@@ -1,0 +1,5 @@
+azure-cosmos
+azure-search-documents
+azure-storage-blob
+azure-identity
+pydantic

@@ -1,0 +1,50 @@
+[
+  {
+    "workflow_id": "heartbeat_timeout_no_rms_alarm_v1",
+    "title": "Heartbeat timeout with no RMS alarm",
+    "issue_category": "CAT-1",
+    "operational_intent": "recover heartbeat timeout with no RMS alarm",
+    "required_signals": [
+      "agvs_stopped",
+      "no_rms_alarm",
+      "tipper_heartbeat_timeout"
+    ],
+    "procedure_refs": [
+      "restart_optisweep_service_after_heartbeat_timeout_v1"
+    ],
+    "related_incidents": [
+      "229374",
+      "229716",
+      "229777"
+    ],
+    "source_candidate_ids": [
+      "heartbeat_timeout_no_rms_alarm_v1"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "workflow_candidate_229374",
+        "source_artifact_id": "artifact_229374",
+        "excerpt": "AGVs stopped, no RMS alarm, heartbeat timeout, service restart recovery."
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "workflow_candidate_229716",
+        "source_artifact_id": "artifact_229716",
+        "excerpt": "Hospital tote removal hung with heartbeat timeout and engineer recovery."
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "workflow_candidate_229777",
+        "source_artifact_id": "artifact_229777",
+        "excerpt": "Recurring frozen WCS presentation with heartbeat timeout."
+      }
+    ],
+    "escalation_conditions": [
+      "remote access unavailable",
+      "heartbeat does not recover after restart",
+      "OT hardware alarms present"
+    ],
+    "status": "approved_for_workflow"
+  }
+]

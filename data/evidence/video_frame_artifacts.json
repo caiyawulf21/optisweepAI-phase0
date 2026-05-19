@@ -1,0 +1,77 @@
+[
+  {
+    "artifact_id": "vf_upsfortna_day1_smoke_000000",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "timestamp": "00:00:00.000",
+    "timestamp_seconds": 0.0,
+    "frame_index": 0,
+    "sequence_id": "seq_000001",
+    "scene_id": "scene_000001",
+    "frame_range": {
+      "start": 0,
+      "end": 0
+    },
+    "image_path": "output\\phase0\\video_training\\upsfortna_day1_smoke\\frames\\upsfortna_day1_smoke_000001_000000_000.jpg",
+    "artifact_type": "video_frame",
+    "extraction_status": "completed",
+    "validation_status": "needs_review",
+    "ocr_status": "pending",
+    "visual_summary_status": "pending",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:00.000",
+      "frame:0"
+    ]
+  },
+  {
+    "artifact_id": "vf_upsfortna_day1_smoke_000160",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "timestamp": "00:00:10.000",
+    "timestamp_seconds": 10.0,
+    "frame_index": 160,
+    "sequence_id": "seq_000002",
+    "scene_id": "scene_000002",
+    "frame_range": {
+      "start": 160,
+      "end": 160
+    },
+    "image_path": "output\\phase0\\video_training\\upsfortna_day1_smoke\\frames\\upsfortna_day1_smoke_000002_000010_000.jpg",
+    "artifact_type": "video_frame",
+    "extraction_status": "completed",
+    "validation_status": "needs_review",
+    "ocr_status": "pending",
+    "visual_summary_status": "pending",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:10.000",
+      "frame:160"
+    ]
+  },
+  {
+    "artifact_id": "vf_upsfortna_day1_smoke_000320",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "timestamp": "00:00:20.000",
+    "timestamp_seconds": 20.0,
+    "frame_index": 320,
+    "sequence_id": "seq_000003",
+    "scene_id": "scene_000003",
+    "frame_range": {
+      "start": 320,
+      "end": 320
+    },
+    "image_path": "output\\phase0\\video_training\\upsfortna_day1_smoke\\frames\\upsfortna_day1_smoke_000003_000020_000.jpg",
+    "artifact_type": "video_frame",
+    "extraction_status": "completed",
+    "validation_status": "needs_review",
+    "ocr_status": "pending",
+    "visual_summary_status": "pending",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:20.000",
+      "frame:320"
+    ]
+  }
+]

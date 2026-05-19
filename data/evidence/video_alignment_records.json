@@ -1,0 +1,21 @@
+[
+  {
+    "alignment_id": "align_vts_upsfortna_day1_smoke_000001",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "segment_id": "vts_upsfortna_day1_smoke_000001",
+    "frame_artifact_ids": [
+      "vf_upsfortna_day1_smoke_000000",
+      "vf_upsfortna_day1_smoke_000160",
+      "vf_upsfortna_day1_smoke_000320"
+    ],
+    "timestamp_start": "00:00:00.000",
+    "timestamp_end": "00:00:30.000",
+    "alignment_method": "timestamp_overlap",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:00.000-00:00:30.000"
+    ]
+  }
+]

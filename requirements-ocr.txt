@@ -1,0 +1,9 @@
+paddleocr==3.5.0
+paddlepaddle==3.2.2
+numpy==2.3.5
+PyMuPDF==1.27.2.3
+Pillow==12.2.0
+pytesseract==0.3.13
+ocrmypdf==17.4.2
+opencv-contrib-python==4.10.0.84
+openai

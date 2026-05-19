@@ -1,0 +1,24 @@
+[
+  {
+    "merge_id": "merge_restart_optisweep_service_after_heartbeat_timeout_v1",
+    "reusable_id": "restart_optisweep_service_after_heartbeat_timeout_v1",
+    "source_candidate_ids": [
+      "case_229374_restart_service_candidate",
+      "case_229716_restart_service_candidate",
+      "case_229777_restart_service_candidate"
+    ],
+    "related_incidents": [
+      "229374",
+      "229716",
+      "229777"
+    ],
+    "status": "merged_candidate",
+    "reasons": [
+      "Shared operational intent",
+      "Shared role",
+      "Shared supported steps",
+      "Shared validation and escalation conditions",
+      "Evidence-backed overlap across multiple incidents"
+    ]
+  }
+]

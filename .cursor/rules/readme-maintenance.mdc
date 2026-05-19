@@ -1,0 +1,18 @@
+---
+description: Keep the root README synchronized with major repository changes
+alwaysApply: true
+---
+
+# README Maintenance
+
+When making large changes, check whether `README.md` must be updated in the same change set.
+
+Update `README.md` for changes to:
+
+- Runtime architecture, graph nodes, API routes, schemas, or state.
+- Retrieval, workflow routing, workflow YAML structure, escalation rules, or citations.
+- Dataset paths, schemas, validation statuses, ingestion, indexing, or promotion rules.
+- Azure/Cosmos/Search/Blob requirements, environment variables, setup commands, or dependencies.
+- Project scope, roadmap, maturity labels, known gaps, or implementation status.
+
+Do not describe planned or conceptual architecture as implemented. Label behavior as implemented, partial, experimental, planned, deferred, stubbed, blocked, or deprecated.

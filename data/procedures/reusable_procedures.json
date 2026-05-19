@@ -1,0 +1,94 @@
+[
+  {
+    "procedure_id": "restart_optisweep_service_after_heartbeat_timeout_v1",
+    "title": "Restart Optisweep service after heartbeat timeout",
+    "operational_intent": "restart optisweep service after heartbeat timeout",
+    "role_required": "engineer",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "confirm_no_rms_alarms",
+        "instruction": "Confirm no RMS alarms are active.",
+        "validation_check": "RMS alarm state is documented.",
+        "expected_outcome": "No RMS alarm explains the stoppage.",
+        "escalation_condition": "Escalate if a safety or hardware alarm is present."
+      },
+      {
+        "step_id": "confirm_tipper_heartbeat_timeout",
+        "instruction": "Confirm tipper heartbeat timeout is present.",
+        "validation_check": "Heartbeat timeout state is captured.",
+        "expected_outcome": "Heartbeat timeout matches the recurring failure signature.",
+        "escalation_condition": "Escalate if OT hardware alarms are present."
+      },
+      {
+        "step_id": "set_master_estop_on",
+        "instruction": "Place master E-stop ON.",
+        "validation_check": "Safe state is confirmed.",
+        "expected_outcome": "System is safe for service recovery.",
+        "escalation_condition": "Escalate if safe state cannot be confirmed."
+      },
+      {
+        "step_id": "restart_service",
+        "instruction": "Engineer restarts the Optisweep/Ignition service.",
+        "validation_check": "Service returns to running state.",
+        "expected_outcome": "Service restart completes.",
+        "escalation_condition": "Escalate if remote access is unavailable."
+      },
+      {
+        "step_id": "validate_heartbeat",
+        "instruction": "Validate heartbeat recovery.",
+        "validation_check": "Heartbeat timeout clears.",
+        "expected_outcome": "Heartbeat is healthy.",
+        "escalation_condition": "Escalate if heartbeat does not recover."
+      },
+      {
+        "step_id": "confirm_agv_movement",
+        "instruction": "Confirm AGVs resume movement.",
+        "validation_check": "AGV movement is observed.",
+        "expected_outcome": "AGVs resume movement.",
+        "escalation_condition": "Escalate if AGVs remain stopped."
+      }
+    ],
+    "validation_checks": [
+      "RMS alarm state is documented.",
+      "Heartbeat timeout clears.",
+      "AGV movement is observed."
+    ],
+    "escalation_conditions": [
+      "remote access unavailable",
+      "heartbeat does not recover after restart",
+      "OT hardware alarms present"
+    ],
+    "related_incidents": [
+      "229374",
+      "229716",
+      "229777"
+    ],
+    "source_candidate_ids": [
+      "case_229374_restart_service_candidate",
+      "case_229716_restart_service_candidate",
+      "case_229777_restart_service_candidate"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "timeline_229374_restart",
+        "source_artifact_id": "artifact_229374",
+        "excerpt": "Service restart restored heartbeat and AGV movement."
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "timeline_229716_restart",
+        "source_artifact_id": "artifact_229716",
+        "excerpt": "Engineer service restart was part of recovery."
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "timeline_229777_restart",
+        "source_artifact_id": "artifact_229777",
+        "excerpt": "Recurring heartbeat timeout recovery pattern."
+      }
+    ],
+    "status": "needs_sme_review"
+  }
+]

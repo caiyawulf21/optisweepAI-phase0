@@ -1,0 +1,15 @@
+version: "0.1"
+categories:
+  - category_id: CAT-1
+    name: WCS / Service Failure
+    supported: true
+    signals:
+      - agvs_stopped
+      - no_rms_alarm
+      - tipper_heartbeat_timeout
+      - hospital_tote_removal_hangs
+      - system_active_but_frozen
+      - ignition_or_wcs_down
+      - service_restart_required
+      - remote_access_unavailable
+      - ot_hardware_alarm_present

@@ -1,0 +1,880 @@
+Optisweep AI Support Assistant — Phase 0 Statement of Work (v2)
+1. Executive Summary
+This document defines the scope, architecture, implementation plan, and delivery objectives for Optisweep AI Support Assistant — Phase 0.
+Phase 0 is a focused proof-of-value implementation centered on:
+
+CAT-1: WCS / Service Failure
+
+The objective of Phase 0 is to validate that an AI-assisted troubleshooting system can:
+
+
+recognize recurring operational failure signatures from natural language symptom descriptions
+
+
+classify incidents into validated issue categories
+
+
+select troubleshooting workflows based on confidence and symptom matching
+
+
+retrieve grounded troubleshooting knowledge and RCA evidence
+
+
+guide users through detailed role-based operational workflows
+
+
+escalate intelligently when engineer or infrastructure involvement is required
+
+
+provide traceable citations and operational context
+
+
+Phase 0 is intentionally narrow in scope and is not intended to be a production deployment. The purpose is to validate:
+
+
+operational usefulness
+
+
+workflow trust
+
+
+retrieval quality
+
+
+orchestration design
+
+
+symptom-driven workflow selection
+
+
+escalation quality
+
+
+before broader Phase 1 investment.
+
+2. Phase 0 Goals
+
+2.1 Symptom-Driven Workflow Selection
+The system can identify recurring operational failure signatures from user-described symptoms and select the correct troubleshooting workflow based on confidence.
+Example symptoms:
+
+
+AGVs stopped
+
+
+no active RMS alarms
+
+
+all tippers heartbeat timeout
+
+
+hospital tote removal hangs
+
+
+system appears active but frozen
+
+
+The user should not need to know:
+
+
+the root cause
+
+
+the workflow name
+
+
+the subsystem owner
+
+
+the escalation path
+
+
+The orchestration layer determines the most appropriate workflow using:
+
+
+symptom extraction
+
+
+retrieval evidence
+
+
+issue-category matching
+
+
+operational signature matching
+
+
+workflow confidence thresholds
+
+
+
+2.2 Grounded Retrieval
+The system retrieves relevant historical incidents, RCA findings, troubleshooting guidance, and workflow evidence from manually curated structured records.
+All responses must include:
+
+
+citations
+
+
+supporting incident references
+
+
+retrieval confidence indicators
+
+
+
+2.3 Role-Based Guided Troubleshooting
+The system guides users through:
+
+
+support-safe troubleshooting actions
+
+
+engineer-required recovery procedures
+
+
+infrastructure diagnostics
+
+
+escalation checkpoints
+
+
+validation checks
+
+
+Each workflow step must contain:
+
+
+detailed operational instructions
+
+
+required role or permission level
+
+
+expected outcome
+
+
+escalation condition
+
+
+validation checks
+
+
+stop conditions where applicable
+
+
+
+2.4 Deterministic Escalation
+The system determines escalation requirements using deterministic rule-based logic.
+Escalation conditions include:
+
+
+unresolved heartbeat recovery
+
+
+engineer-only actions required
+
+
+OT hardware alarms present
+
+
+infrastructure/network indicators
+
+
+communication recovery failures
+
+
+recurring incidents in the same shift
+
+
+remote access unavailable
+
+
+Escalation domains include:
+
+
+application
+
+
+controls
+
+
+OT networking
+
+
+infrastructure
+
+
+database
+
+
+
+3. Scope
+
+3.1 In Scope
+
+Manual Knowledge Authoring
+Phase 0 knowledge records will be manually authored from:
+
+
+Teams RCA discussions
+
+
+Salesforce RCA findings
+
+
+Confluence KBAs
+
+
+troubleshooting notes
+
+
+incident summaries
+
+
+operational investigation findings
+
+
+Phase 0 does NOT include:
+
+
+live ingestion
+
+
+enterprise connectors
+
+
+automated synchronization
+
+
+The purpose of manual authoring is to create:
+
+
+validated structured knowledge records
+
+
+operational symptom signatures
+
+
+retrieval-ready troubleshooting evidence
+
+
+validated troubleshooting workflows
+
+
+
+Issue Scope
+Phase 0 supports only:
+CAT-1: WCS / Service Failure
+Initial operational signatures include:
+
+
+AGVs stopped
+
+
+heartbeat timeout
+
+
+WCS/Ignition instability
+
+
+service crash or freeze behavior
+
+
+hospital tote removal failure
+
+
+OPC-UA communication instability
+
+
+
+Failure Signature Extraction
+The orchestration system extracts operational signals from natural language user input.
+Example:
+Input:
+AGVs stopped and all tippers heartbeat timeout
+Structured extraction:
+{  "agvs_stopped": true,  "heartbeat_timeout": true,  "hospital_tote_removal_hangs": false,  "rms_alarm_present": false}
+These extracted signals are used to:
+
+
+classify issue category
+
+
+determine workflow eligibility
+
+
+evaluate workflow confidence
+
+
+trigger escalation rules
+
+
+improve retrieval precision
+
+
+
+Retrieval Layer
+Azure AI Search retrieval over manually curated CAT-1 knowledge records using:
+
+
+keyword search
+
+
+vector similarity
+
+
+metadata filtering
+
+
+Responses include:
+
+
+citations
+
+
+matched symptom signatures
+
+
+retrieval confidence
+
+
+
+Workflow Engine
+Phase 0 includes:
+
+
+symptom-driven workflow routing
+
+
+confidence-gated workflow selection
+
+
+detailed role-based troubleshooting workflows
+
+
+deterministic escalation routing
+
+
+Workflows are named by operational symptom signatures, NOT by:
+
+
+incident IDs
+
+
+customer names
+
+
+root causes
+
+
+Example workflow names:
+heartbeat_timeout_no_rms_alarm_v1agvs_stopped_hospital_remove_hangs_v1service_restart_recovery_flow_v1
+
+Workflow Structure
+Each workflow contains:
+
+
+entry conditions
+
+
+required symptom signatures
+
+
+required roles
+
+
+detailed step-by-step operational actions
+
+
+expected outcomes
+
+
+escalation triggers
+
+
+validation checkpoints
+
+
+stop conditions
+
+
+Workflows must distinguish:
+
+
+support-safe actions
+
+
+engineer-required actions
+
+
+infrastructure-required actions
+
+
+
+Orchestration Layer
+LangGraph-based deterministic orchestration.
+Responsibilities:
+
+
+symptom extraction
+
+
+context management
+
+
+retrieval invocation
+
+
+workflow confidence evaluation
+
+
+workflow routing
+
+
+escalation routing
+
+
+workflow state tracking
+
+
+
+Escalation Engine
+Rule-based escalation logic with:
+
+
+escalation domain classification
+
+
+structured escalation summary generation
+
+
+deterministic escalation criteria
+
+
+
+User Interface
+Simple troubleshooting interface using:
+
+
+Streamlit OR
+
+
+lightweight React frontend
+
+
+UI requirements:
+
+
+natural language troubleshooting input
+
+
+workflow progression
+
+
+cited responses
+
+
+escalation summary output
+
+
+
+3.2 Explicitly Out of Scope
+The following are NOT included in Phase 0:
+
+
+Teams API integration
+
+
+SharePoint connectors
+
+
+Salesforce connectors
+
+
+automated ingestion
+
+
+scheduled sync jobs
+
+
+admin dashboards
+
+
+human review queue
+
+
+ML classifiers
+
+
+knowledge graph implementation
+
+
+Entra ID authentication
+
+
+production deployment
+
+
+observability platform
+
+
+MCP implementation
+
+
+autonomous agents
+
+
+multi-category troubleshooting support
+
+
+These capabilities are deferred to later phases.
+
+4. Architecture
+Phase 0 Architecture
+User  ↓Chat UI  ↓FastAPI Backend  ↓LangGraph Orchestrator  ↓[Symptom Extraction]  ↓[Retrieval Layer]  ↓[Workflow Confidence Evaluation]  ↓[Workflow OR Escalation]  ↓Response + Citations
+
+5. Canonical Knowledge Record Schema
+Phase 0 uses manually authored structured knowledge records.
+Knowledge records represent:
+
+
+historical incidents
+
+
+operational findings
+
+
+RCA conclusions
+
+
+symptom patterns
+
+
+resolution summaries
+
+
+escalation context
+
+
+Knowledge records do NOT contain executable role-based workflow steps. Detailed operational procedures are defined separately in workflow YAML files.
+
+Canonical Knowledge Record Fields
+FieldPurposerecord_idInternal unique record referencesource_case_idOriginal incident or case referencedata_sourceHuman-readable source descriptionsource_typeSource category such as Teams RCA chat, Salesforce RCA, Confluence KBAsource_authorityRetrieval confidence weightingsiteSite/customer contextissue_categoryRouting categoryfailure_signatureObservable operational symptom groupingsymptom_summaryHuman-readable operational symptomscomponentAffected systems/componentsobserved_signalsSpecific evidence such as heartbeat timeout or OPC resetroot_cause_summaryConfirmed or suspected root cause summaryresolution_summaryHuman-readable recovery summaryresolution_stepsHistorical resolution actions takenescalation_domainsRelevant escalation areasescalation_notesKnown escalation triggers or escalation guidanceresolution_statusResolved, unresolved, workaround, recurring, unknownvalidation_statusManual curation statussource_notesHuman-authored operational evidencenotesAdditional curator notes
+
+6. Workflow Model
+Workflows are symptom-driven operational runbooks.
+
+6.1 Workflow Naming Convention
+Workflow names must describe:
+
+
+observable symptoms
+
+
+operational presentation
+
+
+troubleshooting context
+
+
+NOT:
+
+
+case IDs
+
+
+customer names
+
+
+assumed root causes
+
+
+Correct examples:
+heartbeat_timeout_no_rms_alarm_v1agvs_stopped_hospital_remove_hangs_v1service_restart_recovery_flow_v1
+Incorrect examples:
+case_229374_workflowups_haslet_failure_workflow
+
+6.2 Workflow Selection Logic
+The orchestration layer selects workflows using:
+
+
+symptom extraction
+
+
+retrieval evidence
+
+
+issue-category matching
+
+
+confidence thresholds
+
+
+Workflows are invoked only when:
+
+
+symptom confidence is sufficiently high
+
+
+workflow evidence is strong
+
+
+operational signatures match validated patterns
+
+
+Otherwise:
+
+
+retrieval-only mode is used
+
+
+clarification questions are asked
+
+
+escalation may be recommended
+
+
+
+6.3 Workflow Step Requirements
+Every workflow step must contain:
+FieldDescriptionstep_idUnique identifierrole_requiredRequired role or permissioninstructionDetailed operational instructionexpected_outcomeExpected operational resultvalidation_checkValidation or recovery confirmationescalation_conditionEscalation triggersupport_safeIndicates whether action is support-safestop_conditionWorkflow termination condition
+
+7. Initial Workflow Target
+The first Phase 0 workflow will model the recurring operational signature involving:
+
+
+AGVs stopped
+
+
+no active RMS alarms
+
+
+all tippers heartbeat timeout
+
+
+hospital tote removal hangs
+
+
+system appears active but frozen
+
+
+This operational signature is derived from recurring CAT-1 incidents including:
+
+
+229374
+
+
+229716
+
+
+229777
+
+
+related recurrence patterns
+
+
+The workflow will include:
+
+
+support-safe operational checks
+
+
+engineer-required service restart procedures
+
+
+infrastructure escalation branches
+
+
+OT-network diagnostic escalation paths
+
+
+post-recovery validation checkpoints
+
+
+
+8. Technology Stack
+LayerTechnologyBackendFastAPIOrchestrationLangGraphLLMAzure OpenAIRetrievalAzure AI SearchWorkflow ConfigsYAMLStorageJSONUIStreamlitLoggingStructured logs
+
+9. Delivery Plan
+
+Week 1 — Foundation
+Objectives
+
+
+establish environment
+
+
+create manually curated CAT-1 dataset
+
+
+define operational symptom signatures
+
+
+validate retrieval
+
+
+Deliverables
+
+
+Azure environment configured
+
+
+LangGraph scaffold
+
+
+manually authored CAT-1 knowledge records
+
+
+symptom extraction schema
+
+
+Azure AI Search index
+
+
+retrieval validation harness
+
+
+
+Week 2 — Workflow + Escalation
+Objectives
+
+
+build orchestration
+
+
+build symptom-driven workflow routing
+
+
+build role-based workflow engine
+
+
+build escalation engine
+
+
+Deliverables
+
+
+workflow confidence routing
+
+
+symptom-driven workflow selection
+
+
+role-based workflow execution
+
+
+escalation summary generation
+
+
+troubleshooting UI
+
+
+
+Week 3 — Validation + Demonstration
+Objectives
+
+
+validate with SMEs
+
+
+collect operational feedback
+
+
+prepare Phase 1 recommendation
+
+
+Deliverables
+
+
+live demo
+
+
+workflow validation
+
+
+operational feedback
+
+
+updated architecture findings
+
+
+refined Phase 1 recommendations
+
+
+
+10. Success Criteria
+Phase 0 is successful if the system can:
+
+10.1 Symptom Recognition
+Correctly identify recurring CAT-1 operational signatures from natural language troubleshooting input.
+
+10.2 Workflow Selection
+Select the correct workflow using:
+
+
+symptom extraction
+
+
+confidence scoring
+
+
+retrieval evidence
+
+
+without requiring the user to manually select workflows.
+
+10.3 Guided Troubleshooting
+Guide users through detailed role-based troubleshooting procedures.
+
+10.4 Escalation
+Generate accurate escalation summaries and route incidents to the correct escalation domain.
+
+10.5 Trust
+Demonstrate sufficient operational usefulness that support engineers indicate willingness to continue using the system.
+
+11. Risks
+RiskMitigationWorkflow misroutingConfidence-gated workflow selectionRetrieval quality insufficientNarrow CAT-1 dataset and manual curationUnsafe recommendationsRole-based workflows and escalation boundariesOverengineeringStrict Phase 0 scope limitsWeak symptom extractionStructured operational signal schema
+
+12. Final Recommendation
+Phase 0 should focus exclusively on validating that:
+
+
+operational symptom signatures can be recognized
+
+
+workflows can be selected by confidence
+
+
+grounded retrieval improves troubleshooting
+
+
+role-based workflows improve operational consistency
+
+
+escalation logic reduces ambiguity
+
+
+support knowledge can be structured into reusable operational runbooks
+
+
+The objective is not enterprise production readiness.
+The objective is to validate:
+
+
+symptom-driven orchestration
+
+
+retrieval quality
+
+
+workflow trust
+
+
+escalation quality
+
+
+operational usefulness
+
+
+before expanding into broader ingestion, automation, graph systems, or ML capabilities.

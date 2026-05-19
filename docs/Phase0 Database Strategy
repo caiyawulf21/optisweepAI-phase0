@@ -1,0 +1,562 @@
+Stage 1 — Azure Knowledge Store Implementation Plan
+Goal
+
+Build the Phase 0 knowledge storage layer in Azure so the system can store:
+
+stable Optisweep context
+normalized incidents
+timeline events
+workflow definitions
+reusable procedures
+raw evidence
+source artifacts
+escalation summaries
+relationships between all of the above
+
+The storage layer should support retrieval now and workflow/procedure refinement later.
+
+Recommended Azure Storage Architecture
+Use 3 storage services
+Service	Purpose	Why
+Azure Cosmos DB for NoSQL	Primary structured database	Flexible JSON documents, good for evolving schemas, relationships, metadata, versioning
+Azure AI Search	Retrieval/search index	Best for RAG, hybrid keyword + vector retrieval, citations, filters
+Azure Blob Storage	Raw files and artifacts	Best for screenshots, source docs, logs, PDFs, exported case files
+
+Azure AI Search supports hybrid full-text and vector retrieval, which is what you want for RAG-style troubleshooting search. Blob Storage is the right place for unstructured source files and artifacts like documents, screenshots, logs, and exports. Cosmos DB is a practical source-of-truth store because it can store flexible JSON documents and also supports vector/hybrid search if you later want to simplify architecture or experiment with Cosmos-based retrieval.
+
+Important Design Rule
+
+Do not use Azure AI Search as the database.
+
+Use:
+
+Cosmos DB = source of truth
+Azure AI Search = searchable retrieval index
+Blob Storage = raw source artifact storage
+
+This keeps the system clean.
+
+Recommended Azure Resource Names
+
+Use simple, phase-specific names.
+
+Resource Group:
+rg-optisweep-ai-phase0
+
+Cosmos DB Account:
+cosmos-optisweep-phase0
+
+Cosmos DB Database:
+optisweep_knowledge_phase0
+
+Azure AI Search:
+srch-optisweep-phase0
+
+Storage Account:
+stoptisweepphase0
+
+Blob Containers:
+raw-source-artifacts
+processed-source-artifacts
+Cosmos DB Database Design
+Database Name
+optisweep_knowledge_phase0
+Containers
+
+Create one Cosmos DB container per major dataset.
+
+Container	Dataset	Purpose
+context_reference	Dataset 0	Stable domain/context knowledge
+incident_records	Dataset 1	Canonical incident records
+timeline_events	Dataset 1.5	Incident timeline events
+workflow_definitions	Dataset 2A	Versioned workflow definitions
+procedure_dictionary	Dataset 2B	Reusable procedures
+raw_evidence_chunks	Dataset 3	Source evidence chunks
+source_artifacts	Dataset 4	Metadata for raw files, screenshots, logs
+escalation_summaries	Dataset 5	Engineer handoff summaries
+knowledge_relationships	Cross-dataset	Links incidents, workflows, procedures, symptoms, causes, evidence
+ingestion_runs	Operational metadata	Tracks manual ingestion jobs
+Partition Key Recommendation
+
+For Phase 0, keep this simple.
+
+Container	Partition Key
+context_reference	/context_type
+incident_records	/issue_category
+timeline_events	/incident_id
+workflow_definitions	/issue_category
+procedure_dictionary	/procedure_type
+raw_evidence_chunks	/incident_id
+source_artifacts	/incident_id
+escalation_summaries	/incident_id
+knowledge_relationships	/from_id
+ingestion_runs	/run_type
+
+This is good enough for Phase 0 and keeps querying straightforward.
+
+Container 1 — context_reference
+Purpose
+
+Stores stable Optisweep domain knowledge that should not be mixed with incident retrieval.
+
+Examples:
+
+What is Optisweep?
+What is RMS?
+What is Ignition?
+What is WCS?
+What is a hospital station?
+What are support tiers?
+Who owns infrastructure issues?
+What is the escalation model?
+Example Document
+{
+  "id": "ctx_glossary_rms",
+  "dataset": "dataset_0_context_reference",
+  "context_type": "glossary",
+  "title": "RMS",
+  "applies_to": ["Optisweep", "AGV", "support"],
+  "source_refs": [],
+  "source_authority": "manual_phase0",
+  "retrieval_text": "RMS refers to the robot management system used to monitor robot state, AGV position, task status, and fleet behavior.",
+  "created_at": "2026-05-15T00:00:00Z",
+  "updated_at": "2026-05-15T00:00:00Z"
+}
+Container 2 — incident_records
+Purpose
+
+Main canonical incident database.
+
+Stores one normalized record per incident.
+
+Example Document
+{
+  "id": "inc_229716",
+  "dataset": "dataset_1_canonical_incident",
+  "incident_id": "229716",
+  "source_case_id": "229716",
+  "issue_category": "CAT-1: WCS / Service Failure",
+  "site": "UPS Haslet, TX",
+  "customer": "UPS",
+  "priority": "P1/P2",
+  "failure_signature": [
+    "agvs_stopped",
+    "tipper_heartbeat_timeout",
+    "no_rms_alarm",
+    "hospital_tote_removal_hangs"
+  ],
+  "symptom_summary": "Sort started normally, then AGVs stopped when lining up to go to tippers. All tippers showed heartbeat timeout and hospital tote removal would not execute.",
+  "component": [
+    "WCS",
+    "Ignition",
+    "Tipper heartbeat",
+    "AGV fleet",
+    "Hospital station"
+  ],
+  "observed_signals": [
+    "AGVs stopped",
+    "No faults on RMS screen",
+    "All tippers heartbeat timeout",
+    "Hospital removal command did not execute"
+  ],
+  "root_cause_summary": "Tipper heartbeat failure. Same recurring CAT-1 pattern as related cases.",
+  "validated_root_cause": false,
+  "resolution_summary": "Engineer restarted Optisweep service after site placed master E-stop ON. AGV operation and hospital function were restored.",
+  "resolution_steps": [
+    "Confirm site ready and sort can be paused",
+    "Have site place master E-stop ON",
+    "Engineer restarts Optisweep service",
+    "Confirm AGV operation restored",
+    "Download server event and Ignition logs"
+  ],
+  "escalated": true,
+  "escalation_domains": ["application", "controls"],
+  "support_safe": false,
+  "workflow_candidate": true,
+  "resolution_status": "resolved",
+  "source_refs": ["sf_case_229716"],
+  "source_authority": "salesforce_rca",
+  "retrieval_text": "CAT-1 WCS Service Failure. AGVs stopped, no RMS alarms, all tippers heartbeat timeout, hospital tote removal hangs. Engineer restart of Optisweep service restored operation.",
+  "created_at": "2026-05-15T00:00:00Z",
+  "updated_at": "2026-05-15T00:00:00Z"
+}
+Container 3 — timeline_events
+Purpose
+
+Stores ordered troubleshooting events for each incident.
+
+This is what later helps improve workflows.
+
+Example Document
+{
+  "id": "evt_229716_001",
+  "dataset": "dataset_1_5_timeline_event",
+  "incident_id": "229716",
+  "event_order": 1,
+  "event_type": "initial_report",
+  "actor_role": "operator",
+  "event_summary": "Site reported that AGVs stopped after lining up to go to tippers.",
+  "observed_signals": ["AGVs stopped"],
+  "action_taken": null,
+  "outcome": "Issue opened",
+  "next_action": "Check RMS alarms and tipper heartbeat status",
+  "source_ref": "sf_case_229716",
+  "created_at": "2026-05-15T00:00:00Z"
+}
+Container 4 — workflow_definitions
+Purpose
+
+Stores versioned decision-tree workflows.
+
+Do not store workflows only as files forever. YAML files are fine for local development, but the runtime system should eventually load workflows from this container.
+
+Example Document
+{
+  "id": "wf_heartbeat_timeout_no_rms_alarm_v1_0",
+  "dataset": "dataset_2a_workflow_definition",
+  "workflow_id": "heartbeat_timeout_no_rms_alarm_v1",
+  "workflow_version": "1.0",
+  "status": "draft",
+  "issue_category": "CAT-1: WCS / Service Failure",
+  "entry_conditions": [
+    "AGVs stopped",
+    "No RMS alarms",
+    "Tipper heartbeat timeout"
+  ],
+  "required_signals": [
+    "agvs_stopped",
+    "tipper_heartbeat_timeout",
+    "no_rms_alarm"
+  ],
+  "exclusion_conditions": [
+    "active hardware alarm present",
+    "power outage confirmed"
+  ],
+  "minimum_confidence": 0.75,
+  "roles_allowed": [
+    "L1 Technical Support",
+    "L2/L3 Software Support",
+    "Controls Engineer"
+  ],
+  "steps": [
+    {
+      "step_id": "check_rms_alarms",
+      "step_type": "diagnostic_check",
+      "question": "Are there any active alarms on the RMS screen?",
+      "why_asked": "Active hardware alarms may indicate this is not the heartbeat timeout workflow.",
+      "role_required": "L1 Technical Support",
+      "support_safe": true,
+      "expected_outcome": "Confirm whether RMS alarms are present.",
+      "next_step_if_pass": "check_tipper_heartbeat",
+      "next_step_if_fail": "escalate_controls"
+    }
+  ],
+  "escalation_conditions": [
+    "heartbeat does not recover after service restart",
+    "OT hardware alarms present",
+    "remote access unavailable"
+  ],
+  "evidence_refs": ["inc_229716", "inc_229374", "inc_229777"],
+  "procedure_refs": ["proc_place_master_estop_on", "proc_restart_optisweep_service"],
+  "related_cases": ["229716", "229374", "229777"],
+  "created_at": "2026-05-15T00:00:00Z",
+  "updated_at": "2026-05-15T00:00:00Z"
+}
+Container 5 — procedure_dictionary
+Purpose
+
+Stores reusable procedures that can be referenced by many workflows.
+
+This prevents copying the same restart/check/escalation procedure into multiple workflow files.
+
+Example Document
+{
+  "id": "proc_restart_optisweep_service",
+  "dataset": "dataset_2b_procedure_dictionary",
+  "procedure_id": "restart_optisweep_service",
+  "procedure_version": "1.0",
+  "procedure_type": "service_restart",
+  "title": "Restart Optisweep Service",
+  "role_required": "Controls Engineer",
+  "support_safe": false,
+  "steps": [
+    {
+      "step_order": 1,
+      "instruction": "Confirm site has placed master E-stop ON before restarting services.",
+      "validation_check": "Site confirms system is stopped and safe."
+    },
+    {
+      "step_order": 2,
+      "instruction": "Restart the Optisweep service remotely.",
+      "validation_check": "Service returns to running state."
+    }
+  ],
+  "expected_outcome": "Optisweep service restarts and AGVs resume normal operation if service freeze was the cause.",
+  "escalation_conditions": [
+    "Service does not restart",
+    "Heartbeat does not recover",
+    "Issue recurs within same sort window"
+  ],
+  "evidence_refs": ["inc_229716", "inc_229374", "inc_229777"],
+  "status": "draft",
+  "created_at": "2026-05-15T00:00:00Z",
+  "updated_at": "2026-05-15T00:00:00Z"
+}
+Container 6 — raw_evidence_chunks
+Purpose
+
+Stores small text chunks extracted from source material.
+
+These are useful for citation, retrieval, and traceability.
+
+Example Document
+{
+  "id": "evidence_229716_001",
+  "dataset": "dataset_3_raw_evidence_chunk",
+  "incident_id": "229716",
+  "source_case_id": "229716",
+  "source_type": "salesforce_rca",
+  "source_ref": "sf_case_229716",
+  "chunk_order": 1,
+  "chunk_text": "All tippers showed heartbeat timeout and no faults were visible on the RMS screen.",
+  "observed_signals": [
+    "tipper_heartbeat_timeout",
+    "no_rms_alarm"
+  ],
+  "linked_records": ["inc_229716"],
+  "retrieval_text": "All tippers heartbeat timeout. No faults visible on RMS screen.",
+  "created_at": "2026-05-15T00:00:00Z"
+}
+Container 7 — source_artifacts
+Purpose
+
+Stores metadata about files in Blob Storage.
+
+The actual file goes in Blob Storage.
+The metadata and links go here.
+
+Example Document
+{
+  "id": "artifact_229716_sf_export",
+  "dataset": "dataset_4_source_artifact",
+  "incident_id": "229716",
+  "artifact_type": "exported_case",
+  "source_system": "salesforce",
+  "file_name": "case_229716_export.docx",
+  "blob_container": "raw-source-artifacts",
+  "blob_path": "cat1/229716/case_229716_export.docx",
+  "description": "Exported Salesforce case evidence for incident 229716.",
+  "linked_record_ids": ["inc_229716"],
+  "created_at": "2026-05-15T00:00:00Z"
+}
+Container 8 — escalation_summaries
+Purpose
+
+Stores escalation summary templates and generated engineer handoffs.
+
+Example Document
+{
+  "id": "esc_template_cat1_heartbeat_timeout",
+  "dataset": "dataset_5_escalation_summary",
+  "incident_id": null,
+  "template": true,
+  "issue_category": "CAT-1: WCS / Service Failure",
+  "escalation_domain": "application",
+  "priority": "P1/P2",
+  "trigger_reason": "Heartbeat timeout pattern requires engineer action for service restart.",
+  "symptoms": [
+    "AGVs stopped",
+    "No RMS alarms",
+    "Tipper heartbeat timeout"
+  ],
+  "steps_attempted": [],
+  "evidence_refs": ["inc_229716", "inc_229374", "inc_229777"],
+  "recommended_owner": "L2/L3 Software Support or Controls Engineer",
+  "handoff_summary": "AGVs stopped with no RMS alarms and all tippers showing heartbeat timeout. Pattern matches prior CAT-1 WCS/Ignition service failure incidents. Engineer review and service recovery required.",
+  "created_at": "2026-05-15T00:00:00Z"
+}
+Container 9 — knowledge_relationships
+Purpose
+
+This is the most important addition for your future direction.
+
+It lets you track relationships now without building the full knowledge graph yet.
+
+Think of this as a lightweight graph table inside Cosmos DB.
+
+Example Document
+{
+  "id": "rel_inc229716_supports_wf_heartbeat_v1",
+  "relationship_type": "INCIDENT_SUPPORTS_WORKFLOW",
+  "from_id": "inc_229716",
+  "from_type": "incident",
+  "to_id": "wf_heartbeat_timeout_no_rms_alarm_v1_0",
+  "to_type": "workflow",
+  "confidence": 0.9,
+  "status": "candidate",
+  "evidence_refs": ["evidence_229716_001"],
+  "notes": "Incident 229716 contains the same operational signature required by the workflow.",
+  "created_at": "2026-05-15T00:00:00Z",
+  "updated_at": "2026-05-15T00:00:00Z"
+}
+Relationship Types to Support in Phase 0
+INCIDENT_HAS_SYMPTOM
+INCIDENT_AFFECTS_COMPONENT
+INCIDENT_HAS_ROOT_CAUSE
+INCIDENT_RESOLVED_BY_PROCEDURE
+INCIDENT_SUPPORTS_WORKFLOW
+WORKFLOW_USES_PROCEDURE
+WORKFLOW_SUPPORTED_BY_EVIDENCE
+PROCEDURE_SUPPORTED_BY_EVIDENCE
+INCIDENT_TRIGGERED_ESCALATION_DOMAIN
+INCIDENT_SIMILAR_TO_INCIDENT
+
+This gives you a Phase 2 knowledge graph migration path without actually implementing Neo4j yet.
+
+Container 10 — ingestion_runs
+Purpose
+
+Tracks each manual ingestion run.
+
+Useful for debugging and stakeholder reporting.
+
+Example Document
+{
+  "id": "ingest_run_2026_05_15_001",
+  "run_type": "manual_phase0",
+  "input_files": [
+    "case_229716_export.docx"
+  ],
+  "records_created": {
+    "incident_records": 1,
+    "timeline_events": 10,
+    "raw_evidence_chunks": 6,
+    "source_artifacts": 1,
+    "knowledge_relationships": 12
+  },
+  "status": "completed",
+  "errors": [],
+  "started_at": "2026-05-15T00:00:00Z",
+  "completed_at": "2026-05-15T00:03:00Z"
+}
+Azure AI Search Index Design
+Recommendation
+
+Create one Azure AI Search index for Phase 0.
+
+Name:
+
+idx-optisweep-phase0-knowledge
+
+Do not create one index per dataset yet. That is overkill for Phase 0.
+
+Instead, include fields that allow filtering by dataset/container.
+
+Indexable Record Types
+
+Only index records useful for retrieval.
+
+Index these:
+
+context reference
+incident records
+timeline events
+workflow definitions
+procedure dictionary
+raw evidence chunks
+escalation summaries
+
+Do not index:
+
+ingestion runs
+most source artifact metadata unless description is useful
+Required Search Index Fields
+{
+  "id": "string",
+  "record_type": "string",
+  "dataset": "string",
+  "container_name": "string",
+  "source_cosmos_id": "string",
+  "incident_id": "string",
+  "issue_category": "string",
+  "site": "string",
+  "component": "Collection(string)",
+  "symptoms": "Collection(string)",
+  "workflow_id": "string",
+  "procedure_id": "string",
+  "source_refs": "Collection(string)",
+  "source_authority": "string",
+  "support_safe": "boolean",
+  "resolution_status": "string",
+  "title": "string",
+  "retrieval_text": "string",
+  "content_vector": "Collection(Edm.Single)",
+  "created_at": "DateTimeOffset",
+  "updated_at": "DateTimeOffset"
+}
+Blob Storage Design
+Containers
+raw-source-artifacts
+processed-source-artifacts
+Folder Pattern
+raw-source-artifacts/
+  cat1/
+    229716/
+      source/
+      screenshots/
+      logs/
+      exports/
+
+processed-source-artifacts/
+  cat1/
+    229716/
+      extracted_text/
+      normalized_json/
+      embeddings/
+Example Blob Path
+raw-source-artifacts/cat1/229716/exports/case_229716_export.docx
+
+Recommended workflow creation rule
+
+Use this logic:
+
+Situation	Action
+New incident matches existing workflow strongly	Link incident to workflow
+New incident mostly matches but has a variation	Create workflow refinement candidate
+New incident has repeated pattern across multiple cases	Propose new workflow
+New incident is isolated or uncertain	Store as incident evidence only
+SME approves candidate	Promote to approved workflow
+Existing workflow becomes outdated	Create new version or deprecate
+Add a workflow_candidates container
+
+I would add one more container:
+
+workflow_candidates
+
+Purpose:
+
+Stores proposed workflows or proposed changes to existing workflows generated from incident ingestion. These are not runtime workflows until SME approved.
+
+Example:
+
+{
+  "id": "wfc_heartbeat_timeout_refinement_229716",
+  "candidate_type": "refinement",
+  "source_incident_ids": ["229716"],
+  "target_workflow_id": "heartbeat_timeout_no_rms_alarm_v1",
+  "proposed_change": "Add escalation condition for remote access unavailable or VPN/ZScaler outage.",
+  "reason": "Incident 229716 resolution was delayed because remote access was unavailable.",
+  "evidence_refs": ["inc_229716"],
+  "status": "needs_sme_review",
+  "created_at": "2026-05-15T00:00:00Z"
+}
+Updated storage distinction
+Storage Area	Meaning
+incident_records	What happened
+timeline_events	What happened in sequence
+procedure_dictionary	Reusable operational actions
+workflow_definitions	Approved or draft decision trees
+workflow_candidates	Proposed new workflows or refinements
+knowledge_relationships	Links between incidents, procedures, workflows, symptoms, evidence
+The principle to give Cursor
+Historical incidents should teach the system. They should not become the system one-for-one.

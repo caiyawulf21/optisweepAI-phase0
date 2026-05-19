@@ -1,0 +1,8 @@
+{
+  "endpoint": "https://YOUR-RESOURCE.openai.azure.com/",
+  "api_key": "YOUR_API_KEY",
+  "api_version": "2024-10-21",
+  "deployment": "YOUR_DEPLOYMENT_NAME",
+  "temperature": 0.1,
+  "max_completion_tokens": 12000
+}

@@ -1,0 +1,95 @@
+workflow_id: heartbeat_timeout_no_rms_alarm_v1
+name: Heartbeat Timeout With No RMS Alarm
+version: "1.0"
+issue_category: CAT-1
+status: approved_for_workflow
+entry_conditions:
+  - AGVs stopped
+  - No active RMS alarms
+  - Tipper heartbeat timeout present
+  - Hospital tote removal hangs or system appears frozen
+required_signals:
+  - agvs_stopped
+  - no_rms_alarm
+  - tipper_heartbeat_timeout
+minimum_confidence: 0.65
+related_incidents:
+  - "229374"
+  - "229716"
+  - "229777"
+procedure_refs:
+  - restart_optisweep_service_after_heartbeat_timeout_v1
+escalation_conditions:
+  - remote access unavailable
+  - heartbeat does not recover after restart
+  - OT hardware alarms present
+citations:
+  - cat1_229374_heartbeat_timeout
+  - cat1_229716_heartbeat_timeout
+  - cat1_229777_heartbeat_timeout
+steps:
+  - step_id: confirm_no_rms_alarms
+    role_required: support
+    instruction: Confirm there are no active RMS alarms associated with the stopped AGVs or affected tippers.
+    expected_outcome: RMS does not show an active alarm explaining the stoppage.
+    validation_check: Record RMS alarm state before continuing.
+    escalation_condition: Escalate if a safety or hardware alarm is present.
+    support_safe: true
+    stop_condition: Stop this workflow if RMS shows an active alarm that explains the stoppage.
+    evidence_refs:
+      - cat1_229374_heartbeat_timeout
+      - cat1_229716_heartbeat_timeout
+  - step_id: confirm_tipper_heartbeat_timeout
+    role_required: support
+    instruction: Confirm affected tippers show heartbeat timeout while the WCS or Ignition interface still appears active.
+    expected_outcome: Heartbeat timeout is present and matches the recurring CAT-1 failure signature.
+    validation_check: Capture the affected tipper heartbeat state.
+    escalation_condition: Escalate if OT hardware alarms are also present.
+    support_safe: true
+    stop_condition: Stop this workflow if heartbeat timeout is not present.
+    evidence_refs:
+      - cat1_229374_heartbeat_timeout
+      - cat1_229777_heartbeat_timeout
+  - step_id: set_master_estop_on
+    role_required: site_operations
+    instruction: Place master E-stop ON before engineer-led service recovery.
+    expected_outcome: Site is in a safe state for service recovery.
+    validation_check: Confirm E-stop state with site operations.
+    escalation_condition: Escalate immediately if the site cannot confirm safe state.
+    support_safe: false
+    stop_condition: Stop if safe state cannot be confirmed.
+    evidence_refs:
+      - cat1_229374_heartbeat_timeout
+  - step_id: restart_optisweep_ignition_service
+    role_required: engineer
+    instruction: Engineer restarts the Optisweep or Ignition service associated with the frozen heartbeat behavior.
+    expected_outcome: Service restart completes without introducing new RMS or OT hardware alarms.
+    validation_check: Confirm service is running and UI/session health is restored.
+    escalation_condition: Escalate if remote access is unavailable or restart cannot be completed.
+    support_safe: false
+    stop_condition: Stop if engineer access is unavailable.
+    evidence_refs:
+      - cat1_229374_heartbeat_timeout
+      - cat1_229716_heartbeat_timeout
+  - step_id: validate_heartbeat_recovery
+    role_required: support
+    instruction: Validate tipper heartbeat recovery after the engineer-led service restart.
+    expected_outcome: Heartbeat timeout clears.
+    validation_check: Confirm heartbeat status is normal.
+    escalation_condition: Escalate if heartbeat timeout remains after restart.
+    support_safe: true
+    stop_condition: Stop if heartbeat does not recover and prepare escalation summary.
+    evidence_refs:
+      - cat1_229374_heartbeat_timeout
+      - cat1_229777_heartbeat_timeout
+  - step_id: confirm_agvs_resume_movement
+    role_required: support
+    instruction: Confirm AGVs resume movement and hospital tote removal no longer hangs.
+    expected_outcome: AGVs move normally and the operational flow resumes.
+    validation_check: Confirm AGV movement and hospital tote removal completion.
+    escalation_condition: Escalate if AGVs remain stopped after heartbeat recovery.
+    support_safe: true
+    stop_condition: Complete workflow when AGVs resume movement and heartbeat remains healthy.
+    evidence_refs:
+      - cat1_229374_heartbeat_timeout
+      - cat1_229716_heartbeat_timeout

@@ -1,0 +1,1358 @@
+[
+  {
+    "workflow_id": "heartbeat_timeout_no_rms_alarm_v1",
+    "title": "Heartbeat timeout with no RMS alarm",
+    "issue_category": "CAT-1",
+    "operational_intent": "recover heartbeat timeout with no RMS alarm",
+    "required_signals": [
+      "agvs_stopped",
+      "no_rms_alarm",
+      "tipper_heartbeat_timeout"
+    ],
+    "procedure_refs": [
+      "restart_optisweep_service_after_heartbeat_timeout_v1"
+    ],
+    "related_incidents": [
+      "229374",
+      "229716",
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "workflow_candidate_229374",
+        "source_artifact_id": "artifact_229374",
+        "excerpt": "AGVs stopped, no RMS alarm, heartbeat timeout, service restart recovery."
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "workflow_candidate_229716",
+        "source_artifact_id": "artifact_229716",
+        "excerpt": "Hospital tote removal hung with heartbeat timeout and engineer recovery."
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "workflow_candidate_229777",
+        "source_artifact_id": "artifact_229777",
+        "excerpt": "Recurring frozen WCS presentation with heartbeat timeout."
+      }
+    ],
+    "escalation_conditions": [
+      "remote access unavailable",
+      "heartbeat does not recover after restart",
+      "OT hardware alarms present"
+    ],
+    "status": "candidate",
+    "review_status": "needs_review"
+  },
+  {
+    "workflow_id": "entry_agv_fleet_not_moving_with_tipper_feed_stopped_and_remote_access_blocked",
+    "title": "Entry Agv Fleet Not Moving With Tipper Feed Stopped And Remote Access Blocked",
+    "issue_category": "CAT-1",
+    "operational_intent": "entry agv fleet not moving with tipper feed stopped and remote access blocked",
+    "required_signals": [
+      "agvs_stopped",
+      "tipper_feed_stopped",
+      "tipper_heartbeat_timeout"
+    ],
+    "procedure_refs": [
+      "proc_229374_02",
+      "proc_229374_03"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_01"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_03"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_04"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_18",
+        "source_artifact_id": "case_229374_docx_artifact_18"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_23",
+        "source_artifact_id": "case_229374_docx_artifact_23"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_24",
+        "source_artifact_id": "case_229374_docx_artifact_24"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_33",
+        "source_artifact_id": "case_229374_docx_artifact_33"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_05"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_23",
+        "source_artifact_id": "case_229374_docx_artifact_23"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_24",
+        "source_artifact_id": "case_229374_docx_artifact_24"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_35",
+        "source_artifact_id": "case_229374_docx_artifact_35"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_36",
+        "source_artifact_id": "case_229374_docx_artifact_36"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_37",
+        "source_artifact_id": "case_229374_docx_artifact_37"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_39",
+        "source_artifact_id": "case_229374_docx_artifact_39"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "workflow_id": "diagnose_service_path_when_remote_access_is_blocked_then_restored_via_field_pc",
+    "title": "Diagnose Service Path When Remote Access Is Blocked Then Restored Via Field Pc",
+    "issue_category": "CAT-1",
+    "operational_intent": "diagnose service path when remote access is blocked then restored via field pc",
+    "required_signals": [
+      "field_pc_visibility_available",
+      "remote_access_unavailable"
+    ],
+    "procedure_refs": [
+      "proc_229374_03"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_04"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_07"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_28",
+        "source_artifact_id": "case_229374_docx_artifact_28"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_29",
+        "source_artifact_id": "case_229374_docx_artifact_29"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_30",
+        "source_artifact_id": "case_229374_docx_artifact_30"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_38",
+        "source_artifact_id": "case_229374_docx_artifact_38"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_41",
+        "source_artifact_id": "case_229374_docx_artifact_41"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "workflow_id": "diagnose_wcs_service_degradation_from_timeout_and_opc_heartbeat_evidence",
+    "title": "Diagnose Wcs Service Degradation From Timeout And Opc Heartbeat Evidence",
+    "issue_category": "CAT-1",
+    "operational_intent": "diagnose wcs service degradation from timeout and opc heartbeat evidence",
+    "required_signals": [
+      "ignition_or_wcs_down",
+      "ot_hardware_alarm_present"
+    ],
+    "procedure_refs": [
+      "proc_229374_01"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_08"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_09"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_01",
+        "source_artifact_id": "case_229374_docx_artifact_01"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_02",
+        "source_artifact_id": "case_229374_docx_artifact_02"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_03",
+        "source_artifact_id": "case_229374_docx_artifact_03"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_05",
+        "source_artifact_id": "case_229374_docx_artifact_05"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_43",
+        "source_artifact_id": "case_229374_docx_artifact_43"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_44",
+        "source_artifact_id": "case_229374_docx_artifact_44"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_45",
+        "source_artifact_id": "case_229374_docx_artifact_45"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "workflow_id": "recover_from_candidate_optisweep_service_stall_and_route_for_sme_review",
+    "title": "Recover From Candidate Optisweep Service Stall And Route For Sme Review",
+    "issue_category": "CAT-1",
+    "operational_intent": "recover from candidate optisweep service stall and route for sme review",
+    "required_signals": [
+      "service_restart_required"
+    ],
+    "procedure_refs": [
+      "proc_229374_04"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_10"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_08"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_09"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_42",
+        "source_artifact_id": "case_229374_docx_artifact_42"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_43",
+        "source_artifact_id": "case_229374_docx_artifact_43"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_44",
+        "source_artifact_id": "case_229374_docx_artifact_44"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_45",
+        "source_artifact_id": "case_229374_docx_artifact_45"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_46",
+        "source_artifact_id": "case_229374_docx_artifact_46"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "workflow_symptom_agvs_not_moving_with_suspected_ignition_or_service_issue",
+    "ingestion_version": 1,
+    "workflow_id": "workflow_symptom_agvs_not_moving_with_suspected_ignition_or_service_issue",
+    "title": "Workflow Symptom Agvs Not Moving With Suspected Ignition Or Service Issue",
+    "issue_category": "CAT-1",
+    "operational_intent": "workflow symptom agvs not moving with suspected ignition or service issue",
+    "required_signals": [
+      "agvs_stopped",
+      "customer_bridge_gap_identified",
+      "hmi_question_marks_displayed",
+      "hospital_tote_removal_hangs",
+      "memory_review_did_not_indicate_crash",
+      "remote_access_unavailable",
+      "teams_thread_indicates_active_escalation"
+    ],
+    "procedure_refs": [
+      "proc_228086_01",
+      "proc_228086_02",
+      "proc_228086_03",
+      "proc_228086_04"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "event_228086_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "event_228086_02"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_01",
+        "source_artifact_id": "case_228086_docx_artifact_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_02"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "event_228086_03"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_01",
+        "source_artifact_id": "case_228086_docx_artifact_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_03"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_04"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "event_228086_04"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "event_228086_05"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_02",
+        "source_artifact_id": "case_228086_docx_artifact_02"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_04",
+        "source_artifact_id": "case_228086_docx_artifact_04"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_05",
+        "source_artifact_id": "case_228086_docx_artifact_05"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_06",
+        "source_artifact_id": "case_228086_docx_artifact_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_07",
+        "source_artifact_id": "case_228086_docx_artifact_07"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_05"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_10"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_11"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "event_228086_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "event_228086_10"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_06",
+        "source_artifact_id": "case_228086_docx_artifact_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_11",
+        "source_artifact_id": "case_228086_docx_artifact_11"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_14",
+        "source_artifact_id": "case_228086_docx_artifact_14"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_16",
+        "source_artifact_id": "case_228086_docx_artifact_16"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_18",
+        "source_artifact_id": "case_228086_docx_artifact_18"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_07"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_08"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "event_228086_07"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "event_228086_08"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_08",
+        "source_artifact_id": "case_228086_docx_artifact_08"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_09",
+        "source_artifact_id": "case_228086_docx_artifact_09"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_10",
+        "source_artifact_id": "case_228086_docx_artifact_10"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "hospital_induct_failure_intake_with_service_issue_or_dispatch_context",
+    "ingestion_version": 1,
+    "workflow_id": "hospital_induct_failure_intake_with_service_issue_or_dispatch_context",
+    "title": "Hospital Induct Failure Intake With Service Issue Or Dispatch Context",
+    "issue_category": "CAT-1",
+    "operational_intent": "hospital induct failure intake with service issue or dispatch context",
+    "required_signals": [
+      "case_opened",
+      "hospital_tote_removal_hangs"
+    ],
+    "procedure_refs": [
+      "proc_223554_01"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_01"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_04"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_02",
+        "source_artifact_id": "case_223554_docx_artifact_02"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_12",
+        "source_artifact_id": "case_223554_docx_artifact_12"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_13",
+        "source_artifact_id": "case_223554_docx_artifact_13"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_15",
+        "source_artifact_id": "case_223554_docx_artifact_15"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "hospital_add_failure_with_candidate_agv_tote_state_mismatch",
+    "ingestion_version": 1,
+    "workflow_id": "hospital_add_failure_with_candidate_agv_tote_state_mismatch",
+    "title": "Hospital Add Failure With Candidate Agv Tote State Mismatch",
+    "issue_category": "CAT-1",
+    "operational_intent": "hospital add failure with candidate agv tote state mismatch",
+    "required_signals": [
+      "agvs_stopped",
+      "totes_can_be_removed_but_not_added"
+    ],
+    "procedure_refs": [
+      "proc_223554_02"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_06"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_07"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_09"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_07",
+        "source_artifact_id": "case_223554_docx_artifact_07"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_08",
+        "source_artifact_id": "case_223554_docx_artifact_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_10",
+        "source_artifact_id": "case_223554_docx_artifact_10"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "site_down_or_hospital_backlog_with_onsite_check_and_heartbeat_review",
+    "ingestion_version": 1,
+    "workflow_id": "site_down_or_hospital_backlog_with_onsite_check_and_heartbeat_review",
+    "title": "Site Down Or Hospital Backlog With Onsite Check And Heartbeat Review",
+    "issue_category": "CAT-1",
+    "operational_intent": "site down or hospital backlog with onsite check and heartbeat review",
+    "required_signals": [
+      "onsite_support_contacted",
+      "system_down_or_unable_to_start_sort"
+    ],
+    "procedure_refs": [
+      "proc_223554_03"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_05",
+        "source_artifact_id": "case_223554_docx_artifact_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_09",
+        "source_artifact_id": "case_223554_docx_artifact_09"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "hospital_recovery_with_candidate_manual_agv_removal_and_api_tool_intervention",
+    "ingestion_version": 1,
+    "workflow_id": "hospital_recovery_with_candidate_manual_agv_removal_and_api_tool_intervention",
+    "title": "Hospital Recovery With Candidate Manual Agv Removal And Api Tool Intervention",
+    "issue_category": "CAT-1",
+    "operational_intent": "hospital recovery with candidate manual agv removal and api tool intervention",
+    "required_signals": [
+      "agvs_stopped",
+      "api_dog_used_to_induct_tote"
+    ],
+    "procedure_refs": [
+      "proc_223554_04"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_09"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_11"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_10",
+        "source_artifact_id": "case_223554_docx_artifact_10"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_11",
+        "source_artifact_id": "case_223554_docx_artifact_11"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "hospital_flow_recovery_validation_with_unresolved_cause_and_follow_up_routing",
+    "ingestion_version": 1,
+    "workflow_id": "hospital_flow_recovery_validation_with_unresolved_cause_and_follow_up_routing",
+    "title": "Hospital Flow Recovery Validation With Unresolved Cause And Follow Up Routing",
+    "issue_category": "CAT-1",
+    "operational_intent": "hospital flow recovery validation with unresolved cause and follow up routing",
+    "required_signals": [
+      "able_to_add_and_remove_totes",
+      "system_running_now"
+    ],
+    "procedure_refs": [
+      "proc_223554_01",
+      "proc_223554_04"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_02"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_04"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_11"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_02",
+        "source_artifact_id": "case_223554_docx_artifact_02"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_03",
+        "source_artifact_id": "case_223554_docx_artifact_03"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_11",
+        "source_artifact_id": "case_223554_docx_artifact_11"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_14",
+        "source_artifact_id": "case_223554_docx_artifact_14"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_15",
+        "source_artifact_id": "case_223554_docx_artifact_15"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "agv_to_tipper_flow_stoppage_with_no_path_and_nothing_coming_to_tippers",
+    "ingestion_version": 1,
+    "workflow_id": "agv_to_tipper_flow_stoppage_with_no_path_and_nothing_coming_to_tippers",
+    "title": "Agv To Tipper Flow Stoppage With No Path And Nothing Coming To Tippers",
+    "issue_category": "CAT-1",
+    "operational_intent": "agv to tipper flow stoppage with no path and nothing coming to tippers",
+    "required_signals": [
+      "agvs_stopped",
+      "nothing_coming_to_tippers"
+    ],
+    "procedure_refs": [],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_01"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_01",
+        "source_artifact_id": "case_229716_docx_artifact_01"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_10",
+        "source_artifact_id": "case_229716_docx_artifact_10"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "agv_to_tipper_flow_stoppage_with_tipper_heartbeat_timeout_candidate_service_or_comms_issue",
+    "ingestion_version": 1,
+    "workflow_id": "agv_to_tipper_flow_stoppage_with_tipper_heartbeat_timeout_candidate_service_or_comms_issue",
+    "title": "Agv To Tipper Flow Stoppage With Tipper Heartbeat Timeout Candidate Service Or Comms Issue",
+    "issue_category": "CAT-1",
+    "operational_intent": "agv to tipper flow stoppage with tipper heartbeat timeout candidate service or comms issue",
+    "required_signals": [
+      "hospital_tote_removal_hangs",
+      "no_rms_alarm",
+      "three_lines_stopped",
+      "tipper_heartbeat_timeout",
+      "tippers_status_active"
+    ],
+    "procedure_refs": [
+      "proc_229716_02"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_03",
+        "source_artifact_id": "case_229716_docx_artifact_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "agv_tipper_stoppage_recovery_path_select_optisweep_restart_after_estop",
+    "ingestion_version": 1,
+    "workflow_id": "agv_tipper_stoppage_recovery_path_select_optisweep_restart_after_estop",
+    "title": "Agv Tipper Stoppage Recovery Path Select Optisweep Restart After Estop",
+    "issue_category": "CAT-1",
+    "operational_intent": "agv tipper stoppage recovery path select optisweep restart after estop",
+    "required_signals": [
+      "agvs_stopped",
+      "estop_removal_directed",
+      "service_restart_required"
+    ],
+    "procedure_refs": [
+      "proc_229716_01",
+      "proc_229716_03"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_05"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_07",
+        "source_artifact_id": "case_229716_docx_artifact_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_08",
+        "source_artifact_id": "case_229716_docx_artifact_08"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "post_restart_validation_for_agv_movement_and_hospital_function",
+    "ingestion_version": 1,
+    "workflow_id": "post_restart_validation_for_agv_movement_and_hospital_function",
+    "title": "Post Restart Validation For Agv Movement And Hospital Function",
+    "issue_category": "CAT-1",
+    "operational_intent": "post restart validation for agv movement and hospital function",
+    "required_signals": [
+      "agvs_stopped",
+      "totes_removable_now"
+    ],
+    "procedure_refs": [
+      "proc_229716_04"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_09"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_11",
+        "source_artifact_id": "case_229716_docx_artifact_11"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "post_recovery_evidence_collection_and_sme_review_for_unvalidated_service_failure",
+    "ingestion_version": 1,
+    "workflow_id": "post_recovery_evidence_collection_and_sme_review_for_unvalidated_service_failure",
+    "title": "Post Recovery Evidence Collection And Sme Review For Unvalidated Service Failure",
+    "issue_category": "CAT-1",
+    "operational_intent": "post recovery evidence collection and sme review for unvalidated service failure",
+    "required_signals": [
+      "db_log_transfer_gap_identified",
+      "ignition_or_wcs_down",
+      "switch_logs_follow_up_assigned"
+    ],
+    "procedure_refs": [
+      "proc_229716_03"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_09"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_10"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_12",
+        "source_artifact_id": "case_229716_docx_artifact_12"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "agv_not_moving_with_repeat_incident_and_service_restart_recovery_candidate",
+    "ingestion_version": 1,
+    "workflow_id": "agv_not_moving_with_repeat_incident_and_service_restart_recovery_candidate",
+    "title": "Agv Not Moving With Repeat Incident And Service Restart Recovery Candidate",
+    "issue_category": "CAT-1",
+    "operational_intent": "agv not moving with repeat incident and service restart recovery candidate",
+    "required_signals": [
+      "agvs_stopped",
+      "customer_requested_recovery_within_30_minutes",
+      "production_seriously_impacted",
+      "repeat_issue_from_prior_case_00229374",
+      "service_restart_required"
+    ],
+    "procedure_refs": [
+      "proc_229488_01"
+    ],
+    "related_incidents": [
+      "229488"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_01",
+        "source_artifact_id": "case_229488_docx_artifact_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_21",
+        "source_artifact_id": "case_229488_docx_artifact_21"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_22",
+        "source_artifact_id": "case_229488_docx_artifact_22"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_02",
+        "source_artifact_id": "case_229488_docx_artifact_02"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_23",
+        "source_artifact_id": "case_229488_docx_artifact_23"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_24",
+        "source_artifact_id": "case_229488_docx_artifact_24"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "agv_not_moving_with_comms_triage_candidate",
+    "ingestion_version": 1,
+    "workflow_id": "agv_not_moving_with_comms_triage_candidate",
+    "title": "Agv Not Moving With Comms Triage Candidate",
+    "issue_category": "CAT-1",
+    "operational_intent": "agv not moving with comms triage candidate",
+    "required_signals": [
+      "no_hmi_system_level_error_reported",
+      "tipper_heartbeat_timeout",
+      "tippers_run_position_except_two"
+    ],
+    "procedure_refs": [
+      "proc_229488_03"
+    ],
+    "related_incidents": [
+      "229488"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_02"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_01",
+        "source_artifact_id": "case_229488_docx_artifact_01"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "diagnostic_connection_reset_and_timeout_evidence_collection_candidate",
+    "ingestion_version": 1,
+    "workflow_id": "diagnostic_connection_reset_and_timeout_evidence_collection_candidate",
+    "title": "Diagnostic Connection Reset And Timeout Evidence Collection Candidate",
+    "issue_category": "CAT-1",
+    "operational_intent": "diagnostic connection reset and timeout evidence collection candidate",
+    "required_signals": [
+      "hospital_tote_removal_hangs",
+      "ot_hardware_alarm_present",
+      "station_disconnects",
+      "subscription_transfer_failed_bad_service_unsupported"
+    ],
+    "procedure_refs": [
+      "proc_229488_02",
+      "proc_229488_03"
+    ],
+    "related_incidents": [
+      "229488"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_05"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_06"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_07"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_08"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_09"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_04",
+        "source_artifact_id": "case_229488_docx_artifact_04"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_05",
+        "source_artifact_id": "case_229488_docx_artifact_05"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_06",
+        "source_artifact_id": "case_229488_docx_artifact_06"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_07",
+        "source_artifact_id": "case_229488_docx_artifact_07"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_08",
+        "source_artifact_id": "case_229488_docx_artifact_08"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_10",
+        "source_artifact_id": "case_229488_docx_artifact_10"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_11",
+        "source_artifact_id": "case_229488_docx_artifact_11"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_15",
+        "source_artifact_id": "case_229488_docx_artifact_15"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_17",
+        "source_artifact_id": "case_229488_docx_artifact_17"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_18",
+        "source_artifact_id": "case_229488_docx_artifact_18"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "post_recovery_monitoring_and_sme_review_for_recurrent_station_disconnects_candidate",
+    "ingestion_version": 1,
+    "workflow_id": "post_recovery_monitoring_and_sme_review_for_recurrent_station_disconnects_candidate",
+    "title": "Post Recovery Monitoring And Sme Review For Recurrent Station Disconnects Candidate",
+    "issue_category": "CAT-1",
+    "operational_intent": "post recovery monitoring and sme review for recurrent station disconnects candidate",
+    "required_signals": [
+      "candidate_network_degradation_hypothesis",
+      "daily_reporting_requested",
+      "only_one_disconnect_reported_next_morning",
+      "root_cause_still_under_investigation"
+    ],
+    "procedure_refs": [
+      "proc_229488_02"
+    ],
+    "related_incidents": [
+      "229488"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_08"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_09"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_10"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_14",
+        "source_artifact_id": "case_229488_docx_artifact_14"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_17",
+        "source_artifact_id": "case_229488_docx_artifact_17"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_18",
+        "source_artifact_id": "case_229488_docx_artifact_18"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_19",
+        "source_artifact_id": "case_229488_docx_artifact_19"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_20",
+        "source_artifact_id": "case_229488_docx_artifact_20"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "optisweep_agv_startup_waiting_no_path_nothing_to_tippers",
+    "ingestion_version": 1,
+    "workflow_id": "optisweep_agv_startup_waiting_no_path_nothing_to_tippers",
+    "title": "Optisweep Agv Startup Waiting No Path Nothing To Tippers",
+    "issue_category": "CAT-1",
+    "operational_intent": "optisweep agv startup waiting no path nothing to tippers",
+    "required_signals": [
+      "engineer_connected_to_system",
+      "no_path_displayed",
+      "nothing_reaching_tippers",
+      "system_waiting_state",
+      "tipper_heartbeat_timeout"
+    ],
+    "procedure_refs": [
+      "proc_229777_01"
+    ],
+    "related_incidents": [
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_01",
+        "source_artifact_id": "case_229777_docx_artifact_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_03",
+        "source_artifact_id": "case_229777_docx_artifact_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_04",
+        "source_artifact_id": "case_229777_docx_artifact_04"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_01",
+        "source_artifact_id": "case_229777_docx_artifact_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_03",
+        "source_artifact_id": "case_229777_docx_artifact_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_04",
+        "source_artifact_id": "case_229777_docx_artifact_04"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "optisweep_agv_startup_waiting_no_path_tipper_heartbeat_candidate_recovery",
+    "ingestion_version": 1,
+    "workflow_id": "optisweep_agv_startup_waiting_no_path_tipper_heartbeat_candidate_recovery",
+    "title": "Optisweep Agv Startup Waiting No Path Tipper Heartbeat Candidate Recovery",
+    "issue_category": "CAT-1",
+    "operational_intent": "optisweep agv startup waiting no path tipper heartbeat candidate recovery",
+    "required_signals": [
+      "client_confirmed_satisfaction_for_case_closure",
+      "everything_came_back_on",
+      "master_e_stop_applied_by_client",
+      "service_restart_required",
+      "system_back_up_and_running",
+      "tipper_heartbeat_timeout",
+      "tippers_paused_unpaused"
+    ],
+    "procedure_refs": [
+      "proc_229777_02"
+    ],
+    "related_incidents": [
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_04"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_01",
+        "source_artifact_id": "case_229777_docx_artifact_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_03",
+        "source_artifact_id": "case_229777_docx_artifact_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_04",
+        "source_artifact_id": "case_229777_docx_artifact_04"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_05"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_01",
+        "source_artifact_id": "case_229777_docx_artifact_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_03",
+        "source_artifact_id": "case_229777_docx_artifact_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_04",
+        "source_artifact_id": "case_229777_docx_artifact_04"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "recurring_agv_disconnect_or_induction_follow_on_investigation",
+    "ingestion_version": 1,
+    "workflow_id": "recurring_agv_disconnect_or_induction_follow_on_investigation",
+    "title": "Recurring Agv Disconnect Or Induction Follow On Investigation",
+    "issue_category": "CAT-1",
+    "operational_intent": "recurring agv disconnect or induction follow on investigation",
+    "required_signals": [
+      "agvs_stopped",
+      "disconnect_data_requested_for_review",
+      "no_rms_alarm",
+      "ot_network_static_ip_required"
+    ],
+    "procedure_refs": [
+      "proc_229777_03",
+      "proc_229777_04"
+    ],
+    "related_incidents": [
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_07"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_08"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_09"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_10"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_01",
+        "source_artifact_id": "case_229777_docx_artifact_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_02",
+        "source_artifact_id": "case_229777_docx_artifact_02"
+      }
+    ],
+    "escalation_conditions": [],
+    "status": "candidate_extracted"
+  }
+]

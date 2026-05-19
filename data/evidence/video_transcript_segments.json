@@ -1,0 +1,24 @@
+[
+  {
+    "segment_id": "vts_upsfortna_day1_smoke_000001",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "timestamp_start": "00:00:00.000",
+    "timestamp_end": "00:00:30.000",
+    "timestamp_start_seconds": 0.0,
+    "timestamp_end_seconds": 30.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_smoke_000000",
+      "vf_upsfortna_day1_smoke_000160",
+      "vf_upsfortna_day1_smoke_000320"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:00.000-00:00:30.000"
+    ]
+  }
+]

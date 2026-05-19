@@ -1,0 +1,2410 @@
+[
+  {
+    "procedure_id": "case_229374_restart_service_candidate",
+    "title": "Restart Optisweep service after heartbeat timeout",
+    "operational_intent": "restart optisweep service after heartbeat timeout",
+    "role_required": "engineer",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "confirm_no_rms_alarms",
+        "instruction": "Confirm no RMS alarms are active.",
+        "validation_check": "RMS alarm state is documented.",
+        "expected_outcome": "No RMS alarm explains the stoppage.",
+        "escalation_condition": "Escalate if a safety or hardware alarm is present."
+      },
+      {
+        "step_id": "confirm_tipper_heartbeat_timeout",
+        "instruction": "Confirm tipper heartbeat timeout is present.",
+        "validation_check": "Heartbeat timeout state is captured.",
+        "expected_outcome": "Heartbeat timeout matches the recurring failure signature.",
+        "escalation_condition": "Escalate if OT hardware alarms are present."
+      },
+      {
+        "step_id": "set_master_estop_on",
+        "instruction": "Place master E-stop ON.",
+        "validation_check": "Safe state is confirmed.",
+        "expected_outcome": "System is safe for service recovery.",
+        "escalation_condition": "Escalate if safe state cannot be confirmed."
+      },
+      {
+        "step_id": "restart_service",
+        "instruction": "Engineer restarts the Optisweep/Ignition service.",
+        "validation_check": "Service returns to running state.",
+        "expected_outcome": "Service restart completes.",
+        "escalation_condition": "Escalate if remote access is unavailable."
+      },
+      {
+        "step_id": "validate_heartbeat",
+        "instruction": "Validate heartbeat recovery.",
+        "validation_check": "Heartbeat timeout clears.",
+        "expected_outcome": "Heartbeat is healthy.",
+        "escalation_condition": "Escalate if heartbeat does not recover."
+      },
+      {
+        "step_id": "confirm_agv_movement",
+        "instruction": "Confirm AGVs resume movement.",
+        "validation_check": "AGV movement is observed.",
+        "expected_outcome": "AGVs resume movement.",
+        "escalation_condition": "Escalate if AGVs remain stopped."
+      }
+    ],
+    "validation_checks": [
+      "RMS alarm state is documented.",
+      "Heartbeat timeout clears.",
+      "AGV movement is observed."
+    ],
+    "escalation_conditions": [
+      "remote access unavailable",
+      "heartbeat does not recover after restart",
+      "OT hardware alarms present"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "timeline_229374_restart",
+        "source_artifact_id": "artifact_229374",
+        "excerpt": "Service restart restored heartbeat and AGV movement."
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "procedure_id": "case_229716_restart_service_candidate",
+    "title": "Restart Optisweep service after heartbeat timeout",
+    "operational_intent": "restart optisweep service after heartbeat timeout",
+    "role_required": "engineer",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "confirm_no_rms_alarms",
+        "instruction": "Confirm no RMS alarms are active.",
+        "validation_check": "RMS alarm state is documented.",
+        "expected_outcome": "No RMS alarm explains the stoppage.",
+        "escalation_condition": "Escalate if a safety or hardware alarm is present."
+      },
+      {
+        "step_id": "confirm_tipper_heartbeat_timeout",
+        "instruction": "Confirm tipper heartbeat timeout is present.",
+        "validation_check": "Heartbeat timeout state is captured.",
+        "expected_outcome": "Heartbeat timeout matches the recurring failure signature.",
+        "escalation_condition": "Escalate if OT hardware alarms are present."
+      },
+      {
+        "step_id": "set_master_estop_on",
+        "instruction": "Place master E-stop ON.",
+        "validation_check": "Safe state is confirmed.",
+        "expected_outcome": "System is safe for service recovery.",
+        "escalation_condition": "Escalate if safe state cannot be confirmed."
+      },
+      {
+        "step_id": "restart_service",
+        "instruction": "Engineer restarts the Optisweep/Ignition service.",
+        "validation_check": "Service returns to running state.",
+        "expected_outcome": "Service restart completes.",
+        "escalation_condition": "Escalate if remote access is unavailable."
+      },
+      {
+        "step_id": "validate_heartbeat",
+        "instruction": "Validate heartbeat recovery.",
+        "validation_check": "Heartbeat timeout clears.",
+        "expected_outcome": "Heartbeat is healthy.",
+        "escalation_condition": "Escalate if heartbeat does not recover."
+      },
+      {
+        "step_id": "confirm_agv_movement",
+        "instruction": "Confirm AGVs resume movement.",
+        "validation_check": "AGV movement is observed.",
+        "expected_outcome": "AGVs resume movement.",
+        "escalation_condition": "Escalate if AGVs remain stopped."
+      }
+    ],
+    "validation_checks": [
+      "RMS alarm state is documented.",
+      "Heartbeat timeout clears.",
+      "AGV movement is observed."
+    ],
+    "escalation_conditions": [
+      "remote access unavailable",
+      "heartbeat does not recover after restart",
+      "OT hardware alarms present"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "timeline_229716_restart",
+        "source_artifact_id": "artifact_229716",
+        "excerpt": "Engineer service restart was part of recovery."
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "procedure_id": "case_229777_restart_service_candidate",
+    "title": "Restart Optisweep service after heartbeat timeout",
+    "operational_intent": "restart optisweep service after heartbeat timeout",
+    "role_required": "engineer",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "confirm_no_rms_alarms",
+        "instruction": "Confirm no RMS alarms are active.",
+        "validation_check": "RMS alarm state is documented.",
+        "expected_outcome": "No RMS alarm explains the stoppage.",
+        "escalation_condition": "Escalate if a safety or hardware alarm is present."
+      },
+      {
+        "step_id": "confirm_tipper_heartbeat_timeout",
+        "instruction": "Confirm tipper heartbeat timeout is present.",
+        "validation_check": "Heartbeat timeout state is captured.",
+        "expected_outcome": "Heartbeat timeout matches the recurring failure signature.",
+        "escalation_condition": "Escalate if OT hardware alarms are present."
+      },
+      {
+        "step_id": "set_master_estop_on",
+        "instruction": "Place master E-stop ON.",
+        "validation_check": "Safe state is confirmed.",
+        "expected_outcome": "System is safe for service recovery.",
+        "escalation_condition": "Escalate if safe state cannot be confirmed."
+      },
+      {
+        "step_id": "restart_service",
+        "instruction": "Engineer restarts the Optisweep/Ignition service.",
+        "validation_check": "Service returns to running state.",
+        "expected_outcome": "Service restart completes.",
+        "escalation_condition": "Escalate if remote access is unavailable."
+      },
+      {
+        "step_id": "validate_heartbeat",
+        "instruction": "Validate heartbeat recovery.",
+        "validation_check": "Heartbeat timeout clears.",
+        "expected_outcome": "Heartbeat is healthy.",
+        "escalation_condition": "Escalate if heartbeat does not recover."
+      },
+      {
+        "step_id": "confirm_agv_movement",
+        "instruction": "Confirm AGVs resume movement.",
+        "validation_check": "AGV movement is observed.",
+        "expected_outcome": "AGVs resume movement.",
+        "escalation_condition": "Escalate if AGVs remain stopped."
+      }
+    ],
+    "validation_checks": [
+      "RMS alarm state is documented.",
+      "Heartbeat timeout clears.",
+      "AGV movement is observed."
+    ],
+    "escalation_conditions": [
+      "remote access unavailable",
+      "heartbeat does not recover after restart",
+      "OT hardware alarms present"
+    ],
+    "related_incidents": [
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229777",
+        "evidence_id": "timeline_229777_restart",
+        "source_artifact_id": "artifact_229777",
+        "excerpt": "Recurring heartbeat timeout recovery pattern."
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "procedure_id": "proc_229374_01",
+    "title": "Proc 229374 01",
+    "operational_intent": "Capture source-backed timeout evidence with timestamps, event IDs, categories, and error text so engineering can assess whether database timeouts contributed to a WCS service failure.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "The chosen time anchor matches at least one visible WCSWebApplication timeout screenshot.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "At least one captured image clearly shows WCSWebApplication and the repeated 1:48:37 AM entries.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "The captured detail includes both Event ID 20102 and timeout-related DbCommand text.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "The captured detail explicitly shows Event ID 10100 and timeout-expired language.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "The summary contains Event IDs 20102 and/or 10100 with timestamps and artifact links, and does not mislabel OPC errors as database timeouts.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "At least one screenshot or log view shows WCSWebApplication with timestamp 4/4/2026 1:48:37 AM",
+      "Event ID 20102 and/or 10100 details are preserved with timeout wording"
+    ],
+    "escalation_conditions": [
+      "If Event ID 10100/20102 timeout evidence is present during outage window",
+      "If timeout evidence is repeated across multiple screenshots but cause remains unclear",
+      "If support cannot distinguish database timeout evidence from OPC/application exceptions"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_08"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_01",
+        "source_artifact_id": "case_229374_docx_artifact_01"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_02",
+        "source_artifact_id": "case_229374_docx_artifact_02"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_03",
+        "source_artifact_id": "case_229374_docx_artifact_03"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_05",
+        "source_artifact_id": "case_229374_docx_artifact_05"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_43",
+        "source_artifact_id": "case_229374_docx_artifact_43"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "procedure_id": "proc_229374_02",
+    "title": "Proc 229374 02",
+    "operational_intent": "Collect fast site-side diagnostic evidence when remote access is blocked or delayed.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "The symptom description distinguishes between full stop and stop at tilt trays/tipper handoff.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "A screenshot is captured that shows RMS status during the outage window, even if no errors are present.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Site confirms beacon/alarm state and support records it as a diagnostic signal, not proof of health.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "A specific mismatch is documented between HMI/AVEVA state and physical state.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "The result of the pause/unpause attempt is explicitly recorded as worked or failed.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Review candidate step 6",
+        "validation_check": "At least one affected tipper value and one comparison value are recorded.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "RMS message panel status is captured",
+      "Operator station alarm/beacon state is confirmed",
+      "Heartbeat values are collected for at least the affected tipper path"
+    ],
+    "escalation_conditions": [
+      "If RMS shows no robot errors but AGVs still do not move",
+      "If AVEVA/HMI state conflicts with field reality",
+      "If heartbeat values are inconsistent or one tipper shows zero"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_05"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_23",
+        "source_artifact_id": "case_229374_docx_artifact_23"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_24",
+        "source_artifact_id": "case_229374_docx_artifact_24"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_35",
+        "source_artifact_id": "case_229374_docx_artifact_35"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_36",
+        "source_artifact_id": "case_229374_docx_artifact_36"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_37",
+        "source_artifact_id": "case_229374_docx_artifact_37"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_39",
+        "source_artifact_id": "case_229374_docx_artifact_39"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "procedure_id": "proc_229374_03",
+    "title": "Proc 229374 03",
+    "operational_intent": "Restore diagnostic access without waiting for external VPN remediation.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "The case record clearly shows that normal remote access is blocked by an external access issue.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "A single target IP is selected and recorded before RDP is attempted.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Support confirms that the field PC is visible and can be used for the next diagnostic step.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Either the remote desktop is visible or the exact failure message is recorded.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "Support confirms usable application/server visibility after the workaround.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Field PC visibility is established",
+      "RDP to 10.27.80.165 succeeds or failure is explicitly documented",
+      "Ignition or server desktop becomes visible"
+    ],
+    "escalation_conditions": [
+      "If VPN/Zscaler remains unavailable and production is impacted",
+      "If field PC is the only viable path to server visibility",
+      "If RDP succeeds but application credentials still fail"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_04"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_07"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_24",
+        "source_artifact_id": "case_229374_docx_artifact_24"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_26",
+        "source_artifact_id": "case_229374_docx_artifact_26"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_28",
+        "source_artifact_id": "case_229374_docx_artifact_28"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_29",
+        "source_artifact_id": "case_229374_docx_artifact_29"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_30",
+        "source_artifact_id": "case_229374_docx_artifact_30"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_37",
+        "source_artifact_id": "case_229374_docx_artifact_37"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_38",
+        "source_artifact_id": "case_229374_docx_artifact_38"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_41",
+        "source_artifact_id": "case_229374_docx_artifact_41"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "procedure_id": "proc_229374_04",
+    "title": "Proc 229374 04",
+    "operational_intent": "Restore operations when service degradation is suspected and authorized personnel are available.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "The restart performer and reason are documented before the action is taken.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "The responder has active server access before attempting the restart.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "The restart action is explicitly documented with performer and time.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "At least one post-restart confirmation is captured from the responder or case owner.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "Recovery status and root-cause uncertainty are both documented.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Service restart action is recorded",
+      "Post-restart system is reported operational",
+      "Case notes show continued operation after restart"
+    ],
+    "escalation_conditions": [
+      "If restart restores service but cause remains unknown",
+      "If repeated restarts are needed",
+      "If authorized responder is not available to perform the restart"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_10"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_41",
+        "source_artifact_id": "case_229374_docx_artifact_41"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_42",
+        "source_artifact_id": "case_229374_docx_artifact_42"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_46",
+        "source_artifact_id": "case_229374_docx_artifact_46"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_228086_01",
+    "ingestion_version": 1,
+    "procedure_id": "proc_228086_01",
+    "title": "Proc 228086 01",
+    "operational_intent": "Preserve screenshot-backed evidence showing memory trend, performance/status context, and any visible uptime or gateway state indicators without over-claiming crash confirmation.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "Remote access is confirmed before attempting Ignition evidence capture.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Screenshot includes chart title and enough of the time axis to support later review.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Screenshot is legible enough to identify the page and preserve visible metrics for later review.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Conclusion does not overstate root cause and explicitly notes uncertainty.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Memory trend screenshot captured",
+      "Ignition status/performance page screenshot captured",
+      "Visible values preserved for memory, threads, CPU, or uptime if shown"
+    ],
+    "escalation_conditions": [
+      "If gateway status cannot be reached",
+      "If memory/status evidence is inconclusive and outage persists",
+      "If restart consideration requires higher-role approval"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_04"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_05"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_11"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_05",
+        "source_artifact_id": "case_228086_docx_artifact_05"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_06",
+        "source_artifact_id": "case_228086_docx_artifact_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_07",
+        "source_artifact_id": "case_228086_docx_artifact_07"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_15",
+        "source_artifact_id": "case_228086_docx_artifact_15"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_228086_02",
+    "ingestion_version": 1,
+    "procedure_id": "proc_228086_02",
+    "title": "Proc 228086 02",
+    "operational_intent": "Create a traceable visual evidence set for AGV movement failures and system error context.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "Screenshot includes enough context to tie later detail screenshots to the same incident state.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "At least one screenshot clearly shows the error panel names and associated entries.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Raw wording is preserved separately from interpretation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Evidence package clearly distinguishes direct screen evidence from chat-reported interpretation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "System error area captured",
+      "AGV-related status area captured",
+      "Any visible error strings preserved exactly as shown"
+    ],
+    "escalation_conditions": [
+      "If AGVs are not moving and no explicit AGV fault is shown",
+      "If system errors suggest missing AGV or control object issues",
+      "If HMI symptoms conflict with service/API status"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_09"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_01",
+        "source_artifact_id": "case_228086_docx_artifact_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_02",
+        "source_artifact_id": "case_228086_docx_artifact_02"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_03",
+        "source_artifact_id": "case_228086_docx_artifact_03"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_04",
+        "source_artifact_id": "case_228086_docx_artifact_04"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_10",
+        "source_artifact_id": "case_228086_docx_artifact_10"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_228086_03",
+    "ingestion_version": 1,
+    "procedure_id": "proc_228086_03",
+    "title": "Proc 228086 03",
+    "operational_intent": "Collect screenshot-backed service responsiveness evidence before or after restart-oriented actions.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "The screenshot clearly shows the request being used for service responsiveness validation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "A response is captured and its status is recorded; if no response, that is documented as failure evidence.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Service state is captured in the same evidence set as the API result.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "The note distinguishes service responsiveness from end-to-end production recovery.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "GetAgvStatuses response captured",
+      "HTTP status recorded if visible",
+      "OptiSweep service state captured in Services console"
+    ],
+    "escalation_conditions": [
+      "If API gives no response",
+      "If service is not running",
+      "If API succeeds but AGVs still do not move"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_10"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_11"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_16",
+        "source_artifact_id": "case_228086_docx_artifact_16"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_17",
+        "source_artifact_id": "case_228086_docx_artifact_17"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_18",
+        "source_artifact_id": "case_228086_docx_artifact_18"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_228086_04",
+    "ingestion_version": 1,
+    "procedure_id": "proc_228086_04",
+    "title": "Proc 228086 04",
+    "operational_intent": "Document the candidate recovery sequence exactly as supported by the case evidence, while marking missing execution details and approval boundaries.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "No restart step proceeds until estop coordination is documented.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Command syntax and path are captured well enough for SME review before reuse.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Gateway page is reachable before proceeding to API validation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "The result is explicitly recorded as either responsive or non-responsive.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "A repeated API check is performed after the OptiSweep restart action.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Review candidate step 6",
+        "validation_check": "Release is documented after, not before, the confirmation step.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Estop applied before restart actions",
+      "Ignition restart command captured or documented",
+      "API response checked after restart",
+      "Estop released only after confirmation"
+    ],
+    "escalation_conditions": [
+      "If restart authority is unclear",
+      "If Ignition does not return after command",
+      "If GetAgvStatuses still gives no response after restart",
+      "If onsite coordination is not established"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_10"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_11"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_11",
+        "source_artifact_id": "case_228086_docx_artifact_11"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_14",
+        "source_artifact_id": "case_228086_docx_artifact_14"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_16",
+        "source_artifact_id": "case_228086_docx_artifact_16"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_17",
+        "source_artifact_id": "case_228086_docx_artifact_17"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_223554_01",
+    "ingestion_version": 1,
+    "procedure_id": "proc_223554_01",
+    "title": "Proc 223554 01",
+    "operational_intent": "Preserve a source-backed incident timeline and escalation record before deeper troubleshooting or handoff.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "Case number and subject match the incident package and the screenshot clearly shows the case creation/update card.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Work order ID and entered time are readable and align with the incident timeline summary.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Timestamp and presence of the Teams bridge are readable from the screenshot.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Recovery comments are captured as validation signals only and not converted into root-cause statements.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "Resolution wording is preserved verbatim and flagged as documented action rather than validated cause.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Case number, subject, timestamps, and work order ID are captured from visible source records",
+      "Recovery timestamps are separated from cause assumptions"
+    ],
+    "escalation_conditions": [
+      "CBRE work order shows P1 emergency",
+      "Teams bridge or onsite dispatch is required",
+      "Case wording indicates server/service issue with production impact"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_01"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_02"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_04"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_04",
+        "source_artifact_id": "case_223554_docx_artifact_04"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_12",
+        "source_artifact_id": "case_223554_docx_artifact_12"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_13",
+        "source_artifact_id": "case_223554_docx_artifact_13"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_14",
+        "source_artifact_id": "case_223554_docx_artifact_14"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_15",
+        "source_artifact_id": "case_223554_docx_artifact_15"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_223554_02",
+    "ingestion_version": 1,
+    "procedure_id": "proc_223554_02",
+    "title": "Proc 223554 02",
+    "operational_intent": "Narrow the issue to AGV/tote state inconsistency using source-backed observations before escalation or recovery actions.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "Symptom wording is captured exactly and separated from later diagnosis.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "The statement is labeled candidate-only and not treated as validated root cause.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Each AGV ID is tied to the exact wording from the source and not normalized beyond AGV formatting.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Only fields that are visually legible are recorded; noisy OCR fields are left blank or marked uncertain.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "Escalation note references source artifacts and does not claim confirmed cause.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Specific AGV IDs and mismatch statements are captured from source",
+      "Visual robot detail evidence is treated as supportive, not definitive"
+    ],
+    "escalation_conditions": [
+      "Onsite confirmation is needed",
+      "AGV location/state cannot be reconciled from available evidence",
+      "Issue persists after basic state review"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_06"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_07"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_09"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_01",
+        "source_artifact_id": "case_223554_docx_artifact_01"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_07",
+        "source_artifact_id": "case_223554_docx_artifact_07"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_08",
+        "source_artifact_id": "case_223554_docx_artifact_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_10",
+        "source_artifact_id": "case_223554_docx_artifact_10"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_223554_03",
+    "ingestion_version": 1,
+    "procedure_id": "proc_223554_03",
+    "title": "Proc 223554 03",
+    "operational_intent": "Obtain actionable onsite observations and preserve them for support coordination during an active disruption.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "Onsite status and site-down wording are captured from the same coherent message block.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Requested checks and returned observations are both captured with timestamps.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "E-stop remains marked as considered unless explicit execution evidence is present.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Recovery indicators are captured separately from the actions that may have preceded them.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "Summary references source artifacts and clearly marks unknowns such as whether E-stop occurred.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Onsite contact, location, and requested checks are documented",
+      "Heartbeat/lost-connection observations are preserved with timestamps"
+    ],
+    "escalation_conditions": [
+      "No one is onsite",
+      "Site is reported down",
+      "Heartbeat or connection issue is suspected but not confirmed remotely"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_05",
+        "source_artifact_id": "case_223554_docx_artifact_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_09",
+        "source_artifact_id": "case_223554_docx_artifact_09"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_223554_04",
+    "ingestion_version": 1,
+    "procedure_id": "proc_223554_04",
+    "title": "Proc 223554 04",
+    "operational_intent": "Preserve a reusable evidence-backed recovery pattern for SME review and future controlled documentation.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "Summary is captured verbatim and explicitly marked as candidate operational evidence.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Only AGV removals explicitly stated in the source are recorded.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "No endpoint URLs, payloads, or credentials are invented; only visible action descriptions are recorded.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Recovery confirmation is separated from inferred root cause.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "Procedure remains candidate-only and blocked from promotion until SME approval and role boundaries are defined.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Review candidate step 6",
+        "validation_check": "Service-reset wording is preserved separately from the Teams manual-action summary.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Recovery actions are captured as documented actions only",
+      "No unsupported API endpoint or execution details are invented"
+    ],
+    "escalation_conditions": [
+      "Manual API intervention is being considered",
+      "Support team lacks approved instructions",
+      "Issue requires advanced recovery beyond standard triage"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_09"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_11"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_10",
+        "source_artifact_id": "case_223554_docx_artifact_10"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_11",
+        "source_artifact_id": "case_223554_docx_artifact_11"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_15",
+        "source_artifact_id": "case_223554_docx_artifact_15"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229716_01",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229716_01",
+    "title": "Proc 229716 01",
+    "operational_intent": "Restore AGV-to-tipper flow after service-related stoppage symptoms while preserving evidence and validating recovery.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "Restart target is explicitly Optisweep and symptoms align with this incident pattern.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "E-stop instruction is acknowledged and restart does not begin until controlled stop is in place.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Correct service entry is identified before any restart action is taken.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Service restart completes without switching to an unintended service such as Ignition OPC.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "E-stop is removed only after restart completion and site is ready for movement validation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Review candidate step 6",
+        "validation_check": "Both AGV movement and hospital tote removal are restored, or remaining issue is explicitly documented for escalation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "AGVs are moving again",
+      "Hospital tote removal works after recovery",
+      "System can be declared operational by site/support"
+    ],
+    "escalation_conditions": [
+      "If AGVs do not resume movement after restart",
+      "If hospital tote removal still fails after restart",
+      "If heartbeat timeout symptoms persist",
+      "If service restart cannot be performed due to permissions or unclear service state"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_05"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_09"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_07",
+        "source_artifact_id": "case_229716_docx_artifact_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_08",
+        "source_artifact_id": "case_229716_docx_artifact_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_11",
+        "source_artifact_id": "case_229716_docx_artifact_11"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229716_02",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229716_02",
+    "title": "Proc 229716 02",
+    "operational_intent": "Preserve screenshot-backed diagnostic evidence showing heartbeat timeout context without over-asserting noisy OCR details.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "The screenshot clearly identifies the tipper heartbeat/alarm context rather than an unrelated screen.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "At least one screenshot preserves the message area and timestamps well enough for manual review.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Screenshot is sufficient to support manual comparison with the written note 'no RMS faults' without over-claiming exact values.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Written summary and screenshots are linked together so later reviewers know the screenshots are supporting evidence, not sole proof.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Screenshots clearly show the relevant view names or context",
+      "Capture includes timestamps/messages if visible",
+      "Evidence is linked to the incident record"
+    ],
+    "escalation_conditions": [
+      "If heartbeat/alarm views cannot be accessed",
+      "If screenshots are too unclear to preserve message/timestamp context",
+      "If visual evidence conflicts with operator-reported status"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_03",
+        "source_artifact_id": "case_229716_docx_artifact_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_07",
+        "source_artifact_id": "case_229716_docx_artifact_07"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229716_03",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229716_03",
+    "title": "Proc 229716 03",
+    "operational_intent": "Preserve server-side evidence needed for later engineering review, especially when service restart restores operation before root cause is validated.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "Collected evidence list is explicitly separated into Windows/server event logs, Ignition logs, and unresolved DB logs.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Collector is on the correct server before exporting logs.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Windows/server event logs for the incident window are saved and their location is recorded.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Ignition log files are saved and can be associated with the incident window.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "DB evidence is either collected with timestamps/error text preserved, or the collection gap is explicitly recorded for escalation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Review candidate step 6",
+        "validation_check": "Evidence location and filenames are documented so another reviewer can retrieve the files.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Ignition logs are saved",
+      "Windows event logs are saved",
+      "Any database-log gap is explicitly documented if collection cannot be completed",
+      "Saved evidence location is recorded"
+    ],
+    "escalation_conditions": [
+      "If DB logs are requested but support cannot locate or transfer them",
+      "If server event or Ignition logs cannot be exported",
+      "If evidence suggests database timeout but no DB-specific artifacts can be collected"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_05"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_09"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_10"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_07",
+        "source_artifact_id": "case_229716_docx_artifact_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_08",
+        "source_artifact_id": "case_229716_docx_artifact_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_12",
+        "source_artifact_id": "case_229716_docx_artifact_12"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229716_04",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229716_04",
+    "title": "Proc 229716 04",
+    "operational_intent": "Verify that service restart restored the operational functions affected during the incident.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "AGV movement is confirmed before proceeding to final closure.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Hospital tote removal succeeds after the test or after relogin.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Named site contact confirms both AGV and hospital functions are restored.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Operational status is documented only after both validation checks are complete.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "AGVs are moving",
+      "Hospital tote removal succeeds",
+      "Site contact confirms proper AGV operation and hospital function"
+    ],
+    "escalation_conditions": [
+      "If AGVs still do not move after restart",
+      "If hospital tote removal still fails after relogin",
+      "If site contact cannot confirm proper operation"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_09"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_11",
+        "source_artifact_id": "case_229716_docx_artifact_11"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229488_01",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229488_01",
+    "title": "Proc 229488 01",
+    "operational_intent": "Restore production quickly while preserving traceable evidence and escalation context around the restart action.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "Repeat-incident context and production impact are both visible in source-backed screens before restart coordination proceeds.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Escalation and urgency evidence is preserved before the restart is executed.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "A source-backed indication exists that restart was coordinated with site state, even if exact safety checklist is not visible.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Teams or case notes confirm the restart occurred at the recorded time.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "At least one source-backed recovery confirmation is visible after the restart.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Review candidate step 6",
+        "validation_check": "Case record shows recovery documented without claiming validated root cause.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Site reports startup progressing after restart.",
+      "Production resumes or site is operating again.",
+      "Case notes reflect restart timing and outcome."
+    ],
+    "escalation_conditions": [
+      "No authorized remote access available.",
+      "Restart does not restore production promptly.",
+      "Repeated recurrence after prior restart.",
+      "Need for root cause confirmation beyond service recovery."
+    ],
+    "related_incidents": [
+      "229488"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_01",
+        "source_artifact_id": "case_229488_docx_artifact_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_02",
+        "source_artifact_id": "case_229488_docx_artifact_02"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_21",
+        "source_artifact_id": "case_229488_docx_artifact_21"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_22",
+        "source_artifact_id": "case_229488_docx_artifact_22"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_23",
+        "source_artifact_id": "case_229488_docx_artifact_23"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_24",
+        "source_artifact_id": "case_229488_docx_artifact_24"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229488_02",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229488_02",
+    "title": "Proc 229488 02",
+    "operational_intent": "Produce a reviewable evidence package that separates database-timeout claims from visible OPC UA, alarm, and reconnect evidence.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "The timeout statement is preserved as discussion context and not mislabeled as direct log evidence.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Each screenshot includes enough of the table to preserve logger, time, and message together.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Only mappings explicitly stated in source are recorded; unknown endpoints remain unknown.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Alarm screenshots preserve both the timestamp and the exact alarm wording for the fault window.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "The captured log clearly shows reconnect/rebuild behavior after fault conditions.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Review candidate step 6",
+        "validation_check": "A direct timeout artifact is captured, or the absence of direct timeout evidence is explicitly documented as a gap.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_07",
+        "instruction": "Review candidate step 7",
+        "validation_check": "Post-change monitoring evidence is preserved separately from the original outage evidence.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Each captured screen includes timestamp, logger/source, and endpoint or error text where visible.",
+      "Database timeout evidence is kept separate from OPC UA reset evidence unless the same screen explicitly links them.",
+      "At least one post-fault and one follow-up monitoring screen are preserved."
+    ],
+    "escalation_conditions": [
+      "No direct database timeout evidence can be located on the WCS server.",
+      "Repeated resets involve infrastructure-owned endpoints.",
+      "Need engineering review of subscription rebuild behavior."
+    ],
+    "related_incidents": [
+      "229488"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_05"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_06"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_07"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_08"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_09"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_10"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_04",
+        "source_artifact_id": "case_229488_docx_artifact_04"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_05",
+        "source_artifact_id": "case_229488_docx_artifact_05"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_06",
+        "source_artifact_id": "case_229488_docx_artifact_06"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_07",
+        "source_artifact_id": "case_229488_docx_artifact_07"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_08",
+        "source_artifact_id": "case_229488_docx_artifact_08"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_10",
+        "source_artifact_id": "case_229488_docx_artifact_10"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_11",
+        "source_artifact_id": "case_229488_docx_artifact_11"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_12",
+        "source_artifact_id": "case_229488_docx_artifact_12"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_13",
+        "source_artifact_id": "case_229488_docx_artifact_13"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_14",
+        "source_artifact_id": "case_229488_docx_artifact_14"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_15",
+        "source_artifact_id": "case_229488_docx_artifact_15"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_16",
+        "source_artifact_id": "case_229488_docx_artifact_16"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_17",
+        "source_artifact_id": "case_229488_docx_artifact_17"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_18",
+        "source_artifact_id": "case_229488_docx_artifact_18"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_19",
+        "source_artifact_id": "case_229488_docx_artifact_19"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_20",
+        "source_artifact_id": "case_229488_docx_artifact_20"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229488_03",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229488_03",
+    "title": "Proc 229488 03",
+    "operational_intent": "Rapidly collect the minimum high-value triage signals needed to decide whether to escalate, gather deeper logs, or pursue recovery action.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "A current tipper-state answer is captured rather than assumed.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Heartbeat evidence is captured as a value or screen, not just inferred from AGV stoppage.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "HMI error state is explicitly checked and documented.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Manual workaround evidence is captured because it indicates active operational impact.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "Status screen captures endpoint names and states together in one view.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Review candidate step 6",
+        "validation_check": "At least one recent disconnect/reconnect sequence is captured if communications issues are suspected.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Tipper state, heartbeat state, and HMI error state are all explicitly checked.",
+      "Endpoint status or disconnect evidence is captured if communications issues are suspected."
+    ],
+    "escalation_conditions": [
+      "Heartbeat appears abnormal and AGVs remain stopped.",
+      "No HMI error but endpoint disconnect evidence is present.",
+      "Multiple endpoints show resets or disabled states.",
+      "Site reports unsafe conditions or manual clearing is underway."
+    ],
+    "related_incidents": [
+      "229488"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_02"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_05"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_07"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_09"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_01",
+        "source_artifact_id": "case_229488_docx_artifact_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_03",
+        "source_artifact_id": "case_229488_docx_artifact_03"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_04",
+        "source_artifact_id": "case_229488_docx_artifact_04"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_10",
+        "source_artifact_id": "case_229488_docx_artifact_10"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_11",
+        "source_artifact_id": "case_229488_docx_artifact_11"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_13",
+        "source_artifact_id": "case_229488_docx_artifact_13"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_16",
+        "source_artifact_id": "case_229488_docx_artifact_16"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_17",
+        "source_artifact_id": "case_229488_docx_artifact_17"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_18",
+        "source_artifact_id": "case_229488_docx_artifact_18"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229777_01",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229777_01",
+    "title": "Proc 229777 01",
+    "operational_intent": "Confirm and document whether a tipper heartbeat failure is present during an OptiSweep/AGV startup stoppage and preserve source-backed evidence for escalation or recovery coordination.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "At least one source-backed symptom matches the startup stoppage pattern before proceeding.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Engineer ownership and active diagnostic session are explicitly documented.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "A visible failed heartbeat indicator or equivalent status text is captured, or the absence of such evidence is explicitly noted.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Prior case reference is recorded as similarity context, not as validated cause.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Heartbeat failure observation is documented in case notes or visible system view",
+      "Symptoms align with startup stoppage and no-flow-to-tippers condition",
+      "Evidence is preserved with timestamps and case linkage"
+    ],
+    "escalation_conditions": [
+      "Heartbeat failure cannot be confirmed from available views",
+      "Condition recurs after restart/reset",
+      "Need to compare against prior similar case or deeper controls/infrastructure review"
+    ],
+    "related_incidents": [
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_01",
+        "source_artifact_id": "case_229777_docx_artifact_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_03",
+        "source_artifact_id": "case_229777_docx_artifact_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_04",
+        "source_artifact_id": "case_229777_docx_artifact_04"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229777_02",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229777_02",
+    "title": "Proc 229777 02",
+    "operational_intent": "Restore system operation after the observed startup stoppage using the same coordinated actions documented in the case, while preserving evidence and role boundaries.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "There is a documented basis for attempting restart/reset and a named site contact is engaged.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Master e-stop application is explicitly confirmed before restart proceeds.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Restart action is documented with time and operator identity.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Tipper pause/unpause action is documented as completed and associated with the recovery attempt.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "Both operational recovery and customer acceptance are documented before closure.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Restart and tipper reset actions are documented",
+      "System returns to back-up-and-running state",
+      "Customer/site confirms restoration"
+    ],
+    "escalation_conditions": [
+      "Recovery does not restore flow",
+      "Heartbeat or no-path condition persists after restart",
+      "Site cannot safely perform required coordination"
+    ],
+    "related_incidents": [
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_04"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_05"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_01",
+        "source_artifact_id": "case_229777_docx_artifact_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_03",
+        "source_artifact_id": "case_229777_docx_artifact_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_04",
+        "source_artifact_id": "case_229777_docx_artifact_04"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229777_03",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229777_03",
+    "title": "Proc 229777 03",
+    "operational_intent": "Preserve the specific follow-on diagnostic evidence types discussed in the case so recurring AGV connectivity issues can be investigated without inventing unsupported log paths or tooling details.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "At least one robot identifier or symptom/time window is recorded before requesting logs.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "Disconnect evidence includes robot identifiers and timestamps, not just a verbal summary.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Athena/RMS-equivalent evidence is clearly labeled so it is not confused with AGV-side logs.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "AGV-side logging request is tied to specific robots and recurrence goals, not a generic request.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Review candidate step 5",
+        "validation_check": "Evidence package clearly distinguishes RMS/Athena data from AGV-side logs and states whether any requested logs were unavailable.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Requested log sources are identified by name",
+      "Robot identifiers and time windows are recorded",
+      "Collected evidence is tied to a specific symptom or recurrence window"
+    ],
+    "escalation_conditions": [
+      "RMS/Athena data is unavailable",
+      "AGV-side logs require vendor/on-site setup",
+      "Disconnect pattern remains unclear after initial evidence review"
+    ],
+    "related_incidents": [
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_07"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_08"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_10"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_01",
+        "source_artifact_id": "case_229777_docx_artifact_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_02",
+        "source_artifact_id": "case_229777_docx_artifact_02"
+      }
+    ],
+    "status": "candidate_extracted"
+  },
+  {
+    "local_dataset_id": "proc_229777_04",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229777_04",
+    "title": "Proc 229777 04",
+    "operational_intent": "Document and preserve the minimum source-backed steps for arranging local OT network access for diagnostics without inventing unsupported network configuration procedures.",
+    "role_required": "support",
+    "support_safe": false,
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review candidate step 1",
+        "validation_check": "There is explicit source-backed justification for local OT network access.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Review candidate step 2",
+        "validation_check": "The connection point matches the location described in the support evidence before any device is connected.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review candidate step 3",
+        "validation_check": "Static IP requirement and target IP are recorded exactly from source before connection testing.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review candidate step 4",
+        "validation_check": "Connection result is documented with timestamp and target system identity.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Correct OT network port is identified",
+      "Static IP requirement is documented",
+      "Target RMS IP or destination is recorded"
+    ],
+    "escalation_conditions": [
+      "Personnel cannot connect locally",
+      "Static IP assignment is not authorized or fails",
+      "Target system remains unreachable after local connection attempt"
+    ],
+    "related_incidents": [
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_09"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_02",
+        "source_artifact_id": "case_229777_docx_artifact_02"
+      }
+    ],
+    "status": "candidate_extracted"
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "ocr_artifact_id": "ocr_vf_upsfortna_day1_smoke_000000",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "frame_artifact_id": "vf_upsfortna_day1_smoke_000000",
+    "timestamp": "00:00:00.000",
+    "extracted_text": "",
+    "confidence": null,
+    "ocr_engine": null,
+    "ocr_status": "pending",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:00.000",
+      "frame:0"
+    ]
+  },
+  {
+    "ocr_artifact_id": "ocr_vf_upsfortna_day1_smoke_000160",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "frame_artifact_id": "vf_upsfortna_day1_smoke_000160",
+    "timestamp": "00:00:10.000",
+    "extracted_text": "",
+    "confidence": null,
+    "ocr_engine": null,
+    "ocr_status": "pending",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:10.000",
+      "frame:160"
+    ]
+  },
+  {
+    "ocr_artifact_id": "ocr_vf_upsfortna_day1_smoke_000320",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "frame_artifact_id": "vf_upsfortna_day1_smoke_000320",
+    "timestamp": "00:00:20.000",
+    "extracted_text": "",
+    "confidence": null,
+    "ocr_engine": null,
+    "ocr_status": "pending",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:20.000",
+      "frame:320"
+    ]
+  }
+]

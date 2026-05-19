@@ -1,0 +1,10 @@
+.venv/
+.paddlex/
+output/
+__pycache__/
+*.py[cod]
+*$py.class
+*.tmp
+*.mp4
+config/*.local.json
+config/*secret*.json

@@ -1,0 +1,56 @@
+[
+  {
+    "visual_summary_id": "vs_vf_upsfortna_day1_smoke_000000",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "frame_artifact_id": "vf_upsfortna_day1_smoke_000000",
+    "scene_id": "scene_000001",
+    "timestamp": "00:00:00.000",
+    "visual_summary": "",
+    "visible_components": [],
+    "observed_signals": [],
+    "visual_summary_status": "pending",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:00.000",
+      "frame:0"
+    ]
+  },
+  {
+    "visual_summary_id": "vs_vf_upsfortna_day1_smoke_000160",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "frame_artifact_id": "vf_upsfortna_day1_smoke_000160",
+    "scene_id": "scene_000002",
+    "timestamp": "00:00:10.000",
+    "visual_summary": "",
+    "visible_components": [],
+    "observed_signals": [],
+    "visual_summary_status": "pending",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:10.000",
+      "frame:160"
+    ]
+  },
+  {
+    "visual_summary_id": "vs_vf_upsfortna_day1_smoke_000320",
+    "video_id": "upsfortna_day1_smoke",
+    "source_video_id": "upsfortna_day1_smoke",
+    "frame_artifact_id": "vf_upsfortna_day1_smoke_000320",
+    "scene_id": "scene_000003",
+    "timestamp": "00:00:20.000",
+    "visual_summary": "",
+    "visible_components": [],
+    "observed_signals": [],
+    "visual_summary_status": "pending",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_smoke",
+      "timestamp:00:00:20.000",
+      "frame:320"
+    ]
+  }
+]

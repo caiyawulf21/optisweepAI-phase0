@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+langgraph
+pydantic
+PyYAML
+azure-search-documents
+openai
+streamlit
+pytest
+httpx
