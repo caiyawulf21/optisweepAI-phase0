@@ -119,7 +119,7 @@ def test_transcript_file_is_ingested_and_aligned_to_frames(tmp_path):
     assert segment["speaker"] == "trainer"
     assert segment["transcript_text"] == "RMS map is shown."
     assert segment["aligned_frame_ids"]
-    assert result["extraction_report"]["transcript_coverage_percent"] == 100.0
+    assert 0 < result["extraction_report"]["transcript_coverage_percent"] < 100.0
 
 
 def test_run_ocr_flag_creates_failed_ocr_evidence_without_context_promotion(tmp_path):
@@ -141,3 +141,59 @@ def test_run_ocr_flag_creates_failed_ocr_evidence_without_context_promotion(tmp_
     assert {record["ocr_status"] for record in bundle["records"]["video_ocr_artifacts"]} == {"failed"}
     assert result["extraction_report"]["failed_ocr_frames"]
     assert result["guardrails"]["dataset0_context_write_ran"] is False
+
+
+def test_vtt_transcript_is_parsed_with_structured_source_refs_and_near_frame_alignment(tmp_path):
+    source = tmp_path / "training.mp4"
+    transcript = tmp_path / "transcript.en-US.vtt"
+    create_synthetic_video(source, seconds=6, fps=5)
+    transcript.write_text(
+        "\n".join(
+            [
+                "WEBVTT",
+                "",
+                "cue-intro-1",
+                "00:00:01.200 --> 00:00:01.700",
+                "RMS map is shown.",
+                "",
+                "cue-intro-2",
+                "00:00:03.100 --> 00:00:04.000",
+                "Heartbeat timeout is mentioned.",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    result = run_video_mp4_extraction(
+        source,
+        video_id="vtt_video",
+        mode="quick_sample",
+        frame_interval_seconds=2,
+        max_duration_seconds=5,
+        transcript=transcript,
+        output_dir=tmp_path / "output",
+        data_root=tmp_path / "data",
+    )
+    bundle = json.loads(Path(result["output_bundle_path"]).read_text(encoding="utf-8"))
+    segments = bundle["records"]["video_transcript_segments"]
+    alignments = bundle["records"]["video_alignment_records"]
+
+    assert [segment["transcript_text"] for segment in segments] == [
+        "RMS map is shown.",
+        "Heartbeat timeout is mentioned.",
+    ]
+    assert {segment["transcript_status"] for segment in segments} == {"provided"}
+    assert segments[0]["source_refs"] == [
+        {
+            "source_type": "vtt",
+            "source_path": str(transcript),
+            "cue_id": "cue-intro-1",
+            "timestamp_start": "00:00:01.200",
+            "timestamp_end": "00:00:01.700",
+        }
+    ]
+    assert segments[0]["aligned_frame_ids"]
+    assert alignments[0]["frame_artifact_ids"] == segments[0]["aligned_frame_ids"]
+    assert 0 < result["extraction_report"]["transcript_coverage_percent"] < 100.0
+    assert not (tmp_path / "data" / "context" / "context_reference.json").exists()

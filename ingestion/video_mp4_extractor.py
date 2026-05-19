@@ -45,6 +45,11 @@ def timestamp_token(seconds: float) -> str:
     return seconds_to_timestamp(seconds).replace(":", "").replace(".", "_")
 
 
+def timestamp_to_seconds(value: str) -> float:
+    parsed = parse_timestamp(value)
+    return parsed if parsed is not None else 0.0
+
+
 def parse_timestamp(value: Any) -> float | None:
     if value is None:
         return None
@@ -184,7 +189,20 @@ def transcript_text_from_record(record: dict[str, Any]) -> str:
     return str(record.get("transcript_text") or record.get("text") or record.get("content") or "")
 
 
-def normalize_transcript_records(raw: Any, video_id: str, duration_seconds: float, frame_artifacts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def transcript_source_refs(record: dict[str, Any], video_id: str, start: float, end: float) -> list[Any]:
+    refs = record.get("source_refs")
+    if isinstance(refs, list) and refs:
+        return refs
+    return [f"video:{video_id}", f"timestamp:{seconds_to_timestamp(start)}-{seconds_to_timestamp(end)}"]
+
+
+def normalize_transcript_records(
+    raw: Any,
+    video_id: str,
+    duration_seconds: float,
+    frame_artifacts: list[dict[str, Any]],
+    transcript_path: Path | None = None,
+) -> list[dict[str, Any]]:
     if isinstance(raw, dict):
         raw_records = raw.get("segments") or raw.get("transcript_segments") or [raw]
     elif isinstance(raw, list):
@@ -213,9 +231,70 @@ def normalize_transcript_records(raw: Any, video_id: str, duration_seconds: floa
                 "transcript_status": "provided",
                 "aligned_frame_ids": aligned_frame_ids,
                 "validation_status": "needs_review",
-                "source_refs": [f"video:{video_id}", f"timestamp:{seconds_to_timestamp(start)}-{seconds_to_timestamp(end)}"],
+                "source_refs": transcript_source_refs(record, video_id, start, end),
             }
         )
+    return segments
+
+
+def parse_vtt_transcript(path: Path, video_id: str, frame_artifacts: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    lines = path.read_text(encoding="utf-8-sig").splitlines()
+    segments = []
+    index = 0
+    cue_index = 1
+    while index < len(lines):
+        line = lines[index].strip()
+        if not line or line == "WEBVTT" or line.startswith(("NOTE", "STYLE", "REGION")):
+            index += 1
+            continue
+        cue_id = line
+        index += 1
+        if index >= len(lines):
+            break
+        timing = lines[index].strip()
+        if "-->" not in timing:
+            cue_id = f"cue_{cue_index:06d}"
+            timing = line
+        else:
+            index += 1
+        if "-->" not in timing:
+            continue
+        start_text, end_text = [part.strip().split()[0] for part in timing.split("-->", 1)]
+        text_lines = []
+        while index < len(lines) and lines[index].strip():
+            text_lines.append(lines[index].strip())
+            index += 1
+        start = timestamp_to_seconds(start_text)
+        end = timestamp_to_seconds(end_text)
+        transcript_text = " ".join(text_lines).strip()
+        segment_id = f"vts_{video_id}_{cue_index:06d}"
+        segments.append(
+            {
+                "segment_id": segment_id,
+                "video_id": video_id,
+                "source_video_id": video_id,
+                "timestamp_start": seconds_to_timestamp(start),
+                "timestamp_end": seconds_to_timestamp(end),
+                "timestamp_start_seconds": start,
+                "timestamp_end_seconds": end,
+                "speaker": "unknown",
+                "transcript_text": transcript_text,
+                "transcript_status": "provided",
+                "aligned_frame_ids": aligned_frames(frame_artifacts, start, end),
+                "validation_status": "needs_review",
+                "source_refs": [
+                    {
+                        "source_type": "vtt",
+                        "source_path": str(path),
+                        "cue_id": cue_id,
+                        "timestamp_start": seconds_to_timestamp(start),
+                        "timestamp_end": seconds_to_timestamp(end),
+                    }
+                ],
+            }
+        )
+        cue_index += 1
+        index += 1
     return segments
 
 
@@ -224,17 +303,29 @@ def load_transcript_segments(transcript: Path | None, video_id: str, duration_se
         return []
     if transcript.suffix.lower() == ".json":
         raw = load_json_file(transcript)
+    elif transcript.suffix.lower() == ".vtt":
+        return parse_vtt_transcript(transcript, video_id, frame_artifacts)
     else:
         raw = transcript.read_text(encoding="utf-8")
-    return normalize_transcript_records(raw, video_id, duration_seconds, frame_artifacts)
+    return normalize_transcript_records(raw, video_id, duration_seconds, frame_artifacts, transcript)
 
 
 def aligned_frames(frame_artifacts: list[dict[str, Any]], start: float, end: float) -> list[str]:
-    return [
+    matches = [
         record["artifact_id"]
         for record in frame_artifacts
         if start <= float(record.get("timestamp_seconds", 0)) <= end
     ]
+    if matches or not frame_artifacts:
+        return matches
+    nearest = min(
+        frame_artifacts,
+        key=lambda record: min(
+            abs(float(record.get("timestamp_seconds", 0)) - start),
+            abs(float(record.get("timestamp_seconds", 0)) - end),
+        ),
+    )
+    return [nearest["artifact_id"]]
 
 
 def placeholder_transcript_segments(video_id: str, duration_seconds: float, covered_duration: float, frame_artifacts: list[dict[str, Any]], interval_seconds: float) -> list[dict[str, Any]]:
@@ -338,6 +429,42 @@ def coverage_percent(actual: int, expected: int) -> float:
     return round(min(100.0, (actual / expected) * 100), 2)
 
 
+def merged_ranges(ranges: list[tuple[float, float]]) -> list[tuple[float, float]]:
+    normalized = sorted((max(0.0, start), max(0.0, end)) for start, end in ranges if end > start)
+    if not normalized:
+        return []
+    merged = [normalized[0]]
+    for start, end in normalized[1:]:
+        last_start, last_end = merged[-1]
+        if start <= last_end:
+            merged[-1] = (last_start, max(last_end, end))
+        else:
+            merged.append((start, end))
+    return merged
+
+
+def transcript_coverage(transcript_segments: list[dict[str, Any]], duration_seconds: float) -> tuple[float, list[dict[str, str]]]:
+    provided_ranges = [
+        (
+            float(segment.get("timestamp_start_seconds") or timestamp_to_seconds(segment.get("timestamp_start", "0"))),
+            min(duration_seconds, float(segment.get("timestamp_end_seconds") or timestamp_to_seconds(segment.get("timestamp_end", "0")))),
+        )
+        for segment in transcript_segments
+        if segment.get("transcript_status") == "provided"
+    ]
+    ranges = merged_ranges(provided_ranges)
+    covered_seconds = sum(end - start for start, end in ranges)
+    missing = []
+    cursor = 0.0
+    for start, end in ranges:
+        if start > cursor:
+            missing.append({"start": seconds_to_timestamp(cursor), "end": seconds_to_timestamp(start)})
+        cursor = max(cursor, end)
+    if cursor < duration_seconds:
+        missing.append({"start": seconds_to_timestamp(cursor), "end": seconds_to_timestamp(duration_seconds)})
+    return coverage_percent(int(round(covered_seconds * 1000)), int(round(duration_seconds * 1000))), missing
+
+
 def extraction_report(
     video_id: str,
     duration_seconds: float,
@@ -352,7 +479,7 @@ def extraction_report(
     output_bundle_path: Path,
     counts: dict[str, int],
 ) -> dict[str, Any]:
-    provided_transcript = any(segment["transcript_status"] == "provided" for segment in transcript_segments)
+    transcript_coverage_percent, missing_transcript_ranges = transcript_coverage(transcript_segments, duration_seconds)
     completed_ocr = sum(1 for record in ocr_records if record["ocr_status"] == "completed")
     return {
         "video_id": video_id,
@@ -362,9 +489,9 @@ def extraction_report(
         "expected_frame_count": expected_frame_count,
         "actual_frame_count": len(frame_artifacts),
         "visual_coverage_percent": coverage_percent(len(frame_artifacts), expected_frame_count),
-        "transcript_coverage_percent": 100.0 if provided_transcript else 0.0,
+        "transcript_coverage_percent": transcript_coverage_percent,
         "ocr_coverage_percent": coverage_percent(completed_ocr, len(frame_artifacts)),
-        "missing_transcript_ranges": [] if provided_transcript else [{"start": seconds_to_timestamp(0), "end": seconds_to_timestamp(duration_seconds)}],
+        "missing_transcript_ranges": missing_transcript_ranges,
         "missing_frame_ranges": [],
         "failed_frame_extractions": failed_frame_extractions,
         "failed_ocr_frames": failed_ocr_frames,
