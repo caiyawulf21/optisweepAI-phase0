@@ -1,0 +1,26 @@
+{
+  "video_id": "upsfortna_optisweep_training_day1_20260317",
+  "recording_title": "UPSFORTNA OptiSweep Training - Day 1",
+  "source_system": "Microsoft Teams",
+  "recording_started_at": "2026-03-17T13:16:00Z",
+  "source_video_path": "data/UPSFORTNA OptiSweep Training - Day 1-20260317_081601-Meeting Recording.mp4",
+  "transcript_paths": [
+    {
+      "language": "en-US",
+      "format": "vtt",
+      "path": "data/UPSFORTNA OptiSweep Training - Day 1-20260317_081601-Meeting Recording-en-US.vtt"
+    }
+  ],
+  "evidence_bundle_path": "output/phase0/video_training/upsfortna_optisweep_training_day1_20260317/video_evidence_bundle.json",
+  "local_evidence_datasets": {
+    "video_frame_artifacts": "data/evidence/video_frame_artifacts.json",
+    "video_transcript_segments": "data/evidence/video_transcript_segments.json",
+    "video_alignment_records": "data/evidence/video_alignment_records.json",
+    "video_ocr_artifacts": "data/evidence/video_ocr_artifacts.json",
+    "video_visual_summary_artifacts": "data/evidence/video_visual_summary_artifacts.json"
+  },
+  "trust_boundary": {
+    "raw_extraction_is_trusted_context": false,
+    "dataset0_write_allowed": false
+  }
+}
