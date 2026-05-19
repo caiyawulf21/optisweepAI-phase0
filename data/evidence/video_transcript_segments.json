@@ -1,24 +1,4079 @@
 [
   {
-    "segment_id": "vts_upsfortna_day1_smoke_000001",
-    "video_id": "upsfortna_day1_smoke",
-    "source_video_id": "upsfortna_day1_smoke",
+    "segment_id": "vts_upsfortna_day1_full_000001",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
     "timestamp_start": "00:00:00.000",
-    "timestamp_end": "00:00:30.000",
+    "timestamp_end": "00:01:00.000",
     "timestamp_start_seconds": 0.0,
-    "timestamp_end_seconds": 30.0,
+    "timestamp_end_seconds": 60.0,
     "speaker": "unknown",
     "transcript_text": "[transcript not provided]",
     "transcript_status": "missing_transcript",
     "aligned_frame_ids": [
-      "vf_upsfortna_day1_smoke_000000",
-      "vf_upsfortna_day1_smoke_000160",
-      "vf_upsfortna_day1_smoke_000320"
+      "vf_upsfortna_day1_full_000000",
+      "vf_upsfortna_day1_full_000160",
+      "vf_upsfortna_day1_full_000320",
+      "vf_upsfortna_day1_full_000480",
+      "vf_upsfortna_day1_full_000640",
+      "vf_upsfortna_day1_full_000800",
+      "vf_upsfortna_day1_full_000960"
     ],
     "validation_status": "needs_review",
     "source_refs": [
-      "video:upsfortna_day1_smoke",
-      "timestamp:00:00:00.000-00:00:30.000"
+      "video:upsfortna_day1_full",
+      "timestamp:00:00:00.000-00:01:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000002",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:01:00.000",
+    "timestamp_end": "00:02:00.000",
+    "timestamp_start_seconds": 60.0,
+    "timestamp_end_seconds": 120.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_000960",
+      "vf_upsfortna_day1_full_001120",
+      "vf_upsfortna_day1_full_001280",
+      "vf_upsfortna_day1_full_001440",
+      "vf_upsfortna_day1_full_001600",
+      "vf_upsfortna_day1_full_001760",
+      "vf_upsfortna_day1_full_001920"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:01:00.000-00:02:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000003",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:02:00.000",
+    "timestamp_end": "00:03:00.000",
+    "timestamp_start_seconds": 120.0,
+    "timestamp_end_seconds": 180.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_001920",
+      "vf_upsfortna_day1_full_002080",
+      "vf_upsfortna_day1_full_002240",
+      "vf_upsfortna_day1_full_002400",
+      "vf_upsfortna_day1_full_002560",
+      "vf_upsfortna_day1_full_002720",
+      "vf_upsfortna_day1_full_002880"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:02:00.000-00:03:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000004",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:03:00.000",
+    "timestamp_end": "00:04:00.000",
+    "timestamp_start_seconds": 180.0,
+    "timestamp_end_seconds": 240.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_002880",
+      "vf_upsfortna_day1_full_003040",
+      "vf_upsfortna_day1_full_003200",
+      "vf_upsfortna_day1_full_003360",
+      "vf_upsfortna_day1_full_003520",
+      "vf_upsfortna_day1_full_003680",
+      "vf_upsfortna_day1_full_003840"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:03:00.000-00:04:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000005",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:04:00.000",
+    "timestamp_end": "00:05:00.000",
+    "timestamp_start_seconds": 240.0,
+    "timestamp_end_seconds": 300.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_003840",
+      "vf_upsfortna_day1_full_004000",
+      "vf_upsfortna_day1_full_004160",
+      "vf_upsfortna_day1_full_004320",
+      "vf_upsfortna_day1_full_004480",
+      "vf_upsfortna_day1_full_004640",
+      "vf_upsfortna_day1_full_004800"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:04:00.000-00:05:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000006",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:05:00.000",
+    "timestamp_end": "00:06:00.000",
+    "timestamp_start_seconds": 300.0,
+    "timestamp_end_seconds": 360.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_004800",
+      "vf_upsfortna_day1_full_004960",
+      "vf_upsfortna_day1_full_005120",
+      "vf_upsfortna_day1_full_005280",
+      "vf_upsfortna_day1_full_005440",
+      "vf_upsfortna_day1_full_005600",
+      "vf_upsfortna_day1_full_005760"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:05:00.000-00:06:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000007",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:06:00.000",
+    "timestamp_end": "00:07:00.000",
+    "timestamp_start_seconds": 360.0,
+    "timestamp_end_seconds": 420.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_005760",
+      "vf_upsfortna_day1_full_005920",
+      "vf_upsfortna_day1_full_006080",
+      "vf_upsfortna_day1_full_006240",
+      "vf_upsfortna_day1_full_006400",
+      "vf_upsfortna_day1_full_006560",
+      "vf_upsfortna_day1_full_006720"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:06:00.000-00:07:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000008",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:07:00.000",
+    "timestamp_end": "00:08:00.000",
+    "timestamp_start_seconds": 420.0,
+    "timestamp_end_seconds": 480.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_006720",
+      "vf_upsfortna_day1_full_006880",
+      "vf_upsfortna_day1_full_007040",
+      "vf_upsfortna_day1_full_007200",
+      "vf_upsfortna_day1_full_007360",
+      "vf_upsfortna_day1_full_007520",
+      "vf_upsfortna_day1_full_007680"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:07:00.000-00:08:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000009",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:08:00.000",
+    "timestamp_end": "00:09:00.000",
+    "timestamp_start_seconds": 480.0,
+    "timestamp_end_seconds": 540.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_007680",
+      "vf_upsfortna_day1_full_007840",
+      "vf_upsfortna_day1_full_008000",
+      "vf_upsfortna_day1_full_008160",
+      "vf_upsfortna_day1_full_008320",
+      "vf_upsfortna_day1_full_008480",
+      "vf_upsfortna_day1_full_008640"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:08:00.000-00:09:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000010",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:09:00.000",
+    "timestamp_end": "00:10:00.000",
+    "timestamp_start_seconds": 540.0,
+    "timestamp_end_seconds": 600.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_008640",
+      "vf_upsfortna_day1_full_008800",
+      "vf_upsfortna_day1_full_008960",
+      "vf_upsfortna_day1_full_009120",
+      "vf_upsfortna_day1_full_009280",
+      "vf_upsfortna_day1_full_009440",
+      "vf_upsfortna_day1_full_009600"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:09:00.000-00:10:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000011",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:10:00.000",
+    "timestamp_end": "00:11:00.000",
+    "timestamp_start_seconds": 600.0,
+    "timestamp_end_seconds": 660.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_009600",
+      "vf_upsfortna_day1_full_009760",
+      "vf_upsfortna_day1_full_009920",
+      "vf_upsfortna_day1_full_010080",
+      "vf_upsfortna_day1_full_010240",
+      "vf_upsfortna_day1_full_010400",
+      "vf_upsfortna_day1_full_010560"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:10:00.000-00:11:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000012",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:11:00.000",
+    "timestamp_end": "00:12:00.000",
+    "timestamp_start_seconds": 660.0,
+    "timestamp_end_seconds": 720.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_010560",
+      "vf_upsfortna_day1_full_010720",
+      "vf_upsfortna_day1_full_010880",
+      "vf_upsfortna_day1_full_011040",
+      "vf_upsfortna_day1_full_011200",
+      "vf_upsfortna_day1_full_011360",
+      "vf_upsfortna_day1_full_011520"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:11:00.000-00:12:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000013",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:12:00.000",
+    "timestamp_end": "00:13:00.000",
+    "timestamp_start_seconds": 720.0,
+    "timestamp_end_seconds": 780.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_011520",
+      "vf_upsfortna_day1_full_011680",
+      "vf_upsfortna_day1_full_011840",
+      "vf_upsfortna_day1_full_012000",
+      "vf_upsfortna_day1_full_012160",
+      "vf_upsfortna_day1_full_012320",
+      "vf_upsfortna_day1_full_012480"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:12:00.000-00:13:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000014",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:13:00.000",
+    "timestamp_end": "00:14:00.000",
+    "timestamp_start_seconds": 780.0,
+    "timestamp_end_seconds": 840.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_012480",
+      "vf_upsfortna_day1_full_012640",
+      "vf_upsfortna_day1_full_012800",
+      "vf_upsfortna_day1_full_012960",
+      "vf_upsfortna_day1_full_013120",
+      "vf_upsfortna_day1_full_013280",
+      "vf_upsfortna_day1_full_013440"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:13:00.000-00:14:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000015",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:14:00.000",
+    "timestamp_end": "00:15:00.000",
+    "timestamp_start_seconds": 840.0,
+    "timestamp_end_seconds": 900.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_013440",
+      "vf_upsfortna_day1_full_013600",
+      "vf_upsfortna_day1_full_013760",
+      "vf_upsfortna_day1_full_013920",
+      "vf_upsfortna_day1_full_014080",
+      "vf_upsfortna_day1_full_014240",
+      "vf_upsfortna_day1_full_014400"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:14:00.000-00:15:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000016",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:15:00.000",
+    "timestamp_end": "00:16:00.000",
+    "timestamp_start_seconds": 900.0,
+    "timestamp_end_seconds": 960.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_014400",
+      "vf_upsfortna_day1_full_014560",
+      "vf_upsfortna_day1_full_014720",
+      "vf_upsfortna_day1_full_014880",
+      "vf_upsfortna_day1_full_015040",
+      "vf_upsfortna_day1_full_015200",
+      "vf_upsfortna_day1_full_015360"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:15:00.000-00:16:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000017",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:16:00.000",
+    "timestamp_end": "00:17:00.000",
+    "timestamp_start_seconds": 960.0,
+    "timestamp_end_seconds": 1020.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_015360",
+      "vf_upsfortna_day1_full_015520",
+      "vf_upsfortna_day1_full_015680",
+      "vf_upsfortna_day1_full_015840",
+      "vf_upsfortna_day1_full_016000",
+      "vf_upsfortna_day1_full_016160",
+      "vf_upsfortna_day1_full_016320"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:16:00.000-00:17:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000018",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:17:00.000",
+    "timestamp_end": "00:18:00.000",
+    "timestamp_start_seconds": 1020.0,
+    "timestamp_end_seconds": 1080.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_016320",
+      "vf_upsfortna_day1_full_016480",
+      "vf_upsfortna_day1_full_016640",
+      "vf_upsfortna_day1_full_016800",
+      "vf_upsfortna_day1_full_016960",
+      "vf_upsfortna_day1_full_017120",
+      "vf_upsfortna_day1_full_017280"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:17:00.000-00:18:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000019",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:18:00.000",
+    "timestamp_end": "00:19:00.000",
+    "timestamp_start_seconds": 1080.0,
+    "timestamp_end_seconds": 1140.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_017280",
+      "vf_upsfortna_day1_full_017440",
+      "vf_upsfortna_day1_full_017600",
+      "vf_upsfortna_day1_full_017760",
+      "vf_upsfortna_day1_full_017920",
+      "vf_upsfortna_day1_full_018080",
+      "vf_upsfortna_day1_full_018240"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:18:00.000-00:19:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000020",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:19:00.000",
+    "timestamp_end": "00:20:00.000",
+    "timestamp_start_seconds": 1140.0,
+    "timestamp_end_seconds": 1200.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_018240",
+      "vf_upsfortna_day1_full_018400",
+      "vf_upsfortna_day1_full_018560",
+      "vf_upsfortna_day1_full_018720",
+      "vf_upsfortna_day1_full_018880",
+      "vf_upsfortna_day1_full_019040",
+      "vf_upsfortna_day1_full_019200"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:19:00.000-00:20:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000021",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:20:00.000",
+    "timestamp_end": "00:21:00.000",
+    "timestamp_start_seconds": 1200.0,
+    "timestamp_end_seconds": 1260.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_019200",
+      "vf_upsfortna_day1_full_019360",
+      "vf_upsfortna_day1_full_019520",
+      "vf_upsfortna_day1_full_019680",
+      "vf_upsfortna_day1_full_019840",
+      "vf_upsfortna_day1_full_020000",
+      "vf_upsfortna_day1_full_020160"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:20:00.000-00:21:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000022",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:21:00.000",
+    "timestamp_end": "00:22:00.000",
+    "timestamp_start_seconds": 1260.0,
+    "timestamp_end_seconds": 1320.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_020160",
+      "vf_upsfortna_day1_full_020320",
+      "vf_upsfortna_day1_full_020480",
+      "vf_upsfortna_day1_full_020640",
+      "vf_upsfortna_day1_full_020800",
+      "vf_upsfortna_day1_full_020960",
+      "vf_upsfortna_day1_full_021120"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:21:00.000-00:22:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000023",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:22:00.000",
+    "timestamp_end": "00:23:00.000",
+    "timestamp_start_seconds": 1320.0,
+    "timestamp_end_seconds": 1380.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_021120",
+      "vf_upsfortna_day1_full_021280",
+      "vf_upsfortna_day1_full_021440",
+      "vf_upsfortna_day1_full_021600",
+      "vf_upsfortna_day1_full_021760",
+      "vf_upsfortna_day1_full_021920",
+      "vf_upsfortna_day1_full_022080"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:22:00.000-00:23:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000024",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:23:00.000",
+    "timestamp_end": "00:24:00.000",
+    "timestamp_start_seconds": 1380.0,
+    "timestamp_end_seconds": 1440.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_022080",
+      "vf_upsfortna_day1_full_022240",
+      "vf_upsfortna_day1_full_022400",
+      "vf_upsfortna_day1_full_022560",
+      "vf_upsfortna_day1_full_022720",
+      "vf_upsfortna_day1_full_022880",
+      "vf_upsfortna_day1_full_023040"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:23:00.000-00:24:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000025",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:24:00.000",
+    "timestamp_end": "00:25:00.000",
+    "timestamp_start_seconds": 1440.0,
+    "timestamp_end_seconds": 1500.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_023040",
+      "vf_upsfortna_day1_full_023200",
+      "vf_upsfortna_day1_full_023360",
+      "vf_upsfortna_day1_full_023520",
+      "vf_upsfortna_day1_full_023680",
+      "vf_upsfortna_day1_full_023840",
+      "vf_upsfortna_day1_full_024000"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:24:00.000-00:25:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000026",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:25:00.000",
+    "timestamp_end": "00:26:00.000",
+    "timestamp_start_seconds": 1500.0,
+    "timestamp_end_seconds": 1560.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_024000",
+      "vf_upsfortna_day1_full_024160",
+      "vf_upsfortna_day1_full_024320",
+      "vf_upsfortna_day1_full_024480",
+      "vf_upsfortna_day1_full_024640",
+      "vf_upsfortna_day1_full_024800",
+      "vf_upsfortna_day1_full_024960"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:25:00.000-00:26:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000027",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:26:00.000",
+    "timestamp_end": "00:27:00.000",
+    "timestamp_start_seconds": 1560.0,
+    "timestamp_end_seconds": 1620.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_024960",
+      "vf_upsfortna_day1_full_025120",
+      "vf_upsfortna_day1_full_025280",
+      "vf_upsfortna_day1_full_025440",
+      "vf_upsfortna_day1_full_025600",
+      "vf_upsfortna_day1_full_025760",
+      "vf_upsfortna_day1_full_025920"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:26:00.000-00:27:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000028",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:27:00.000",
+    "timestamp_end": "00:28:00.000",
+    "timestamp_start_seconds": 1620.0,
+    "timestamp_end_seconds": 1680.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_025920",
+      "vf_upsfortna_day1_full_026080",
+      "vf_upsfortna_day1_full_026240",
+      "vf_upsfortna_day1_full_026400",
+      "vf_upsfortna_day1_full_026560",
+      "vf_upsfortna_day1_full_026720",
+      "vf_upsfortna_day1_full_026880"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:27:00.000-00:28:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000029",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:28:00.000",
+    "timestamp_end": "00:29:00.000",
+    "timestamp_start_seconds": 1680.0,
+    "timestamp_end_seconds": 1740.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_026880",
+      "vf_upsfortna_day1_full_027040",
+      "vf_upsfortna_day1_full_027200",
+      "vf_upsfortna_day1_full_027360",
+      "vf_upsfortna_day1_full_027520",
+      "vf_upsfortna_day1_full_027680",
+      "vf_upsfortna_day1_full_027840"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:28:00.000-00:29:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000030",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:29:00.000",
+    "timestamp_end": "00:30:00.000",
+    "timestamp_start_seconds": 1740.0,
+    "timestamp_end_seconds": 1800.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_027840",
+      "vf_upsfortna_day1_full_028000",
+      "vf_upsfortna_day1_full_028160",
+      "vf_upsfortna_day1_full_028320",
+      "vf_upsfortna_day1_full_028480",
+      "vf_upsfortna_day1_full_028640",
+      "vf_upsfortna_day1_full_028800"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:29:00.000-00:30:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000031",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:30:00.000",
+    "timestamp_end": "00:31:00.000",
+    "timestamp_start_seconds": 1800.0,
+    "timestamp_end_seconds": 1860.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_028800",
+      "vf_upsfortna_day1_full_028960",
+      "vf_upsfortna_day1_full_029120",
+      "vf_upsfortna_day1_full_029280",
+      "vf_upsfortna_day1_full_029440",
+      "vf_upsfortna_day1_full_029600",
+      "vf_upsfortna_day1_full_029760"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:30:00.000-00:31:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000032",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:31:00.000",
+    "timestamp_end": "00:32:00.000",
+    "timestamp_start_seconds": 1860.0,
+    "timestamp_end_seconds": 1920.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_029760",
+      "vf_upsfortna_day1_full_029920",
+      "vf_upsfortna_day1_full_030080",
+      "vf_upsfortna_day1_full_030240",
+      "vf_upsfortna_day1_full_030400",
+      "vf_upsfortna_day1_full_030560",
+      "vf_upsfortna_day1_full_030720"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:31:00.000-00:32:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000033",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:32:00.000",
+    "timestamp_end": "00:33:00.000",
+    "timestamp_start_seconds": 1920.0,
+    "timestamp_end_seconds": 1980.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_030720",
+      "vf_upsfortna_day1_full_030880",
+      "vf_upsfortna_day1_full_031040",
+      "vf_upsfortna_day1_full_031200",
+      "vf_upsfortna_day1_full_031360",
+      "vf_upsfortna_day1_full_031520",
+      "vf_upsfortna_day1_full_031680"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:32:00.000-00:33:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000034",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:33:00.000",
+    "timestamp_end": "00:34:00.000",
+    "timestamp_start_seconds": 1980.0,
+    "timestamp_end_seconds": 2040.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_031680",
+      "vf_upsfortna_day1_full_031840",
+      "vf_upsfortna_day1_full_032000",
+      "vf_upsfortna_day1_full_032160",
+      "vf_upsfortna_day1_full_032320",
+      "vf_upsfortna_day1_full_032480",
+      "vf_upsfortna_day1_full_032640"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:33:00.000-00:34:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000035",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:34:00.000",
+    "timestamp_end": "00:35:00.000",
+    "timestamp_start_seconds": 2040.0,
+    "timestamp_end_seconds": 2100.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_032640",
+      "vf_upsfortna_day1_full_032800",
+      "vf_upsfortna_day1_full_032960",
+      "vf_upsfortna_day1_full_033120",
+      "vf_upsfortna_day1_full_033280",
+      "vf_upsfortna_day1_full_033440",
+      "vf_upsfortna_day1_full_033600"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:34:00.000-00:35:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000036",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:35:00.000",
+    "timestamp_end": "00:36:00.000",
+    "timestamp_start_seconds": 2100.0,
+    "timestamp_end_seconds": 2160.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_033600",
+      "vf_upsfortna_day1_full_033760",
+      "vf_upsfortna_day1_full_033920",
+      "vf_upsfortna_day1_full_034080",
+      "vf_upsfortna_day1_full_034240",
+      "vf_upsfortna_day1_full_034400",
+      "vf_upsfortna_day1_full_034560"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:35:00.000-00:36:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000037",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:36:00.000",
+    "timestamp_end": "00:37:00.000",
+    "timestamp_start_seconds": 2160.0,
+    "timestamp_end_seconds": 2220.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_034560",
+      "vf_upsfortna_day1_full_034720",
+      "vf_upsfortna_day1_full_034880",
+      "vf_upsfortna_day1_full_035040",
+      "vf_upsfortna_day1_full_035200",
+      "vf_upsfortna_day1_full_035360",
+      "vf_upsfortna_day1_full_035520"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:36:00.000-00:37:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000038",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:37:00.000",
+    "timestamp_end": "00:38:00.000",
+    "timestamp_start_seconds": 2220.0,
+    "timestamp_end_seconds": 2280.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_035520",
+      "vf_upsfortna_day1_full_035680",
+      "vf_upsfortna_day1_full_035840",
+      "vf_upsfortna_day1_full_036000",
+      "vf_upsfortna_day1_full_036160",
+      "vf_upsfortna_day1_full_036320",
+      "vf_upsfortna_day1_full_036480"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:37:00.000-00:38:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000039",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:38:00.000",
+    "timestamp_end": "00:39:00.000",
+    "timestamp_start_seconds": 2280.0,
+    "timestamp_end_seconds": 2340.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_036480",
+      "vf_upsfortna_day1_full_036640",
+      "vf_upsfortna_day1_full_036800",
+      "vf_upsfortna_day1_full_036960",
+      "vf_upsfortna_day1_full_037120",
+      "vf_upsfortna_day1_full_037280",
+      "vf_upsfortna_day1_full_037440"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:38:00.000-00:39:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000040",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:39:00.000",
+    "timestamp_end": "00:40:00.000",
+    "timestamp_start_seconds": 2340.0,
+    "timestamp_end_seconds": 2400.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_037440",
+      "vf_upsfortna_day1_full_037600",
+      "vf_upsfortna_day1_full_037760",
+      "vf_upsfortna_day1_full_037920",
+      "vf_upsfortna_day1_full_038080",
+      "vf_upsfortna_day1_full_038240",
+      "vf_upsfortna_day1_full_038400"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:39:00.000-00:40:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000041",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:40:00.000",
+    "timestamp_end": "00:41:00.000",
+    "timestamp_start_seconds": 2400.0,
+    "timestamp_end_seconds": 2460.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_038400",
+      "vf_upsfortna_day1_full_038560",
+      "vf_upsfortna_day1_full_038720",
+      "vf_upsfortna_day1_full_038880",
+      "vf_upsfortna_day1_full_039040",
+      "vf_upsfortna_day1_full_039200",
+      "vf_upsfortna_day1_full_039360"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:40:00.000-00:41:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000042",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:41:00.000",
+    "timestamp_end": "00:42:00.000",
+    "timestamp_start_seconds": 2460.0,
+    "timestamp_end_seconds": 2520.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_039360",
+      "vf_upsfortna_day1_full_039520",
+      "vf_upsfortna_day1_full_039680",
+      "vf_upsfortna_day1_full_039840",
+      "vf_upsfortna_day1_full_040000",
+      "vf_upsfortna_day1_full_040160",
+      "vf_upsfortna_day1_full_040320"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:41:00.000-00:42:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000043",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:42:00.000",
+    "timestamp_end": "00:43:00.000",
+    "timestamp_start_seconds": 2520.0,
+    "timestamp_end_seconds": 2580.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_040320",
+      "vf_upsfortna_day1_full_040480",
+      "vf_upsfortna_day1_full_040640",
+      "vf_upsfortna_day1_full_040800",
+      "vf_upsfortna_day1_full_040960",
+      "vf_upsfortna_day1_full_041120",
+      "vf_upsfortna_day1_full_041280"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:42:00.000-00:43:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000044",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:43:00.000",
+    "timestamp_end": "00:44:00.000",
+    "timestamp_start_seconds": 2580.0,
+    "timestamp_end_seconds": 2640.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_041280",
+      "vf_upsfortna_day1_full_041440",
+      "vf_upsfortna_day1_full_041600",
+      "vf_upsfortna_day1_full_041760",
+      "vf_upsfortna_day1_full_041920",
+      "vf_upsfortna_day1_full_042080",
+      "vf_upsfortna_day1_full_042240"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:43:00.000-00:44:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000045",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:44:00.000",
+    "timestamp_end": "00:45:00.000",
+    "timestamp_start_seconds": 2640.0,
+    "timestamp_end_seconds": 2700.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_042240",
+      "vf_upsfortna_day1_full_042400",
+      "vf_upsfortna_day1_full_042560",
+      "vf_upsfortna_day1_full_042720",
+      "vf_upsfortna_day1_full_042880",
+      "vf_upsfortna_day1_full_043040",
+      "vf_upsfortna_day1_full_043200"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:44:00.000-00:45:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000046",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:45:00.000",
+    "timestamp_end": "00:46:00.000",
+    "timestamp_start_seconds": 2700.0,
+    "timestamp_end_seconds": 2760.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_043200",
+      "vf_upsfortna_day1_full_043360",
+      "vf_upsfortna_day1_full_043520",
+      "vf_upsfortna_day1_full_043680",
+      "vf_upsfortna_day1_full_043840",
+      "vf_upsfortna_day1_full_044000",
+      "vf_upsfortna_day1_full_044160"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:45:00.000-00:46:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000047",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:46:00.000",
+    "timestamp_end": "00:47:00.000",
+    "timestamp_start_seconds": 2760.0,
+    "timestamp_end_seconds": 2820.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_044160",
+      "vf_upsfortna_day1_full_044320",
+      "vf_upsfortna_day1_full_044480",
+      "vf_upsfortna_day1_full_044640",
+      "vf_upsfortna_day1_full_044800",
+      "vf_upsfortna_day1_full_044960",
+      "vf_upsfortna_day1_full_045120"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:46:00.000-00:47:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000048",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:47:00.000",
+    "timestamp_end": "00:48:00.000",
+    "timestamp_start_seconds": 2820.0,
+    "timestamp_end_seconds": 2880.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_045120",
+      "vf_upsfortna_day1_full_045280",
+      "vf_upsfortna_day1_full_045440",
+      "vf_upsfortna_day1_full_045600",
+      "vf_upsfortna_day1_full_045760",
+      "vf_upsfortna_day1_full_045920",
+      "vf_upsfortna_day1_full_046080"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:47:00.000-00:48:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000049",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:48:00.000",
+    "timestamp_end": "00:49:00.000",
+    "timestamp_start_seconds": 2880.0,
+    "timestamp_end_seconds": 2940.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_046080",
+      "vf_upsfortna_day1_full_046240",
+      "vf_upsfortna_day1_full_046400",
+      "vf_upsfortna_day1_full_046560",
+      "vf_upsfortna_day1_full_046720",
+      "vf_upsfortna_day1_full_046880",
+      "vf_upsfortna_day1_full_047040"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:48:00.000-00:49:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000050",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:49:00.000",
+    "timestamp_end": "00:50:00.000",
+    "timestamp_start_seconds": 2940.0,
+    "timestamp_end_seconds": 3000.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_047040",
+      "vf_upsfortna_day1_full_047200",
+      "vf_upsfortna_day1_full_047360",
+      "vf_upsfortna_day1_full_047520",
+      "vf_upsfortna_day1_full_047680",
+      "vf_upsfortna_day1_full_047840",
+      "vf_upsfortna_day1_full_048000"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:49:00.000-00:50:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000051",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:50:00.000",
+    "timestamp_end": "00:51:00.000",
+    "timestamp_start_seconds": 3000.0,
+    "timestamp_end_seconds": 3060.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_048000",
+      "vf_upsfortna_day1_full_048160",
+      "vf_upsfortna_day1_full_048320",
+      "vf_upsfortna_day1_full_048480",
+      "vf_upsfortna_day1_full_048640",
+      "vf_upsfortna_day1_full_048800",
+      "vf_upsfortna_day1_full_048960"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:50:00.000-00:51:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000052",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:51:00.000",
+    "timestamp_end": "00:52:00.000",
+    "timestamp_start_seconds": 3060.0,
+    "timestamp_end_seconds": 3120.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_048960",
+      "vf_upsfortna_day1_full_049120",
+      "vf_upsfortna_day1_full_049280",
+      "vf_upsfortna_day1_full_049440",
+      "vf_upsfortna_day1_full_049600",
+      "vf_upsfortna_day1_full_049760",
+      "vf_upsfortna_day1_full_049920"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:51:00.000-00:52:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000053",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:52:00.000",
+    "timestamp_end": "00:53:00.000",
+    "timestamp_start_seconds": 3120.0,
+    "timestamp_end_seconds": 3180.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_049920",
+      "vf_upsfortna_day1_full_050080",
+      "vf_upsfortna_day1_full_050240",
+      "vf_upsfortna_day1_full_050400",
+      "vf_upsfortna_day1_full_050560",
+      "vf_upsfortna_day1_full_050720",
+      "vf_upsfortna_day1_full_050880"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:52:00.000-00:53:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000054",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:53:00.000",
+    "timestamp_end": "00:54:00.000",
+    "timestamp_start_seconds": 3180.0,
+    "timestamp_end_seconds": 3240.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_050880",
+      "vf_upsfortna_day1_full_051040",
+      "vf_upsfortna_day1_full_051200",
+      "vf_upsfortna_day1_full_051360",
+      "vf_upsfortna_day1_full_051520",
+      "vf_upsfortna_day1_full_051680",
+      "vf_upsfortna_day1_full_051840"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:53:00.000-00:54:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000055",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:54:00.000",
+    "timestamp_end": "00:55:00.000",
+    "timestamp_start_seconds": 3240.0,
+    "timestamp_end_seconds": 3300.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_051840",
+      "vf_upsfortna_day1_full_052000",
+      "vf_upsfortna_day1_full_052160",
+      "vf_upsfortna_day1_full_052320",
+      "vf_upsfortna_day1_full_052480",
+      "vf_upsfortna_day1_full_052640",
+      "vf_upsfortna_day1_full_052800"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:54:00.000-00:55:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000056",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:55:00.000",
+    "timestamp_end": "00:56:00.000",
+    "timestamp_start_seconds": 3300.0,
+    "timestamp_end_seconds": 3360.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_052800",
+      "vf_upsfortna_day1_full_052960",
+      "vf_upsfortna_day1_full_053120",
+      "vf_upsfortna_day1_full_053280",
+      "vf_upsfortna_day1_full_053440",
+      "vf_upsfortna_day1_full_053600",
+      "vf_upsfortna_day1_full_053760"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:55:00.000-00:56:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000057",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:56:00.000",
+    "timestamp_end": "00:57:00.000",
+    "timestamp_start_seconds": 3360.0,
+    "timestamp_end_seconds": 3420.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_053760",
+      "vf_upsfortna_day1_full_053920",
+      "vf_upsfortna_day1_full_054080",
+      "vf_upsfortna_day1_full_054240",
+      "vf_upsfortna_day1_full_054400",
+      "vf_upsfortna_day1_full_054560",
+      "vf_upsfortna_day1_full_054720"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:56:00.000-00:57:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000058",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:57:00.000",
+    "timestamp_end": "00:58:00.000",
+    "timestamp_start_seconds": 3420.0,
+    "timestamp_end_seconds": 3480.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_054720",
+      "vf_upsfortna_day1_full_054880",
+      "vf_upsfortna_day1_full_055040",
+      "vf_upsfortna_day1_full_055200",
+      "vf_upsfortna_day1_full_055360",
+      "vf_upsfortna_day1_full_055520",
+      "vf_upsfortna_day1_full_055680"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:57:00.000-00:58:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000059",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:58:00.000",
+    "timestamp_end": "00:59:00.000",
+    "timestamp_start_seconds": 3480.0,
+    "timestamp_end_seconds": 3540.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_055680",
+      "vf_upsfortna_day1_full_055840",
+      "vf_upsfortna_day1_full_056000",
+      "vf_upsfortna_day1_full_056160",
+      "vf_upsfortna_day1_full_056320",
+      "vf_upsfortna_day1_full_056480",
+      "vf_upsfortna_day1_full_056640"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:58:00.000-00:59:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000060",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "00:59:00.000",
+    "timestamp_end": "01:00:00.000",
+    "timestamp_start_seconds": 3540.0,
+    "timestamp_end_seconds": 3600.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_056640",
+      "vf_upsfortna_day1_full_056800",
+      "vf_upsfortna_day1_full_056960",
+      "vf_upsfortna_day1_full_057120",
+      "vf_upsfortna_day1_full_057280",
+      "vf_upsfortna_day1_full_057440",
+      "vf_upsfortna_day1_full_057600"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:00:59:00.000-01:00:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000061",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:00:00.000",
+    "timestamp_end": "01:01:00.000",
+    "timestamp_start_seconds": 3600.0,
+    "timestamp_end_seconds": 3660.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_057600",
+      "vf_upsfortna_day1_full_057760",
+      "vf_upsfortna_day1_full_057920",
+      "vf_upsfortna_day1_full_058080",
+      "vf_upsfortna_day1_full_058240",
+      "vf_upsfortna_day1_full_058400",
+      "vf_upsfortna_day1_full_058560"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:00:00.000-01:01:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000062",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:01:00.000",
+    "timestamp_end": "01:02:00.000",
+    "timestamp_start_seconds": 3660.0,
+    "timestamp_end_seconds": 3720.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_058560",
+      "vf_upsfortna_day1_full_058720",
+      "vf_upsfortna_day1_full_058880",
+      "vf_upsfortna_day1_full_059040",
+      "vf_upsfortna_day1_full_059200",
+      "vf_upsfortna_day1_full_059360",
+      "vf_upsfortna_day1_full_059520"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:01:00.000-01:02:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000063",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:02:00.000",
+    "timestamp_end": "01:03:00.000",
+    "timestamp_start_seconds": 3720.0,
+    "timestamp_end_seconds": 3780.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_059520",
+      "vf_upsfortna_day1_full_059680",
+      "vf_upsfortna_day1_full_059840",
+      "vf_upsfortna_day1_full_060000",
+      "vf_upsfortna_day1_full_060160",
+      "vf_upsfortna_day1_full_060320",
+      "vf_upsfortna_day1_full_060480"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:02:00.000-01:03:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000064",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:03:00.000",
+    "timestamp_end": "01:04:00.000",
+    "timestamp_start_seconds": 3780.0,
+    "timestamp_end_seconds": 3840.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_060480",
+      "vf_upsfortna_day1_full_060640",
+      "vf_upsfortna_day1_full_060800",
+      "vf_upsfortna_day1_full_060960",
+      "vf_upsfortna_day1_full_061120",
+      "vf_upsfortna_day1_full_061280",
+      "vf_upsfortna_day1_full_061440"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:03:00.000-01:04:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000065",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:04:00.000",
+    "timestamp_end": "01:05:00.000",
+    "timestamp_start_seconds": 3840.0,
+    "timestamp_end_seconds": 3900.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_061440",
+      "vf_upsfortna_day1_full_061600",
+      "vf_upsfortna_day1_full_061760",
+      "vf_upsfortna_day1_full_061920",
+      "vf_upsfortna_day1_full_062080",
+      "vf_upsfortna_day1_full_062240",
+      "vf_upsfortna_day1_full_062400"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:04:00.000-01:05:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000066",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:05:00.000",
+    "timestamp_end": "01:06:00.000",
+    "timestamp_start_seconds": 3900.0,
+    "timestamp_end_seconds": 3960.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_062400",
+      "vf_upsfortna_day1_full_062560",
+      "vf_upsfortna_day1_full_062720",
+      "vf_upsfortna_day1_full_062880",
+      "vf_upsfortna_day1_full_063040",
+      "vf_upsfortna_day1_full_063200",
+      "vf_upsfortna_day1_full_063360"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:05:00.000-01:06:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000067",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:06:00.000",
+    "timestamp_end": "01:07:00.000",
+    "timestamp_start_seconds": 3960.0,
+    "timestamp_end_seconds": 4020.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_063360",
+      "vf_upsfortna_day1_full_063520",
+      "vf_upsfortna_day1_full_063680",
+      "vf_upsfortna_day1_full_063840",
+      "vf_upsfortna_day1_full_064000",
+      "vf_upsfortna_day1_full_064160",
+      "vf_upsfortna_day1_full_064320"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:06:00.000-01:07:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000068",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:07:00.000",
+    "timestamp_end": "01:08:00.000",
+    "timestamp_start_seconds": 4020.0,
+    "timestamp_end_seconds": 4080.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_064320",
+      "vf_upsfortna_day1_full_064480",
+      "vf_upsfortna_day1_full_064640",
+      "vf_upsfortna_day1_full_064800",
+      "vf_upsfortna_day1_full_064960",
+      "vf_upsfortna_day1_full_065120",
+      "vf_upsfortna_day1_full_065280"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:07:00.000-01:08:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000069",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:08:00.000",
+    "timestamp_end": "01:09:00.000",
+    "timestamp_start_seconds": 4080.0,
+    "timestamp_end_seconds": 4140.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_065280",
+      "vf_upsfortna_day1_full_065440",
+      "vf_upsfortna_day1_full_065600",
+      "vf_upsfortna_day1_full_065760",
+      "vf_upsfortna_day1_full_065920",
+      "vf_upsfortna_day1_full_066080",
+      "vf_upsfortna_day1_full_066240"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:08:00.000-01:09:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000070",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:09:00.000",
+    "timestamp_end": "01:10:00.000",
+    "timestamp_start_seconds": 4140.0,
+    "timestamp_end_seconds": 4200.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_066240",
+      "vf_upsfortna_day1_full_066400",
+      "vf_upsfortna_day1_full_066560",
+      "vf_upsfortna_day1_full_066720",
+      "vf_upsfortna_day1_full_066880",
+      "vf_upsfortna_day1_full_067040",
+      "vf_upsfortna_day1_full_067200"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:09:00.000-01:10:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000071",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:10:00.000",
+    "timestamp_end": "01:11:00.000",
+    "timestamp_start_seconds": 4200.0,
+    "timestamp_end_seconds": 4260.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_067200",
+      "vf_upsfortna_day1_full_067360",
+      "vf_upsfortna_day1_full_067520",
+      "vf_upsfortna_day1_full_067680",
+      "vf_upsfortna_day1_full_067840",
+      "vf_upsfortna_day1_full_068000",
+      "vf_upsfortna_day1_full_068160"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:10:00.000-01:11:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000072",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:11:00.000",
+    "timestamp_end": "01:12:00.000",
+    "timestamp_start_seconds": 4260.0,
+    "timestamp_end_seconds": 4320.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_068160",
+      "vf_upsfortna_day1_full_068320",
+      "vf_upsfortna_day1_full_068480",
+      "vf_upsfortna_day1_full_068640",
+      "vf_upsfortna_day1_full_068800",
+      "vf_upsfortna_day1_full_068960",
+      "vf_upsfortna_day1_full_069120"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:11:00.000-01:12:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000073",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:12:00.000",
+    "timestamp_end": "01:13:00.000",
+    "timestamp_start_seconds": 4320.0,
+    "timestamp_end_seconds": 4380.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_069120",
+      "vf_upsfortna_day1_full_069280",
+      "vf_upsfortna_day1_full_069440",
+      "vf_upsfortna_day1_full_069600",
+      "vf_upsfortna_day1_full_069760",
+      "vf_upsfortna_day1_full_069920",
+      "vf_upsfortna_day1_full_070080"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:12:00.000-01:13:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000074",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:13:00.000",
+    "timestamp_end": "01:14:00.000",
+    "timestamp_start_seconds": 4380.0,
+    "timestamp_end_seconds": 4440.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_070080",
+      "vf_upsfortna_day1_full_070240",
+      "vf_upsfortna_day1_full_070400",
+      "vf_upsfortna_day1_full_070560",
+      "vf_upsfortna_day1_full_070720",
+      "vf_upsfortna_day1_full_070880",
+      "vf_upsfortna_day1_full_071040"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:13:00.000-01:14:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000075",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:14:00.000",
+    "timestamp_end": "01:15:00.000",
+    "timestamp_start_seconds": 4440.0,
+    "timestamp_end_seconds": 4500.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_071040",
+      "vf_upsfortna_day1_full_071200",
+      "vf_upsfortna_day1_full_071360",
+      "vf_upsfortna_day1_full_071520",
+      "vf_upsfortna_day1_full_071680",
+      "vf_upsfortna_day1_full_071840",
+      "vf_upsfortna_day1_full_072000"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:14:00.000-01:15:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000076",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:15:00.000",
+    "timestamp_end": "01:16:00.000",
+    "timestamp_start_seconds": 4500.0,
+    "timestamp_end_seconds": 4560.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_072000",
+      "vf_upsfortna_day1_full_072160",
+      "vf_upsfortna_day1_full_072320",
+      "vf_upsfortna_day1_full_072480",
+      "vf_upsfortna_day1_full_072640",
+      "vf_upsfortna_day1_full_072800",
+      "vf_upsfortna_day1_full_072960"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:15:00.000-01:16:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000077",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:16:00.000",
+    "timestamp_end": "01:17:00.000",
+    "timestamp_start_seconds": 4560.0,
+    "timestamp_end_seconds": 4620.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_072960",
+      "vf_upsfortna_day1_full_073120",
+      "vf_upsfortna_day1_full_073280",
+      "vf_upsfortna_day1_full_073440",
+      "vf_upsfortna_day1_full_073600",
+      "vf_upsfortna_day1_full_073760",
+      "vf_upsfortna_day1_full_073920"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:16:00.000-01:17:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000078",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:17:00.000",
+    "timestamp_end": "01:18:00.000",
+    "timestamp_start_seconds": 4620.0,
+    "timestamp_end_seconds": 4680.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_073920",
+      "vf_upsfortna_day1_full_074080",
+      "vf_upsfortna_day1_full_074240",
+      "vf_upsfortna_day1_full_074400",
+      "vf_upsfortna_day1_full_074560",
+      "vf_upsfortna_day1_full_074720",
+      "vf_upsfortna_day1_full_074880"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:17:00.000-01:18:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000079",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:18:00.000",
+    "timestamp_end": "01:19:00.000",
+    "timestamp_start_seconds": 4680.0,
+    "timestamp_end_seconds": 4740.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_074880",
+      "vf_upsfortna_day1_full_075040",
+      "vf_upsfortna_day1_full_075200",
+      "vf_upsfortna_day1_full_075360",
+      "vf_upsfortna_day1_full_075520",
+      "vf_upsfortna_day1_full_075680",
+      "vf_upsfortna_day1_full_075840"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:18:00.000-01:19:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000080",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:19:00.000",
+    "timestamp_end": "01:20:00.000",
+    "timestamp_start_seconds": 4740.0,
+    "timestamp_end_seconds": 4800.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_075840",
+      "vf_upsfortna_day1_full_076000",
+      "vf_upsfortna_day1_full_076160",
+      "vf_upsfortna_day1_full_076320",
+      "vf_upsfortna_day1_full_076480",
+      "vf_upsfortna_day1_full_076640",
+      "vf_upsfortna_day1_full_076800"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:19:00.000-01:20:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000081",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:20:00.000",
+    "timestamp_end": "01:21:00.000",
+    "timestamp_start_seconds": 4800.0,
+    "timestamp_end_seconds": 4860.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_076800",
+      "vf_upsfortna_day1_full_076960",
+      "vf_upsfortna_day1_full_077120",
+      "vf_upsfortna_day1_full_077280",
+      "vf_upsfortna_day1_full_077440",
+      "vf_upsfortna_day1_full_077600",
+      "vf_upsfortna_day1_full_077760"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:20:00.000-01:21:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000082",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:21:00.000",
+    "timestamp_end": "01:22:00.000",
+    "timestamp_start_seconds": 4860.0,
+    "timestamp_end_seconds": 4920.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_077760",
+      "vf_upsfortna_day1_full_077920",
+      "vf_upsfortna_day1_full_078080",
+      "vf_upsfortna_day1_full_078240",
+      "vf_upsfortna_day1_full_078400",
+      "vf_upsfortna_day1_full_078560",
+      "vf_upsfortna_day1_full_078720"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:21:00.000-01:22:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000083",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:22:00.000",
+    "timestamp_end": "01:23:00.000",
+    "timestamp_start_seconds": 4920.0,
+    "timestamp_end_seconds": 4980.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_078720",
+      "vf_upsfortna_day1_full_078880",
+      "vf_upsfortna_day1_full_079040",
+      "vf_upsfortna_day1_full_079200",
+      "vf_upsfortna_day1_full_079360",
+      "vf_upsfortna_day1_full_079520",
+      "vf_upsfortna_day1_full_079680"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:22:00.000-01:23:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000084",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:23:00.000",
+    "timestamp_end": "01:24:00.000",
+    "timestamp_start_seconds": 4980.0,
+    "timestamp_end_seconds": 5040.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_079680",
+      "vf_upsfortna_day1_full_079840",
+      "vf_upsfortna_day1_full_080000",
+      "vf_upsfortna_day1_full_080160",
+      "vf_upsfortna_day1_full_080320",
+      "vf_upsfortna_day1_full_080480",
+      "vf_upsfortna_day1_full_080640"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:23:00.000-01:24:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000085",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:24:00.000",
+    "timestamp_end": "01:25:00.000",
+    "timestamp_start_seconds": 5040.0,
+    "timestamp_end_seconds": 5100.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_080640",
+      "vf_upsfortna_day1_full_080800",
+      "vf_upsfortna_day1_full_080960",
+      "vf_upsfortna_day1_full_081120",
+      "vf_upsfortna_day1_full_081280",
+      "vf_upsfortna_day1_full_081440",
+      "vf_upsfortna_day1_full_081600"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:24:00.000-01:25:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000086",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:25:00.000",
+    "timestamp_end": "01:26:00.000",
+    "timestamp_start_seconds": 5100.0,
+    "timestamp_end_seconds": 5160.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_081600",
+      "vf_upsfortna_day1_full_081760",
+      "vf_upsfortna_day1_full_081920",
+      "vf_upsfortna_day1_full_082080",
+      "vf_upsfortna_day1_full_082240",
+      "vf_upsfortna_day1_full_082400",
+      "vf_upsfortna_day1_full_082560"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:25:00.000-01:26:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000087",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:26:00.000",
+    "timestamp_end": "01:27:00.000",
+    "timestamp_start_seconds": 5160.0,
+    "timestamp_end_seconds": 5220.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_082560",
+      "vf_upsfortna_day1_full_082720",
+      "vf_upsfortna_day1_full_082880",
+      "vf_upsfortna_day1_full_083040",
+      "vf_upsfortna_day1_full_083200",
+      "vf_upsfortna_day1_full_083360",
+      "vf_upsfortna_day1_full_083520"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:26:00.000-01:27:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000088",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:27:00.000",
+    "timestamp_end": "01:28:00.000",
+    "timestamp_start_seconds": 5220.0,
+    "timestamp_end_seconds": 5280.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_083520",
+      "vf_upsfortna_day1_full_083680",
+      "vf_upsfortna_day1_full_083840",
+      "vf_upsfortna_day1_full_084000",
+      "vf_upsfortna_day1_full_084160",
+      "vf_upsfortna_day1_full_084320",
+      "vf_upsfortna_day1_full_084480"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:27:00.000-01:28:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000089",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:28:00.000",
+    "timestamp_end": "01:29:00.000",
+    "timestamp_start_seconds": 5280.0,
+    "timestamp_end_seconds": 5340.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_084480",
+      "vf_upsfortna_day1_full_084640",
+      "vf_upsfortna_day1_full_084800",
+      "vf_upsfortna_day1_full_084960",
+      "vf_upsfortna_day1_full_085120",
+      "vf_upsfortna_day1_full_085280",
+      "vf_upsfortna_day1_full_085440"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:28:00.000-01:29:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000090",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:29:00.000",
+    "timestamp_end": "01:30:00.000",
+    "timestamp_start_seconds": 5340.0,
+    "timestamp_end_seconds": 5400.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_085440",
+      "vf_upsfortna_day1_full_085600",
+      "vf_upsfortna_day1_full_085760",
+      "vf_upsfortna_day1_full_085920",
+      "vf_upsfortna_day1_full_086080",
+      "vf_upsfortna_day1_full_086240",
+      "vf_upsfortna_day1_full_086400"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:29:00.000-01:30:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000091",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:30:00.000",
+    "timestamp_end": "01:31:00.000",
+    "timestamp_start_seconds": 5400.0,
+    "timestamp_end_seconds": 5460.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_086400",
+      "vf_upsfortna_day1_full_086560",
+      "vf_upsfortna_day1_full_086720",
+      "vf_upsfortna_day1_full_086880",
+      "vf_upsfortna_day1_full_087040",
+      "vf_upsfortna_day1_full_087200",
+      "vf_upsfortna_day1_full_087360"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:30:00.000-01:31:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000092",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:31:00.000",
+    "timestamp_end": "01:32:00.000",
+    "timestamp_start_seconds": 5460.0,
+    "timestamp_end_seconds": 5520.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_087360",
+      "vf_upsfortna_day1_full_087520",
+      "vf_upsfortna_day1_full_087680",
+      "vf_upsfortna_day1_full_087840",
+      "vf_upsfortna_day1_full_088000",
+      "vf_upsfortna_day1_full_088160",
+      "vf_upsfortna_day1_full_088320"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:31:00.000-01:32:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000093",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:32:00.000",
+    "timestamp_end": "01:33:00.000",
+    "timestamp_start_seconds": 5520.0,
+    "timestamp_end_seconds": 5580.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_088320",
+      "vf_upsfortna_day1_full_088480",
+      "vf_upsfortna_day1_full_088640",
+      "vf_upsfortna_day1_full_088800",
+      "vf_upsfortna_day1_full_088960",
+      "vf_upsfortna_day1_full_089120",
+      "vf_upsfortna_day1_full_089280"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:32:00.000-01:33:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000094",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:33:00.000",
+    "timestamp_end": "01:34:00.000",
+    "timestamp_start_seconds": 5580.0,
+    "timestamp_end_seconds": 5640.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_089280",
+      "vf_upsfortna_day1_full_089440",
+      "vf_upsfortna_day1_full_089600",
+      "vf_upsfortna_day1_full_089760",
+      "vf_upsfortna_day1_full_089920",
+      "vf_upsfortna_day1_full_090080",
+      "vf_upsfortna_day1_full_090240"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:33:00.000-01:34:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000095",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:34:00.000",
+    "timestamp_end": "01:35:00.000",
+    "timestamp_start_seconds": 5640.0,
+    "timestamp_end_seconds": 5700.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_090240",
+      "vf_upsfortna_day1_full_090400",
+      "vf_upsfortna_day1_full_090560",
+      "vf_upsfortna_day1_full_090720",
+      "vf_upsfortna_day1_full_090880",
+      "vf_upsfortna_day1_full_091040",
+      "vf_upsfortna_day1_full_091200"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:34:00.000-01:35:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000096",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:35:00.000",
+    "timestamp_end": "01:36:00.000",
+    "timestamp_start_seconds": 5700.0,
+    "timestamp_end_seconds": 5760.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_091200",
+      "vf_upsfortna_day1_full_091360",
+      "vf_upsfortna_day1_full_091520",
+      "vf_upsfortna_day1_full_091680",
+      "vf_upsfortna_day1_full_091840",
+      "vf_upsfortna_day1_full_092000",
+      "vf_upsfortna_day1_full_092160"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:35:00.000-01:36:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000097",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:36:00.000",
+    "timestamp_end": "01:37:00.000",
+    "timestamp_start_seconds": 5760.0,
+    "timestamp_end_seconds": 5820.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_092160",
+      "vf_upsfortna_day1_full_092320",
+      "vf_upsfortna_day1_full_092480",
+      "vf_upsfortna_day1_full_092640",
+      "vf_upsfortna_day1_full_092800",
+      "vf_upsfortna_day1_full_092960",
+      "vf_upsfortna_day1_full_093120"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:36:00.000-01:37:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000098",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:37:00.000",
+    "timestamp_end": "01:38:00.000",
+    "timestamp_start_seconds": 5820.0,
+    "timestamp_end_seconds": 5880.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_093120",
+      "vf_upsfortna_day1_full_093280",
+      "vf_upsfortna_day1_full_093440",
+      "vf_upsfortna_day1_full_093600",
+      "vf_upsfortna_day1_full_093760",
+      "vf_upsfortna_day1_full_093920",
+      "vf_upsfortna_day1_full_094080"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:37:00.000-01:38:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000099",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:38:00.000",
+    "timestamp_end": "01:39:00.000",
+    "timestamp_start_seconds": 5880.0,
+    "timestamp_end_seconds": 5940.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_094080",
+      "vf_upsfortna_day1_full_094240",
+      "vf_upsfortna_day1_full_094400",
+      "vf_upsfortna_day1_full_094560",
+      "vf_upsfortna_day1_full_094720",
+      "vf_upsfortna_day1_full_094880",
+      "vf_upsfortna_day1_full_095040"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:38:00.000-01:39:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000100",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:39:00.000",
+    "timestamp_end": "01:40:00.000",
+    "timestamp_start_seconds": 5940.0,
+    "timestamp_end_seconds": 6000.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_095040",
+      "vf_upsfortna_day1_full_095200",
+      "vf_upsfortna_day1_full_095360",
+      "vf_upsfortna_day1_full_095520",
+      "vf_upsfortna_day1_full_095680",
+      "vf_upsfortna_day1_full_095840",
+      "vf_upsfortna_day1_full_096000"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:39:00.000-01:40:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000101",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:40:00.000",
+    "timestamp_end": "01:41:00.000",
+    "timestamp_start_seconds": 6000.0,
+    "timestamp_end_seconds": 6060.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_096000",
+      "vf_upsfortna_day1_full_096160",
+      "vf_upsfortna_day1_full_096320",
+      "vf_upsfortna_day1_full_096480",
+      "vf_upsfortna_day1_full_096640",
+      "vf_upsfortna_day1_full_096800",
+      "vf_upsfortna_day1_full_096960"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:40:00.000-01:41:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000102",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:41:00.000",
+    "timestamp_end": "01:42:00.000",
+    "timestamp_start_seconds": 6060.0,
+    "timestamp_end_seconds": 6120.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_096960",
+      "vf_upsfortna_day1_full_097120",
+      "vf_upsfortna_day1_full_097280",
+      "vf_upsfortna_day1_full_097440",
+      "vf_upsfortna_day1_full_097600",
+      "vf_upsfortna_day1_full_097760",
+      "vf_upsfortna_day1_full_097920"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:41:00.000-01:42:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000103",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:42:00.000",
+    "timestamp_end": "01:43:00.000",
+    "timestamp_start_seconds": 6120.0,
+    "timestamp_end_seconds": 6180.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_097920",
+      "vf_upsfortna_day1_full_098080",
+      "vf_upsfortna_day1_full_098240",
+      "vf_upsfortna_day1_full_098400",
+      "vf_upsfortna_day1_full_098560",
+      "vf_upsfortna_day1_full_098720",
+      "vf_upsfortna_day1_full_098880"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:42:00.000-01:43:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000104",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:43:00.000",
+    "timestamp_end": "01:44:00.000",
+    "timestamp_start_seconds": 6180.0,
+    "timestamp_end_seconds": 6240.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_098880",
+      "vf_upsfortna_day1_full_099040",
+      "vf_upsfortna_day1_full_099200",
+      "vf_upsfortna_day1_full_099360",
+      "vf_upsfortna_day1_full_099520",
+      "vf_upsfortna_day1_full_099680",
+      "vf_upsfortna_day1_full_099840"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:43:00.000-01:44:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000105",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:44:00.000",
+    "timestamp_end": "01:45:00.000",
+    "timestamp_start_seconds": 6240.0,
+    "timestamp_end_seconds": 6300.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_099840",
+      "vf_upsfortna_day1_full_100000",
+      "vf_upsfortna_day1_full_100160",
+      "vf_upsfortna_day1_full_100320",
+      "vf_upsfortna_day1_full_100480",
+      "vf_upsfortna_day1_full_100640",
+      "vf_upsfortna_day1_full_100800"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:44:00.000-01:45:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000106",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:45:00.000",
+    "timestamp_end": "01:46:00.000",
+    "timestamp_start_seconds": 6300.0,
+    "timestamp_end_seconds": 6360.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_100800",
+      "vf_upsfortna_day1_full_100960",
+      "vf_upsfortna_day1_full_101120",
+      "vf_upsfortna_day1_full_101280",
+      "vf_upsfortna_day1_full_101440",
+      "vf_upsfortna_day1_full_101600",
+      "vf_upsfortna_day1_full_101760"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:45:00.000-01:46:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000107",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:46:00.000",
+    "timestamp_end": "01:47:00.000",
+    "timestamp_start_seconds": 6360.0,
+    "timestamp_end_seconds": 6420.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_101760",
+      "vf_upsfortna_day1_full_101920",
+      "vf_upsfortna_day1_full_102080",
+      "vf_upsfortna_day1_full_102240",
+      "vf_upsfortna_day1_full_102400",
+      "vf_upsfortna_day1_full_102560",
+      "vf_upsfortna_day1_full_102720"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:46:00.000-01:47:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000108",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:47:00.000",
+    "timestamp_end": "01:48:00.000",
+    "timestamp_start_seconds": 6420.0,
+    "timestamp_end_seconds": 6480.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_102720",
+      "vf_upsfortna_day1_full_102880",
+      "vf_upsfortna_day1_full_103040",
+      "vf_upsfortna_day1_full_103200",
+      "vf_upsfortna_day1_full_103360",
+      "vf_upsfortna_day1_full_103520",
+      "vf_upsfortna_day1_full_103680"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:47:00.000-01:48:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000109",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:48:00.000",
+    "timestamp_end": "01:49:00.000",
+    "timestamp_start_seconds": 6480.0,
+    "timestamp_end_seconds": 6540.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_103680",
+      "vf_upsfortna_day1_full_103840",
+      "vf_upsfortna_day1_full_104000",
+      "vf_upsfortna_day1_full_104160",
+      "vf_upsfortna_day1_full_104320",
+      "vf_upsfortna_day1_full_104480",
+      "vf_upsfortna_day1_full_104640"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:48:00.000-01:49:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000110",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:49:00.000",
+    "timestamp_end": "01:50:00.000",
+    "timestamp_start_seconds": 6540.0,
+    "timestamp_end_seconds": 6600.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_104640",
+      "vf_upsfortna_day1_full_104800",
+      "vf_upsfortna_day1_full_104960",
+      "vf_upsfortna_day1_full_105120",
+      "vf_upsfortna_day1_full_105280",
+      "vf_upsfortna_day1_full_105440",
+      "vf_upsfortna_day1_full_105600"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:49:00.000-01:50:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000111",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:50:00.000",
+    "timestamp_end": "01:51:00.000",
+    "timestamp_start_seconds": 6600.0,
+    "timestamp_end_seconds": 6660.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_105600",
+      "vf_upsfortna_day1_full_105760",
+      "vf_upsfortna_day1_full_105920",
+      "vf_upsfortna_day1_full_106080",
+      "vf_upsfortna_day1_full_106240",
+      "vf_upsfortna_day1_full_106400",
+      "vf_upsfortna_day1_full_106560"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:50:00.000-01:51:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000112",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:51:00.000",
+    "timestamp_end": "01:52:00.000",
+    "timestamp_start_seconds": 6660.0,
+    "timestamp_end_seconds": 6720.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_106560",
+      "vf_upsfortna_day1_full_106720",
+      "vf_upsfortna_day1_full_106880",
+      "vf_upsfortna_day1_full_107040",
+      "vf_upsfortna_day1_full_107200",
+      "vf_upsfortna_day1_full_107360",
+      "vf_upsfortna_day1_full_107520"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:51:00.000-01:52:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000113",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:52:00.000",
+    "timestamp_end": "01:53:00.000",
+    "timestamp_start_seconds": 6720.0,
+    "timestamp_end_seconds": 6780.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_107520",
+      "vf_upsfortna_day1_full_107680",
+      "vf_upsfortna_day1_full_107840",
+      "vf_upsfortna_day1_full_108000",
+      "vf_upsfortna_day1_full_108160",
+      "vf_upsfortna_day1_full_108320",
+      "vf_upsfortna_day1_full_108480"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:52:00.000-01:53:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000114",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:53:00.000",
+    "timestamp_end": "01:54:00.000",
+    "timestamp_start_seconds": 6780.0,
+    "timestamp_end_seconds": 6840.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_108480",
+      "vf_upsfortna_day1_full_108640",
+      "vf_upsfortna_day1_full_108800",
+      "vf_upsfortna_day1_full_108960",
+      "vf_upsfortna_day1_full_109120",
+      "vf_upsfortna_day1_full_109280",
+      "vf_upsfortna_day1_full_109440"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:53:00.000-01:54:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000115",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:54:00.000",
+    "timestamp_end": "01:55:00.000",
+    "timestamp_start_seconds": 6840.0,
+    "timestamp_end_seconds": 6900.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_109440",
+      "vf_upsfortna_day1_full_109600",
+      "vf_upsfortna_day1_full_109760",
+      "vf_upsfortna_day1_full_109920",
+      "vf_upsfortna_day1_full_110080",
+      "vf_upsfortna_day1_full_110240",
+      "vf_upsfortna_day1_full_110400"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:54:00.000-01:55:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000116",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:55:00.000",
+    "timestamp_end": "01:56:00.000",
+    "timestamp_start_seconds": 6900.0,
+    "timestamp_end_seconds": 6960.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_110400",
+      "vf_upsfortna_day1_full_110560",
+      "vf_upsfortna_day1_full_110720",
+      "vf_upsfortna_day1_full_110880",
+      "vf_upsfortna_day1_full_111040",
+      "vf_upsfortna_day1_full_111200",
+      "vf_upsfortna_day1_full_111360"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:55:00.000-01:56:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000117",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:56:00.000",
+    "timestamp_end": "01:57:00.000",
+    "timestamp_start_seconds": 6960.0,
+    "timestamp_end_seconds": 7020.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_111360",
+      "vf_upsfortna_day1_full_111520",
+      "vf_upsfortna_day1_full_111680",
+      "vf_upsfortna_day1_full_111840",
+      "vf_upsfortna_day1_full_112000",
+      "vf_upsfortna_day1_full_112160",
+      "vf_upsfortna_day1_full_112320"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:56:00.000-01:57:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000118",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:57:00.000",
+    "timestamp_end": "01:58:00.000",
+    "timestamp_start_seconds": 7020.0,
+    "timestamp_end_seconds": 7080.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_112320",
+      "vf_upsfortna_day1_full_112480",
+      "vf_upsfortna_day1_full_112640",
+      "vf_upsfortna_day1_full_112800",
+      "vf_upsfortna_day1_full_112960",
+      "vf_upsfortna_day1_full_113120",
+      "vf_upsfortna_day1_full_113280"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:57:00.000-01:58:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000119",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:58:00.000",
+    "timestamp_end": "01:59:00.000",
+    "timestamp_start_seconds": 7080.0,
+    "timestamp_end_seconds": 7140.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_113280",
+      "vf_upsfortna_day1_full_113440",
+      "vf_upsfortna_day1_full_113600",
+      "vf_upsfortna_day1_full_113760",
+      "vf_upsfortna_day1_full_113920",
+      "vf_upsfortna_day1_full_114080",
+      "vf_upsfortna_day1_full_114240"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:58:00.000-01:59:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000120",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "01:59:00.000",
+    "timestamp_end": "02:00:00.000",
+    "timestamp_start_seconds": 7140.0,
+    "timestamp_end_seconds": 7200.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_114240",
+      "vf_upsfortna_day1_full_114400",
+      "vf_upsfortna_day1_full_114560",
+      "vf_upsfortna_day1_full_114720",
+      "vf_upsfortna_day1_full_114880",
+      "vf_upsfortna_day1_full_115040",
+      "vf_upsfortna_day1_full_115200"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:01:59:00.000-02:00:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000121",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:00:00.000",
+    "timestamp_end": "02:01:00.000",
+    "timestamp_start_seconds": 7200.0,
+    "timestamp_end_seconds": 7260.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_115200",
+      "vf_upsfortna_day1_full_115360",
+      "vf_upsfortna_day1_full_115520",
+      "vf_upsfortna_day1_full_115680",
+      "vf_upsfortna_day1_full_115840",
+      "vf_upsfortna_day1_full_116000",
+      "vf_upsfortna_day1_full_116160"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:00:00.000-02:01:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000122",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:01:00.000",
+    "timestamp_end": "02:02:00.000",
+    "timestamp_start_seconds": 7260.0,
+    "timestamp_end_seconds": 7320.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_116160",
+      "vf_upsfortna_day1_full_116320",
+      "vf_upsfortna_day1_full_116480",
+      "vf_upsfortna_day1_full_116640",
+      "vf_upsfortna_day1_full_116800",
+      "vf_upsfortna_day1_full_116960",
+      "vf_upsfortna_day1_full_117120"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:01:00.000-02:02:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000123",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:02:00.000",
+    "timestamp_end": "02:03:00.000",
+    "timestamp_start_seconds": 7320.0,
+    "timestamp_end_seconds": 7380.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_117120",
+      "vf_upsfortna_day1_full_117280",
+      "vf_upsfortna_day1_full_117440",
+      "vf_upsfortna_day1_full_117600",
+      "vf_upsfortna_day1_full_117760",
+      "vf_upsfortna_day1_full_117920",
+      "vf_upsfortna_day1_full_118080"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:02:00.000-02:03:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000124",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:03:00.000",
+    "timestamp_end": "02:04:00.000",
+    "timestamp_start_seconds": 7380.0,
+    "timestamp_end_seconds": 7440.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_118080",
+      "vf_upsfortna_day1_full_118240",
+      "vf_upsfortna_day1_full_118400",
+      "vf_upsfortna_day1_full_118560",
+      "vf_upsfortna_day1_full_118720",
+      "vf_upsfortna_day1_full_118880",
+      "vf_upsfortna_day1_full_119040"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:03:00.000-02:04:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000125",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:04:00.000",
+    "timestamp_end": "02:05:00.000",
+    "timestamp_start_seconds": 7440.0,
+    "timestamp_end_seconds": 7500.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_119040",
+      "vf_upsfortna_day1_full_119200",
+      "vf_upsfortna_day1_full_119360",
+      "vf_upsfortna_day1_full_119520",
+      "vf_upsfortna_day1_full_119680",
+      "vf_upsfortna_day1_full_119840",
+      "vf_upsfortna_day1_full_120000"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:04:00.000-02:05:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000126",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:05:00.000",
+    "timestamp_end": "02:06:00.000",
+    "timestamp_start_seconds": 7500.0,
+    "timestamp_end_seconds": 7560.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_120000",
+      "vf_upsfortna_day1_full_120160",
+      "vf_upsfortna_day1_full_120320",
+      "vf_upsfortna_day1_full_120480",
+      "vf_upsfortna_day1_full_120640",
+      "vf_upsfortna_day1_full_120800",
+      "vf_upsfortna_day1_full_120960"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:05:00.000-02:06:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000127",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:06:00.000",
+    "timestamp_end": "02:07:00.000",
+    "timestamp_start_seconds": 7560.0,
+    "timestamp_end_seconds": 7620.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_120960",
+      "vf_upsfortna_day1_full_121120",
+      "vf_upsfortna_day1_full_121280",
+      "vf_upsfortna_day1_full_121440",
+      "vf_upsfortna_day1_full_121600",
+      "vf_upsfortna_day1_full_121760",
+      "vf_upsfortna_day1_full_121920"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:06:00.000-02:07:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000128",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:07:00.000",
+    "timestamp_end": "02:08:00.000",
+    "timestamp_start_seconds": 7620.0,
+    "timestamp_end_seconds": 7680.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_121920",
+      "vf_upsfortna_day1_full_122080",
+      "vf_upsfortna_day1_full_122240",
+      "vf_upsfortna_day1_full_122400",
+      "vf_upsfortna_day1_full_122560",
+      "vf_upsfortna_day1_full_122720",
+      "vf_upsfortna_day1_full_122880"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:07:00.000-02:08:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000129",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:08:00.000",
+    "timestamp_end": "02:09:00.000",
+    "timestamp_start_seconds": 7680.0,
+    "timestamp_end_seconds": 7740.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_122880",
+      "vf_upsfortna_day1_full_123040",
+      "vf_upsfortna_day1_full_123200",
+      "vf_upsfortna_day1_full_123360",
+      "vf_upsfortna_day1_full_123520",
+      "vf_upsfortna_day1_full_123680",
+      "vf_upsfortna_day1_full_123840"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:08:00.000-02:09:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000130",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:09:00.000",
+    "timestamp_end": "02:10:00.000",
+    "timestamp_start_seconds": 7740.0,
+    "timestamp_end_seconds": 7800.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_123840",
+      "vf_upsfortna_day1_full_124000",
+      "vf_upsfortna_day1_full_124160",
+      "vf_upsfortna_day1_full_124320",
+      "vf_upsfortna_day1_full_124480",
+      "vf_upsfortna_day1_full_124640",
+      "vf_upsfortna_day1_full_124800"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:09:00.000-02:10:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000131",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:10:00.000",
+    "timestamp_end": "02:11:00.000",
+    "timestamp_start_seconds": 7800.0,
+    "timestamp_end_seconds": 7860.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_124800",
+      "vf_upsfortna_day1_full_124960",
+      "vf_upsfortna_day1_full_125120",
+      "vf_upsfortna_day1_full_125280",
+      "vf_upsfortna_day1_full_125440",
+      "vf_upsfortna_day1_full_125600",
+      "vf_upsfortna_day1_full_125760"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:10:00.000-02:11:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000132",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:11:00.000",
+    "timestamp_end": "02:12:00.000",
+    "timestamp_start_seconds": 7860.0,
+    "timestamp_end_seconds": 7920.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_125760",
+      "vf_upsfortna_day1_full_125920",
+      "vf_upsfortna_day1_full_126080",
+      "vf_upsfortna_day1_full_126240",
+      "vf_upsfortna_day1_full_126400",
+      "vf_upsfortna_day1_full_126560",
+      "vf_upsfortna_day1_full_126720"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:11:00.000-02:12:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000133",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:12:00.000",
+    "timestamp_end": "02:13:00.000",
+    "timestamp_start_seconds": 7920.0,
+    "timestamp_end_seconds": 7980.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_126720",
+      "vf_upsfortna_day1_full_126880",
+      "vf_upsfortna_day1_full_127040",
+      "vf_upsfortna_day1_full_127200",
+      "vf_upsfortna_day1_full_127360",
+      "vf_upsfortna_day1_full_127520",
+      "vf_upsfortna_day1_full_127680"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:12:00.000-02:13:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000134",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:13:00.000",
+    "timestamp_end": "02:14:00.000",
+    "timestamp_start_seconds": 7980.0,
+    "timestamp_end_seconds": 8040.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_127680",
+      "vf_upsfortna_day1_full_127840",
+      "vf_upsfortna_day1_full_128000",
+      "vf_upsfortna_day1_full_128160",
+      "vf_upsfortna_day1_full_128320",
+      "vf_upsfortna_day1_full_128480",
+      "vf_upsfortna_day1_full_128640"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:13:00.000-02:14:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000135",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:14:00.000",
+    "timestamp_end": "02:15:00.000",
+    "timestamp_start_seconds": 8040.0,
+    "timestamp_end_seconds": 8100.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_128640",
+      "vf_upsfortna_day1_full_128800",
+      "vf_upsfortna_day1_full_128960",
+      "vf_upsfortna_day1_full_129120",
+      "vf_upsfortna_day1_full_129280",
+      "vf_upsfortna_day1_full_129440",
+      "vf_upsfortna_day1_full_129600"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:14:00.000-02:15:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000136",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:15:00.000",
+    "timestamp_end": "02:16:00.000",
+    "timestamp_start_seconds": 8100.0,
+    "timestamp_end_seconds": 8160.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_129600",
+      "vf_upsfortna_day1_full_129760",
+      "vf_upsfortna_day1_full_129920",
+      "vf_upsfortna_day1_full_130080",
+      "vf_upsfortna_day1_full_130240",
+      "vf_upsfortna_day1_full_130400",
+      "vf_upsfortna_day1_full_130560"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:15:00.000-02:16:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000137",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:16:00.000",
+    "timestamp_end": "02:17:00.000",
+    "timestamp_start_seconds": 8160.0,
+    "timestamp_end_seconds": 8220.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_130560",
+      "vf_upsfortna_day1_full_130720",
+      "vf_upsfortna_day1_full_130880",
+      "vf_upsfortna_day1_full_131040",
+      "vf_upsfortna_day1_full_131200",
+      "vf_upsfortna_day1_full_131360",
+      "vf_upsfortna_day1_full_131520"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:16:00.000-02:17:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000138",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:17:00.000",
+    "timestamp_end": "02:18:00.000",
+    "timestamp_start_seconds": 8220.0,
+    "timestamp_end_seconds": 8280.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_131520",
+      "vf_upsfortna_day1_full_131680",
+      "vf_upsfortna_day1_full_131840",
+      "vf_upsfortna_day1_full_132000",
+      "vf_upsfortna_day1_full_132160",
+      "vf_upsfortna_day1_full_132320",
+      "vf_upsfortna_day1_full_132480"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:17:00.000-02:18:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000139",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:18:00.000",
+    "timestamp_end": "02:19:00.000",
+    "timestamp_start_seconds": 8280.0,
+    "timestamp_end_seconds": 8340.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_132480",
+      "vf_upsfortna_day1_full_132640",
+      "vf_upsfortna_day1_full_132800",
+      "vf_upsfortna_day1_full_132960",
+      "vf_upsfortna_day1_full_133120",
+      "vf_upsfortna_day1_full_133280",
+      "vf_upsfortna_day1_full_133440"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:18:00.000-02:19:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000140",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:19:00.000",
+    "timestamp_end": "02:20:00.000",
+    "timestamp_start_seconds": 8340.0,
+    "timestamp_end_seconds": 8400.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_133440",
+      "vf_upsfortna_day1_full_133600",
+      "vf_upsfortna_day1_full_133760",
+      "vf_upsfortna_day1_full_133920",
+      "vf_upsfortna_day1_full_134080",
+      "vf_upsfortna_day1_full_134240",
+      "vf_upsfortna_day1_full_134400"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:19:00.000-02:20:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000141",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:20:00.000",
+    "timestamp_end": "02:21:00.000",
+    "timestamp_start_seconds": 8400.0,
+    "timestamp_end_seconds": 8460.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_134400",
+      "vf_upsfortna_day1_full_134560",
+      "vf_upsfortna_day1_full_134720",
+      "vf_upsfortna_day1_full_134880",
+      "vf_upsfortna_day1_full_135040",
+      "vf_upsfortna_day1_full_135200",
+      "vf_upsfortna_day1_full_135360"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:20:00.000-02:21:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000142",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:21:00.000",
+    "timestamp_end": "02:22:00.000",
+    "timestamp_start_seconds": 8460.0,
+    "timestamp_end_seconds": 8520.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_135360",
+      "vf_upsfortna_day1_full_135520",
+      "vf_upsfortna_day1_full_135680",
+      "vf_upsfortna_day1_full_135840",
+      "vf_upsfortna_day1_full_136000",
+      "vf_upsfortna_day1_full_136160",
+      "vf_upsfortna_day1_full_136320"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:21:00.000-02:22:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000143",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:22:00.000",
+    "timestamp_end": "02:23:00.000",
+    "timestamp_start_seconds": 8520.0,
+    "timestamp_end_seconds": 8580.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_136320",
+      "vf_upsfortna_day1_full_136480",
+      "vf_upsfortna_day1_full_136640",
+      "vf_upsfortna_day1_full_136800",
+      "vf_upsfortna_day1_full_136960",
+      "vf_upsfortna_day1_full_137120",
+      "vf_upsfortna_day1_full_137280"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:22:00.000-02:23:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000144",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:23:00.000",
+    "timestamp_end": "02:24:00.000",
+    "timestamp_start_seconds": 8580.0,
+    "timestamp_end_seconds": 8640.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_137280",
+      "vf_upsfortna_day1_full_137440",
+      "vf_upsfortna_day1_full_137600",
+      "vf_upsfortna_day1_full_137760",
+      "vf_upsfortna_day1_full_137920",
+      "vf_upsfortna_day1_full_138080",
+      "vf_upsfortna_day1_full_138240"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:23:00.000-02:24:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000145",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:24:00.000",
+    "timestamp_end": "02:25:00.000",
+    "timestamp_start_seconds": 8640.0,
+    "timestamp_end_seconds": 8700.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_138240",
+      "vf_upsfortna_day1_full_138400",
+      "vf_upsfortna_day1_full_138560",
+      "vf_upsfortna_day1_full_138720",
+      "vf_upsfortna_day1_full_138880",
+      "vf_upsfortna_day1_full_139040",
+      "vf_upsfortna_day1_full_139200"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:24:00.000-02:25:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000146",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:25:00.000",
+    "timestamp_end": "02:26:00.000",
+    "timestamp_start_seconds": 8700.0,
+    "timestamp_end_seconds": 8760.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_139200",
+      "vf_upsfortna_day1_full_139360",
+      "vf_upsfortna_day1_full_139520",
+      "vf_upsfortna_day1_full_139680",
+      "vf_upsfortna_day1_full_139840",
+      "vf_upsfortna_day1_full_140000",
+      "vf_upsfortna_day1_full_140160"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:25:00.000-02:26:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000147",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:26:00.000",
+    "timestamp_end": "02:27:00.000",
+    "timestamp_start_seconds": 8760.0,
+    "timestamp_end_seconds": 8820.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_140160",
+      "vf_upsfortna_day1_full_140320",
+      "vf_upsfortna_day1_full_140480",
+      "vf_upsfortna_day1_full_140640",
+      "vf_upsfortna_day1_full_140800",
+      "vf_upsfortna_day1_full_140960",
+      "vf_upsfortna_day1_full_141120"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:26:00.000-02:27:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000148",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:27:00.000",
+    "timestamp_end": "02:28:00.000",
+    "timestamp_start_seconds": 8820.0,
+    "timestamp_end_seconds": 8880.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_141120",
+      "vf_upsfortna_day1_full_141280",
+      "vf_upsfortna_day1_full_141440",
+      "vf_upsfortna_day1_full_141600",
+      "vf_upsfortna_day1_full_141760",
+      "vf_upsfortna_day1_full_141920",
+      "vf_upsfortna_day1_full_142080"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:27:00.000-02:28:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000149",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:28:00.000",
+    "timestamp_end": "02:29:00.000",
+    "timestamp_start_seconds": 8880.0,
+    "timestamp_end_seconds": 8940.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_142080",
+      "vf_upsfortna_day1_full_142240",
+      "vf_upsfortna_day1_full_142400",
+      "vf_upsfortna_day1_full_142560",
+      "vf_upsfortna_day1_full_142720",
+      "vf_upsfortna_day1_full_142880",
+      "vf_upsfortna_day1_full_143040"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:28:00.000-02:29:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000150",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:29:00.000",
+    "timestamp_end": "02:30:00.000",
+    "timestamp_start_seconds": 8940.0,
+    "timestamp_end_seconds": 9000.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_143040",
+      "vf_upsfortna_day1_full_143200",
+      "vf_upsfortna_day1_full_143360",
+      "vf_upsfortna_day1_full_143520",
+      "vf_upsfortna_day1_full_143680",
+      "vf_upsfortna_day1_full_143840",
+      "vf_upsfortna_day1_full_144000"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:29:00.000-02:30:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000151",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:30:00.000",
+    "timestamp_end": "02:31:00.000",
+    "timestamp_start_seconds": 9000.0,
+    "timestamp_end_seconds": 9060.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_144000",
+      "vf_upsfortna_day1_full_144160",
+      "vf_upsfortna_day1_full_144320",
+      "vf_upsfortna_day1_full_144480",
+      "vf_upsfortna_day1_full_144640",
+      "vf_upsfortna_day1_full_144800",
+      "vf_upsfortna_day1_full_144960"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:30:00.000-02:31:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000152",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:31:00.000",
+    "timestamp_end": "02:32:00.000",
+    "timestamp_start_seconds": 9060.0,
+    "timestamp_end_seconds": 9120.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_144960",
+      "vf_upsfortna_day1_full_145120",
+      "vf_upsfortna_day1_full_145280",
+      "vf_upsfortna_day1_full_145440",
+      "vf_upsfortna_day1_full_145600",
+      "vf_upsfortna_day1_full_145760",
+      "vf_upsfortna_day1_full_145920"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:31:00.000-02:32:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000153",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:32:00.000",
+    "timestamp_end": "02:33:00.000",
+    "timestamp_start_seconds": 9120.0,
+    "timestamp_end_seconds": 9180.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_145920",
+      "vf_upsfortna_day1_full_146080",
+      "vf_upsfortna_day1_full_146240",
+      "vf_upsfortna_day1_full_146400",
+      "vf_upsfortna_day1_full_146560",
+      "vf_upsfortna_day1_full_146720",
+      "vf_upsfortna_day1_full_146880"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:32:00.000-02:33:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000154",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:33:00.000",
+    "timestamp_end": "02:34:00.000",
+    "timestamp_start_seconds": 9180.0,
+    "timestamp_end_seconds": 9240.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_146880",
+      "vf_upsfortna_day1_full_147040",
+      "vf_upsfortna_day1_full_147200",
+      "vf_upsfortna_day1_full_147360",
+      "vf_upsfortna_day1_full_147520",
+      "vf_upsfortna_day1_full_147680",
+      "vf_upsfortna_day1_full_147840"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:33:00.000-02:34:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000155",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:34:00.000",
+    "timestamp_end": "02:35:00.000",
+    "timestamp_start_seconds": 9240.0,
+    "timestamp_end_seconds": 9300.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_147840",
+      "vf_upsfortna_day1_full_148000",
+      "vf_upsfortna_day1_full_148160",
+      "vf_upsfortna_day1_full_148320",
+      "vf_upsfortna_day1_full_148480",
+      "vf_upsfortna_day1_full_148640",
+      "vf_upsfortna_day1_full_148800"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:34:00.000-02:35:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000156",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:35:00.000",
+    "timestamp_end": "02:36:00.000",
+    "timestamp_start_seconds": 9300.0,
+    "timestamp_end_seconds": 9360.0,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_148800",
+      "vf_upsfortna_day1_full_148960",
+      "vf_upsfortna_day1_full_149120",
+      "vf_upsfortna_day1_full_149280",
+      "vf_upsfortna_day1_full_149440",
+      "vf_upsfortna_day1_full_149600",
+      "vf_upsfortna_day1_full_149760"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:35:00.000-02:36:00.000"
+    ]
+  },
+  {
+    "segment_id": "vts_upsfortna_day1_full_000157",
+    "video_id": "upsfortna_day1_full",
+    "source_video_id": "upsfortna_day1_full",
+    "timestamp_start": "02:36:00.000",
+    "timestamp_end": "02:36:10.375",
+    "timestamp_start_seconds": 9360.0,
+    "timestamp_end_seconds": 9370.375,
+    "speaker": "unknown",
+    "transcript_text": "[transcript not provided]",
+    "transcript_status": "missing_transcript",
+    "aligned_frame_ids": [
+      "vf_upsfortna_day1_full_149760",
+      "vf_upsfortna_day1_full_149920"
+    ],
+    "validation_status": "needs_review",
+    "source_refs": [
+      "video:upsfortna_day1_full",
+      "timestamp:02:36:00.000-02:36:10.375"
     ]
   }
 ]
