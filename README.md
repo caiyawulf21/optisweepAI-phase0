@@ -1519,6 +1519,16 @@ Recommended future documentation enforcement:
 - Roadmap sync checks between README status sections and focused docs under
 `docs/`.
 
-Until those checks exist, the Cursor project rule in `.cursor/rules/` requires
-future AI-agent work to evaluate whether README updates are needed for major
-changes.
+Current local enforcement:
+
+- `.cursor/rules/readme-maintenance.mdc` is an always-applied Cursor rule that
+requires AI-agent work to evaluate README impact for major changes.
+- `.cursor/hooks.json` registers a `beforeShellExecution` hook for `git commit`.
+- `.cursor/hooks/readme_maintenance_guard.py` checks staged files before commits.
+If staged changes touch architecture, runtime, dataset, workflow, ingestion,
+documentation, or dependency areas and `README.md` is not staged, the hook blocks
+the commit with a README maintenance reminder.
+
+This hook is a local/project guard, not a substitute for CI. It mitigates missed
+README updates during agent-assisted work and should eventually be complemented
+by repository-hosted checks that run outside Cursor.
