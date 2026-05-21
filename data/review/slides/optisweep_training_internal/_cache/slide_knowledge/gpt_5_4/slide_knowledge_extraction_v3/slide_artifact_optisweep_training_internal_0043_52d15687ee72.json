@@ -1,0 +1,288 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0043_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        43
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0043"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Aveva API page exposes overall system control and state functions",
+      "systems": [
+        "Aveva",
+        "OptiSweep"
+      ],
+      "components": [
+        "Aveva API page"
+      ],
+      "summary": "The Aveva API page in the Overall System section presents system-level functions including System State, System Startup, System Bag Out, System Shutdown, and System Purge.",
+      "observed_evidence": [
+        "Slide title: 'Overall System / Aveva API page'",
+        "Visible bullets list: 'System State', 'System Startup', 'System Bag Out', 'System Shutdown', 'System Purge'"
+      ],
+      "relationships": [
+        {
+          "type": "contains",
+          "target": "System State"
+        },
+        {
+          "type": "contains",
+          "target": "System Startup"
+        },
+        {
+          "type": "contains",
+          "target": "System Bag Out"
+        },
+        {
+          "type": "contains",
+          "target": "System Shutdown"
+        },
+        {
+          "type": "contains",
+          "target": "System Purge"
+        }
+      ],
+      "retrieval_text": "Aveva API page overall system UI reference. The page includes system-level items System State, System Startup, System Bag Out, System Shutdown, and System Purge for OptiSweep overall system interaction.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0043_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        43
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0043"
+      ],
+      "unit_type": "state_transition",
+      "title": "System Startup stages AGVs for exchanges after shutdown charging state",
+      "systems": [
+        "OptiSweep",
+        "AGV"
+      ],
+      "components": [
+        "System Startup",
+        "AGVs"
+      ],
+      "summary": "Between sorts, AGVs are kept in a shutdown state to charge. Invoking System Startup triggers OptiSweep to stage the AGVs for exchanges.",
+      "observed_evidence": [
+        "Bullet text: 'AGVs are kept in a shut down state between sorts to allow them to charge.'",
+        "Bullet text: 'System startup triggers OptiSweep to stage the AGVs for exchanges.'"
+      ],
+      "relationships": [
+        {
+          "type": "precondition_state",
+          "target": "AGVs in shut down state between sorts"
+        },
+        {
+          "type": "triggers",
+          "target": "OptiSweep stages AGVs for exchanges"
+        }
+      ],
+      "retrieval_text": "System Startup behavior: AGVs are kept shut down between sorts so they can charge. System Startup triggers OptiSweep to stage AGVs for exchanges.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0043_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        43
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0043"
+      ],
+      "unit_type": "operational_process",
+      "title": "System Bag Out closes chutes and exchanges totes with items at sort end",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "System Bag Out",
+        "chutes",
+        "totes"
+      ],
+      "summary": "At the end of a sort, the close out process is used to close all chutes and exchange all totes that contain items.",
+      "observed_evidence": [
+        "Bullet heading: 'System Bag Out'",
+        "Bullet text: 'At the end of a sort the close out is used to close all chutes and exchange all totes with items.'"
+      ],
+      "relationships": [
+        {
+          "type": "occurs_at",
+          "target": "end of a sort"
+        },
+        {
+          "type": "results_in",
+          "target": "all chutes closed"
+        },
+        {
+          "type": "results_in",
+          "target": "totes with items exchanged"
+        }
+      ],
+      "retrieval_text": "System Bag Out operational behavior: at the end of a sort, close out closes all chutes and exchanges all totes with items.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0043_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        43
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0043"
+      ],
+      "unit_type": "state_transition",
+      "title": "System Shutdown places system into shutdown so AGVs can rotate on charger",
+      "systems": [
+        "OptiSweep",
+        "AGV"
+      ],
+      "components": [
+        "System Shutdown",
+        "AGVs",
+        "charger"
+      ],
+      "summary": "When the sort is complete, the system should be put into a shutdown state so AGVs can rotate on the charger.",
+      "observed_evidence": [
+        "Bullet heading: 'System Shutdown'",
+        "Bullet text: 'When the sort is done the system should be put in a shutdown state for AGVs to rotate on the charger.'"
+      ],
+      "relationships": [
+        {
+          "type": "occurs_at",
+          "target": "when the sort is done"
+        },
+        {
+          "type": "enables",
+          "target": "AGVs rotate on the charger"
+        }
+      ],
+      "retrieval_text": "System Shutdown behavior: when the sort is done, the system should be placed in shutdown state so AGVs can rotate on the charger.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0043_05",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        43
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0043"
+      ],
+      "unit_type": "system_behavior",
+      "title": "System Purge exchanges all totes and suppresses tipper label printing",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "System Purge",
+        "totes",
+        "tipper"
+      ],
+      "summary": "System Purge exchanges all totes and does not print a label at the tipper.",
+      "observed_evidence": [
+        "Bullet heading: 'System Purge'",
+        "Bullet text: 'Exchanges all totes and does not print a label at the tipper.'"
+      ],
+      "relationships": [
+        {
+          "type": "results_in",
+          "target": "all totes exchanged"
+        },
+        {
+          "type": "suppresses",
+          "target": "label printing at the tipper"
+        }
+      ],
+      "retrieval_text": "System Purge behavior: exchanges all totes and does not print a label at the tipper.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0043_06",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        43
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0043"
+      ],
+      "unit_type": "system_behavior",
+      "title": "System State shows the current system state",
+      "systems": [
+        "Aveva",
+        "OptiSweep"
+      ],
+      "components": [
+        "System State"
+      ],
+      "summary": "The System State function displays the current state the system is in.",
+      "observed_evidence": [
+        "Bullet heading: 'System State'",
+        "Bullet text: 'Shows the current state the system is in'"
+      ],
+      "relationships": [
+        {
+          "type": "displays",
+          "target": "current system state"
+        }
+      ],
+      "retrieval_text": "System State on the Aveva API page shows the current state the system is in.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0043_01",
+      "title": "Use Aveva API page overall system functions",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        43
+      ],
+      "systems": [
+        "Aveva",
+        "OptiSweep",
+        "AGV"
+      ],
+      "components": [
+        "Aveva API page",
+        "System State",
+        "System Startup",
+        "System Bag Out",
+        "System Shutdown",
+        "System Purge"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User has access to the Aveva API page",
+        "Exact button sequence or invocation method is not shown on the slide"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0043"
+      ],
+      "procedure_visual_summary": "Slide-level screenshot describing the Aveva API page and the available overall system functions, but without explicit UI action sequence.",
+      "steps": [],
+      "warnings": [
+        "Slide provides capability descriptions, not explicit reusable action steps.",
+        "No exact navigation path, control labels, or execution sequence is shown."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0043",
+        "oku_optisweep_training_internal_0043_01",
+        "oku_optisweep_training_internal_0043_02",
+        "oku_optisweep_training_internal_0043_03",
+        "oku_optisweep_training_internal_0043_04",
+        "oku_optisweep_training_internal_0043_05",
+        "oku_optisweep_training_internal_0043_06"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a true procedure candidate because the slide is an overview of Aveva API page overall system functions. It describes System State, Startup, Bag Out, Shutdown, and Purge behaviors, but does not provide explicit action steps or a reusable procedure sequence."
+    }
+  ],
+  "discarded_candidates": []
+}

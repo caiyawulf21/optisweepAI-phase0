@@ -1,0 +1,102 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Do's and Don'ts for Handling AGB Removal",
+      "timestamp_start": "01:37:57.973",
+      "timestamp_end": "01:38:28.560",
+      "primary_intent": "Explain restrictions and guidelines on removing AGBs",
+      "operational_intents": [
+        "Warn against removing AGBs from Geek",
+        "Direct customers to use AVEVA or hospital systems",
+        "Maintain control over AGB handling procedures"
+      ],
+      "knowledge_extraction_strategy": "Extract guidelines and restrictions on AGB removal",
+      "why_this_strategy": "Clarifies critical operational restrictions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001657",
+        "vec_upsfortna_optisweep_training_day1_20260317_001658",
+        "vec_upsfortna_optisweep_training_day1_20260317_001659",
+        "vec_upsfortna_optisweep_training_day1_20260317_001660",
+        "vec_upsfortna_optisweep_training_day1_20260317_001661",
+        "vec_upsfortna_optisweep_training_day1_20260317_001662",
+        "vec_upsfortna_optisweep_training_day1_20260317_001663",
+        "vec_upsfortna_optisweep_training_day1_20260317_001664",
+        "vec_upsfortna_optisweep_training_day1_20260317_001665",
+        "vec_upsfortna_optisweep_training_day1_20260317_001666",
+        "vec_upsfortna_optisweep_training_day1_20260317_001667",
+        "vec_upsfortna_optisweep_training_day1_20260317_001668",
+        "vec_upsfortna_optisweep_training_day1_20260317_001669"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000033"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Overview of Cell Selection and QR Code Usage",
+      "timestamp_start": "01:38:53.760",
+      "timestamp_end": "01:39:57.774",
+      "primary_intent": "Describe cell selection and interpreting QR codes",
+      "operational_intents": [
+        "Explain how to select cells and view QR codes",
+        "Identify cell codes and special station cells",
+        "Use cell codes to communicate with operators"
+      ],
+      "knowledge_extraction_strategy": "Extract procedures for cell code identification and usage",
+      "why_this_strategy": "Details operational use of cell codes and QR codes",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001678",
+        "vec_upsfortna_optisweep_training_day1_20260317_001679",
+        "vec_upsfortna_optisweep_training_day1_20260317_001680",
+        "vec_upsfortna_optisweep_training_day1_20260317_001681",
+        "vec_upsfortna_optisweep_training_day1_20260317_001682",
+        "vec_upsfortna_optisweep_training_day1_20260317_001683",
+        "vec_upsfortna_optisweep_training_day1_20260317_001684",
+        "vec_upsfortna_optisweep_training_day1_20260317_001685",
+        "vec_upsfortna_optisweep_training_day1_20260317_001686",
+        "vec_upsfortna_optisweep_training_day1_20260317_001687",
+        "vec_upsfortna_optisweep_training_day1_20260317_001688",
+        "vec_upsfortna_optisweep_training_day1_20260317_001689",
+        "vec_upsfortna_optisweep_training_day1_20260317_001690",
+        "vec_upsfortna_optisweep_training_day1_20260317_001691",
+        "vec_upsfortna_optisweep_training_day1_20260317_001692",
+        "vec_upsfortna_optisweep_training_day1_20260317_001693"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000033"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Load and Unload Direction Node Explanation",
+      "timestamp_start": "01:40:13.440",
+      "timestamp_end": "01:41:02.960",
+      "primary_intent": "Explain load and unload direction nodes and their implications",
+      "operational_intents": [
+        "Clarify design issues vs support issues for load/unload directions",
+        "Describe unload direction allowing only AGVs without totes",
+        "Introduce concept of loaded direction allowing only AGVs with totes"
+      ],
+      "knowledge_extraction_strategy": "Extract operational distinctions for load/unload directions",
+      "why_this_strategy": "Defines critical operational design and support boundaries",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001694",
+        "vec_upsfortna_optisweep_training_day1_20260317_001695",
+        "vec_upsfortna_optisweep_training_day1_20260317_001696",
+        "vec_upsfortna_optisweep_training_day1_20260317_001697",
+        "vec_upsfortna_optisweep_training_day1_20260317_001698",
+        "vec_upsfortna_optisweep_training_day1_20260317_001699",
+        "vec_upsfortna_optisweep_training_day1_20260317_001700",
+        "vec_upsfortna_optisweep_training_day1_20260317_001701",
+        "vec_upsfortna_optisweep_training_day1_20260317_001702",
+        "vec_upsfortna_optisweep_training_day1_20260317_001703",
+        "vec_upsfortna_optisweep_training_day1_20260317_001704",
+        "vec_upsfortna_optisweep_training_day1_20260317_001705"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000033"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

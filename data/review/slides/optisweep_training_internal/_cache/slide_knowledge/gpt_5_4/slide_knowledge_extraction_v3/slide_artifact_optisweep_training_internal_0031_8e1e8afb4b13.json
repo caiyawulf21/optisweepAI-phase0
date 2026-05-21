@@ -1,0 +1,220 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0031_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        31
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0031"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Cell selection displays cell information including QR code",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Cell Selection UI"
+      ],
+      "summary": "The slide indicates that when cell selection is active, selecting a cell shows cell information including a QR code.",
+      "observed_evidence": [
+        "Slide title: 'Cell Selection / QR codes'",
+        "Bullet text: 'When cell selection is selected select a cell to view cell information including QR code.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "shows",
+          "target": "cell information"
+        },
+        {
+          "relationship_type": "includes",
+          "target": "QR code"
+        }
+      ],
+      "retrieval_text": "In the Cell Selection UI, when cell selection is active and a cell is selected, the UI displays cell information including the cell QR code.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0031_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        31
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0031"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Orange cells represent stations and show station ID with QR code",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Cell Selection UI"
+      ],
+      "summary": "The slide states that orange cells correspond to stations. Selecting an orange cell shows the station ID along with the QR code.",
+      "observed_evidence": [
+        "Bullet text: 'Orange cells represents stations.'",
+        "Bullet text: 'If you select an orange cell it will show you the station ID along with the QR code.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "represents",
+          "target": "stations"
+        },
+        {
+          "relationship_type": "shows",
+          "target": "station ID"
+        },
+        {
+          "relationship_type": "shows",
+          "target": "QR code"
+        }
+      ],
+      "retrieval_text": "In Cell Selection, orange cells indicate stations. Selecting an orange cell displays the station ID together with the QR code.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0031_01",
+      "title": "View cell information and QR code from Cell Selection",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        31
+      ],
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Cell Selection UI"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Cell Selection is available in the UI",
+        "Cell selection mode is selected"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0031"
+      ],
+      "procedure_visual_summary": "Slide describes selecting a cell in Cell Selection to view cell information including a QR code.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Select Cell Selection in the UI.",
+          "expected_outcome": "Cell selection mode is active.",
+          "validation_check": "The UI is in Cell Selection mode.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:31",
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "visual_region_hint": "Cell Selection area referenced by the slide title and bullet text."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Select a cell.",
+          "expected_outcome": "Cell information is shown, including the QR code.",
+          "validation_check": "A QR code appears in the cell information view.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:31",
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "visual_region_hint": "Cell grid or selectable cell area implied by the Cell Selection screen."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0031_01",
+        "oku_optisweep_training_internal_0031_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "To view cell information and a QR code in Cell Selection, activate Cell Selection and select a cell. The selected cell displays information including its QR code."
+    },
+    {
+      "procedure_id": "proc_optisweep_training_internal_0031_02",
+      "title": "View station ID and QR code by selecting an orange cell",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        31
+      ],
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Cell Selection UI"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Cell Selection is available in the UI",
+        "An orange cell is visible"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0031"
+      ],
+      "procedure_visual_summary": "Slide explains that orange cells represent stations and selecting one shows station ID with QR code.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "In Cell Selection, identify an orange cell.",
+          "expected_outcome": "A station cell is identified.",
+          "validation_check": "The selected candidate cell is orange, which the slide indicates represents a station.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:31",
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "visual_region_hint": "Cell grid area containing orange cells."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Select the orange cell.",
+          "expected_outcome": "The UI shows the station ID along with the QR code.",
+          "validation_check": "Station ID and QR code are both displayed.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:31",
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0031"
+          ],
+          "visual_region_hint": "Orange station cell and resulting information display area."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0031_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "In Cell Selection, orange cells represent stations. Selecting an orange cell displays the station ID together with the QR code."
+    }
+  ],
+  "discarded_candidates": []
+}

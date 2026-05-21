@@ -1,0 +1,206 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_0049_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        49
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0049"
+      ],
+      "unit_type": "api_capability",
+      "title": "Aveva API initialize tote request accepts BarcodeID, StationID, and ToteID",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Initialize Tote interface",
+        "Tote"
+      ],
+      "summary": "The Aveva API page provides an interface to initialize a tote for processing in the system using BarcodeID, StationID, and ToteID.",
+      "observed_evidence": [
+        "Slide text states: \"This interface allows users to initialize a tote for processing within the system by specifying key information (BarcodeID, StationID, ToteID).\"",
+        "Slide title: \"Initialize Tote / Aveva API page\""
+      ],
+      "relationships": [
+        {
+          "relation": "uses_fields",
+          "target": "BarcodeID, StationID, ToteID"
+        },
+        {
+          "relation": "performed_via",
+          "target": "Request to Initialize Tote button"
+        }
+      ],
+      "retrieval_text": "Aveva API Initialize Tote page lets users initialize a tote for processing by entering BarcodeID, StationID, and ToteID.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_0049_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        49
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0049"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Initialize Tote page includes request button and response field",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Initialize Tote interface",
+        "Request to Initialize Tote button",
+        "Response field"
+      ],
+      "summary": "The page contains a button that sends the tote initialization command and a Response field that displays the result returned by the system.",
+      "observed_evidence": [
+        "Slide text states: \"Request to Initialize Tote\"",
+        "Slide text states: \"This button sends a command to the system to initialize the tote with the provided details.\"",
+        "Slide text states: \"Upon clicking, the system processes the request and displays the response in the \\\"Response\\\" field.\""
+      ],
+      "relationships": [
+        {
+          "relation": "triggers",
+          "target": "tote initialization command"
+        },
+        {
+          "relation": "writes_result_to",
+          "target": "Response field"
+        }
+      ],
+      "retrieval_text": "Initialize Tote UI on the Aveva API page has a Request to Initialize Tote button that sends the initialization command and a Response field that shows the result.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_0049_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        49
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0049"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Initialize Tote response indicates success confirmation or error message",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Response field",
+        "Initialize Tote interface"
+      ],
+      "summary": "After an initialize tote request is processed, the Response field shows either a confirmation message for success or an error message for failure.",
+      "observed_evidence": [
+        "Slide text states: \"Displays the result of the initialization request.\"",
+        "Slide text states: \"If successful, this field will show a confirmation message.\"",
+        "Slide text states: \"If the initialization fails, it will display an error message.\""
+      ],
+      "relationships": [
+        {
+          "relation": "follows",
+          "target": "Request to Initialize Tote action"
+        }
+      ],
+      "retrieval_text": "The Initialize Tote Response field displays the result of the request, showing a confirmation message on success or an error message if initialization fails.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0049_01",
+      "title": "Initialize a tote from the Aveva API page",
+      "procedure_type": "api_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        49
+      ],
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Initialize Tote interface",
+        "Request to Initialize Tote button",
+        "Response field",
+        "Tote"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Initialize Tote interface is accessible",
+        "BarcodeID, StationID, and ToteID values are available"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0049"
+      ],
+      "procedure_visual_summary": "Slide-level screenshot for the Initialize Tote / Aveva API page describing required fields, request button, and response field behavior.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Enter the required tote initialization information: BarcodeID, StationID, and ToteID.",
+          "expected_outcome": "The initialize tote request details are populated in the interface.",
+          "validation_check": "All three values needed by the page are specified.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:49",
+            "artifact:slide_artifact_optisweep_training_internal_0049"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0049"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0049"
+          ],
+          "visual_region_hint": "Initialize Tote form fields for BarcodeID, StationID, and ToteID on the Aveva API page"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Click the \"Request to Initialize Tote\" button.",
+          "expected_outcome": "The system sends the tote initialization command using the provided details.",
+          "validation_check": "The request is submitted from the page.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:49",
+            "artifact:slide_artifact_optisweep_training_internal_0049"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0049"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0049"
+          ],
+          "visual_region_hint": "\"Request to Initialize Tote\" button"
+        },
+        {
+          "step_order": 3,
+          "instruction": "Review the \"Response\" field for the result of the initialization request.",
+          "expected_outcome": "The response field shows either a confirmation message or an error message.",
+          "validation_check": "Successful initialization is indicated by a confirmation message; failed initialization is indicated by an error message.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:49",
+            "artifact:slide_artifact_optisweep_training_internal_0049"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0049"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0049"
+          ],
+          "visual_region_hint": "\"Response\" field"
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "ku_optisweep_training_internal_0049_01",
+        "ku_optisweep_training_internal_0049_02",
+        "ku_optisweep_training_internal_0049_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "To initialize a tote from the Aveva API page, provide BarcodeID, StationID, and ToteID, click Request to Initialize Tote, and review the Response field for a confirmation or error message."
+    }
+  ],
+  "discarded_candidates": []
+}

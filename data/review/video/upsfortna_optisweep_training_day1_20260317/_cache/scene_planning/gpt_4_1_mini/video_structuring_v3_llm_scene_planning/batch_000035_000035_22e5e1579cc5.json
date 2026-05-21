@@ -1,0 +1,147 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Overview of Station Direction and Multi-Phase Validation",
+      "timestamp_start": "01:44:06.460",
+      "timestamp_end": "01:44:24.680",
+      "primary_intent": "Explain the multi-phase process for validating station direction",
+      "operational_intents": [
+        "Describe how station direction is confirmed during commissioning",
+        "Highlight the role of simulation and UAT phases in issue detection"
+      ],
+      "knowledge_extraction_strategy": "Extract multi-phase validation steps and key checkpoints",
+      "why_this_strategy": "Clarifies layered validation approach for station direction",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001763",
+        "vec_upsfortna_optisweep_training_day1_20260317_001764",
+        "vec_upsfortna_optisweep_training_day1_20260317_001765",
+        "vec_upsfortna_optisweep_training_day1_20260317_001766",
+        "vec_upsfortna_optisweep_training_day1_20260317_001767",
+        "vec_upsfortna_optisweep_training_day1_20260317_001768"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000035"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Importance and Usage of Note Code and Workstation ID",
+      "timestamp_start": "01:44:24.960",
+      "timestamp_end": "01:44:55.840",
+      "primary_intent": "Emphasize key identifiers for operational tracking",
+      "operational_intents": [
+        "Identify note code as a critical data point",
+        "Explain workstation ID significance and usage",
+        "Discuss default values and noise reduction in data"
+      ],
+      "knowledge_extraction_strategy": "Extract key identifiers and their operational relevance",
+      "why_this_strategy": "Focuses on critical data elements for system monitoring",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001769",
+        "vec_upsfortna_optisweep_training_day1_20260317_001770",
+        "vec_upsfortna_optisweep_training_day1_20260317_001771",
+        "vec_upsfortna_optisweep_training_day1_20260317_001772",
+        "vec_upsfortna_optisweep_training_day1_20260317_001773",
+        "vec_upsfortna_optisweep_training_day1_20260317_001774",
+        "vec_upsfortna_optisweep_training_day1_20260317_001776",
+        "vec_upsfortna_optisweep_training_day1_20260317_001777",
+        "vec_upsfortna_optisweep_training_day1_20260317_001778",
+        "vec_upsfortna_optisweep_training_day1_20260317_001779",
+        "vec_upsfortna_optisweep_training_day1_20260317_001780"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000035"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Accessing and Interpreting Workstation IDs",
+      "timestamp_start": "01:44:55.960",
+      "timestamp_end": "01:45:32.440",
+      "primary_intent": "Demonstrate how to view workstation IDs and their relevance",
+      "operational_intents": [
+        "Show method to view workstation IDs despite zoom limitations",
+        "Clarify that some data is technical and less relevant operationally"
+      ],
+      "knowledge_extraction_strategy": "Extract user actions and data interpretation guidelines",
+      "why_this_strategy": "Supports practical understanding of workstation ID retrieval",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001781",
+        "vec_upsfortna_optisweep_training_day1_20260317_001782",
+        "vec_upsfortna_optisweep_training_day1_20260317_001783",
+        "vec_upsfortna_optisweep_training_day1_20260317_001784",
+        "vec_upsfortna_optisweep_training_day1_20260317_001785",
+        "vec_upsfortna_optisweep_training_day1_20260317_001786",
+        "vec_upsfortna_optisweep_training_day1_20260317_001787",
+        "vec_upsfortna_optisweep_training_day1_20260317_001788",
+        "vec_upsfortna_optisweep_training_day1_20260317_001789",
+        "vec_upsfortna_optisweep_training_day1_20260317_001790",
+        "vec_upsfortna_optisweep_training_day1_20260317_001791",
+        "vec_upsfortna_optisweep_training_day1_20260317_001792"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000035"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Charger Selection and Identification",
+      "timestamp_start": "01:45:33.280",
+      "timestamp_end": "01:46:01.880",
+      "primary_intent": "Explain how to identify and check charger status",
+      "operational_intents": [
+        "Describe unique charger IDs and how to access them",
+        "Show how to check charger enable/disable status",
+        "Identify which robot is charging at a station"
+      ],
+      "knowledge_extraction_strategy": "Extract charger identification and status checking procedures",
+      "why_this_strategy": "Enables operational monitoring of charging stations",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001794",
+        "vec_upsfortna_optisweep_training_day1_20260317_001796",
+        "vec_upsfortna_optisweep_training_day1_20260317_001797",
+        "vec_upsfortna_optisweep_training_day1_20260317_001798",
+        "vec_upsfortna_optisweep_training_day1_20260317_001799",
+        "vec_upsfortna_optisweep_training_day1_20260317_001800",
+        "vec_upsfortna_optisweep_training_day1_20260317_001801",
+        "vec_upsfortna_optisweep_training_day1_20260317_001802",
+        "vec_upsfortna_optisweep_training_day1_20260317_001803"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000035"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Handling Low Power AGVs and Charger Disabling",
+      "timestamp_start": "01:46:13.240",
+      "timestamp_end": "01:47:06.800",
+      "primary_intent": "Describe manual intervention for low power AGVs and charger management",
+      "operational_intents": [
+        "Explain scenarios with low power AGVs stuck in error states",
+        "Show how to manually parse AGVs to avoid waiting for automatic logic",
+        "Describe logical disabling of chargers to prevent routing"
+      ],
+      "knowledge_extraction_strategy": "Extract manual override procedures and charger disablement logic",
+      "why_this_strategy": "Critical for managing exceptions and maintaining system flow",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001804",
+        "vec_upsfortna_optisweep_training_day1_20260317_001805",
+        "vec_upsfortna_optisweep_training_day1_20260317_001806",
+        "vec_upsfortna_optisweep_training_day1_20260317_001807",
+        "vec_upsfortna_optisweep_training_day1_20260317_001808",
+        "vec_upsfortna_optisweep_training_day1_20260317_001809",
+        "vec_upsfortna_optisweep_training_day1_20260317_001810",
+        "vec_upsfortna_optisweep_training_day1_20260317_001811",
+        "vec_upsfortna_optisweep_training_day1_20260317_001812",
+        "vec_upsfortna_optisweep_training_day1_20260317_001813",
+        "vec_upsfortna_optisweep_training_day1_20260317_001814",
+        "vec_upsfortna_optisweep_training_day1_20260317_001815"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000035"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_16_001",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        16
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0016"
+      ],
+      "unit_type": "routing_rule",
+      "title": "AGV area-to-area movement requires exiting before entering the next area",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "Hospital",
+        "SorterSide",
+        "Charger",
+        "Tipper"
+      ],
+      "summary": "The layout uses distinct areas connected by a common entrance and exit. To move from one area to another, an AGV must first go to the exit before entering the next area.",
+      "observed_evidence": [
+        "Slide text states: 'The layout is designed for modularity and scalability, with distinct areas connected by a common entrance and exit.'",
+        "Slide text states: 'This ensures that to move from one area to another, an AGV must go to the exit before entering the next.'",
+        "Slide lists areas: 'Hospital, SorterSide, Charger, Tipper'."
+      ],
+      "relationships": [
+        {
+          "type": "applies_to",
+          "target": "AGV movement between layout areas"
+        },
+        {
+          "type": "connects_areas",
+          "target": "common entrance and exit"
+        },
+        {
+          "type": "includes_areas",
+          "target": "Hospital, SorterSide, Charger, Tipper"
+        }
+      ],
+      "retrieval_text": "Layout design routing rule for OptiSweep AGVs: distinct areas are connected by a common entrance and exit, and when moving from one area to another the AGV must go to the exit before entering the next area. Areas named on the slide are Hospital, SorterSide, Charger, and Tipper.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_16_002",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        16
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0016"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Layout organizes modular areas through shared entrance and exit connections",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "Hospital",
+        "SorterSide",
+        "Charger",
+        "Tipper"
+      ],
+      "summary": "The layout is described as modular and scalable, with separate operational areas linked via a shared entrance and exit rather than direct unrestricted inter-area transitions.",
+      "observed_evidence": [
+        "Slide text states the layout is 'designed for modularity and scalability'.",
+        "Slide text states there are 'distinct areas connected by a common entrance and exit'.",
+        "The named areas are Hospital, SorterSide, Charger, and Tipper."
+      ],
+      "relationships": [
+        {
+          "type": "architecture_pattern",
+          "target": "distinct areas with common entrance/exit"
+        },
+        {
+          "type": "supports",
+          "target": "modularity and scalability"
+        }
+      ],
+      "retrieval_text": "OptiSweep layout architecture relationship: the system layout uses distinct areas connected through a common entrance and exit to support modularity and scalability. Example areas shown are Hospital, SorterSide, Charger, and Tipper.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_16_001",
+      "title": "Transition an AGV from one area to another via the common exit",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        16
+      ],
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "Hospital",
+        "SorterSide",
+        "Charger",
+        "Tipper"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "An AGV is in one defined layout area.",
+        "A destination area is different from the current area.",
+        "The layout uses distinct areas connected by a common entrance and exit."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0016"
+      ],
+      "procedure_visual_summary": "Slide describes a layout rule: distinct areas are connected by a common entrance and exit, and AGVs must go to the exit before entering the next area. Areas listed are Hospital, SorterSide, Charger, and Tipper.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "When an AGV needs to move from its current area to a different area, route the AGV to the common exit first.",
+          "expected_outcome": "The AGV leaves the current area through the shared exit path.",
+          "validation_check": "Confirm the AGV goes to the exit before attempting entry into another area.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:16",
+            "artifact:slide_artifact_optisweep_training_internal_0016"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0016"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0016"
+          ],
+          "visual_region_hint": "Main bullet text describing area-to-area movement through the exit"
+        },
+        {
+          "step_order": 2,
+          "instruction": "After reaching the exit, direct the AGV to enter the destination area.",
+          "expected_outcome": "The AGV enters the next area only after passing through the exit path.",
+          "validation_check": "Confirm area entry occurs only after the AGV has gone to the exit.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:16",
+            "artifact:slide_artifact_optisweep_training_internal_0016"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0016"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0016"
+          ],
+          "visual_region_hint": "Main bullet text stating the AGV must go to the exit before entering the next area"
+        }
+      ],
+      "warnings": [
+        "The slide provides a routing rule but not a detailed execution method or control interface.",
+        "No explicit user action, UI workflow, or command sequence is shown on the slide."
+      ],
+      "related_context_refs": [
+        "ku_optisweep_training_internal_16_001",
+        "ku_optisweep_training_internal_16_002"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure candidate for AGV inter-area transition: move the AGV to the common exit first, then enter the destination area. Based directly on the slide rule that AGVs must go to the exit before entering the next area in the modular layout."
+    }
+  ],
+  "discarded_candidates": []
+}

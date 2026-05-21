@@ -1,0 +1,86 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0084_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        84
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0084"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "AgvErrorModel table stores AGV error definitions and metric classification",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "AgvErrorModel"
+      ],
+      "summary": "The slide states that the AgvErrorModel table stores the list of errors, their codes, and descriptions, and that errors are classified as critical or noncritical for metrics purposes.",
+      "observed_evidence": [
+        "Slide title: 'Robotics Database / AGV Error Model'",
+        "Visible text: 'The AgvErrorModel tables stores the list of errors and their codes as well as provides a description of the error.'",
+        "Visible text: 'For metrics purposes errors are classified as critical and noncritical.'"
+      ],
+      "relationships": [
+        {
+          "relation": "stores",
+          "target": "AGV error list"
+        },
+        {
+          "relation": "stores",
+          "target": "error codes"
+        },
+        {
+          "relation": "stores",
+          "target": "error descriptions"
+        },
+        {
+          "relation": "classifies_for_metrics",
+          "target": "critical and noncritical errors"
+        }
+      ],
+      "retrieval_text": "Robotics Database AGV Error Model. AgvErrorModel table stores AGV errors, error codes, and error descriptions. Errors are classified as critical and noncritical for metrics purposes.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "discarded_optisweep_training_internal_0084_01",
+      "title": "No procedure extracted from AGV Error Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        84
+      ],
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "AgvErrorModel"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide contains database reference content but no explicit action sequence."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0084"
+      ],
+      "procedure_visual_summary": "Database-oriented slide describing the AgvErrorModel table and its purpose; no numbered steps, UI actions, or operational sequence shown.",
+      "steps": [],
+      "warnings": [
+        "Do not infer database query, maintenance, or troubleshooting steps from this slide alone."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0084_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate: slide describes AgvErrorModel table contents and error classification for metrics, but provides no explicit reusable operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

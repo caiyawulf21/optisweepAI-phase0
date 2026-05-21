@@ -1,0 +1,155 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Robot Status Indicators and Message Panel",
+      "timestamp_start": "01:16:42.760",
+      "timestamp_end": "01:16:54.880",
+      "primary_intent": "Explain robot status color codes and message panel alerts",
+      "operational_intents": [
+        "Identify robot idle status",
+        "Recognize fault or low battery alerts"
+      ],
+      "knowledge_extraction_strategy": "Extract status indicator meanings and alert handling",
+      "why_this_strategy": "Clarifies robot status monitoring basics",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001287",
+        "vec_upsfortna_optisweep_training_day1_20260317_001288"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000026"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Introduction to Robot Selection Process",
+      "timestamp_start": "01:16:59.320",
+      "timestamp_end": "01:17:14.200",
+      "primary_intent": "Introduce robot selection and removal overview",
+      "operational_intents": [
+        "Explain purpose of adding/removing robots",
+        "Set context for detailed procedure"
+      ],
+      "knowledge_extraction_strategy": "Capture overview and rationale for robot management",
+      "why_this_strategy": "Frames subsequent detailed instructions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001289",
+        "vec_upsfortna_optisweep_training_day1_20260317_001290",
+        "vec_upsfortna_optisweep_training_day1_20260317_001291"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000026"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "How to Add a Robot in the System",
+      "timestamp_start": "01:17:15.240",
+      "timestamp_end": "01:17:37.000",
+      "primary_intent": "Demonstrate the mechanics of adding a robot",
+      "operational_intents": [
+        "Input robot ID",
+        "Use Add button",
+        "Confirm successful addition"
+      ],
+      "knowledge_extraction_strategy": "Extract step-by-step add robot procedure",
+      "why_this_strategy": "Details operational steps for robot addition",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001292",
+        "vec_upsfortna_optisweep_training_day1_20260317_001293",
+        "vec_upsfortna_optisweep_training_day1_20260317_001294",
+        "vec_upsfortna_optisweep_training_day1_20260317_001295",
+        "vec_upsfortna_optisweep_training_day1_20260317_001296",
+        "vec_upsfortna_optisweep_training_day1_20260317_001297"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000026"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "How to Remove a Robot from the System",
+      "timestamp_start": "01:17:38.000",
+      "timestamp_end": "01:18:01.720",
+      "primary_intent": "Explain methods to remove a robot and confirmation",
+      "operational_intents": [
+        "Remove by typing robot ID",
+        "Remove by selecting robot and clicking remove",
+        "Confirm successful removal"
+      ],
+      "knowledge_extraction_strategy": "Extract removal methods and feedback signals",
+      "why_this_strategy": "Clarifies robot removal mechanics",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001298",
+        "vec_upsfortna_optisweep_training_day1_20260317_001299",
+        "vec_upsfortna_optisweep_training_day1_20260317_001300",
+        "vec_upsfortna_optisweep_training_day1_20260317_001301",
+        "vec_upsfortna_optisweep_training_day1_20260317_001302",
+        "vec_upsfortna_optisweep_training_day1_20260317_001303"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000026"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Risks and Correct Procedures for Robot Removal",
+      "timestamp_start": "01:18:02.640",
+      "timestamp_end": "01:18:59.160",
+      "primary_intent": "Discuss risks of improper removal and correct removal protocol",
+      "operational_intents": [
+        "Explain consequences of removing physical robot without logical removal",
+        "Describe robot space occupancy and obstacle detection",
+        "Advise bringing robot to safe state before removal"
+      ],
+      "knowledge_extraction_strategy": "Extract safety considerations and best practices",
+      "why_this_strategy": "Ensures safe robot removal procedures",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001304",
+        "vec_upsfortna_optisweep_training_day1_20260317_001305",
+        "vec_upsfortna_optisweep_training_day1_20260317_001306",
+        "vec_upsfortna_optisweep_training_day1_20260317_001307",
+        "vec_upsfortna_optisweep_training_day1_20260317_001308",
+        "vec_upsfortna_optisweep_training_day1_20260317_001309",
+        "vec_upsfortna_optisweep_training_day1_20260317_001310",
+        "vec_upsfortna_optisweep_training_day1_20260317_001311",
+        "vec_upsfortna_optisweep_training_day1_20260317_001312",
+        "vec_upsfortna_optisweep_training_day1_20260317_001313",
+        "vec_upsfortna_optisweep_training_day1_20260317_001314",
+        "vec_upsfortna_optisweep_training_day1_20260317_001315",
+        "vec_upsfortna_optisweep_training_day1_20260317_001316",
+        "vec_upsfortna_optisweep_training_day1_20260317_001317",
+        "vec_upsfortna_optisweep_training_day1_20260317_001318",
+        "vec_upsfortna_optisweep_training_day1_20260317_001319",
+        "vec_upsfortna_optisweep_training_day1_20260317_001320",
+        "vec_upsfortna_optisweep_training_day1_20260317_001321"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000026"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Access and Usage Context for Robot Management",
+      "timestamp_start": "01:19:02.804",
+      "timestamp_end": "01:19:44.634",
+      "primary_intent": "Discuss access permissions and network context for robot system",
+      "operational_intents": [
+        "Clarify who has access to Geek Plus",
+        "Explain OT network device access"
+      ],
+      "knowledge_extraction_strategy": "Extract access control and network environment details",
+      "why_this_strategy": "Defines operational access boundaries",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001323",
+        "vec_upsfortna_optisweep_training_day1_20260317_001324",
+        "vec_upsfortna_optisweep_training_day1_20260317_001333",
+        "vec_upsfortna_optisweep_training_day1_20260317_001334",
+        "vec_upsfortna_optisweep_training_day1_20260317_001335"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000026"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

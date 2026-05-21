@@ -1,0 +1,177 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Explanation of Container and Tote Labels",
+      "timestamp_start": "01:31:53.400",
+      "timestamp_end": "01:32:21.520",
+      "primary_intent": "Clarify container and tote labeling conventions",
+      "operational_intents": [
+        "Identify container ID and total number",
+        "Explain tote label usage on single and multi totes"
+      ],
+      "knowledge_extraction_strategy": "Extract label identification and usage details",
+      "why_this_strategy": "Labels define container and tote identification",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001520",
+        "vec_upsfortna_optisweep_training_day1_20260317_001521",
+        "vec_upsfortna_optisweep_training_day1_20260317_001522",
+        "vec_upsfortna_optisweep_training_day1_20260317_001523",
+        "vec_upsfortna_optisweep_training_day1_20260317_001524",
+        "vec_upsfortna_optisweep_training_day1_20260317_001525",
+        "vec_upsfortna_optisweep_training_day1_20260317_001526",
+        "vec_upsfortna_optisweep_training_day1_20260317_001527",
+        "vec_upsfortna_optisweep_training_day1_20260317_001528"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000031"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Description of Shelf Density and Abnormal Use Codes",
+      "timestamp_start": "01:32:21.520",
+      "timestamp_end": "01:32:53.840",
+      "primary_intent": "Explain shelf density and abnormal code locations",
+      "operational_intents": [
+        "Define single density shelf configuration",
+        "Introduce abnormal use and exception box concepts"
+      ],
+      "knowledge_extraction_strategy": "Extract shelf and exception code definitions",
+      "why_this_strategy": "Shelf and exception codes affect system configuration",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001528",
+        "vec_upsfortna_optisweep_training_day1_20260317_001529",
+        "vec_upsfortna_optisweep_training_day1_20260317_001530",
+        "vec_upsfortna_optisweep_training_day1_20260317_001531",
+        "vec_upsfortna_optisweep_training_day1_20260317_001532",
+        "vec_upsfortna_optisweep_training_day1_20260317_001533",
+        "vec_upsfortna_optisweep_training_day1_20260317_001534",
+        "vec_upsfortna_optisweep_training_day1_20260317_001535",
+        "vec_upsfortna_optisweep_training_day1_20260317_001536",
+        "vec_upsfortna_optisweep_training_day1_20260317_001537",
+        "vec_upsfortna_optisweep_training_day1_20260317_001538",
+        "vec_upsfortna_optisweep_training_day1_20260317_001539"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000031"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Discussion of Geek Plus Features and System Control",
+      "timestamp_start": "01:32:53.840",
+      "timestamp_end": "01:33:23.760",
+      "primary_intent": "Describe Geek Plus system features and control scope",
+      "operational_intents": [
+        "Identify unused Geek Plus features",
+        "Explain custom API control and system usage limitations"
+      ],
+      "knowledge_extraction_strategy": "Extract system feature usage and control details",
+      "why_this_strategy": "Understanding system control impacts operational use",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001540",
+        "vec_upsfortna_optisweep_training_day1_20260317_001541",
+        "vec_upsfortna_optisweep_training_day1_20260317_001542",
+        "vec_upsfortna_optisweep_training_day1_20260317_001543",
+        "vec_upsfortna_optisweep_training_day1_20260317_001544",
+        "vec_upsfortna_optisweep_training_day1_20260317_001545",
+        "vec_upsfortna_optisweep_training_day1_20260317_001546",
+        "vec_upsfortna_optisweep_training_day1_20260317_001547",
+        "vec_upsfortna_optisweep_training_day1_20260317_001548",
+        "vec_upsfortna_optisweep_training_day1_20260317_001549"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000031"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Explanation of Logic ID, Layer Count, and Map Creation",
+      "timestamp_start": "01:33:23.760",
+      "timestamp_end": "01:33:59.800",
+      "primary_intent": "Clarify logic ID, layer count, and map properties",
+      "operational_intents": [
+        "Explain single layer rack configuration",
+        "Describe map creation timing and layer usage"
+      ],
+      "knowledge_extraction_strategy": "Extract rack and map property explanations",
+      "why_this_strategy": "Rack and map properties affect system mapping",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001550",
+        "vec_upsfortna_optisweep_training_day1_20260317_001551",
+        "vec_upsfortna_optisweep_training_day1_20260317_001552",
+        "vec_upsfortna_optisweep_training_day1_20260317_001553",
+        "vec_upsfortna_optisweep_training_day1_20260317_001554",
+        "vec_upsfortna_optisweep_training_day1_20260317_001555",
+        "vec_upsfortna_optisweep_training_day1_20260317_001556",
+        "vec_upsfortna_optisweep_training_day1_20260317_001557",
+        "vec_upsfortna_optisweep_training_day1_20260317_001558",
+        "vec_upsfortna_optisweep_training_day1_20260317_001559"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000031"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Details on AGB Types and Container Properties",
+      "timestamp_start": "01:33:59.800",
+      "timestamp_end": "01:34:33.280",
+      "primary_intent": "Describe AGB types and container labeling properties",
+      "operational_intents": [
+        "Differentiate AGB types by layer count",
+        "Explain special container labels and station IDs"
+      ],
+      "knowledge_extraction_strategy": "Extract AGB and container property distinctions",
+      "why_this_strategy": "AGB and container details impact system handling",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001560",
+        "vec_upsfortna_optisweep_training_day1_20260317_001561",
+        "vec_upsfortna_optisweep_training_day1_20260317_001562",
+        "vec_upsfortna_optisweep_training_day1_20260317_001563",
+        "vec_upsfortna_optisweep_training_day1_20260317_001564",
+        "vec_upsfortna_optisweep_training_day1_20260317_001565",
+        "vec_upsfortna_optisweep_training_day1_20260317_001566",
+        "vec_upsfortna_optisweep_training_day1_20260317_001567",
+        "vec_upsfortna_optisweep_training_day1_20260317_001568",
+        "vec_upsfortna_optisweep_training_day1_20260317_001569",
+        "vec_upsfortna_optisweep_training_day1_20260317_001570",
+        "vec_upsfortna_optisweep_training_day1_20260317_001571",
+        "vec_upsfortna_optisweep_training_day1_20260317_001572",
+        "vec_upsfortna_optisweep_training_day1_20260317_001573"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000031"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Explanation of Map Object Selection and Toolbar Icons",
+      "timestamp_start": "01:34:33.280",
+      "timestamp_end": "01:34:55.120",
+      "primary_intent": "Explain map object selection and toolbar icon functions",
+      "operational_intents": [
+        "Identify selectable objects on the map",
+        "Describe toolbar icons and their purposes"
+      ],
+      "knowledge_extraction_strategy": "Extract map interaction and UI element details",
+      "why_this_strategy": "Map selection and toolbar icons guide user interaction",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001574",
+        "vec_upsfortna_optisweep_training_day1_20260317_001575",
+        "vec_upsfortna_optisweep_training_day1_20260317_001576",
+        "vec_upsfortna_optisweep_training_day1_20260317_001577",
+        "vec_upsfortna_optisweep_training_day1_20260317_001578",
+        "vec_upsfortna_optisweep_training_day1_20260317_001579",
+        "vec_upsfortna_optisweep_training_day1_20260317_001580",
+        "vec_upsfortna_optisweep_training_day1_20260317_001581",
+        "vec_upsfortna_optisweep_training_day1_20260317_001582",
+        "vec_upsfortna_optisweep_training_day1_20260317_001583"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000031"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -44,15 +44,22 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data-root", default="data")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--allow-runtime-asset-seed", action="store_true")
     args = parser.parse_args()
 
     data_root = Path(args.data_root)
     documents = local_documents(data_root)
-    workflow_documents = reusable_workflow_documents(data_root / DATASET_PATHS["workflow_definitions"])
-    procedure_documents = reusable_procedure_documents(data_root / DATASET_PATHS["reusable_procedures"])
+    workflow_documents = []
+    procedure_documents = []
+    if args.allow_runtime_asset_seed:
+        workflow_documents = reusable_workflow_documents(data_root / DATASET_PATHS["workflow_definitions"])
+        procedure_documents = reusable_procedure_documents(data_root / DATASET_PATHS["reusable_procedures"])
     result: dict[str, Any] = {
         "dry_run": args.dry_run,
         "documents": {name: len(records) for name, records in documents.items()},
+        "runtime_asset_seed": {
+            "enabled": args.allow_runtime_asset_seed,
+        },
         "reusable_assets": {
             "workflow_definitions": len(workflow_documents),
             "procedure_dictionary": len(procedure_documents),
@@ -66,7 +73,11 @@ def main() -> None:
         }
     else:
         result["upserted"] = persist_local_documents(documents)
-        result["upserted_reusable_assets"] = seed_documents(workflow_documents, procedure_documents)
+        result["upserted_reusable_assets"] = (
+            seed_documents(workflow_documents, procedure_documents, allow_runtime_asset_seed=True)
+            if args.allow_runtime_asset_seed
+            else {"workflow_definitions": 0, "procedure_dictionary": 0}
+        )
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

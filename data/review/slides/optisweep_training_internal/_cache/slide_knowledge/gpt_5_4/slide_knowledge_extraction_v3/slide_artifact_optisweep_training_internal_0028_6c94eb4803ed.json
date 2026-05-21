@@ -1,0 +1,182 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0028_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        28
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0028"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Robot Selection restart UI supports robot ID entry or direct robot selection",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Robot Selection",
+        "Restart"
+      ],
+      "summary": "The Restart function in the Robot Selection area allows the user to identify a robot either by entering the robot ID or by selecting the robot directly before issuing a restart.",
+      "observed_evidence": [
+        "Slide title: 'Robot Selection / Restart'",
+        "Bullet: 'Restart Robot'",
+        "Step 1: 'Enter the corresponding robot Id or select the robot.'",
+        "Step 2: 'Click “Restart”'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "supports_procedure",
+          "target_id": "proc_optisweep_training_internal_0028_01"
+        }
+      ],
+      "retrieval_text": "Robot Selection Restart UI: to restart a robot, the interface supports identifying the robot by entering the corresponding robot ID or selecting the robot, then clicking Restart.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0028_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        28
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0028"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Restarted robot appears on map after startup when positioned",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Restart",
+        "Map"
+      ],
+      "summary": "After a restart, the robot restarts when it is at the restart point or on the QR code cell, and after starting, the positioned robot is displayed on the map.",
+      "observed_evidence": [
+        "Step 3: 'The robot will restart (it is at the restart point or on the QR code cell).'",
+        "Step 4: 'After starting, the robot that has been positioned will be displayed on the map.'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "outcome_of",
+          "target_id": "proc_optisweep_training_internal_0028_01"
+        }
+      ],
+      "retrieval_text": "Robot restart behavior: the slide states the robot will restart when it is at the restart point or on the QR code cell, and after starting, the positioned robot will be displayed on the map.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0028_01",
+      "title": "Restart a robot from Robot Selection",
+      "procedure_type": "service_restart",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        28
+      ],
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Robot Selection",
+        "Restart",
+        "Map"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Robot Selection Restart UI is available.",
+        "A target robot can be identified by robot ID or direct selection.",
+        "Slide indicates restart occurs when the robot is at the restart point or on the QR code cell."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0028"
+      ],
+      "procedure_visual_summary": "Slide describing Robot Selection > Restart with numbered steps for selecting a robot, clicking Restart, and observing the robot on the map.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Enter the corresponding robot ID or select the robot.",
+          "expected_outcome": "The target robot is selected for restart.",
+          "validation_check": "A corresponding robot has been identified in the Restart workflow.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:28",
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "visual_region_hint": "Robot Selection Restart area where robot ID entry or robot selection is performed."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Click \"Restart\".",
+          "expected_outcome": "A restart command is issued for the selected robot.",
+          "validation_check": "The Restart control has been activated for the selected robot.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:28",
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "visual_region_hint": "Restart button/control in the Robot Selection Restart interface."
+        },
+        {
+          "step_order": 3,
+          "instruction": "Allow the robot to restart.",
+          "expected_outcome": "The robot restarts.",
+          "validation_check": "The slide states the robot will restart when it is at the restart point or on the QR code cell.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:28",
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "visual_region_hint": "Restart status/result described in the Robot Selection Restart workflow."
+        },
+        {
+          "step_order": 4,
+          "instruction": "After the robot starts, confirm that the positioned robot is displayed on the map.",
+          "expected_outcome": "The restarted and positioned robot appears on the map.",
+          "validation_check": "The robot that has been positioned is displayed on the map.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:28",
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0028"
+          ],
+          "visual_region_hint": "Map display area showing the robot after startup."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0028_01",
+        "oku_optisweep_training_internal_0028_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure to restart a robot from Robot Selection: enter the corresponding robot ID or select the robot, click Restart, the robot will restart when it is at the restart point or on the QR code cell, and after starting the positioned robot will be displayed on the map."
+    }
+  ],
+  "discarded_candidates": []
+}

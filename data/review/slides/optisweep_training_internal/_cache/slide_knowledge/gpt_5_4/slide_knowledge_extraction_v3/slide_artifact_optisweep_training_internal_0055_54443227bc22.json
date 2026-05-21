@@ -1,0 +1,17 @@
+{
+  "operational_knowledge_units": [],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "candidate_type": "procedure_or_operational_context",
+      "title": "Contents / Message Flow agenda entry",
+      "reason": "Slide is an agenda/table-of-contents page listing sections (Message Flow, Database, API, Ignition, Service) without operational behavior, bounded system knowledge, or explicit action steps. Candidate record type hints are present, but this slide itself does not provide usable API, database, or procedure content.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:55",
+        "artifact:slide_artifact_optisweep_training_internal_0055"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGV Tipper Queue and Tip Initiation Process",
+      "timestamp_start": "00:31:03.720",
+      "timestamp_end": "00:31:29.840",
+      "primary_intent": "Explain the process of AGV reaching tipper queue and initiating tip",
+      "operational_intents": [
+        "Describe AGV arrival at tipper entrance queue",
+        "Explain software communication with tipper controller",
+        "Detail operator action to start tip"
+      ],
+      "knowledge_extraction_strategy": "Extract sequential tip initiation steps",
+      "why_this_strategy": "Focus on stepwise tip initiation process",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000511",
+        "vec_upsfortna_optisweep_training_day1_20260317_000512",
+        "vec_upsfortna_optisweep_training_day1_20260317_000513",
+        "vec_upsfortna_optisweep_training_day1_20260317_000514",
+        "vec_upsfortna_optisweep_training_day1_20260317_000515",
+        "vec_upsfortna_optisweep_training_day1_20260317_000516",
+        "vec_upsfortna_optisweep_training_day1_20260317_000517",
+        "vec_upsfortna_optisweep_training_day1_20260317_000518",
+        "vec_upsfortna_optisweep_training_day1_20260317_000519"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000011"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Monitoring Tip Process and Bag Labeling Workflow",
+      "timestamp_start": "00:31:44.360",
+      "timestamp_end": "00:32:08.880",
+      "primary_intent": "Describe software monitoring and operator bag labeling steps",
+      "operational_intents": [
+        "Explain software monitoring of tip process",
+        "Detail chat message prompt for bag label printing",
+        "Describe operator applying bag label and preparing next bag"
+      ],
+      "knowledge_extraction_strategy": "Extract monitoring and labeling operational steps",
+      "why_this_strategy": "Capture interaction between software and operator tasks",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000520",
+        "vec_upsfortna_optisweep_training_day1_20260317_000521",
+        "vec_upsfortna_optisweep_training_day1_20260317_000522",
+        "vec_upsfortna_optisweep_training_day1_20260317_000523",
+        "vec_upsfortna_optisweep_training_day1_20260317_000524"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000011"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Background and Q&A on System Operation",
+      "timestamp_start": "00:32:12.480",
+      "timestamp_end": "00:32:53.720",
+      "primary_intent": "Provide background and address initial system questions",
+      "operational_intents": [
+        "Encourage questions and note-taking",
+        "Discuss system operation basics",
+        "Clarify tote to bag mapping"
+      ],
+      "knowledge_extraction_strategy": "Extract background info and Q&A clarifications",
+      "why_this_strategy": "Capture foundational understanding and common queries",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000525",
+        "vec_upsfortna_optisweep_training_day1_20260317_000526",
+        "vec_upsfortna_optisweep_training_day1_20260317_000527",
+        "vec_upsfortna_optisweep_training_day1_20260317_000528",
+        "vec_upsfortna_optisweep_training_day1_20260317_000529",
+        "vec_upsfortna_optisweep_training_day1_20260317_000530",
+        "vec_upsfortna_optisweep_training_day1_20260317_000531",
+        "vec_upsfortna_optisweep_training_day1_20260317_000532",
+        "vec_upsfortna_optisweep_training_day1_20260317_000533",
+        "vec_upsfortna_optisweep_training_day1_20260317_000534",
+        "vec_upsfortna_optisweep_training_day1_20260317_000535",
+        "vec_upsfortna_optisweep_training_day1_20260317_000536"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000011"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV Post-Tip Actions and Error Handling",
+      "timestamp_start": "00:32:55.000",
+      "timestamp_end": "00:33:45.080",
+      "primary_intent": "Explain AGV actions after tip and error scenarios",
+      "operational_intents": [
+        "Describe tipper informing software of cycle completion",
+        "Detail AGV returning or charging decisions",
+        "Explain failed tip and hospital routing",
+        "Discuss battery charging strategy"
+      ],
+      "knowledge_extraction_strategy": "Extract post-tip AGV workflows and error handling",
+      "why_this_strategy": "Focus on AGV state transitions and fault management",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000537",
+        "vec_upsfortna_optisweep_training_day1_20260317_000538",
+        "vec_upsfortna_optisweep_training_day1_20260317_000539",
+        "vec_upsfortna_optisweep_training_day1_20260317_000540",
+        "vec_upsfortna_optisweep_training_day1_20260317_000541",
+        "vec_upsfortna_optisweep_training_day1_20260317_000542",
+        "vec_upsfortna_optisweep_training_day1_20260317_000543",
+        "vec_upsfortna_optisweep_training_day1_20260317_000544",
+        "vec_upsfortna_optisweep_training_day1_20260317_000545",
+        "vec_upsfortna_optisweep_training_day1_20260317_000546",
+        "vec_upsfortna_optisweep_training_day1_20260317_000547",
+        "vec_upsfortna_optisweep_training_day1_20260317_000548",
+        "vec_upsfortna_optisweep_training_day1_20260317_000549",
+        "vec_upsfortna_optisweep_training_day1_20260317_000550",
+        "vec_upsfortna_optisweep_training_day1_20260317_000551"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000011"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Clarification on Failed Tip and Tipper Role",
+      "timestamp_start": "00:33:47.760",
+      "timestamp_end": "00:34:04.160",
+      "primary_intent": "Clarify meaning of failed tip and tipper identification",
+      "operational_intents": [
+        "Answer questions about failed tip scenarios",
+        "Clarify tipper identity and role"
+      ],
+      "knowledge_extraction_strategy": "Extract clarifications from Q&A",
+      "why_this_strategy": "Resolve ambiguities in tipper and failure definitions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000552",
+        "vec_upsfortna_optisweep_training_day1_20260317_000553",
+        "vec_upsfortna_optisweep_training_day1_20260317_000554",
+        "vec_upsfortna_optisweep_training_day1_20260317_000555",
+        "vec_upsfortna_optisweep_training_day1_20260317_000556",
+        "vec_upsfortna_optisweep_training_day1_20260317_000557",
+        "vec_upsfortna_optisweep_training_day1_20260317_000558"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000011"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_101_001",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        101
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0101"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Destination model stores possible parcel destinations from sort messages",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Destination Model"
+      ],
+      "summary": "The slide states that when a sort message is received, the system receives a list of possible destinations for the parcel and attaches that list to the item.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Destination Model'",
+        "Visible text: 'When we receive a sort message we receive a list of possible destination for the parcel. We attach that to the item.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "associates_with",
+          "target": "item",
+          "details": "Possible destinations received in the sort message are attached to the item."
+        },
+        {
+          "relationship_type": "receives_from",
+          "target": "sort message",
+          "details": "The destination list originates from the received sort message."
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Destination Model: when a sort message is received, a list of possible parcel destinations is received and attached to the item.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_101_001",
+      "title": "No explicit procedure on destination model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        101
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Destination Model"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0101"
+      ],
+      "procedure_visual_summary": "Conceptual database-model slide describing how possible destinations from a sort message are attached to an item; no user actions or ordered steps are shown.",
+      "steps": [],
+      "warnings": [
+        "Slide describes system/data behavior only.",
+        "No explicit reusable action sequence is provided."
+      ],
+      "related_context_refs": [
+        "ku_optisweep_training_internal_101_001"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: slide 101 describes the Destination Model behavior in the Sorter Sweeper Database, stating that possible destinations from a sort message are attached to the item, but it does not provide operator or support steps."
+    }
+  ],
+  "discarded_candidates": []
+}

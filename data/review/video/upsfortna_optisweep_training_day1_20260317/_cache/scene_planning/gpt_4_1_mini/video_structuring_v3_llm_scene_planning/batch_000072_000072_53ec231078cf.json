@@ -1,0 +1,28 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Discussion on Recurring Issues in Support",
+      "timestamp_start": "02:35:16.360",
+      "timestamp_end": "02:35:26.480",
+      "primary_intent": "Address the problem of recurring issues in support processes",
+      "operational_intents": [
+        "Identify the challenge of recurring issues",
+        "Emphasize that recurring issues should be prevented",
+        "Highlight the need for effective support actions"
+      ],
+      "knowledge_extraction_strategy": "Extract problem identification and prevention emphasis",
+      "why_this_strategy": "Focus on recurring issue recognition and prevention",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002427",
+        "vec_upsfortna_optisweep_training_day1_20260317_002428",
+        "vec_upsfortna_optisweep_training_day1_20260317_002429",
+        "vec_upsfortna_optisweep_training_day1_20260317_002430",
+        "vec_upsfortna_optisweep_training_day1_20260317_002431"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000072"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

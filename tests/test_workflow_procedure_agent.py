@@ -7,7 +7,7 @@ from backend.app.schemas.workflow_candidate import WorkflowCandidate
 from backend.app.services.workflow_candidate_service import WorkflowCandidateService
 
 
-def test_workflow_procedure_agent_writes_drafts_for_review(tmp_path):
+def test_workflow_procedure_agent_does_not_promote_source_silent_candidates(tmp_path):
     (tmp_path / "procedures").mkdir()
     (tmp_path / "workflows").mkdir()
     (tmp_path / "review").mkdir()
@@ -20,13 +20,11 @@ def test_workflow_procedure_agent_writes_drafts_for_review(tmp_path):
     workflows = json.loads((tmp_path / "workflows" / "workflow_definitions.json").read_text(encoding="utf-8"))
     queue = json.loads((tmp_path / "review" / "sme_review_queue.json").read_text(encoding="utf-8"))
 
-    assert result["reusable_procedure_count"] == 1
-    assert procedures[0]["procedure_id"] == "restart_optisweep_service_after_heartbeat_timeout_v1"
-    assert procedures[0]["status"] == "needs_sme_review"
-    assert workflows[0]["workflow_id"] == "heartbeat_timeout_no_rms_alarm_v1"
-    assert workflows[0]["status"] == "draft"
-    assert len(queue) == 2
-    assert all(item["status"] == "needs_sme_review" for item in queue)
+    assert result["reusable_procedure_count"] == 0
+    assert result["workflow_definition_count"] == 0
+    assert procedures == []
+    assert workflows == []
+    assert queue == []
 
 
 def test_workflow_candidate_service_requires_evidence_backed_overlap():

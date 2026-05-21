@@ -6,8 +6,22 @@ from typing import Any
 
 from backend.app.schemas.procedure import ProcedureCandidate, SmeReviewQueueItem
 from backend.app.schemas.workflow_candidate import WorkflowCandidate
+from backend.app.services.procedure_workflow_candidate_agent import ProcedureWorkflowCandidateAgent
 from backend.app.services.procedure_merge_service import ProcedureMergeService
 from backend.app.services.workflow_candidate_service import WorkflowCandidateService
+
+
+def procedure_workflow_candidate_node(state: dict[str, Any] | None = None) -> dict[str, Any]:
+    data_root = Path((state or {}).get("data_root", "data"))
+    taxonomy_path = (state or {}).get("taxonomy_path")
+    synthesis_client = (state or {}).get("synthesis_client")
+    llm_config_path = (state or {}).get("llm_config_path")
+    return ProcedureWorkflowCandidateAgent(
+        data_root=data_root,
+        taxonomy_path=taxonomy_path,
+        synthesis_client=synthesis_client,
+        llm_config_path=llm_config_path,
+    ).run()
 
 
 def workflow_procedure_node(state: dict[str, Any] | None = None) -> dict[str, Any]:

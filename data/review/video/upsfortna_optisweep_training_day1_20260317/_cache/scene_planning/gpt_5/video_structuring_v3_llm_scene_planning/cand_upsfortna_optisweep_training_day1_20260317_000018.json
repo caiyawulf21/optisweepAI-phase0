@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "cand_upsfortna_optisweep_training_day1_20260317_000018_scene_001",
+      "timestamp_start": "00:06:11.080",
+      "timestamp_end": "00:06:21.600",
+      "intent": "Clarify prior naming of the HMI/software, noting it used to be referred to as 'into soft.'",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000086",
+        "vec_upsfortna_optisweep_training_day1_20260317_000087",
+        "vec_upsfortna_optisweep_training_day1_20260317_000088",
+        "vec_upsfortna_optisweep_training_day1_20260317_000089",
+        "vec_upsfortna_optisweep_training_day1_20260317_000090"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

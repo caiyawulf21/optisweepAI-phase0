@@ -1,0 +1,314 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0076_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        76
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0076"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "HospitalDatabaseModel stores hospital queue and tote handoff locations",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "HospitalDatabaseModel",
+        "Hospital",
+        "Entrance queue location",
+        "Exit queue location",
+        "Drop off location",
+        "Induction location",
+        "Tote"
+      ],
+      "summary": "The HospitalDatabaseModel table stores hospitals together with entrance and exit queue locations and the drop off and induction locations used for tote handoff behavior.",
+      "observed_evidence": [
+        "Slide text states: 'The HospitalDatabaseModel table stores the hospitals and their entrance and exit queue location as well as the drop off and induction locations, this is where it drops off a tote and picks one up.'"
+      ],
+      "relationships": [
+        {
+          "type": "stores",
+          "from": "HospitalDatabaseModel",
+          "to": "Hospital"
+        },
+        {
+          "type": "stores",
+          "from": "HospitalDatabaseModel",
+          "to": "Entrance queue location"
+        },
+        {
+          "type": "stores",
+          "from": "HospitalDatabaseModel",
+          "to": "Exit queue location"
+        },
+        {
+          "type": "stores",
+          "from": "HospitalDatabaseModel",
+          "to": "Drop off location"
+        },
+        {
+          "type": "stores",
+          "from": "HospitalDatabaseModel",
+          "to": "Induction location"
+        },
+        {
+          "type": "supports",
+          "from": "Drop off location",
+          "to": "Tote drop-off"
+        },
+        {
+          "type": "supports",
+          "from": "Induction location",
+          "to": "Tote pickup"
+        }
+      ],
+      "retrieval_text": "Robotics Database Hospital slide: HospitalDatabaseModel stores hospitals, entrance queue location, exit queue location, drop off location, and induction location. These locations define where a tote is dropped off and picked up.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0076_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        76
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0076"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "HosptialSorterSideDatabaseModel maps sorter sides to hospitals",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "HosptialSorterSideDatabaseModel",
+        "Sorter side",
+        "Hospital"
+      ],
+      "summary": "The HosptialSorterSideDatabaseModel table stores the association between sorter sides and their related hospital.",
+      "observed_evidence": [
+        "Slide text states: 'The HosptialSorterSideDatabaseModel table stores the mapping of sortersides and its associated hospital.'"
+      ],
+      "relationships": [
+        {
+          "type": "maps",
+          "from": "HosptialSorterSideDatabaseModel",
+          "to": "Sorter side"
+        },
+        {
+          "type": "associates",
+          "from": "Sorter side",
+          "to": "Hospital"
+        }
+      ],
+      "retrieval_text": "Robotics Database Hospital slide: HosptialSorterSideDatabaseModel stores mapping between sorter sides and the associated hospital.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0076_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        76
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0076"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "CellCodeDatabaseModel stores map cell codes used for hospital lookup",
+      "systems": [
+        "Robotics Database",
+        "AGV system"
+      ],
+      "components": [
+        "CellCodeDatabaseModel",
+        "Cell code",
+        "Map",
+        "Hospital",
+        "AGV"
+      ],
+      "summary": "The CellCodeDatabaseModel stores all cell codes in the map and is used to determine what hospital a cell code is connected to.",
+      "observed_evidence": [
+        "Slide text states: 'The CellCodeDatabaseModel stores all cell codes in the map.'",
+        "Slide text also states: 'we use the CellCode table to lookup what hospital its connected to'"
+      ],
+      "relationships": [
+        {
+          "type": "stores",
+          "from": "CellCodeDatabaseModel",
+          "to": "Cell code"
+        },
+        {
+          "type": "maps",
+          "from": "Cell code",
+          "to": "Hospital"
+        },
+        {
+          "type": "used_by",
+          "from": "AGV initialization logic",
+          "to": "CellCodeDatabaseModel"
+        }
+      ],
+      "retrieval_text": "Robotics Database Hospital slide: CellCodeDatabaseModel stores all map cell codes and can be used to look up which hospital a cell code is connected to.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0076_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        76
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0076"
+      ],
+      "unit_type": "operational_process",
+      "title": "Running-state AGV add flow checks missing zone before hospital lookup and Geek initialize",
+      "systems": [
+        "AGV system",
+        "Robotics Database",
+        "Geek"
+      ],
+      "components": [
+        "AGV",
+        "Missing zone under sorter",
+        "CellCode table",
+        "Hospital",
+        "Initialize command"
+      ],
+      "summary": "When a new AGV is added while the system is in a running state, the system first checks whether the AGV's current cell code is in a missing zone under the sorter. If it is not, the system uses the CellCode table to find the connected hospital and sends an Initialize command to Geek.",
+      "observed_evidence": [
+        "Slide text states: 'When a new AGV is added to the system if we are in a running state we will first check if the AGVs current cell code is in a missing zone under the sorter.'",
+        "Slide text continues: 'If not we use the CellCode table to lookup what hospital its connected to and we send a Initialize command to Geek.'"
+      ],
+      "relationships": [
+        {
+          "type": "condition",
+          "from": "Running state",
+          "to": "AGV add logic"
+        },
+        {
+          "type": "checks",
+          "from": "AGV add logic",
+          "to": "Missing zone under sorter"
+        },
+        {
+          "type": "uses",
+          "from": "AGV add logic",
+          "to": "CellCode table"
+        },
+        {
+          "type": "looks_up",
+          "from": "CellCode table",
+          "to": "Hospital"
+        },
+        {
+          "type": "triggers",
+          "from": "AGV add logic",
+          "to": "Initialize command to Geek"
+        }
+      ],
+      "retrieval_text": "When a new AGV is added in a running state, the system first checks whether the AGV current cell code is in a missing zone under the sorter. If not, it uses the CellCode table to look up the connected hospital and sends an Initialize command to Geek.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0076_01",
+      "title": "Initialize a newly added AGV during running state using cell code to hospital lookup",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        76
+      ],
+      "systems": [
+        "AGV system",
+        "Robotics Database",
+        "Geek"
+      ],
+      "components": [
+        "AGV",
+        "CellCode table",
+        "Missing zone under sorter",
+        "Hospital",
+        "Initialize command"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A new AGV is being added to the system",
+        "The system is in a running state"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0076"
+      ],
+      "procedure_visual_summary": "Text-only slide describing database tables and runtime behavior for adding a new AGV, including missing-zone check, cell code hospital lookup, and Initialize command to Geek.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Check whether the newly added AGV's current cell code is in a missing zone under the sorter.",
+          "expected_outcome": "You determine whether the AGV is currently in a missing zone under the sorter.",
+          "validation_check": "The AGV current cell code has been evaluated against the missing-zone condition described on the slide.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:76",
+            "artifact:slide_artifact_optisweep_training_internal_0076"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0076"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0076"
+          ],
+          "visual_region_hint": "Bullet describing CellCodeDatabaseModel and new AGV behavior"
+        },
+        {
+          "step_order": 2,
+          "instruction": "If the AGV current cell code is not in a missing zone under the sorter, use the CellCode table to look up the hospital connected to that cell code.",
+          "expected_outcome": "The hospital associated with the AGV current cell code is identified.",
+          "validation_check": "A hospital mapping is obtained from the CellCode table for the AGV current cell code.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:76",
+            "artifact:slide_artifact_optisweep_training_internal_0076"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0076"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0076"
+          ],
+          "visual_region_hint": "Bullet describing CellCode table lookup to connected hospital"
+        },
+        {
+          "step_order": 3,
+          "instruction": "Send an Initialize command to Geek.",
+          "expected_outcome": "Geek receives the Initialize command for the newly added AGV context.",
+          "validation_check": "The Initialize command has been issued after hospital lookup.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:76",
+            "artifact:slide_artifact_optisweep_training_internal_0076"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0076"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0076"
+          ],
+          "visual_region_hint": "Final clause of CellCodeDatabaseModel bullet mentioning Initialize command to Geek"
+        }
+      ],
+      "warnings": [
+        "The slide only specifies the branch for when the AGV current cell code is not in a missing zone; it does not define what to do if it is in a missing zone.",
+        "The slide does not specify the interface, command format, or operator actions for sending the Initialize command."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0076_03",
+        "oku_optisweep_training_internal_0076_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure candidate from Robotics Database Hospital slide: when adding a new AGV in running state, check whether the AGV current cell code is in a missing zone under the sorter. If not, use the CellCode table to look up the connected hospital and send an Initialize command to Geek."
+    }
+  ],
+  "discarded_candidates": []
+}

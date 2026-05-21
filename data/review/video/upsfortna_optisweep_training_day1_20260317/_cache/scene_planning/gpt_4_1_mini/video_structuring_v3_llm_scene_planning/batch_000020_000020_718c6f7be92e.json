@@ -1,0 +1,144 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Overview of Robot System Status Indicators",
+      "timestamp_start": "00:58:19.497",
+      "timestamp_end": "00:58:54.480",
+      "primary_intent": "Explain key robot system status indicators",
+      "operational_intents": [
+        "Describe alarm history display",
+        "Define active robot count",
+        "Identify robots currently charging"
+      ],
+      "knowledge_extraction_strategy": "Extract definitions and status explanations",
+      "why_this_strategy": "Clarifies system status metrics for monitoring",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000981",
+        "vec_upsfortna_optisweep_training_day1_20260317_000982",
+        "vec_upsfortna_optisweep_training_day1_20260317_000983",
+        "vec_upsfortna_optisweep_training_day1_20260317_000984",
+        "vec_upsfortna_optisweep_training_day1_20260317_000985",
+        "vec_upsfortna_optisweep_training_day1_20260317_000986",
+        "vec_upsfortna_optisweep_training_day1_20260317_000987",
+        "vec_upsfortna_optisweep_training_day1_20260317_000988",
+        "vec_upsfortna_optisweep_training_day1_20260317_000989"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000020"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Accessing and Interpreting Error Notifications",
+      "timestamp_start": "00:58:57.760",
+      "timestamp_end": "00:59:14.320",
+      "primary_intent": "Show how to view current errors in system",
+      "operational_intents": [
+        "Locate and use dropdown menu for errors",
+        "Understand when error notifications appear"
+      ],
+      "knowledge_extraction_strategy": "Identify UI interaction for error visibility",
+      "why_this_strategy": "Enables troubleshooting through error access",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000990",
+        "vec_upsfortna_optisweep_training_day1_20260317_000991",
+        "vec_upsfortna_optisweep_training_day1_20260317_000992",
+        "vec_upsfortna_optisweep_training_day1_20260317_000993",
+        "vec_upsfortna_optisweep_training_day1_20260317_000994",
+        "vec_upsfortna_optisweep_training_day1_20260317_000995"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000020"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Understanding AGV Disconnection Status",
+      "timestamp_start": "00:59:15.840",
+      "timestamp_end": "01:00:12.760",
+      "primary_intent": "Explain causes and meaning of AGV disconnections",
+      "operational_intents": [
+        "Define disconnection between AGVs and RMS",
+        "Discuss possible reasons for disconnection",
+        "Clarify RMS and AGV communication setup"
+      ],
+      "knowledge_extraction_strategy": "Extract technical explanation of disconnection",
+      "why_this_strategy": "Clarifies communication issues for diagnostics",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000996",
+        "vec_upsfortna_optisweep_training_day1_20260317_000997",
+        "vec_upsfortna_optisweep_training_day1_20260317_000998",
+        "vec_upsfortna_optisweep_training_day1_20260317_000999",
+        "vec_upsfortna_optisweep_training_day1_20260317_001000",
+        "vec_upsfortna_optisweep_training_day1_20260317_001001",
+        "vec_upsfortna_optisweep_training_day1_20260317_001002",
+        "vec_upsfortna_optisweep_training_day1_20260317_001003"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000020"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Diagnosing and Handling AGV Disconnections",
+      "timestamp_start": "01:00:14.920",
+      "timestamp_end": "01:00:50.160",
+      "primary_intent": "Guide on troubleshooting AGV disconnections",
+      "operational_intents": [
+        "Check if AGV was turned off intentionally",
+        "Understand disconnection traceability in logs",
+        "Differentiate shutdown state from turned off"
+      ],
+      "knowledge_extraction_strategy": "Extract troubleshooting and terminology details",
+      "why_this_strategy": "Supports effective disconnection resolution",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001012",
+        "vec_upsfortna_optisweep_training_day1_20260317_001013",
+        "vec_upsfortna_optisweep_training_day1_20260317_001014",
+        "vec_upsfortna_optisweep_training_day1_20260317_001015",
+        "vec_upsfortna_optisweep_training_day1_20260317_001016",
+        "vec_upsfortna_optisweep_training_day1_20260317_001017",
+        "vec_upsfortna_optisweep_training_day1_20260317_001018",
+        "vec_upsfortna_optisweep_training_day1_20260317_001019",
+        "vec_upsfortna_optisweep_training_day1_20260317_001020",
+        "vec_upsfortna_optisweep_training_day1_20260317_001021",
+        "vec_upsfortna_optisweep_training_day1_20260317_001022",
+        "vec_upsfortna_optisweep_training_day1_20260317_001023",
+        "vec_upsfortna_optisweep_training_day1_20260317_001024",
+        "vec_upsfortna_optisweep_training_day1_20260317_001025"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000020"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Contextualizing AGV Terminology in Geek Plus System",
+      "timestamp_start": "01:00:50.720",
+      "timestamp_end": "01:01:21.680",
+      "primary_intent": "Clarify terminology and system usage conventions",
+      "operational_intents": [
+        "Explain Geek Plus system context",
+        "Discuss terminology preferences for shutdown vs turn off",
+        "Align terminology with team standards"
+      ],
+      "knowledge_extraction_strategy": "Extract terminology and system context details",
+      "why_this_strategy": "Ensures consistent communication and understanding",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001026",
+        "vec_upsfortna_optisweep_training_day1_20260317_001027",
+        "vec_upsfortna_optisweep_training_day1_20260317_001028",
+        "vec_upsfortna_optisweep_training_day1_20260317_001029",
+        "vec_upsfortna_optisweep_training_day1_20260317_001030",
+        "vec_upsfortna_optisweep_training_day1_20260317_001031",
+        "vec_upsfortna_optisweep_training_day1_20260317_001032",
+        "vec_upsfortna_optisweep_training_day1_20260317_001033",
+        "vec_upsfortna_optisweep_training_day1_20260317_001034"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000020"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

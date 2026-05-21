@@ -1,0 +1,140 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0064_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        64
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0064"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Overview of WCS and OptiSweep database groups",
+      "systems": [
+        "WCS",
+        "OptiSweep"
+      ],
+      "components": [
+        "DataContainers",
+        "EntityLogs",
+        "PLCCommunication",
+        "Audit",
+        "GeekAgv",
+        "OPCComms",
+        "Robotics",
+        "SorterSweeper",
+        "SQL Jobs"
+      ],
+      "summary": "The slide provides an overview of database-related areas in the environment, grouped into WCS Databases, OptiSweep Databases, and SQL Jobs.",
+      "observed_evidence": [
+        "Slide title: Overview",
+        "Bullet group: WCS Databases",
+        "Sub-items: DataContainers, EntityLogs, PLCCommunication",
+        "Bullet group: OptiSweep Databases",
+        "Sub-items: Audit (Geek Comm Module), GeekAgv (Geek Comm Module), OPCComms, Robotics, SorterSweeper",
+        "Bullet item: SQL Jobs"
+      ],
+      "relationships": [
+        {
+          "type": "group_contains",
+          "from": "WCS Databases",
+          "to": "DataContainers"
+        },
+        {
+          "type": "group_contains",
+          "from": "WCS Databases",
+          "to": "EntityLogs"
+        },
+        {
+          "type": "group_contains",
+          "from": "WCS Databases",
+          "to": "PLCCommunication"
+        },
+        {
+          "type": "group_contains",
+          "from": "OptiSweep Databases",
+          "to": "Audit"
+        },
+        {
+          "type": "group_contains",
+          "from": "OptiSweep Databases",
+          "to": "GeekAgv"
+        },
+        {
+          "type": "group_contains",
+          "from": "OptiSweep Databases",
+          "to": "OPCComms"
+        },
+        {
+          "type": "group_contains",
+          "from": "OptiSweep Databases",
+          "to": "Robotics"
+        },
+        {
+          "type": "group_contains",
+          "from": "OptiSweep Databases",
+          "to": "SorterSweeper"
+        },
+        {
+          "type": "associated_module",
+          "from": "Audit",
+          "to": "Geek Comm Module"
+        },
+        {
+          "type": "associated_module",
+          "from": "GeekAgv",
+          "to": "Geek Comm Module"
+        }
+      ],
+      "retrieval_text": "Overview slide listing database areas for the OptiSweep environment. WCS Databases include DataContainers, EntityLogs, and PLCCommunication. OptiSweep Databases include Audit (Geek Comm Module), GeekAgv (Geek Comm Module), OPCComms, Robotics, and SorterSweeper. SQL Jobs is also listed as part of the overview.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0064_01",
+      "title": "No explicit procedure present on database overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        64
+      ],
+      "systems": [
+        "WCS",
+        "OptiSweep"
+      ],
+      "components": [
+        "DataContainers",
+        "EntityLogs",
+        "PLCCommunication",
+        "Audit",
+        "GeekAgv",
+        "OPCComms",
+        "Robotics",
+        "SorterSweeper",
+        "SQL Jobs"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Viewer is reviewing architecture or database reference material"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0064"
+      ],
+      "procedure_visual_summary": "Overview slide with bullet lists of WCS Databases, OptiSweep Databases, and SQL Jobs; no numbered steps or action sequence shown.",
+      "steps": [],
+      "warnings": [
+        "Slide is an overview/reference list only",
+        "No explicit reusable action guidance or ordered operational steps are provided"
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0064"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because slide 64 is an overview of database groups and SQL Jobs, not an action sequence. It provides database references for WCS and OptiSweep but no explicit steps, validations, or operational instructions."
+    }
+  ],
+  "discarded_candidates": []
+}

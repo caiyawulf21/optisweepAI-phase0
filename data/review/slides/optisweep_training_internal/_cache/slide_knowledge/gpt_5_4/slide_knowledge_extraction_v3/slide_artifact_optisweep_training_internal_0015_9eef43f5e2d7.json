@@ -1,0 +1,202 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0015_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        15
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0015"
+      ],
+      "unit_type": "routing_rule",
+      "title": "AGV destination after tip cycle completion depends on tip result and battery condition",
+      "systems": [
+        "AGV",
+        "Tipper",
+        "software"
+      ],
+      "components": [
+        "Hospital",
+        "charger",
+        "sorter entrance queue",
+        "empty tote"
+      ],
+      "summary": "After the full cycle is complete and the tipper informs software that the AGV is clear to move out, the AGV is routed based on operating condition: failed tip goes to Hospital, low battery goes to charger, and normal completion returns the AGV to the sorter entrance queue with an empty tote for the next exchange.",
+      "observed_evidence": [
+        "When the full cycle is complete, the tipper informs software that the AGV is clear to move out",
+        "The AGV can return to the sorter, go to the hospital, or go to charge",
+        "Failed tip leads to Hospital",
+        "Low battery level leads to the charger",
+        "If all is good, the AGV returns to the sorter entrance queue with an empty tote that will be used for its next exchange"
+      ],
+      "relationships": [
+        {
+          "type": "condition_to_destination",
+          "from": "failed tip",
+          "to": "Hospital"
+        },
+        {
+          "type": "condition_to_destination",
+          "from": "low battery level",
+          "to": "charger"
+        },
+        {
+          "type": "condition_to_destination",
+          "from": "all is good",
+          "to": "sorter entrance queue"
+        }
+      ],
+      "retrieval_text": "Return routing rule for AGV after full cycle completion: tipper informs software AGV is clear to move out. Failed tip routes to Hospital. Low battery routes to charger. If all is good, AGV returns to sorter entrance queue with an empty tote for next exchange.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0015_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        15
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0015"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Tipper clearance signal enables AGV departure at end of cycle",
+      "systems": [
+        "Tipper",
+        "software",
+        "AGV"
+      ],
+      "components": [],
+      "summary": "At the end of the full cycle, the tipper communicates to software that the AGV is clear to move out, acting as the release condition for AGV departure into return routing.",
+      "observed_evidence": [
+        "When the full cycle is complete, the tipper informs software that the AGV is clear to move out"
+      ],
+      "relationships": [
+        {
+          "type": "enables",
+          "from": "tipper informs software AGV is clear to move out",
+          "to": "AGV return movement"
+        }
+      ],
+      "retrieval_text": "System behavior at cycle completion: tipper informs software that the AGV is clear to move out. This clearance precedes the AGV returning to sorter, hospital, or charger.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0015_01",
+      "title": "Route AGV after full cycle completion based on system condition",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        15
+      ],
+      "systems": [
+        "AGV",
+        "Tipper",
+        "software"
+      ],
+      "components": [
+        "Hospital",
+        "charger",
+        "sorter entrance queue",
+        "empty tote"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "The full cycle is complete",
+        "The tipper informs software that the AGV is clear to move out"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0015"
+      ],
+      "procedure_visual_summary": "Slide states return behavior after cycle completion and lists destination outcomes for failed tip, low battery, and normal completion.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Wait for the full cycle to complete and for the tipper to inform software that the AGV is clear to move out.",
+          "expected_outcome": "Software has clearance status indicating the AGV can depart.",
+          "validation_check": "Confirm slide-stated clearance condition exists: the tipper has informed software the AGV is clear to move out.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:15",
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "visual_region_hint": "Main body text under 'The Return'"
+        },
+        {
+          "step_order": 2,
+          "instruction": "If the tip failed, route the AGV to Hospital.",
+          "expected_outcome": "The AGV is sent to Hospital following a failed tip.",
+          "validation_check": "Verify the AGV destination is Hospital when tip status is failed.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:15",
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "visual_region_hint": "Bullet list in lower half of slide"
+        },
+        {
+          "step_order": 3,
+          "instruction": "If the battery level is low, route the AGV to the charger.",
+          "expected_outcome": "The AGV is sent to the charger when battery is low.",
+          "validation_check": "Verify the AGV destination is charger when battery level is low.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:15",
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "visual_region_hint": "Bullet list in lower half of slide"
+        },
+        {
+          "step_order": 4,
+          "instruction": "If all conditions are good, return the AGV to the sorter entrance queue with an empty tote for its next exchange.",
+          "expected_outcome": "The AGV rejoins the sorter entrance queue carrying an empty tote for reuse.",
+          "validation_check": "Verify the AGV returns to the sorter entrance queue and has an empty tote for the next exchange.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:15",
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0015"
+          ],
+          "visual_region_hint": "Bullet list in lower half of slide"
+        }
+      ],
+      "warnings": [
+        "The slide provides routing outcomes but does not specify who performs the routing action or the interface used.",
+        "Decision logic is limited to the conditions explicitly shown on the slide."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0015_01",
+        "oku_optisweep_training_internal_0015_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Operational action candidate for AGV return routing after full cycle completion: once tipper informs software AGV is clear to move out, send failed tip to Hospital, low battery to charger, otherwise return AGV to sorter entrance queue with empty tote for next exchange."
+    }
+  ],
+  "discarded_candidates": []
+}

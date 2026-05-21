@@ -1,0 +1,108 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Tote Status and Task Overview",
+      "timestamp_start": "02:26:12.840",
+      "timestamp_end": "02:27:11.600",
+      "primary_intent": "Explain tote status details and current task information",
+      "operational_intents": [
+        "Describe tote initialization and status reporting",
+        "Explain current task and exchange types for totes",
+        "Identify task names, errors, and tote IDs"
+      ],
+      "knowledge_extraction_strategy": "Extract detailed tote status and task attributes",
+      "why_this_strategy": "Focus on tote status and task info for operational clarity",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002258",
+        "vec_upsfortna_optisweep_training_day1_20260317_002259",
+        "vec_upsfortna_optisweep_training_day1_20260317_002260",
+        "vec_upsfortna_optisweep_training_day1_20260317_002261",
+        "vec_upsfortna_optisweep_training_day1_20260317_002262",
+        "vec_upsfortna_optisweep_training_day1_20260317_002263",
+        "vec_upsfortna_optisweep_training_day1_20260317_002264",
+        "vec_upsfortna_optisweep_training_day1_20260317_002265",
+        "vec_upsfortna_optisweep_training_day1_20260317_002266",
+        "vec_upsfortna_optisweep_training_day1_20260317_002267",
+        "vec_upsfortna_optisweep_training_day1_20260317_002268",
+        "vec_upsfortna_optisweep_training_day1_20260317_002269",
+        "vec_upsfortna_optisweep_training_day1_20260317_002270",
+        "vec_upsfortna_optisweep_training_day1_20260317_002271"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000069"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Threshold Settings and Software Configuration",
+      "timestamp_start": "02:27:16.920",
+      "timestamp_end": "02:27:49.640",
+      "primary_intent": "Describe threshold parameters and software methods for tote handling",
+      "operational_intents": [
+        "Explain queue, pickup, priority, and close thresholds",
+        "Discuss software methods based on counts and cube counts",
+        "Clarify customer update process and project team finalization"
+      ],
+      "knowledge_extraction_strategy": "Extract threshold values and configuration options",
+      "why_this_strategy": "Capture key configuration parameters for tote processing",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002272",
+        "vec_upsfortna_optisweep_training_day1_20260317_002273",
+        "vec_upsfortna_optisweep_training_day1_20260317_002274",
+        "vec_upsfortna_optisweep_training_day1_20260317_002275",
+        "vec_upsfortna_optisweep_training_day1_20260317_002276",
+        "vec_upsfortna_optisweep_training_day1_20260317_002277",
+        "vec_upsfortna_optisweep_training_day1_20260317_002278",
+        "vec_upsfortna_optisweep_training_day1_20260317_002279"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000069"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Access and Usage of Aviva and RMS Systems",
+      "timestamp_start": "02:27:49.640",
+      "timestamp_end": "02:29:13.604",
+      "primary_intent": "Clarify access restrictions and diagnostic steps for Aviva and RMS",
+      "operational_intents": [
+        "Explain lack of direct access to Aviva for support",
+        "Describe RMS screen as first diagnostic step",
+        "Outline communication protocols between UPS and Aviva",
+        "Identify roles with Aviva access and operator support"
+      ],
+      "knowledge_extraction_strategy": "Extract access policies and diagnostic procedures",
+      "why_this_strategy": "Ensure understanding of system access and troubleshooting flow",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002280",
+        "vec_upsfortna_optisweep_training_day1_20260317_002281",
+        "vec_upsfortna_optisweep_training_day1_20260317_002282",
+        "vec_upsfortna_optisweep_training_day1_20260317_002283",
+        "vec_upsfortna_optisweep_training_day1_20260317_002284",
+        "vec_upsfortna_optisweep_training_day1_20260317_002285",
+        "vec_upsfortna_optisweep_training_day1_20260317_002286",
+        "vec_upsfortna_optisweep_training_day1_20260317_002287",
+        "vec_upsfortna_optisweep_training_day1_20260317_002288",
+        "vec_upsfortna_optisweep_training_day1_20260317_002289",
+        "vec_upsfortna_optisweep_training_day1_20260317_002290",
+        "vec_upsfortna_optisweep_training_day1_20260317_002291",
+        "vec_upsfortna_optisweep_training_day1_20260317_002292",
+        "vec_upsfortna_optisweep_training_day1_20260317_002293",
+        "vec_upsfortna_optisweep_training_day1_20260317_002294",
+        "vec_upsfortna_optisweep_training_day1_20260317_002295",
+        "vec_upsfortna_optisweep_training_day1_20260317_002296",
+        "vec_upsfortna_optisweep_training_day1_20260317_002297",
+        "vec_upsfortna_optisweep_training_day1_20260317_002298",
+        "vec_upsfortna_optisweep_training_day1_20260317_002299",
+        "vec_upsfortna_optisweep_training_day1_20260317_002300",
+        "vec_upsfortna_optisweep_training_day1_20260317_002301",
+        "vec_upsfortna_optisweep_training_day1_20260317_002302",
+        "vec_upsfortna_optisweep_training_day1_20260317_002303"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000069"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

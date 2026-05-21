@@ -1,0 +1,103 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Shutdown Locations and Bag Out Process",
+      "timestamp_start": "00:37:06.240",
+      "timestamp_end": "00:39:13.960",
+      "primary_intent": "Explain shutdown locations and bag out procedure for AGVs and totes",
+      "operational_intents": [
+        "Describe shutdown locations for AGVs with and without totes",
+        "Explain behavior of AGVs during shutdown state",
+        "Detail bag out process and its purpose",
+        "Clarify sequence of AGV movements during bag out"
+      ],
+      "knowledge_extraction_strategy": "Segment by shutdown and bag out operational details",
+      "why_this_strategy": "Distinct operational topic on shutdown and bag out procedures",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000013"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000013"
+      ]
+    },
+    {
+      "scene_title": "Sort Cycle Transitions and Volume Handling",
+      "timestamp_start": "00:39:13.960",
+      "timestamp_end": "00:40:08.840",
+      "primary_intent": "Discuss sort cycle transitions and volume management in UPS",
+      "operational_intents": [
+        "Explain typical sort cycles in a day",
+        "Describe volume impact on sort transitions",
+        "Clarify when shutdown and back out occur in high volume settings"
+      ],
+      "knowledge_extraction_strategy": "Segment focused on sort cycle timing and volume effects",
+      "why_this_strategy": "Shift from shutdown to sort cycle and volume discussion",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000013"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000013"
+      ]
+    },
+    {
+      "scene_title": "AGV Zone Operations and Backfill Algorithm",
+      "timestamp_start": "00:40:08.840",
+      "timestamp_end": "00:43:09.353",
+      "primary_intent": "Explain AGV zone assignments and backfill algorithm",
+      "operational_intents": [
+        "Describe zone-based AGV pick up and drop off",
+        "Explain backfill algorithm and FIFO logic",
+        "Detail tipper queues and AGV movements",
+        "Introduce hospital role for AGV rejects"
+      ],
+      "knowledge_extraction_strategy": "Segment by AGV zone and algorithm operational details",
+      "why_this_strategy": "Focus on AGV zone behavior and backfill process",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000014"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000014"
+      ]
+    },
+    {
+      "scene_title": "Hospital Role and AGV Handling in Shutdown",
+      "timestamp_start": "00:43:09.353",
+      "timestamp_end": "00:46:11.480",
+      "primary_intent": "Describe hospital function and AGV handling during shutdown",
+      "operational_intents": [
+        "Explain hospital as reject station for AGVs",
+        "Detail AGV entrance, tote drop off, and charging behavior",
+        "Clarify shutdown queue purpose and AGV cycling",
+        "Discuss tipper issues and package handling in rejects"
+      ],
+      "knowledge_extraction_strategy": "Segment focused on hospital and shutdown AGV operations",
+      "why_this_strategy": "Distinct operational process on hospital and shutdown handling",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000015"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000015"
+      ]
+    },
+    {
+      "scene_title": "Sorter States and Transition Logic",
+      "timestamp_start": "00:46:12.120",
+      "timestamp_end": "00:49:12.143",
+      "primary_intent": "Explain sorter operational states and transitions",
+      "operational_intents": [
+        "Define shutdown, running, bag out, and close out states",
+        "Describe AGV behavior in each state",
+        "Explain automatic transitions between states",
+        "Discuss planning for peak and non-peak operations"
+      ],
+      "knowledge_extraction_strategy": "Segment by sorter state definitions and transitions",
+      "why_this_strategy": "Operational focus on sorter state management",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000016"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000016"
+      ]
+    }
+  ]
+}

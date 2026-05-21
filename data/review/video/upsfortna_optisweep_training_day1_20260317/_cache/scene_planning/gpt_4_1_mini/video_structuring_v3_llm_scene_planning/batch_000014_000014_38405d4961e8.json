@@ -1,0 +1,144 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Overview of Sort Cycles and Volume Management",
+      "timestamp_start": "00:40:08.840",
+      "timestamp_end": "00:40:32.120",
+      "primary_intent": "Explain the importance of cycling sorts and managing volume during sort phases",
+      "operational_intents": [
+        "Describe the need to cycle all sorts during sort phases",
+        "Explain volume expectations and goals for pushing volume before sort ends",
+        "Discuss transitions during peak season"
+      ],
+      "knowledge_extraction_strategy": "Extract operational details on sort cycling and volume handling",
+      "why_this_strategy": "Focus on foundational sort cycle and volume management concepts",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000655",
+        "vec_upsfortna_optisweep_training_day1_20260317_000656",
+        "vec_upsfortna_optisweep_training_day1_20260317_000657",
+        "vec_upsfortna_optisweep_training_day1_20260317_000658",
+        "vec_upsfortna_optisweep_training_day1_20260317_000659",
+        "vec_upsfortna_optisweep_training_day1_20260317_000660",
+        "vec_upsfortna_optisweep_training_day1_20260317_000661",
+        "vec_upsfortna_optisweep_training_day1_20260317_000662"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000014"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Pre-Learn Sort and Transport Specifics",
+      "timestamp_start": "00:40:32.120",
+      "timestamp_end": "00:41:09.200",
+      "primary_intent": "Describe pre-learn sort process and UPS transport specifics",
+      "operational_intents": [
+        "Explain pre-learn sort purpose and timing",
+        "Clarify UPS transport system compared to other companies",
+        "Discuss implications of UPS having only own transport"
+      ],
+      "knowledge_extraction_strategy": "Extract details on pre-learn sort and transport logistics",
+      "why_this_strategy": "Capture unique transport and pre-learn operational details",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000663",
+        "vec_upsfortna_optisweep_training_day1_20260317_000664",
+        "vec_upsfortna_optisweep_training_day1_20260317_000665",
+        "vec_upsfortna_optisweep_training_day1_20260317_000666",
+        "vec_upsfortna_optisweep_training_day1_20260317_000667",
+        "vec_upsfortna_optisweep_training_day1_20260317_000668",
+        "vec_upsfortna_optisweep_training_day1_20260317_000669",
+        "vec_upsfortna_optisweep_training_day1_20260317_000670",
+        "vec_upsfortna_optisweep_training_day1_20260317_000671",
+        "vec_upsfortna_optisweep_training_day1_20260317_000672"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000014"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Zone Concept and AGB Operations",
+      "timestamp_start": "00:41:09.680",
+      "timestamp_end": "00:42:02.813",
+      "primary_intent": "Explain zones and AGB operational behavior within zones",
+      "operational_intents": [
+        "Define zones and their operational boundaries",
+        "Describe AGB backfill and zone-specific activities",
+        "Introduce the algorithm guiding AGB movements"
+      ],
+      "knowledge_extraction_strategy": "Extract operational rules and algorithmic logic for zones and AGBs",
+      "why_this_strategy": "Clarify zone-based operational constraints and AGB logic",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000673",
+        "vec_upsfortna_optisweep_training_day1_20260317_000674",
+        "vec_upsfortna_optisweep_training_day1_20260317_000675",
+        "vec_upsfortna_optisweep_training_day1_20260317_000676",
+        "vec_upsfortna_optisweep_training_day1_20260317_000677",
+        "vec_upsfortna_optisweep_training_day1_20260317_000678",
+        "vec_upsfortna_optisweep_training_day1_20260317_000679",
+        "vec_upsfortna_optisweep_training_day1_20260317_000680",
+        "vec_upsfortna_optisweep_training_day1_20260317_000681",
+        "vec_upsfortna_optisweep_training_day1_20260317_000682",
+        "vec_upsfortna_optisweep_training_day1_20260317_000683"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000014"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Backfill Algorithm and Exchange Time Optimization",
+      "timestamp_start": "00:42:02.813",
+      "timestamp_end": "00:42:28.920",
+      "primary_intent": "Detail backfill algorithm and efforts to optimize exchange time",
+      "operational_intents": [
+        "Explain backfill algorithm principles including FIFO",
+        "Discuss zone closure impact on backfill decisions",
+        "Describe goal to minimize median exchange time"
+      ],
+      "knowledge_extraction_strategy": "Extract algorithmic approach and performance goals",
+      "why_this_strategy": "Focus on algorithm logic and operational efficiency",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000684",
+        "vec_upsfortna_optisweep_training_day1_20260317_000685",
+        "vec_upsfortna_optisweep_training_day1_20260317_000686",
+        "vec_upsfortna_optisweep_training_day1_20260317_000687",
+        "vec_upsfortna_optisweep_training_day1_20260317_000688",
+        "vec_upsfortna_optisweep_training_day1_20260317_000689"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000014"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Tipper Queues and Tote Handling Process",
+      "timestamp_start": "00:42:29.320",
+      "timestamp_end": "00:43:09.353",
+      "primary_intent": "Describe tipper queue management and tote pickup/dropoff process",
+      "operational_intents": [
+        "Explain tipper entrance queues and execution flow",
+        "Detail conditions for dropoff and pickup at locations",
+        "Describe waiting behavior when totes are unavailable"
+      ],
+      "knowledge_extraction_strategy": "Extract operational flow for tipper and tote handling",
+      "why_this_strategy": "Capture detailed tipper and tote operational sequence",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000690",
+        "vec_upsfortna_optisweep_training_day1_20260317_000691",
+        "vec_upsfortna_optisweep_training_day1_20260317_000692",
+        "vec_upsfortna_optisweep_training_day1_20260317_000693",
+        "vec_upsfortna_optisweep_training_day1_20260317_000694",
+        "vec_upsfortna_optisweep_training_day1_20260317_000695",
+        "vec_upsfortna_optisweep_training_day1_20260317_000696",
+        "vec_upsfortna_optisweep_training_day1_20260317_000697",
+        "vec_upsfortna_optisweep_training_day1_20260317_000698",
+        "vec_upsfortna_optisweep_training_day1_20260317_000699"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000014"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

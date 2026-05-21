@@ -1,0 +1,141 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0129_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        129
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0129",
+        "deck:optisweep_training_internal",
+        "slide:129"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "Database connectivity check during unplanned restart handling",
+      "systems": [
+        "SQL Server"
+      ],
+      "components": [
+        "fortna-wcs-primary.txrth.otnet.ups.com",
+        "SQL Server Management Studio"
+      ],
+      "summary": "The slide indicates that during an unplanned restart scenario, an operator should remote into the specified WCS host and verify that SQL Server Management Studio can connect.",
+      "observed_evidence": [
+        "Slide title: 'Services / Unplanned restart'",
+        "Visible text: 'Rdp into fortna-wcs-'",
+        "Visible text: 'primary.txrth.otnet.ups.com'",
+        "Visible text: 'Open Sql server management studio and'",
+        "Visible text: 'check that you can connect'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "involves_system",
+          "target": "SQL Server"
+        },
+        {
+          "relationship_type": "uses_component",
+          "target": "SQL Server Management Studio"
+        },
+        {
+          "relationship_type": "performed_on",
+          "target": "fortna-wcs-primary.txrth.otnet.ups.com"
+        }
+      ],
+      "retrieval_text": "Services unplanned restart diagnostic concept: RDP into fortna-wcs-primary.txrth.otnet.ups.com, open SQL Server Management Studio, and verify that a connection can be made.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0129_01",
+      "title": "Verify SQL connectivity from the primary WCS server during an unplanned restart",
+      "procedure_type": "diagnostic_check",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        129
+      ],
+      "systems": [
+        "SQL Server"
+      ],
+      "components": [
+        "fortna-wcs-primary.txrth.otnet.ups.com",
+        "SQL Server Management Studio"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "An unplanned restart scenario is being investigated.",
+        "Remote desktop access to fortna-wcs-primary.txrth.otnet.ups.com is available.",
+        "SQL Server Management Studio is available on the target host."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0129"
+      ],
+      "procedure_visual_summary": "Slide titled 'Services / Unplanned restart' with text instructing the user to RDP into fortna-wcs-primary.txrth.otnet.ups.com and open SQL Server Management Studio to check connectivity.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "RDP into fortna-wcs-primary.txrth.otnet.ups.com.",
+          "expected_outcome": "A remote session to the primary WCS host is established.",
+          "validation_check": "You are logged into fortna-wcs-primary.txrth.otnet.ups.com.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:129",
+            "artifact:slide_artifact_optisweep_training_internal_0129"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0129"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0129"
+          ],
+          "visual_region_hint": "Center text area containing the RDP host instruction."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Open SQL Server Management Studio.",
+          "expected_outcome": "SQL Server Management Studio is launched on the remote host.",
+          "validation_check": "The SQL Server Management Studio application is open.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:129",
+            "artifact:slide_artifact_optisweep_training_internal_0129"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0129"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0129"
+          ],
+          "visual_region_hint": "Center text area containing the SQL Server Management Studio instruction."
+        },
+        {
+          "step_order": 3,
+          "instruction": "Check that you can connect in SQL Server Management Studio.",
+          "expected_outcome": "A successful SQL connection can be established from the primary WCS host.",
+          "validation_check": "SQL Server Management Studio shows a successful connection rather than a connection failure.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:129",
+            "artifact:slide_artifact_optisweep_training_internal_0129"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0129"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0129"
+          ],
+          "visual_region_hint": "Center text area containing the connectivity check instruction."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0129_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Diagnostic check for services unplanned restart: RDP into fortna-wcs-primary.txrth.otnet.ups.com, open SQL Server Management Studio, and verify that SQL connectivity works."
+    }
+  ],
+  "discarded_candidates": []
+}

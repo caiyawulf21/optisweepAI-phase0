@@ -1,0 +1,99 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGV System and Map Status Explanation",
+      "timestamp_start": "01:01:21.960",
+      "timestamp_end": "01:04:26.029",
+      "primary_intent": "Explain the difference between AGVs in the system and on the map",
+      "operational_intents": [
+        "Clarify AGV status in system vs map",
+        "Describe how AGVs appear when turned off or removed",
+        "Explain implications of AGVs not added to map"
+      ],
+      "knowledge_extraction_strategy": "Segment by AGV system and map status discussion",
+      "why_this_strategy": "Distinct topic on AGV system vs map presence",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000021"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000021"
+      ]
+    },
+    {
+      "scene_title": "Sign-in Sheet and Robot Count Overview",
+      "timestamp_start": "01:04:26.029",
+      "timestamp_end": "01:07:29.883",
+      "primary_intent": "Discuss sign-in process and robot count details",
+      "operational_intents": [
+        "Explain purpose of sign-in sheet",
+        "Describe robot counts in system and map",
+        "Discuss reasons for removing AGVs from system"
+      ],
+      "knowledge_extraction_strategy": "Segment by sign-in and robot count operational details",
+      "why_this_strategy": "Shift from AGV status to administrative and count details",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000022"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000022"
+      ]
+    },
+    {
+      "scene_title": "AGV Removal Procedures and Tote Handling",
+      "timestamp_start": "01:07:29.883",
+      "timestamp_end": "01:10:33.800",
+      "primary_intent": "Explain proper procedures for removing AGVs and associated totes",
+      "operational_intents": [
+        "Describe sequence for removing AGV and tote",
+        "Highlight common errors in removal process",
+        "Introduce upcoming training on removal procedures"
+      ],
+      "knowledge_extraction_strategy": "Segment by AGV removal and tote handling instructions",
+      "why_this_strategy": "Focused operational process on AGV and tote removal",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000023"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000023"
+      ]
+    },
+    {
+      "scene_title": "Soft Emergency Stop and System Pause Functionality",
+      "timestamp_start": "01:10:34.720",
+      "timestamp_end": "01:11:06.419",
+      "primary_intent": "Describe the soft emergency stop feature and its effects",
+      "operational_intents": [
+        "Explain difference between soft and actual emergency stop",
+        "Detail behavior of AGVs during soft stop",
+        "Explain how to restart system after soft stop"
+      ],
+      "knowledge_extraction_strategy": "Segment by emergency stop feature explanation",
+      "why_this_strategy": "Distinct operational safety feature discussion",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000024"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000024"
+      ]
+    },
+    {
+      "scene_title": "Map Icons and Path Visualization Features",
+      "timestamp_start": "01:11:06.419",
+      "timestamp_end": "01:13:37.600",
+      "primary_intent": "Introduce map icons and path visualization tools",
+      "operational_intents": [
+        "Show how to view AGV paths on map",
+        "Explain station IDs and their importance",
+        "Describe charger IDs and map object selection"
+      ],
+      "knowledge_extraction_strategy": "Segment by map interface and icon usage explanation",
+      "why_this_strategy": "Focused on map interaction and debugging tools",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000024"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000024"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0026_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        26
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0026"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Robot selection highlights the chosen robot and opens robot details",
+      "systems": [
+        "OptiSweep UI"
+      ],
+      "components": [
+        "Robot selection option",
+        "Robot tile/list item",
+        "Robot details view"
+      ],
+      "summary": "When the Robot option is selected in the UI, a user can select a robot to view its details. The selected robot is visually indicated by a box around it.",
+      "observed_evidence": [
+        "Slide text: \"When Robot option is selected, select a robot to view robot details.\"",
+        "Slide text: \"The robot selected will have a box around it showing its selected.\""
+      ],
+      "relationships": [
+        {
+          "type": "selection_indicates",
+          "from": "Robot tile/list item",
+          "to": "Robot details view",
+          "evidence": "Selecting a robot is described as the action used to view robot details."
+        },
+        {
+          "type": "ui_state_indicator",
+          "from": "Box around robot",
+          "to": "Selected robot",
+          "evidence": "The selected robot will have a box around it."
+        }
+      ],
+      "retrieval_text": "Robot Selection Overview: when Robot option is selected, choose a robot to view robot details. The selected robot is shown with a box around it.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0026_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        26
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0026"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Tote status is displayed beneath robot ID with special markers for removed robots or missing totes",
+      "systems": [
+        "OptiSweep UI"
+      ],
+      "components": [
+        "Robot",
+        "Robot ID",
+        "Tote display"
+      ],
+      "summary": "If a robot has a tote, the tote is shown under the robot ID. A tote prefixed with a question mark indicates the robot has been removed but the tote remains. If a robot does not have a tote, the UI displays \"layer_1.\"",
+      "observed_evidence": [
+        "Slide text: \"If the robot has a tote it will show under the robot Id.\"",
+        "Slide text: \"If the tote has a “?” before it, that means the robot has been removed but the tote has not.\"",
+        "Slide text: \"If a robot doesn’t have a tote it will say layer_1\""
+      ],
+      "relationships": [
+        {
+          "type": "display_rule",
+          "from": "Tote display",
+          "to": "Robot ID area",
+          "evidence": "Tote appears under the robot ID when present."
+        },
+        {
+          "type": "status_marker",
+          "from": "\"?\" prefix before tote",
+          "to": "Robot removed but tote not removed",
+          "evidence": "The slide explicitly defines this meaning."
+        },
+        {
+          "type": "fallback_display",
+          "from": "\"layer_1\"",
+          "to": "Robot without tote",
+          "evidence": "The slide states that robots without totes show layer_1."
+        }
+      ],
+      "retrieval_text": "Robot tote display behavior: tote appears under robot ID. A '?' before the tote means the robot has been removed but the tote has not. If no tote is present, the display says layer_1.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0026_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        26
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0026"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Robot color coding communicates connection and task status",
+      "systems": [
+        "OptiSweep UI"
+      ],
+      "components": [
+        "Robot color indicator",
+        "Robot"
+      ],
+      "summary": "The UI uses robot colors to indicate robot condition or activity: purple for disconnected, blue or flashing blue for in task/searching for label, green for not in a task, and red for fault or low battery.",
+      "observed_evidence": [
+        "Slide text: \"Robot colors\"",
+        "Slide text: \"Purple: robot disconnected\"",
+        "Slide text: \"Blue/Flashing Blue: robot in task/searching for label\"",
+        "Slide text: \"Green: robot not in a task\"",
+        "Slide text: \"Red: fault/low battery\""
+      ],
+      "relationships": [
+        {
+          "type": "color_state_mapping",
+          "from": "Purple",
+          "to": "Robot disconnected",
+          "evidence": "Explicitly listed on slide."
+        },
+        {
+          "type": "color_state_mapping",
+          "from": "Blue/Flashing Blue",
+          "to": "Robot in task/searching for label",
+          "evidence": "Explicitly listed on slide."
+        },
+        {
+          "type": "color_state_mapping",
+          "from": "Green",
+          "to": "Robot not in a task",
+          "evidence": "Explicitly listed on slide."
+        },
+        {
+          "type": "color_state_mapping",
+          "from": "Red",
+          "to": "Fault/low battery",
+          "evidence": "Explicitly listed on slide."
+        }
+      ],
+      "retrieval_text": "Robot color meanings in Robot Selection Overview: purple = disconnected, blue or flashing blue = in task/searching for label, green = not in task, red = fault or low battery.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0026_01",
+      "title": "Select a robot to view robot details",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        26
+      ],
+      "systems": [
+        "OptiSweep UI"
+      ],
+      "components": [
+        "Robot selection option",
+        "Robot tile/list item",
+        "Robot details view"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "The Robot option is available in the UI."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0026"
+      ],
+      "procedure_visual_summary": "Slide describes Robot Selection overview and indicates that selecting a robot shows details and places a box around the selected robot.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "With the Robot option selected, select a robot in the UI.",
+          "expected_outcome": "The selected robot's details are shown.",
+          "validation_check": "A box appears around the selected robot.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:26",
+            "artifact:slide_artifact_optisweep_training_internal_0026"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0026"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0026"
+          ],
+          "visual_region_hint": "Robot selection area showing robot entries and selection highlight"
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0026_01",
+        "oku_optisweep_training_internal_0026_02",
+        "oku_optisweep_training_internal_0026_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Navigation attempt: when Robot option is selected, select a robot to view robot details. Validation is a box around the selected robot."
+    }
+  ],
+  "discarded_candidates": []
+}

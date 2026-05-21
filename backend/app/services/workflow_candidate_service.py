@@ -43,6 +43,8 @@ class WorkflowCandidateService:
         )
 
     def _has_evidence_backed_overlap(self, candidates: list[WorkflowCandidate]) -> bool:
+        if any(not candidate.title or not candidate.operational_intent for candidate in candidates):
+            return False
         incident_ids = {incident for candidate in candidates for incident in candidate.related_incidents}
         evidence_incidents = {ref.incident_id for candidate in candidates for ref in candidate.evidence_refs}
         evidence_sources = {

@@ -1,0 +1,1268 @@
+[
+  {
+    "workflow_id": "agv_flow_stopped_at_all_three_tipper_lines_nothing_coming_to_tippers_r_v1",
+    "workflow_version": "0.1",
+    "title": "Agv Flow Stopped At All Three Tipper Lines Nothing Coming To Tippers R V1",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Fallback workflow synthesized from source workflow candidates with validated generated procedure mappings.",
+    "source_workflow_candidate_ids": [
+      "agv_flow_stop_at_tippers_with_heartbeat_timeout_and_no_rms_faults"
+    ],
+    "entry_conditions": [
+      "agv_flow_stopped_at_all_three_tipper_lines",
+      "nothing_coming_to_tippers",
+      "rms_screen_no_faults_visible",
+      "tipper_heartbeat_timeout_status_active"
+    ],
+    "required_signals": [
+      "agv_flow_stopped_at_all_three_tipper_lines",
+      "nothing_coming_to_tippers",
+      "tipper_heartbeat_timeout_status_active",
+      "rms_screen_no_faults_visible",
+      "heartbeat_statistics_review_requested",
+      "agvs_e_stopped",
+      "optisweep_service_restarted"
+    ],
+    "shared_signals": [
+      "agv_flow_stopped_at_all_three_tipper_lines",
+      "nothing_coming_to_tippers",
+      "rms_screen_no_faults_visible",
+      "tipper_heartbeat_timeout_status_active"
+    ],
+    "differing_signals": [],
+    "common_root_cause_hypotheses": [
+      "Tipper heartbeat failure or loss of stable WCS-to-tipper communication likely caused AGV flow to stop at all three lines and blocked hospital tote actions.",
+      "Optisweep service degradation or unresponsive state likely contributed because recovery followed E-stop and Optisweep service restart.",
+      "Underlying OT or switch-side issue may have contributed, but was not confirmed in this case."
+    ],
+    "exclusion_conditions": [],
+    "minimum_confidence": 0.75,
+    "roles_allowed": [],
+    "steps": [
+      {
+        "step_id": "step_01",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure review_tipper_heartbeat_no_fault_signature_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "review_tipper_heartbeat_no_fault_signature_v1"
+        ],
+        "image_refs": [],
+        "evidence_refs": [
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_05"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_03",
+            "source_artifact_id": "case_229716_docx_artifact_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_04",
+            "source_artifact_id": "case_229716_docx_artifact_04"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_10",
+            "source_artifact_id": "case_229716_docx_artifact_10"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_06"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_07"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_07",
+            "source_artifact_id": "case_229716_docx_artifact_07"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_08",
+            "source_artifact_id": "case_229716_docx_artifact_08"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      },
+      {
+        "step_id": "step_02",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure review_service_restart_and_response_validation_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "review_service_restart_and_response_validation_v1"
+        ],
+        "image_refs": [],
+        "evidence_refs": [
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_05"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_03",
+            "source_artifact_id": "case_229716_docx_artifact_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_04",
+            "source_artifact_id": "case_229716_docx_artifact_04"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_10",
+            "source_artifact_id": "case_229716_docx_artifact_10"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_06"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_07"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_07",
+            "source_artifact_id": "case_229716_docx_artifact_07"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_08",
+            "source_artifact_id": "case_229716_docx_artifact_08"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      }
+    ],
+    "validation_checks": [],
+    "procedure_refs": [
+      "review_tipper_heartbeat_no_fault_signature_v1",
+      "review_service_restart_and_response_validation_v1"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "related_cases": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_05"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_03",
+        "source_artifact_id": "case_229716_docx_artifact_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_10",
+        "source_artifact_id": "case_229716_docx_artifact_10"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_07",
+        "source_artifact_id": "case_229716_docx_artifact_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_08",
+        "source_artifact_id": "case_229716_docx_artifact_08"
+      }
+    ],
+    "image_refs": [],
+    "escalation_conditions": [],
+    "confidence": 0.82,
+    "status": "draft",
+    "validation_status": "needs_review"
+  },
+  {
+    "workflow_id": "agvs_are_moving_hospital_logout_login_performed_hospital_tote_removal_v1",
+    "workflow_version": "0.1",
+    "title": "Agvs Are Moving Hospital Logout Login Performed Hospital Tote Removal V1",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Fallback workflow synthesized from source workflow candidates with validated generated procedure mappings.",
+    "source_workflow_candidate_ids": [
+      "hospital_tote_removal_blocked_during_cat1_tipper_heartbeat_failure"
+    ],
+    "entry_conditions": [
+      "agvs_are_moving",
+      "hospital_logout_login_performed",
+      "hospital_tote_removal_command_did_not_execute",
+      "hospital_tote_removal_restored"
+    ],
+    "required_signals": [
+      "hospital_tote_removal_command_did_not_execute",
+      "agvs_are_moving",
+      "hospital_logout_login_performed",
+      "hospital_tote_removal_restored"
+    ],
+    "shared_signals": [
+      "agvs_are_moving",
+      "hospital_logout_login_performed",
+      "hospital_tote_removal_command_did_not_execute",
+      "hospital_tote_removal_restored"
+    ],
+    "differing_signals": [],
+    "common_root_cause_hypotheses": [
+      "Tipper heartbeat failure or loss of stable WCS-to-tipper communication likely caused AGV flow to stop at all three lines and blocked hospital tote actions.",
+      "Optisweep service degradation or unresponsive state likely contributed because recovery followed E-stop and Optisweep service restart.",
+      "Underlying OT or switch-side issue may have contributed, but was not confirmed in this case."
+    ],
+    "exclusion_conditions": [],
+    "minimum_confidence": 0.75,
+    "roles_allowed": [],
+    "steps": [
+      {
+        "step_id": "step_01",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure validate_recovery_after_service_restart_and_readd_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "validate_recovery_after_service_restart_and_readd_v1"
+        ],
+        "image_refs": [],
+        "evidence_refs": [
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_04"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_08"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_03",
+            "source_artifact_id": "case_229716_docx_artifact_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_04",
+            "source_artifact_id": "case_229716_docx_artifact_04"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "case_229716_docx_artifact_11",
+            "source_artifact_id": "case_229716_docx_artifact_11"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      }
+    ],
+    "validation_checks": [],
+    "procedure_refs": [
+      "validate_recovery_after_service_restart_and_readd_v1"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "related_cases": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_03",
+        "source_artifact_id": "case_229716_docx_artifact_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_11",
+        "source_artifact_id": "case_229716_docx_artifact_11"
+      }
+    ],
+    "image_refs": [],
+    "escalation_conditions": [],
+    "confidence": 0.7,
+    "status": "draft",
+    "validation_status": "needs_review"
+  },
+  {
+    "workflow_id": "agvs_not_moving_hospital_tote_removal_failed_no_visible_faults_reporte_v1",
+    "workflow_version": "0.1",
+    "title": "Agvs Not Moving Hospital Tote Removal Failed No Visible Faults Reporte V1",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Fallback workflow synthesized from source workflow candidates with validated generated procedure mappings.",
+    "source_workflow_candidate_ids": [
+      "agvs_not_moving_no_visible_faults_with_hospital_tote_removal_failure"
+    ],
+    "entry_conditions": [
+      "agvs_not_moving",
+      "hospital_tote_removal_failed",
+      "no_visible_faults_reported",
+      "system_showing_standard_operation_mode"
+    ],
+    "required_signals": [
+      "agvs_not_moving",
+      "no_visible_faults_reported",
+      "hospital_tote_removal_failed"
+    ],
+    "shared_signals": [
+      "agvs_not_moving",
+      "hospital_tote_removal_failed",
+      "no_visible_faults_reported",
+      "system_showing_standard_operation_mode"
+    ],
+    "differing_signals": [],
+    "common_root_cause_hypotheses": [
+      "OptiSweep/WCS web application or related service fault likely caused AGVs to lose sync and stop moving.",
+      "High memory usage may have contributed to the web application or Ignition service fault, but this was debated during troubleshooting and not conclusively validated in the chat evidence.",
+      "Service interruption left multiple AGVs in incorrect or out-of-sync states that required RMS correction after restart."
+    ],
+    "exclusion_conditions": [],
+    "minimum_confidence": 0.75,
+    "roles_allowed": [],
+    "steps": [
+      {
+        "step_id": "step_01",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure establish_bridge_and_site_coordination_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "establish_bridge_and_site_coordination_v1"
+        ],
+        "image_refs": [],
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_01"
+          },
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_02"
+          },
+          {
+            "incident_id": "228086",
+            "evidence_id": "case_228086_docx_artifact_01",
+            "source_artifact_id": "case_228086_docx_artifact_01"
+          },
+          {
+            "incident_id": "228086",
+            "evidence_id": "case_228086_docx_artifact_05",
+            "source_artifact_id": "case_228086_docx_artifact_05"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      }
+    ],
+    "validation_checks": [],
+    "procedure_refs": [
+      "establish_bridge_and_site_coordination_v1"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "related_cases": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_02"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_01",
+        "source_artifact_id": "case_228086_docx_artifact_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_05",
+        "source_artifact_id": "case_228086_docx_artifact_05"
+      }
+    ],
+    "image_refs": [],
+    "escalation_conditions": [],
+    "confidence": 0.67,
+    "status": "draft",
+    "validation_status": "needs_review"
+  },
+  {
+    "workflow_id": "agvs_not_moving_no_fault_shown_production_seriously_impacted_v1",
+    "workflow_version": "0.1",
+    "title": "Agvs Not Moving No Fault Shown Production Seriously Impacted V1",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Fallback workflow synthesized from source workflow candidates with validated generated procedure mappings.",
+    "source_workflow_candidate_ids": [
+      "agvs_not_moving_no_fault_with_service_failure_candidate"
+    ],
+    "entry_conditions": [
+      "agvs_not_moving",
+      "no_fault_shown",
+      "production_seriously_impacted"
+    ],
+    "required_signals": [
+      "agvs_not_moving",
+      "no_fault_shown",
+      "tipper_heartbeat_flat",
+      "tippers_mostly_in_run_position",
+      "no_hmi_system_level_error_reported",
+      "software_support_requested",
+      "internal_escalation_chat_created",
+      "optisweep_windows_service_restarted"
+    ],
+    "shared_signals": [
+      "agvs_not_moving",
+      "no_fault_shown",
+      "production_seriously_impacted"
+    ],
+    "differing_signals": [],
+    "common_root_cause_hypotheses": [
+      "Optisweep Windows service was stopped or unresponsive at incident time.",
+      "Underlying OPC UA or network communication instability may have contributed to the service failure pattern.",
+      "This incident may be a recurrence of the prior Saturday Haslet failure pattern rather than an isolated one-off service stop."
+    ],
+    "exclusion_conditions": [],
+    "minimum_confidence": 0.75,
+    "roles_allowed": [],
+    "steps": [
+      {
+        "step_id": "step_01",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure review_service_restart_and_response_validation_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "review_service_restart_and_response_validation_v1"
+        ],
+        "image_refs": [],
+        "evidence_refs": [
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_01"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_02"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_01",
+            "source_artifact_id": "case_229488_docx_artifact_01"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_21",
+            "source_artifact_id": "case_229488_docx_artifact_21"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_22",
+            "source_artifact_id": "case_229488_docx_artifact_22"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_02",
+            "source_artifact_id": "case_229488_docx_artifact_02"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_23",
+            "source_artifact_id": "case_229488_docx_artifact_23"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      },
+      {
+        "step_id": "step_02",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure collect_service_timeout_and_comms_evidence_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "collect_service_timeout_and_comms_evidence_v1"
+        ],
+        "image_refs": [],
+        "evidence_refs": [
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_01"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_02"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_01",
+            "source_artifact_id": "case_229488_docx_artifact_01"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_21",
+            "source_artifact_id": "case_229488_docx_artifact_21"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_22",
+            "source_artifact_id": "case_229488_docx_artifact_22"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_02",
+            "source_artifact_id": "case_229488_docx_artifact_02"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "case_229488_docx_artifact_23",
+            "source_artifact_id": "case_229488_docx_artifact_23"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      }
+    ],
+    "validation_checks": [],
+    "procedure_refs": [
+      "review_service_restart_and_response_validation_v1",
+      "collect_service_timeout_and_comms_evidence_v1"
+    ],
+    "related_incidents": [
+      "229488"
+    ],
+    "related_cases": [
+      "229488"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_02"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_01",
+        "source_artifact_id": "case_229488_docx_artifact_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_21",
+        "source_artifact_id": "case_229488_docx_artifact_21"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_22",
+        "source_artifact_id": "case_229488_docx_artifact_22"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_02",
+        "source_artifact_id": "case_229488_docx_artifact_02"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_23",
+        "source_artifact_id": "case_229488_docx_artifact_23"
+      }
+    ],
+    "image_refs": [],
+    "escalation_conditions": [],
+    "confidence": 0.79,
+    "status": "draft",
+    "validation_status": "needs_review"
+  },
+  {
+    "workflow_id": "agvs_stopped_with_no_visible_alarms_flow_stops_before_tipper_processin_v1",
+    "workflow_version": "0.1",
+    "title": "Agvs Stopped With No Visible Alarms Flow Stops Before Tipper Processin V1",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Fallback workflow synthesized from source workflow candidates with validated generated procedure mappings.",
+    "source_workflow_candidate_ids": [
+      "agvs_stopped_mid_sort_with_no_visible_alarms_and_tipper_flow_loss"
+    ],
+    "entry_conditions": [
+      "agvs_stopped_with_no_visible_alarms",
+      "flow_stops_before_tipper_processing",
+      "hospital_function_impacted"
+    ],
+    "required_signals": [
+      "agvs_stopped_mid_sort",
+      "flow_stops_before_tipper_processing",
+      "rms_shows_no_robot_errors"
+    ],
+    "shared_signals": [
+      "agvs_stopped_with_no_visible_alarms",
+      "flow_stops_before_tipper_processing",
+      "hospital_function_impacted"
+    ],
+    "differing_signals": [],
+    "common_root_cause_hypotheses": [
+      "WCS/Ignition likely lost stable OPC/OPC-UA communication with tipper-side endpoint(s), causing heartbeat failure and downstream AGV/tipper coordination loss.",
+      "Database query timeout errors were present during the incident window but may have been secondary symptoms rather than the initiating failure.",
+      "OT-side controls or device faults may have contributed to the communication loss."
+    ],
+    "exclusion_conditions": [],
+    "minimum_confidence": 0.75,
+    "roles_allowed": [],
+    "steps": [
+      {
+        "step_id": "step_01",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure review_tipper_heartbeat_no_fault_signature_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "review_tipper_heartbeat_no_fault_signature_v1"
+        ],
+        "image_refs": [],
+        "evidence_refs": [
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_02"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "case_229374_docx_artifact_27",
+            "source_artifact_id": "case_229374_docx_artifact_27"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "case_229374_docx_artifact_35",
+            "source_artifact_id": "case_229374_docx_artifact_35"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      }
+    ],
+    "validation_checks": [],
+    "procedure_refs": [
+      "review_tipper_heartbeat_no_fault_signature_v1"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "related_cases": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_02"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_27",
+        "source_artifact_id": "case_229374_docx_artifact_27"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_35",
+        "source_artifact_id": "case_229374_docx_artifact_35"
+      }
+    ],
+    "image_refs": [],
+    "escalation_conditions": [],
+    "confidence": 0.64,
+    "status": "draft",
+    "validation_status": "needs_review"
+  },
+  {
+    "workflow_id": "aveva_field_state_mismatch_pause_unpause_unsuccessful_tipper_heartbeat_v1",
+    "workflow_version": "0.1",
+    "title": "Aveva Field State Mismatch Pause Unpause Unsuccessful Tipper Heartbeat V1",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Fallback workflow synthesized from source workflow candidates with validated generated procedure mappings.",
+    "source_workflow_candidate_ids": [
+      "tipper_heartbeat_failure_signature_with_aveva_or_field_state_mismatch"
+    ],
+    "entry_conditions": [
+      "aveva_field_state_mismatch",
+      "pause_unpause_unsuccessful",
+      "tipper_heartbeat_timeout_or_zero"
+    ],
+    "required_signals": [
+      "pause_unpause_tipper_unsuccessful",
+      "tipper_1_heartbeat_zero"
+    ],
+    "shared_signals": [
+      "aveva_field_state_mismatch",
+      "pause_unpause_unsuccessful",
+      "tipper_heartbeat_timeout_or_zero"
+    ],
+    "differing_signals": [],
+    "common_root_cause_hypotheses": [
+      "WCS/Ignition likely lost stable OPC/OPC-UA communication with tipper-side endpoint(s), causing heartbeat failure and downstream AGV/tipper coordination loss.",
+      "Database query timeout errors were present during the incident window but may have been secondary symptoms rather than the initiating failure.",
+      "OT-side controls or device faults may have contributed to the communication loss."
+    ],
+    "exclusion_conditions": [],
+    "minimum_confidence": 0.75,
+    "roles_allowed": [],
+    "steps": [
+      {
+        "step_id": "step_01",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure review_tipper_heartbeat_no_fault_signature_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "review_tipper_heartbeat_no_fault_signature_v1"
+        ],
+        "image_refs": [],
+        "evidence_refs": [
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_03"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_04"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "case_229374_docx_artifact_23",
+            "source_artifact_id": "case_229374_docx_artifact_23"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "case_229374_docx_artifact_24",
+            "source_artifact_id": "case_229374_docx_artifact_24"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      }
+    ],
+    "validation_checks": [],
+    "procedure_refs": [
+      "review_tipper_heartbeat_no_fault_signature_v1"
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "related_cases": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_03"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_04"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_23",
+        "source_artifact_id": "case_229374_docx_artifact_23"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_24",
+        "source_artifact_id": "case_229374_docx_artifact_24"
+      }
+    ],
+    "image_refs": [],
+    "escalation_conditions": [],
+    "confidence": 0.67,
+    "status": "draft",
+    "validation_status": "needs_review"
+  },
+  {
+    "workflow_id": "hospital_station_unable_to_induct_totes_robot_shutdown_state_hospital_v1",
+    "workflow_version": "0.1",
+    "title": "Hospital Station Unable To Induct Totes Robot Shutdown State Hospital V1",
+    "issue_category": "CAT-1",
+    "operational_intent": "Review recurring evidence-backed procedure pattern: Validate recovery after documented service restart and asset re-add.",
+    "source_workflow_candidate_ids": [
+      "hospital_induction_blocked_with_robot_shutdown_or_stale_agv_tote_state",
+      "agvs_not_moving_no_fault_with_possible_comms_instability_candidate",
+      "service_restart_recovered_but_rca_pending_with_monitoring_candidate",
+      "hospital_tote_removal_blocked_during_cat1_tipper_heartbeat_failure"
+    ],
+    "entry_conditions": [
+      "hospital_station_unable_to_induct_totes",
+      "robot_shutdown_state",
+      "hospital_can_remove_totes_but_cannot_add_totes",
+      "production_restored_after_restart",
+      "opc_ua_connection_reset",
+      "keep_alive_failure_exceeds_threshold"
+    ],
+    "required_signals": [
+      "hospital_station_unable_to_induct_totes",
+      "robot_shutdown_state",
+      "hospital_can_remove_totes_but_cannot_add_totes",
+      "possible_prior_agv_removed_without_associated_tote",
+      "optisweep_services_reset_documented",
+      "hospital_lane_restart_documented",
+      "induct_tote_not_working_at_hospital",
+      "api_dog_used_to_induct_tote",
+      "hospital_can_add_and_remove_totes",
+      "robots_readded_and_running",
+      "opc_ua_connection_reset_10_27_80_157",
+      "opc_ua_connection_reset_10_27_80_248",
+      "opc_ua_connection_reset_10_27_80_156",
+      "site_operating_and_getting_production",
+      "resolved_pending_rca",
+      "hospital_tote_removal_command_did_not_execute",
+      "agvs_are_moving",
+      "hospital_logout_login_performed",
+      "hospital_tote_removal_restored"
+    ],
+    "shared_signals": [
+      "hospital_station_unable_to_induct_totes",
+      "robot_shutdown_state",
+      "hospital_can_remove_totes_but_cannot_add_totes",
+      "production_restored_after_restart",
+      "opc_ua_connection_reset",
+      "keep_alive_failure_exceeds_threshold",
+      "subscription_transfer_failed_bad_service_unsupported",
+      "tipper_alarm_history_comms_faults"
+    ],
+    "differing_signals": [],
+    "common_root_cause_hypotheses": [
+      "Hospital induction was likely blocked by stale AGV/tote association state after an AGV was removed without removing the associated tote.",
+      "Robot shutdown state at the ACB hospital station likely required Optisweep service reset and hospital lane restart to return to normal operation.",
+      "Recovery complexity may have been worsened because tipper stations were not paused while hospital recovery was underway, causing totes to continue routing to hospital.",
+      "Optisweep Windows service was stopped or unresponsive at incident time.",
+      "Underlying OPC UA or network communication instability may have contributed to the service failure pattern.",
+      "This incident may be a recurrence of the prior Saturday Haslet failure pattern rather than an isolated one-off service stop.",
+      "Optisweep Windows service was stopped or unresponsive at incident time.",
+      "Underlying OPC UA or network communication instability may have contributed to the service failure pattern."
+    ],
+    "exclusion_conditions": [],
+    "minimum_confidence": 0.75,
+    "roles_allowed": [],
+    "steps": [
+      {
+        "step_id": "step_01",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure validate_recovery_after_service_restart_and_readd_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "validate_recovery_after_service_restart_and_readd_v1"
+        ],
+        "image_refs": [
+          "case_229488_docx_artifact_23",
+          "case_229716_docx_artifact_11"
+        ],
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_10"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_08"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      }
+    ],
+    "validation_checks": [],
+    "procedure_refs": [
+      "validate_recovery_after_service_restart_and_readd_v1"
+    ],
+    "related_incidents": [
+      "223554",
+      "229488",
+      "229716"
+    ],
+    "related_cases": [
+      "223554",
+      "229488",
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      }
+    ],
+    "image_refs": [
+      "case_229488_docx_artifact_23",
+      "case_229716_docx_artifact_11"
+    ],
+    "escalation_conditions": [],
+    "confidence": 0.83,
+    "status": "draft",
+    "validation_status": "needs_review"
+  },
+  {
+    "workflow_id": "web_application_fault_reported_memory_trend_review_requested_gateway_r_v1",
+    "workflow_version": "0.1",
+    "title": "Web Application Fault Reported Memory Trend Review Requested Gateway R V1",
+    "issue_category": "CAT-1",
+    "operational_intent": "Review recurring evidence-backed procedure pattern: Review service restart path and response validation evidence.",
+    "source_workflow_candidate_ids": [
+      "wcs_service_failure_with_web_application_or_service_fault_hypothesis",
+      "cat1_service_failure_with_remote_access_blocked_then_field_pc_workaround",
+      "engineer_led_optisweep_service_restart_with_post_restart_validation_for_heartbeat_failure_pattern",
+      "agvs_not_moving_no_fault_with_service_failure_candidate",
+      "agv_flow_stop_at_tippers_with_heartbeat_timeout_and_no_rms_faults",
+      "startup_waiting_no_path_to_tippers_with_tipper_heartbeat_recurrence_candidate"
+    ],
+    "entry_conditions": [
+      "web_application_fault_reported",
+      "memory_trend_review_requested",
+      "gateway_restart_command_executed",
+      "optisweep_service_restart_performed",
+      "vpn_or_zscaler_blocked",
+      "field_pc_rdp_workaround"
+    ],
+    "required_signals": [
+      "web_application_fault_reported",
+      "memory_trend_review_requested",
+      "remote_access_obtained_via_rdp",
+      "remote_access_blocked_by_zscaler",
+      "rdp_to_10_27_80_165_established",
+      "engineer_restarted_optisweep_services",
+      "system_operational_after_service_restart",
+      "agvs_not_moving",
+      "no_fault_shown",
+      "tipper_heartbeat_flat",
+      "tippers_mostly_in_run_position",
+      "no_hmi_system_level_error_reported",
+      "software_support_requested",
+      "internal_escalation_chat_created",
+      "optisweep_windows_service_restarted",
+      "agv_flow_stopped_at_all_three_tipper_lines",
+      "nothing_coming_to_tippers",
+      "tipper_heartbeat_timeout_status_active",
+      "rms_screen_no_faults_visible",
+      "heartbeat_statistics_review_requested",
+      "agvs_e_stopped",
+      "optisweep_service_restarted",
+      "system_startup_waiting_state",
+      "no_path_shown_to_tippers",
+      "nothing_reaching_tippers",
+      "engineer_connected_to_system",
+      "tipper_heartbeat_failed",
+      "client_master_e_stop_on",
+      "tippers_paused_unpaused",
+      "system_back_up_and_running",
+      "everything_came_back_on",
+      "client_approved_case_closure",
+      "recurrence_noted_same_issue_again"
+    ],
+    "shared_signals": [
+      "web_application_fault_reported",
+      "memory_trend_review_requested",
+      "gateway_restart_command_executed",
+      "optisweep_service_restart_performed",
+      "vpn_or_zscaler_blocked",
+      "field_pc_rdp_workaround",
+      "engineer_access_dependency",
+      "engineer_service_restart_restores_operation"
+    ],
+    "differing_signals": [],
+    "common_root_cause_hypotheses": [
+      "OptiSweep/WCS web application or related service fault likely caused AGVs to lose sync and stop moving.",
+      "High memory usage may have contributed to the web application or Ignition service fault, but this was debated during troubleshooting and not conclusively validated in the chat evidence.",
+      "Service interruption left multiple AGVs in incorrect or out-of-sync states that required RMS correction after restart.",
+      "WCS/Ignition likely lost stable OPC/OPC-UA communication with tipper-side endpoint(s), causing heartbeat failure and downstream AGV/tipper coordination loss.",
+      "Database query timeout errors were present during the incident window but may have been secondary symptoms rather than the initiating failure.",
+      "OT-side controls or device faults may have contributed to the communication loss.",
+      "WCS/Ignition likely lost stable OPC/OPC-UA communication with tipper-side endpoint(s), causing heartbeat failure and downstream AGV/tipper coordination loss.",
+      "Database query timeout errors were present during the incident window but may have been secondary symptoms rather than the initiating failure."
+    ],
+    "exclusion_conditions": [],
+    "minimum_confidence": 0.75,
+    "roles_allowed": [],
+    "steps": [
+      {
+        "step_id": "step_01",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure review_service_restart_and_response_validation_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "review_service_restart_and_response_validation_v1"
+        ],
+        "image_refs": [
+          "case_228086_docx_artifact_14",
+          "case_229374_docx_artifact_41"
+        ],
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_06"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_11"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_06"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_03"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      }
+    ],
+    "validation_checks": [],
+    "procedure_refs": [
+      "review_service_restart_and_response_validation_v1"
+    ],
+    "related_incidents": [
+      "228086",
+      "229374",
+      "229488",
+      "229716",
+      "229777"
+    ],
+    "related_cases": [
+      "228086",
+      "229374",
+      "229488",
+      "229716",
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_06"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_11"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_03"
+      }
+    ],
+    "image_refs": [
+      "case_228086_docx_artifact_14",
+      "case_229374_docx_artifact_41"
+    ],
+    "escalation_conditions": [],
+    "confidence": 0.76,
+    "status": "draft",
+    "validation_status": "needs_review"
+  },
+  {
+    "workflow_id": "agvs_stopped_with_no_visible_alarms_flow_stops_before_tipper_processin_v1",
+    "workflow_version": "0.1",
+    "title": "Agvs Stopped With No Visible Alarms Flow Stops Before Tipper Processin V1",
+    "issue_category": "CAT-1",
+    "operational_intent": "Review recurring evidence-backed procedure pattern: Review tipper heartbeat timeout and no-fault signature.",
+    "source_workflow_candidate_ids": [
+      "agvs_stopped_mid_sort_with_no_visible_alarms_and_tipper_flow_loss",
+      "tipper_heartbeat_failure_signature_with_aveva_or_field_state_mismatch",
+      "agv_flow_stop_at_tippers_with_heartbeat_timeout_and_no_rms_faults",
+      "startup_waiting_no_path_to_tippers_with_tipper_heartbeat_recurrence_candidate"
+    ],
+    "entry_conditions": [
+      "agvs_stopped_with_no_visible_alarms",
+      "flow_stops_before_tipper_processing",
+      "hospital_function_impacted",
+      "tipper_heartbeat_timeout_or_zero",
+      "aveva_field_state_mismatch",
+      "pause_unpause_unsuccessful"
+    ],
+    "required_signals": [
+      "agvs_stopped_mid_sort",
+      "flow_stops_before_tipper_processing",
+      "rms_shows_no_robot_errors",
+      "pause_unpause_tipper_unsuccessful",
+      "tipper_1_heartbeat_zero",
+      "agv_flow_stopped_at_all_three_tipper_lines",
+      "nothing_coming_to_tippers",
+      "tipper_heartbeat_timeout_status_active",
+      "rms_screen_no_faults_visible",
+      "heartbeat_statistics_review_requested",
+      "agvs_e_stopped",
+      "optisweep_service_restarted",
+      "system_startup_waiting_state",
+      "no_path_shown_to_tippers",
+      "nothing_reaching_tippers",
+      "engineer_connected_to_system",
+      "tipper_heartbeat_failed",
+      "client_master_e_stop_on",
+      "tippers_paused_unpaused",
+      "system_back_up_and_running",
+      "everything_came_back_on",
+      "client_approved_case_closure",
+      "recurrence_noted_same_issue_again"
+    ],
+    "shared_signals": [
+      "agvs_stopped_with_no_visible_alarms",
+      "flow_stops_before_tipper_processing",
+      "hospital_function_impacted",
+      "tipper_heartbeat_timeout_or_zero",
+      "aveva_field_state_mismatch",
+      "pause_unpause_unsuccessful",
+      "agv_flow_stopped_at_all_three_tipper_lines",
+      "nothing_coming_to_tippers"
+    ],
+    "differing_signals": [],
+    "common_root_cause_hypotheses": [
+      "WCS/Ignition likely lost stable OPC/OPC-UA communication with tipper-side endpoint(s), causing heartbeat failure and downstream AGV/tipper coordination loss.",
+      "Database query timeout errors were present during the incident window but may have been secondary symptoms rather than the initiating failure.",
+      "OT-side controls or device faults may have contributed to the communication loss.",
+      "WCS/Ignition likely lost stable OPC/OPC-UA communication with tipper-side endpoint(s), causing heartbeat failure and downstream AGV/tipper coordination loss.",
+      "Database query timeout errors were present during the incident window but may have been secondary symptoms rather than the initiating failure.",
+      "OT-side controls or device faults may have contributed to the communication loss.",
+      "Tipper heartbeat failure or loss of stable WCS-to-tipper communication likely caused AGV flow to stop at all three lines and blocked hospital tote actions.",
+      "Optisweep service degradation or unresponsive state likely contributed because recovery followed E-stop and Optisweep service restart."
+    ],
+    "exclusion_conditions": [],
+    "minimum_confidence": 0.75,
+    "roles_allowed": [],
+    "steps": [
+      {
+        "step_id": "step_01",
+        "step_type": "diagnostic_check",
+        "instruction": "Use procedure review_tipper_heartbeat_no_fault_signature_v1.",
+        "support_safe": true,
+        "procedure_refs": [
+          "review_tipper_heartbeat_no_fault_signature_v1"
+        ],
+        "image_refs": [
+          "case_229374_docx_artifact_23",
+          "case_229716_docx_artifact_03"
+        ],
+        "evidence_refs": [
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_05"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_05"
+          }
+        ],
+        "branches": [],
+        "escalation_conditions": []
+      }
+    ],
+    "validation_checks": [],
+    "procedure_refs": [
+      "review_tipper_heartbeat_no_fault_signature_v1"
+    ],
+    "related_incidents": [
+      "229374",
+      "229716",
+      "229777"
+    ],
+    "related_cases": [
+      "229374",
+      "229716",
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_05"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_05"
+      }
+    ],
+    "image_refs": [
+      "case_229374_docx_artifact_23",
+      "case_229716_docx_artifact_03"
+    ],
+    "escalation_conditions": [],
+    "confidence": 0.87,
+    "status": "draft",
+    "validation_status": "needs_review"
+  }
+]

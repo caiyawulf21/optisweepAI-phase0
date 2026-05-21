@@ -1,0 +1,137 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Introduction and Overview of HMI Viva Screens",
+      "timestamp_start": "02:07:51.040",
+      "timestamp_end": "02:08:23.000",
+      "primary_intent": "Introduce and overview the HMI Viva screens",
+      "operational_intents": [
+        "Address questions about HMI",
+        "Provide general introduction to Viva screens",
+        "Present main overview screen"
+      ],
+      "knowledge_extraction_strategy": "Extract overview and screen navigation details",
+      "why_this_strategy": "Sets foundation for understanding HMI interface",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001989",
+        "vec_upsfortna_optisweep_training_day1_20260317_001990",
+        "vec_upsfortna_optisweep_training_day1_20260317_001991",
+        "vec_upsfortna_optisweep_training_day1_20260317_001992",
+        "vec_upsfortna_optisweep_training_day1_20260317_001993",
+        "vec_upsfortna_optisweep_training_day1_20260317_001994"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000063"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Detailed Explanation of Bag Out Control System",
+      "timestamp_start": "02:08:23.000",
+      "timestamp_end": "02:09:31.520",
+      "primary_intent": "Explain bag out control system and manual bag out cancellation",
+      "operational_intents": [
+        "Describe bag out functions and controls",
+        "Explain manual bag out cancellation conditions",
+        "Clarify exchange chest process during bag out"
+      ],
+      "knowledge_extraction_strategy": "Extract operational procedures and conditions for bag out",
+      "why_this_strategy": "Clarifies critical bag out system operations",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001995",
+        "vec_upsfortna_optisweep_training_day1_20260317_001996",
+        "vec_upsfortna_optisweep_training_day1_20260317_001997",
+        "vec_upsfortna_optisweep_training_day1_20260317_001998",
+        "vec_upsfortna_optisweep_training_day1_20260317_001999",
+        "vec_upsfortna_optisweep_training_day1_20260317_002000",
+        "vec_upsfortna_optisweep_training_day1_20260317_002001",
+        "vec_upsfortna_optisweep_training_day1_20260317_002002",
+        "vec_upsfortna_optisweep_training_day1_20260317_002003",
+        "vec_upsfortna_optisweep_training_day1_20260317_002004",
+        "vec_upsfortna_optisweep_training_day1_20260317_002005",
+        "vec_upsfortna_optisweep_training_day1_20260317_002006",
+        "vec_upsfortna_optisweep_training_day1_20260317_002007",
+        "vec_upsfortna_optisweep_training_day1_20260317_002008",
+        "vec_upsfortna_optisweep_training_day1_20260317_002009",
+        "vec_upsfortna_optisweep_training_day1_20260317_002010",
+        "vec_upsfortna_optisweep_training_day1_20260317_002011"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000063"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Transition and Clarification on Auto Bagger Control",
+      "timestamp_start": "02:09:31.520",
+      "timestamp_end": "02:10:00.880",
+      "primary_intent": "Discuss auto bagger control and related pop-up features",
+      "operational_intents": [
+        "Clarify presence and phase of auto bagger control",
+        "Discuss pop-up interface elements"
+      ],
+      "knowledge_extraction_strategy": "Extract feature availability and interface details",
+      "why_this_strategy": "Clarifies system capabilities and UI elements",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002012",
+        "vec_upsfortna_optisweep_training_day1_20260317_002013",
+        "vec_upsfortna_optisweep_training_day1_20260317_002014",
+        "vec_upsfortna_optisweep_training_day1_20260317_002015",
+        "vec_upsfortna_optisweep_training_day1_20260317_002016",
+        "vec_upsfortna_optisweep_training_day1_20260317_002017",
+        "vec_upsfortna_optisweep_training_day1_20260317_002018",
+        "vec_upsfortna_optisweep_training_day1_20260317_002019",
+        "vec_upsfortna_optisweep_training_day1_20260317_002020",
+        "vec_upsfortna_optisweep_training_day1_20260317_002021"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000063"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV Status and Error Reporting Pop-up Details",
+      "timestamp_start": "02:10:00.880",
+      "timestamp_end": "02:10:32.400",
+      "primary_intent": "Explain AGV status pop-up and error reporting",
+      "operational_intents": [
+        "Describe detailed AGV status information",
+        "Explain error filtering in AGV reports"
+      ],
+      "knowledge_extraction_strategy": "Extract AGV monitoring and error reporting details",
+      "why_this_strategy": "Important for operational monitoring and troubleshooting",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002022",
+        "vec_upsfortna_optisweep_training_day1_20260317_002023",
+        "vec_upsfortna_optisweep_training_day1_20260317_002024",
+        "vec_upsfortna_optisweep_training_day1_20260317_002025"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000063"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Main Statistics and Custom Metrics Overview",
+      "timestamp_start": "02:10:32.400",
+      "timestamp_end": "02:10:56.868",
+      "primary_intent": "Present main statistics and custom defined metrics",
+      "operational_intents": [
+        "Explain statistics related to tippers, E stops, volume",
+        "Describe custom metrics requested by UPS"
+      ],
+      "knowledge_extraction_strategy": "Extract statistical and metric definitions",
+      "why_this_strategy": "Supports performance monitoring and reporting",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002026",
+        "vec_upsfortna_optisweep_training_day1_20260317_002027",
+        "vec_upsfortna_optisweep_training_day1_20260317_002028",
+        "vec_upsfortna_optisweep_training_day1_20260317_002029"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000063"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

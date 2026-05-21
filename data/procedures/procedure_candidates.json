@@ -1,63 +1,929 @@
 [
   {
-    "procedure_id": "case_229374_restart_service_candidate",
-    "title": "Restart Optisweep service after heartbeat timeout",
-    "operational_intent": "restart optisweep service after heartbeat timeout",
-    "role_required": "engineer",
-    "support_safe": false,
+    "local_dataset_id": "proc_223554_review_hospital_add_remove_state",
+    "ingestion_version": 1,
+    "procedure_id": "proc_223554_review_hospital_add_remove_state",
+    "title": "Review hospital station add-versus-remove tote failure state",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Establish a source-backed symptom baseline for hospital induction failure so later recovery actions can be compared against documented pre-recovery state.",
     "steps": [
       {
-        "step_id": "confirm_no_rms_alarms",
-        "instruction": "Confirm no RMS alarms are active.",
-        "validation_check": "RMS alarm state is documented.",
-        "expected_outcome": "No RMS alarm explains the stoppage.",
-        "escalation_condition": "Escalate if a safety or hardware alarm is present."
+        "step_id": "step_01",
+        "instruction": "Open the Salesforce case intake/closure evidence and record the exact wording that the ACB hospital was unable to induct and that the robot was in shutdown state or unable to return to normal operation.",
+        "validation_check": "The captured case evidence explicitly ties the incident to hospital induction failure and robot shutdown/normal-state recovery language.",
+        "expected_outcome": null,
+        "escalation_condition": null
       },
       {
-        "step_id": "confirm_tipper_heartbeat_timeout",
-        "instruction": "Confirm tipper heartbeat timeout is present.",
-        "validation_check": "Heartbeat timeout state is captured.",
-        "expected_outcome": "Heartbeat timeout matches the recurring failure signature.",
-        "escalation_condition": "Escalate if OT hardware alarms are present."
+        "step_id": "step_02",
+        "instruction": "Review the Teams troubleshooting thread and capture the message stating that the site can remove totes but cannot add totes at the hospital.",
+        "validation_check": "The symptom is preserved as an asymmetric hospital failure, not a generic tote handling outage.",
+        "expected_outcome": null,
+        "escalation_condition": null
       },
       {
-        "step_id": "set_master_estop_on",
-        "instruction": "Place master E-stop ON.",
-        "validation_check": "Safe state is confirmed.",
-        "expected_outcome": "System is safe for service recovery.",
-        "escalation_condition": "Escalate if safe state cannot be confirmed."
-      },
-      {
-        "step_id": "restart_service",
-        "instruction": "Engineer restarts the Optisweep/Ignition service.",
-        "validation_check": "Service returns to running state.",
-        "expected_outcome": "Service restart completes.",
-        "escalation_condition": "Escalate if remote access is unavailable."
-      },
-      {
-        "step_id": "validate_heartbeat",
-        "instruction": "Validate heartbeat recovery.",
-        "validation_check": "Heartbeat timeout clears.",
-        "expected_outcome": "Heartbeat is healthy.",
-        "escalation_condition": "Escalate if heartbeat does not recover."
-      },
-      {
-        "step_id": "confirm_agv_movement",
-        "instruction": "Confirm AGVs resume movement.",
-        "validation_check": "AGV movement is observed.",
-        "expected_outcome": "AGVs resume movement.",
-        "escalation_condition": "Escalate if AGVs remain stopped."
+        "step_id": "step_03",
+        "instruction": "Capture the later Salesforce/Teams update stating the original issue was resolved and the site could add and remove totes again.",
+        "validation_check": "Recovery evidence explicitly confirms both hospital add and remove functions were restored.",
+        "expected_outcome": null,
+        "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "RMS alarm state is documented.",
-      "Heartbeat timeout clears.",
-      "AGV movement is observed."
+      "Hospital symptom is documented as remove works but add fails, or inability to induct is explicitly recorded",
+      "Robot shutdown or inability to return to normal operation is preserved if visible in case evidence"
     ],
     "escalation_conditions": [
-      "remote access unavailable",
-      "heartbeat does not recover after restart",
-      "OT hardware alarms present"
+      "Hospital symptom cannot be clearly confirmed",
+      "Robot remains in shutdown state after recovery attempts",
+      "Evidence suggests broader service or AGV state issue beyond hospital UI behavior"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_01"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_07",
+        "source_artifact_id": "case_223554_docx_artifact_07"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_12",
+        "source_artifact_id": "case_223554_docx_artifact_12"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_14",
+        "source_artifact_id": "case_223554_docx_artifact_14"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_15",
+        "source_artifact_id": "case_223554_docx_artifact_15"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "medium",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Hospital UI path and field-level validation are incomplete",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Useful as a recurring CAT-1/CAT-3 crossover symptom review pattern where hospital remove works but add fails.",
+    "comparable_signal_groups": [
+      "hospital_station_unable_to_induct_totes",
+      "hospital_can_remove_totes_but_cannot_add_totes",
+      "robot_shutdown_state"
+    ],
+    "recurrence_evidence_refs": [
+      "Case 223554 Data.docx#media=image7.png",
+      "Case 223554 Data.docx#media=image15.png"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_223554_review_agv_misplacement_and_disconnected_tote_evidence",
+    "ingestion_version": 1,
+    "procedure_id": "proc_223554_review_agv_misplacement_and_disconnected_tote_evidence",
+    "title": "Review AGV misplacement and disconnected tote evidence around hospital blockage",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Document the AGV state anomalies associated with hospital blockage so recovery actions can be traced to specific AGVs and tote associations.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review the Teams troubleshooting messages and record each AGV explicitly named in relation to the blockage, including AGV 1555028, AGV 1542188, and AGV 1555012 if referenced in the recovery summary.",
+        "validation_check": "Each AGV ID is tied to a visible source message rather than memory or inference.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Capture the Teams statements that AGV 1555028 does not belong there, that two AGVs are under the rack in the same zone, and that AGV 1542188 is at the hospital pickup location.",
+        "validation_check": "The anomaly description is preserved exactly as source-provided and not upgraded to validated root cause.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Open the robot details screenshot and record the visible high-confidence fields for robot 1555028, including Robot ID, Path Mode, confirmed location wording, node code, and any visible action buttons such as Remove or Restart.",
+        "validation_check": "Only high-confidence visible fields are recorded; noisy OCR-only fields are not over-trusted.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Capture the recovery summary text stating that AGV 1555012 had disconnected tote 51 in the system and that tote 51 could not be removed from hospital until API dog was used.",
+        "validation_check": "The disconnected tote evidence is tied to a specific AGV and tote ID in source text.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Specific AGV IDs are preserved",
+      "Wrong-zone or under-rack observations are tied to source evidence",
+      "Disconnected tote reference is linked to the implicated AGV when visible"
+    ],
+    "escalation_conditions": [
+      "AGV identity cannot be confirmed",
+      "Multiple AGVs appear misplaced or under rack",
+      "Disconnected tote cannot be cleared after AGV cleanup"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_06"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_07",
+        "source_artifact_id": "case_223554_docx_artifact_07"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_08",
+        "source_artifact_id": "case_223554_docx_artifact_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_10",
+        "source_artifact_id": "case_223554_docx_artifact_10"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "medium",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Field-level AGV state validation path is incomplete",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "This candidate may generalize to CAT-1/CAT-2 crossover incidents where hospital blockage is driven by AGV placement or stale AGV/tote state.",
+    "comparable_signal_groups": [
+      "agv_1555028_wrong_zone_suspected",
+      "two_agvs_under_rack_same_zone_observed",
+      "agv_1555012_disconnected_tote_51"
+    ],
+    "recurrence_evidence_refs": [
+      "Case 223554 Data.docx#media=image7.png",
+      "Case 223554 Data.docx#media=image8.png",
+      "Case 223554 Data.docx#media=image10.png"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_223554_document_api_dog_tote_recovery_actions",
+    "ingestion_version": 1,
+    "procedure_id": "proc_223554_document_api_dog_tote_recovery_actions",
+    "title": "Document API dog or equivalent endpoint-based tote recovery actions",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Preserve a reusable candidate recovery pattern for endpoint-based tote actions while clearly marking missing operational details and role-review requirements.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review the recovery summary and record the exact failed action, such as tote induction not working at the hospital or tote 51 not being removable from hospital.",
+        "validation_check": "The failed normal-path tote action is explicitly documented before the endpoint-based action is recorded.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Capture the statement that a tote was inducted with API dog to get the system moving forward, and record that this was an endpoint-based action rather than a standard hospital UI action.",
+        "validation_check": "The source explicitly ties API dog tote induction to recovery progress.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Capture the statement that AGV 1555012 had disconnected tote 51 and that API dog was used to remove tote 51 after it could not be removed from hospital.",
+        "validation_check": "The tote removal action is linked to a specific tote and AGV in source evidence.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Review the follow-up Teams discussion and record that API dog process documentation was requested, that the process had been covered in training, and that Aveva was said to hit the same endpoints as API dog.",
+        "validation_check": "The procedure remains candidate-only and clearly marked as needing role and process validation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Source evidence explicitly shows which tote action failed and which endpoint-based action was used",
+      "Post-action recovery is documented"
+    ],
+    "escalation_conditions": [
+      "Normal hospital removal path still unclear",
+      "Endpoint-based action is unavailable or unauthorized",
+      "Issue persists after tote induction/removal action"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_09"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_10",
+        "source_artifact_id": "case_223554_docx_artifact_10"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_11",
+        "source_artifact_id": "case_223554_docx_artifact_11"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "medium",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Tooling details and permissions are incomplete",
+      "Support-safe status is unvalidated",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Important candidate recovery pattern, but should remain review-only until endpoint actions are formally documented and approved.",
+    "comparable_signal_groups": [
+      "api_dog_used_to_induct_tote",
+      "api_dog_used_to_remove_tote_51",
+      "aveva_uses_same_endpoints_as_api_dog"
+    ],
+    "recurrence_evidence_refs": [
+      "Case 223554 Data.docx#media=image10.png",
+      "Case 223554 Data.docx#media=image11.png"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_223554_validate_recovery_after_service_reset_and_robot_readd",
+    "ingestion_version": 1,
+    "procedure_id": "proc_223554_validate_recovery_after_service_reset_and_robot_readd",
+    "title": "Validate recovery after Optisweep service reset, hospital lane restart, and robot re-add",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Create a reusable post-recovery validation sequence for incidents where service reset and hospital lane restart are documented but exact execution details are incomplete.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Capture the documented recovery statement that the site is now able to add and remove totes, and record any note that secondary cleanup issues still remained at that moment.",
+        "validation_check": "Recovery evidence explicitly confirms restoration of both hospital add and remove functions.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Capture the later update stating that all robots were re-added and are back up and running.",
+        "validation_check": "The source shows fleet-level recovery, not only partial hospital symptom relief.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Review the Teams recovery summary and capture statements such as system started moving, clearing up hospital now, system is running now, or issue resolved around 9 PM ET.",
+        "validation_check": "At least one post-action message confirms operational movement or running state, not just action completion.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Capture the closure wording that Optisweep services were reset and the site restarted Hospital Lane, then record the escalation condition that the robot does not return to normal operation after those actions.",
+        "validation_check": "Documented closure actions are preserved and can be compared against any recurrence or failed recovery.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Hospital can add and remove totes",
+      "Robots are re-added and running",
+      "System is moving or site is running"
+    ],
+    "escalation_conditions": [
+      "Robot does not return to normal operation",
+      "Hospital still cannot add totes",
+      "System is not moving after robot re-add"
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_09",
+        "source_artifact_id": "case_223554_docx_artifact_09"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_10",
+        "source_artifact_id": "case_223554_docx_artifact_10"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_14",
+        "source_artifact_id": "case_223554_docx_artifact_14"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "case_223554_docx_artifact_15",
+        "source_artifact_id": "case_223554_docx_artifact_15"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "medium",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Post-recovery validation method is partly narrative rather than screen-driven",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Good candidate for CAT-1 recovery validation where service reset and robot re-add are documented but root cause remains unvalidated.",
+    "comparable_signal_groups": [
+      "hospital_can_add_and_remove_totes",
+      "robots_readded_and_running",
+      "system_running_now",
+      "case_closed"
+    ],
+    "recurrence_evidence_refs": [
+      "Case 223554 Data.docx#media=image9.png",
+      "Case 223554 Data.docx#media=image10.png",
+      "Case 223554 Data.docx#media=image14.png",
+      "Case 223554 Data.docx#media=image15.png"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_228086_restart_optisweep_ignition_and_validate",
+    "ingestion_version": 1,
+    "procedure_id": "proc_228086_restart_optisweep_ignition_and_validate",
+    "title": "Restart Ignition/OptiSweep service path and validate application response",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Restore WCS/OptiSweep application responsiveness and confirm the service stack is responding before onsite operations resume.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Confirm with onsite personnel that the system is in a safe state for remote recovery actions and that the system will remain e-stopped until remote validation is complete.",
+        "validation_check": "Onsite team confirms the system is held in e-stop and remote restart can proceed.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "On the affected server, open Command Prompt and navigate to the Ignition installation directory shown in the evidence before issuing the gateway restart command.",
+        "validation_check": "The command window shows the operator is in the Ignition directory and ready to execute the restart command.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Run the gateway restart command visible in the case evidence and wait for the restart sequence to complete.",
+        "validation_check": "The command output indicates the gateway restart was initiated and no immediate command failure is shown.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Open Services (Local), locate the OptiSweep service entry, and capture its visible status and startup type.",
+        "validation_check": "OptiSweep service is visible and shows Running after the restart sequence.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Use the visible API test view to send the GetAgvStatuses request, or the equivalent health-check request used by support, and capture the response.",
+        "validation_check": "The API returns a response after restart, matching the guidance that service response should be confirmed before releasing e-stop.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Inform onsite personnel that restart validation has passed and they may release the e-stop only after service response has been confirmed.",
+        "validation_check": "Onsite release instruction is given only after remote validation evidence is captured.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Ignition gateway restart command completes without visible error",
+      "OptiSweep service shows running state in Services view",
+      "API request returns a response after restart",
+      "Onsite team can release e-stop only after remote validation"
+    ],
+    "escalation_conditions": [
+      "Remote access unavailable",
+      "Gateway restart does not restore API response",
+      "OptiSweep service cannot be restarted or remains unstable",
+      "Issue recurs and infrastructure review is needed"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_07"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_08"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_06",
+        "source_artifact_id": "case_228086_docx_artifact_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_08",
+        "source_artifact_id": "case_228086_docx_artifact_08"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_09",
+        "source_artifact_id": "case_228086_docx_artifact_09"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_11",
+        "source_artifact_id": "case_228086_docx_artifact_11"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_14",
+        "source_artifact_id": "case_228086_docx_artifact_14"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_16",
+        "source_artifact_id": "case_228086_docx_artifact_16"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_17",
+        "source_artifact_id": "case_228086_docx_artifact_17"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_18",
+        "source_artifact_id": "case_228086_docx_artifact_18"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "medium",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Needs SME confirmation of exact restart order and permissions",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Matches CAT-1 service failure pattern where AGVs stop moving and recovery depends on remote service restart plus post-restart validation.",
+    "comparable_signal_groups": [
+      "agvs_not_moving",
+      "service_restart_performed",
+      "service_response_rechecked",
+      "e_stop_coordination_discussed"
+    ],
+    "recurrence_evidence_refs": [
+      "Case 228086 Data.docx#media=image10.png",
+      "Case 228086 Data.docx#media=image16.png"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_228086_review_and_correct_out_of_sync_agvs_in_rms",
+    "ingestion_version": 1,
+    "procedure_id": "proc_228086_review_and_correct_out_of_sync_agvs_in_rms",
+    "title": "Review AGV states and correct out-of-sync AGVs in RMS after service recovery",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Restore AGV fleet consistency after service restart by reviewing AGV states in RMS and related status views, then correcting affected AGVs individually.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Open Geek+ RMS and navigate to the robot map or monitor view shown in the evidence so individual robot details and current state can be reviewed.",
+        "validation_check": "RMS is accessible and at least one AGV detail record can be opened for inspection.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Open the API test view and run the GetAgvStatuses request to capture returned AGV states that may indicate queue or shutdown mismatches.",
+        "validation_check": "The API returns current AGV state data that can be compared against RMS observations.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Compare RMS robot details, API state output, and any visible system error notes to identify AGVs that are in incorrect queue states, missing from expected zone coverage, or otherwise inconsistent with normal operation.",
+        "validation_check": "A candidate list of AGVs requiring correction is documented before changes are made.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Using RMS elevated controls, correct each AGV identified as out of sync one at a time, documenting the AGV ID and the action taken for each correction.",
+        "validation_check": "Each corrected AGV shows an improved or expected state before moving to the next AGV.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "After completing individual AGV corrections, rerun the AGV status review and confirm with onsite operations that the system can resume the intended process such as auto bag-out.",
+        "validation_check": "No critical AGV mismatch remains that blocks operation, and onsite team confirms recovery.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Affected AGVs can be identified in RMS or API views",
+      "Each corrected AGV no longer shows the problematic state",
+      "Zone missing AGV or queue anomalies no longer block operation"
+    ],
+    "escalation_conditions": [
+      "Cannot identify which AGVs are out of sync",
+      "Zone missing AGV signal persists after corrections",
+      "RMS access unavailable or insufficient",
+      "Multiple AGVs remain blocked after one-by-one correction"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_08"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_10",
+        "source_artifact_id": "case_228086_docx_artifact_10"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_11",
+        "source_artifact_id": "case_228086_docx_artifact_11"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_13",
+        "source_artifact_id": "case_228086_docx_artifact_13"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_16",
+        "source_artifact_id": "case_228086_docx_artifact_16"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "medium",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Needs SME-approved AGV state interpretation and correction actions",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Fits CAT-1 incidents where service recovery alone is insufficient and AGVs remain out of sync until individually corrected in RMS.",
+    "comparable_signal_groups": [
+      "agv_status_api_reviewed",
+      "rms_agv_state_reviewed",
+      "agv_states_corrected_in_rms",
+      "zone_missing_agv_signal_mentioned"
+    ],
+    "recurrence_evidence_refs": [
+      "data/Case 228086 Data.docx#case=228086"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_228086_collect_wcs_server_application_timeout_and_memory_evidence",
+    "ingestion_version": 1,
+    "procedure_id": "proc_228086_collect_wcs_server_application_timeout_and_memory_evidence",
+    "title": "Collect WCS server, application, and performance evidence for suspected timeout or crash condition",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Capture the visible server, application, and event evidence needed to support later engineering or infrastructure review without over-claiming root cause.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Record the reported fault time and the active diagnostic hypothesis from the case notes or Teams discussion, such as web application fault, memory concern, or possible crash/timeout.",
+        "validation_check": "A documented starting point exists for what evidence the team is trying to confirm or rule out.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Open the Ignition status/performance page shown in the evidence and capture the visible CPU, memory, threads, and uptime-related information.",
+        "validation_check": "The screenshot clearly shows the performance page and enough metric context for later review.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Capture the memory trend view and note the visible scale and time window so later reviewers can compare pre- and post-restart behavior.",
+        "validation_check": "The memory trend screenshot is readable enough to support later comparison, even if it does not prove causation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Open Windows Services and capture the OptiSweep service row, including status and startup type.",
+        "validation_check": "The service state is preserved as visible evidence for later comparison with reported outage behavior.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "If a restart is performed, capture the command prompt or server console showing the restart command and any resulting status text.",
+        "validation_check": "The evidence package includes a visible record of the restart attempt rather than only a verbal report.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "If Windows Event Viewer, Ignition logs, or application event screens are available during the session, capture the relevant entries around the reported fault time; if they are not visible in the case, explicitly note that event evidence was not captured from this package.",
+        "validation_check": "Either timestamped event evidence is captured, or the evidence gap is explicitly documented for escalation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Performance page shows CPU/memory/threads or uptime data",
+      "Service state is captured from Windows Services",
+      "Any restart command or server console evidence is preserved",
+      "If event logs are available, relevant application/system entries are captured with timestamps"
+    ],
+    "escalation_conditions": [
+      "No event evidence can be collected before restart",
+      "Service crashes repeatedly",
+      "Performance evidence suggests infrastructure follow-up is needed",
+      "Visible evidence is insufficient to distinguish timeout from memory issue"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_03"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_07"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_05",
+        "source_artifact_id": "case_228086_docx_artifact_05"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_06",
+        "source_artifact_id": "case_228086_docx_artifact_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_07",
+        "source_artifact_id": "case_228086_docx_artifact_07"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_14",
+        "source_artifact_id": "case_228086_docx_artifact_14"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_15",
+        "source_artifact_id": "case_228086_docx_artifact_15"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_18",
+        "source_artifact_id": "case_228086_docx_artifact_18"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "medium",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Needs validated event/log collection examples",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Useful as a reusable evidence-collection pattern for CAT-1 incidents where memory, timeout, or crash is suspected but not validated.",
+    "comparable_signal_groups": [
+      "memory_trend_review_requested",
+      "memory_trend_reviewed",
+      "web_application_fault_reported",
+      "optisweep_service_running_state_viewed"
+    ],
+    "recurrence_evidence_refs": [
+      "data/Case 228086 Data.docx#case=228086",
+      "Case 228086 Data.docx#media=image14.png"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_228086_establish_customer_bridge_and_site_coordination_for_cat1_recovery",
+    "ingestion_version": 1,
+    "procedure_id": "proc_228086_establish_customer_bridge_and_site_coordination_for_cat1_recovery",
+    "title": "Establish customer bridge and onsite coordination before CAT-1 remote recovery actions",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Ensure remote troubleshooting and recovery actions occur with active onsite coordination and shared visibility into system state.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Ask whether a customer-facing bridge is active and whether onsite UPS contacts have been invited before continuing remote recovery planning.",
+        "validation_check": "The incident lead can state whether a real customer bridge exists and who is on it.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "If no proper bridge exists, start a group call or meeting immediately and add the onsite UPS contacts identified in the incident thread.",
+        "validation_check": "At least one onsite decision-maker is on the bridge or has confirmed receipt of the invite.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Ask the onsite team to state whether they are manually bagging out, whether the system is e-stopped, and when they will be ready for remote recovery actions.",
+        "validation_check": "Remote team has a current, explicit statement of onsite system state before acting.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Do not proceed with remote restart or validation steps without keeping the onsite team on the bridge for status updates, release timing, and confirmation of operational recovery.",
+        "validation_check": "Onsite team remains informed during remote actions and confirms recovery status after validation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "A customer bridge is active with onsite participants",
+      "Onsite contact names and invite status are documented",
+      "Bag-out and e-stop status are confirmed before remote actions"
+    ],
+    "escalation_conditions": [
+      "No onsite contact joins the bridge",
+      "Customer reports not receiving updates or invite",
+      "Remote recovery is blocked because site state is unclear"
+    ],
+    "related_incidents": [
+      "228086"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_04"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_05"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_06",
+        "source_artifact_id": "case_228086_docx_artifact_06"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_08",
+        "source_artifact_id": "case_228086_docx_artifact_08"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_09",
+        "source_artifact_id": "case_228086_docx_artifact_09"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_10",
+        "source_artifact_id": "case_228086_docx_artifact_10"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "medium",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Needs validated communication ownership model",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Strong candidate for CAT-1 incident handling because missing bridge materially affected coordination in this case.",
+    "comparable_signal_groups": [
+      "customer_bridge_missing",
+      "customer_complaint_about_no_bridge",
+      "site_manually_bagging_out",
+      "e_stop_coordination_discussed"
+    ],
+    "recurrence_evidence_refs": [
+      "Case 228086 Data.docx#media=image7.png",
+      "Case 228086 Data.docx#media=image8.png",
+      "Case 228086 Data.docx#media=image9.png"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_229374_01",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229374_01",
+    "title": "Check tipper heartbeat state and local tipper response during CAT-1 no-movement incident",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Collect source-backed tipper heartbeat and local-state evidence that distinguishes a no-alarm AGV stop from a tipper heartbeat/comms issue.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Ask the site to open the operator-facing RMS/related local view and report whether AGVs are stopping before tipper processing while beacon lights remain green and no active operator-station alarms are visible.",
+        "validation_check": "Evidence shows the system is stopped without a clear local alarm explanation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Have the site open AVEVA or the equivalent tipper overview and compare displayed tipper state to what is physically observed in the field, specifically whether tippers appear closed on screen while physically open and not paused.",
+        "validation_check": "A documented mismatch exists between AVEVA/supervisory state and field state, or the screen confirms no mismatch.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Direct the site to attempt a pause and then unpause of an affected tipper from the HMI, and record whether the command executes or has no effect.",
+        "validation_check": "The result is explicitly recorded as successful, unsuccessful, or indeterminate.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "On the tipper HMI, read and capture the visible heartbeat values for each tipper, preserving the full set of values and identifying any tipper showing zero or timeout behavior.",
+        "validation_check": "At least one screenshot or written record preserves the heartbeat values, including any zero value such as Tipper 1 = 0.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Summarize the collected evidence in the case or bridge chat, including no-alarm condition, AVEVA mismatch if present, pause/unpause result, and heartbeat values, and flag whether engineer restart or controls escalation is needed.",
+        "validation_check": "The next responder can see the symptom pattern and supporting values without re-running the checks.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Heartbeat values are captured and at least one abnormal value or timeout condition is documented.",
+      "Pause/unpause result is documented as successful or unsuccessful.",
+      "AVEVA/local field-state mismatch is documented if visible."
+    ],
+    "escalation_conditions": [
+      "All tippers show heartbeat timeout or one/more heartbeat values are zero/non-updating.",
+      "Pause/unpause does not restore response.",
+      "Hardware alarms are visible on AVEVA/RMS/controls screens.",
+      "Support cannot obtain remote access for deeper review."
     ],
     "related_incidents": [
       "229374"
@@ -65,210 +931,230 @@
     "evidence_refs": [
       {
         "incident_id": "229374",
-        "evidence_id": "timeline_229374_restart",
-        "source_artifact_id": "artifact_229374",
-        "excerpt": "Service restart restored heartbeat and AGV movement."
+        "evidence_id": "chunk_229374_02"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_03"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_04"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_23",
+        "source_artifact_id": "case_229374_docx_artifact_23"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_24",
+        "source_artifact_id": "case_229374_docx_artifact_24"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_35",
+        "source_artifact_id": "case_229374_docx_artifact_35"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "high_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Need SME confirmation of screen names and role boundaries.",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Matches CAT-1 recurrence pattern in related cases 229716 and 229777 where heartbeat failure and no visible RMS faults were key entry symptoms.",
+    "comparable_signal_groups": [
+      "agvs_stopped_with_no_visible_alarms",
+      "tipper_heartbeat_timeout_or_zero",
+      "hospital_function_impacted"
+    ],
+    "recurrence_evidence_refs": [
+      "region_229374_024",
+      "region_229374_035"
+    ]
   },
   {
-    "procedure_id": "case_229716_restart_service_candidate",
-    "title": "Restart Optisweep service after heartbeat timeout",
-    "operational_intent": "restart optisweep service after heartbeat timeout",
-    "role_required": "engineer",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "confirm_no_rms_alarms",
-        "instruction": "Confirm no RMS alarms are active.",
-        "validation_check": "RMS alarm state is documented.",
-        "expected_outcome": "No RMS alarm explains the stoppage.",
-        "escalation_condition": "Escalate if a safety or hardware alarm is present."
-      },
-      {
-        "step_id": "confirm_tipper_heartbeat_timeout",
-        "instruction": "Confirm tipper heartbeat timeout is present.",
-        "validation_check": "Heartbeat timeout state is captured.",
-        "expected_outcome": "Heartbeat timeout matches the recurring failure signature.",
-        "escalation_condition": "Escalate if OT hardware alarms are present."
-      },
-      {
-        "step_id": "set_master_estop_on",
-        "instruction": "Place master E-stop ON.",
-        "validation_check": "Safe state is confirmed.",
-        "expected_outcome": "System is safe for service recovery.",
-        "escalation_condition": "Escalate if safe state cannot be confirmed."
-      },
-      {
-        "step_id": "restart_service",
-        "instruction": "Engineer restarts the Optisweep/Ignition service.",
-        "validation_check": "Service returns to running state.",
-        "expected_outcome": "Service restart completes.",
-        "escalation_condition": "Escalate if remote access is unavailable."
-      },
-      {
-        "step_id": "validate_heartbeat",
-        "instruction": "Validate heartbeat recovery.",
-        "validation_check": "Heartbeat timeout clears.",
-        "expected_outcome": "Heartbeat is healthy.",
-        "escalation_condition": "Escalate if heartbeat does not recover."
-      },
-      {
-        "step_id": "confirm_agv_movement",
-        "instruction": "Confirm AGVs resume movement.",
-        "validation_check": "AGV movement is observed.",
-        "expected_outcome": "AGVs resume movement.",
-        "escalation_condition": "Escalate if AGVs remain stopped."
-      }
-    ],
-    "validation_checks": [
-      "RMS alarm state is documented.",
-      "Heartbeat timeout clears.",
-      "AGV movement is observed."
-    ],
-    "escalation_conditions": [
-      "remote access unavailable",
-      "heartbeat does not recover after restart",
-      "OT hardware alarms present"
-    ],
-    "related_incidents": [
-      "229716"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "229716",
-        "evidence_id": "timeline_229716_restart",
-        "source_artifact_id": "artifact_229716",
-        "excerpt": "Engineer service restart was part of recovery."
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "procedure_id": "case_229777_restart_service_candidate",
-    "title": "Restart Optisweep service after heartbeat timeout",
-    "operational_intent": "restart optisweep service after heartbeat timeout",
-    "role_required": "engineer",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "confirm_no_rms_alarms",
-        "instruction": "Confirm no RMS alarms are active.",
-        "validation_check": "RMS alarm state is documented.",
-        "expected_outcome": "No RMS alarm explains the stoppage.",
-        "escalation_condition": "Escalate if a safety or hardware alarm is present."
-      },
-      {
-        "step_id": "confirm_tipper_heartbeat_timeout",
-        "instruction": "Confirm tipper heartbeat timeout is present.",
-        "validation_check": "Heartbeat timeout state is captured.",
-        "expected_outcome": "Heartbeat timeout matches the recurring failure signature.",
-        "escalation_condition": "Escalate if OT hardware alarms are present."
-      },
-      {
-        "step_id": "set_master_estop_on",
-        "instruction": "Place master E-stop ON.",
-        "validation_check": "Safe state is confirmed.",
-        "expected_outcome": "System is safe for service recovery.",
-        "escalation_condition": "Escalate if safe state cannot be confirmed."
-      },
-      {
-        "step_id": "restart_service",
-        "instruction": "Engineer restarts the Optisweep/Ignition service.",
-        "validation_check": "Service returns to running state.",
-        "expected_outcome": "Service restart completes.",
-        "escalation_condition": "Escalate if remote access is unavailable."
-      },
-      {
-        "step_id": "validate_heartbeat",
-        "instruction": "Validate heartbeat recovery.",
-        "validation_check": "Heartbeat timeout clears.",
-        "expected_outcome": "Heartbeat is healthy.",
-        "escalation_condition": "Escalate if heartbeat does not recover."
-      },
-      {
-        "step_id": "confirm_agv_movement",
-        "instruction": "Confirm AGVs resume movement.",
-        "validation_check": "AGV movement is observed.",
-        "expected_outcome": "AGVs resume movement.",
-        "escalation_condition": "Escalate if AGVs remain stopped."
-      }
-    ],
-    "validation_checks": [
-      "RMS alarm state is documented.",
-      "Heartbeat timeout clears.",
-      "AGV movement is observed."
-    ],
-    "escalation_conditions": [
-      "remote access unavailable",
-      "heartbeat does not recover after restart",
-      "OT hardware alarms present"
-    ],
-    "related_incidents": [
-      "229777"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "229777",
-        "evidence_id": "timeline_229777_restart",
-        "source_artifact_id": "artifact_229777",
-        "excerpt": "Recurring heartbeat timeout recovery pattern."
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "procedure_id": "proc_229374_01",
-    "title": "Proc 229374 01",
-    "operational_intent": "Capture source-backed timeout evidence with timestamps, event IDs, categories, and error text so engineering can assess whether database timeouts contributed to a WCS service failure.",
-    "role_required": "support",
-    "support_safe": false,
+    "local_dataset_id": "proc_229374_02",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229374_02",
+    "title": "Restore access and perform engineer-led Optisweep service restart for CAT-1 WCS service failure",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Recover CAT-1 service-failure incidents by restoring server access and executing the source-backed service restart path.",
     "steps": [
       {
         "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "The chosen time anchor matches at least one visible WCSWebApplication timeout screenshot.",
+        "instruction": "Record that normal UPS-side ZScaler/VPN access is failing after authentication and note any related UPS incident or helpline information before switching to the field-PC access path.",
+        "validation_check": "The team has documented that normal remote access is blocked and an alternate path is required.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "At least one captured image clearly shows WCSWebApplication and the repeated 1:48:37 AM entries.",
+        "instruction": "Confirm the primary WCS IP to target for access, using the incident thread evidence that identifies 10.27.80.165 as the primary WCS server needed to check Ignition and the database.",
+        "validation_check": "The responder can state which server is being accessed and why.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "The captured detail includes both Event ID 20102 and timeout-related DbCommand text.",
+        "instruction": "Coordinate with the site to use the shared field PC and establish an RDP session to 10.27.80.165, then confirm that the remote desktop session is active.",
+        "validation_check": "The team can interact with the primary WCS server through the field-PC session.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "The captured detail explicitly shows Event ID 10100 and timeout-expired language.",
+        "instruction": "Once server access is available, engage the engineer or elevated responder who has authority to use administrative access and perform the restart, and record the responder name in the case.",
+        "validation_check": "An authorized responder is clearly identified before the restart occurs.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "The summary contains Event IDs 20102 and/or 10100 with timestamps and artifact links, and does not mislabel OPC errors as database timeouts.",
+        "instruction": "From the server session, have the authorized responder restart the Optisweep services used by the WCS/Ignition environment, and document that the restart was completed.",
+        "validation_check": "The case or bridge explicitly states that Optisweep services were restarted.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Ask the site and bridge participants to confirm whether the system is operational after the restart and whether the site continues to run, then record the outcome in the case.",
+        "validation_check": "At least one post-restart note confirms operational recovery from the production perspective.",
         "expected_outcome": null,
         "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "At least one screenshot or log view shows WCSWebApplication with timestamp 4/4/2026 1:48:37 AM",
-      "Event ID 20102 and/or 10100 details are preserved with timeout wording"
+      "RDP session to 10.27.80.165 is established.",
+      "Engineer confirms Optisweep services were restarted.",
+      "Post-restart system operation is confirmed by site or case notes."
     ],
     "escalation_conditions": [
-      "If Event ID 10100/20102 timeout evidence is present during outage window",
-      "If timeout evidence is repeated across multiple screenshots but cause remains unclear",
-      "If support cannot distinguish database timeout evidence from OPC/application exceptions"
+      "RDP path cannot be established.",
+      "Restart does not restore operation.",
+      "Heartbeat or hardware alarms persist after restart.",
+      "Issue recurs in the same sort window."
+    ],
+    "related_incidents": [
+      "229374"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_05"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_06"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_11"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_24",
+        "source_artifact_id": "case_229374_docx_artifact_24"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_28",
+        "source_artifact_id": "case_229374_docx_artifact_28"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_41",
+        "source_artifact_id": "case_229374_docx_artifact_41"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_42",
+        "source_artifact_id": "case_229374_docx_artifact_42"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_46",
+        "source_artifact_id": "case_229374_docx_artifact_46"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "high_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Need exact service inventory and approved access method.",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Strong recurrence candidate across CAT-1 cases where service restart restored operation after heartbeat/no-alarm symptoms.",
+    "comparable_signal_groups": [
+      "remote_access_blocked_then_field_pc_workaround",
+      "engineer_service_restart_restores_operation",
+      "heartbeat_failure_precedes_restart"
+    ],
+    "recurrence_evidence_refs": [
+      "region_229374_028",
+      "region_229374_042",
+      "region_229374_046"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_229374_03",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229374_03",
+    "title": "Collect WCS server and application evidence for database timeout symptoms",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Create a reusable evidence-collection pattern for database timeout symptoms seen during CAT-1 incidents without over-interpreting them as root cause.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Use the available server access path or existing RCA screenshots to open the WCS/Ignition-side evidence source that contains WCSWebApplication timeout entries.",
+        "validation_check": "The reviewer is looking at the event source that contains the timeout evidence, not a paraphrased note only.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Capture the event list or screenshot that shows multiple WCSWebApplication errors at the same timestamp, including the visible 4/4/2026 1:48:37 AM entries and event IDs if shown.",
+        "validation_check": "The screenshot clearly preserves the clustered event timing and source attribution.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Open a WCSWebApplication Event ID 20102 entry and capture the General Details pane showing the category, event ID, failed DbCommand text, command timeout, and logged time.",
+        "validation_check": "The captured detail pane contains enough text to identify this as a database-command timeout event.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Open a WCSWebApplication Event ID 10100 entry and capture the General Details pane showing the query exception, context type, and Execution Timeout Expired wording.",
+        "validation_check": "The captured detail pane clearly ties the event to a query timeout/iteration exception.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Record the visible host/computer name and correlate the timeout timestamps to the incident timeline, noting that the screenshots were later shared as database timeouts around 2 AM site time.",
+        "validation_check": "A reviewer can connect the event screenshots to the incident timeline without re-reading the entire chat thread.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "At least one event 10100 and/or 20102 record is captured with timestamp and source.",
+      "Host/computer name is preserved if visible.",
+      "Event details include timeout wording rather than only a generic error count."
+    ],
+    "escalation_conditions": [
+      "Timeout events are present near the incident window.",
+      "Timeouts recur after restart.",
+      "Timeout evidence is accompanied by broader server/database health concerns."
     ],
     "related_incidents": [
       "229374"
@@ -295,1451 +1181,205 @@
       },
       {
         "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_05",
-        "source_artifact_id": "case_229374_docx_artifact_05"
-      },
-      {
-        "incident_id": "229374",
         "evidence_id": "case_229374_docx_artifact_43",
         "source_artifact_id": "case_229374_docx_artifact_43"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "high_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Need validated event collection method from a live server example.",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Useful as a reusable evidence-collection object because database timeout screenshots recur in CAT-1 investigations even when they are not the validated root cause.",
+    "comparable_signal_groups": [
+      "wcswebapplication_event_10100_execution_timeout",
+      "wcswebapplication_event_20102_dbcommand_timeout"
+    ],
+    "recurrence_evidence_refs": [
+      "region_229374_001",
+      "region_229374_002",
+      "region_229374_003",
+      "region_229374_043"
+    ]
   },
   {
-    "procedure_id": "proc_229374_02",
-    "title": "Proc 229374 02",
-    "operational_intent": "Collect fast site-side diagnostic evidence when remote access is blocked or delayed.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "The symptom description distinguishes between full stop and stop at tilt trays/tipper handoff.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "A screenshot is captured that shows RMS status during the outage window, even if no errors are present.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Site confirms beacon/alarm state and support records it as a diagnostic signal, not proof of health.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "A specific mismatch is documented between HMI/AVEVA state and physical state.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "The result of the pause/unpause attempt is explicitly recorded as worked or failed.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_06",
-        "instruction": "Review candidate step 6",
-        "validation_check": "At least one affected tipper value and one comparison value are recorded.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "RMS message panel status is captured",
-      "Operator station alarm/beacon state is confirmed",
-      "Heartbeat values are collected for at least the affected tipper path"
-    ],
-    "escalation_conditions": [
-      "If RMS shows no robot errors but AGVs still do not move",
-      "If AVEVA/HMI state conflicts with field reality",
-      "If heartbeat values are inconsistent or one tipper shows zero"
-    ],
-    "related_incidents": [
-      "229374"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "229374",
-        "evidence_id": "chunk_229374_05"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_23",
-        "source_artifact_id": "case_229374_docx_artifact_23"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_24",
-        "source_artifact_id": "case_229374_docx_artifact_24"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_35",
-        "source_artifact_id": "case_229374_docx_artifact_35"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_36",
-        "source_artifact_id": "case_229374_docx_artifact_36"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_37",
-        "source_artifact_id": "case_229374_docx_artifact_37"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_39",
-        "source_artifact_id": "case_229374_docx_artifact_39"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "procedure_id": "proc_229374_03",
-    "title": "Proc 229374 03",
-    "operational_intent": "Restore diagnostic access without waiting for external VPN remediation.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "The case record clearly shows that normal remote access is blocked by an external access issue.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "A single target IP is selected and recorded before RDP is attempted.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Support confirms that the field PC is visible and can be used for the next diagnostic step.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Either the remote desktop is visible or the exact failure message is recorded.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "Support confirms usable application/server visibility after the workaround.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "Field PC visibility is established",
-      "RDP to 10.27.80.165 succeeds or failure is explicitly documented",
-      "Ignition or server desktop becomes visible"
-    ],
-    "escalation_conditions": [
-      "If VPN/Zscaler remains unavailable and production is impacted",
-      "If field PC is the only viable path to server visibility",
-      "If RDP succeeds but application credentials still fail"
-    ],
-    "related_incidents": [
-      "229374"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "229374",
-        "evidence_id": "chunk_229374_04"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "chunk_229374_07"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_24",
-        "source_artifact_id": "case_229374_docx_artifact_24"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_26",
-        "source_artifact_id": "case_229374_docx_artifact_26"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_28",
-        "source_artifact_id": "case_229374_docx_artifact_28"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_29",
-        "source_artifact_id": "case_229374_docx_artifact_29"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_30",
-        "source_artifact_id": "case_229374_docx_artifact_30"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_37",
-        "source_artifact_id": "case_229374_docx_artifact_37"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_38",
-        "source_artifact_id": "case_229374_docx_artifact_38"
-      },
-      {
-        "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_41",
-        "source_artifact_id": "case_229374_docx_artifact_41"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
+    "local_dataset_id": "proc_229374_04",
+    "ingestion_version": 1,
     "procedure_id": "proc_229374_04",
-    "title": "Proc 229374 04",
-    "operational_intent": "Restore operations when service degradation is suspected and authorized personnel are available.",
-    "role_required": "support",
-    "support_safe": false,
+    "title": "Collect and correlate OPC or tipper endpoint communication evidence",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Preserve communication-path evidence for engineering and controls review without overclaiming causality.",
     "steps": [
       {
         "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "The restart performer and reason are documented before the action is taken.",
+        "instruction": "Capture the visible connectivity test output for the tipper OTnet endpoint, preserving the target IP 10.27.80.157, timestamps, and response times shown in the PowerShell or command prompt output.",
+        "validation_check": "The screenshot clearly ties the connectivity evidence to endpoint 10.27.80.157.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "The responder has active server access before attempting the restart.",
+        "instruction": "Open the OPC or Ignition log view that shows UascClientMessageHandler entries and capture the rows showing connection reset events to remote 10.27.80.157:4840.",
+        "validation_check": "At least one screenshot preserves a connection-reset event to the target endpoint.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "The restart action is explicitly documented with performer and time.",
+        "instruction": "Capture the log or screenshot entries showing WriteOpcTagAsync failures, Bad at OPC comms errors, and any visible heartbeat or hospital tag names affected.",
+        "validation_check": "The evidence shows that operational tag writes were failing, not just generic connectivity warnings.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "At least one post-restart confirmation is captured from the responder or case owner.",
+        "instruction": "Capture the alarm screen showing any tipper or controls hardware alarms, preserving timestamps and exact alarm text such as RIO Module Ethernet Failure, ClearLink Module not communicating, and VFD not detected.",
+        "validation_check": "Alarm evidence is preserved with exact wording and timestamps for later controls review.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "Recovery status and root-cause uncertainty are both documented.",
+        "instruction": "Create a concise evidence note that links the endpoint IP, connection-reset entries, OPC write failures, and any controls alarms, while explicitly marking them as candidate contributing evidence rather than validated root cause.",
+        "validation_check": "A reviewer can see the communication-path evidence set without inferring that causality is already proven.",
         "expected_outcome": null,
         "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "Service restart action is recorded",
-      "Post-restart system is reported operational",
-      "Case notes show continued operation after restart"
+      "Endpoint IP 10.27.80.157 is preserved in the evidence.",
+      "At least one OPC/UASC connection-reset or Bad at OPC comms entry is captured.",
+      "Any related controls alarms are preserved with timestamps if visible."
     ],
     "escalation_conditions": [
-      "If restart restores service but cause remains unknown",
-      "If repeated restarts are needed",
-      "If authorized responder is not available to perform the restart"
+      "Connection reset or Bad at OPC comms evidence is present.",
+      "Controls alarms are visible.",
+      "Heartbeat does not recover after service restart or issue recurs."
     ],
     "related_incidents": [
       "229374"
     ],
     "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_09"
+      },
       {
         "incident_id": "229374",
         "evidence_id": "chunk_229374_10"
       },
       {
         "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_41",
-        "source_artifact_id": "case_229374_docx_artifact_41"
+        "evidence_id": "case_229374_docx_artifact_04",
+        "source_artifact_id": "case_229374_docx_artifact_04"
       },
       {
         "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_42",
-        "source_artifact_id": "case_229374_docx_artifact_42"
+        "evidence_id": "case_229374_docx_artifact_06",
+        "source_artifact_id": "case_229374_docx_artifact_06"
       },
       {
         "incident_id": "229374",
-        "evidence_id": "case_229374_docx_artifact_46",
-        "source_artifact_id": "case_229374_docx_artifact_46"
+        "evidence_id": "case_229374_docx_artifact_07",
+        "source_artifact_id": "case_229374_docx_artifact_07"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_08",
+        "source_artifact_id": "case_229374_docx_artifact_08"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_45",
+        "source_artifact_id": "case_229374_docx_artifact_45"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "medium_high_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Need validated live collection steps and controls review boundaries.",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Strong candidate for recurrence grouping where heartbeat failure coincides with OPC connection resets and OT-side alarm evidence.",
+    "comparable_signal_groups": [
+      "uasc_client_connection_reset_to_10_27_80_157",
+      "bad_at_opc_comms",
+      "rio_clearlink_vfd_alarm_cluster"
+    ],
+    "recurrence_evidence_refs": [
+      "region_229374_006",
+      "region_229374_007",
+      "region_229374_045"
+    ]
   },
   {
-    "local_dataset_id": "proc_228086_01",
+    "local_dataset_id": "proc_229488_restart_optisweep_windows_service_candidate",
     "ingestion_version": 1,
-    "procedure_id": "proc_228086_01",
-    "title": "Proc 228086 01",
-    "operational_intent": "Preserve screenshot-backed evidence showing memory trend, performance/status context, and any visible uptime or gateway state indicators without over-claiming crash confirmation.",
-    "role_required": "support",
-    "support_safe": false,
+    "procedure_id": "proc_229488_restart_optisweep_windows_service_candidate",
+    "title": "Restart Optisweep Windows service after AGVs stop with no visible fault",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Restore AGV movement and production when the Optisweep Windows service is suspected stopped or unresponsive.",
     "steps": [
       {
         "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "Remote access is confirmed before attempting Ignition evidence capture.",
+        "instruction": "Review the active Teams thread and Salesforce case to confirm the reported symptom is AGVs not moving, no visible fault is reported, and customer/site is requesting rapid recovery.",
+        "validation_check": "Evidence shows AGVs are not moving and the issue is being handled as a CAT-1 service failure candidate rather than a confirmed hardware fault.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Screenshot includes chart title and enough of the time axis to support later review.",
+        "instruction": "Ask site/support to confirm current tipper/HMI status and record the reported findings that tippers were mostly in run position, heartbeat was flat at 550, and no HMI system-level errors were reported.",
+        "validation_check": "Pre-restart evidence supports a no-visible-fault presentation consistent with service restart being considered.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Screenshot is legible enough to identify the page and preserve visible metrics for later review.",
+        "instruction": "Coordinate with site/support in the incident thread to confirm the area is stopped or startup is being held before the remote responder restarts the Optisweep Windows service.",
+        "validation_check": "There is visible coordination showing restart was intentionally executed during a controlled recovery attempt.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Conclusion does not overstate root cause and explicitly notes uncertainty.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "Memory trend screenshot captured",
-      "Ignition status/performance page screenshot captured",
-      "Visible values preserved for memory, threads, CPU, or uptime if shown"
-    ],
-    "escalation_conditions": [
-      "If gateway status cannot be reached",
-      "If memory/status evidence is inconclusive and outage persists",
-      "If restart consideration requires higher-role approval"
-    ],
-    "related_incidents": [
-      "228086"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_04"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_05"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_11"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_05",
-        "source_artifact_id": "case_228086_docx_artifact_05"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_06",
-        "source_artifact_id": "case_228086_docx_artifact_06"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_07",
-        "source_artifact_id": "case_228086_docx_artifact_07"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_15",
-        "source_artifact_id": "case_228086_docx_artifact_15"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_228086_02",
-    "ingestion_version": 1,
-    "procedure_id": "proc_228086_02",
-    "title": "Proc 228086 02",
-    "operational_intent": "Create a traceable visual evidence set for AGV movement failures and system error context.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "Screenshot includes enough context to tie later detail screenshots to the same incident state.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "At least one screenshot clearly shows the error panel names and associated entries.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Raw wording is preserved separately from interpretation.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Evidence package clearly distinguishes direct screen evidence from chat-reported interpretation.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "System error area captured",
-      "AGV-related status area captured",
-      "Any visible error strings preserved exactly as shown"
-    ],
-    "escalation_conditions": [
-      "If AGVs are not moving and no explicit AGV fault is shown",
-      "If system errors suggest missing AGV or control object issues",
-      "If HMI symptoms conflict with service/API status"
-    ],
-    "related_incidents": [
-      "228086"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_01"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_06"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_09"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_01",
-        "source_artifact_id": "case_228086_docx_artifact_01"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_02",
-        "source_artifact_id": "case_228086_docx_artifact_02"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_03",
-        "source_artifact_id": "case_228086_docx_artifact_03"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_04",
-        "source_artifact_id": "case_228086_docx_artifact_04"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_10",
-        "source_artifact_id": "case_228086_docx_artifact_10"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_228086_03",
-    "ingestion_version": 1,
-    "procedure_id": "proc_228086_03",
-    "title": "Proc 228086 03",
-    "operational_intent": "Collect screenshot-backed service responsiveness evidence before or after restart-oriented actions.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "The screenshot clearly shows the request being used for service responsiveness validation.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "A response is captured and its status is recorded; if no response, that is documented as failure evidence.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Service state is captured in the same evidence set as the API result.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "The note distinguishes service responsiveness from end-to-end production recovery.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "GetAgvStatuses response captured",
-      "HTTP status recorded if visible",
-      "OptiSweep service state captured in Services console"
-    ],
-    "escalation_conditions": [
-      "If API gives no response",
-      "If service is not running",
-      "If API succeeds but AGVs still do not move"
-    ],
-    "related_incidents": [
-      "228086"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_10"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_11"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_16",
-        "source_artifact_id": "case_228086_docx_artifact_16"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_17",
-        "source_artifact_id": "case_228086_docx_artifact_17"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_18",
-        "source_artifact_id": "case_228086_docx_artifact_18"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_228086_04",
-    "ingestion_version": 1,
-    "procedure_id": "proc_228086_04",
-    "title": "Proc 228086 04",
-    "operational_intent": "Document the candidate recovery sequence exactly as supported by the case evidence, while marking missing execution details and approval boundaries.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "No restart step proceeds until estop coordination is documented.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Command syntax and path are captured well enough for SME review before reuse.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Gateway page is reachable before proceeding to API validation.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "The result is explicitly recorded as either responsive or non-responsive.",
+        "instruction": "From the remote site connection, restart the Optisweep Windows service and immediately notify the incident thread that the restart has been completed.",
+        "validation_check": "A support message or case comment explicitly confirms the Optisweep Windows service restart occurred.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "A repeated API check is performed after the OptiSweep restart action.",
+        "instruction": "Monitor site feedback and case comments for startup progress and production confirmation after the service restart.",
+        "validation_check": "Recovery is only considered successful when startup and production statements are explicitly documented.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_06",
-        "instruction": "Review candidate step 6",
-        "validation_check": "Release is documented after, not before, the confirmation step.",
+        "instruction": "Update the case to reflect recovery, resolution/RCA-pending status, and note that logs or additional evidence are still being collected for investigation.",
+        "validation_check": "Case record shows recovery was documented without claiming validated root cause.",
         "expected_outcome": null,
         "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "Estop applied before restart actions",
-      "Ignition restart command captured or documented",
-      "API response checked after restart",
-      "Estop released only after confirmation"
+      "Site startup begins after restart",
+      "Support or site confirms production resumes",
+      "Case comments reflect recovery and RCA continuation"
     ],
     "escalation_conditions": [
-      "If restart authority is unclear",
-      "If Ignition does not return after command",
-      "If GetAgvStatuses still gives no response after restart",
-      "If onsite coordination is not established"
-    ],
-    "related_incidents": [
-      "228086"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_10"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "chunk_228086_11"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_11",
-        "source_artifact_id": "case_228086_docx_artifact_11"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_14",
-        "source_artifact_id": "case_228086_docx_artifact_14"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_16",
-        "source_artifact_id": "case_228086_docx_artifact_16"
-      },
-      {
-        "incident_id": "228086",
-        "evidence_id": "case_228086_docx_artifact_17",
-        "source_artifact_id": "case_228086_docx_artifact_17"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_223554_01",
-    "ingestion_version": 1,
-    "procedure_id": "proc_223554_01",
-    "title": "Proc 223554 01",
-    "operational_intent": "Preserve a source-backed incident timeline and escalation record before deeper troubleshooting or handoff.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "Case number and subject match the incident package and the screenshot clearly shows the case creation/update card.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Work order ID and entered time are readable and align with the incident timeline summary.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Timestamp and presence of the Teams bridge are readable from the screenshot.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Recovery comments are captured as validation signals only and not converted into root-cause statements.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "Resolution wording is preserved verbatim and flagged as documented action rather than validated cause.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "Case number, subject, timestamps, and work order ID are captured from visible source records",
-      "Recovery timestamps are separated from cause assumptions"
-    ],
-    "escalation_conditions": [
-      "CBRE work order shows P1 emergency",
-      "Teams bridge or onsite dispatch is required",
-      "Case wording indicates server/service issue with production impact"
-    ],
-    "related_incidents": [
-      "223554"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_01"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_02"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_04"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_04",
-        "source_artifact_id": "case_223554_docx_artifact_04"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_12",
-        "source_artifact_id": "case_223554_docx_artifact_12"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_13",
-        "source_artifact_id": "case_223554_docx_artifact_13"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_14",
-        "source_artifact_id": "case_223554_docx_artifact_14"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_15",
-        "source_artifact_id": "case_223554_docx_artifact_15"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_223554_02",
-    "ingestion_version": 1,
-    "procedure_id": "proc_223554_02",
-    "title": "Proc 223554 02",
-    "operational_intent": "Narrow the issue to AGV/tote state inconsistency using source-backed observations before escalation or recovery actions.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "Symptom wording is captured exactly and separated from later diagnosis.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "The statement is labeled candidate-only and not treated as validated root cause.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Each AGV ID is tied to the exact wording from the source and not normalized beyond AGV formatting.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Only fields that are visually legible are recorded; noisy OCR fields are left blank or marked uncertain.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "Escalation note references source artifacts and does not claim confirmed cause.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "Specific AGV IDs and mismatch statements are captured from source",
-      "Visual robot detail evidence is treated as supportive, not definitive"
-    ],
-    "escalation_conditions": [
-      "Onsite confirmation is needed",
-      "AGV location/state cannot be reconciled from available evidence",
-      "Issue persists after basic state review"
-    ],
-    "related_incidents": [
-      "223554"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_06"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_07"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_09"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_01",
-        "source_artifact_id": "case_223554_docx_artifact_01"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_07",
-        "source_artifact_id": "case_223554_docx_artifact_07"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_08",
-        "source_artifact_id": "case_223554_docx_artifact_08"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_10",
-        "source_artifact_id": "case_223554_docx_artifact_10"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_223554_03",
-    "ingestion_version": 1,
-    "procedure_id": "proc_223554_03",
-    "title": "Proc 223554 03",
-    "operational_intent": "Obtain actionable onsite observations and preserve them for support coordination during an active disruption.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "Onsite status and site-down wording are captured from the same coherent message block.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Requested checks and returned observations are both captured with timestamps.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "E-stop remains marked as considered unless explicit execution evidence is present.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Recovery indicators are captured separately from the actions that may have preceded them.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "Summary references source artifacts and clearly marks unknowns such as whether E-stop occurred.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "Onsite contact, location, and requested checks are documented",
-      "Heartbeat/lost-connection observations are preserved with timestamps"
-    ],
-    "escalation_conditions": [
-      "No one is onsite",
-      "Site is reported down",
-      "Heartbeat or connection issue is suspected but not confirmed remotely"
-    ],
-    "related_incidents": [
-      "223554"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_05"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_08"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_05",
-        "source_artifact_id": "case_223554_docx_artifact_05"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_09",
-        "source_artifact_id": "case_223554_docx_artifact_09"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_223554_04",
-    "ingestion_version": 1,
-    "procedure_id": "proc_223554_04",
-    "title": "Proc 223554 04",
-    "operational_intent": "Preserve a reusable evidence-backed recovery pattern for SME review and future controlled documentation.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "Summary is captured verbatim and explicitly marked as candidate operational evidence.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Only AGV removals explicitly stated in the source are recorded.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "No endpoint URLs, payloads, or credentials are invented; only visible action descriptions are recorded.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Recovery confirmation is separated from inferred root cause.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "Procedure remains candidate-only and blocked from promotion until SME approval and role boundaries are defined.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_06",
-        "instruction": "Review candidate step 6",
-        "validation_check": "Service-reset wording is preserved separately from the Teams manual-action summary.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "Recovery actions are captured as documented actions only",
-      "No unsupported API endpoint or execution details are invented"
-    ],
-    "escalation_conditions": [
-      "Manual API intervention is being considered",
-      "Support team lacks approved instructions",
-      "Issue requires advanced recovery beyond standard triage"
-    ],
-    "related_incidents": [
-      "223554"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_09"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_10"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "chunk_223554_11"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_10",
-        "source_artifact_id": "case_223554_docx_artifact_10"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_11",
-        "source_artifact_id": "case_223554_docx_artifact_11"
-      },
-      {
-        "incident_id": "223554",
-        "evidence_id": "case_223554_docx_artifact_15",
-        "source_artifact_id": "case_223554_docx_artifact_15"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_229716_01",
-    "ingestion_version": 1,
-    "procedure_id": "proc_229716_01",
-    "title": "Proc 229716 01",
-    "operational_intent": "Restore AGV-to-tipper flow after service-related stoppage symptoms while preserving evidence and validating recovery.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "Restart target is explicitly Optisweep and symptoms align with this incident pattern.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "E-stop instruction is acknowledged and restart does not begin until controlled stop is in place.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Correct service entry is identified before any restart action is taken.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Service restart completes without switching to an unintended service such as Ignition OPC.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "E-stop is removed only after restart completion and site is ready for movement validation.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_06",
-        "instruction": "Review candidate step 6",
-        "validation_check": "Both AGV movement and hospital tote removal are restored, or remaining issue is explicitly documented for escalation.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "AGVs are moving again",
-      "Hospital tote removal works after recovery",
-      "System can be declared operational by site/support"
-    ],
-    "escalation_conditions": [
-      "If AGVs do not resume movement after restart",
-      "If hospital tote removal still fails after restart",
-      "If heartbeat timeout symptoms persist",
-      "If service restart cannot be performed due to permissions or unclear service state"
-    ],
-    "related_incidents": [
-      "229716"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_05"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_06"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_08"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_09"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_04",
-        "source_artifact_id": "case_229716_docx_artifact_04"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_07",
-        "source_artifact_id": "case_229716_docx_artifact_07"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_08",
-        "source_artifact_id": "case_229716_docx_artifact_08"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_11",
-        "source_artifact_id": "case_229716_docx_artifact_11"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_229716_02",
-    "ingestion_version": 1,
-    "procedure_id": "proc_229716_02",
-    "title": "Proc 229716 02",
-    "operational_intent": "Preserve screenshot-backed diagnostic evidence showing heartbeat timeout context without over-asserting noisy OCR details.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "The screenshot clearly identifies the tipper heartbeat/alarm context rather than an unrelated screen.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "At least one screenshot preserves the message area and timestamps well enough for manual review.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Screenshot is sufficient to support manual comparison with the written note 'no RMS faults' without over-claiming exact values.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Written summary and screenshots are linked together so later reviewers know the screenshots are supporting evidence, not sole proof.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "Screenshots clearly show the relevant view names or context",
-      "Capture includes timestamps/messages if visible",
-      "Evidence is linked to the incident record"
-    ],
-    "escalation_conditions": [
-      "If heartbeat/alarm views cannot be accessed",
-      "If screenshots are too unclear to preserve message/timestamp context",
-      "If visual evidence conflicts with operator-reported status"
-    ],
-    "related_incidents": [
-      "229716"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_03"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_04"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_03",
-        "source_artifact_id": "case_229716_docx_artifact_03"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_04",
-        "source_artifact_id": "case_229716_docx_artifact_04"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_07",
-        "source_artifact_id": "case_229716_docx_artifact_07"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_229716_03",
-    "ingestion_version": 1,
-    "procedure_id": "proc_229716_03",
-    "title": "Proc 229716 03",
-    "operational_intent": "Preserve server-side evidence needed for later engineering review, especially when service restart restores operation before root cause is validated.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "Collected evidence list is explicitly separated into Windows/server event logs, Ignition logs, and unresolved DB logs.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Collector is on the correct server before exporting logs.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Windows/server event logs for the incident window are saved and their location is recorded.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Ignition log files are saved and can be associated with the incident window.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "DB evidence is either collected with timestamps/error text preserved, or the collection gap is explicitly recorded for escalation.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_06",
-        "instruction": "Review candidate step 6",
-        "validation_check": "Evidence location and filenames are documented so another reviewer can retrieve the files.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "Ignition logs are saved",
-      "Windows event logs are saved",
-      "Any database-log gap is explicitly documented if collection cannot be completed",
-      "Saved evidence location is recorded"
-    ],
-    "escalation_conditions": [
-      "If DB logs are requested but support cannot locate or transfer them",
-      "If server event or Ignition logs cannot be exported",
-      "If evidence suggests database timeout but no DB-specific artifacts can be collected"
-    ],
-    "related_incidents": [
-      "229716"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_05"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_06"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_09"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_10"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_04",
-        "source_artifact_id": "case_229716_docx_artifact_04"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_07",
-        "source_artifact_id": "case_229716_docx_artifact_07"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_08",
-        "source_artifact_id": "case_229716_docx_artifact_08"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_12",
-        "source_artifact_id": "case_229716_docx_artifact_12"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_229716_04",
-    "ingestion_version": 1,
-    "procedure_id": "proc_229716_04",
-    "title": "Proc 229716 04",
-    "operational_intent": "Verify that service restart restored the operational functions affected during the incident.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "AGV movement is confirmed before proceeding to final closure.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Hospital tote removal succeeds after the test or after relogin.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Named site contact confirms both AGV and hospital functions are restored.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Operational status is documented only after both validation checks are complete.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "AGVs are moving",
-      "Hospital tote removal succeeds",
-      "Site contact confirms proper AGV operation and hospital function"
-    ],
-    "escalation_conditions": [
-      "If AGVs still do not move after restart",
-      "If hospital tote removal still fails after relogin",
-      "If site contact cannot confirm proper operation"
-    ],
-    "related_incidents": [
-      "229716"
-    ],
-    "evidence_refs": [
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_08"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "chunk_229716_09"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_04",
-        "source_artifact_id": "case_229716_docx_artifact_04"
-      },
-      {
-        "incident_id": "229716",
-        "evidence_id": "case_229716_docx_artifact_11",
-        "source_artifact_id": "case_229716_docx_artifact_11"
-      }
-    ],
-    "status": "candidate_extracted"
-  },
-  {
-    "local_dataset_id": "proc_229488_01",
-    "ingestion_version": 1,
-    "procedure_id": "proc_229488_01",
-    "title": "Proc 229488 01",
-    "operational_intent": "Restore production quickly while preserving traceable evidence and escalation context around the restart action.",
-    "role_required": "support",
-    "support_safe": false,
-    "steps": [
-      {
-        "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "Repeat-incident context and production impact are both visible in source-backed screens before restart coordination proceeds.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Escalation and urgency evidence is preserved before the restart is executed.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "A source-backed indication exists that restart was coordinated with site state, even if exact safety checklist is not visible.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Teams or case notes confirm the restart occurred at the recorded time.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "At least one source-backed recovery confirmation is visible after the restart.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_06",
-        "instruction": "Review candidate step 6",
-        "validation_check": "Case record shows recovery documented without claiming validated root cause.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      }
-    ],
-    "validation_checks": [
-      "Site reports startup progressing after restart.",
-      "Production resumes or site is operating again.",
-      "Case notes reflect restart timing and outcome."
-    ],
-    "escalation_conditions": [
-      "No authorized remote access available.",
-      "Restart does not restore production promptly.",
-      "Repeated recurrence after prior restart.",
-      "Need for root cause confirmation beyond service recovery."
+      "AGVs remain stopped after restart",
+      "Active hardware alarms are present",
+      "Remote access is unavailable",
+      "Issue recurs within same shift or same pattern as prior case"
     ],
     "related_incidents": [
       "229488"
@@ -1747,16 +1387,11 @@
     "evidence_refs": [
       {
         "incident_id": "229488",
-        "evidence_id": "chunk_229488_01"
+        "evidence_id": "chunk_229488_02"
       },
       {
         "incident_id": "229488",
         "evidence_id": "chunk_229488_03"
-      },
-      {
-        "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_01",
-        "source_artifact_id": "case_229488_docx_artifact_01"
       },
       {
         "incident_id": "229488",
@@ -1784,76 +1419,95 @@
         "source_artifact_id": "case_229488_docx_artifact_24"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "supported_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Missing exact service UI path and host details",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Strongly aligns with CAT-1 recurrence pattern where AGVs stop with no visible fault and restart restores production.",
+    "comparable_signal_groups": [
+      "agvs_not_moving",
+      "no_fault_shown",
+      "service_restart_restores_production",
+      "same_issue_as_prior_case"
+    ],
+    "recurrence_evidence_refs": [
+      "Case 229488  Data.docx#media=image1.png",
+      "Case 229488  Data.docx#media=image22.png"
+    ]
   },
   {
-    "local_dataset_id": "proc_229488_02",
+    "local_dataset_id": "proc_229488_collect_opc_ua_disconnect_and_alarm_evidence_candidate",
     "ingestion_version": 1,
-    "procedure_id": "proc_229488_02",
-    "title": "Proc 229488 02",
-    "operational_intent": "Produce a reviewable evidence package that separates database-timeout claims from visible OPC UA, alarm, and reconnect evidence.",
-    "role_required": "support",
-    "support_safe": false,
+    "procedure_id": "proc_229488_collect_opc_ua_disconnect_and_alarm_evidence_candidate",
+    "title": "Collect Ignition OPC UA disconnect and related alarm evidence for recurrence investigation",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Preserve the visible WCS/application/event evidence needed to investigate communication resets and related controls alarms without inventing unsupported navigation or database details.",
     "steps": [
       {
         "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "The timeout statement is preserved as discussion context and not mislabeled as direct log evidence.",
+        "instruction": "Capture the Teams messages that state the site is having the same issue again as Saturday case 229374 and that RCA/root-cause information is being requested.",
+        "validation_check": "The evidence package clearly ties the captured diagnostics to a recurrence investigation rather than an isolated one-off review.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Each screenshot includes enough of the table to preserve logger, time, and message together.",
+        "instruction": "Open the Ignition diagnostics log viewer page visible in the source and capture screenshots that show logger name, timestamp, remote endpoint IP/port, and the exact error text such as 'Exception caught: Connection reset'.",
+        "validation_check": "At least one screenshot clearly shows a logger, timestamp, endpoint, and reset/error message together on the same screen.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Only mappings explicitly stated in source are recorded; unknown endpoints remain unknown.",
+        "instruction": "From the same Ignition diagnostics/log viewer area, capture entries showing keep-alive failures, subscription transfer failures, Bad_ServiceUnsupported, reconnect attempts, resend success, and monitored item rebuild activity.",
+        "validation_check": "Screenshots preserve both failure and recovery/retry messages so later reviewers can assess whether reconnect logic partially recovered.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Alarm screenshots preserve both the timestamp and the exact alarm wording for the fault window.",
+        "instruction": "Capture the alarm/history screens that show the prior-night fault window and preserve the exact alarm text, timestamps, status, and affected tipper side/device references.",
+        "validation_check": "Alarm screenshots show exact message text and timestamps sufficient to correlate with the investigated fault window.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "The captured log clearly shows reconnect/rebuild behavior after fault conditions.",
+        "instruction": "Capture the endpoint status page and heartbeat statistics screen showing which endpoints are connected or disabled and the visible heartbeat values after recovery or manual reset.",
+        "validation_check": "Screenshots show whether communications were reestablished and which endpoints remained disabled or recently reset.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_06",
-        "instruction": "Review candidate step 6",
-        "validation_check": "A direct timeout artifact is captured, or the absence of direct timeout evidence is explicitly documented as a gap.",
+        "instruction": "Capture the Teams discussion that references DB event logs showing timeouts, and record that this case supports only a visible discussion reference rather than a direct database log artifact. If available in future cases, pair this with the actual WCS server/application/event screenshot or export.",
+        "validation_check": "The evidence package clearly distinguishes between a discussion reference to DB timeouts and an actual captured DB log/event artifact.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_07",
-        "instruction": "Review candidate step 7",
-        "validation_check": "Post-change monitoring evidence is preserved separately from the original outage evidence.",
+        "instruction": "Capture the disconnect count chart and follow-up Teams messages that clarify the team is tracking station disconnects and preparing daily reports for the customer.",
+        "validation_check": "Monitoring evidence shows recurrence tracking continued after operational recovery.",
         "expected_outcome": null,
         "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "Each captured screen includes timestamp, logger/source, and endpoint or error text where visible.",
-      "Database timeout evidence is kept separate from OPC UA reset evidence unless the same screen explicitly links them.",
-      "At least one post-fault and one follow-up monitoring screen are preserved."
+      "Captured screenshots show logger names, timestamps, remote endpoint IPs, and error strings",
+      "Alarm evidence preserves exact message text and timestamps",
+      "Endpoint status evidence shows connected/disabled state at time of review"
     ],
     "escalation_conditions": [
-      "No direct database timeout evidence can be located on the WCS server.",
-      "Repeated resets involve infrastructure-owned endpoints.",
-      "Need engineering review of subscription rebuild behavior."
+      "Ignition diagnostics are inaccessible",
+      "Endpoint IP ownership cannot be mapped",
+      "Controls alarms indicate OT-side device failure",
+      "Evidence suggests recurring disconnect pattern requiring engineering/controls review"
     ],
     "related_incidents": [
       "229488"
@@ -1885,6 +1539,16 @@
       },
       {
         "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_01",
+        "source_artifact_id": "case_229488_docx_artifact_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_02",
+        "source_artifact_id": "case_229488_docx_artifact_02"
+      },
+      {
+        "incident_id": "229488",
         "evidence_id": "case_229488_docx_artifact_04",
         "source_artifact_id": "case_229488_docx_artifact_04"
       },
@@ -1895,18 +1559,8 @@
       },
       {
         "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_06",
-        "source_artifact_id": "case_229488_docx_artifact_06"
-      },
-      {
-        "incident_id": "229488",
         "evidence_id": "case_229488_docx_artifact_07",
         "source_artifact_id": "case_229488_docx_artifact_07"
-      },
-      {
-        "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_08",
-        "source_artifact_id": "case_229488_docx_artifact_08"
       },
       {
         "incident_id": "229488",
@@ -1964,69 +1618,89 @@
         "source_artifact_id": "case_229488_docx_artifact_20"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "supported_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "OCR noise in screenshots",
+      "Missing direct export artifacts and DB evidence",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Useful reusable evidence-collection pattern for CAT-1 recurrence investigations involving OPC UA disconnects and controls alarms.",
+    "comparable_signal_groups": [
+      "opc_ua_connection_reset",
+      "subscription_transfer_failed",
+      "keep_alive_failure",
+      "tipper_alarm_history_comms_faults",
+      "disconnect_monitoring"
+    ],
+    "recurrence_evidence_refs": [
+      "Case 229488  Data.docx#media=image1.png",
+      "Case 229488  Data.docx#media=image4.png",
+      "Case 229488  Data.docx#media=image5.png",
+      "Case 229488  Data.docx#media=image7.png",
+      "Case 229488  Data.docx#media=image11.png",
+      "Case 229488  Data.docx#media=image14.png",
+      "Case 229488  Data.docx#media=image19.png"
+    ]
   },
   {
-    "local_dataset_id": "proc_229488_03",
+    "local_dataset_id": "proc_229488_validate_recovery_and_document_rca_pending_candidate",
     "ingestion_version": 1,
-    "procedure_id": "proc_229488_03",
-    "title": "Proc 229488 03",
-    "operational_intent": "Rapidly collect the minimum high-value triage signals needed to decide whether to escalate, gather deeper logs, or pursue recovery action.",
-    "role_required": "support",
-    "support_safe": false,
+    "procedure_id": "proc_229488_validate_recovery_and_document_rca_pending_candidate",
+    "title": "Validate post-restart recovery and document RCA-pending status",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Ensure restart-based recovery is explicitly validated and documented without overstating root cause closure.",
     "steps": [
       {
         "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "A current tipper-state answer is captured rather than assumed.",
+        "instruction": "Review the post-restart Teams and Salesforce updates and capture the first statements indicating the site is about to try startup or is starting up.",
+        "validation_check": "There is explicit evidence that startup was attempted after the restart, not merely that the restart command was issued.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Heartbeat evidence is captured as a value or screen, not just inferred from AGV stoppage.",
+        "instruction": "Record the first explicit statement that the site is operating and getting production, and preserve the associated timestamp and source.",
+        "validation_check": "Recovery is validated only when production restoration is explicitly stated.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "HMI error state is explicitly checked and documented.",
+        "instruction": "Update or capture the Salesforce status history showing the case moved from escalated to resolved and/or RCA pending, and preserve any note that information is still being pulled for RCA.",
+        "validation_check": "Case documentation shows recovery closure and ongoing investigation as separate states.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Manual workaround evidence is captured because it indicates active operational impact.",
+        "instruction": "Review post-recovery Teams discussion for residual issues such as tote removal problems, shutdown-before-bagout state, or parcel/bag-tag concerns, and record them as follow-up operational risks.",
+        "validation_check": "Residual issues are documented as separate follow-up items and do not overwrite the fact that production recovery occurred.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "Status screen captures endpoint names and states together in one view.",
-        "expected_outcome": null,
-        "escalation_condition": null
-      },
-      {
-        "step_id": "step_06",
-        "instruction": "Review candidate step 6",
-        "validation_check": "At least one recent disconnect/reconnect sequence is captured if communications issues are suspected.",
+        "instruction": "If the case moves into monitoring, capture the next-day disconnect discussion and any chart/report requests showing ongoing observation of station disconnects or similar recurrence indicators.",
+        "validation_check": "Monitoring evidence shows the incident transitioned from active recovery to observation rather than immediate full RCA closure.",
         "expected_outcome": null,
         "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "Tipper state, heartbeat state, and HMI error state are all explicitly checked.",
-      "Endpoint status or disconnect evidence is captured if communications issues are suspected."
+      "Startup is attempted and succeeds",
+      "Production is explicitly reported as restored",
+      "Residual issues are captured separately from the main outage recovery",
+      "Case status reflects resolved/RCA pending rather than validated root cause"
     ],
     "escalation_conditions": [
-      "Heartbeat appears abnormal and AGVs remain stopped.",
-      "No HMI error but endpoint disconnect evidence is present.",
-      "Multiple endpoints show resets or disabled states.",
-      "Site reports unsafe conditions or manual clearing is underway."
+      "Production does not resume after restart",
+      "Residual tote/hospital issues persist",
+      "Repeated disconnects continue after recovery",
+      "Customer requests RCA or monitoring data beyond support's current evidence"
     ],
     "related_incidents": [
       "229488"
@@ -2034,24 +1708,20 @@
     "evidence_refs": [
       {
         "incident_id": "229488",
-        "evidence_id": "chunk_229488_02"
+        "evidence_id": "chunk_229488_03"
       },
       {
         "incident_id": "229488",
-        "evidence_id": "chunk_229488_05"
+        "evidence_id": "chunk_229488_04"
       },
       {
         "incident_id": "229488",
-        "evidence_id": "chunk_229488_07"
+        "evidence_id": "chunk_229488_10"
       },
       {
         "incident_id": "229488",
-        "evidence_id": "chunk_229488_09"
-      },
-      {
-        "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_01",
-        "source_artifact_id": "case_229488_docx_artifact_01"
+        "evidence_id": "case_229488_docx_artifact_02",
+        "source_artifact_id": "case_229488_docx_artifact_02"
       },
       {
         "incident_id": "229488",
@@ -2060,89 +1730,553 @@
       },
       {
         "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_04",
-        "source_artifact_id": "case_229488_docx_artifact_04"
-      },
-      {
-        "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_10",
-        "source_artifact_id": "case_229488_docx_artifact_10"
-      },
-      {
-        "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_11",
-        "source_artifact_id": "case_229488_docx_artifact_11"
-      },
-      {
-        "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_13",
-        "source_artifact_id": "case_229488_docx_artifact_13"
-      },
-      {
-        "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_16",
-        "source_artifact_id": "case_229488_docx_artifact_16"
-      },
-      {
-        "incident_id": "229488",
         "evidence_id": "case_229488_docx_artifact_17",
         "source_artifact_id": "case_229488_docx_artifact_17"
       },
       {
         "incident_id": "229488",
-        "evidence_id": "case_229488_docx_artifact_18",
-        "source_artifact_id": "case_229488_docx_artifact_18"
+        "evidence_id": "case_229488_docx_artifact_19",
+        "source_artifact_id": "case_229488_docx_artifact_19"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_20",
+        "source_artifact_id": "case_229488_docx_artifact_20"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_23",
+        "source_artifact_id": "case_229488_docx_artifact_23"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_24",
+        "source_artifact_id": "case_229488_docx_artifact_24"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "supported_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Missing formal validation checklist",
+      "Residual issue handling not fully specified",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Useful for restart-based CAT-1 incidents where production returns quickly but RCA and monitoring continue afterward.",
+    "comparable_signal_groups": [
+      "startup_after_restart",
+      "production_restored_after_restart",
+      "rca_pending_after_recovery",
+      "post_recovery_monitoring"
+    ],
+    "recurrence_evidence_refs": [
+      "Case 229488  Data.docx#media=image23.png",
+      "Case 229488  Data.docx#media=image24.png",
+      "Case 229488  Data.docx#media=image17.png",
+      "Case 229488  Data.docx#media=image20.png"
+    ]
   },
   {
-    "local_dataset_id": "proc_229777_01",
+    "local_dataset_id": "proc_229716_review_tipper_heartbeat_and_rms_fault_state",
     "ingestion_version": 1,
-    "procedure_id": "proc_229777_01",
-    "title": "Proc 229777 01",
-    "operational_intent": "Confirm and document whether a tipper heartbeat failure is present during an OptiSweep/AGV startup stoppage and preserve source-backed evidence for escalation or recovery coordination.",
-    "role_required": "support",
-    "support_safe": false,
+    "procedure_id": "proc_229716_review_tipper_heartbeat_and_rms_fault_state",
+    "title": "Review tipper heartbeat timeout state and RMS no-fault condition",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Preserve the observable pre-restart failure pattern so support and engineering can compare recurrence against prior heartbeat timeout incidents.",
     "steps": [
       {
         "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "At least one source-backed symptom matches the startup stoppage pattern before proceeding.",
+        "instruction": "Record the reported operational condition that sort started normally, then all three lines stopped as AGVs lined up to go to the tippers, and note that nothing was coming to the tippers.",
+        "validation_check": "The captured narrative explicitly ties the stop to AGVs lining up for tippers and not a generic site-down report.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Engineer ownership and active diagnostic session are explicitly documented.",
+        "instruction": "Open or preserve the visible tipper heartbeat/alarm screen and capture the screen showing heartbeat timeout indications for the tippers.",
+        "validation_check": "The screenshot set shows heartbeat timeout or heartbeat-related stale condition on the tipper view and can be linked to the same incident window.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "A visible failed heartbeat indicator or equivalent status text is captured, or the absence of such evidence is explicitly noted.",
+        "instruction": "Capture the RMS screen or note from the source showing that no faults were visible while the tippers were timing out and AGV flow was stopped.",
+        "validation_check": "Evidence shows the no-fault RMS condition in the same incident window as the heartbeat timeout report.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Prior case reference is recorded as similarity context, not as validated cause.",
+        "instruction": "Record the observed combination of all-three-line stop, heartbeat timeout, active/enabled tipper state, no RMS faults, and hospital tote removal failure in the case notes or evidence package.",
+        "validation_check": "The evidence package contains enough detail to distinguish this pattern from generic AGV stop or hardware-fault incidents.",
         "expected_outcome": null,
         "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "Heartbeat failure observation is documented in case notes or visible system view",
-      "Symptoms align with startup stoppage and no-flow-to-tippers condition",
-      "Evidence is preserved with timestamps and case linkage"
+      "Heartbeat timeout is visibly shown for all tippers or affected tippers",
+      "Tipper status appears active/enabled in the same evidence set",
+      "RMS screen shows no visible faults at the same time window"
     ],
     "escalation_conditions": [
-      "Heartbeat failure cannot be confirmed from available views",
-      "Condition recurs after restart/reset",
-      "Need to compare against prior similar case or deeper controls/infrastructure review"
+      "Heartbeat view cannot be accessed remotely",
+      "Hardware alarms are visible instead of no-fault pattern",
+      "Heartbeat does not recover after restart",
+      "Observed pattern differs materially from prior CAT-1 recurrence"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_05"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_03",
+        "source_artifact_id": "case_229716_docx_artifact_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_07",
+        "source_artifact_id": "case_229716_docx_artifact_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_10",
+        "source_artifact_id": "case_229716_docx_artifact_10"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "supported_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Visual evidence quality limits exact field extraction",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Strong match to CAT-1 recurrence pattern described in dataset context for cases 229374 and 229777.",
+    "comparable_signal_groups": [
+      "agv_flow_stopped_at_all_three_tipper_lines",
+      "tipper_heartbeat_timeout_status_active",
+      "rms_screen_no_faults_visible",
+      "nothing_coming_to_tippers"
+    ],
+    "recurrence_evidence_refs": [
+      "region_229716_003",
+      "region_229716_009"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_229716_coordinate_estop_and_restart_optisweep_service",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229716_coordinate_estop_and_restart_optisweep_service",
+    "title": "Coordinate AGV E-stop and Optisweep service restart for CAT-1 heartbeat timeout pattern",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Restore AGV and hospital operation after the documented heartbeat timeout/service failure pattern while preserving role boundaries and evidence.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review the live support thread and confirm the proposed recovery sequence is to E-stop AGVs, restart the service, and remove the E-stop, with Optisweep identified as the service to restart.",
+        "validation_check": "The support thread explicitly identifies Optisweep as the restart target and not an assumed generic service reset.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Have the site operator place the AGVs or system into E-stop as directed in the support thread and document who confirmed the E-stop was applied.",
+        "validation_check": "There is explicit confirmation in the incident record that the system was E-stopped before or during the restart sequence.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "From the remote Windows service control view or equivalent host access, restart the Optisweep service identified in the support thread.",
+        "validation_check": "The restart action is documented and tied to the Optisweep service rather than an unspecified application restart.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Coordinate with the site to remove the E-stop after the Optisweep restart and document the time and confirmation source.",
+        "validation_check": "The incident record shows E-stop removal as part of the executed recovery sequence, not just a proposed step.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Check for post-restart evidence that AGVs are moving and that hospital tote removal is working again; if hospital removal still fails, perform the documented hospital log out/in and recheck.",
+        "validation_check": "Recovery is only marked successful when both AGV movement and hospital function are confirmed.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "E-stop was applied before restart if required by site practice",
+      "Optisweep was the selected restart target",
+      "AGVs resume movement after restart and E-stop removal",
+      "Hospital function is restored"
+    ],
+    "escalation_conditions": [
+      "Remote access unavailable",
+      "Heartbeat does not recover after restart",
+      "Hardware alarms are present",
+      "Issue recurs within same shift or sort window"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_10"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_07",
+        "source_artifact_id": "case_229716_docx_artifact_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_08",
+        "source_artifact_id": "case_229716_docx_artifact_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_11",
+        "source_artifact_id": "case_229716_docx_artifact_11"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "supported_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Some execution details remain role- and site-specific",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Strongly aligned with CAT-1 resolution approach in dataset context: service restart with E-stop coordination.",
+    "comparable_signal_groups": [
+      "agvs_e_stopped",
+      "optisweep_service_restarted",
+      "e_stop_removed",
+      "agvs_are_moving",
+      "hospital_tote_removal_restored"
+    ],
+    "recurrence_evidence_refs": [
+      "region_229716_007",
+      "region_229716_008",
+      "region_229716_009"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_229716_validate_agv_and_hospital_recovery_after_restart",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229716_validate_agv_and_hospital_recovery_after_restart",
+    "title": "Validate AGV movement and hospital tote removal after CAT-1 service recovery",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Confirm true operational recovery and avoid closing the incident based only on restart completion.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Ask the remote observer or site contact to verify AGVs are moving and capture the confirmation in the support thread or case notes.",
+        "validation_check": "AGV movement is explicitly confirmed after the restart sequence, not inferred from service status alone.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Have the site retest tote removal at the hospital station and document whether the remove command now executes.",
+        "validation_check": "The same operational function that failed earlier is explicitly confirmed as restored.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "If the hospital still cannot remove totes after the service restart, have the local user log out and back in at the hospital station, then retest tote removal.",
+        "validation_check": "Hospital tote removal succeeds after the logout/login if it did not recover immediately after restart.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Record the final confirmation from the site contact that AGV operation and hospital function are proper, then note that the system is operational and the call can disengage.",
+        "validation_check": "Closure-ready validation includes both internal support confirmation and site/customer confirmation where available.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "AGVs are moving",
+      "Hospital tote removal works",
+      "System can be declared operational",
+      "Customer/site contact confirms proper operation"
+    ],
+    "escalation_conditions": [
+      "AGVs move but hospital tote removal still fails after logout/login",
+      "System appears operational but customer cannot confirm production function",
+      "Issue recurs shortly after validation"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_03",
+        "source_artifact_id": "case_229716_docx_artifact_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_11",
+        "source_artifact_id": "case_229716_docx_artifact_11"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "supported_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Hospital workaround may not generalize without SME review",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Useful as a reusable post-restart validation object because this case shows restart completion alone was not the full validation boundary.",
+    "comparable_signal_groups": [
+      "agvs_are_moving",
+      "hospital_tote_removal_restored",
+      "system_operational_call_disengaged",
+      "antonio_confirmed_hospital_function"
+    ],
+    "recurrence_evidence_refs": [
+      "region_229716_011",
+      "region_229716_004"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_229716_collect_server_event_ignition_and_db_timeout_evidence",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229716_collect_server_event_ignition_and_db_timeout_evidence",
+    "title": "Collect server event, Ignition, and requested DB timeout evidence after CAT-1 recovery",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Preserve post-incident evidence for engineering review without inventing unsupported database collection steps.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Capture the support instruction that event logs and DB logs should be collected, and note any additional request for performance monitor or switch-log follow-up.",
+        "validation_check": "The evidence package clearly distinguishes requested evidence from evidence actually collected.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "From the remote Windows host, save or export the Windows event logs referenced in the case, and capture the location where the files were stored if the export itself is not shown.",
+        "validation_check": "There is explicit evidence that Windows/server event logs were saved or downloaded, even if the exact export UI is not shown.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "Save the Ignition logs referenced in the support thread and capture any visible filename fragment, save location, or related performance-monitor screenshot request tied to Ignition.",
+        "validation_check": "Ignition evidence is preserved with at least a saved-file reference and location, even if the full file path is not shown.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Check whether any DB logs, DB timeout messages, or database-related application evidence are visibly available from the current remote session or saved files; if not, document that DB logs were requested but the collector was not familiar with the method to obtain or transfer them.",
+        "validation_check": "The case record clearly distinguishes between DB evidence requested and DB evidence actually collected; if unavailable, the gap is explicitly documented.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Record which logs were saved or downloaded, where they were staged, whether they were attached to the ticket, and what remained outstanding such as DB logs or switch logs.",
+        "validation_check": "The final evidence record states both what was collected and what still requires follow-up, avoiding false completeness.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Ignition logs are saved or exported",
+      "Windows event logs are saved or exported",
+      "Case notes state whether DB logs were collected or remain a gap",
+      "Evidence location is recorded for later transfer"
+    ],
+    "escalation_conditions": [
+      "DB timeout evidence cannot be located",
+      "No access to event logs or Ignition logs",
+      "Need DBA/infrastructure help to obtain DB logs",
+      "Switch or OT-side logs are also required"
+    ],
+    "related_incidents": [
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_09"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_07",
+        "source_artifact_id": "case_229716_docx_artifact_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_08",
+        "source_artifact_id": "case_229716_docx_artifact_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_11",
+        "source_artifact_id": "case_229716_docx_artifact_11"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_12",
+        "source_artifact_id": "case_229716_docx_artifact_12"
+      }
+    ],
+    "status": "candidate_extracted",
+    "quality_tier": "supported_candidate_with_major_gaps",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Database evidence collection is incomplete and not operationally validated",
+      "Critical navigation and tool details are missing",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Useful as a bounded evidence-collection candidate because the case explicitly requests logs and explicitly documents the DB log gap.",
+    "comparable_signal_groups": [
+      "event_logs_requested",
+      "db_logs_requested",
+      "ignition_logs_saved",
+      "windows_event_logs_saved",
+      "db_log_transfer_gap_identified"
+    ],
+    "recurrence_evidence_refs": [
+      "region_229716_007",
+      "region_229716_011",
+      "region_229716_012"
+    ]
+  },
+  {
+    "local_dataset_id": "proc_229777_coordinate_master_estop_and_remote_optisweep_restart",
+    "ingestion_version": 1,
+    "procedure_id": "proc_229777_coordinate_master_estop_and_remote_optisweep_restart",
+    "title": "Coordinate master E-stop with remote Optisweep restart for startup stall and tipper heartbeat recurrence",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Restore system movement to tippers when startup is stalled and the incident matches the recurring tipper heartbeat failure pattern.",
+    "steps": [
+      {
+        "step_id": "step_01",
+        "instruction": "Review the active case description and support chat, confirm the reported condition is startup with everything waiting, no path shown, and nothing reaching the tippers, and verify an engineer is actively connected or assigned to investigate.",
+        "validation_check": "Symptoms and escalation context match the recurring CAT-1 startup stall pattern and an engineer is available to perform remote recovery.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_02",
+        "instruction": "Contact the site/client and instruct them to place the master E-stop on, then document that the site action was completed before or during the remote restart sequence.",
+        "validation_check": "Site confirms master E-stop is on before proceeding with or while coordinating the restart.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_03",
+        "instruction": "From the remote Optisweep/WCS environment, perform the Optisweep restart used by the engineer during the incident and document that the restart was executed as part of the recovery sequence.",
+        "validation_check": "Restart action is completed and documented before tipper pause/unpause validation steps.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_04",
+        "instruction": "Using the engineer-access tipper control interface, pause the tippers and then unpause them, matching the sequence documented in Teams and Salesforce after the Optisweep restart.",
+        "validation_check": "Tipper pause/unpause is completed after the restart and before final recovery confirmation.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Verify that the system is back up and running, confirm that everything came back on, communicate with the customer, and document customer acceptance for closure if operations are restored.",
+        "validation_check": "Recovery is confirmed by both support and customer-facing evidence, and the case can be moved to resolved/closed state.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      }
+    ],
+    "validation_checks": [
+      "Engineer confirms remote connection established.",
+      "Recovery actions are completed in sequence.",
+      "System returns to back up and running state."
+    ],
+    "escalation_conditions": [
+      "Heartbeat does not recover after restart.",
+      "Hardware alarms are present.",
+      "Remote access is unavailable.",
+      "Issue recurs within same shift or sort window."
     ],
     "related_incidents": [
       "229777"
@@ -2150,11 +2284,19 @@
     "evidence_refs": [
       {
         "incident_id": "229777",
-        "evidence_id": "chunk_229777_01"
+        "evidence_id": "chunk_229777_03"
       },
       {
         "incident_id": "229777",
-        "evidence_id": "chunk_229777_03"
+        "evidence_id": "chunk_229777_05"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_06"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_07"
       },
       {
         "incident_id": "229777",
@@ -2172,62 +2314,82 @@
         "source_artifact_id": "case_229777_docx_artifact_04"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "high_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "UI navigation details are not visible in this case package",
+      "validation_not_passed",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Strong recurrence alignment with cases 229716 and 229374 for startup stall plus tipper heartbeat failure pattern.",
+    "comparable_signal_groups": [
+      "system_startup_waiting_state",
+      "no_path_shown_to_tippers",
+      "tipper_heartbeat_failed",
+      "optisweep_service_restarted",
+      "tippers_paused_unpaused"
+    ],
+    "recurrence_evidence_refs": [
+      "chunk_229777_05",
+      "Case 229777 Data.docx#media=image3.png"
+    ]
   },
   {
-    "local_dataset_id": "proc_229777_02",
+    "local_dataset_id": "proc_229777_review_and_document_tipper_heartbeat_recurrence",
     "ingestion_version": 1,
-    "procedure_id": "proc_229777_02",
-    "title": "Proc 229777 02",
-    "operational_intent": "Restore system operation after the observed startup stoppage using the same coordinated actions documented in the case, while preserving evidence and role boundaries.",
-    "role_required": "support",
-    "support_safe": false,
+    "procedure_id": "proc_229777_review_and_document_tipper_heartbeat_recurrence",
+    "title": "Review and document failed tipper heartbeat recurrence before recovery",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Capture and preserve the recurrence-based diagnostic basis that the engineer used to guide recovery in case 229777.",
     "steps": [
       {
         "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "There is a documented basis for attempting restart/reset and a named site contact is engaged.",
+        "instruction": "Open the Salesforce case description and capture the exact reported symptoms indicating startup stall, including everything waiting, no path shown, and nothing reaching the tippers.",
+        "validation_check": "The documented symptoms match the known recurrence entry pattern for this CAT-1 issue family.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Master e-stop application is explicitly confirmed before restart proceeds.",
+        "instruction": "Review the Teams thread and capture the message where the engineer states they are connected and checking the system.",
+        "validation_check": "An engineer explicitly confirms remote connection before the diagnostic conclusion is recorded.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Restart action is documented with time and operator identity.",
+        "instruction": "From the Salesforce resolution note, capture the statement that the engineer dialed into the system and saw that the tipper heartbeat had failed.",
+        "validation_check": "The diagnostic note explicitly identifies failed tipper heartbeat as an observed condition, not just an inferred cause.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Tipper pause/unpause action is documented as completed and associated with the recovery attempt.",
+        "instruction": "Capture the same Salesforce resolution note text that states the failed tipper heartbeat was the same as case 229716, and record the prior case reference as recurrence context only.",
+        "validation_check": "The prior case reference is preserved as recurrence evidence and not promoted to validated root cause.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "Both operational recovery and customer acceptance are documented before closure.",
+        "instruction": "Document that the heartbeat failure pattern was used as the recovery basis, then note missing direct evidence such as heartbeat screen capture, logs, or OT-side alarm review for this specific incident.",
+        "validation_check": "Observed signals are preserved while unresolved technical details remain explicitly open.",
         "expected_outcome": null,
         "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "Restart and tipper reset actions are documented",
-      "System returns to back-up-and-running state",
-      "Customer/site confirms restoration"
+      "Current symptoms align with startup stall/no path/nothing reaching tippers.",
+      "Engineer documents that tipper heartbeat failed.",
+      "Prior comparable case reference is preserved without overclaiming root cause."
     ],
     "escalation_conditions": [
-      "Recovery does not restore flow",
-      "Heartbeat or no-path condition persists after restart",
-      "Site cannot safely perform required coordination"
+      "Heartbeat failure cannot be confirmed remotely.",
+      "Symptoms diverge from the prior recurrence pattern.",
+      "Hardware alarms or OT-side issues are visible and suggest a different failure mode."
     ],
     "related_incidents": [
       "229777"
@@ -2235,7 +2397,11 @@
     "evidence_refs": [
       {
         "incident_id": "229777",
-        "evidence_id": "chunk_229777_04"
+        "evidence_id": "chunk_229777_02"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_03"
       },
       {
         "incident_id": "229777",
@@ -2257,62 +2423,88 @@
         "source_artifact_id": "case_229777_docx_artifact_04"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "high_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Need a repeatable heartbeat evidence capture standard",
+      "validation_not_passed",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Useful as a reusable recurrence-diagnosis object for CAT-1 startup stall incidents tied to tipper heartbeat failure language.",
+    "comparable_signal_groups": [
+      "system_startup_waiting_state",
+      "no_path_shown_to_tippers",
+      "tipper_heartbeat_failed",
+      "same_pattern_as_case_229716"
+    ],
+    "recurrence_evidence_refs": [
+      "chunk_229777_05",
+      "event_229777_07"
+    ]
   },
   {
-    "local_dataset_id": "proc_229777_03",
+    "local_dataset_id": "proc_229777_collect_wcs_server_application_event_evidence_for_timeout_or_disconnect_pattern",
     "ingestion_version": 1,
-    "procedure_id": "proc_229777_03",
-    "title": "Proc 229777 03",
-    "operational_intent": "Preserve the specific follow-on diagnostic evidence types discussed in the case so recurring AGV connectivity issues can be investigated without inventing unsupported log paths or tooling details.",
-    "role_required": "support",
-    "support_safe": false,
+    "procedure_id": "proc_229777_collect_wcs_server_application_event_evidence_for_timeout_or_disconnect_pattern",
+    "title": "Collect WCS server, application, and event evidence for timeout or disconnect pattern review",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Preserve the evidence collection actions that are visible in source and identify what should be captured from WCS/server/application/event views without inventing unsupported navigation details.",
     "steps": [
       {
         "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "At least one robot identifier or symptom/time window is recorded before requesting logs.",
+        "instruction": "Record the incident symptoms and the engineer's diagnostic statement that the tipper heartbeat failed in the same pattern as case 229716 before collecting deeper evidence.",
+        "validation_check": "The evidence package is anchored to a specific recurring failure pattern rather than a generic log pull.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "Disconnect evidence includes robot identifiers and timestamps, not just a verbal summary.",
+        "instruction": "From the WCS or application server, open the server event view used by engineering and capture any events around the incident window that reference service faults, application faults, communication loss, timeout conditions, or restart activity. Preserve the exact event text rather than paraphrasing.",
+        "validation_check": "Captured event evidence includes exact timestamps and raw event text tied to the incident window.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Athena/RMS-equivalent evidence is clearly labeled so it is not confused with AGV-side logs.",
+        "instruction": "Open the WCS/Ignition application log source used by engineering and capture entries around the incident window that show heartbeat failures, communication loss, timeout messages, application faults, or restart sequences. Preserve exact strings and timestamps.",
+        "validation_check": "Application evidence includes exact raw strings and timestamps, not only a summary statement.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "AGV-side logging request is tied to specific robots and recurrence goals, not a generic request.",
+        "instruction": "If the issue appears to involve repeated disconnects or communication instability, collect the RMS disconnect logs or Athena logs referenced in the Teams follow-up and preserve which bots or components were affected.",
+        "validation_check": "Disconnect evidence identifies which bots/endpoints were affected and when.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_05",
-        "instruction": "Review candidate step 5",
-        "validation_check": "Evidence package clearly distinguishes RMS/Athena data from AGV-side logs and states whether any requested logs were unavailable.",
+        "instruction": "If onsite or engineering support sets up AGV-side logging, record which bots were instrumented and capture references to bot-side and xPico logs mentioned in the Teams follow-up.",
+        "validation_check": "Instrumentation details are specific enough for engineering to correlate bot-side evidence with server/application logs.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_06",
+        "instruction": "Compile the collected evidence into one review bundle aligned to the incident timeline, preserving raw timestamps, source systems, event IDs, bot IDs, IPs, and exact timeout/disconnect/heartbeat wording for manual engineering review.",
+        "validation_check": "The final package allows engineering to compare incident timing against server/application/disconnect evidence without relying on memory or paraphrase.",
         "expected_outcome": null,
         "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "Requested log sources are identified by name",
-      "Robot identifiers and time windows are recorded",
-      "Collected evidence is tied to a specific symptom or recurrence window"
+      "Collected evidence includes timestamps and source system names.",
+      "Evidence set distinguishes server/application/event logs from chat commentary.",
+      "Any timeout or disconnect strings are preserved exactly as seen."
     ],
     "escalation_conditions": [
-      "RMS/Athena data is unavailable",
-      "AGV-side logs require vendor/on-site setup",
-      "Disconnect pattern remains unclear after initial evidence review"
+      "Required logs cannot be accessed remotely.",
+      "Issue recurs after restart-based recovery.",
+      "Disconnect or timeout evidence suggests OT/network/infrastructure involvement."
     ],
     "related_incidents": [
       "229777"
@@ -2320,11 +2512,11 @@
     "evidence_refs": [
       {
         "incident_id": "229777",
-        "evidence_id": "chunk_229777_07"
+        "evidence_id": "chunk_229777_05"
       },
       {
         "incident_id": "229777",
-        "evidence_id": "chunk_229777_08"
+        "evidence_id": "chunk_229777_09"
       },
       {
         "incident_id": "229777",
@@ -2337,59 +2529,92 @@
       },
       {
         "incident_id": "229777",
-        "evidence_id": "case_229777_docx_artifact_02",
-        "source_artifact_id": "case_229777_docx_artifact_02"
+        "evidence_id": "case_229777_docx_artifact_03",
+        "source_artifact_id": "case_229777_docx_artifact_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_04",
+        "source_artifact_id": "case_229777_docx_artifact_04"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "medium_candidate_review_only",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Insufficient direct UI evidence for log collection navigation",
+      "Uncertain linkage of later follow-up logging discussion to the April 18 incident",
+      "validation_not_passed",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "Useful as a review-only evidence collection scaffold for recurring CAT-1 timeout/disconnect investigations, but not ready for promotion without SME validation.",
+    "comparable_signal_groups": [
+      "tipper_heartbeat_failed",
+      "network_troubleshooting_follow_up",
+      "disconnect_capture_interest",
+      "rms_disconnect_logs_requested"
+    ],
+    "recurrence_evidence_refs": [
+      "chunk_229777_09",
+      "chunk_229777_10",
+      "Case 229777 Data.docx#media=image3.png"
+    ]
   },
   {
-    "local_dataset_id": "proc_229777_04",
+    "local_dataset_id": "proc_229777_manage_callback_and_resolution_updates_during_cat1_recurrence",
     "ingestion_version": 1,
-    "procedure_id": "proc_229777_04",
-    "title": "Proc 229777 04",
-    "operational_intent": "Document and preserve the minimum source-backed steps for arranging local OT network access for diagnostics without inventing unsupported network configuration procedures.",
-    "role_required": "support",
-    "support_safe": false,
+    "procedure_id": "proc_229777_manage_callback_and_resolution_updates_during_cat1_recurrence",
+    "title": "Manage callback, ownership, and resolution updates during CAT-1 recurrence",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "operational_intent": "Reduce customer wait time and preserve clear ownership and closure communication during active incident handling.",
     "steps": [
       {
         "step_id": "step_01",
-        "instruction": "Review candidate step 1",
-        "validation_check": "There is explicit source-backed justification for local OT network access.",
+        "instruction": "Post or capture a support-thread update that the same issue has happened again, include the approximate occurrence time if known, and request that UPS be called back with a follow-up update when resolved.",
+        "validation_check": "The support team can see that the issue recurred and that customer callback is required.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_02",
-        "instruction": "Review candidate step 2",
-        "validation_check": "The connection point matches the location described in the support evidence before any device is connected.",
+        "instruction": "If the customer is still waiting for a callback, post or capture a follow-up message asking whether the investigating person is in the group and identify the active owner.",
+        "validation_check": "An active investigator is identified or ownership escalation is visible in the thread.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_03",
-        "instruction": "Review candidate step 3",
-        "validation_check": "Static IP requirement and target IP are recorded exactly from source before connection testing.",
+        "instruction": "Capture the engineer message confirming remote connection and checking, and use that as the active ownership marker for the incident thread and case handling.",
+        "validation_check": "The thread clearly shows who is actively investigating the incident.",
         "expected_outcome": null,
         "escalation_condition": null
       },
       {
         "step_id": "step_04",
-        "instruction": "Review candidate step 4",
-        "validation_check": "Connection result is documented with timestamp and target system identity.",
+        "instruction": "After the engineer completes recovery, post or capture the update that the system is back up and running and include the key actions taken if known, such as restarting Optisweep and pausing/unpausing the tippers.",
+        "validation_check": "The support thread contains a clear recovery update tied to the incident.",
+        "expected_outcome": null,
+        "escalation_condition": null
+      },
+      {
+        "step_id": "step_05",
+        "instruction": "Update the Salesforce case with the recovery outcome, note that everything came back on and the client was happy for the case to be closed, then move the case to resolved/closed status.",
+        "validation_check": "Formal case record reflects recovery and customer-approved closure.",
         "expected_outcome": null,
         "escalation_condition": null
       }
     ],
     "validation_checks": [
-      "Correct OT network port is identified",
-      "Static IP requirement is documented",
-      "Target RMS IP or destination is recorded"
+      "Customer callback need is acknowledged.",
+      "An active investigator is identified.",
+      "Recovery and closure updates are posted after resolution."
     ],
     "escalation_conditions": [
-      "Personnel cannot connect locally",
-      "Static IP assignment is not authorized or fails",
-      "Target system remains unreachable after local connection attempt"
+      "No engineer is assigned or responding.",
+      "Customer remains waiting without callback.",
+      "Issue recurs again after closure."
     ],
     "related_incidents": [
       "229777"
@@ -2397,14 +2622,58 @@
     "evidence_refs": [
       {
         "incident_id": "229777",
-        "evidence_id": "chunk_229777_09"
+        "evidence_id": "chunk_229777_02"
       },
       {
         "incident_id": "229777",
-        "evidence_id": "case_229777_docx_artifact_02",
-        "source_artifact_id": "case_229777_docx_artifact_02"
+        "evidence_id": "chunk_229777_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_07"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_08"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_01",
+        "source_artifact_id": "case_229777_docx_artifact_01"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_03",
+        "source_artifact_id": "case_229777_docx_artifact_03"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "case_229777_docx_artifact_04",
+        "source_artifact_id": "case_229777_docx_artifact_04"
       }
     ],
-    "status": "candidate_extracted"
+    "status": "candidate_extracted",
+    "quality_tier": "high_candidate",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_level": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "synthesis_blockers": [
+      "Need standardized communication template for broader reuse",
+      "validation_not_passed",
+      "missing_signal_buckets"
+    ],
+    "pattern_candidate_notes": "This coordination pattern is reusable for CAT-1 incidents where customer callback pressure and investigator visibility are part of the escalation path.",
+    "comparable_signal_groups": [
+      "customer_callback_requested",
+      "customer_waiting_for_callback",
+      "engineer_connected_to_system",
+      "system_back_up_and_running",
+      "client_approved_case_closure"
+    ],
+    "recurrence_evidence_refs": [
+      "chunk_229777_02",
+      "chunk_229777_03",
+      "chunk_229777_07"
+    ]
   }
 ]

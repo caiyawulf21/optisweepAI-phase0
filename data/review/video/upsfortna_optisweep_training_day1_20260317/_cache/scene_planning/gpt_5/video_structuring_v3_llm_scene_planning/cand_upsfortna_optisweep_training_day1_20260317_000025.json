@@ -1,0 +1,20 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "scene_upsfortna_optisweep_training_day1_20260317_000025_1",
+      "candidate_segment_id": "cand_upsfortna_optisweep_training_day1_20260317_000025",
+      "video_id": "upsfortna_optisweep_training_day1_20260317",
+      "timestamp_start": "00:07:54.811",
+      "timestamp_end": "00:08:13.200",
+      "intent": "Explain RMS visibility and role: RMS screen is visible to UPS and operators; RMS is the robot control system that dictates robot actions and receives tasks assigned by the WCS (OptiSweep/Office of Software).",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000121",
+        "vec_upsfortna_optisweep_training_day1_20260317_000122",
+        "vec_upsfortna_optisweep_training_day1_20260317_000123",
+        "vec_upsfortna_optisweep_training_day1_20260317_000124",
+        "vec_upsfortna_optisweep_training_day1_20260317_000125"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

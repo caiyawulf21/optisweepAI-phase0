@@ -1,0 +1,91 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_upsfortna_optisweep_training_day1_20260317_000086_1",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000086"
+      ],
+      "source_artifact_ids": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002283_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002300_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002293_midpoint"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002283",
+        "vec_upsfortna_optisweep_training_day1_20260317_002300",
+        "vec_upsfortna_optisweep_training_day1_20260317_002293",
+        "vec_upsfortna_optisweep_training_day1_20260317_002302",
+        "vec_upsfortna_optisweep_training_day1_20260317_002292"
+      ],
+      "artifact_refs": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002283_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002300_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002293_midpoint"
+      ],
+      "timestamp_start": "02:28:06.400",
+      "timestamp_end": "02:29:11.160",
+      "unit_type": "policy",
+      "title": "Aviva access restrictions and UPS-mediated communication",
+      "systems": [
+        "Aviva"
+      ],
+      "components": [],
+      "summary": "Fortna support lacks direct Aviva access; only UPS users can access. PC does not communicate with Aviva. Coordinate with a UPS operator to obtain Aviva observations during troubleshooting.",
+      "observed_evidence": [
+        "“We don't have the access to Aviva.”",
+        "“anybody ... not a UPS ... doesn't have access to Aviva.”",
+        "“PC doesn't talk to Aviva.”"
+      ],
+      "relationships": [
+        "requires: UPS operator to relay Aviva status",
+        "excludes: direct Fortna/PC access to Aviva",
+        "boundary: PC and Aviva are separate systems"
+      ],
+      "retrieval_text": "No direct Aviva access for Fortna/PC; only UPS users. For Aviva details, work through a UPS operator. PC does not communicate with Aviva.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_upsfortna_optisweep_training_day1_20260317_000086_2",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000086"
+      ],
+      "source_artifact_ids": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002286_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002287_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002288_midpoint"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002286",
+        "vec_upsfortna_optisweep_training_day1_20260317_002287",
+        "vec_upsfortna_optisweep_training_day1_20260317_002288"
+      ],
+      "artifact_refs": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002286_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002287_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002288_midpoint"
+      ],
+      "timestamp_start": "02:28:15.280",
+      "timestamp_end": "02:28:26.040",
+      "unit_type": "diagnostic_guideline",
+      "title": "First-response diagnostic step: check RMS system faults",
+      "systems": [
+        "RMS"
+      ],
+      "components": [],
+      "summary": "On any issue, first open the RMS screen and check for system faults; this is the first step during a support call before deeper triage.",
+      "observed_evidence": [
+        "“first thing first, go to that RMS screen”",
+        "“see if any system faults.”",
+        "“This should always be your first step on a phone call.”"
+      ],
+      "relationships": [
+        "first_step: use RMS faults before deeper triage",
+        "supports: phone triage workflow",
+        "independent_of: direct Aviva access"
+      ],
+      "retrieval_text": "Initial triage: open RMS screen and check for system faults before escalating or requesting Aviva checks.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": []
+}

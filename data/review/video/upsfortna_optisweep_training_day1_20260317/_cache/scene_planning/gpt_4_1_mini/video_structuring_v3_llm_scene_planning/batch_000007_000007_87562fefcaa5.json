@@ -1,0 +1,126 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Explanation of Potential and Destination in Sorting",
+      "timestamp_start": "00:18:53.370",
+      "timestamp_end": "00:20:12.960",
+      "primary_intent": "Clarify the meaning of potential destinations and sorting destinations",
+      "operational_intents": [
+        "Define potential destinations in UPS sorting",
+        "Explain how multiple destinations relate to load types",
+        "Describe the concept of sorted destination codes"
+      ],
+      "knowledge_extraction_strategy": "Extract definitions and relationships of sorting terms",
+      "why_this_strategy": "Clarifies key sorting terminology and system logic",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000320",
+        "vec_upsfortna_optisweep_training_day1_20260317_000321",
+        "vec_upsfortna_optisweep_training_day1_20260317_000322",
+        "vec_upsfortna_optisweep_training_day1_20260317_000323",
+        "vec_upsfortna_optisweep_training_day1_20260317_000324",
+        "vec_upsfortna_optisweep_training_day1_20260317_000325",
+        "vec_upsfortna_optisweep_training_day1_20260317_000326",
+        "vec_upsfortna_optisweep_training_day1_20260317_000327",
+        "vec_upsfortna_optisweep_training_day1_20260317_000328",
+        "vec_upsfortna_optisweep_training_day1_20260317_000329",
+        "vec_upsfortna_optisweep_training_day1_20260317_000330",
+        "vec_upsfortna_optisweep_training_day1_20260317_000331",
+        "vec_upsfortna_optisweep_training_day1_20260317_000332",
+        "vec_upsfortna_optisweep_training_day1_20260317_000333",
+        "vec_upsfortna_optisweep_training_day1_20260317_000334",
+        "vec_upsfortna_optisweep_training_day1_20260317_000335",
+        "vec_upsfortna_optisweep_training_day1_20260317_000336",
+        "vec_upsfortna_optisweep_training_day1_20260317_000337",
+        "vec_upsfortna_optisweep_training_day1_20260317_000338",
+        "vec_upsfortna_optisweep_training_day1_20260317_000339",
+        "vec_upsfortna_optisweep_training_day1_20260317_000340",
+        "vec_upsfortna_optisweep_training_day1_20260317_000341",
+        "vec_upsfortna_optisweep_training_day1_20260317_000342",
+        "vec_upsfortna_optisweep_training_day1_20260317_000343"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000007"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Role of ASX System and Destination Mapping",
+      "timestamp_start": "00:20:12.960",
+      "timestamp_end": "00:20:38.520",
+      "primary_intent": "Describe the ASX system's function in destination determination",
+      "operational_intents": [
+        "Explain how ASX maps zip codes to destinations",
+        "Clarify local system's knowledge limitations",
+        "Discuss dynamic nature of destination assignments"
+      ],
+      "knowledge_extraction_strategy": "Extract system roles and mapping logic",
+      "why_this_strategy": "Details system interactions for destination assignment",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000343",
+        "vec_upsfortna_optisweep_training_day1_20260317_000344",
+        "vec_upsfortna_optisweep_training_day1_20260317_000345",
+        "vec_upsfortna_optisweep_training_day1_20260317_000346",
+        "vec_upsfortna_optisweep_training_day1_20260317_000347",
+        "vec_upsfortna_optisweep_training_day1_20260317_000348",
+        "vec_upsfortna_optisweep_training_day1_20260317_000349",
+        "vec_upsfortna_optisweep_training_day1_20260317_000350"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000007"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Importance of Sort Confirmation Messages",
+      "timestamp_start": "00:20:51.000",
+      "timestamp_end": "00:21:15.440",
+      "primary_intent": "Explain the critical role of sort confirmation messages",
+      "operational_intents": [
+        "Describe how parcels are sorted to tote locations",
+        "Explain the triggering of sort confirmation messages",
+        "Highlight consequences of missing confirmation messages"
+      ],
+      "knowledge_extraction_strategy": "Extract message flow and operational impact",
+      "why_this_strategy": "Captures critical communication for sorting accuracy",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000354",
+        "vec_upsfortna_optisweep_training_day1_20260317_000355",
+        "vec_upsfortna_optisweep_training_day1_20260317_000356",
+        "vec_upsfortna_optisweep_training_day1_20260317_000357",
+        "vec_upsfortna_optisweep_training_day1_20260317_000358",
+        "vec_upsfortna_optisweep_training_day1_20260317_000359"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000007"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Software Tracking of Tote Contents and Volume",
+      "timestamp_start": "00:21:16.280",
+      "timestamp_end": "00:21:56.280",
+      "primary_intent": "Detail software processes for tote content and fullness tracking",
+      "operational_intents": [
+        "Explain updating parcel counts in totes",
+        "Describe dimension data scaling for different package types",
+        "Define fullness thresholds for tote management"
+      ],
+      "knowledge_extraction_strategy": "Extract software logic for tote volume management",
+      "why_this_strategy": "Captures operational rules for tote capacity monitoring",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000360",
+        "vec_upsfortna_optisweep_training_day1_20260317_000361",
+        "vec_upsfortna_optisweep_training_day1_20260317_000362",
+        "vec_upsfortna_optisweep_training_day1_20260317_000363",
+        "vec_upsfortna_optisweep_training_day1_20260317_000364",
+        "vec_upsfortna_optisweep_training_day1_20260317_000365",
+        "vec_upsfortna_optisweep_training_day1_20260317_000366",
+        "vec_upsfortna_optisweep_training_day1_20260317_000367"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000007"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

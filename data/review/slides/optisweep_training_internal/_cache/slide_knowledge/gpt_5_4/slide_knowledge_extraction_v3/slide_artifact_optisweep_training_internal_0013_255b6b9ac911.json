@@ -1,0 +1,270 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_13_exchange_staging_process",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        13
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0013"
+      ],
+      "unit_type": "operational_process",
+      "title": "Exchange staging and tote replacement flow in a zone",
+      "systems": [
+        "AGV",
+        "sorter",
+        "racking"
+      ],
+      "components": [
+        "full tote",
+        "empty tote",
+        "zone-designated AGV with no tote",
+        "AGV with empty tote",
+        "rack location",
+        "aisle"
+      ],
+      "summary": "The slide describes how staging for a tote exchange occurs when a tote is imminently full or completely full. A zone-designated AGV with no tote positions under the racking for a lift, another AGV carrying an empty tote positions behind the tote under the sorter, the AGV with the full tote exits into the aisle, and the AGV with the empty tote moves into the rack location and places the empty tote. The AGV left without a tote becomes the next vehicle assigned to pick up a full tote in that zone.",
+      "observed_evidence": [
+        "“Staging for an exchange can happen when a tote is imminently full or completely full”",
+        "“An AGV with no tote that is designated to that tote’s zone moves under the racking to position for a lift”",
+        "“The tote is lifted in position”",
+        "“An AGV with an empty tote travels under the sorter to the position behind that tote”",
+        "“The AGV with the full tote moves out into the aisle”",
+        "“The AGV with the empty tote moves into that rack location and lowers its empty tote into the rack”",
+        "“This AGV with no tote becomes the AGV that will pick up the next full tote in that zone”"
+      ],
+      "relationships": [
+        {
+          "type": "triggered_by",
+          "target": "tote nearing or reaching full condition"
+        },
+        {
+          "type": "involves",
+          "target": "zone-designated AGV staging under racking"
+        },
+        {
+          "type": "involves",
+          "target": "empty-tote AGV positioning behind tote under sorter"
+        },
+        {
+          "type": "results_in",
+          "target": "empty tote placed into vacated rack location"
+        },
+        {
+          "type": "results_in",
+          "target": "tote-less AGV becomes next full-tote pickup AGV for the zone"
+        }
+      ],
+      "retrieval_text": "Exchange staging process for OptiSweep tote replacement: when a tote is imminently full or fully full, a zone-designated AGV with no tote moves under the racking for lift position, the tote is lifted, an AGV with an empty tote travels under the sorter behind that tote, the AGV with the full tote moves into the aisle, the AGV with the empty tote moves into the rack location and lowers its empty tote, and the AGV left without a tote becomes the next AGV assigned to pick up a full tote in that zone.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_13_exchange_assignment_behavior",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        13
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0013"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Post-exchange AGV role reassignment within a zone",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "AGV with no tote",
+        "zone assignment",
+        "next full tote pickup"
+      ],
+      "summary": "After the exchange movement completes, the AGV that no longer has a tote is assigned to pick up the next full tote in the same zone.",
+      "observed_evidence": [
+        "“This AGV with no tote becomes the AGV that will pick up the next full tote in that zone”"
+      ],
+      "relationships": [
+        {
+          "type": "follows",
+          "target": "exchange staging and tote replacement flow"
+        },
+        {
+          "type": "applies_to",
+          "target": "zone-based AGV assignment"
+        }
+      ],
+      "retrieval_text": "After tote exchange, the AGV with no tote becomes the AGV assigned to pick up the next full tote in that zone.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_13_stage_exchange_for_full_tote",
+      "title": "Stage and complete a tote exchange when a tote is full or nearly full",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        13
+      ],
+      "systems": [
+        "AGV",
+        "sorter",
+        "racking"
+      ],
+      "components": [
+        "full tote",
+        "empty tote",
+        "zone-designated AGV with no tote",
+        "AGV with empty tote",
+        "rack location",
+        "aisle"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A tote is imminently full or completely full.",
+        "A no-tote AGV is designated to the tote's zone.",
+        "An AGV carrying an empty tote is available."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0013"
+      ],
+      "procedure_visual_summary": "Slide describes AGV exchange staging around a full tote, including a zone-designated AGV positioning under racking, an empty-tote AGV approaching from behind under the sorter, the full-tote AGV moving into the aisle, and the empty tote being lowered into the rack location.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Initiate exchange staging when a tote is imminently full or completely full.",
+          "expected_outcome": "The system enters an exchange scenario for the affected tote.",
+          "validation_check": "The slide states exchange staging can happen when a tote is imminently full or completely full.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:13",
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "visual_region_hint": "Upper text block describing exchange trigger conditions."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Move the zone-designated AGV with no tote under the racking to position for a lift.",
+          "expected_outcome": "A no-tote AGV is positioned under the racking for the tote lift.",
+          "validation_check": "The AGV is described as moving under the racking to position for a lift.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:13",
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "visual_region_hint": "Middle text block beginning with 'An AGV with no tote...'."
+        },
+        {
+          "step_order": 3,
+          "instruction": "Lift the tote into position.",
+          "expected_outcome": "The tote is lifted and ready for the exchange movement.",
+          "validation_check": "The slide explicitly states the tote is lifted in position.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:13",
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "visual_region_hint": "Bullet line stating 'The tote is lifted in position'."
+        },
+        {
+          "step_order": 4,
+          "instruction": "Move an AGV carrying an empty tote under the sorter to the position behind that tote.",
+          "expected_outcome": "The replacement empty tote is staged behind the tote being exchanged.",
+          "validation_check": "The slide states the AGV with an empty tote travels under the sorter to the position behind that tote.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:13",
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "visual_region_hint": "Middle-lower text block beginning with 'An AGV with an empty tote...'."
+        },
+        {
+          "step_order": 5,
+          "instruction": "Move the AGV with the full tote out into the aisle.",
+          "expected_outcome": "The full tote clears the rack location.",
+          "validation_check": "The slide states the AGV with the full tote moves out into the aisle.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:13",
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "visual_region_hint": "Lower text block describing full-tote AGV movement into the aisle."
+        },
+        {
+          "step_order": 6,
+          "instruction": "Move the AGV with the empty tote into the rack location and lower its empty tote into the rack.",
+          "expected_outcome": "An empty tote is placed into the rack location vacated by the full tote.",
+          "validation_check": "The slide states the AGV with the empty tote moves into that rack location and lowers its empty tote into the rack.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:13",
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "visual_region_hint": "Lower text block describing empty-tote placement into the rack."
+        },
+        {
+          "step_order": 7,
+          "instruction": "Treat the AGV left with no tote as the AGV that will pick up the next full tote in that zone.",
+          "expected_outcome": "The no-tote AGV is reassigned as the next full-tote pickup vehicle for the zone.",
+          "validation_check": "The slide states this AGV with no tote becomes the AGV that will pick up the next full tote in that zone.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:13",
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0013"
+          ],
+          "visual_region_hint": "Final bullet text at bottom of slide."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_13_exchange_staging_process",
+        "oku_optisweep_training_internal_13_exchange_assignment_behavior"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Operational action for tote exchange staging: when a tote is imminently full or full, position a zone-designated no-tote AGV under the racking for lift, lift the tote, move an empty-tote AGV under the sorter behind the tote, move the full-tote AGV into the aisle, move the empty-tote AGV into the rack location and lower the empty tote, then use the resulting no-tote AGV as the next full-tote pickup AGV for that zone."
+    }
+  ],
+  "discarded_candidates": []
+}

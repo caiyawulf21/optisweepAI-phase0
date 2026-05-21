@@ -9,7 +9,7 @@ class IncidentRecord(KnowledgeDocument):
     dataset: str = "dataset_1_canonical_incident"
     incident_id: str
     source_case_id: str | None = None
-    issue_category: str
+    issue_category: str | None = None
     site: str | None = None
     customer: str | None = None
     priority: str | None = None

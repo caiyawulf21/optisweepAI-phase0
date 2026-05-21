@@ -1,0 +1,50 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0017_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        17
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0017"
+      ],
+      "unit_type": "operational_process",
+      "title": "Potential future addition noted: GLD for MF1",
+      "systems": [
+        "MF1"
+      ],
+      "components": [
+        "GLD"
+      ],
+      "summary": "The slide shows MF1 with the note 'Maybe Add GLD', indicating a tentative or proposed change related to GLD in the MF1 context. No action sequence, implementation detail, or confirmed process is provided.",
+      "observed_evidence": [
+        "Visible text: 'MF1'",
+        "Visible text: 'Maybe Add GLD'",
+        "Visible text: 'Mitchel Flynn, 2026-03-11T17:51:17.457'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "candidate_change_for",
+          "target": "MF1",
+          "evidence": "The note 'Maybe Add GLD' appears directly with 'MF1'."
+        }
+      ],
+      "retrieval_text": "MF1 slide note says 'Maybe Add GLD'. This appears to be a tentative change or placeholder comment associated with MF1, not a defined procedure.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "candidate_type": "procedure",
+      "title": "Add GLD to MF1",
+      "reason": "Rejected as a procedure because the slide only contains the tentative note 'Maybe Add GLD' and does not provide explicit reusable action guidance or operational steps.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:17",
+        "artifact:slide_artifact_optisweep_training_internal_0017"
+      ]
+    }
+  ]
+}

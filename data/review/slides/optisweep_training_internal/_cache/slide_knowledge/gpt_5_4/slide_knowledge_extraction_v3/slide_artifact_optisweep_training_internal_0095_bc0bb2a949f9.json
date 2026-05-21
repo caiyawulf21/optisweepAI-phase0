@@ -1,0 +1,114 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0095_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        95
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0095"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Tipper Station model represents operator stations with standard and GLD station types",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tipper Station",
+        "Standard Station",
+        "GLD Station"
+      ],
+      "summary": "The slide describes the Tipper Station model in the Sorter Sweeper Database as representing operator stations. It indicates two station categories are currently present: standard stations and GLD stations.",
+      "observed_evidence": [
+        "Slide title: \"Tipper Station Model\"",
+        "Visible text: \"Tipper Stations represent operator stations.\"",
+        "Visible text: \"As of now we have our standard Stations and our GLD Stations.\""
+      ],
+      "relationships": [
+        {
+          "relationship_type": "represents",
+          "source_component": "Tipper Station",
+          "target_component": "operator stations"
+        },
+        {
+          "relationship_type": "has_types",
+          "source_component": "Tipper Station",
+          "target_component": "Standard Station and GLD Station"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Tipper Station Model. Tipper Stations represent operator stations. Current station types include standard stations and GLD stations.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0095_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        95
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0095"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Each tipper station has two tippers",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tipper Station",
+        "Tipper"
+      ],
+      "summary": "The slide states a fixed relationship in the model: each station contains two tippers.",
+      "observed_evidence": [
+        "Visible text: \"Each station has 2 tippers.\"",
+        "Visual elements list component: \"Tipper\""
+      ],
+      "relationships": [
+        {
+          "relationship_type": "contains",
+          "source_component": "Tipper Station",
+          "target_component": "2 Tippers"
+        }
+      ],
+      "retrieval_text": "In the Sorter Sweeper Database Tipper Station model, each station has 2 tippers.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0095_01",
+      "title": "No procedure extracted from Tipper Station model overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        95
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tipper Station",
+        "Tipper"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0095"
+      ],
+      "procedure_visual_summary": "Overview/model slide describing Tipper Station representation and cardinality, with no user actions or ordered steps shown.",
+      "steps": [],
+      "warnings": [
+        "Slide provides database/model context only.",
+        "No explicit reusable action guidance or ordered operational sequence is present."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0095_01",
+        "oku_optisweep_training_internal_0095_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: the slide is a Tipper Station database/model overview stating that Tipper Stations represent operator stations, include standard and GLD stations, and each station has 2 tippers, but it does not provide action steps."
+    }
+  ],
+  "discarded_candidates": []
+}

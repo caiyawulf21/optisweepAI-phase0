@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "cand_upsfortna_optisweep_training_day1_20260317_000061_s1",
+      "timestamp_start": "00:18:04.400",
+      "timestamp_end": "00:18:14.175",
+      "operational_intent": "Clarify whether the discussed system should be considered an auto-induct outlet by comparing its differences and classification.",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000301",
+        "vec_upsfortna_optisweep_training_day1_20260317_000302",
+        "vec_upsfortna_optisweep_training_day1_20260317_000303",
+        "vec_upsfortna_optisweep_training_day1_20260317_000304",
+        "vec_upsfortna_optisweep_training_day1_20260317_000305"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

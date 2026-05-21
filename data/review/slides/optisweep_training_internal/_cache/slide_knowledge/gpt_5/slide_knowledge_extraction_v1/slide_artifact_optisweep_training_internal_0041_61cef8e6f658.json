@@ -1,0 +1,32 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "optisweep_training_internal_41_u1",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        41
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0041"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Overall System - AGV Status page",
+      "systems": [
+        "Overall System",
+        "AGVs"
+      ],
+      "components": [
+        "AGV Status page"
+      ],
+      "summary": "The 'AGV Status' page within the Overall System displays the current status of the AGVs.",
+      "observed_evidence": [
+        "Slide text includes: 'Overall System', 'AGV Status', and 'This page will show the current status of the AGVs'."
+      ],
+      "relationships": [],
+      "retrieval_text": "UI concept: Overall System > AGV Status page shows the current status of AGVs.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

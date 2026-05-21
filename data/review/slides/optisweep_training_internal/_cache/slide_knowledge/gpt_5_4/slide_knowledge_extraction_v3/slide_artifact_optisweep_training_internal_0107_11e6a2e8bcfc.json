@@ -1,0 +1,191 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0107_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        107
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0107"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "AGV status data is received from Geek and used by the Sorter Sweeper Database",
+      "systems": [
+        "Sorter Sweeper Database",
+        "AGV"
+      ],
+      "components": [
+        "AGV",
+        "Geek"
+      ],
+      "summary": "The slide states that data from Geek on the AGVs is sent to the receiving system and used within the AGV Status Model under the Sorter Sweeper Database context.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / AGV Status Model'",
+        "Visible text: 'Data from Geek on the AGVs are sent to us.'"
+      ],
+      "relationships": [
+        {
+          "type": "data_flow",
+          "from": "Geek",
+          "to": "Sorter Sweeper Database",
+          "description": "AGV-related data is sent from Geek to the receiving system described on the slide."
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database AGV Status Model receives AGV data from Geek. The slide indicates AGV information is sent to the system for downstream operational use.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0107_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        107
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0107"
+      ],
+      "unit_type": "system_behavior",
+      "title": "RMS fault on an AGV triggers tipper notification behavior",
+      "systems": [
+        "AGV",
+        "Tipper",
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "AGV",
+        "Tipper",
+        "RMS Fault"
+      ],
+      "summary": "The AGV status information is used to notify tippers when an RMS fault condition exists.",
+      "observed_evidence": [
+        "Visible text: 'We use the information to notify tippers if there is an RMS Fault'"
+      ],
+      "relationships": [
+        {
+          "type": "notification_trigger",
+          "from": "AGV RMS Fault status",
+          "to": "Tipper",
+          "description": "AGV fault information is used to notify the tipper."
+        }
+      ],
+      "retrieval_text": "AGV Status Model behavior: if there is an RMS Fault on an AGV, the system uses received AGV data to notify tippers.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0107_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        107
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0107"
+      ],
+      "unit_type": "system_behavior",
+      "title": "AGV waiting-for-tote condition triggers hospital notification",
+      "systems": [
+        "AGV",
+        "Hospital",
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "AGV",
+        "Hospital",
+        "Tote"
+      ],
+      "summary": "The AGV status information is used to notify the hospital when an AGV is waiting for a tote.",
+      "observed_evidence": [
+        "Visible text: 'notify the hospital if an AGV is waiting for a tote'"
+      ],
+      "relationships": [
+        {
+          "type": "notification_trigger",
+          "from": "AGV waiting for tote status",
+          "to": "Hospital",
+          "description": "Hospital is notified when an AGV is waiting for a tote."
+        }
+      ],
+      "retrieval_text": "AGV Status Model behavior: when an AGV is waiting for a tote, the system notifies the hospital.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0107_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        107
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0107"
+      ],
+      "unit_type": "routing_rule",
+      "title": "If an AGV is called to maintenance, a tote is sent to the hospital",
+      "systems": [
+        "AGV",
+        "Hospital",
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "AGV",
+        "Tote",
+        "Hospital",
+        "Maintenance"
+      ],
+      "summary": "The slide describes a routing/action rule where a tote is sent to the hospital if the AGV is called to maintenance.",
+      "observed_evidence": [
+        "Visible text: 'send a tote to the hospital if the AGV is called to maintenance.'"
+      ],
+      "relationships": [
+        {
+          "type": "conditional_routing",
+          "from": "AGV called to maintenance",
+          "to": "Hospital",
+          "description": "A tote is sent to the hospital when the AGV is called to maintenance."
+        }
+      ],
+      "retrieval_text": "Routing rule in AGV Status Model: if an AGV is called to maintenance, send a tote to the hospital.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0107_01",
+      "title": "No explicit reusable procedure on AGV Status Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        107
+      ],
+      "systems": [
+        "Sorter Sweeper Database",
+        "AGV",
+        "Tipper",
+        "Hospital"
+      ],
+      "components": [
+        "AGV",
+        "Tote",
+        "Geek"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0107"
+      ],
+      "procedure_visual_summary": "Slide titled 'Sorter Sweeper Database / AGV Status Model' describing how AGV data is used for notifications and tote routing under specific conditions.",
+      "steps": [],
+      "warnings": [
+        "The slide describes conditional system behavior but does not provide operator or support action steps.",
+        "No explicit step sequence, UI interaction, or validation procedure is shown."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0107_01",
+        "oku_optisweep_training_internal_0107_02",
+        "oku_optisweep_training_internal_0107_03",
+        "oku_optisweep_training_internal_0107_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because slide 107 provides AGV status model behavior and routing/notification logic, not a reusable action sequence."
+    }
+  ],
+  "discarded_candidates": []
+}

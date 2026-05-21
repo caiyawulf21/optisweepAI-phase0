@@ -1,0 +1,167 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0040_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        40
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0040"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Geek+ RMS page visibility depends on firewall access",
+      "systems": [
+        "Geek+ RMS"
+      ],
+      "components": [
+        "RMS web page",
+        "firewall rules"
+      ],
+      "summary": "The RMS slide states that the Geek+ RMS web page will be shown when appropriate firewall rules are open.",
+      "observed_evidence": [
+        "Visible text: \"This page will show the Geek+ RMS web page when appropriate firewall rules are open.\"",
+        "Slide title: \"Overall System / RMS\""
+      ],
+      "relationships": [
+        {
+          "relation": "depends_on",
+          "target": "Appropriate firewall rules being open"
+        }
+      ],
+      "retrieval_text": "Overall System RMS: the Geek+ RMS web page is available or shown when appropriate firewall rules are open. This is a UI access dependency tied to firewall configuration.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0040_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        40
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0040"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "RMS page presents system faults and active AGV faults in separate screen regions",
+      "systems": [
+        "Geek+ RMS",
+        "AGV"
+      ],
+      "components": [
+        "system faults panel",
+        "active AGV faults panel"
+      ],
+      "summary": "The slide indicates that system faults appear on the left side of the RMS page and active AGV faults appear on the right side.",
+      "observed_evidence": [
+        "Visible text: \"I will also show system faults on the left and any active AGV faults on the right.\""
+      ],
+      "relationships": [
+        {
+          "relation": "displays",
+          "target": "System faults on the left"
+        },
+        {
+          "relation": "displays",
+          "target": "Active AGV faults on the right"
+        }
+      ],
+      "retrieval_text": "On the RMS page, system faults are shown on the left side and active AGV faults are shown on the right side. This is a diagnostic UI layout concept for fault visibility.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0040_01",
+      "title": "Review RMS page fault areas",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        40
+      ],
+      "systems": [
+        "Geek+ RMS",
+        "AGV"
+      ],
+      "components": [
+        "RMS web page",
+        "system faults area",
+        "active AGV faults area"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Appropriate firewall rules are open, as stated on the slide."
+      ],
+      "procedure_screenshot_refs": [
+        "slide_artifact_optisweep_training_internal_0040"
+      ],
+      "procedure_visual_summary": "Slide describes the RMS web page and identifies left-side system faults and right-side active AGV faults.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Open or view the Geek+ RMS web page if appropriate firewall rules are open.",
+          "expected_outcome": "The RMS web page is visible.",
+          "validation_check": "Confirm the Geek+ RMS web page is displayed.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:40",
+            "artifact:slide_artifact_optisweep_training_internal_0040"
+          ],
+          "artifact_refs": [
+            "slide_artifact_optisweep_training_internal_0040"
+          ],
+          "screenshot_refs": [
+            "slide_artifact_optisweep_training_internal_0040"
+          ],
+          "visual_region_hint": "Overall RMS page"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Check the left side of the RMS page for system faults.",
+          "expected_outcome": "System faults, if present, are shown on the left.",
+          "validation_check": "Verify whether a system fault area is present on the left side.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:40",
+            "artifact:slide_artifact_optisweep_training_internal_0040"
+          ],
+          "artifact_refs": [
+            "slide_artifact_optisweep_training_internal_0040"
+          ],
+          "screenshot_refs": [
+            "slide_artifact_optisweep_training_internal_0040"
+          ],
+          "visual_region_hint": "Left side of RMS page"
+        },
+        {
+          "step_order": 3,
+          "instruction": "Check the right side of the RMS page for active AGV faults.",
+          "expected_outcome": "Active AGV faults, if present, are shown on the right.",
+          "validation_check": "Verify whether an active AGV fault area is present on the right side.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:40",
+            "artifact:slide_artifact_optisweep_training_internal_0040"
+          ],
+          "artifact_refs": [
+            "slide_artifact_optisweep_training_internal_0040"
+          ],
+          "screenshot_refs": [
+            "slide_artifact_optisweep_training_internal_0040"
+          ],
+          "visual_region_hint": "Right side of RMS page"
+        }
+      ],
+      "warnings": [
+        "This candidate is based on descriptive slide text rather than a fully documented action sequence."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0040_01",
+        "oku_optisweep_training_internal_0040_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Navigation candidate for RMS review: if firewall rules permit access, view the Geek+ RMS web page, then review system faults on the left and active AGV faults on the right."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,66 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0090_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        90
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0090"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Sorter Sweeper Database foundation reference",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Foundation"
+      ],
+      "summary": "The slide establishes a foundational database reference for the Sorter Sweeper Database but does not expose readable schema details, fields, relationships, or operational instructions in the provided artifact.",
+      "observed_evidence": [
+        "Visible text shows 'Sorter Sweeper Database' and 'Foundation'.",
+        "Visual element is identified as a database_schema.",
+        "Candidate record type indicates database_reference."
+      ],
+      "relationships": [],
+      "retrieval_text": "Sorter Sweeper Database Foundation slide. Foundational database reference slide for the Sorter Sweeper Database. Indicates database schema/foundation context but no readable table, field, or relationship details are visible in the artifact.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0090_01",
+      "title": "No procedure extracted from Sorter Sweeper Database foundation slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        90
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Foundation"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0090"
+      ],
+      "procedure_visual_summary": "Title-style foundation slide for Sorter Sweeper Database with database schema/reference indication but no visible action sequence or readable operational detail.",
+      "steps": [],
+      "warnings": [
+        "No explicit reusable action guidance, numbered steps, or operational sequence is visible on the slide.",
+        "Do not infer database procedures, schema operations, or support actions from the title/foundation labeling alone."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0090_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate for slide 90. The slide is a foundational database reference for Sorter Sweeper Database and does not provide explicit operational steps or actionable procedure content."
+    }
+  ],
+  "discarded_candidates": []
+}

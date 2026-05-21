@@ -1,0 +1,192 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0080_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        80
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0080"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Robot States Sorter state groups in Robotics Database",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "Robot",
+        "Sorter",
+        "GLD",
+        "ShutDown"
+      ],
+      "summary": "The slide lists Robot States Sorter values organized into grouped categories used in the Robotics Database: In and Out, Sorter Queue, Sorter Locations, GLD, and ShutDown.",
+      "observed_evidence": [
+        "Slide title: 'Robotics Database / Robot States Sorter'",
+        "Grouped bullets shown under 'In and Out', 'Sorter Queue', 'Sorter Locations', 'GLD', and 'ShutDown'",
+        "State values listed as database/reference labels rather than procedural instructions"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "contains_state_group",
+          "target": "In and Out",
+          "details": [
+            "MovingToSorterEntranceQueue",
+            "AtSorterEntranceQueue",
+            "MovingToSorterExitQueue",
+            "AtSorterExitQueue"
+          ]
+        },
+        {
+          "relationship_type": "contains_state_group",
+          "target": "Sorter Queue",
+          "details": [
+            "SQMovingIntoZone",
+            "SQWaitingInZone",
+            "SQStagingExchange",
+            "SQStagedExchange",
+            "SQExchanging",
+            "SQExchanged",
+            "SDroppingOffTote"
+          ]
+        },
+        {
+          "relationship_type": "contains_state_group",
+          "target": "Sorter Locations",
+          "details": [
+            "SWaitingInzone",
+            "SZoneStaging",
+            "SPickingUpTote",
+            "SPickedUpTote",
+            "SWaitingForExchange"
+          ]
+        },
+        {
+          "relationship_type": "contains_state_group",
+          "target": "GLD",
+          "details": [
+            "AtGLDPreQueue",
+            "MovingToGLDPreQueue",
+            "AtGLDPreQueueExit"
+          ]
+        },
+        {
+          "relationship_type": "contains_state_group",
+          "target": "ShutDown",
+          "details": [
+            "MovingToShutDownOffTheEnd",
+            "AtShutDownOffTheEnd",
+            "MovingToShutDownQueue",
+            "AtShutDownQueue"
+          ]
+        }
+      ],
+      "retrieval_text": "Robotics Database Robot States Sorter reference. State groups include In and Out, Sorter Queue, Sorter Locations, GLD, and ShutDown. States listed: MovingToSorterEntranceQueue, AtSorterEntranceQueue, MovingToSorterExitQueue, AtSorterExitQueue, SQMovingIntoZone, SQWaitingInZone, SQStagingExchange, SQStagedExchange, SQExchanging, SQExchanged, SDroppingOffTote, SWaitingInzone, SZoneStaging, SPickingUpTote, SPickedUpTote, SWaitingForExchange, AtGLDPreQueue, MovingToGLDPreQueue, AtGLDPreQueueExit, MovingToShutDownOffTheEnd, AtShutDownOffTheEnd, MovingToShutDownQueue, AtShutDownQueue.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0080_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        80
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0080"
+      ],
+      "unit_type": "state_transition",
+      "title": "Sorter-related robot movement and waiting states",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "Robot",
+        "Sorter Queue",
+        "Sorter Locations"
+      ],
+      "summary": "The listed robot states describe observable movement, queueing, staging, exchange, tote drop-off, pickup, and waiting conditions around the sorter area.",
+      "observed_evidence": [
+        "Movement-prefixed states: 'MovingToSorterEntranceQueue', 'MovingToSorterExitQueue', 'SQMovingIntoZone', 'MovingToGLDPreQueue', 'MovingToShutDownOffTheEnd', 'MovingToShutDownQueue'",
+        "Stationary/location states: 'AtSorterEntranceQueue', 'AtSorterExitQueue', 'AtGLDPreQueue', 'AtGLDPreQueueExit', 'AtShutDownOffTheEnd', 'AtShutDownQueue'",
+        "Sorter exchange/tote handling states: 'SQStagingExchange', 'SQStagedExchange', 'SQExchanging', 'SQExchanged', 'SDroppingOffTote', 'SPickingUpTote', 'SPickedUpTote'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "implies_transition_pattern",
+          "target": "movement_to_arrival",
+          "details": [
+            "MovingToSorterEntranceQueue -> AtSorterEntranceQueue",
+            "MovingToSorterExitQueue -> AtSorterExitQueue",
+            "MovingToGLDPreQueue -> AtGLDPreQueue",
+            "MovingToShutDownOffTheEnd -> AtShutDownOffTheEnd",
+            "MovingToShutDownQueue -> AtShutDownQueue"
+          ]
+        },
+        {
+          "relationship_type": "covers_operational_phase",
+          "target": "sorter_exchange_cycle",
+          "details": [
+            "SQMovingIntoZone",
+            "SQWaitingInZone",
+            "SQStagingExchange",
+            "SQStagedExchange",
+            "SQExchanging",
+            "SQExchanged"
+          ]
+        },
+        {
+          "relationship_type": "covers_tote_interaction",
+          "target": "tote_handling",
+          "details": [
+            "SDroppingOffTote",
+            "SPickingUpTote",
+            "SPickedUpTote"
+          ]
+        }
+      ],
+      "retrieval_text": "Robot States Sorter operational behavior. Sorter-related states indicate movement, arrival, queue waiting, zone staging, exchange, tote drop-off, tote pickup, GLD pre-queue handling, and shutdown queue/off-the-end positions. Example implied transitions include MovingToSorterEntranceQueue to AtSorterEntranceQueue and MovingToShutDownQueue to AtShutDownQueue.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0080_01",
+      "title": "No procedure extracted from Robot States Sorter reference slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        80
+      ],
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "Robot",
+        "Sorter",
+        "GLD",
+        "ShutDown"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewer is examining slide 80 as a candidate procedure source"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0080"
+      ],
+      "procedure_visual_summary": "Reference slide listing Robot States Sorter categories and state names; no numbered or imperative action sequence is shown.",
+      "steps": [],
+      "warnings": [
+        "Slide contains categorized state names only",
+        "No explicit reusable action guidance or ordered operator/support workflow is provided",
+        "Any inferred troubleshooting or navigation steps would be invented beyond slide evidence"
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0080_01",
+        "oku_optisweep_training_internal_0080_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: Robot States Sorter slide is a database/state reference listing categories and state values, not an explicit procedure."
+    }
+  ],
+  "discarded_candidates": []
+}

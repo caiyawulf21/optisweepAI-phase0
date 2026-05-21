@@ -1,0 +1,142 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Introduction to Hot Bins Concept",
+      "timestamp_start": "02:17:06.440",
+      "timestamp_end": "02:17:21.208",
+      "primary_intent": "Explain the concept and priority of hot bins",
+      "operational_intents": [
+        "Define hot bins",
+        "Explain priority rationale"
+      ],
+      "knowledge_extraction_strategy": "Extract definitions and priority criteria",
+      "why_this_strategy": "Clarifies key terminology and priority basis",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002127",
+        "vec_upsfortna_optisweep_training_day1_20260317_002128",
+        "vec_upsfortna_optisweep_training_day1_20260317_002129",
+        "vec_upsfortna_optisweep_training_day1_20260317_002130",
+        "vec_upsfortna_optisweep_training_day1_20260317_002131",
+        "vec_upsfortna_optisweep_training_day1_20260317_002132"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Operational Importance and Management of Hot Bins",
+      "timestamp_start": "02:17:21.208",
+      "timestamp_end": "02:17:57.160",
+      "primary_intent": "Describe operational handling and system messaging for hot bins",
+      "operational_intents": [
+        "Explain urgency for hot bins",
+        "Describe system message exchange and indicator usage"
+      ],
+      "knowledge_extraction_strategy": "Extract operational procedures and system communication details",
+      "why_this_strategy": "Details how hot bins are prioritized and managed",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002133",
+        "vec_upsfortna_optisweep_training_day1_20260317_002134",
+        "vec_upsfortna_optisweep_training_day1_20260317_002135",
+        "vec_upsfortna_optisweep_training_day1_20260317_002136",
+        "vec_upsfortna_optisweep_training_day1_20260317_002137",
+        "vec_upsfortna_optisweep_training_day1_20260317_002138",
+        "vec_upsfortna_optisweep_training_day1_20260317_002139",
+        "vec_upsfortna_optisweep_training_day1_20260317_002140",
+        "vec_upsfortna_optisweep_training_day1_20260317_002141",
+        "vec_upsfortna_optisweep_training_day1_20260317_002142",
+        "vec_upsfortna_optisweep_training_day1_20260317_002143",
+        "vec_upsfortna_optisweep_training_day1_20260317_002144",
+        "vec_upsfortna_optisweep_training_day1_20260317_002145"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "API Page Overview and System State Indicators",
+      "timestamp_start": "02:18:06.520",
+      "timestamp_end": "02:18:51.640",
+      "primary_intent": "Explain API page functions and system state indicators",
+      "operational_intents": [
+        "Describe API page naming and purpose",
+        "List system states shown on API page",
+        "Explain purge and close out differences"
+      ],
+      "knowledge_extraction_strategy": "Extract system interface functions and state definitions",
+      "why_this_strategy": "Clarifies system monitoring and control features",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002146",
+        "vec_upsfortna_optisweep_training_day1_20260317_002147",
+        "vec_upsfortna_optisweep_training_day1_20260317_002148",
+        "vec_upsfortna_optisweep_training_day1_20260317_002149",
+        "vec_upsfortna_optisweep_training_day1_20260317_002150",
+        "vec_upsfortna_optisweep_training_day1_20260317_002151",
+        "vec_upsfortna_optisweep_training_day1_20260317_002152",
+        "vec_upsfortna_optisweep_training_day1_20260317_002153",
+        "vec_upsfortna_optisweep_training_day1_20260317_002154",
+        "vec_upsfortna_optisweep_training_day1_20260317_002155",
+        "vec_upsfortna_optisweep_training_day1_20260317_002156",
+        "vec_upsfortna_optisweep_training_day1_20260317_002157"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "System Metrics and Error Retrieval Functions",
+      "timestamp_start": "02:19:00.080",
+      "timestamp_end": "02:19:30.520",
+      "primary_intent": "Describe system metrics reset and error retrieval features",
+      "operational_intents": [
+        "Explain reset metrics function",
+        "Describe get metrics and get errors functions",
+        "Mention zone configuration usage"
+      ],
+      "knowledge_extraction_strategy": "Extract system diagnostic and monitoring commands",
+      "why_this_strategy": "Details system health and status retrieval methods",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002158",
+        "vec_upsfortna_optisweep_training_day1_20260317_002159",
+        "vec_upsfortna_optisweep_training_day1_20260317_002160",
+        "vec_upsfortna_optisweep_training_day1_20260317_002161",
+        "vec_upsfortna_optisweep_training_day1_20260317_002162",
+        "vec_upsfortna_optisweep_training_day1_20260317_002163",
+        "vec_upsfortna_optisweep_training_day1_20260317_002164"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV Command Integration and Recovery Mechanisms",
+      "timestamp_start": "02:19:32.960",
+      "timestamp_end": "02:20:08.741",
+      "primary_intent": "Explain AGV command controls and recovery options",
+      "operational_intents": [
+        "Describe AGV add, remove, pause, and resume commands",
+        "Explain recovery command execution for AGVs"
+      ],
+      "knowledge_extraction_strategy": "Extract AGV control commands and recovery procedures",
+      "why_this_strategy": "Covers AGV operational control and fault recovery",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002165",
+        "vec_upsfortna_optisweep_training_day1_20260317_002166",
+        "vec_upsfortna_optisweep_training_day1_20260317_002167",
+        "vec_upsfortna_optisweep_training_day1_20260317_002168",
+        "vec_upsfortna_optisweep_training_day1_20260317_002169",
+        "vec_upsfortna_optisweep_training_day1_20260317_002170",
+        "vec_upsfortna_optisweep_training_day1_20260317_002171",
+        "vec_upsfortna_optisweep_training_day1_20260317_002172"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Unknown Slide 61 - No Content",
+      "timestamp_start": "02:06:59.760",
+      "timestamp_end": "02:06:59.880",
+      "primary_intent": "Placeholder or transition segment with no operational content",
+      "operational_intents": [],
+      "knowledge_extraction_strategy": "Skip due to lack of content",
+      "why_this_strategy": "No transcript or slide content to extract",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000061"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000061"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Unknown Slide 62 - No Content",
+      "timestamp_start": "02:07:29.760",
+      "timestamp_end": "02:07:29.880",
+      "primary_intent": "Placeholder or transition segment with no operational content",
+      "operational_intents": [],
+      "knowledge_extraction_strategy": "Skip due to lack of content",
+      "why_this_strategy": "No transcript or slide content to extract",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000062"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000062"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Overview and Explanation of Viva Screens and Bag Out Controls",
+      "timestamp_start": "02:07:51.040",
+      "timestamp_end": "02:10:56.868",
+      "primary_intent": "Explain Viva HMI screens focusing on bag out control and AGV status",
+      "operational_intents": [
+        "Introduce Viva screens from Hazlet site",
+        "Describe main overview screen elements",
+        "Explain bag out control system and manual bag out cancellation",
+        "Discuss AGV status pop-ups and error reporting",
+        "Present custom defined metrics requested by UPS"
+      ],
+      "knowledge_extraction_strategy": "Extract detailed operational descriptions and control functions",
+      "why_this_strategy": "Detailed explanation of HMI controls and system functions",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000063"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000063"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "System and Tipper Statistics with RMS Integration Discussion",
+      "timestamp_start": "02:10:56.868",
+      "timestamp_end": "02:14:00.061",
+      "primary_intent": "Discuss system statistics, tipper metrics, and RMS integration challenges",
+      "operational_intents": [
+        "Explain statistics reset per sort and sort GUID usage",
+        "Describe historical data handling and database support",
+        "Discuss firewall limitations affecting RMS display",
+        "Outline future flexibility for historical metrics and HMI integration"
+      ],
+      "knowledge_extraction_strategy": "Extract operational details on statistics management and integration",
+      "why_this_strategy": "Focus on system metrics and integration operational aspects",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000064"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000064"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

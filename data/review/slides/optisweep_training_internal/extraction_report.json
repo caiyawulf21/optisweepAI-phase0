@@ -1,0 +1,16 @@
+{
+  "deck_id": "optisweep_training_internal",
+  "source_file": "data\\OptiSweep Training Slides [INTERNAL ONLY].pdf",
+  "slides_processed": 139,
+  "total_slides": 139,
+  "last_completed_slide": 139,
+  "current_slide": null,
+  "slide_artifacts_created": 139,
+  "knowledge_units_created": 297,
+  "context_candidates_created": 297,
+  "procedure_candidates_created": 42,
+  "discarded_candidates": 76,
+  "warnings": [],
+  "llm_status": "azure_openai",
+  "validation_status": "needs_review"
+}

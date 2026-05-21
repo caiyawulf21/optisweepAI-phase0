@@ -1,0 +1,108 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0130_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        130
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0130"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "Tipper heartbeat can be checked through a web browser using the tipper IP",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Tipper"
+      ],
+      "summary": "For an unplanned restart scenario, the slide indicates that tipper heartbeat should be verified. It states that a user can connect via a web browser using a tipper IP and provides an example WebVisu URL.",
+      "observed_evidence": [
+        "Slide title: 'Services / Unplanned restart'",
+        "Text: 'Check to make sure the tippers are getting heartbeat.'",
+        "Text: 'You can connect via a web browser using a tipper ip.'",
+        "Text: 'http://10.27.80.154:8080/webvisu.htm'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "supports",
+          "target": "procedure_candidate_attempt:proc_optisweep_training_internal_0130_01"
+        }
+      ],
+      "retrieval_text": "Services unplanned restart diagnostic: check whether tippers are getting heartbeat. Heartbeat verification may be performed by connecting in a web browser to the tipper IP, for example using a WebVisu URL such as http://10.27.80.154:8080/webvisu.htm.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0130_01",
+      "title": "Check tipper heartbeat via browser during unplanned restart",
+      "procedure_type": "diagnostic_check",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        130
+      ],
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Tipper"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A tipper IP address is known.",
+        "A web browser is available.",
+        "The check is being performed in the context of an unplanned restart."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0130"
+      ],
+      "procedure_visual_summary": "Slide titled 'Services / Unplanned restart' instructs checking whether tippers are getting heartbeat and notes browser access using a tipper IP, with an example URL shown.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Check to make sure the tippers are getting heartbeat.",
+          "expected_outcome": "You determine whether heartbeat is being received by the tippers.",
+          "validation_check": "Heartbeat status for the tipper can be observed or confirmed.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:130"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0130"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0130"
+          ],
+          "visual_region_hint": "Main body text under 'Unplanned restart'"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Connect via a web browser using a tipper IP, for example by opening the shown WebVisu address pattern.",
+          "expected_outcome": "The browser connects to the tipper's web interface.",
+          "validation_check": "The tipper web page loads using the tipper IP and port/path shown on the slide example.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:130"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0130"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0130"
+          ],
+          "visual_region_hint": "Lower body text containing the example URL"
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0130_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure candidate for unplanned restart: verify tipper heartbeat by connecting in a web browser to the tipper IP. Example shown: http://10.27.80.154:8080/webvisu.htm."
+    }
+  ],
+  "discarded_candidates": []
+}

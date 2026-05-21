@@ -1,0 +1,118 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0048_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        48
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0048"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Zone Config Aveva API page shows lane assignments, zones, and processing sequence numbers",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Zone Config",
+        "Aveva API page"
+      ],
+      "summary": "The Zone Config interface is described as providing an overview of lane assignments, their respective zones, and processing sequence numbers.",
+      "observed_evidence": [
+        "Slide title: 'Zone Config / Aveva API page'",
+        "Visible text: 'This interface provides an overview of lane assignments, their respective zones, and the processing sequence numbers.'"
+      ],
+      "relationships": [
+        {
+          "relation": "contains",
+          "target": "lane assignments"
+        },
+        {
+          "relation": "contains",
+          "target": "zones"
+        },
+        {
+          "relation": "contains",
+          "target": "processing sequence numbers"
+        }
+      ],
+      "retrieval_text": "Zone Config Aveva API page UI concept. Interface provides an overview of lane assignments, their respective zones, and processing sequence numbers.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0048_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        48
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0048"
+      ],
+      "unit_type": "api_capability",
+      "title": "Get Zone Configuration fetches current lane configuration",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Zone Config",
+        "Get Zone Configuration"
+      ],
+      "summary": "The Get Zone Configuration capability fetches the current configuration of all lanes to provide visibility into how each lane is set up within the system.",
+      "observed_evidence": [
+        "Visible text: 'Get Zone Configuration'",
+        "Visible text: 'Fetches the current configuration of all lanes, offering visibility into how each lane is set up within the system.'"
+      ],
+      "relationships": [
+        {
+          "relation": "reads",
+          "target": "current configuration of all lanes"
+        },
+        {
+          "relation": "supports_visibility_into",
+          "target": "how each lane is set up within the system"
+        }
+      ],
+      "retrieval_text": "Aveva Zone Config API capability: Get Zone Configuration fetches the current configuration of all lanes and provides visibility into lane setup within the system.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0048_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        48
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0048"
+      ],
+      "unit_type": "api_capability",
+      "title": "Update Zone Configuration modifies zone settings",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Zone Config",
+        "Update Zone Configuration"
+      ],
+      "summary": "The Update Zone Configuration capability allows users to modify zone settings so operations can adapt to system needs or changing requirements.",
+      "observed_evidence": [
+        "Visible text: 'Update Zone Configuration'",
+        "Visible text: 'Allows users to modify zone settings, ensuring flexibility to adapt operations based on system needs or changing requirements.'"
+      ],
+      "relationships": [
+        {
+          "relation": "modifies",
+          "target": "zone settings"
+        },
+        {
+          "relation": "supports",
+          "target": "adapting operations based on system needs or changing requirements"
+        }
+      ],
+      "retrieval_text": "Aveva Zone Config API capability: Update Zone Configuration allows users to modify zone settings for operational flexibility based on system needs or changing requirements.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

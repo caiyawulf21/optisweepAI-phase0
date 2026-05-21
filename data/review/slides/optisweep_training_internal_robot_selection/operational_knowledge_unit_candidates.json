@@ -1,0 +1,654 @@
+[
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_24_message_panel_functions",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      24
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024",
+      "slide_artifact_optisweep_training_internal_robot_selection_0024"
+    ],
+    "unit_type": "ui_concept",
+    "title": "Map Monitor message panel exposes robot and AGV status and fault actions",
+    "systems": [
+      "Map Monitor",
+      "AGV",
+      "Robot"
+    ],
+    "components": [
+      "Message Panel"
+    ],
+    "summary": "The Map Monitor Message Panel is presented as a UI area used to open the message panel, view counts of active robots, robots charging, and AGVs disconnected, expand AGV faults, inspect fault details, locate a faulted AGV, and E-stop the system.",
+    "observed_evidence": [
+      "Slide title: 'Map Monitor / Message Panel'",
+      "Bullet: 'Open message panel'",
+      "Bullet: 'Count of active Robots'",
+      "Bullet: 'Count of Robots charging'",
+      "Bullet: 'Drop down to show AGV faults'",
+      "Bullet: 'Count of AGVs disconnected'",
+      "Bullet: 'Inspection to view details of fault'",
+      "Bullet: 'Locate Faulted AGV'",
+      "Bullet: 'E stop the system'"
+    ],
+    "relationships": [
+      {
+        "relation_type": "supports",
+        "target": "diagnostic monitoring of AGV and robot status"
+      },
+      {
+        "relation_type": "includes",
+        "target": "fault inspection and AGV location actions"
+      }
+    ],
+    "retrieval_text": "Map Monitor Message Panel UI concept. Open message panel to view count of active robots, count of robots charging, AGV faults dropdown, count of AGVs disconnected, inspect fault details, locate faulted AGV, and E-stop the system.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:24"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_24_fault_diagnostics_from_message_panel",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      24
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024",
+      "slide_artifact_optisweep_training_internal_robot_selection_0024"
+    ],
+    "unit_type": "diagnostic_concept",
+    "title": "Message panel supports AGV fault visibility and inspection",
+    "systems": [
+      "Map Monitor",
+      "AGV"
+    ],
+    "components": [
+      "Message Panel"
+    ],
+    "summary": "The slide indicates that AGV faults can be shown from a dropdown, fault details can be inspected, disconnected AGV counts are visible, and a faulted AGV can be located from the message panel.",
+    "observed_evidence": [
+      "Bullet: 'Drop down to show AGV faults'",
+      "Bullet: 'Count of AGVs disconnected'",
+      "Bullet: 'Inspection to view details of fault'",
+      "Bullet: 'Locate Faulted AGV'"
+    ],
+    "relationships": [
+      {
+        "relation_type": "available_in",
+        "target": "Map Monitor Message Panel"
+      }
+    ],
+    "retrieval_text": "AGV fault diagnostics in Map Monitor message panel: show AGV faults from dropdown, view disconnected AGV count, inspect fault details, and locate a faulted AGV.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:24"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_25_01",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      25
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0025",
+      "slide_artifact_optisweep_training_internal_robot_selection_0025"
+    ],
+    "unit_type": "ui_concept",
+    "title": "Map Monitor Quick Select provides map visibility toggles and selection shortcuts",
+    "systems": [
+      "AGV",
+      "Robot"
+    ],
+    "components": [
+      "Map Monitor",
+      "Quick Select"
+    ],
+    "summary": "The Map Monitor Quick Select area includes options to view all AGV active paths, station IDs, and charger IDs, and includes selection functions for robots, containers, cells, and chargers.",
+    "observed_evidence": [
+      "Slide title: 'Map Monitor / Quick Select'",
+      "Visible text: 'View all AGV active paths'",
+      "Visible text: 'View Station Ids'",
+      "Visible text: 'View Charger Ids'",
+      "Visible text: 'Robot Selection'",
+      "Visible text: 'Container Selection'",
+      "Visible text: 'Cell Selection'",
+      "Visible text: 'Charger Selection'"
+    ],
+    "relationships": [
+      {
+        "relationship_type": "contains",
+        "target": "Map visibility options"
+      },
+      {
+        "relationship_type": "contains",
+        "target": "Selection functions for robots, containers, cells, and chargers"
+      }
+    ],
+    "retrieval_text": "Map Monitor Quick Select UI reference. Quick Select supports viewing all AGV active paths, viewing station IDs, viewing charger IDs, and selecting robots, containers, cells, and chargers from the Map Monitor.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:25"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_26_robot_selection_ui_behavior",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      26
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0026",
+      "slide_artifact_optisweep_training_internal_robot_selection_0026"
+    ],
+    "unit_type": "ui_concept",
+    "title": "Robot Selection view shows robot details and selected robot highlighting",
+    "systems": [
+      "OptiSweep"
+    ],
+    "components": [
+      "Robot Selection UI",
+      "Robot",
+      "Robot details panel"
+    ],
+    "summary": "In the Robot Selection overview, choosing the Robot option allows the user to select a robot to view robot details. The selected robot is visually indicated by a box around it.",
+    "observed_evidence": [
+      "Slide text: \"When Robot option is selected, select a robot to view robot details.\"",
+      "Slide text: \"The robot selected will have a box around it showing its selected.\""
+    ],
+    "relationships": [
+      {
+        "relation": "selection_reveals",
+        "target": "robot details"
+      },
+      {
+        "relation": "selection_indicated_by",
+        "target": "box around selected robot"
+      }
+    ],
+    "retrieval_text": "Robot Selection overview UI behavior: when Robot option is selected, selecting a robot shows robot details. Selected robot is indicated by a box around it.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:26"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_26_robot_tote_label_interpretation",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      26
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0026",
+      "slide_artifact_optisweep_training_internal_robot_selection_0026"
+    ],
+    "unit_type": "system_behavior",
+    "title": "Robot tote text under robot ID indicates tote presence and robot removal condition",
+    "systems": [
+      "OptiSweep"
+    ],
+    "components": [
+      "Robot",
+      "Tote",
+      "Robot ID display"
+    ],
+    "summary": "If a robot has a tote, the tote appears under the robot ID. A tote label prefixed with a question mark indicates the robot has been removed but the tote remains. If a robot does not have a tote, the display shows layer_1.",
+    "observed_evidence": [
+      "Slide text: \"If the robot has a tote it will show under the robot Id.\"",
+      "Slide text: \"If the tote has a “?” before it, that means the robot has been removed but the tote has not.\"",
+      "Slide text: \"If a robot doesn’t have a tote it will say layer_1\""
+    ],
+    "relationships": [
+      {
+        "relation": "display_under",
+        "target": "robot ID"
+      },
+      {
+        "relation": "question_mark_prefix_means",
+        "target": "robot removed but tote not removed"
+      },
+      {
+        "relation": "no_tote_display_value",
+        "target": "layer_1"
+      }
+    ],
+    "retrieval_text": "Robot tote display behavior: tote appears under robot ID. A '?' before tote means robot removed but tote remains. If no tote is present, the display says layer_1.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:26"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_26_robot_color_status_meanings",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      26
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0026",
+      "slide_artifact_optisweep_training_internal_robot_selection_0026"
+    ],
+    "unit_type": "system_behavior",
+    "title": "Robot colors indicate robot connectivity, task, and fault status",
+    "systems": [
+      "OptiSweep"
+    ],
+    "components": [
+      "Robot",
+      "Robot color indicator"
+    ],
+    "summary": "Robot color coding communicates status in the Robot Selection view: purple means robot disconnected, blue or flashing blue means robot is in a task or searching for label, green means robot is not in a task, and red means fault or low battery.",
+    "observed_evidence": [
+      "Slide text: \"Purple: robot disconnected\"",
+      "Slide text: \"Blue/Flashing Blue: robot in task/searching for label\"",
+      "Slide text: \"Green: robot not in a task\"",
+      "Slide text: \"Red: fault/low battery\""
+    ],
+    "relationships": [
+      {
+        "relation": "purple_indicates",
+        "target": "robot disconnected"
+      },
+      {
+        "relation": "blue_or_flashing_blue_indicates",
+        "target": "robot in task or searching for label"
+      },
+      {
+        "relation": "green_indicates",
+        "target": "robot not in a task"
+      },
+      {
+        "relation": "red_indicates",
+        "target": "fault or low battery"
+      }
+    ],
+    "retrieval_text": "Robot color meanings in Robot Selection: purple = disconnected, blue/flashing blue = in task or searching for label, green = not in task, red = fault or low battery.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:26"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_robot_selection_add_remove_ui_27",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      27
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027",
+      "slide_artifact_optisweep_training_internal_robot_selection_0027"
+    ],
+    "unit_type": "ui_concept",
+    "title": "Robot Selection supports add and remove actions for robots by ID or selection",
+    "systems": [
+      "Robot"
+    ],
+    "components": [
+      "Robot Selection UI"
+    ],
+    "summary": "The Robot Selection screen includes actions to add a robot by entering its corresponding robot ID and clicking Add, and to remove a robot by entering the corresponding robot ID or selecting the robot and clicking Remove. The system displays success feedback for add and remove actions.",
+    "observed_evidence": [
+      "Slide title: 'Robot Selection / Add and Remove'",
+      "Visible text: 'Add Robot'",
+      "Visible text: '1. Enter the corresponding robot ID'",
+      "Visible text: '2. Click “Add”'",
+      "Visible text: '3. The system will show that the adding was successful.'",
+      "Visible text: 'Remove Robot'",
+      "Visible text: '1. Enter the corresponding robot Id or select the robot.'",
+      "Visible text: '2. Click “Remove”'",
+      "Visible text: '3. The system will show that the removal'"
+    ],
+    "relationships": [
+      {
+        "relationship_type": "supports",
+        "target": "proc_optisweep_add_robot_27"
+      },
+      {
+        "relationship_type": "supports",
+        "target": "proc_optisweep_remove_robot_27"
+      }
+    ],
+    "retrieval_text": "Robot Selection Add and Remove screen supports adding a robot by entering the corresponding robot ID and clicking Add, and removing a robot by entering the corresponding robot ID or selecting the robot and clicking Remove. The system shows success feedback for add and remove operations.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:27"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_28_restart_behavior",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      28
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028",
+      "slide_artifact_optisweep_training_internal_robot_selection_0028"
+    ],
+    "unit_type": "system_behavior",
+    "title": "Robot restart behavior and post-restart map display",
+    "systems": [
+      "Robot"
+    ],
+    "components": [
+      "Restart function",
+      "Map display",
+      "Robot positioning"
+    ],
+    "summary": "The slide states that when a robot is restarted, the robot restarts while at the restart point or on the QR code cell, and after starting, the positioned robot is displayed on the map.",
+    "observed_evidence": [
+      "Slide title: 'Robot Selection / Restart'",
+      "Bullet: 'Restart Robot'",
+      "Step 3: 'The robot will restart (it is at the restart point or on the QR code cell).'",
+      "Step 4: 'After starting, the robot that has been positioned will be displayed on the map.'"
+    ],
+    "relationships": [
+      {
+        "relationship_type": "supports",
+        "target_id": "proc_optisweep_training_internal_robot_selection_28_restart_robot"
+      }
+    ],
+    "retrieval_text": "Robot Selection Restart behavior: after clicking Restart for a selected robot, the robot restarts at the restart point or on the QR code cell. After starting, the positioned robot is displayed on the map.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:28"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_28_restart_ui",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      28
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028",
+      "slide_artifact_optisweep_training_internal_robot_selection_0028"
+    ],
+    "unit_type": "ui_concept",
+    "title": "Robot restart can be initiated by robot ID entry or robot selection",
+    "systems": [
+      "Robot"
+    ],
+    "components": [
+      "Robot ID input",
+      "Robot selection",
+      "Restart button"
+    ],
+    "summary": "The restart workflow allows the operator to identify the target robot either by entering the corresponding robot ID or by selecting the robot, then using the Restart control.",
+    "observed_evidence": [
+      "Step 1: 'Enter the corresponding robot Id or select the robot.'",
+      "Step 2: 'Click “Restart”'"
+    ],
+    "relationships": [
+      {
+        "relationship_type": "supports",
+        "target_id": "proc_optisweep_training_internal_robot_selection_28_restart_robot"
+      }
+    ],
+    "retrieval_text": "UI concept for robot restart: identify the robot by entering the corresponding robot ID or by selecting the robot, then click Restart.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:28"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_29_go_to_function_behavior",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      29
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029",
+      "slide_artifact_optisweep_training_internal_robot_selection_0029"
+    ],
+    "unit_type": "system_behavior",
+    "title": "Go-to function can send an idle AGV to a selected square",
+    "systems": [
+      "AGV",
+      "Robot Selection"
+    ],
+    "components": [
+      "Go to function",
+      "AGV",
+      "square"
+    ],
+    "summary": "The slide states that an AGV not currently in a task can be sent to any square using the Go-to function.",
+    "observed_evidence": [
+      "Slide text: 'An AGV not in a task can be sent to any square.'",
+      "Numbered UI actions on the slide reference selecting an AGV, Go to, a square, and Confirm."
+    ],
+    "relationships": [
+      {
+        "relation": "applies_to",
+        "target": "AGV not in a task"
+      },
+      {
+        "relation": "uses_ui_concept",
+        "target": "Go to function"
+      }
+    ],
+    "retrieval_text": "Robot Selection Go-to function behavior: an AGV not in a task can be sent to any square. The UI sequence shown is Select an AGV, Select Go to, Select which square you want the AGV to go to, Select Confirm.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:29"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_29_recovery_use_case_hospital_dropoff",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      29
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029",
+      "slide_artifact_optisweep_training_internal_robot_selection_0029"
+    ],
+    "unit_type": "operational_process",
+    "title": "Go-to function is used for quick recovery when an AGV must be moved to hospital",
+    "systems": [
+      "AGV",
+      "Tipper",
+      "Hospital"
+    ],
+    "components": [
+      "Go to function",
+      "AGV",
+      "Tipper",
+      "Hospital",
+      "tote"
+    ],
+    "summary": "The slide presents a recovery scenario where if a tipper goes down and an AGV will not leave, the AGV can be removed and added again, then the Go-to function can be used to drop it off at the hospital.",
+    "observed_evidence": [
+      "Slide text: 'This is helpful when trying to recover quickly.'",
+      "Slide text: 'Example if a Tipper goes down and an AGV will not leave.'",
+      "Slide text: 'You can remove and add the agv and use the go to function to drop it off at the hospital.'"
+    ],
+    "relationships": [
+      {
+        "relation": "supports",
+        "target": "quick recovery"
+      },
+      {
+        "relation": "example_condition",
+        "target": "Tipper goes down and AGV will not leave"
+      }
+    ],
+    "retrieval_text": "Recovery use of Robot Selection Go-to function: when a tipper goes down and an AGV will not leave, the slide says you can remove and add the AGV and use the Go-to function to drop it off at the hospital.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:29"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_29_agv_task_resume_after_tote_removed",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      29
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029",
+      "slide_artifact_optisweep_training_internal_robot_selection_0029"
+    ],
+    "unit_type": "system_behavior",
+    "title": "AGV resumes by picking up a new task after its tote is removed",
+    "systems": [
+      "AGV"
+    ],
+    "components": [
+      "AGV",
+      "tote"
+    ],
+    "summary": "The slide states that after the AGV is dropped off, it will pick up a new task once its tote has been removed.",
+    "observed_evidence": [
+      "Slide text: 'The AGV will pickup a new task once it’s tote has been removed'"
+    ],
+    "relationships": [
+      {
+        "relation": "condition_for",
+        "target": "AGV picks up a new task"
+      },
+      {
+        "relation": "required_event",
+        "target": "tote removed"
+      }
+    ],
+    "retrieval_text": "AGV task resumption behavior: the slide says the AGV will pick up a new task once its tote has been removed.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:29"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_29_go_to_ui_sequence",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      29
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029",
+      "slide_artifact_optisweep_training_internal_robot_selection_0029"
+    ],
+    "unit_type": "ui_concept",
+    "title": "Go-to function UI sequence in Robot Selection",
+    "systems": [
+      "Robot Selection",
+      "AGV"
+    ],
+    "components": [
+      "AGV selector",
+      "Go to",
+      "square selection",
+      "Confirm"
+    ],
+    "summary": "The slide identifies the visible UI interaction sequence for sending an AGV to a square: select an AGV, select Go to, choose the destination square, and confirm.",
+    "observed_evidence": [
+      "Slide numbered list: '1. Select an AGV'",
+      "Slide numbered list: '2. Select Go to'",
+      "Slide numbered list: '3. Select which square you want the AGV to go to'",
+      "Slide numbered list: '4. Select Confirm'"
+    ],
+    "relationships": [
+      {
+        "relation": "part_of",
+        "target": "Robot Selection"
+      }
+    ],
+    "retrieval_text": "Robot Selection Go-to UI concept: select an AGV, select Go to, select which square you want the AGV to go to, then select Confirm.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:29"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_030_01",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      30
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030",
+      "slide_artifact_optisweep_training_internal_robot_selection_0030"
+    ],
+    "unit_type": "ui_concept",
+    "title": "Tote presence and empty rack are indicated by color in Container Selection",
+    "systems": [
+      "AGV"
+    ],
+    "components": [
+      "Tote",
+      "Rack",
+      "Container Selection UI"
+    ],
+    "summary": "In the Container Selection Totes view, dark blue indicates a tote is present and light blue represents an empty rack. Selecting the item shows a box icon and the tote number.",
+    "observed_evidence": [
+      "Slide text states: 'Dark blue indicates the presence of a tote. While light blue represents empty rack.'",
+      "Slide text states: 'If you select it, a box icon will show as well as the tote number.'",
+      "Slide title and section identify the UI context as 'Container Selection / Totes'."
+    ],
+    "relationships": [
+      {
+        "relationship_type": "indicates",
+        "from": "Dark blue UI color",
+        "to": "Tote present"
+      },
+      {
+        "relationship_type": "indicates",
+        "from": "Light blue UI color",
+        "to": "Empty rack"
+      },
+      {
+        "relationship_type": "selection_reveals",
+        "from": "Selected tote/rack item",
+        "to": "Box icon and tote number"
+      }
+    ],
+    "retrieval_text": "Container Selection Totes UI reference: dark blue means a tote is present, light blue means the rack is empty. Selecting the item shows a box icon and the tote number.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:30"
+    ]
+  },
+  {
+    "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_030_02",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      30
+    ],
+    "artifact_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030",
+      "slide_artifact_optisweep_training_internal_robot_selection_0030"
+    ],
+    "unit_type": "ui_concept",
+    "title": "Totes can be located by tote number in the Container Selection interface",
+    "systems": [
+      "AGV"
+    ],
+    "components": [
+      "Tote",
+      "Rack",
+      "Container Selection UI",
+      "Tote number input"
+    ],
+    "summary": "The slide indicates that a user can find a tote by typing in the tote number and then selecting the rack or AGV where it is located, if the tote exists in the system.",
+    "observed_evidence": [
+      "Slide text states: 'You can also find a tote by typing the number in and selecting the rack or AGV it’s located on if its in the system.'"
+    ],
+    "relationships": [
+      {
+        "relationship_type": "searches_for",
+        "from": "Tote number input",
+        "to": "Tote"
+      },
+      {
+        "relationship_type": "locates_on",
+        "from": "Tote",
+        "to": "Rack or AGV"
+      }
+    ],
+    "retrieval_text": "Container Selection Totes allows tote lookup by entering a tote number. If the tote is in the system, the user can identify and select the rack or AGV where it is located.",
+    "validation_status": "needs_review",
+    "source_refs": [
+      "slide:30"
+    ]
+  }
+]

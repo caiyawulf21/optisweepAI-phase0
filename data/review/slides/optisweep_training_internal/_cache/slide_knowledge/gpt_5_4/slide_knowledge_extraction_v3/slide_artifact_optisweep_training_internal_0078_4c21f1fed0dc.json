@@ -1,0 +1,60 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0078_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        78
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0078"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "RobotDatabaseModel stores per-robot operational data",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "RobotDatabaseModel",
+        "Robot",
+        "Tote"
+      ],
+      "summary": "The RobotDatabaseModel table contains data for every robot in the system, including robot state, tote name, assigned sorter side, current location ID, and destination location.",
+      "observed_evidence": [
+        "Slide title: \"Robot Database Model\"",
+        "Visible text: \"The RobotDatabaseModel table contains the data for every robot in the system including its state, tote name, assigned sorterside, currentlocationid, destination location, and state.\"",
+        "Visual element indicates a database schema context."
+      ],
+      "relationships": [
+        {
+          "type": "stores_data_for",
+          "target": "Robot"
+        },
+        {
+          "type": "includes_field_or_attribute",
+          "target": "state"
+        },
+        {
+          "type": "includes_field_or_attribute",
+          "target": "tote name"
+        },
+        {
+          "type": "includes_field_or_attribute",
+          "target": "assigned sorterside"
+        },
+        {
+          "type": "includes_field_or_attribute",
+          "target": "currentlocationid"
+        },
+        {
+          "type": "includes_field_or_attribute",
+          "target": "destination location"
+        }
+      ],
+      "retrieval_text": "RobotDatabaseModel table robotics database stores data for every robot in the system including robot state, tote name, assigned sorterside, currentlocationid, and destination location.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

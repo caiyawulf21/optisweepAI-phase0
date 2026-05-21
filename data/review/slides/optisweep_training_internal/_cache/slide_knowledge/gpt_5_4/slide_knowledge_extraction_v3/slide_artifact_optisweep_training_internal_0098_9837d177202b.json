@@ -1,0 +1,126 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0098_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        98
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0098"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Bits model fields for tags requiring bit conversion",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Bits Model",
+        "Tag",
+        "Tipper"
+      ],
+      "summary": "The Bits Model is used for tags that have bits that need to be converted. The slide defines the meaning of BitType, Bit, Value, and DefaultValue within this model.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Bits Model'",
+        "Text: 'For Tags that have bits that need to be converted.'",
+        "Text: 'BitType: defines the function.'",
+        "Text: 'Bit: defines the bit to look for'",
+        "Text: 'Value: shows if its currently a 0 (NULL) or a 1.'",
+        "Text: 'DefaultValue: is used for tags we write to the tipper to reset the state.'"
+      ],
+      "relationships": [
+        {
+          "relation": "applies_to",
+          "target": "Tags that have bits that need to be converted"
+        },
+        {
+          "relation": "writes_to",
+          "target": "Tipper"
+        },
+        {
+          "relation": "supports",
+          "target": "state reset for tags written to the tipper"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Bits Model reference. Used for tags with bits that need conversion. BitType defines function. Bit defines which bit to look for. Value indicates current state as 0 (NULL) or 1. DefaultValue is used for tags written to the tipper to reset state.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0098_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        98
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0098"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Bits model value and default value behavior",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Bits Model",
+        "Value",
+        "DefaultValue",
+        "Tipper"
+      ],
+      "summary": "Within the Bits Model, the Value field represents the current bit state as 0 (NULL) or 1, while DefaultValue is used when writing tags to the tipper in order to reset state.",
+      "observed_evidence": [
+        "Text: 'Value: shows if its currently a 0 (NULL) or a 1.'",
+        "Text: 'DefaultValue: is used for tags we write to the tipper to reset the state.'"
+      ],
+      "relationships": [
+        {
+          "relation": "represents_state_of",
+          "target": "bit state"
+        },
+        {
+          "relation": "reset_mechanism_for",
+          "target": "tags written to the tipper"
+        }
+      ],
+      "retrieval_text": "Bits Model behavior: Value shows current bit state, either 0 (NULL) or 1. DefaultValue is used when writing tags to the tipper to reset the state.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0098_01",
+      "title": "No explicit procedure on Bits Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        98
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Bits Model",
+        "Tipper"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewer is examining Sorter Sweeper Database documentation for Bits Model behavior"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0098"
+      ],
+      "procedure_visual_summary": "Slide presents field definitions for the Bits Model and mentions state reset behavior for tags written to the tipper; no numbered or sequential actions are shown.",
+      "steps": [],
+      "warnings": [
+        "The slide defines database fields and behavior but does not provide an explicit action sequence.",
+        "Do not infer configuration or write procedures from this slide alone."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0098_01",
+        "oku_optisweep_training_internal_0098_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because slide 98 is a database model reference. It describes BitType, Bit, Value, and DefaultValue and mentions resetting state when writing tags to the tipper, but it does not provide explicit operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

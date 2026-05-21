@@ -1,0 +1,106 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGV Tote Exchange Process and Chute Operation",
+      "timestamp_start": "00:28:01.650",
+      "timestamp_end": "00:29:10.960",
+      "primary_intent": "Explain the AGV tote exchange sequence and chute opening timing",
+      "operational_intents": [
+        "Describe AGV role transition after dropping tote",
+        "Clarify chute opening triggers relative to AGV movement",
+        "Highlight KPI requirements for exchange speed"
+      ],
+      "knowledge_extraction_strategy": "Extract process flow and timing constraints",
+      "why_this_strategy": "Focus on operational sequence and timing for tote exchange",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000466",
+        "vec_upsfortna_optisweep_training_day1_20260317_000467",
+        "vec_upsfortna_optisweep_training_day1_20260317_000468",
+        "vec_upsfortna_optisweep_training_day1_20260317_000469",
+        "vec_upsfortna_optisweep_training_day1_20260317_000470",
+        "vec_upsfortna_optisweep_training_day1_20260317_000471",
+        "vec_upsfortna_optisweep_training_day1_20260317_000472",
+        "vec_upsfortna_optisweep_training_day1_20260317_000473",
+        "vec_upsfortna_optisweep_training_day1_20260317_000474",
+        "vec_upsfortna_optisweep_training_day1_20260317_000475",
+        "vec_upsfortna_optisweep_training_day1_20260317_000476",
+        "vec_upsfortna_optisweep_training_day1_20260317_000477",
+        "vec_upsfortna_optisweep_training_day1_20260317_000478",
+        "vec_upsfortna_optisweep_training_day1_20260317_000479",
+        "vec_upsfortna_optisweep_training_day1_20260317_000480",
+        "vec_upsfortna_optisweep_training_day1_20260317_000481",
+        "vec_upsfortna_optisweep_training_day1_20260317_000482",
+        "vec_upsfortna_optisweep_training_day1_20260317_000483",
+        "vec_upsfortna_optisweep_training_day1_20260317_000484"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000010"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV Fault Handling and Chute Closing Conditions",
+      "timestamp_start": "00:29:10.960",
+      "timestamp_end": "00:30:22.160",
+      "primary_intent": "Discuss fault scenarios and chute closing logic",
+      "operational_intents": [
+        "Explain conditions causing AGV to move without replacement",
+        "Describe software command synchronization for AGV movement",
+        "Detail chute closing triggers based on fullness and exchange delays"
+      ],
+      "knowledge_extraction_strategy": "Identify fault conditions and operational thresholds",
+      "why_this_strategy": "Capture exception handling and control logic for operations",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000485",
+        "vec_upsfortna_optisweep_training_day1_20260317_000486",
+        "vec_upsfortna_optisweep_training_day1_20260317_000487",
+        "vec_upsfortna_optisweep_training_day1_20260317_000488",
+        "vec_upsfortna_optisweep_training_day1_20260317_000489",
+        "vec_upsfortna_optisweep_training_day1_20260317_000490",
+        "vec_upsfortna_optisweep_training_day1_20260317_000491",
+        "vec_upsfortna_optisweep_training_day1_20260317_000492",
+        "vec_upsfortna_optisweep_training_day1_20260317_000493",
+        "vec_upsfortna_optisweep_training_day1_20260317_000494",
+        "vec_upsfortna_optisweep_training_day1_20260317_000495",
+        "vec_upsfortna_optisweep_training_day1_20260317_000496",
+        "vec_upsfortna_optisweep_training_day1_20260317_000497",
+        "vec_upsfortna_optisweep_training_day1_20260317_000498",
+        "vec_upsfortna_optisweep_training_day1_20260317_000499",
+        "vec_upsfortna_optisweep_training_day1_20260317_000500",
+        "vec_upsfortna_optisweep_training_day1_20260317_000501",
+        "vec_upsfortna_optisweep_training_day1_20260317_000502"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000010"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "End of Cycle and Tipper Assignment Process",
+      "timestamp_start": "00:30:22.160",
+      "timestamp_end": "00:31:02.520",
+      "primary_intent": "Outline tote handling at sorter and tipper assignment",
+      "operational_intents": [
+        "Describe tote staging on AGV at sorter",
+        "Explain tipper assignment using round robin method",
+        "Detail AGV dispatch to tipper entrance queue"
+      ],
+      "knowledge_extraction_strategy": "Extract end-of-cycle tote routing and tipper coordination",
+      "why_this_strategy": "Focus on final tote delivery and tipper interaction",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000503",
+        "vec_upsfortna_optisweep_training_day1_20260317_000504",
+        "vec_upsfortna_optisweep_training_day1_20260317_000505",
+        "vec_upsfortna_optisweep_training_day1_20260317_000506",
+        "vec_upsfortna_optisweep_training_day1_20260317_000507",
+        "vec_upsfortna_optisweep_training_day1_20260317_000508",
+        "vec_upsfortna_optisweep_training_day1_20260317_000509",
+        "vec_upsfortna_optisweep_training_day1_20260317_000510"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000010"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

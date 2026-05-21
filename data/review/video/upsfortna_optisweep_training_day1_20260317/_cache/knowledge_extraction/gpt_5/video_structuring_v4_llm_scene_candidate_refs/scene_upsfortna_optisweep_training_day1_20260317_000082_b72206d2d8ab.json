@@ -1,0 +1,94 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_upsfortna_optisweep_training_day1_20260317_000082_01",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000082"
+      ],
+      "source_artifact_ids": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002127_midpoint"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002132",
+        "vec_upsfortna_optisweep_training_day1_20260317_002133",
+        "vec_upsfortna_optisweep_training_day1_20260317_002134",
+        "vec_upsfortna_optisweep_training_day1_20260317_002135",
+        "vec_upsfortna_optisweep_training_day1_20260317_002136"
+      ],
+      "artifact_refs": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002132_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002133_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002135_midpoint"
+      ],
+      "timestamp_start": "02:17:17.560",
+      "timestamp_end": "02:17:35.880",
+      "unit_type": "concept_explanation",
+      "title": "Hot bins definition and urgency context",
+      "systems": [],
+      "components": [
+        "tote"
+      ],
+      "summary": "Hot bins are highest-priority bins/totes requiring fast processing, e.g., when a trailer departs in ~10 minutes, those must be completed first.",
+      "observed_evidence": [
+        "02:17:19: \"Hot bins are the highest priority bins.\"",
+        "02:17:23: \"the ones that I need to get [done] fast.\"",
+        "02:17:31: Trailer leaving in 10 minutes; \"I need those done.\""
+      ],
+      "relationships": [
+        "tote -> may be designated as 'hot' when outbound deadline is imminent",
+        "hot bin -> implies expedited processing",
+        "priority status -> driven by operational deadlines"
+      ],
+      "retrieval_text": "Hot bins: the highest-priority bins/totes processed urgently, especially before outbound trailer pulls (e.g., 10-minute window).",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_upsfortna_optisweep_training_day1_20260317_000082_02",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000082"
+      ],
+      "source_artifact_ids": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002127_midpoint"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002137",
+        "vec_upsfortna_optisweep_training_day1_20260317_002138",
+        "vec_upsfortna_optisweep_training_day1_20260317_002139",
+        "vec_upsfortna_optisweep_training_day1_20260317_002140",
+        "vec_upsfortna_optisweep_training_day1_20260317_002141",
+        "vec_upsfortna_optisweep_training_day1_20260317_002142",
+        "vec_upsfortna_optisweep_training_day1_20260317_002144",
+        "vec_upsfortna_optisweep_training_day1_20260317_002147"
+      ],
+      "artifact_refs": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002137_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002140_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002147_midpoint"
+      ],
+      "timestamp_start": "02:17:38.120",
+      "timestamp_end": "02:18:12.360",
+      "unit_type": "concept_explanation",
+      "title": "Priority signaling via 'indicator' messages (hop in/hop in close)",
+      "systems": [],
+      "components": [
+        "tote"
+      ],
+      "summary": "Hot status is signaled via API/socket 'indicator' messages ('hop in'/'hop in close'). These messages are exchanged to mark what is hot for prioritization.",
+      "observed_evidence": [
+        "02:17:40: \"they send us a message saying what's [hot]\" / \"what's hopped in\"",
+        "02:17:50: \"once they hit hop in close or hop in...\"; \"message type is called the indicator\"",
+        "02:18:10: \"all this stuff is through APIs\""
+      ],
+      "relationships": [
+        "indicator messages ('hop in'/'hop in close') -> mark hot items",
+        "APIs/socket -> transport indicator messages",
+        "hot flag -> informs tote/bin prioritization"
+      ],
+      "retrieval_text": "Hot designation is communicated via API/socket as 'indicator' messages: hop in/hop in close. These exchanged signals indicate which totes/bins are hot for prioritization.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": []
+}

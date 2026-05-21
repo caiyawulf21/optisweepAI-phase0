@@ -1,0 +1,136 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_124_001",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        124
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0124"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Ignition maps tipper and hospital tags for OptiSweep communication",
+      "systems": [
+        "OptiSweep",
+        "Ignition"
+      ],
+      "components": [
+        "Tipper",
+        "Hospital",
+        "tag provider",
+        "tags"
+      ],
+      "summary": "The slide states that all tipper and hospital tags are mapped in Ignition, and that OptiSweep communication uses a tag provider mapped under Ignition.",
+      "observed_evidence": [
+        "“All tippers and Hospitals tags are mapped in Ignition.”",
+        "“For OptiSweep to communicate we utilize tag provider and are mapped under Ignition.”"
+      ],
+      "relationships": [
+        {
+          "from": "Tipper tags",
+          "relationship": "mapped_in",
+          "to": "Ignition"
+        },
+        {
+          "from": "Hospital tags",
+          "relationship": "mapped_in",
+          "to": "Ignition"
+        },
+        {
+          "from": "OptiSweep",
+          "relationship": "communicates_via",
+          "to": "tag provider"
+        },
+        {
+          "from": "tag provider",
+          "relationship": "mapped_under",
+          "to": "Ignition"
+        }
+      ],
+      "retrieval_text": "In the OptiSweep training deck, the Tags slide says all tipper and hospital tags are mapped in Ignition. It also says OptiSweep communication uses a tag provider that is mapped under Ignition.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_124_002",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        124
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0124"
+      ],
+      "unit_type": "system_behavior",
+      "title": "SYS1 converts metrics into tags for Aveva consumption",
+      "systems": [
+        "SYS1",
+        "Aveva"
+      ],
+      "components": [
+        "metrics",
+        "tags"
+      ],
+      "summary": "The slide identifies SYS1 as the location where metrics are converted into tags for Aveva to read.",
+      "observed_evidence": [
+        "“SYS1 is where all metrics are converted to tags for Aveva to read.”"
+      ],
+      "relationships": [
+        {
+          "from": "SYS1",
+          "relationship": "converts",
+          "to": "metrics to tags"
+        },
+        {
+          "from": "Aveva",
+          "relationship": "reads",
+          "to": "tags"
+        }
+      ],
+      "retrieval_text": "The slide states that SYS1 is where all metrics are converted to tags, and those tags are read by Aveva.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_124_001",
+      "title": "No reusable procedure present on tag mapping slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        124
+      ],
+      "systems": [
+        "OptiSweep",
+        "Ignition",
+        "SYS1",
+        "Aveva"
+      ],
+      "components": [
+        "Tipper",
+        "Hospital",
+        "tag provider",
+        "tags",
+        "metrics"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "slide_artifact_optisweep_training_internal_0124"
+      ],
+      "procedure_visual_summary": "Bullet slide describing that tipper and hospital tags are mapped in Ignition, OptiSweep uses a tag provider under Ignition, and SYS1 converts metrics to tags for Aveva.",
+      "steps": [],
+      "warnings": [
+        "Slide provides architecture and data-flow context only.",
+        "No explicit action sequence, configuration steps, validation steps, or operator instructions are shown."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_124_001",
+        "oku_optisweep_training_internal_124_002"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide only describes how tags are mapped in Ignition and how SYS1 converts metrics to tags for Aveva. It does not provide a reusable step-by-step operational procedure."
+    }
+  ],
+  "discarded_candidates": []
+}

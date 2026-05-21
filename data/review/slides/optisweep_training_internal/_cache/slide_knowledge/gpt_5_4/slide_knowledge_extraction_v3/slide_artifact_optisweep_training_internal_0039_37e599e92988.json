@@ -1,0 +1,118 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0039_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        39
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0039"
+      ],
+      "unit_type": "ui_concept",
+      "title": "HMI supports customer-defined calculations for metrics",
+      "systems": [
+        "HMI"
+      ],
+      "components": [
+        "HMI Calculations"
+      ],
+      "summary": "The slide states that calculations shown or used in the HMI are customer-defined metrics.",
+      "observed_evidence": [
+        "Slide title: 'HMI Calculations'",
+        "Bullet: 'Customer-Defined Calculations: Metrics calculated by the customer'"
+      ],
+      "relationships": [
+        {
+          "relation": "includes",
+          "target": "System statistics"
+        },
+        {
+          "relation": "includes",
+          "target": "Bin statistics"
+        },
+        {
+          "relation": "includes",
+          "target": "Tipper statistics"
+        }
+      ],
+      "retrieval_text": "Overall System HMI Calculations slide says HMI calculations are customer-defined metrics calculated by the customer. Calculation types listed are system statistics, bin statistics, and tipper statistics.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0039_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        39
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0039"
+      ],
+      "unit_type": "system_behavior",
+      "title": "HMI calculation categories include system, bin, and tipper statistics",
+      "systems": [
+        "HMI"
+      ],
+      "components": [
+        "HMI Calculations",
+        "Tipper"
+      ],
+      "summary": "The slide identifies three calculation/statistics categories available in the HMI context: system statistics, bin statistics, and tipper statistics.",
+      "observed_evidence": [
+        "Bullet: 'Types of Calculations:'",
+        "Sub-bullets: 'System statistics', 'Bin statistics', 'Tipper statistics'"
+      ],
+      "relationships": [
+        {
+          "relation": "categorized_as",
+          "target": "system statistics"
+        },
+        {
+          "relation": "categorized_as",
+          "target": "bin statistics"
+        },
+        {
+          "relation": "categorized_as",
+          "target": "tipper statistics"
+        }
+      ],
+      "retrieval_text": "HMI calculations types on the Overall System slide are system statistics, bin statistics, and tipper statistics. These are presented as categories of customer-defined calculations.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0039_01",
+      "title": "No reusable procedure on HMI Calculations overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        39
+      ],
+      "systems": [
+        "HMI"
+      ],
+      "components": [
+        "HMI Calculations"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0039"
+      ],
+      "procedure_visual_summary": "Overview slide listing customer-defined HMI calculations and their types; no buttons, fields, or ordered actions shown.",
+      "steps": [],
+      "warnings": [
+        "Slide is descriptive only and does not provide explicit action steps for creating, editing, or viewing calculations."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0039_01",
+        "oku_optisweep_training_internal_0039_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide only states that HMI calculations are customer-defined metrics and lists calculation types: system, bin, and tipper statistics. No operational sequence is provided."
+    }
+  ],
+  "discarded_candidates": []
+}

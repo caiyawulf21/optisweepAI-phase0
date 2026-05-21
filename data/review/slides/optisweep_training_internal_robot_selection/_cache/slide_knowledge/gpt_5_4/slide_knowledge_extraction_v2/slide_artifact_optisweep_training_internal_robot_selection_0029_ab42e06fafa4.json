@@ -1,0 +1,174 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_29_go_to_function_behavior",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        29
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Go-to function can send an idle AGV to a selected square for recovery positioning",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "Go to function",
+        "Square",
+        "Hospital",
+        "Tipper",
+        "Tote"
+      ],
+      "summary": "The slide states that an AGV not currently in a task can be sent to any square using the Go-to function. This is presented as a quick recovery aid, including an example where a tipper is down and an AGV will not leave; the AGV can be removed and added, then sent to the hospital using Go-to. The AGV will pick up a new task once its tote has been removed.",
+      "observed_evidence": [
+        "“An AGV not in a task can be sent to any square.”",
+        "“This is helpful when trying to recover quickly.”",
+        "“Example if a Tipper goes down and an AGV will not leave.”",
+        "“You can remove and add the agv and use the go to function to drop it off at the hospital.”",
+        "“The AGV will pickup a new task once it’s tote has been removed”"
+      ],
+      "relationships": [
+        {
+          "type": "applies_when",
+          "target": "AGV not in a task"
+        },
+        {
+          "type": "used_for",
+          "target": "quick recovery positioning"
+        },
+        {
+          "type": "example_condition",
+          "target": "tipper down and AGV will not leave"
+        },
+        {
+          "type": "postcondition",
+          "target": "AGV picks up a new task after tote removal"
+        }
+      ],
+      "retrieval_text": "Go-to function behavior: an AGV not in a task can be sent to any square. This is used for quick recovery. Example given: if a tipper goes down and an AGV will not leave, remove and add the AGV and use Go-to to drop it off at the hospital. The AGV will pick up a new task once its tote has been removed.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_29_go_to_ui_concept",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        29
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Go-to workflow requires AGV selection, destination square selection, and confirmation",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "AGV selection",
+        "Go to",
+        "Square selection",
+        "Confirm"
+      ],
+      "summary": "The slide presents a UI-driven Go-to workflow with explicit actions: select an AGV, select Go to, choose the square, and confirm.",
+      "observed_evidence": [
+        "“1. Select an AGV”",
+        "“2. Select Go to”",
+        "“3. Select which square you want the AGV to go to”",
+        "“4. Select Confirm”"
+      ],
+      "relationships": [
+        {
+          "type": "precedes",
+          "target": "destination square selection",
+          "source": "Go to"
+        },
+        {
+          "type": "precedes",
+          "target": "Confirm",
+          "source": "destination square selection"
+        }
+      ],
+      "retrieval_text": "Go-to UI concept: user selects an AGV, selects Go to, selects the destination square, then selects Confirm.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_robot_selection_29_send_idle_agv_to_square",
+      "title": "Send an AGV to a selected square using Go-to",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        29
+      ],
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "AGV selection",
+        "Go to",
+        "Square selection",
+        "Confirm"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "AGV is not in a task"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+      ],
+      "procedure_visual_summary": "Slide titled 'Robot Selection / Go-to function' with numbered UI steps for selecting an AGV, using Go to, choosing a square, and confirming.",
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "Select an AGV.",
+          "expected_result": "An AGV is chosen for the Go-to action.",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+          ],
+          "visual_region_hint": "Numbered step 1 area on the slide"
+        },
+        {
+          "step_number": 2,
+          "action": "Select Go to.",
+          "expected_result": "The Go-to function is opened for the selected AGV.",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+          ],
+          "visual_region_hint": "Numbered step 2 area on the slide"
+        },
+        {
+          "step_number": 3,
+          "action": "Select which square you want the AGV to go to.",
+          "expected_result": "A destination square is selected for the AGV.",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+          ],
+          "visual_region_hint": "Numbered step 3 area on the slide"
+        },
+        {
+          "step_number": 4,
+          "action": "Select Confirm.",
+          "expected_result": "The Go-to command is confirmed for the selected square.",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+          ],
+          "visual_region_hint": "Numbered step 4 area on the slide"
+        }
+      ],
+      "warnings": [
+        "The slide states the AGV must not be in a task.",
+        "Recovery example context mentions a tipper-down condition and sending the AGV to the hospital after removing and adding the AGV, but those remove/add actions are described as context rather than explicit numbered steps in this procedure."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_robot_selection_29_go_to_function_behavior",
+        "oku_optisweep_training_internal_robot_selection_29_go_to_ui_concept"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure to send an idle AGV to a square using Go-to: select an AGV, select Go to, select the destination square, and select Confirm. Preconditions: AGV is not in a task."
+    }
+  ],
+  "discarded_candidates": []
+}

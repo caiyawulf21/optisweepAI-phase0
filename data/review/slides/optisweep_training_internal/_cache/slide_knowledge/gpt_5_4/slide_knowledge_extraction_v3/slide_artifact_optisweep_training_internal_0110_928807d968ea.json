@@ -1,0 +1,123 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_110_001",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        110
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0110"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Sorter Sweeper database system state model tracks overall system status and related conditions",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "System State Model",
+        "System Status"
+      ],
+      "summary": "The slide states that the Sorter Sweeper Database includes a System State Model that keeps track of system status, whether chutes should remain closed after a bag out, and whether sort data is being received.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / System State Model'",
+        "Text: 'Keeps track of the System Status, if chutes are to be kept closed after a bag out, and if we are getting sort data.'",
+        "Section label: 'Sorter Sweeper Database'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "contains",
+          "target": "System Status state list"
+        },
+        {
+          "relation_type": "tracks",
+          "target": "chute closed condition after bag out"
+        },
+        {
+          "relation_type": "tracks",
+          "target": "sort data receipt condition"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database System State Model reference. The model keeps track of system status, whether chutes are to be kept closed after a bag out, and whether sort data is being received.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_110_002",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        110
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0110"
+      ],
+      "unit_type": "state_transition",
+      "title": "Defined System Status values in the Sorter Sweeper System State Model",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "System Status"
+      ],
+      "summary": "The slide enumerates the System Status values used by the System State Model: StartingUp, StartUpRequested, Running, ShutDownRequested, Shutdown, ZoneConfigRequested, ZoneConfigStaging, CloseOutRequested, CloseOutStaging, and CloseOutStaged.",
+      "observed_evidence": [
+        "Heading: 'System Status'",
+        "Bullet list includes: 'StartingUp', 'StartUpRequested', 'Running', 'ShutDownRequested', 'Shutdown', 'ZoneConfigRequested', 'ZoneConfigStaging', 'CloseOutRequested', 'CloseOutStaging', 'CloseOutStaged'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "state_list_for",
+          "target": "System State Model"
+        }
+      ],
+      "retrieval_text": "System Status values in the Sorter Sweeper Database System State Model are StartingUp, StartUpRequested, Running, ShutDownRequested, Shutdown, ZoneConfigRequested, ZoneConfigStaging, CloseOutRequested, CloseOutStaging, and CloseOutStaged.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_110_003",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        110
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0110"
+      ],
+      "unit_type": "system_behavior",
+      "title": "System state model includes closeout and zone configuration staging states",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "System State Model",
+        "System Status"
+      ],
+      "summary": "The listed status values indicate the model represents requested and staging phases for zone configuration and closeout operations, in addition to startup, running, and shutdown states.",
+      "observed_evidence": [
+        "States shown include 'ZoneConfigRequested' and 'ZoneConfigStaging'",
+        "States shown include 'CloseOutRequested', 'CloseOutStaging', and 'CloseOutStaged'",
+        "States shown include 'StartUpRequested', 'StartingUp', 'Running', 'ShutDownRequested', and 'Shutdown'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "suggests_operational_phases",
+          "target": "startup lifecycle"
+        },
+        {
+          "relation_type": "suggests_operational_phases",
+          "target": "shutdown lifecycle"
+        },
+        {
+          "relation_type": "suggests_operational_phases",
+          "target": "zone configuration lifecycle"
+        },
+        {
+          "relation_type": "suggests_operational_phases",
+          "target": "closeout lifecycle"
+        }
+      ],
+      "retrieval_text": "The Sorter Sweeper System State Model includes requested and staging states for startup, shutdown, zone configuration, and closeout, including CloseOutStaged as a final listed closeout state.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

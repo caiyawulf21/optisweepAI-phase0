@@ -1,0 +1,115 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0086_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        86
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0086"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "LocationActiveDwellModel shows current active dwells for dwell-tracked locations",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "LocationActiveDwellModel",
+        "DwellTracking"
+      ],
+      "summary": "The slide states that the LocationActiveDwellModel table displays active dwells at locations that are marked for DwellTracking.",
+      "observed_evidence": [
+        "Slide title: 'Location Active Dwell Model'",
+        "Bullet: 'The LocationActiveDwellModel table displays the active dwells at locations marked for DwellTracking'"
+      ],
+      "relationships": [
+        {
+          "relation": "applies_to",
+          "target": "locations marked for DwellTracking"
+        }
+      ],
+      "retrieval_text": "Robotics Database Location Active Dwell Model. The LocationActiveDwellModel table displays active dwells at locations marked for DwellTracking.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0086_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        86
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0086"
+      ],
+      "unit_type": "state_transition",
+      "title": "AGV departure ends active dwell and archives activity to LocationDwellActivity",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "LocationActiveDwellModel",
+        "LocationDwellActivity"
+      ],
+      "summary": "The slide indicates that when the AGV leaves a location, dwelling is complete and the dwell activity is archived to the LocationDwellActivity table.",
+      "observed_evidence": [
+        "Bullet: 'One the AGV leaves it is done dwelling and the activity is archived to the LocationDwellActivity.'"
+      ],
+      "relationships": [
+        {
+          "relation": "transition_from",
+          "target": "LocationActiveDwellModel"
+        },
+        {
+          "relation": "transition_to",
+          "target": "LocationDwellActivity"
+        },
+        {
+          "relation": "triggered_by",
+          "target": "AGV leaves location"
+        }
+      ],
+      "retrieval_text": "When the AGV leaves, dwelling is finished and the activity is archived to LocationDwellActivity. Active dwell information is associated with LocationActiveDwellModel.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0086_01",
+      "title": "No procedure extracted from Location Active Dwell Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        86
+      ],
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "LocationActiveDwellModel",
+        "LocationDwellActivity"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0086"
+      ],
+      "procedure_visual_summary": "Slide describes database table behavior for active dwell records and archival when an AGV leaves; no explicit action sequence or operator steps are shown.",
+      "steps": [],
+      "warnings": [
+        "Slide provides database behavior and lifecycle information, not reusable action guidance.",
+        "Do not infer steps for querying, validating, or editing database records because they are not stated on the slide."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0086_01",
+        "oku_optisweep_training_internal_0086_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: slide explains that LocationActiveDwellModel shows active dwells for dwell-tracked locations and that AGV departure archives the activity to LocationDwellActivity, but it does not provide explicit operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

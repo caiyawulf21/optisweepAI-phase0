@@ -1,0 +1,191 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_24_01",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        24
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Map Monitor message panel exposes robot and AGV status indicators and fault actions",
+      "systems": [
+        "OptiSweep",
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Map Monitor",
+        "Message Panel"
+      ],
+      "summary": "The Map Monitor Message Panel includes access to active robot count, robots charging count, AGV fault display, disconnected AGV count, fault inspection details, faulted AGV location, and a system E-stop control.",
+      "observed_evidence": [
+        "Slide title: 'Map Monitor / Message Panel'",
+        "Bullet: 'Open message panel'",
+        "Bullet: 'Count of active Robots'",
+        "Bullet: 'Count of Robots charging'",
+        "Bullet: 'Drop down to show AGV faults'",
+        "Bullet: 'Count of AGVs disconnected'",
+        "Bullet: 'Inspection to view details of fault'",
+        "Bullet: 'Locate Faulted AGV'",
+        "Bullet: 'E stop the system'"
+      ],
+      "relationships": [
+        {
+          "type": "contains",
+          "target": "Robot activity count"
+        },
+        {
+          "type": "contains",
+          "target": "Robot charging count"
+        },
+        {
+          "type": "contains",
+          "target": "AGV fault dropdown"
+        },
+        {
+          "type": "contains",
+          "target": "Disconnected AGV count"
+        },
+        {
+          "type": "contains",
+          "target": "Fault inspection view"
+        },
+        {
+          "type": "contains",
+          "target": "Locate faulted AGV action"
+        },
+        {
+          "type": "contains",
+          "target": "System E-stop control"
+        }
+      ],
+      "retrieval_text": "Map Monitor Message Panel UI concept. The panel can be opened and shows counts of active robots, robots charging, and AGVs disconnected. It includes a dropdown to show AGV faults, inspection to view fault details, an option to locate a faulted AGV, and an E-stop system control.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_24_02",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        24
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "Message panel supports AGV fault monitoring and inspection",
+      "systems": [
+        "OptiSweep",
+        "AGV"
+      ],
+      "components": [
+        "Map Monitor",
+        "Message Panel"
+      ],
+      "summary": "The message panel is used to surface AGV faults, show disconnected AGV counts, inspect fault details, and locate a faulted AGV.",
+      "observed_evidence": [
+        "Bullet: 'Drop down to show AGV faults'",
+        "Bullet: 'Count of AGVs disconnected'",
+        "Bullet: 'Inspection to view details of fault'",
+        "Bullet: 'Locate Faulted AGV'"
+      ],
+      "relationships": [
+        {
+          "type": "supports",
+          "target": "AGV fault visibility"
+        },
+        {
+          "type": "supports",
+          "target": "Fault detail inspection"
+        },
+        {
+          "type": "supports",
+          "target": "Faulted AGV location"
+        }
+      ],
+      "retrieval_text": "Diagnostic concept for AGV faults in the Map Monitor Message Panel. Operators can use the panel dropdown to show AGV faults, review disconnected AGV counts, inspect fault details, and locate the faulted AGV.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_robot_selection_24_01",
+      "title": "Open the message panel and review AGV fault information",
+      "procedure_type": "diagnostic_check",
+      "source_deck": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        24
+      ],
+      "systems": [
+        "OptiSweep",
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Map Monitor",
+        "Message Panel"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is viewing the Map Monitor screen.",
+        "Message Panel is available in the UI."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+      ],
+      "procedure_visual_summary": "Slide-level reference for the Map Monitor Message Panel listing available monitoring and fault-related actions.",
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "Open the message panel.",
+          "observed_evidence": "Bullet: 'Open message panel'",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+          ],
+          "visual_region_hint": "Map Monitor Message Panel area"
+        },
+        {
+          "step_number": 2,
+          "action": "Use the dropdown to show AGV faults.",
+          "observed_evidence": "Bullet: 'Drop down to show AGV faults'",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+          ],
+          "visual_region_hint": "Message Panel dropdown or fault list area"
+        },
+        {
+          "step_number": 3,
+          "action": "Inspect the fault to view details.",
+          "observed_evidence": "Bullet: 'Inspection to view details of fault'",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+          ],
+          "visual_region_hint": "Fault inspection/details area in Message Panel"
+        },
+        {
+          "step_number": 4,
+          "action": "Locate the faulted AGV.",
+          "observed_evidence": "Bullet: 'Locate Faulted AGV'",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+          ],
+          "visual_region_hint": "Locate faulted AGV control within Message Panel"
+        }
+      ],
+      "warnings": [
+        "The slide also references 'E stop the system' but does not provide enough instruction to include it as a reusable step sequence.",
+        "Counts of active robots, charging robots, and disconnected AGVs are listed as available panel information, not explicit action steps."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_robot_selection_24_01",
+        "oku_optisweep_training_internal_robot_selection_24_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Diagnostic check candidate for Map Monitor Message Panel. Open the message panel, use the dropdown to show AGV faults, inspect fault details, and locate the faulted AGV. Slide also indicates the panel shows robot and disconnection counts."
+    }
+  ],
+  "discarded_candidates": []
+}

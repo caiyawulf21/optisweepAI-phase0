@@ -1,0 +1,68 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0089_001",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        89
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0089"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Sorter Sweeper Database overview reference",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [],
+      "summary": "The slide identifies a database-related subject area named \"Sorter Sweeper Database\" and labels the slide as an overview, indicating introductory reference content rather than a procedure.",
+      "observed_evidence": [
+        "Visible text includes \"Sorter Sweeper Database\"",
+        "Visible text includes \"Overview\"",
+        "Visual element classified as database_schema",
+        "Evidence hints indicate database terms are present"
+      ],
+      "relationships": [],
+      "retrieval_text": "Sorter Sweeper Database overview reference slide. Introductory database content for the Sorter Sweeper Database. Overview-only slide with database-related context and no explicit operational steps.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0089_001",
+      "title": "No procedure extracted from Sorter Sweeper Database overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        89
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Viewer is referencing the overview slide for database context"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0089"
+      ],
+      "procedure_visual_summary": "Title/overview slide for Sorter Sweeper Database with no visible action sequence, controls, fields, or numbered steps.",
+      "steps": [],
+      "warnings": [
+        "Slide appears to be an overview/title slide only",
+        "No explicit reusable action guidance is visible",
+        "No UI navigation, commands, or ordered operational steps are provided"
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0089",
+        "deck:optisweep_training_internal",
+        "slide:89"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate for Sorter Sweeper Database overview slide. Database context is present, but the slide contains no explicit operational procedure or action sequence."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,120 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0131_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        131
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0131"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "Flatlined heartbeat may indicate Ignition started after WCS and OptiSweep requires restart",
+      "systems": [
+        "OptiSweep",
+        "Ignition",
+        "WCS"
+      ],
+      "components": [
+        "heartbeat",
+        "OptiSweep service"
+      ],
+      "summary": "The slide states that if the heartbeat is flatlined, Ignition probably started later than WCS, and the OptiSweep service needs to be restarted.",
+      "observed_evidence": [
+        "Slide title: 'Services / Unplanned restart'",
+        "Visible text: 'If the heartbeat is flat lined Igniton probably came up later then wcs and the service OptiSweep needs to be restarted'"
+      ],
+      "relationships": [
+        {
+          "type": "possible_cause_of",
+          "from": "Ignition started later than WCS",
+          "to": "flatlined heartbeat"
+        },
+        {
+          "type": "suggests_action",
+          "from": "flatlined heartbeat",
+          "to": "restart OptiSweep service"
+        }
+      ],
+      "retrieval_text": "Unplanned restart diagnostic: if the heartbeat is flatlined, Ignition may have come up later than WCS, and the OptiSweep service needs to be restarted.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0131_01",
+      "title": "Restart OptiSweep service when heartbeat is flatlined after startup order issue",
+      "procedure_type": "service_restart",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        131
+      ],
+      "systems": [
+        "OptiSweep",
+        "Ignition",
+        "WCS"
+      ],
+      "components": [
+        "heartbeat",
+        "OptiSweep service"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Heartbeat is observed to be flatlined",
+        "Possible condition noted by slide: Ignition came up later than WCS"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0131"
+      ],
+      "procedure_visual_summary": "Slide states that if the heartbeat is flatlined, Ignition probably started later than WCS and OptiSweep needs to be restarted.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Check whether the heartbeat is flatlined.",
+          "expected_outcome": "The heartbeat condition is confirmed as flatlined.",
+          "validation_check": "Heartbeat appears flatlined.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:131"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0131"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0131"
+          ],
+          "visual_region_hint": "Main slide text under 'Unplanned restart'"
+        },
+        {
+          "step_order": 2,
+          "instruction": "If the heartbeat is flatlined, restart the OptiSweep service.",
+          "expected_outcome": "OptiSweep service is restarted in response to the flatlined heartbeat condition.",
+          "validation_check": "OptiSweep service restart has been performed; no further validation is stated on the slide.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:131"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0131"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0131"
+          ],
+          "visual_region_hint": "Main slide text under 'Unplanned restart'"
+        }
+      ],
+      "warnings": [
+        "The slide provides no exact restart sequence or interface details.",
+        "The statement that Ignition came up later than WCS is presented as a probable cause, not a confirmed diagnosis."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0131_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Service restart candidate: when heartbeat is flatlined, the slide indicates Ignition may have started after WCS and the OptiSweep service should be restarted."
+    }
+  ],
+  "discarded_candidates": []
+}

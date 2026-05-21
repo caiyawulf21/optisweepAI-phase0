@@ -1,0 +1,198 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0077_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        77
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0077"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "TipperStationDatabaseModel stores tipper station names",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Tipper",
+        "TipperStationDatabaseModel"
+      ],
+      "summary": "The slide states that the TipperStationDatabaseModel table stores the name of the tipper station.",
+      "observed_evidence": [
+        "“The TipperStationDatabaseModel table stores the name of the tipper station.”"
+      ],
+      "relationships": [
+        {
+          "relation": "stores",
+          "target": "tipper station name"
+        }
+      ],
+      "retrieval_text": "Robotics Database / Tipper: TipperStationDatabaseModel stores the name of the tipper station.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0077_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        77
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0077"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "TipperDatabaseModel stores tipper location and routing identifiers",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Tipper",
+        "TipperDatabaseModel"
+      ],
+      "summary": "The TipperDatabaseModel table contains the tipper location id and the entrance and exit ids associated with tippers.",
+      "observed_evidence": [
+        "“The TipperDatabaseModel table contains all the location id of the tippers as well as the entrance and exit id's.”"
+      ],
+      "relationships": [
+        {
+          "relation": "stores",
+          "target": "tipper location id"
+        },
+        {
+          "relation": "stores",
+          "target": "tipper entrance id"
+        },
+        {
+          "relation": "stores",
+          "target": "tipper exit id"
+        }
+      ],
+      "retrieval_text": "TipperDatabaseModel contains tipper location ids plus entrance and exit ids for tippers.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0077_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        77
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0077"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "TipperDatabaseModel includes TipperLoadType and GLD-specific prequeue identifiers",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Tipper",
+        "TipperDatabaseModel",
+        "TipperLoadType",
+        "GLDPreQueueEnteranceId",
+        "GLDPreQueueExitId"
+      ],
+      "summary": "The table includes TipperLoadType to distinguish GLD (gaylord) from standard tippers. GLDPreQueueEnteranceId and GLDPreQueueExitId provide entrance and exit ids for GLD and are not needed for standard tippers.",
+      "observed_evidence": [
+        "“There is also a TipperLoadType to determine what kind of tipper. GLD (gaylord) or Standard normal tipper.”",
+        "“The GLDPreQueueEnteranceId and GLDPreQueueExitId are the enterance and exit id's for the GLD.”",
+        "“They can be ignored for the standard tippers.”"
+      ],
+      "relationships": [
+        {
+          "relation": "classifies",
+          "target": "tipper type via TipperLoadType"
+        },
+        {
+          "relation": "uses",
+          "target": "GLDPreQueueEnteranceId for GLD tippers"
+        },
+        {
+          "relation": "uses",
+          "target": "GLDPreQueueExitId for GLD tippers"
+        },
+        {
+          "relation": "not_applicable_to",
+          "target": "standard tippers for GLD prequeue fields"
+        }
+      ],
+      "retrieval_text": "TipperDatabaseModel includes TipperLoadType to distinguish GLD/gaylord versus standard tippers. GLDPreQueueEnteranceId and GLDPreQueueExitId are GLD-specific entrance and exit ids and can be ignored for standard tippers.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0077_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        77
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0077"
+      ],
+      "unit_type": "routing_rule",
+      "title": "Sorter Side Tipper Station table defines per-sorter-side tipper map and consideration sequence",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Tipper",
+        "Sorter Side Tipper Station table"
+      ],
+      "summary": "The slide describes a table that stores the mapping for each sorter side and the sequence in which tippers should be considered.",
+      "observed_evidence": [
+        "“The Sorter Side Tipper Station table stores the map for each sorter side and the sequence in which it should consider tippers.”"
+      ],
+      "relationships": [
+        {
+          "relation": "maps",
+          "target": "sorter side to tippers"
+        },
+        {
+          "relation": "orders",
+          "target": "tipper consideration sequence"
+        }
+      ],
+      "retrieval_text": "Sorter Side Tipper Station table stores the map for each sorter side and the sequence used to consider tippers.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0077_01",
+      "title": "No explicit reusable procedure present on Tipper database slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        77
+      ],
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Tipper",
+        "TipperStationDatabaseModel",
+        "TipperDatabaseModel",
+        "Sorter Side Tipper Station table"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0077"
+      ],
+      "procedure_visual_summary": "Slide is a database reference describing tipper-related tables and fields, including GLD-specific fields and sorter-side mapping/sequence.",
+      "steps": [],
+      "warnings": [
+        "The slide describes table contents and applicability of fields but does not provide an explicit action sequence.",
+        "Do not infer database update, configuration, or troubleshooting steps from this slide alone."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0077_01",
+        "oku_optisweep_training_internal_0077_02",
+        "oku_optisweep_training_internal_0077_03",
+        "oku_optisweep_training_internal_0077_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: slide 77 is a database/model reference for Tipper tables and routing sequence, not an explicit operational procedure."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,16 @@
+{
+  "deck_id": "optisweep_training_internal_robot_selection",
+  "source_file": "data\\OptiSweep Training Slides [INTERNAL ONLY].pdf",
+  "slides_processed": 7,
+  "total_slides": 7,
+  "last_completed_slide": 30,
+  "current_slide": null,
+  "slide_artifacts_created": 7,
+  "knowledge_units_created": 15,
+  "context_candidates_created": 15,
+  "procedure_candidates_created": 8,
+  "discarded_candidates": 0,
+  "warnings": [],
+  "llm_status": "azure_openai",
+  "validation_status": "needs_review"
+}

@@ -1,0 +1,165 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Overview of Geek Plus RMS and AGV Control",
+      "timestamp_start": "00:06:46.520",
+      "timestamp_end": "00:07:04.320",
+      "primary_intent": "Explain the control system and communication between RMS and AGVs",
+      "operational_intents": [
+        "Describe QR code operation",
+        "Introduce Geek Plus RMS as robot management software",
+        "Explain direct communication with AGVs"
+      ],
+      "knowledge_extraction_strategy": "Extract system architecture and communication flow",
+      "why_this_strategy": "Clarifies control and communication roles",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000099",
+        "vec_upsfortna_optisweep_training_day1_20260317_000100",
+        "vec_upsfortna_optisweep_training_day1_20260317_000101",
+        "vec_upsfortna_optisweep_training_day1_20260317_000102",
+        "vec_upsfortna_optisweep_training_day1_20260317_000103",
+        "vec_upsfortna_optisweep_training_day1_20260317_000104"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000003"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV Sensors and Collision Detection",
+      "timestamp_start": "00:07:04.320",
+      "timestamp_end": "00:07:49.320",
+      "primary_intent": "Detail sensor functions and collision detection on AGVs",
+      "operational_intents": [
+        "Describe collision sensors and fence system operation",
+        "Explain sensor data processing inside AGV",
+        "Outline obstacle detection and reporting to RMS"
+      ],
+      "knowledge_extraction_strategy": "Extract sensor roles and data flow for collision management",
+      "why_this_strategy": "Defines safety and obstacle handling mechanisms",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000105",
+        "vec_upsfortna_optisweep_training_day1_20260317_000106",
+        "vec_upsfortna_optisweep_training_day1_20260317_000107",
+        "vec_upsfortna_optisweep_training_day1_20260317_000108",
+        "vec_upsfortna_optisweep_training_day1_20260317_000109",
+        "vec_upsfortna_optisweep_training_day1_20260317_000110",
+        "vec_upsfortna_optisweep_training_day1_20260317_000111",
+        "vec_upsfortna_optisweep_training_day1_20260317_000112",
+        "vec_upsfortna_optisweep_training_day1_20260317_000113",
+        "vec_upsfortna_optisweep_training_day1_20260317_000114",
+        "vec_upsfortna_optisweep_training_day1_20260317_000115",
+        "vec_upsfortna_optisweep_training_day1_20260317_000116",
+        "vec_upsfortna_optisweep_training_day1_20260317_000117",
+        "vec_upsfortna_optisweep_training_day1_20260317_000118",
+        "vec_upsfortna_optisweep_training_day1_20260317_000119"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000003"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "RMS Task Management and Robot Routing",
+      "timestamp_start": "00:07:49.320",
+      "timestamp_end": "00:08:42.720",
+      "primary_intent": "Explain RMS task queue and routing decisions for AGVs",
+      "operational_intents": [
+        "Describe RMS as robot control system",
+        "Explain task assignment from WCS to RMS",
+        "Detail task execution and routing by RMS",
+        "Clarify AGV's limited knowledge and real-time updates"
+      ],
+      "knowledge_extraction_strategy": "Extract task flow and routing logic from RMS to AGVs",
+      "why_this_strategy": "Clarifies command and control hierarchy",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000120",
+        "vec_upsfortna_optisweep_training_day1_20260317_000121",
+        "vec_upsfortna_optisweep_training_day1_20260317_000122",
+        "vec_upsfortna_optisweep_training_day1_20260317_000123",
+        "vec_upsfortna_optisweep_training_day1_20260317_000124",
+        "vec_upsfortna_optisweep_training_day1_20260317_000125",
+        "vec_upsfortna_optisweep_training_day1_20260317_000126",
+        "vec_upsfortna_optisweep_training_day1_20260317_000127",
+        "vec_upsfortna_optisweep_training_day1_20260317_000128",
+        "vec_upsfortna_optisweep_training_day1_20260317_000129",
+        "vec_upsfortna_optisweep_training_day1_20260317_000130",
+        "vec_upsfortna_optisweep_training_day1_20260317_000131",
+        "vec_upsfortna_optisweep_training_day1_20260317_000132",
+        "vec_upsfortna_optisweep_training_day1_20260317_000133",
+        "vec_upsfortna_optisweep_training_day1_20260317_000134",
+        "vec_upsfortna_optisweep_training_day1_20260317_000135",
+        "vec_upsfortna_optisweep_training_day1_20260317_000136",
+        "vec_upsfortna_optisweep_training_day1_20260317_000137",
+        "vec_upsfortna_optisweep_training_day1_20260317_000138",
+        "vec_upsfortna_optisweep_training_day1_20260317_000139",
+        "vec_upsfortna_optisweep_training_day1_20260317_000140",
+        "vec_upsfortna_optisweep_training_day1_20260317_000141",
+        "vec_upsfortna_optisweep_training_day1_20260317_000142"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000003"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Clarifications and Q&A on RMS and AGV Operations",
+      "timestamp_start": "00:08:42.720",
+      "timestamp_end": "00:09:18.320",
+      "primary_intent": "Address questions and clarify real-time operations and reporting",
+      "operational_intents": [
+        "Discuss real-time nature of RMS updates",
+        "Confirm central salary reporting",
+        "Allow participant questions"
+      ],
+      "knowledge_extraction_strategy": "Extract clarifications and operational nuances",
+      "why_this_strategy": "Ensures understanding of system timing and reporting",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000143",
+        "vec_upsfortna_optisweep_training_day1_20260317_000144",
+        "vec_upsfortna_optisweep_training_day1_20260317_000145",
+        "vec_upsfortna_optisweep_training_day1_20260317_000146",
+        "vec_upsfortna_optisweep_training_day1_20260317_000147",
+        "vec_upsfortna_optisweep_training_day1_20260317_000148",
+        "vec_upsfortna_optisweep_training_day1_20260317_000149",
+        "vec_upsfortna_optisweep_training_day1_20260317_000150",
+        "vec_upsfortna_optisweep_training_day1_20260317_000151",
+        "vec_upsfortna_optisweep_training_day1_20260317_000152",
+        "vec_upsfortna_optisweep_training_day1_20260317_000153",
+        "vec_upsfortna_optisweep_training_day1_20260317_000154",
+        "vec_upsfortna_optisweep_training_day1_20260317_000155",
+        "vec_upsfortna_optisweep_training_day1_20260317_000156",
+        "vec_upsfortna_optisweep_training_day1_20260317_000157"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000003"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Introduction to Tote Racks and Package Alignment",
+      "timestamp_start": "00:09:22.760",
+      "timestamp_end": "00:09:48.024",
+      "primary_intent": "Describe tote racks and mechanisms for package alignment",
+      "operational_intents": [
+        "Show tote rack design and placement",
+        "Explain alignment features like feet and fins",
+        "Prepare for later visual inspection"
+      ],
+      "knowledge_extraction_strategy": "Extract physical design and package handling details",
+      "why_this_strategy": "Supports understanding of package flow and alignment",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000158",
+        "vec_upsfortna_optisweep_training_day1_20260317_000159",
+        "vec_upsfortna_optisweep_training_day1_20260317_000160",
+        "vec_upsfortna_optisweep_training_day1_20260317_000161",
+        "vec_upsfortna_optisweep_training_day1_20260317_000162",
+        "vec_upsfortna_optisweep_training_day1_20260317_000163"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000003"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

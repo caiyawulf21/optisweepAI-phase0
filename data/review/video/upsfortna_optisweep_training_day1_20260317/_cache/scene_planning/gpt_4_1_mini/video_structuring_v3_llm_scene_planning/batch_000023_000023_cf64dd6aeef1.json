@@ -1,0 +1,113 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGV and Tote Removal Procedures",
+      "timestamp_start": "01:07:29.883",
+      "timestamp_end": "01:08:47.320",
+      "primary_intent": "Explain correct sequence for removing AGVs and totes",
+      "operational_intents": [
+        "Describe why totes must be removed after AGVs",
+        "Highlight consequences of incorrect removal order",
+        "Introduce upcoming detailed instructions"
+      ],
+      "knowledge_extraction_strategy": "Identify procedural rules and rationale",
+      "why_this_strategy": "Clarifies critical removal sequence and error prevention",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001142",
+        "vec_upsfortna_optisweep_training_day1_20260317_001143",
+        "vec_upsfortna_optisweep_training_day1_20260317_001144",
+        "vec_upsfortna_optisweep_training_day1_20260317_001145",
+        "vec_upsfortna_optisweep_training_day1_20260317_001146",
+        "vec_upsfortna_optisweep_training_day1_20260317_001147",
+        "vec_upsfortna_optisweep_training_day1_20260317_001148",
+        "vec_upsfortna_optisweep_training_day1_20260317_001149",
+        "vec_upsfortna_optisweep_training_day1_20260317_001150",
+        "vec_upsfortna_optisweep_training_day1_20260317_001151",
+        "vec_upsfortna_optisweep_training_day1_20260317_001152",
+        "vec_upsfortna_optisweep_training_day1_20260317_001153",
+        "vec_upsfortna_optisweep_training_day1_20260317_001154",
+        "vec_upsfortna_optisweep_training_day1_20260317_001155"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000023"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Handling Full Totes and AGV-Tote Interaction",
+      "timestamp_start": "01:08:09.720",
+      "timestamp_end": "01:08:59.188",
+      "primary_intent": "Explain procedures when totes are full and AGV-tote relationships",
+      "operational_intents": [
+        "Clarify tote removal after AGV removal",
+        "Describe system behavior when totes are full",
+        "Emphasize correct sequence to avoid system errors"
+      ],
+      "knowledge_extraction_strategy": "Extract operational rules and system constraints",
+      "why_this_strategy": "Ensures understanding of tote capacity and removal order",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001156",
+        "vec_upsfortna_optisweep_training_day1_20260317_001157",
+        "vec_upsfortna_optisweep_training_day1_20260317_001158",
+        "vec_upsfortna_optisweep_training_day1_20260317_001159",
+        "vec_upsfortna_optisweep_training_day1_20260317_001160",
+        "vec_upsfortna_optisweep_training_day1_20260317_001161",
+        "vec_upsfortna_optisweep_training_day1_20260317_001162",
+        "vec_upsfortna_optisweep_training_day1_20260317_001163",
+        "vec_upsfortna_optisweep_training_day1_20260317_001164",
+        "vec_upsfortna_optisweep_training_day1_20260317_001165",
+        "vec_upsfortna_optisweep_training_day1_20260317_001166",
+        "vec_upsfortna_optisweep_training_day1_20260317_001167",
+        "vec_upsfortna_optisweep_training_day1_20260317_001168",
+        "vec_upsfortna_optisweep_training_day1_20260317_001169"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000023"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Common AGV Errors and Troubleshooting",
+      "timestamp_start": "01:08:59.188",
+      "timestamp_end": "01:10:33.800",
+      "primary_intent": "Identify common AGV errors and how to interpret system feedback",
+      "operational_intents": [
+        "Explain typical causes of AGV faults",
+        "Demonstrate how to use system interface for error details",
+        "Introduce emergency stop software function"
+      ],
+      "knowledge_extraction_strategy": "Capture error types and diagnostic steps",
+      "why_this_strategy": "Supports troubleshooting and system monitoring",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001170",
+        "vec_upsfortna_optisweep_training_day1_20260317_001171",
+        "vec_upsfortna_optisweep_training_day1_20260317_001172",
+        "vec_upsfortna_optisweep_training_day1_20260317_001173",
+        "vec_upsfortna_optisweep_training_day1_20260317_001174",
+        "vec_upsfortna_optisweep_training_day1_20260317_001175",
+        "vec_upsfortna_optisweep_training_day1_20260317_001176",
+        "vec_upsfortna_optisweep_training_day1_20260317_001177",
+        "vec_upsfortna_optisweep_training_day1_20260317_001178",
+        "vec_upsfortna_optisweep_training_day1_20260317_001179",
+        "vec_upsfortna_optisweep_training_day1_20260317_001180",
+        "vec_upsfortna_optisweep_training_day1_20260317_001181",
+        "vec_upsfortna_optisweep_training_day1_20260317_001182",
+        "vec_upsfortna_optisweep_training_day1_20260317_001183",
+        "vec_upsfortna_optisweep_training_day1_20260317_001184",
+        "vec_upsfortna_optisweep_training_day1_20260317_001185",
+        "vec_upsfortna_optisweep_training_day1_20260317_001186",
+        "vec_upsfortna_optisweep_training_day1_20260317_001187",
+        "vec_upsfortna_optisweep_training_day1_20260317_001188",
+        "vec_upsfortna_optisweep_training_day1_20260317_001189",
+        "vec_upsfortna_optisweep_training_day1_20260317_001190",
+        "vec_upsfortna_optisweep_training_day1_20260317_001191",
+        "vec_upsfortna_optisweep_training_day1_20260317_001192",
+        "vec_upsfortna_optisweep_training_day1_20260317_001193"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000023"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0044_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        44
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0044"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Aveva API page exposes operator/support access to system actions and related pop-up pages",
+      "systems": [
+        "Aveva",
+        "OptiSweep"
+      ],
+      "components": [
+        "Aveva API page"
+      ],
+      "summary": "The Aveva API page includes controls for resetting metrics, resetting tipper statistics, opening bag out controls, opening the metrics page, opening the zone configuration page, and viewing current errors.",
+      "observed_evidence": [
+        "Slide title: 'Overall System / Aveva API page'",
+        "Visible bullets list: 'Reset Metrics'",
+        "Visible note: 'Metrics are reset when a new sort plan is loaded but can also be manually reset.'",
+        "Visible bullets list: 'Reset Tipper Stats'",
+        "Visible bullets list: 'Bag Out control' with note 'Pops up additional bag out controls'",
+        "Visible bullets list: 'Get metrics' with note 'Pops up the metrics page'",
+        "Visible bullets list: 'Zone configuration' with note 'Pops up the zone configuration page'",
+        "Visible bullets list: 'Get errors' with note 'Pops up the current errors'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "contains",
+          "target": "Reset Metrics control"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Reset Tipper Stats control"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Bag Out control"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Get metrics page access"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Zone configuration page access"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Current errors view"
+        }
+      ],
+      "retrieval_text": "Slide 44 Overall System Aveva API page. The Aveva API page provides UI controls for Reset Metrics, Reset Tipper Stats, Bag Out control, Get metrics, Zone configuration, and Get errors. Bag Out control opens additional bag out controls. Get metrics opens the metrics page. Zone configuration opens the zone configuration page. Get errors opens the current errors.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0044_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        44
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0044"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Metrics reset automatically on new sort plan load and can also be manually reset",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Metrics",
+        "Sort plan",
+        "Aveva API page"
+      ],
+      "summary": "The slide states that metrics are automatically reset when a new sort plan is loaded, and that manual metric reset is also available from the Aveva API page.",
+      "observed_evidence": [
+        "Visible bullet: 'Reset Metrics'",
+        "Visible sub-bullet: 'Metrics are reset when a new sort plan is loaded but can also be manually reset.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "triggered_by",
+          "target": "new sort plan load"
+        },
+        {
+          "relationship_type": "manually_accessed_from",
+          "target": "Aveva API page"
+        }
+      ],
+      "retrieval_text": "Metrics behavior on the Aveva API page: metrics are reset when a new sort plan is loaded, but they can also be manually reset.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0044_01",
+      "title": "Open related pages from the Aveva API page",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        44
+      ],
+      "systems": [
+        "Aveva",
+        "OptiSweep"
+      ],
+      "components": [
+        "Aveva API page",
+        "Bag Out controls",
+        "Metrics page",
+        "Zone configuration page",
+        "Current errors view"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is viewing the Aveva API page."
+      ],
+      "procedure_screenshot_refs": [
+        "slide_artifact_optisweep_training_internal_0044"
+      ],
+      "procedure_visual_summary": "Slide lists Aveva API page controls including Bag Out control, Get metrics, Zone configuration, and Get errors, each described as opening a related page or controls.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "From the Aveva API page, select one of the available controls based on the information needed: Bag Out control, Get metrics, Zone configuration, or Get errors.",
+          "expected_outcome": "The corresponding controls or page should open from the Aveva API page.",
+          "validation_check": "Confirm that additional bag out controls, the metrics page, the zone configuration page, or the current errors view appears.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:44",
+            "artifact:slide_artifact_optisweep_training_internal_0044"
+          ],
+          "artifact_refs": [
+            "slide_artifact_optisweep_training_internal_0044"
+          ],
+          "screenshot_refs": [
+            "slide_artifact_optisweep_training_internal_0044"
+          ],
+          "visual_region_hint": "Bullet list on the Aveva API page description showing Bag Out control, Get metrics, Zone configuration, and Get errors."
+        }
+      ],
+      "warnings": [
+        "The slide identifies available controls and their outcomes but does not show the exact UI sequence or resulting screens."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0044_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Navigation candidate from slide 44: on the Aveva API page, selecting Bag Out control opens additional bag out controls, Get metrics opens the metrics page, Zone configuration opens the zone configuration page, and Get errors opens the current errors."
+    }
+  ],
+  "discarded_candidates": []
+}

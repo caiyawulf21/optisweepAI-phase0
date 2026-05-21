@@ -1,0 +1,34 @@
+{
+  "video_id": "upsfortna_optisweep_training_day1_20260317",
+  "created_at": "2026-05-20T16:22:01.508629+00:00",
+  "promotion_allowed": false,
+  "promotion_rule": "Video structuring outputs require human review before becoming Dataset 0 context records or procedure dictionary records. Training videos do not generate workflow candidates.",
+  "review_required_for": {
+    "operational_knowledge_units": [
+      "ku_upsfortna_optisweep_training_day1_20260317_000079_01",
+      "ku_upsfortna_optisweep_training_day1_20260317_000079_02",
+      "oku_upsfortna_optisweep_training_day1_20260317_000082_01",
+      "oku_upsfortna_optisweep_training_day1_20260317_000082_02",
+      "oku_upsfortna_optisweep_training_day1_20260317_000085_01",
+      "oku_upsfortna_optisweep_training_day1_20260317_000085_02",
+      "oku_upsfortna_optisweep_training_day1_20260317_000086_1",
+      "oku_upsfortna_optisweep_training_day1_20260317_000086_2",
+      "uku_upsfortna_optisweep_training_day1_20260317_000090_01"
+    ],
+    "context_record_candidates": [
+      "ctx_upsfortna_optisweep_training_day1_20260317_ku_upsfortna_optisweep_training_day1_20260317_000079_01",
+      "ctx_upsfortna_optisweep_training_day1_20260317_ku_upsfortna_optisweep_training_day1_20260317_000079_02",
+      "ctx_upsfortna_optisweep_training_day1_20260317_oku_upsfortna_optisweep_training_day1_20260317_000082_01",
+      "ctx_upsfortna_optisweep_training_day1_20260317_oku_upsfortna_optisweep_training_day1_20260317_000082_02",
+      "ctx_upsfortna_optisweep_training_day1_20260317_oku_upsfortna_optisweep_training_day1_20260317_000085_01",
+      "ctx_upsfortna_optisweep_training_day1_20260317_oku_upsfortna_optisweep_training_day1_20260317_000085_02",
+      "ctx_upsfortna_optisweep_training_day1_20260317_oku_upsfortna_optisweep_training_day1_20260317_000086_1",
+      "ctx_upsfortna_optisweep_training_day1_20260317_oku_upsfortna_optisweep_training_day1_20260317_000086_2",
+      "ctx_upsfortna_optisweep_training_day1_20260317_uku_upsfortna_optisweep_training_day1_20260317_000090_01"
+    ],
+    "procedure_dictionary_candidates": []
+  },
+  "legacy_invalid_outputs": [],
+  "target_production_context_file": "data/context/context_reference.json",
+  "production_context_write_ran": false
+}

@@ -1,0 +1,161 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_120_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        120
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0120"
+      ],
+      "unit_type": "api_capability",
+      "title": "ExchangeSorterSideZone API sends multiple exchanges to tippers for testing",
+      "systems": [
+        "API"
+      ],
+      "components": [
+        "Tote",
+        "Tipper"
+      ],
+      "summary": "The ExchangeSorterSideZone API requires a sorter side and a zone, and is used during testing to send multiple exchanges to the tippers.",
+      "observed_evidence": [
+        "Slide section/title: APIs / Totes",
+        "Visible text: 'ExchangeSorterSideZone: Requires a sorter side and a zone. This is used during testing to send multiple exchanges to the tippers.'"
+      ],
+      "relationships": [
+        {
+          "type": "requires_parameters",
+          "target": "sorter side and zone"
+        },
+        {
+          "type": "used_for",
+          "target": "sending multiple exchanges to tippers during testing"
+        }
+      ],
+      "retrieval_text": "API capability for totes: ExchangeSorterSideZone requires sorter side and zone, and is used during testing to send multiple exchanges to the tippers.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_120_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        120
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0120"
+      ],
+      "unit_type": "api_capability",
+      "title": "RemoveTote API removes a tote after AGV removal prerequisite is met",
+      "systems": [
+        "API"
+      ],
+      "components": [
+        "Tote",
+        "AGV"
+      ],
+      "summary": "The RemoveTote API requires a tote ID and removes the tote from the system. The slide explicitly notes that the AGV must be removed before the tote can be removed.",
+      "observed_evidence": [
+        "Visible text: 'RemoveTote: Requires a tote id and will remove the tote from the system.'",
+        "Visible text: 'Note: the AGV must be removed before the tote can be removed.'"
+      ],
+      "relationships": [
+        {
+          "type": "requires_parameters",
+          "target": "tote id"
+        },
+        {
+          "type": "precondition",
+          "target": "AGV must be removed before tote removal"
+        },
+        {
+          "type": "affects",
+          "target": "tote removal from the system"
+        }
+      ],
+      "retrieval_text": "RemoveTote API reference: requires tote ID, removes tote from the system, and has a prerequisite that the AGV must be removed before the tote can be removed.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_120_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        120
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0120"
+      ],
+      "unit_type": "api_capability",
+      "title": "GetToteTask API shows active tote state",
+      "systems": [
+        "API"
+      ],
+      "components": [
+        "Tote"
+      ],
+      "summary": "The GetToteTask API shows the active state of the totes.",
+      "observed_evidence": [
+        "Visible text: 'GetToteTask: Shows the active state of the totes.'"
+      ],
+      "relationships": [
+        {
+          "type": "returns_or_shows",
+          "target": "active state of totes"
+        }
+      ],
+      "retrieval_text": "GetToteTask API shows the active state of the totes.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_120_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        120
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0120"
+      ],
+      "unit_type": "api_capability",
+      "title": "ResendtoteTask API resends a task to the robotics module",
+      "systems": [
+        "API"
+      ],
+      "components": [
+        "Tote",
+        "Robot"
+      ],
+      "summary": "The ResendtoteTask API requires a task GUID and resends the task to the robotics module.",
+      "observed_evidence": [
+        "Visible text: 'ResendtoteTask: Requires a task guid and will resend the task to the robotics module.'"
+      ],
+      "relationships": [
+        {
+          "type": "requires_parameters",
+          "target": "task guid"
+        },
+        {
+          "type": "sends_to",
+          "target": "robotics module"
+        },
+        {
+          "type": "used_for",
+          "target": "resending a task"
+        }
+      ],
+      "retrieval_text": "ResendtoteTask API requires a task GUID and resends the task to the robotics module.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "title": "Tote API list as procedures",
+      "reason": "Slide provides API capabilities, parameters, and one prerequisite note, but does not present explicit reusable action steps or a complete action sequence. Per rules, this should be captured as API context rather than procedures.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:120",
+        "artifact:slide_artifact_optisweep_training_internal_0120"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Introduction and Overview of Opti Suite Training",
+      "timestamp_start": "00:00:43.200",
+      "timestamp_end": "00:03:44.200",
+      "primary_intent": "Introduce training session and provide high-level overview of Opti Suite",
+      "operational_intents": [
+        "Set context for training day",
+        "Introduce speakers and agenda",
+        "Explain what Opti Suite is"
+      ],
+      "knowledge_extraction_strategy": "Extract foundational context and system overview",
+      "why_this_strategy": "Establish baseline understanding for subsequent technical details",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000001"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000001"
+      ]
+    },
+    {
+      "scene_title": "Current Manual Sorting Process and Challenges",
+      "timestamp_start": "00:03:44.200",
+      "timestamp_end": "00:04:25.378",
+      "primary_intent": "Describe existing manual sorting process and its inefficiencies",
+      "operational_intents": [
+        "Explain manual chute and bagging process",
+        "Highlight operator workload and inefficiencies",
+        "Identify pain points in current system"
+      ],
+      "knowledge_extraction_strategy": "Capture operational challenges and manual workflow details",
+      "why_this_strategy": "Understand baseline process to contextualize automation benefits",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000002"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000002"
+      ]
+    },
+    {
+      "scene_title": "Introduction to Modular AGV System and UPS Partnership",
+      "timestamp_start": "00:04:25.378",
+      "timestamp_end": "00:06:46.520",
+      "primary_intent": "Explain modular AGV system development and UPS integration",
+      "operational_intents": [
+        "Describe modular system concept with AGVs",
+        "Outline communication standards across UPS buildings",
+        "List core system components and software integration"
+      ],
+      "knowledge_extraction_strategy": "Extract system architecture and integration details",
+      "why_this_strategy": "Clarify system components and communication protocols",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000002"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000002"
+      ]
+    },
+    {
+      "scene_title": "AGV Operation and Robot Management System (RMS) Details",
+      "timestamp_start": "00:06:46.520",
+      "timestamp_end": "00:09:48.024",
+      "primary_intent": "Detail AGV operation, sensor integration, and RMS responsibilities",
+      "operational_intents": [
+        "Explain AGV sensor functions and collision detection",
+        "Describe RMS role in task assignment and routing",
+        "Clarify separation of logic between AGV and RMS"
+      ],
+      "knowledge_extraction_strategy": "Capture technical operational details of AGV and RMS",
+      "why_this_strategy": "Understand robot control and management system interactions",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000003"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000003"
+      ]
+    },
+    {
+      "scene_title": "Tote Rack Design and Package Handling Features",
+      "timestamp_start": "00:09:48.024",
+      "timestamp_end": "00:10:10.800",
+      "primary_intent": "Describe physical design of tote racks and package alignment features",
+      "operational_intents": [
+        "Explain tote rack structure and alignment mechanisms",
+        "Discuss package handling to minimize floor items"
+      ],
+      "knowledge_extraction_strategy": "Extract physical system design and handling features",
+      "why_this_strategy": "Understand mechanical aspects affecting package flow",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000004"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000004"
+      ]
+    },
+    {
+      "scene_title": "Tippers, Software Integration, and Network Communication",
+      "timestamp_start": "00:10:10.800",
+      "timestamp_end": "00:12:51.680",
+      "primary_intent": "Explain tipper mechanisms, software integration, and network protocols",
+      "operational_intents": [
+        "Describe tipper operation and control",
+        "Outline Opti Sweep software integration with hardware",
+        "Explain network separation and secure communication protocols"
+      ],
+      "knowledge_extraction_strategy": "Capture integration of hardware, software, and network security",
+      "why_this_strategy": "Clarify system interoperability and communication architecture",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000004"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000004"
+      ]
+    }
+  ]
+}

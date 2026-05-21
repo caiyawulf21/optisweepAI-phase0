@@ -1,0 +1,84 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0102_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        102
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0102"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Ignition lane activity model tracks lane-area messaging",
+      "systems": [
+        "Ignition"
+      ],
+      "components": [
+        "Ignition lane activity"
+      ],
+      "summary": "The slide states that the Ignition lane activity model tracks Scandata, Induct(sort), and SortConf messages that fall within the working area.",
+      "observed_evidence": [
+        "Slide title: 'Ignition Lane Activity Model'",
+        "Visible text: 'Igntion lane activity tracks all Scandata,'",
+        "Visible text: 'Induct(sort), and SortConf message that'",
+        "Visible text: 'fall within our working area.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "tracks_messages_for",
+          "target": "Scandata messages"
+        },
+        {
+          "relationship_type": "tracks_messages_for",
+          "target": "Induct(sort) messages"
+        },
+        {
+          "relationship_type": "tracks_messages_for",
+          "target": "SortConf messages"
+        },
+        {
+          "relationship_type": "scope_limited_to",
+          "target": "working area"
+        }
+      ],
+      "retrieval_text": "Ignition lane activity model in the Sorter Sweeper Database tracks Scandata, Induct(sort), and SortConf messages within the working area.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0102_01",
+      "title": "No reusable procedure present on Ignition lane activity model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        102
+      ],
+      "systems": [
+        "Ignition"
+      ],
+      "components": [
+        "Ignition lane activity"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0102"
+      ],
+      "procedure_visual_summary": "Slide describes the Ignition Lane Activity Model and what message types it tracks, but shows no ordered actions, UI interactions, or validation workflow.",
+      "steps": [],
+      "warnings": [
+        "Slide is descriptive database/model context only.",
+        "No explicit action sequence or reusable operational guidance is shown."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0102_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate because slide 102 only defines that Ignition lane activity tracks Scandata, Induct(sort), and SortConf messages within the working area; it does not provide action steps."
+    }
+  ],
+  "discarded_candidates": []
+}

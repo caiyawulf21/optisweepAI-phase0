@@ -1,0 +1,148 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_046_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        46
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0046"
+      ],
+      "unit_type": "api_capability",
+      "title": "Aveva tote management API features",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Tote management API",
+        "Tote"
+      ],
+      "summary": "The Aveva API page exposes tote management features including tote initialization, tote removal, tote task retrieval, tote task resend, tote exchange by tote ID, tote exchange by lane number, and exchange settings retrieval.",
+      "observed_evidence": [
+        "Slide title: 'Totes / Aveva API page'",
+        "'API Features for Tote Management'",
+        "'Initialize Tote' - 'Adds a specified tote to the system.'",
+        "'Remove Tote' - 'Removes a specified tote from the system.'",
+        "'Get Tote Task' - 'Retrieves the current tote task.'",
+        "'Resend Tote Task' - 'Resends a command to a tote that encountered an error or failed to execute.'",
+        "'Exchange Tote' - 'Manually trigger a tote exchange by tote Id.'",
+        "'Exchange Lane' - 'Manually trigger a tote exchange by lane number.'",
+        "'Get Exchange Settings' - 'Retrieves settings and configurations for tote exchanges.'"
+      ],
+      "relationships": [
+        {
+          "relation": "includes_capability",
+          "target": "Initialize Tote"
+        },
+        {
+          "relation": "includes_capability",
+          "target": "Remove Tote"
+        },
+        {
+          "relation": "includes_capability",
+          "target": "Get Tote Task"
+        },
+        {
+          "relation": "includes_capability",
+          "target": "Resend Tote Task"
+        },
+        {
+          "relation": "includes_capability",
+          "target": "Exchange Tote"
+        },
+        {
+          "relation": "includes_capability",
+          "target": "Exchange Lane"
+        },
+        {
+          "relation": "includes_capability",
+          "target": "Get Exchange Settings"
+        }
+      ],
+      "retrieval_text": "Aveva tote management API page lists tote-related features: Initialize Tote adds a specified tote to the system; Remove Tote removes a specified tote from the system; Get Tote Task retrieves the current tote task; Resend Tote Task resends a command to a tote that encountered an error or failed to execute; Exchange Tote manually triggers a tote exchange by tote ID; Exchange Lane manually triggers a tote exchange by lane number; Get Exchange Settings retrieves tote exchange settings and configurations.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_046_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        46
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0046"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Tote task resend is used for tote command recovery",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Tote",
+        "Tote task command handling"
+      ],
+      "summary": "The Resend Tote Task API feature is intended to resend a command to a tote when the tote encountered an error or failed to execute the prior command.",
+      "observed_evidence": [
+        "'Resend Tote Task'",
+        "'Resends a command to a tote that encountered an error or failed to execute.'"
+      ],
+      "relationships": [
+        {
+          "relation": "describes_recovery_for",
+          "target": "Resend Tote Task"
+        }
+      ],
+      "retrieval_text": "Resend Tote Task is a recovery-oriented API capability for tote management. It resends a command to a tote when the tote encountered an error or failed to execute.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_046_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        46
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0046"
+      ],
+      "unit_type": "operational_process",
+      "title": "Manual tote exchange can be triggered by tote ID or lane number",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Tote exchange",
+        "Tote",
+        "Lane"
+      ],
+      "summary": "The API supports manually triggering tote exchange in two addressing modes: by tote ID or by lane number.",
+      "observed_evidence": [
+        "'Exchange Tote' - 'Manually trigger a tote exchange by tote Id.'",
+        "'Exchange Lane' - 'Manually trigger a tote exchange by lane number.'"
+      ],
+      "relationships": [
+        {
+          "relation": "has_variant",
+          "target": "Exchange Tote"
+        },
+        {
+          "relation": "has_variant",
+          "target": "Exchange Lane"
+        }
+      ],
+      "retrieval_text": "Aveva tote exchange operations can be manually triggered through the API either by tote ID using Exchange Tote or by lane number using Exchange Lane.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "title": "Aveva tote API actions as procedures",
+      "reason": "The slide lists API capabilities and short descriptions but does not provide explicit reusable action sequences, inputs, navigation flow, request format, or validation steps. Per rules, this should be represented as API context rather than procedures.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:46",
+        "artifact:slide_artifact_optisweep_training_internal_0046"
+      ]
+    }
+  ]
+}

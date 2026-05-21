@@ -1,0 +1,28 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "optisweep_training_internal_113_oku_1",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        113
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0113"
+      ],
+      "unit_type": "operational_process",
+      "title": "API Walkthrough (section header)",
+      "systems": [],
+      "components": [],
+      "summary": "This slide acts as a section divider indicating an upcoming API walkthrough. It provides no actionable steps, procedures, or specific API details on its own.",
+      "observed_evidence": [
+        "Visible text: 'API Walkthrough', '112', '© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.'",
+        "Visual summary indicates only the section title without additional instructional content."
+      ],
+      "relationships": [],
+      "retrieval_text": "Section header: API Walkthrough. Slide 113 marks the start of an API walkthrough section but contains no operational steps or API specifics.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

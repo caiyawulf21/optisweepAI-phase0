@@ -1,0 +1,166 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0088_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        88
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0088"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "SystemDatabaseModel represents system state and current sort GUID",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "SystemDatabaseModel"
+      ],
+      "summary": "The slide states that the SystemDatabaseModel shows the state of the system and the current sort guid.",
+      "observed_evidence": [
+        "Slide title: 'Robotics Database / System Database Model'",
+        "Text: 'The SystemDatabaseModel shows the state of the system and the current sort guid.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "describes",
+          "target": "system state"
+        },
+        {
+          "relationship_type": "tracks",
+          "target": "current sort guid"
+        }
+      ],
+      "retrieval_text": "Robotics Database System Database Model. The SystemDatabaseModel shows the state of the system and the current sort guid.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0088_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        88
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0088"
+      ],
+      "unit_type": "state_transition",
+      "title": "SystemDatabaseModel includes enumerated system states",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "SystemDatabaseModel"
+      ],
+      "summary": "The SystemDatabaseModel includes a set of named system states visible on the slide.",
+      "observed_evidence": [
+        "Listed states: StartingUp",
+        "Listed states: StartUpRequested",
+        "Listed states: Running",
+        "Listed states: ShutDownRequested",
+        "Listed states: Shutdown",
+        "Listed states: ZoneConfigRequested",
+        "Listed states: ZoneConfigStaging",
+        "Listed states: CloseOutRequested",
+        "Listed states: CloseOutStaging",
+        "Listed states: CloseOutStaged"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "state_set_in",
+          "target": "SystemDatabaseModel"
+        }
+      ],
+      "retrieval_text": "SystemDatabaseModel state list includes StartingUp, StartUpRequested, Running, ShutDownRequested, Shutdown, ZoneConfigRequested, ZoneConfigStaging, CloseOutRequested, CloseOutStaging, and CloseOutStaged.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0088_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        88
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0088"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Operational lifecycle concepts reflected in SystemDatabaseModel states",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "SystemDatabaseModel"
+      ],
+      "summary": "The state names indicate the model reflects startup, running, shutdown, zone configuration, and closeout lifecycle conditions for the system.",
+      "observed_evidence": [
+        "Startup-related states: StartingUp, StartUpRequested",
+        "Running state: Running",
+        "Shutdown-related states: ShutDownRequested, Shutdown",
+        "Zone configuration states: ZoneConfigRequested, ZoneConfigStaging",
+        "Closeout states: CloseOutRequested, CloseOutStaging, CloseOutStaged"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "groups",
+          "target": "startup lifecycle"
+        },
+        {
+          "relationship_type": "groups",
+          "target": "running lifecycle"
+        },
+        {
+          "relationship_type": "groups",
+          "target": "shutdown lifecycle"
+        },
+        {
+          "relationship_type": "groups",
+          "target": "zone configuration lifecycle"
+        },
+        {
+          "relationship_type": "groups",
+          "target": "closeout lifecycle"
+        }
+      ],
+      "retrieval_text": "SystemDatabaseModel state names reflect operational lifecycle concepts including startup, running, shutdown, zone configuration, and closeout.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0088_01",
+      "title": "No procedure extracted from System Database Model state list slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        88
+      ],
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "SystemDatabaseModel"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0088"
+      ],
+      "procedure_visual_summary": "Slide presents a database model description and a list of system states, without stepwise user actions or explicit operational sequence.",
+      "steps": [],
+      "warnings": [
+        "Slide contains state and database reference information only.",
+        "No explicit reusable action sequence, UI interaction, or operator procedure is shown."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0088",
+        "oku_optisweep_training_internal_0088_01",
+        "oku_optisweep_training_internal_0088_02",
+        "oku_optisweep_training_internal_0088_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate because the slide is a database model/state reference: it describes that SystemDatabaseModel shows system state and current sort guid and lists states, but provides no explicit action steps."
+    }
+  ],
+  "discarded_candidates": []
+}

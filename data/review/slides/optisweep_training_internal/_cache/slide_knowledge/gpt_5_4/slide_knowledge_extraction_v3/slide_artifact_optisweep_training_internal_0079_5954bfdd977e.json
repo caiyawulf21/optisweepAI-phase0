@@ -1,0 +1,367 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0079_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        79
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0079"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Robot states taxonomy in the Robotics Database",
+      "systems": [
+        "Robot",
+        "Robotics Database"
+      ],
+      "components": [
+        "Robot States",
+        "Tipper",
+        "Hospital",
+        "Charger"
+      ],
+      "summary": "The slide presents a Robotics Database reference for robot states, including top-level states Undefined, Removed, ToBeInitialized, and grouped state families for Tipper, Hospital, and Charger.",
+      "observed_evidence": [
+        "Slide title: 'Robotics Database / Robot States'",
+        "Visible text lists top-level states: 'Undefined', 'Removed', 'ToBeInitialized'",
+        "Visible text lists grouped categories: 'Tipper', 'Hospital', 'Charger'",
+        "Substates are shown under each grouped category as indented bullets"
+      ],
+      "relationships": [
+        {
+          "type": "contains_state_family",
+          "from": "Robot States",
+          "to": "Tipper"
+        },
+        {
+          "type": "contains_state_family",
+          "from": "Robot States",
+          "to": "Hospital"
+        },
+        {
+          "type": "contains_state_family",
+          "from": "Robot States",
+          "to": "Charger"
+        },
+        {
+          "type": "contains_state",
+          "from": "Robot States",
+          "to": "Undefined"
+        },
+        {
+          "type": "contains_state",
+          "from": "Robot States",
+          "to": "Removed"
+        },
+        {
+          "type": "contains_state",
+          "from": "Robot States",
+          "to": "ToBeInitialized"
+        }
+      ],
+      "retrieval_text": "Robotics Database robot states reference. Top-level robot states include Undefined, Removed, ToBeInitialized, plus grouped state families for Tipper, Hospital, and Charger. This slide appears to document database state values for robot lifecycle and location/task progress tracking.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0079_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        79
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0079"
+      ],
+      "unit_type": "state_transition",
+      "title": "Tipper state progression for a robot",
+      "systems": [
+        "Robot",
+        "Robotics Database"
+      ],
+      "components": [
+        "Tipper",
+        "Tipper Queue",
+        "Tipper Exit Queue"
+      ],
+      "summary": "The slide lists an ordered set of Tipper-related robot substates that imply movement to the tipper queue, arrival, servicing at the tipper, clear-to-leave status, and movement to an exit queue.",
+      "observed_evidence": [
+        "Under 'Tipper' the slide lists: 'MovingToTipperQueue', 'AtTipperQueue', 'MovingToTipper', 'AtTipper', 'AtTipperClearToLeave', 'MovingToTipperExitQueue', 'AtTipperExitQueue'"
+      ],
+      "relationships": [
+        {
+          "type": "state_family",
+          "from": "Tipper",
+          "to": "MovingToTipperQueue"
+        },
+        {
+          "type": "state_family",
+          "from": "Tipper",
+          "to": "AtTipperQueue"
+        },
+        {
+          "type": "state_family",
+          "from": "Tipper",
+          "to": "MovingToTipper"
+        },
+        {
+          "type": "state_family",
+          "from": "Tipper",
+          "to": "AtTipper"
+        },
+        {
+          "type": "state_family",
+          "from": "Tipper",
+          "to": "AtTipperClearToLeave"
+        },
+        {
+          "type": "state_family",
+          "from": "Tipper",
+          "to": "MovingToTipperExitQueue"
+        },
+        {
+          "type": "state_family",
+          "from": "Tipper",
+          "to": "AtTipperExitQueue"
+        }
+      ],
+      "retrieval_text": "Tipper robot state sequence in Robotics Database: MovingToTipperQueue, AtTipperQueue, MovingToTipper, AtTipper, AtTipperClearToLeave, MovingToTipperExitQueue, AtTipperExitQueue. Useful for interpreting robot progress around tipper operations and queue/exit states.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0079_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        79
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0079"
+      ],
+      "unit_type": "state_transition",
+      "title": "Hospital state progression for tote drop-off and pickup",
+      "systems": [
+        "Robot",
+        "Robotics Database"
+      ],
+      "components": [
+        "Hospital",
+        "Hospital Queue",
+        "Hospital DropOff",
+        "Hospital Pickup",
+        "Tote"
+      ],
+      "summary": "The slide lists Hospital-related robot substates covering movement to a hospital queue, drop-off completion, pickup activity, clear-to-leave status, and movement to the hospital exit queue.",
+      "observed_evidence": [
+        "Under 'Hospital' the slide lists: 'MovingToHospitalQueue', 'AtHospitalQueue', 'DroppingOffHospitalDropOff', 'DroppedOffHospitalDropOff', 'MovingToHospitalPickup', 'AtHospitalPickup', 'PickingUpToteHospital', 'PickedUpToteHospital', 'PickedUpClearToLeave', 'MovingToHospitalExitQueue', 'AtHospitalExitQueue'"
+      ],
+      "relationships": [
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "MovingToHospitalQueue"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "AtHospitalQueue"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "DroppingOffHospitalDropOff"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "DroppedOffHospitalDropOff"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "MovingToHospitalPickup"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "AtHospitalPickup"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "PickingUpToteHospital"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "PickedUpToteHospital"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "PickedUpClearToLeave"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "MovingToHospitalExitQueue"
+        },
+        {
+          "type": "state_family",
+          "from": "Hospital",
+          "to": "AtHospitalExitQueue"
+        }
+      ],
+      "retrieval_text": "Hospital robot state sequence in Robotics Database: MovingToHospitalQueue, AtHospitalQueue, DroppingOffHospitalDropOff, DroppedOffHospitalDropOff, MovingToHospitalPickup, AtHospitalPickup, PickingUpToteHospital, PickedUpToteHospital, PickedUpClearToLeave, MovingToHospitalExitQueue, AtHospitalExitQueue. This describes database-observed robot progress through hospital drop-off and tote pickup handling.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0079_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        79
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0079"
+      ],
+      "unit_type": "state_transition",
+      "title": "Charger state progression including tote stand handling and charge cancellation",
+      "systems": [
+        "Robot",
+        "Robotics Database"
+      ],
+      "components": [
+        "Charger",
+        "Charger Entrance Queue",
+        "Charger Tote Stand",
+        "Charger Exit Queue",
+        "Tote"
+      ],
+      "summary": "The slide lists Charger-related robot substates that cover entering the charger queue, dropping off a tote at the charger tote stand, requesting and performing charging, cancel/complete transitions, leaving the charger, picking up the tote again, and exiting via the charger exit queue.",
+      "observed_evidence": [
+        "Under 'Charger' the slide lists: 'MovingToChargerEntranceQueue', 'AtChargerEntranceQueue', 'DroppingOffChargerToteStand', 'DroppedOffChargerToteStand', 'CancelRequestedBeforeCharging', 'GoCharge', 'Charging', 'ChargeCancelling', 'ChargeComplete', 'LeavingCharger', 'LeftCharger', 'PickingUpToteChargerToteStand', 'PickedUpToteChargerToteStand', 'MovingToChargerExitQueue', 'AtChargerExitQueue'"
+      ],
+      "relationships": [
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "MovingToChargerEntranceQueue"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "AtChargerEntranceQueue"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "DroppingOffChargerToteStand"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "DroppedOffChargerToteStand"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "CancelRequestedBeforeCharging"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "GoCharge"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "Charging"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "ChargeCancelling"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "ChargeComplete"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "LeavingCharger"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "LeftCharger"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "PickingUpToteChargerToteStand"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "PickedUpToteChargerToteStand"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "MovingToChargerExitQueue"
+        },
+        {
+          "type": "state_family",
+          "from": "Charger",
+          "to": "AtChargerExitQueue"
+        }
+      ],
+      "retrieval_text": "Charger robot state sequence in Robotics Database: MovingToChargerEntranceQueue, AtChargerEntranceQueue, DroppingOffChargerToteStand, DroppedOffChargerToteStand, CancelRequestedBeforeCharging, GoCharge, Charging, ChargeCancelling, ChargeComplete, LeavingCharger, LeftCharger, PickingUpToteChargerToteStand, PickedUpToteChargerToteStand, MovingToChargerExitQueue, AtChargerExitQueue. Includes charge request, charging, cancellation, completion, and tote stand handling states.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0079_01",
+      "title": "No explicit reusable procedure on Robot States slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        79
+      ],
+      "systems": [
+        "Robot",
+        "Robotics Database"
+      ],
+      "components": [
+        "Robot States",
+        "Tipper",
+        "Hospital",
+        "Charger"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is reviewing Robotics Database documentation or robot state values"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0079"
+      ],
+      "procedure_visual_summary": "Slide is a bulleted reference list of robot states and substates grouped under Tipper, Hospital, and Charger; no numbered or imperative action sequence is shown.",
+      "steps": [],
+      "warnings": [
+        "The slide enumerates database states but does not provide explicit operator or support actions.",
+        "State ordering may imply progression, but no instruction sequence or decision criteria are stated."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0079_01",
+        "oku_optisweep_training_internal_0079_02",
+        "oku_optisweep_training_internal_0079_03",
+        "oku_optisweep_training_internal_0079_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: Robot States slide is a database/state reference, not an explicit operational procedure. It lists state values for Tipper, Hospital, and Charger flows without instructing the user to perform actions."
+    }
+  ],
+  "discarded_candidates": []
+}

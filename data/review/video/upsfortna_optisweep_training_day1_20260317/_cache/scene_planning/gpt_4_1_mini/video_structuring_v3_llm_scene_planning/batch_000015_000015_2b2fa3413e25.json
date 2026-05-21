@@ -1,0 +1,143 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGV Hospital and Reject State Handling",
+      "timestamp_start": "00:43:09.353",
+      "timestamp_end": "00:44:01.920",
+      "primary_intent": "Explain AGV hospital function and reject state management",
+      "operational_intents": [
+        "Describe AGV behavior in shutdown state",
+        "Explain hospital role for sick or rejected AGVs",
+        "Clarify reject detection and handling"
+      ],
+      "knowledge_extraction_strategy": "Extract detailed AGV state and hospital usage",
+      "why_this_strategy": "Focus on AGV error and reject handling processes",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000700",
+        "vec_upsfortna_optisweep_training_day1_20260317_000701",
+        "vec_upsfortna_optisweep_training_day1_20260317_000702",
+        "vec_upsfortna_optisweep_training_day1_20260317_000703",
+        "vec_upsfortna_optisweep_training_day1_20260317_000704",
+        "vec_upsfortna_optisweep_training_day1_20260317_000705",
+        "vec_upsfortna_optisweep_training_day1_20260317_000706",
+        "vec_upsfortna_optisweep_training_day1_20260317_000707",
+        "vec_upsfortna_optisweep_training_day1_20260317_000708",
+        "vec_upsfortna_optisweep_training_day1_20260317_000709",
+        "vec_upsfortna_optisweep_training_day1_20260317_000710",
+        "vec_upsfortna_optisweep_training_day1_20260317_000711",
+        "vec_upsfortna_optisweep_training_day1_20260317_000712",
+        "vec_upsfortna_optisweep_training_day1_20260317_000713",
+        "vec_upsfortna_optisweep_training_day1_20260317_000714",
+        "vec_upsfortna_optisweep_training_day1_20260317_000715",
+        "vec_upsfortna_optisweep_training_day1_20260317_000716",
+        "vec_upsfortna_optisweep_training_day1_20260317_000717",
+        "vec_upsfortna_optisweep_training_day1_20260317_000718",
+        "vec_upsfortna_optisweep_training_day1_20260317_000719",
+        "vec_upsfortna_optisweep_training_day1_20260317_000720",
+        "vec_upsfortna_optisweep_training_day1_20260317_000721"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000015"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV Initialization and Tote Handling in Shutdown",
+      "timestamp_start": "00:44:01.920",
+      "timestamp_end": "00:44:55.600",
+      "primary_intent": "Describe AGV initialization and tote management during shutdown",
+      "operational_intents": [
+        "Explain hospital as home base for AGVs",
+        "Detail tote drop-off and charging process",
+        "Outline AGV behavior post charging"
+      ],
+      "knowledge_extraction_strategy": "Extract shutdown state AGV tote and charging procedures",
+      "why_this_strategy": "Capture AGV lifecycle during shutdown and charging",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000722",
+        "vec_upsfortna_optisweep_training_day1_20260317_000723",
+        "vec_upsfortna_optisweep_training_day1_20260317_000724",
+        "vec_upsfortna_optisweep_training_day1_20260317_000725",
+        "vec_upsfortna_optisweep_training_day1_20260317_000726",
+        "vec_upsfortna_optisweep_training_day1_20260317_000727",
+        "vec_upsfortna_optisweep_training_day1_20260317_000728",
+        "vec_upsfortna_optisweep_training_day1_20260317_000729",
+        "vec_upsfortna_optisweep_training_day1_20260317_000730",
+        "vec_upsfortna_optisweep_training_day1_20260317_000731",
+        "vec_upsfortna_optisweep_training_day1_20260317_000732",
+        "vec_upsfortna_optisweep_training_day1_20260317_000733",
+        "vec_upsfortna_optisweep_training_day1_20260317_000734",
+        "vec_upsfortna_optisweep_training_day1_20260317_000735",
+        "vec_upsfortna_optisweep_training_day1_20260317_000736"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000015"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Tipper Malfunction and Hospital Reject Process",
+      "timestamp_start": "00:44:55.800",
+      "timestamp_end": "00:45:32.920",
+      "primary_intent": "Explain tipper issues and reject handling via hospital",
+      "operational_intents": [
+        "Describe tipper malfunction response",
+        "Explain sorting to bag and reject handling",
+        "Clarify hospital role as reject station"
+      ],
+      "knowledge_extraction_strategy": "Extract procedures for tipper failure and reject management",
+      "why_this_strategy": "Focus on handling tipper errors and package recovery",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000737",
+        "vec_upsfortna_optisweep_training_day1_20260317_000738",
+        "vec_upsfortna_optisweep_training_day1_20260317_000739",
+        "vec_upsfortna_optisweep_training_day1_20260317_000740",
+        "vec_upsfortna_optisweep_training_day1_20260317_000741",
+        "vec_upsfortna_optisweep_training_day1_20260317_000742",
+        "vec_upsfortna_optisweep_training_day1_20260317_000743",
+        "vec_upsfortna_optisweep_training_day1_20260317_000744",
+        "vec_upsfortna_optisweep_training_day1_20260317_000745",
+        "vec_upsfortna_optisweep_training_day1_20260317_000746",
+        "vec_upsfortna_optisweep_training_day1_20260317_000747",
+        "vec_upsfortna_optisweep_training_day1_20260317_000748",
+        "vec_upsfortna_optisweep_training_day1_20260317_000749",
+        "vec_upsfortna_optisweep_training_day1_20260317_000750",
+        "vec_upsfortna_optisweep_training_day1_20260317_000751",
+        "vec_upsfortna_optisweep_training_day1_20260317_000752",
+        "vec_upsfortna_optisweep_training_day1_20260317_000753"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000015"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Shutdown Queue and AGV Zone Assignment",
+      "timestamp_start": "00:45:35.080",
+      "timestamp_end": "00:46:11.480",
+      "primary_intent": "Describe shutdown queue function and AGV zone deployment",
+      "operational_intents": [
+        "Explain shutdown queue purpose",
+        "Detail AGV cycling through charters in shutdown",
+        "Describe AGV zone assignment on startup"
+      ],
+      "knowledge_extraction_strategy": "Extract shutdown queue and zone management details",
+      "why_this_strategy": "Clarify AGV state transitions and zone operations",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000754",
+        "vec_upsfortna_optisweep_training_day1_20260317_000755",
+        "vec_upsfortna_optisweep_training_day1_20260317_000756",
+        "vec_upsfortna_optisweep_training_day1_20260317_000757",
+        "vec_upsfortna_optisweep_training_day1_20260317_000758",
+        "vec_upsfortna_optisweep_training_day1_20260317_000759",
+        "vec_upsfortna_optisweep_training_day1_20260317_000760",
+        "vec_upsfortna_optisweep_training_day1_20260317_000761",
+        "vec_upsfortna_optisweep_training_day1_20260317_000762"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000015"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

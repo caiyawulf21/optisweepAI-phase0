@@ -1,0 +1,120 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGV Restart and Brake Lock Behavior",
+      "timestamp_start": "01:22:45.760",
+      "timestamp_end": "01:23:21.720",
+      "primary_intent": "Explain AGV restart cycle and brake lock status",
+      "operational_intents": [
+        "Describe AGV status indicators after restart",
+        "Clarify brake locking mechanism during restart"
+      ],
+      "knowledge_extraction_strategy": "Extract procedural details on AGV restart and brake lock",
+      "why_this_strategy": "Focus on restart cycle and brake lock explanation",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001384",
+        "vec_upsfortna_optisweep_training_day1_20260317_001385",
+        "vec_upsfortna_optisweep_training_day1_20260317_001386",
+        "vec_upsfortna_optisweep_training_day1_20260317_001387",
+        "vec_upsfortna_optisweep_training_day1_20260317_001388",
+        "vec_upsfortna_optisweep_training_day1_20260317_001389",
+        "vec_upsfortna_optisweep_training_day1_20260317_001390",
+        "vec_upsfortna_optisweep_training_day1_20260317_001391",
+        "vec_upsfortna_optisweep_training_day1_20260317_001392",
+        "vec_upsfortna_optisweep_training_day1_20260317_001393",
+        "vec_upsfortna_optisweep_training_day1_20260317_001394"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000028"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Task Persistence and AGV Removal Effects",
+      "timestamp_start": "01:23:22.000",
+      "timestamp_end": "01:24:08.840",
+      "primary_intent": "Clarify task retention and removal impact on AGV system",
+      "operational_intents": [
+        "Explain task resumption after restart",
+        "Describe conditions causing task loss",
+        "Outline process for removing and re-adding AGV"
+      ],
+      "knowledge_extraction_strategy": "Extract operational rules for task management and AGV removal",
+      "why_this_strategy": "Focus on task persistence and removal procedures",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001395",
+        "vec_upsfortna_optisweep_training_day1_20260317_001396",
+        "vec_upsfortna_optisweep_training_day1_20260317_001397",
+        "vec_upsfortna_optisweep_training_day1_20260317_001398",
+        "vec_upsfortna_optisweep_training_day1_20260317_001399",
+        "vec_upsfortna_optisweep_training_day1_20260317_001400",
+        "vec_upsfortna_optisweep_training_day1_20260317_001401",
+        "vec_upsfortna_optisweep_training_day1_20260317_001402",
+        "vec_upsfortna_optisweep_training_day1_20260317_001403",
+        "vec_upsfortna_optisweep_training_day1_20260317_001404",
+        "vec_upsfortna_optisweep_training_day1_20260317_001405",
+        "vec_upsfortna_optisweep_training_day1_20260317_001406",
+        "vec_upsfortna_optisweep_training_day1_20260317_001407"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000028"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Using Go To Function for AGV Movement",
+      "timestamp_start": "01:24:08.840",
+      "timestamp_end": "01:25:22.520",
+      "primary_intent": "Demonstrate how to move AGVs using the go to function",
+      "operational_intents": [
+        "Explain go to function usage",
+        "Describe selecting AGV and target location",
+        "Highlight map interaction for target selection"
+      ],
+      "knowledge_extraction_strategy": "Extract step-by-step instructions for go to function operation",
+      "why_this_strategy": "Focus on AGV manual movement via go to function",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001408",
+        "vec_upsfortna_optisweep_training_day1_20260317_001409",
+        "vec_upsfortna_optisweep_training_day1_20260317_001410",
+        "vec_upsfortna_optisweep_training_day1_20260317_001411",
+        "vec_upsfortna_optisweep_training_day1_20260317_001412",
+        "vec_upsfortna_optisweep_training_day1_20260317_001413",
+        "vec_upsfortna_optisweep_training_day1_20260317_001414",
+        "vec_upsfortna_optisweep_training_day1_20260317_001415",
+        "vec_upsfortna_optisweep_training_day1_20260317_001416",
+        "vec_upsfortna_optisweep_training_day1_20260317_001417",
+        "vec_upsfortna_optisweep_training_day1_20260317_001418"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000028"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Example Scenario: Network Disconnection and AGV Removal",
+      "timestamp_start": "01:25:27.560",
+      "timestamp_end": "01:25:50.600",
+      "primary_intent": "Illustrate handling AGV removal after network loss",
+      "operational_intents": [
+        "Describe network severance impact on AGV",
+        "Explain removing and re-adding AGV after disconnection",
+        "Discuss question mark state indication"
+      ],
+      "knowledge_extraction_strategy": "Extract example use case for AGV removal and re-addition",
+      "why_this_strategy": "Focus on practical troubleshooting scenario",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001419",
+        "vec_upsfortna_optisweep_training_day1_20260317_001420",
+        "vec_upsfortna_optisweep_training_day1_20260317_001421",
+        "vec_upsfortna_optisweep_training_day1_20260317_001422",
+        "vec_upsfortna_optisweep_training_day1_20260317_001423",
+        "vec_upsfortna_optisweep_training_day1_20260317_001424"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000028"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

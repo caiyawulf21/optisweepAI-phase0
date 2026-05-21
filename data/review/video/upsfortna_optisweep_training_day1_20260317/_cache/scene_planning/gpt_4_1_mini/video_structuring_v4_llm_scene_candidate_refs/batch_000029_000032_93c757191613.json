@@ -1,0 +1,118 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AUV Tote Removal and Reinitialization Process",
+      "timestamp_start": "01:25:50.720",
+      "timestamp_end": "01:27:06.368",
+      "primary_intent": "Explain procedure for removing and reinitializing AUV totes",
+      "operational_intents": [
+        "Describe removing AUV and sending go to function",
+        "Explain tote drop and reinitialization at hospital",
+        "Clarify WCS reinitialization conditions"
+      ],
+      "knowledge_extraction_strategy": "Segment by tote removal and reinitialization steps",
+      "why_this_strategy": "Distinct operational process on tote handling",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000029"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000029"
+      ]
+    },
+    {
+      "scene_title": "Container Selection and Rack Color Coding",
+      "timestamp_start": "01:27:06.368",
+      "timestamp_end": "01:28:52.170",
+      "primary_intent": "Identify container selection and rack color meanings",
+      "operational_intents": [
+        "Explain rack location indicators",
+        "Describe color coding for tote presence",
+        "Discuss identifying tote addition issues"
+      ],
+      "knowledge_extraction_strategy": "Group content on container selection and rack status",
+      "why_this_strategy": "Coherent topic on rack and container identification",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000029"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000029"
+      ]
+    },
+    {
+      "scene_title": "Tote Association and Rack Verification Procedures",
+      "timestamp_start": "01:28:52.170",
+      "timestamp_end": "01:30:57.759",
+      "primary_intent": "Explain tote association with AGVs and rack verification",
+      "operational_intents": [
+        "Describe tote left on stand but associated to AGV",
+        "Explain rack color and tote ID verification",
+        "Outline finding tote location by ID"
+      ],
+      "knowledge_extraction_strategy": "Segment by tote association and rack verification steps",
+      "why_this_strategy": "Focused on tote-AGV and rack verification processes",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000030"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000030"
+      ]
+    },
+    {
+      "scene_title": "Labeling and Map Properties of Racks and Robots",
+      "timestamp_start": "01:30:57.759",
+      "timestamp_end": "01:34:55.120",
+      "primary_intent": "Describe labeling system and map properties for racks and robots",
+      "operational_intents": [
+        "Explain labels on totes, robots, and rack positions",
+        "Discuss node codes and layer counts",
+        "Clarify rack and station properties"
+      ],
+      "knowledge_extraction_strategy": "Group content on labeling and map property explanations",
+      "why_this_strategy": "Unified topic on system labeling and mapping",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000031"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000031"
+      ]
+    },
+    {
+      "scene_title": "Map Object Selection and Information Display",
+      "timestamp_start": "01:34:55.280",
+      "timestamp_end": "01:36:26.544",
+      "primary_intent": "Explain map object selection and corresponding information display",
+      "operational_intents": [
+        "Describe selecting objects on map by type",
+        "Explain information shown for AGVs, racks, chargers",
+        "Clarify map interaction mechanics"
+      ],
+      "knowledge_extraction_strategy": "Segment by map interaction and object selection explanation",
+      "why_this_strategy": "Distinct operational topic on map usage",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000032"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000032"
+      ]
+    },
+    {
+      "scene_title": "System Access Controls and Removal Warnings",
+      "timestamp_start": "01:36:26.544",
+      "timestamp_end": "01:37:57.973",
+      "primary_intent": "Discuss system access controls and warnings for removals",
+      "operational_intents": [
+        "Explain risks of removing AGVs improperly",
+        "Describe user credential requirements",
+        "Outline warning mechanisms on removal actions"
+      ],
+      "knowledge_extraction_strategy": "Group content on access control and removal warnings",
+      "why_this_strategy": "Coherent topic on system security and safety",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000032"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000032"
+      ]
+    }
+  ]
+}

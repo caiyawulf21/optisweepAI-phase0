@@ -1,0 +1,142 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Introduction to Tippers and Their Function",
+      "timestamp_start": "00:09:48.024",
+      "timestamp_end": "00:10:34.720",
+      "primary_intent": "Explain the role and design of tippers in the system",
+      "operational_intents": [
+        "Describe tipper design and operator stations",
+        "Explain how tippers dump contents onto chutes"
+      ],
+      "knowledge_extraction_strategy": "Extract details on tipper design and operation",
+      "why_this_strategy": "Focus on tipper functionality and operator interaction",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000169",
+        "vec_upsfortna_optisweep_training_day1_20260317_000170",
+        "vec_upsfortna_optisweep_training_day1_20260317_000171",
+        "vec_upsfortna_optisweep_training_day1_20260317_000172",
+        "vec_upsfortna_optisweep_training_day1_20260317_000173",
+        "vec_upsfortna_optisweep_training_day1_20260317_000174",
+        "vec_upsfortna_optisweep_training_day1_20260317_000175"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000004"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Process of Handling Items in the Chute",
+      "timestamp_start": "00:10:34.760",
+      "timestamp_end": "00:11:04.640",
+      "primary_intent": "Describe item handling and labeling process in the chute",
+      "operational_intents": [
+        "Explain how items are placed and secured in the chute",
+        "Describe automatic label printing and containment"
+      ],
+      "knowledge_extraction_strategy": "Extract operational steps for chute item processing",
+      "why_this_strategy": "Clarify item handling and labeling workflow",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000176",
+        "vec_upsfortna_optisweep_training_day1_20260317_000177",
+        "vec_upsfortna_optisweep_training_day1_20260317_000178",
+        "vec_upsfortna_optisweep_training_day1_20260317_000179"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000004"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Overview of Opti Sweep Software and Integration",
+      "timestamp_start": "00:11:00.600",
+      "timestamp_end": "00:11:39.360",
+      "primary_intent": "Explain software components and communication protocols",
+      "operational_intents": [
+        "Describe Opti sweep software integration",
+        "Explain use of Ignition OPC server and AVEVA integration",
+        "Discuss communication with camera tunnels and chat system"
+      ],
+      "knowledge_extraction_strategy": "Extract software architecture and communication details",
+      "why_this_strategy": "Understand system integration and data flow",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000180",
+        "vec_upsfortna_optisweep_training_day1_20260317_000181",
+        "vec_upsfortna_optisweep_training_day1_20260317_000182",
+        "vec_upsfortna_optisweep_training_day1_20260317_000183",
+        "vec_upsfortna_optisweep_training_day1_20260317_000184",
+        "vec_upsfortna_optisweep_training_day1_20260317_000185",
+        "vec_upsfortna_optisweep_training_day1_20260317_000186",
+        "vec_upsfortna_optisweep_training_day1_20260317_000187",
+        "vec_upsfortna_optisweep_training_day1_20260317_000188"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000004"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Explanation of OPC Protocol and S Tunnel",
+      "timestamp_start": "00:11:39.800",
+      "timestamp_end": "00:12:09.421",
+      "primary_intent": "Clarify OPC protocol and S tunnel usage",
+      "operational_intents": [
+        "Define OPC as an industry protocol",
+        "Explain purpose and function of S tunnel"
+      ],
+      "knowledge_extraction_strategy": "Extract protocol definitions and security rationale",
+      "why_this_strategy": "Clarify communication protocols and security measures",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000189",
+        "vec_upsfortna_optisweep_training_day1_20260317_000190",
+        "vec_upsfortna_optisweep_training_day1_20260317_000191",
+        "vec_upsfortna_optisweep_training_day1_20260317_000192",
+        "vec_upsfortna_optisweep_training_day1_20260317_000193",
+        "vec_upsfortna_optisweep_training_day1_20260317_000194",
+        "vec_upsfortna_optisweep_training_day1_20260317_000195",
+        "vec_upsfortna_optisweep_training_day1_20260317_000196",
+        "vec_upsfortna_optisweep_training_day1_20260317_000197",
+        "vec_upsfortna_optisweep_training_day1_20260317_000198",
+        "vec_upsfortna_optisweep_training_day1_20260317_000199",
+        "vec_upsfortna_optisweep_training_day1_20260317_000200",
+        "vec_upsfortna_optisweep_training_day1_20260317_000201",
+        "vec_upsfortna_optisweep_training_day1_20260317_000202",
+        "vec_upsfortna_optisweep_training_day1_20260317_000203",
+        "vec_upsfortna_optisweep_training_day1_20260317_000204"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000004"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Network Architecture and Security Isolation",
+      "timestamp_start": "00:12:09.421",
+      "timestamp_end": "00:12:51.680",
+      "primary_intent": "Describe network segmentation and secure communication",
+      "operational_intents": [
+        "Explain separation of OT net and UPS network",
+        "Discuss server and device network isolation",
+        "Clarify how order status is monitored across networks"
+      ],
+      "knowledge_extraction_strategy": "Extract network design and security practices",
+      "why_this_strategy": "Understand secure network segmentation and data flow",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000205",
+        "vec_upsfortna_optisweep_training_day1_20260317_000206",
+        "vec_upsfortna_optisweep_training_day1_20260317_000207",
+        "vec_upsfortna_optisweep_training_day1_20260317_000208",
+        "vec_upsfortna_optisweep_training_day1_20260317_000209",
+        "vec_upsfortna_optisweep_training_day1_20260317_000210",
+        "vec_upsfortna_optisweep_training_day1_20260317_000211",
+        "vec_upsfortna_optisweep_training_day1_20260317_000212",
+        "vec_upsfortna_optisweep_training_day1_20260317_000213",
+        "vec_upsfortna_optisweep_training_day1_20260317_000214"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000004"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

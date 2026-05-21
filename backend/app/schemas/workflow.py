@@ -19,7 +19,7 @@ class WorkflowDefinition(BaseModel):
     workflow_id: str
     name: str
     version: str = "1.0"
-    issue_category: str = "CAT-1"
+    issue_category: str | None = None
     status: str = "draft"
     entry_conditions: list[str] = Field(default_factory=list)
     required_signals: list[str] = Field(default_factory=list)

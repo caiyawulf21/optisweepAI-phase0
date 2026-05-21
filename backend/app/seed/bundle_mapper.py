@@ -11,7 +11,6 @@ from backend.app.models import (
     IncidentRecord,
     IngestionRun,
     KnowledgeRelationship,
-    Procedure,
     RawEvidenceChunk,
     SourceArtifact,
     TimelineEvent,
@@ -86,7 +85,7 @@ def map_incident(bundle: dict[str, Any]) -> dict[str, Any]:
         id=document_id("inc_", incident_id, incident_id),
         incident_id=incident_id,
         source_case_id=str(record.get("source_case_id") or incident_id),
-        issue_category=record.get("issue_category") or metadata.get("category") or "CAT-1: WCS / Service Failure",
+        issue_category=record.get("issue_category") or metadata.get("category"),
         site=record.get("site"),
         customer=record.get("customer"),
         priority=record.get("priority"),
@@ -220,43 +219,17 @@ def map_artifacts(bundle: dict[str, Any]) -> list[dict[str, Any]]:
     return docs
 
 
-def map_procedures(bundle: dict[str, Any]) -> list[dict[str, Any]]:
-    docs = []
+def procedure_candidate_refs(bundle: dict[str, Any]) -> list[dict[str, Any]]:
+    refs = []
     for index, record in enumerate(bundle["records"].get("procedure_candidates", []), start=1):
-        procedure_id = record.get("procedure_id") or f"procedure_candidate_{index:03d}"
-        doc = Procedure(
-            id=document_id("proc_", procedure_id, procedure_id),
-            procedure_id=procedure_id,
-            procedure_version=str(record.get("procedure_version") or "1.0"),
-            procedure_type=record.get("procedure_type") or record.get("procedure_category") or "candidate_procedure",
-            title=record.get("title") or record.get("procedure_title") or record.get("procedure_name") or procedure_id.replace("_", " ").title(),
-            role_required=record.get("role_required"),
-            support_safe=record.get("support_safe"),
-            steps=as_list(record.get("steps") or record.get("procedure_steps")),
-            expected_outcome=record.get("expected_outcome") or record.get("procedure_goal") or record.get("procedure_summary"),
-            escalation_conditions=as_list(record.get("escalation_conditions")),
-            evidence_refs=as_list(record.get("evidence_refs")) or as_list(record.get("supporting_evidence_chunks")),
-            supporting_timeline_events=as_list(record.get("supporting_timeline_events")),
-            supporting_evidence_chunks=as_list(record.get("supporting_evidence_chunks")),
-            status=record.get("status") or "draft",
-            procedure_category_status=record.get("procedure_category_status"),
-            candidate_maturity=record.get("candidate_maturity"),
-            promotion_blockers=as_list(record.get("promotion_blockers")),
-            refinement_opportunities=as_list(record.get("refinement_opportunities")),
-            procedure_detail_level=record.get("procedure_detail_level"),
-            procedure_refinement_status=record.get("procedure_refinement_status"),
-            missing_operational_details=as_list(record.get("missing_operational_details")),
-            required_screenshot_examples=as_list(record.get("required_screenshot_examples")),
-            candidate_refinement_questions=as_list(record.get("candidate_refinement_questions")),
-            supporting_artifacts=as_list(record.get("supporting_artifacts")),
-            retrieval_text=record.get("retrieval_text") or record.get("procedure_summary") or record.get("expected_outcome"),
-            source_refs=record_source_refs(record),
-            validation_status=record.get("validation_status"),
-            requires_manual_review=record.get("requires_manual_review"),
-            metadata=record_metadata(record),
+        procedure_id = str(record.get("procedure_id") or record.get("procedure_name") or record.get("title") or f"procedure_candidate_{index:03d}")
+        refs.append(
+            {
+                "id": procedure_id,
+                "evidence_refs": as_string_list(record.get("evidence_refs") or record.get("supporting_evidence_chunks")),
+            }
         )
-        docs.append(model_to_dict(doc))
-    return docs
+    return refs
 
 
 def candidate_type(record: dict[str, Any]) -> str:
@@ -369,23 +342,30 @@ def relationship_doc(relationship_type: str, from_id: str, from_type: str, to_id
     return model_to_dict(doc)
 
 
-def map_relationships(documents: dict[str, Any]) -> list[dict[str, Any]]:
+def map_relationships(documents: dict[str, Any], bundle: dict[str, Any]) -> list[dict[str, Any]]:
     incident_id = documents["incident_records"][0]["id"]
     relationships = []
-    for procedure in documents["procedure_dictionary"]:
-        evidence_refs = procedure.get("supporting_evidence_chunks", []) + procedure.get("supporting_timeline_events", [])
-        relationships.append(relationship_doc("INCIDENT_RESOLVED_BY_PROCEDURE", incident_id, "incident", procedure["id"], "procedure", evidence_refs, None, "Candidate procedure derived from incident evidence."))
-        for evidence_ref in procedure.get("supporting_evidence_chunks", []):
-            relationships.append(relationship_doc("PROCEDURE_SUPPORTED_BY_EVIDENCE", procedure["id"], "procedure", evidence_ref, "raw_evidence_chunk", [evidence_ref]))
+    for procedure in procedure_candidate_refs(bundle):
+        relationships.append(
+            relationship_doc(
+                "INCIDENT_HAS_PROCEDURE_CANDIDATE",
+                incident_id,
+                "incident",
+                procedure["id"],
+                "procedure_candidate",
+                procedure.get("evidence_refs", []),
+                None,
+                "Incident evidence includes a local procedure candidate for SME review.",
+            )
+        )
     for candidate in documents["workflow_candidates"]:
         target_workflow_id = candidate.get("target_workflow_id")
         if target_workflow_id:
-            relationships.append(relationship_doc("INCIDENT_SUPPORTS_WORKFLOW", incident_id, "incident", target_workflow_id, "workflow_definition", candidate.get("evidence_refs", []), None, "Incident evidence supports a reusable workflow targeted by this candidate."))
             relationships.append(relationship_doc("WORKFLOW_CANDIDATE_REFINES_WORKFLOW", candidate["id"], "workflow_candidate", target_workflow_id, "workflow_definition", candidate.get("evidence_refs", [])))
         else:
-            relationships.append(relationship_doc("INCIDENT_SUPPORTS_WORKFLOW_CANDIDATE", incident_id, "incident", candidate["id"], "workflow_candidate", candidate.get("evidence_refs", []), None, "Incident evidence supports a workflow candidate for SME review."))
+            relationships.append(relationship_doc("INCIDENT_HAS_WORKFLOW_CANDIDATE", incident_id, "incident", candidate["id"], "workflow_candidate", candidate.get("evidence_refs", []), None, "Incident evidence includes a workflow candidate for SME review."))
         for procedure_ref in candidate.get("procedure_refs", []):
-            relationships.append(relationship_doc("WORKFLOW_CANDIDATE_USES_PROCEDURE", candidate["id"], "workflow_candidate", procedure_ref, "procedure", candidate.get("evidence_refs", [])))
+            relationships.append(relationship_doc("WORKFLOW_CANDIDATE_REFERENCES_PROCEDURE_CANDIDATE", candidate["id"], "workflow_candidate", procedure_ref, "procedure_candidate", candidate.get("evidence_refs", [])))
     seen = set()
     unique = []
     for relationship in relationships:
@@ -401,11 +381,10 @@ def map_phase0_bundle(bundle: dict[str, Any], run_trace: dict[str, Any] | None =
         "timeline_events": map_timeline_events(bundle),
         "raw_evidence_chunks": map_evidence_chunks(bundle),
         "source_artifacts": map_artifacts(bundle),
-        "procedure_dictionary": map_procedures(bundle),
         "workflow_candidates": map_workflow_candidates(bundle),
         "escalation_summaries": [map_escalation(bundle)],
     }
-    documents["knowledge_relationships"] = map_relationships(documents)
+    documents["knowledge_relationships"] = map_relationships(documents, bundle)
     documents["ingestion_runs"] = [map_ingestion_run(bundle, documents, run_trace)]
     return documents
 

@@ -1,0 +1,130 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Introduction to System Faults and Monitoring",
+      "timestamp_start": "02:14:00.061",
+      "timestamp_end": "02:14:37.800",
+      "primary_intent": "Explain system faults and their categorization",
+      "operational_intents": [
+        "Describe system faults and AGV system faults",
+        "Explain how faults are detected and displayed"
+      ],
+      "knowledge_extraction_strategy": "Extract fault definitions and detection methods",
+      "why_this_strategy": "Clarifies fault types and monitoring approach",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002074",
+        "vec_upsfortna_optisweep_training_day1_20260317_002075",
+        "vec_upsfortna_optisweep_training_day1_20260317_002076",
+        "vec_upsfortna_optisweep_training_day1_20260317_002077",
+        "vec_upsfortna_optisweep_training_day1_20260317_002078",
+        "vec_upsfortna_optisweep_training_day1_20260317_002079",
+        "vec_upsfortna_optisweep_training_day1_20260317_002080",
+        "vec_upsfortna_optisweep_training_day1_20260317_002081",
+        "vec_upsfortna_optisweep_training_day1_20260317_002082",
+        "vec_upsfortna_optisweep_training_day1_20260317_002083",
+        "vec_upsfortna_optisweep_training_day1_20260317_002084"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000065"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Accessing and Viewing System Faults Remotely",
+      "timestamp_start": "02:14:38.760",
+      "timestamp_end": "02:15:49.160",
+      "primary_intent": "Discuss methods for remotely accessing system fault information",
+      "operational_intents": [
+        "Explain limitations of thin clients and screen sharing",
+        "Describe use of APIs and databases for fault data retrieval",
+        "Outline typical support call scenarios and screen sharing capabilities"
+      ],
+      "knowledge_extraction_strategy": "Extract remote access methods and support procedures",
+      "why_this_strategy": "Details remote fault monitoring and support workflows",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002085",
+        "vec_upsfortna_optisweep_training_day1_20260317_002086",
+        "vec_upsfortna_optisweep_training_day1_20260317_002087",
+        "vec_upsfortna_optisweep_training_day1_20260317_002088",
+        "vec_upsfortna_optisweep_training_day1_20260317_002089",
+        "vec_upsfortna_optisweep_training_day1_20260317_002090",
+        "vec_upsfortna_optisweep_training_day1_20260317_002091",
+        "vec_upsfortna_optisweep_training_day1_20260317_002092",
+        "vec_upsfortna_optisweep_training_day1_20260317_002093",
+        "vec_upsfortna_optisweep_training_day1_20260317_002094",
+        "vec_upsfortna_optisweep_training_day1_20260317_002095",
+        "vec_upsfortna_optisweep_training_day1_20260317_002096",
+        "vec_upsfortna_optisweep_training_day1_20260317_002097",
+        "vec_upsfortna_optisweep_training_day1_20260317_002098",
+        "vec_upsfortna_optisweep_training_day1_20260317_002099",
+        "vec_upsfortna_optisweep_training_day1_20260317_002100",
+        "vec_upsfortna_optisweep_training_day1_20260317_002101",
+        "vec_upsfortna_optisweep_training_day1_20260317_002102",
+        "vec_upsfortna_optisweep_training_day1_20260317_002103",
+        "vec_upsfortna_optisweep_training_day1_20260317_002104",
+        "vec_upsfortna_optisweep_training_day1_20260317_002105"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000065"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Data Sources and API Integration for Fault Monitoring",
+      "timestamp_start": "02:15:49.800",
+      "timestamp_end": "02:16:25.840",
+      "primary_intent": "Explain data sources and API use for fault data access",
+      "operational_intents": [
+        "Clarify data feeding from APIs and databases",
+        "Discuss call center access and transition away from call-based support"
+      ],
+      "knowledge_extraction_strategy": "Extract data integration and support access details",
+      "why_this_strategy": "Highlights data flow and evolving support methods",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002106",
+        "vec_upsfortna_optisweep_training_day1_20260317_002107",
+        "vec_upsfortna_optisweep_training_day1_20260317_002108",
+        "vec_upsfortna_optisweep_training_day1_20260317_002109",
+        "vec_upsfortna_optisweep_training_day1_20260317_002110",
+        "vec_upsfortna_optisweep_training_day1_20260317_002111",
+        "vec_upsfortna_optisweep_training_day1_20260317_002112",
+        "vec_upsfortna_optisweep_training_day1_20260317_002113",
+        "vec_upsfortna_optisweep_training_day1_20260317_002114",
+        "vec_upsfortna_optisweep_training_day1_20260317_002115",
+        "vec_upsfortna_optisweep_training_day1_20260317_002116"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000065"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV Status and Hop In Functionality Overview",
+      "timestamp_start": "02:16:27.800",
+      "timestamp_end": "02:17:04.040",
+      "primary_intent": "Describe AGV status pop-up and hop in controls",
+      "operational_intents": [
+        "Explain hop in, close out, and hop in disabled states",
+        "Detail effects of hop in on totes and shoots"
+      ],
+      "knowledge_extraction_strategy": "Extract AGV status and hop in operational details",
+      "why_this_strategy": "Focuses on AGV control features and status monitoring",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002117",
+        "vec_upsfortna_optisweep_training_day1_20260317_002118",
+        "vec_upsfortna_optisweep_training_day1_20260317_002119",
+        "vec_upsfortna_optisweep_training_day1_20260317_002120",
+        "vec_upsfortna_optisweep_training_day1_20260317_002121",
+        "vec_upsfortna_optisweep_training_day1_20260317_002122",
+        "vec_upsfortna_optisweep_training_day1_20260317_002123",
+        "vec_upsfortna_optisweep_training_day1_20260317_002124",
+        "vec_upsfortna_optisweep_training_day1_20260317_002125",
+        "vec_upsfortna_optisweep_training_day1_20260317_002126"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000065"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

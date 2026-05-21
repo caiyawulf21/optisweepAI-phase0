@@ -1,0 +1,138 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Manual Bag Labeling and Sorting Process",
+      "timestamp_start": "00:03:44.200",
+      "timestamp_end": "00:04:05.080",
+      "primary_intent": "Describe manual bag labeling and sorting workflow",
+      "operational_intents": [
+        "Explain manual bag labeling steps",
+        "Highlight inefficiencies in manual sorting"
+      ],
+      "knowledge_extraction_strategy": "Extract process steps and inefficiency points",
+      "why_this_strategy": "Focus on manual workflow and its limitations",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000050",
+        "vec_upsfortna_optisweep_training_day1_20260317_000051",
+        "vec_upsfortna_optisweep_training_day1_20260317_000052",
+        "vec_upsfortna_optisweep_training_day1_20260317_000053"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000002"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Challenges of Manual Sorting and Physical Strain",
+      "timestamp_start": "00:04:05.520",
+      "timestamp_end": "00:04:30.760",
+      "primary_intent": "Discuss challenges and inefficiencies in manual sorting",
+      "operational_intents": [
+        "Describe physical strain on operators",
+        "Explain inefficiencies due to chute operation and layout"
+      ],
+      "knowledge_extraction_strategy": "Identify operational challenges and ergonomic issues",
+      "why_this_strategy": "Highlight pain points for improvement",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000054",
+        "vec_upsfortna_optisweep_training_day1_20260317_000055",
+        "vec_upsfortna_optisweep_training_day1_20260317_000056",
+        "vec_upsfortna_optisweep_training_day1_20260317_000057",
+        "vec_upsfortna_optisweep_training_day1_20260317_000058",
+        "vec_upsfortna_optisweep_training_day1_20260317_000059",
+        "vec_upsfortna_optisweep_training_day1_20260317_000060"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000002"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Introduction to Modular AGV System with UPS Partnership",
+      "timestamp_start": "00:04:32.720",
+      "timestamp_end": "00:05:10.920",
+      "primary_intent": "Introduce modular AGV system developed with UPS",
+      "operational_intents": [
+        "Explain modular system concept",
+        "Provide historical context of system development"
+      ],
+      "knowledge_extraction_strategy": "Extract system overview and development timeline",
+      "why_this_strategy": "Capture foundational system information",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000061",
+        "vec_upsfortna_optisweep_training_day1_20260317_000062",
+        "vec_upsfortna_optisweep_training_day1_20260317_000063",
+        "vec_upsfortna_optisweep_training_day1_20260317_000064",
+        "vec_upsfortna_optisweep_training_day1_20260317_000065",
+        "vec_upsfortna_optisweep_training_day1_20260317_000066",
+        "vec_upsfortna_optisweep_training_day1_20260317_000067",
+        "vec_upsfortna_optisweep_training_day1_20260317_000068"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000002"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "UPS Communication Standards and System Integration",
+      "timestamp_start": "00:05:10.920",
+      "timestamp_end": "00:05:57.600",
+      "primary_intent": "Explain UPS communication protocols and system components",
+      "operational_intents": [
+        "Describe UPS chat communication standard",
+        "List integrated system components",
+        "Explain software integration for system coordination"
+      ],
+      "knowledge_extraction_strategy": "Extract communication and integration details",
+      "why_this_strategy": "Clarify system interoperability and components",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000069",
+        "vec_upsfortna_optisweep_training_day1_20260317_000070",
+        "vec_upsfortna_optisweep_training_day1_20260317_000071",
+        "vec_upsfortna_optisweep_training_day1_20260317_000073",
+        "vec_upsfortna_optisweep_training_day1_20260317_000074",
+        "vec_upsfortna_optisweep_training_day1_20260317_000075",
+        "vec_upsfortna_optisweep_training_day1_20260317_000076",
+        "vec_upsfortna_optisweep_training_day1_20260317_000077",
+        "vec_upsfortna_optisweep_training_day1_20260317_000078",
+        "vec_upsfortna_optisweep_training_day1_20260317_000079",
+        "vec_upsfortna_optisweep_training_day1_20260317_000080",
+        "vec_upsfortna_optisweep_training_day1_20260317_000081"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000002"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "UPS HMI Software Standards and Evolution",
+      "timestamp_start": "00:05:57.600",
+      "timestamp_end": "00:06:46.520",
+      "primary_intent": "Discuss UPS HMI software standards and history",
+      "operational_intents": [
+        "Explain standard HMI software used by UPS",
+        "Describe software evolution and naming conventions"
+      ],
+      "knowledge_extraction_strategy": "Extract software standardization and history",
+      "why_this_strategy": "Document UPS software environment",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000082",
+        "vec_upsfortna_optisweep_training_day1_20260317_000083",
+        "vec_upsfortna_optisweep_training_day1_20260317_000084",
+        "vec_upsfortna_optisweep_training_day1_20260317_000086",
+        "vec_upsfortna_optisweep_training_day1_20260317_000087",
+        "vec_upsfortna_optisweep_training_day1_20260317_000088",
+        "vec_upsfortna_optisweep_training_day1_20260317_000091",
+        "vec_upsfortna_optisweep_training_day1_20260317_000094",
+        "vec_upsfortna_optisweep_training_day1_20260317_000095",
+        "vec_upsfortna_optisweep_training_day1_20260317_000096",
+        "vec_upsfortna_optisweep_training_day1_20260317_000097",
+        "vec_upsfortna_optisweep_training_day1_20260317_000098"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000002"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

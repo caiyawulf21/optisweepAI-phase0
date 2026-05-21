@@ -1,0 +1,45 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0002_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        2
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0002"
+      ],
+      "unit_type": "operational_process",
+      "title": "Training deck is organized into three content sections",
+      "systems": [],
+      "components": [
+        "Overview",
+        "Geek+ RMS",
+        "Aveva"
+      ],
+      "summary": "The contents slide shows the training material is structured into three sections: Overview, Geek+ RMS, and Aveva.",
+      "observed_evidence": [
+        "Visible text lists: '1. Overview', '2. Geek+ RMS', '3. Aveva'",
+        "Slide title is 'Contents'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "groups",
+          "target": "Overview"
+        },
+        {
+          "relation_type": "groups",
+          "target": "Geek+ RMS"
+        },
+        {
+          "relation_type": "groups",
+          "target": "Aveva"
+        }
+      ],
+      "retrieval_text": "Contents slide for OptiSweep training deck lists three sections: Overview, Geek+ RMS, and Aveva. This is deck structure context, not an action procedure.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

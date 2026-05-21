@@ -1,0 +1,160 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Incident Response Strategy and Prioritization",
+      "timestamp_start": "02:32:15.680",
+      "timestamp_end": "02:32:49.960",
+      "primary_intent": "Explain the approach to incident response focusing on quick recovery",
+      "operational_intents": [
+        "Discuss the goal of support during incidents",
+        "Emphasize importance of restoring system operation quickly",
+        "Highlight SLA constraints and urgency"
+      ],
+      "knowledge_extraction_strategy": "Extract key incident response principles and SLA details",
+      "why_this_strategy": "Focus on incident handling priorities and urgency",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002366",
+        "vec_upsfortna_optisweep_training_day1_20260317_002367",
+        "vec_upsfortna_optisweep_training_day1_20260317_002368",
+        "vec_upsfortna_optisweep_training_day1_20260317_002369",
+        "vec_upsfortna_optisweep_training_day1_20260317_002370",
+        "vec_upsfortna_optisweep_training_day1_20260317_002371",
+        "vec_upsfortna_optisweep_training_day1_20260317_002372",
+        "vec_upsfortna_optisweep_training_day1_20260317_002373",
+        "vec_upsfortna_optisweep_training_day1_20260317_002374",
+        "vec_upsfortna_optisweep_training_day1_20260317_002375",
+        "vec_upsfortna_optisweep_training_day1_20260317_002376",
+        "vec_upsfortna_optisweep_training_day1_20260317_002377",
+        "vec_upsfortna_optisweep_training_day1_20260317_002378",
+        "vec_upsfortna_optisweep_training_day1_20260317_002379",
+        "vec_upsfortna_optisweep_training_day1_20260317_002380",
+        "vec_upsfortna_optisweep_training_day1_20260317_002381"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000071"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Types of Errors and Initial Troubleshooting",
+      "timestamp_start": "02:32:54.700",
+      "timestamp_end": "02:33:31.640",
+      "primary_intent": "Identify error categories and initial troubleshooting steps",
+      "operational_intents": [
+        "Differentiate between user, system, and business exceptions",
+        "Discuss handling of infrastructure issues",
+        "Introduce concept of runbooks for business exceptions"
+      ],
+      "knowledge_extraction_strategy": "Extract error types and corresponding response protocols",
+      "why_this_strategy": "Clarify error classification and initial handling processes",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002382",
+        "vec_upsfortna_optisweep_training_day1_20260317_002383",
+        "vec_upsfortna_optisweep_training_day1_20260317_002384",
+        "vec_upsfortna_optisweep_training_day1_20260317_002385",
+        "vec_upsfortna_optisweep_training_day1_20260317_002386",
+        "vec_upsfortna_optisweep_training_day1_20260317_002387",
+        "vec_upsfortna_optisweep_training_day1_20260317_002388",
+        "vec_upsfortna_optisweep_training_day1_20260317_002389",
+        "vec_upsfortna_optisweep_training_day1_20260317_002390",
+        "vec_upsfortna_optisweep_training_day1_20260317_002391",
+        "vec_upsfortna_optisweep_training_day1_20260317_002392"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000071"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Escalation and Team Coordination for Complex Issues",
+      "timestamp_start": "02:33:35.802",
+      "timestamp_end": "02:34:02.740",
+      "primary_intent": "Describe escalation paths and team responsibilities",
+      "operational_intents": [
+        "Explain when to escalate to specialized teams",
+        "Discuss criteria for confirming system issues",
+        "Outline communication and ownership transfer"
+      ],
+      "knowledge_extraction_strategy": "Extract escalation protocols and team roles",
+      "why_this_strategy": "Capture coordination and escalation procedures",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002393",
+        "vec_upsfortna_optisweep_training_day1_20260317_002394",
+        "vec_upsfortna_optisweep_training_day1_20260317_002395",
+        "vec_upsfortna_optisweep_training_day1_20260317_002396",
+        "vec_upsfortna_optisweep_training_day1_20260317_002397",
+        "vec_upsfortna_optisweep_training_day1_20260317_002398",
+        "vec_upsfortna_optisweep_training_day1_20260317_002399",
+        "vec_upsfortna_optisweep_training_day1_20260317_002400",
+        "vec_upsfortna_optisweep_training_day1_20260317_002401",
+        "vec_upsfortna_optisweep_training_day1_20260317_002402"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000071"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "API and System Fault Troubleshooting",
+      "timestamp_start": "02:34:06.400",
+      "timestamp_end": "02:34:36.840",
+      "primary_intent": "Discuss troubleshooting via API and system fault analysis",
+      "operational_intents": [
+        "Explain API usage for diagnostics",
+        "Describe system fault identification",
+        "Clarify user visibility of system status"
+      ],
+      "knowledge_extraction_strategy": "Extract API troubleshooting and fault analysis methods",
+      "why_this_strategy": "Focus on technical diagnostic tools and visibility",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002403",
+        "vec_upsfortna_optisweep_training_day1_20260317_002404",
+        "vec_upsfortna_optisweep_training_day1_20260317_002405",
+        "vec_upsfortna_optisweep_training_day1_20260317_002406",
+        "vec_upsfortna_optisweep_training_day1_20260317_002407",
+        "vec_upsfortna_optisweep_training_day1_20260317_002408",
+        "vec_upsfortna_optisweep_training_day1_20260317_002409",
+        "vec_upsfortna_optisweep_training_day1_20260317_002410",
+        "vec_upsfortna_optisweep_training_day1_20260317_002411",
+        "vec_upsfortna_optisweep_training_day1_20260317_002412",
+        "vec_upsfortna_optisweep_training_day1_20260317_002413"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000071"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Improving Diagnostic Communication and Collaboration",
+      "timestamp_start": "02:34:42.877",
+      "timestamp_end": "02:35:16.160",
+      "primary_intent": "Enhance communication channels for better diagnosis",
+      "operational_intents": [
+        "Discuss opening communication channels for diagnostics",
+        "Emphasize learning and knowledge sharing",
+        "Outline ticket creation and issue tracking process"
+      ],
+      "knowledge_extraction_strategy": "Extract collaboration and communication improvement strategies",
+      "why_this_strategy": "Capture methods to improve diagnostic efficiency",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002414",
+        "vec_upsfortna_optisweep_training_day1_20260317_002415",
+        "vec_upsfortna_optisweep_training_day1_20260317_002416",
+        "vec_upsfortna_optisweep_training_day1_20260317_002417",
+        "vec_upsfortna_optisweep_training_day1_20260317_002418",
+        "vec_upsfortna_optisweep_training_day1_20260317_002419",
+        "vec_upsfortna_optisweep_training_day1_20260317_002420",
+        "vec_upsfortna_optisweep_training_day1_20260317_002421",
+        "vec_upsfortna_optisweep_training_day1_20260317_002422",
+        "vec_upsfortna_optisweep_training_day1_20260317_002423",
+        "vec_upsfortna_optisweep_training_day1_20260317_002424",
+        "vec_upsfortna_optisweep_training_day1_20260317_002425",
+        "vec_upsfortna_optisweep_training_day1_20260317_002426"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000071"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

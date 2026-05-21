@@ -1,0 +1,249 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_61_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        61
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0061"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Sorter Sweeper module acts as the tote state machine and task creator",
+      "systems": [
+        "Sorter Sweeper Module",
+        "Sorter",
+        "Tipper",
+        "Hospital",
+        "HMI",
+        "Robot"
+      ],
+      "components": [
+        "Tote",
+        "robotics modules",
+        "hospital station"
+      ],
+      "summary": "The slide states that the Sorter Sweeper module functions as the tote state machine. It receives data from the sorter, tippers, hospital station, and HMI, and creates tote tasks for execution by robotics modules.",
+      "observed_evidence": [
+        "The Sorter Sweeper module functions as the state machine for totes.",
+        "It receives data from the sorter, tippers, hospital station, and HMI, creating tasks for totes with the robotics modules to execute."
+      ],
+      "relationships": [
+        {
+          "type": "receives_data_from",
+          "source": "Sorter Sweeper Module",
+          "target": "Sorter"
+        },
+        {
+          "type": "receives_data_from",
+          "source": "Sorter Sweeper Module",
+          "target": "Tipper"
+        },
+        {
+          "type": "receives_data_from",
+          "source": "Sorter Sweeper Module",
+          "target": "Hospital station"
+        },
+        {
+          "type": "receives_data_from",
+          "source": "Sorter Sweeper Module",
+          "target": "HMI"
+        },
+        {
+          "type": "creates_tasks_for",
+          "source": "Sorter Sweeper Module",
+          "target": "Tote"
+        },
+        {
+          "type": "tasks_executed_by",
+          "source": "Tote tasks",
+          "target": "robotics modules"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper module detailed design: acts as the state machine for totes, receives data from sorter, tippers, hospital station, and HMI, and creates tote tasks for robotics modules to execute.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_61_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        61
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0061"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Sorter Sweeper notifies tippers about tote arrival and robot faults",
+      "systems": [
+        "Sorter Sweeper Module",
+        "Tipper",
+        "Robot"
+      ],
+      "components": [
+        "Tote"
+      ],
+      "summary": "The Sorter Sweeper module sends notifications to tippers when a tote arrives and when there is a robot fault.",
+      "observed_evidence": [
+        "It also notifies tippers when a tote arrives or when there is a robot fault"
+      ],
+      "relationships": [
+        {
+          "type": "notifies",
+          "source": "Sorter Sweeper Module",
+          "target": "Tipper",
+          "condition": "tote arrives"
+        },
+        {
+          "type": "notifies",
+          "source": "Sorter Sweeper Module",
+          "target": "Tipper",
+          "condition": "robot fault"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper module notification behavior: notifies tippers when a tote arrives and when a robot fault occurs.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_61_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        61
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0061"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Sorter Sweeper processes hospital data",
+      "systems": [
+        "Sorter Sweeper Module",
+        "Hospital"
+      ],
+      "components": [
+        "hospital station"
+      ],
+      "summary": "The module processes data originating from the hospital subsystem.",
+      "observed_evidence": [
+        "and processes data from the hospital."
+      ],
+      "relationships": [
+        {
+          "type": "processes_data_from",
+          "source": "Sorter Sweeper Module",
+          "target": "Hospital"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper detailed design includes processing data from the hospital.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_61_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        61
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0061"
+      ],
+      "unit_type": "operational_process",
+      "title": "Defined tote task types handled by the Sorter Sweeper module",
+      "systems": [
+        "Sorter Sweeper Module"
+      ],
+      "components": [
+        "Tote"
+      ],
+      "summary": "The slide enumerates the tote task types associated with the Sorter Sweeper module: Induct Tote, Remove Tote, Pickup Tote, Move Out Sorter, Drop Off Sorter, and Drop Off Hospital.",
+      "observed_evidence": [
+        "Tote Task:",
+        "Induct Tote",
+        "Remove Tote",
+        "Pickup Tote",
+        "Move Out Sorter",
+        "Drop Off Sorter",
+        "Drop Off Hospital"
+      ],
+      "relationships": [
+        {
+          "type": "includes_task_type",
+          "source": "Tote Task",
+          "target": "Induct Tote"
+        },
+        {
+          "type": "includes_task_type",
+          "source": "Tote Task",
+          "target": "Remove Tote"
+        },
+        {
+          "type": "includes_task_type",
+          "source": "Tote Task",
+          "target": "Pickup Tote"
+        },
+        {
+          "type": "includes_task_type",
+          "source": "Tote Task",
+          "target": "Move Out Sorter"
+        },
+        {
+          "type": "includes_task_type",
+          "source": "Tote Task",
+          "target": "Drop Off Sorter"
+        },
+        {
+          "type": "includes_task_type",
+          "source": "Tote Task",
+          "target": "Drop Off Hospital"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper module tote task list: Induct Tote, Remove Tote, Pickup Tote, Move Out Sorter, Drop Off Sorter, Drop Off Hospital.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_61_01",
+      "title": "No reusable operator or support procedure present on Sorter Sweeper detailed design slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        61
+      ],
+      "systems": [
+        "Sorter Sweeper Module",
+        "Sorter",
+        "Tipper",
+        "Hospital",
+        "HMI",
+        "Robot"
+      ],
+      "components": [
+        "Tote",
+        "robotics modules",
+        "hospital station"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewing slide content for explicit action sequence"
+      ],
+      "procedure_screenshot_refs": [
+        "slide_artifact_optisweep_training_internal_0061"
+      ],
+      "procedure_visual_summary": "Bullet list describing Sorter Sweeper module behavior and enumerating tote task names, without numbered or ordered operational instructions.",
+      "steps": [],
+      "warnings": [
+        "Slide provides module behavior and task categories, not an explicit action sequence.",
+        "Task names such as Induct Tote and Remove Tote are listed without user or system execution steps."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_61_01",
+        "oku_optisweep_training_internal_61_02",
+        "oku_optisweep_training_internal_61_03",
+        "oku_optisweep_training_internal_61_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: Sorter Sweeper detailed design slide contains architectural behavior and tote task names only; no explicit reusable procedure steps are shown."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -37,7 +37,7 @@ def reusable_workflow_documents(path: Path) -> list[dict[str, Any]]:
             workflow_id=workflow_id,
             workflow_version=str(record.get("workflow_version") or record.get("version") or "1.0"),
             status=record.get("status") or "draft",
-            issue_category=record.get("issue_category") or "CAT-1: WCS / Service Failure",
+            issue_category=record.get("issue_category"),
             title=record.get("title") or record.get("name"),
             operational_intent=record.get("operational_intent"),
             required_signals=[str(value) for value in record.get("required_signals", [])],
@@ -64,7 +64,7 @@ def reusable_procedure_documents(path: Path) -> list[dict[str, Any]]:
             id=record.get("id") or f"proc_{procedure_id}",
             procedure_id=procedure_id,
             procedure_version=str(record.get("procedure_version") or record.get("version") or "1.0"),
-            procedure_type=record.get("procedure_type") or record.get("operational_intent") or "service_restart",
+            procedure_type=record.get("procedure_type") or record.get("operational_intent"),
             title=record.get("title") or procedure_id.replace("_", " ").title(),
             role_required=record.get("role_required"),
             support_safe=record.get("support_safe"),
@@ -86,7 +86,9 @@ def reusable_procedure_documents(path: Path) -> list[dict[str, Any]]:
     return documents
 
 
-def seed_documents(workflow_documents: list[dict[str, Any]], procedure_documents: list[dict[str, Any]]) -> dict[str, int]:
+def seed_documents(workflow_documents: list[dict[str, Any]], procedure_documents: list[dict[str, Any]], allow_runtime_asset_seed: bool = False) -> dict[str, int]:
+    if not allow_runtime_asset_seed:
+        raise RuntimeError("Runtime asset seeding is disabled by default. Pass --allow-runtime-asset-seed to create workflow definitions or reusable procedures.")
     workflow_repository = WorkflowRepository()
     procedure_repository = ProcedureRepository()
     for document in workflow_documents:
@@ -101,6 +103,7 @@ def main() -> None:
     parser.add_argument("--workflow-path", default="data/workflows/workflow_definitions.json")
     parser.add_argument("--procedure-path", default="data/procedures/reusable_procedures.json")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--allow-runtime-asset-seed", action="store_true")
     args = parser.parse_args()
     workflow_documents = reusable_workflow_documents(Path(args.workflow_path))
     procedure_documents = reusable_procedure_documents(Path(args.procedure_path))
@@ -117,7 +120,7 @@ def main() -> None:
             "procedure_dictionary": procedure_documents,
         }
     else:
-        result["upserted"] = seed_documents(workflow_documents, procedure_documents)
+        result["upserted"] = seed_documents(workflow_documents, procedure_documents, allow_runtime_asset_seed=args.allow_runtime_asset_seed)
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

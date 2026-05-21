@@ -1,0 +1,265 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_022_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        22
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0022"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Home screen includes language selection in the right-hand corner",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Home screen",
+        "Language selection"
+      ],
+      "summary": "The Home Breakdown slide identifies a language selection control located in the right-hand corner of the home screen.",
+      "observed_evidence": [
+        "Slide text: '1. In the right-hand corner is your language selection'",
+        "Slide title/section: 'Home Breakdown'"
+      ],
+      "relationships": [],
+      "retrieval_text": "On the OptiSweep Home screen, the language selection control is located in the right-hand corner.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_022_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        22
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0022"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Right-side menu can be expanded to access menu options and Map Monitor",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Right-side menu",
+        "Map Monitor"
+      ],
+      "summary": "The slide indicates that the right-side menu can be expanded to show menu options and to select Map Monitor.",
+      "observed_evidence": [
+        "Slide text: '2. On the right side you can expand menu options as well as select map monitor.'"
+      ],
+      "relationships": [
+        {
+          "relation": "contains",
+          "target": "Map Monitor"
+        }
+      ],
+      "retrieval_text": "The OptiSweep Home screen has a right-side expandable menu that exposes menu options and provides access to Map Monitor.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_022_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        22
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0022"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Map Monitor displays the map and AGV movements",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Map Monitor",
+        "AGV"
+      ],
+      "summary": "Map Monitor is described as a view that allows the user to see the map and AGV movements.",
+      "observed_evidence": [
+        "Slide text: 'Map Monitor allows you to view the map and AGV movements'"
+      ],
+      "relationships": [
+        {
+          "relation": "monitors",
+          "target": "AGV movements"
+        }
+      ],
+      "retrieval_text": "In OptiSweep, Map Monitor allows viewing of the map and AGV movements.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_022_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        22
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0022"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Menu can be expanded or collapsed",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Menu"
+      ],
+      "summary": "The slide states that the menu supports both expanded and collapsed states.",
+      "observed_evidence": [
+        "Slide text: '3. You can expand the menu you or collapse it.'"
+      ],
+      "relationships": [],
+      "retrieval_text": "The OptiSweep menu can be expanded or collapsed from the Home screen.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_022_01",
+      "title": "Open Map Monitor from the Home screen right-side menu",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        22
+      ],
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Home screen",
+        "Right-side menu",
+        "Map Monitor",
+        "AGV"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is on the OptiSweep Home screen.",
+        "The right-side menu is available in the UI."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0022"
+      ],
+      "procedure_visual_summary": "Slide describes Home screen controls on the right side, including an expandable menu and a Map Monitor option used to view the map and AGV movements.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "On the Home screen, go to the right side of the interface and expand the menu.",
+          "expected_outcome": "Menu options become visible.",
+          "validation_check": "The right-side menu is expanded and additional options are shown.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:22",
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "visual_region_hint": "Right side of the Home screen where the expandable menu is located."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Select Map Monitor from the right-side menu.",
+          "expected_outcome": "Map Monitor opens.",
+          "validation_check": "The user can view the map and AGV movements.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:22",
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "visual_region_hint": "Expanded menu area on the right side containing the Map Monitor option."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_022_02",
+        "oku_optisweep_training_internal_022_03",
+        "oku_optisweep_training_internal_022_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "From the OptiSweep Home screen, expand the right-side menu and select Map Monitor to view the map and AGV movements."
+    },
+    {
+      "procedure_id": "proc_optisweep_training_internal_022_02",
+      "title": "Expand or collapse the Home screen menu",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        22
+      ],
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Home screen",
+        "Menu"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is on the OptiSweep Home screen."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0022"
+      ],
+      "procedure_visual_summary": "Slide identifies a menu on the right side of the Home screen that can be expanded or collapsed.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Use the menu control on the right side of the Home screen to expand the menu.",
+          "expected_outcome": "The menu opens to show available options.",
+          "validation_check": "Additional menu options are visible.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:22",
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "visual_region_hint": "Right side menu area on the Home screen."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Use the same menu control to collapse the menu when you want to hide it.",
+          "expected_outcome": "The menu returns to its collapsed state.",
+          "validation_check": "The expanded menu options are no longer shown.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:22",
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0022"
+          ],
+          "visual_region_hint": "Right side menu area on the Home screen."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_022_02",
+        "oku_optisweep_training_internal_022_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "On the OptiSweep Home screen, the right-side menu can be expanded to show options and collapsed to hide them."
+    }
+  ],
+  "discarded_candidates": []
+}

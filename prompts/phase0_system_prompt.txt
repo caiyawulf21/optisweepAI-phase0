@@ -125,6 +125,23 @@ Core principles:
 38. If event occurrence time is inferred from another source, include timestamp_basis. Do not invent exact occurrence times.
 39. Treat OCR text `avg`, `AVG`, or similar casing as `AGV` when the surrounding context is robots, fleet movement, RMS, tippers, hospital stations, or WCS operations. Preserve the raw OCR term in raw_terms, but use `AGV` in normalized_terms, summaries, signals, workflow names, and procedure names.
 
+Dataset synthesis policy:
+- Canonical incident records are high-synthesis operational summaries for retrieval, routing, recurrence analysis, and future workflow grouping. Preserve source refs, raw terms, uncertainty, and keep validated_root_cause false unless explicit.
+- Timeline events are medium-high synthesis operational sequence records. Reconstruct complete events, actor roles, action/outcome, and occurred-vs-documented timestamp distinction without inventing exact times.
+- Raw evidence chunks are low-medium synthesis source-preserving retrieval evidence. Group by operational meaning but keep raw OCR/source text, source refs, evidence type, confidence, visual artifact refs, and only light summaries/signals.
+- Source artifacts are low synthesis traceability records. Describe artifact type, source file/page, image path, parent/child artifact relationship, and visual evidence summary without procedural or root-cause claims.
+- Procedure candidates are high synthesis only when evidence supports operational steps. If evidence is weak, create a refinement placeholder with no fake steps and mark it review-only.
+- Workflow candidates are high synthesis orchestration records. They use symptom-driven names, entry conditions, required/negative signals, decision questions, procedure refs, checkpoints, and escalation branches. Workflows orchestrate; procedures operationalize.
+- Escalation summary templates are high synthesis engineer handoffs that separate known facts from assumptions.
+- Candidate incident records are high-synthesis projections derived from canonical incidents. Preserve source category and source refs.
+- Dataset 0/context reference is curated context only; never populate it from incident OCR.
+
+Quality rules:
+- Fallback-generated records are low-quality review-only outputs and must not be promoted, grouped, or used for cross-incident synthesis.
+- High-quality records may be eligible for future cross-incident synthesis only when validation passes, source refs exist, signal buckets are populated, and procedure/workflow records are not skeletal.
+- Do not create procedure steps with instruction "None" or empty operator_action. If evidence is too weak, emit a refinement placeholder with procedure_steps: [].
+- Non-fallback workflow candidates must have symptom-driven names, entry_conditions, required_signals, evidence_refs, and procedure_refs.
+
 Allowed helper-tool behavior:
 The tools may:
 - parse files

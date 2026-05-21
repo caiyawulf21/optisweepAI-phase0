@@ -1,0 +1,164 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0037_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        37
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0037"
+      ],
+      "unit_type": "ui_concept",
+      "title": "AGV Status screen is divided into all-AGV details and error-focused details",
+      "systems": [
+        "OptiSweep",
+        "AGV"
+      ],
+      "components": [
+        "AGV Status screen",
+        "Top Section",
+        "Bottom Section"
+      ],
+      "summary": "The AGV Status view has a top section showing detailed information for all AGVs and a bottom section that displays only AGVs with errors along with additional details.",
+      "observed_evidence": [
+        "Slide title: 'Overall System / AGV Status'",
+        "Visible text: 'Top Section: Detailed info for all AGVs – ID, Status, Destination, and Errors'",
+        "Visible text: 'Bottom Section: Only AGVs with errors, with additional details will appear'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "has_section",
+          "target": "Top Section"
+        },
+        {
+          "relation_type": "has_section",
+          "target": "Bottom Section"
+        },
+        {
+          "relation_type": "top_section_shows",
+          "target": "AGV ID, Status, Destination, Errors"
+        },
+        {
+          "relation_type": "bottom_section_filters_to",
+          "target": "AGVs with errors"
+        }
+      ],
+      "retrieval_text": "Overall System AGV Status UI concept. The AGV Status screen has a top section with detailed info for all AGVs including ID, status, destination, and errors. The bottom section shows only AGVs with errors and provides additional details.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0037_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        37
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0037"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "AGV errors are surfaced in a dedicated lower section with added detail",
+      "systems": [
+        "OptiSweep",
+        "AGV"
+      ],
+      "components": [
+        "AGV Status screen",
+        "Error display area"
+      ],
+      "summary": "The interface isolates AGVs with errors into a bottom section and provides additional details there, supporting focused error review.",
+      "observed_evidence": [
+        "Visible text: 'Bottom Section: Only AGVs with errors, with additional details will appear'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "supports",
+          "target": "error-focused AGV review"
+        },
+        {
+          "relation_type": "filters_to",
+          "target": "AGVs with errors"
+        }
+      ],
+      "retrieval_text": "Diagnostic concept for AGV Status: AGVs with errors are shown separately in the bottom section, where additional details appear for troubleshooting or review.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0037_01",
+      "title": "Review AGV status information on the AGV Status screen",
+      "procedure_type": "diagnostic_check",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        37
+      ],
+      "systems": [
+        "OptiSweep",
+        "AGV"
+      ],
+      "components": [
+        "AGV Status screen",
+        "Top Section",
+        "Bottom Section"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "AGV Status screen is open"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0037"
+      ],
+      "procedure_visual_summary": "Slide describes the AGV Status screen layout with a top section for all AGVs and a bottom section for AGVs with errors and additional details.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Review the top section of the AGV Status screen to see detailed information for all AGVs.",
+          "expected_outcome": "All AGVs are visible with details such as ID, status, destination, and errors.",
+          "validation_check": "Confirm the top section contains AGV ID, status, destination, and error information.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:37",
+            "artifact:slide_artifact_optisweep_training_internal_0037"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0037"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0037"
+          ],
+          "visual_region_hint": "Top section of the AGV Status screen"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Check the bottom section to identify whether any AGVs with errors are listed with additional details.",
+          "expected_outcome": "If AGV errors exist, the bottom section shows only AGVs with errors and provides added detail.",
+          "validation_check": "Confirm the bottom section is populated only by AGVs with errors.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:37",
+            "artifact:slide_artifact_optisweep_training_internal_0037"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0037"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0037"
+          ],
+          "visual_region_hint": "Bottom section of the AGV Status screen"
+        }
+      ],
+      "warnings": [
+        "The slide describes screen content but does not provide a full navigation path or remediation actions."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0037_01",
+        "oku_optisweep_training_internal_0037_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Diagnostic check candidate for AGV Status screen. Review the top section for all AGV details including ID, status, destination, and errors. Review the bottom section for AGVs with errors and additional details. Slide provides screen usage guidance but limited step detail."
+    }
+  ],
+  "discarded_candidates": []
+}

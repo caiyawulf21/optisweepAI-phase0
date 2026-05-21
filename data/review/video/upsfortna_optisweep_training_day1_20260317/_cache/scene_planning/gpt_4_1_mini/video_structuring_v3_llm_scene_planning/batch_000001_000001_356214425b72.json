@@ -1,0 +1,92 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Initial Informal Discussion and Setup",
+      "timestamp_start": "00:00:43.200",
+      "timestamp_end": "00:02:39.440",
+      "primary_intent": "Casual conversation and informal setup before training",
+      "operational_intents": [
+        "Engage participants informally",
+        "Discuss meeting attendance and logistics",
+        "Prepare for training session start"
+      ],
+      "knowledge_extraction_strategy": "Extract context on participant readiness and session setup",
+      "why_this_strategy": "Establishes participant context and session environment",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000001",
+        "vec_upsfortna_optisweep_training_day1_20260317_000002",
+        "vec_upsfortna_optisweep_training_day1_20260317_000003",
+        "vec_upsfortna_optisweep_training_day1_20260317_000004",
+        "vec_upsfortna_optisweep_training_day1_20260317_000005",
+        "vec_upsfortna_optisweep_training_day1_20260317_000006",
+        "vec_upsfortna_optisweep_training_day1_20260317_000007",
+        "vec_upsfortna_optisweep_training_day1_20260317_000008",
+        "vec_upsfortna_optisweep_training_day1_20260317_000009",
+        "vec_upsfortna_optisweep_training_day1_20260317_000010",
+        "vec_upsfortna_optisweep_training_day1_20260317_000011",
+        "vec_upsfortna_optisweep_training_day1_20260317_000012",
+        "vec_upsfortna_optisweep_training_day1_20260317_000013",
+        "vec_upsfortna_optisweep_training_day1_20260317_000014",
+        "vec_upsfortna_optisweep_training_day1_20260317_000015",
+        "vec_upsfortna_optisweep_training_day1_20260317_000016",
+        "vec_upsfortna_optisweep_training_day1_20260317_000017",
+        "vec_upsfortna_optisweep_training_day1_20260317_000018",
+        "vec_upsfortna_optisweep_training_day1_20260317_000019",
+        "vec_upsfortna_optisweep_training_day1_20260317_000020",
+        "vec_upsfortna_optisweep_training_day1_20260317_000021",
+        "vec_upsfortna_optisweep_training_day1_20260317_000022",
+        "vec_upsfortna_optisweep_training_day1_20260317_000023",
+        "vec_upsfortna_optisweep_training_day1_20260317_000024",
+        "vec_upsfortna_optisweep_training_day1_20260317_000025",
+        "vec_upsfortna_optisweep_training_day1_20260317_000026",
+        "vec_upsfortna_optisweep_training_day1_20260317_000027",
+        "vec_upsfortna_optisweep_training_day1_20260317_000028",
+        "vec_upsfortna_optisweep_training_day1_20260317_000029",
+        "vec_upsfortna_optisweep_training_day1_20260317_000030",
+        "vec_upsfortna_optisweep_training_day1_20260317_000031",
+        "vec_upsfortna_optisweep_training_day1_20260317_000032",
+        "vec_upsfortna_optisweep_training_day1_20260317_000033",
+        "vec_upsfortna_optisweep_training_day1_20260317_000034",
+        "vec_upsfortna_optisweep_training_day1_20260317_000035",
+        "vec_upsfortna_optisweep_training_day1_20260317_000036",
+        "vec_upsfortna_optisweep_training_day1_20260317_000037"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000001"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Training Session Introduction and Overview",
+      "timestamp_start": "00:02:39.440",
+      "timestamp_end": "00:03:44.200",
+      "primary_intent": "Introduce training session and outline agenda",
+      "operational_intents": [
+        "Start formal training",
+        "Introduce presenters",
+        "Explain training structure and content overview",
+        "Introduce Opti Suite concept"
+      ],
+      "knowledge_extraction_strategy": "Extract training objectives and session structure",
+      "why_this_strategy": "Defines training goals and framework for knowledge extraction",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000038",
+        "vec_upsfortna_optisweep_training_day1_20260317_000039",
+        "vec_upsfortna_optisweep_training_day1_20260317_000040",
+        "vec_upsfortna_optisweep_training_day1_20260317_000041",
+        "vec_upsfortna_optisweep_training_day1_20260317_000042",
+        "vec_upsfortna_optisweep_training_day1_20260317_000043",
+        "vec_upsfortna_optisweep_training_day1_20260317_000044",
+        "vec_upsfortna_optisweep_training_day1_20260317_000045",
+        "vec_upsfortna_optisweep_training_day1_20260317_000046",
+        "vec_upsfortna_optisweep_training_day1_20260317_000047",
+        "vec_upsfortna_optisweep_training_day1_20260317_000048",
+        "vec_upsfortna_optisweep_training_day1_20260317_000049"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000001"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_105_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        105
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0105"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "ActiveExchangeModel stores active chute exchange records",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "ActiveExchangeModel",
+        "chute"
+      ],
+      "summary": "The slide states that when a chute is closed, an active exchange record is created in the ActiveExchangeModel.",
+      "observed_evidence": [
+        "Slide text: 'When a chute is closed an active exchange is created in the ActiveExchangeModel.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "created_on_condition",
+          "target": "ActiveExchangeModel",
+          "details": "A chute closure causes creation of an active exchange record."
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Exchange ActiveExchangeModel when a chute is closed an active exchange is created in the ActiveExchangeModel.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_105_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        105
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0105"
+      ],
+      "unit_type": "operational_process",
+      "title": "Exchange closes and is archived when an empty tote replaces the closed chute",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "ActiveExchangeModel",
+        "Exchange activity",
+        "Tote"
+      ],
+      "summary": "The slide describes that when an empty tote replaces a closed chute, the exchange is closed and archived in Exchange activity.",
+      "observed_evidence": [
+        "Slide text: 'When a empty tote replaces it, the exchange is closed and archived in Exchange activity'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "archives_to",
+          "target": "Exchange activity",
+          "details": "A previously active exchange is archived after closure."
+        },
+        {
+          "relationship_type": "triggered_by",
+          "target": "empty tote replacement",
+          "details": "Replacement with an empty tote closes the exchange."
+        }
+      ],
+      "retrieval_text": "When an empty tote replaces a closed chute, the exchange is closed and archived in Exchange activity. Sorter Sweeper Database exchange behavior.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_105_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        105
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0105"
+      ],
+      "unit_type": "state_transition",
+      "title": "Exchange lifecycle transitions from active to archived",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "ActiveExchangeModel",
+        "Exchange activity"
+      ],
+      "summary": "The slide implies an exchange lifecycle where chute closure creates an active exchange, and empty tote replacement closes that exchange and archives it in Exchange activity.",
+      "observed_evidence": [
+        "Slide text: 'When a chute is closed an active exchange is created in the ActiveExchangeModel.'",
+        "Slide text: 'When a empty tote replaces it, the exchange is closed and archived in Exchange activity'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "state_transition",
+          "target": "exchange record",
+          "details": "Created as active in ActiveExchangeModel after chute closure, then closed and archived in Exchange activity after empty tote replacement."
+        }
+      ],
+      "retrieval_text": "Exchange lifecycle in Sorter Sweeper Database: chute closed creates active exchange in ActiveExchangeModel; empty tote replacement closes and archives exchange in Exchange activity.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_105_01",
+      "title": "Exchange record lifecycle during chute closure and tote replacement",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        105
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "ActiveExchangeModel",
+        "Exchange activity",
+        "chute",
+        "Tote"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A chute is closed",
+        "An exchange record is relevant to sorter sweeper operation"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0105"
+      ],
+      "procedure_visual_summary": "Slide text describes exchange creation when a chute closes and exchange closure/archive when an empty tote replaces it.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Close the chute.",
+          "expected_outcome": "An active exchange is created in the ActiveExchangeModel.",
+          "validation_check": "Confirm that an active exchange record exists in ActiveExchangeModel.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:105"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0105"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0105"
+          ],
+          "visual_region_hint": "Main body text under 'Exhange'"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Replace the closed chute position with an empty tote.",
+          "expected_outcome": "The exchange is closed and archived in Exchange activity.",
+          "validation_check": "Confirm the exchange no longer remains active and appears in Exchange activity.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:105"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0105"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0105"
+          ],
+          "visual_region_hint": "Main body text under 'Exhange'"
+        }
+      ],
+      "warnings": [
+        "The slide describes system behavior but does not provide full operational prerequisites, interface details, or user actions beyond the stated sequence."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0105",
+        "oku_optisweep_training_internal_105_01",
+        "oku_optisweep_training_internal_105_02",
+        "oku_optisweep_training_internal_105_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure candidate for exchange lifecycle: close chute to create active exchange in ActiveExchangeModel, then replace with empty tote to close and archive exchange in Exchange activity."
+    }
+  ],
+  "discarded_candidates": []
+}

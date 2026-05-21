@@ -1,0 +1,16 @@
+{
+  "operational_knowledge_units": [],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "candidate_type": "database_reference",
+      "title": "Database Walkthrough",
+      "reason": "Slide contains only a section/title label with no visible database model details, operational behavior, or procedural guidance. No bounded operational knowledge can be extracted without inventing content.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:63",
+        "artifact:slide_artifact_optisweep_training_internal_0063"
+      ]
+    }
+  ]
+}

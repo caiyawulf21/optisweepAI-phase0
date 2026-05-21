@@ -1,0 +1,177 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0075_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        75
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0075"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "ChargingDatabaseModel stores charging areas and area entry/exit locations",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "ChargingDatabaseModel"
+      ],
+      "summary": "The ChargingDatabaseModel table stores separate charging areas and their entrance and exit locations. Each charging area contains several chargers.",
+      "observed_evidence": [
+        "Slide bullet: 'The ChargingDatabaseModel table stores the separate charging areas as well as their entrance and exit locations. Each area has several chargers'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "contains",
+          "source_component": "ChargingDatabaseModel",
+          "target_component": "charging areas"
+        },
+        {
+          "relationship_type": "defines_locations_for",
+          "source_component": "ChargingDatabaseModel",
+          "target_component": "entrance and exit locations"
+        },
+        {
+          "relationship_type": "area_has_multiple",
+          "source_component": "charging area",
+          "target_component": "chargers"
+        }
+      ],
+      "retrieval_text": "Robotics Database Charging: ChargingDatabaseModel stores separate charging areas plus entrance and exit locations; each area has several chargers.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0075_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        75
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0075"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "ChargingLocationDatabaseModel stores charger-to-station and tote stand associations",
+      "systems": [
+        "AGV",
+        "Robot",
+        "Tote"
+      ],
+      "components": [
+        "ChargingLocationDatabaseModel"
+      ],
+      "summary": "The ChargingLocationDatabaseModel table stores individual chargers, the stations where they are located, and the tote stands associated with those chargers.",
+      "observed_evidence": [
+        "Slide bullet: 'The ChargingLocationDatabaseModel table stores the individual chargers, the stations they are located at, and the tote stands associated with the chargers.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "stores",
+          "source_component": "ChargingLocationDatabaseModel",
+          "target_component": "individual chargers"
+        },
+        {
+          "relationship_type": "maps_to",
+          "source_component": "charger",
+          "target_component": "station"
+        },
+        {
+          "relationship_type": "associates_with",
+          "source_component": "charger",
+          "target_component": "tote stand"
+        }
+      ],
+      "retrieval_text": "ChargingLocationDatabaseModel stores individual chargers, the stations they are located at, and tote stands associated with the chargers.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0075_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        75
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0075"
+      ],
+      "unit_type": "system_behavior",
+      "title": "ChargingThresholdsDatabaseModel provides thresholds used for AGV charging decisions",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "ChargingThresholdsDatabaseModel"
+      ],
+      "summary": "The ChargingThresholdsDatabaseModel table stores values used in code to determine whether an AGV needs charging, can be released from a charger, or requires an emergency charge.",
+      "observed_evidence": [
+        "Slide bullet: 'The ChargingThresholdsDatabaseModel table stores values we use in the code to decide whether an agv needs charged or can be kicked off the charger or need an emergency charge.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "provides_decision_values_for",
+          "source_component": "ChargingThresholdsDatabaseModel",
+          "target_component": "charging control code"
+        },
+        {
+          "relationship_type": "influences",
+          "source_component": "ChargingThresholdsDatabaseModel",
+          "target_component": "AGV needs charged decision"
+        },
+        {
+          "relationship_type": "influences",
+          "source_component": "ChargingThresholdsDatabaseModel",
+          "target_component": "AGV can be kicked off charger decision"
+        },
+        {
+          "relationship_type": "influences",
+          "source_component": "ChargingThresholdsDatabaseModel",
+          "target_component": "AGV emergency charge decision"
+        }
+      ],
+      "retrieval_text": "ChargingThresholdsDatabaseModel stores values used by code to decide whether an AGV needs charged, can be kicked off the charger, or needs an emergency charge.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0075_01",
+      "title": "No explicit charging database procedure present on slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        75
+      ],
+      "systems": [
+        "AGV",
+        "Robot",
+        "Tote"
+      ],
+      "components": [
+        "ChargingDatabaseModel",
+        "ChargingLocationDatabaseModel",
+        "ChargingThresholdsDatabaseModel"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0075"
+      ],
+      "procedure_visual_summary": "Slide lists three charging-related database tables and what each stores; no ordered actions, UI controls, or operator workflow are shown.",
+      "steps": [],
+      "warnings": [
+        "Slide is descriptive database reference content, not a reusable action sequence.",
+        "Do not infer configuration or troubleshooting steps from the table descriptions alone."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0075_01",
+        "oku_optisweep_training_internal_0075_02",
+        "oku_optisweep_training_internal_0075_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: slide describes charging database tables and threshold usage but provides no explicit operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

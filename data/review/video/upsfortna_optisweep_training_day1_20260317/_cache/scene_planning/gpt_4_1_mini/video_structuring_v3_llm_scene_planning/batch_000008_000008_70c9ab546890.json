@@ -1,0 +1,91 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Tote Volume Thresholds and Pickup Prioritization",
+      "timestamp_start": "00:21:56.280",
+      "timestamp_end": "00:23:28.240",
+      "primary_intent": "Explain tote volume thresholds and their impact on pickup requests",
+      "operational_intents": [
+        "Define volume percentage thresholds for tote fullness",
+        "Describe how pickup requests are triggered based on volume",
+        "Clarify priority levels for tote pickups"
+      ],
+      "knowledge_extraction_strategy": "Extract threshold definitions and priority rules",
+      "why_this_strategy": "Thresholds define operational pickup priorities",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000368",
+        "vec_upsfortna_optisweep_training_day1_20260317_000369",
+        "vec_upsfortna_optisweep_training_day1_20260317_000370",
+        "vec_upsfortna_optisweep_training_day1_20260317_000371",
+        "vec_upsfortna_optisweep_training_day1_20260317_000372",
+        "vec_upsfortna_optisweep_training_day1_20260317_000373",
+        "vec_upsfortna_optisweep_training_day1_20260317_000374",
+        "vec_upsfortna_optisweep_training_day1_20260317_000375",
+        "vec_upsfortna_optisweep_training_day1_20260317_000376",
+        "vec_upsfortna_optisweep_training_day1_20260317_000377",
+        "vec_upsfortna_optisweep_training_day1_20260317_000378",
+        "vec_upsfortna_optisweep_training_day1_20260317_000379",
+        "vec_upsfortna_optisweep_training_day1_20260317_000380",
+        "vec_upsfortna_optisweep_training_day1_20260317_000381",
+        "vec_upsfortna_optisweep_training_day1_20260317_000382",
+        "vec_upsfortna_optisweep_training_day1_20260317_000383",
+        "vec_upsfortna_optisweep_training_day1_20260317_000384",
+        "vec_upsfortna_optisweep_training_day1_20260317_000385",
+        "vec_upsfortna_optisweep_training_day1_20260317_000386",
+        "vec_upsfortna_optisweep_training_day1_20260317_000387",
+        "vec_upsfortna_optisweep_training_day1_20260317_000388",
+        "vec_upsfortna_optisweep_training_day1_20260317_000389",
+        "vec_upsfortna_optisweep_training_day1_20260317_000390",
+        "vec_upsfortna_optisweep_training_day1_20260317_000391",
+        "vec_upsfortna_optisweep_training_day1_20260317_000392"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000008"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Weight Limits and Their Role in Tote Handling",
+      "timestamp_start": "00:23:33.640",
+      "timestamp_end": "00:24:59.143",
+      "primary_intent": "Discuss weight thresholds and their influence on tote processing",
+      "operational_intents": [
+        "Explain weight limits based on union contracts",
+        "Describe how weight data is integrated into tote handling",
+        "Clarify the role of weight versus volume in operational decisions"
+      ],
+      "knowledge_extraction_strategy": "Extract weight limit policies and operational impact",
+      "why_this_strategy": "Weight affects tote handling and safety compliance",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000393",
+        "vec_upsfortna_optisweep_training_day1_20260317_000394",
+        "vec_upsfortna_optisweep_training_day1_20260317_000395",
+        "vec_upsfortna_optisweep_training_day1_20260317_000396",
+        "vec_upsfortna_optisweep_training_day1_20260317_000397",
+        "vec_upsfortna_optisweep_training_day1_20260317_000398",
+        "vec_upsfortna_optisweep_training_day1_20260317_000399",
+        "vec_upsfortna_optisweep_training_day1_20260317_000400",
+        "vec_upsfortna_optisweep_training_day1_20260317_000401",
+        "vec_upsfortna_optisweep_training_day1_20260317_000402",
+        "vec_upsfortna_optisweep_training_day1_20260317_000403",
+        "vec_upsfortna_optisweep_training_day1_20260317_000404",
+        "vec_upsfortna_optisweep_training_day1_20260317_000405",
+        "vec_upsfortna_optisweep_training_day1_20260317_000406",
+        "vec_upsfortna_optisweep_training_day1_20260317_000407",
+        "vec_upsfortna_optisweep_training_day1_20260317_000408",
+        "vec_upsfortna_optisweep_training_day1_20260317_000409",
+        "vec_upsfortna_optisweep_training_day1_20260317_000410",
+        "vec_upsfortna_optisweep_training_day1_20260317_000411",
+        "vec_upsfortna_optisweep_training_day1_20260317_000412",
+        "vec_upsfortna_optisweep_training_day1_20260317_000413",
+        "vec_upsfortna_optisweep_training_day1_20260317_000414",
+        "vec_upsfortna_optisweep_training_day1_20260317_000415",
+        "vec_upsfortna_optisweep_training_day1_20260317_000416"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000008"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

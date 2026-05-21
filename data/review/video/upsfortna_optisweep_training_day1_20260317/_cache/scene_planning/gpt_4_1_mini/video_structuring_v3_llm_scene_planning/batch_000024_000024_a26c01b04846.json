@@ -1,0 +1,107 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Explanation of Soft Stop (E Stop) Functionality",
+      "timestamp_start": "01:10:34.720",
+      "timestamp_end": "01:11:08.880",
+      "primary_intent": "Clarify the behavior and limitations of the soft stop (E stop) feature",
+      "operational_intents": [
+        "Explain difference between soft stop and actual emergency stop",
+        "Describe AGV behavior when soft stop is pressed during movement",
+        "Explain how to restart AGV after soft stop"
+      ],
+      "knowledge_extraction_strategy": "Extract detailed operational behavior of soft stop",
+      "why_this_strategy": "Soft stop behavior critical for safe AGV operation",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001194",
+        "vec_upsfortna_optisweep_training_day1_20260317_001195",
+        "vec_upsfortna_optisweep_training_day1_20260317_001196",
+        "vec_upsfortna_optisweep_training_day1_20260317_001197",
+        "vec_upsfortna_optisweep_training_day1_20260317_001198",
+        "vec_upsfortna_optisweep_training_day1_20260317_001199",
+        "vec_upsfortna_optisweep_training_day1_20260317_001200",
+        "vec_upsfortna_optisweep_training_day1_20260317_001201",
+        "vec_upsfortna_optisweep_training_day1_20260317_001202",
+        "vec_upsfortna_optisweep_training_day1_20260317_001203"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000024"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Overview of Additional Map Icons and Their Functions",
+      "timestamp_start": "01:11:14.040",
+      "timestamp_end": "01:11:53.920",
+      "primary_intent": "Introduce and explain additional icons for AGV path visualization and station IDs",
+      "operational_intents": [
+        "Describe 'view all ATV paths' icon and its map visualization",
+        "Explain station IDs and their significance",
+        "Differentiate between stations and cells on the map"
+      ],
+      "knowledge_extraction_strategy": "Extract icon functions and map visualization details",
+      "why_this_strategy": "Understanding icons aids in AGV path monitoring",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001204",
+        "vec_upsfortna_optisweep_training_day1_20260317_001205",
+        "vec_upsfortna_optisweep_training_day1_20260317_001206",
+        "vec_upsfortna_optisweep_training_day1_20260317_001207",
+        "vec_upsfortna_optisweep_training_day1_20260317_001208",
+        "vec_upsfortna_optisweep_training_day1_20260317_001209",
+        "vec_upsfortna_optisweep_training_day1_20260317_001210",
+        "vec_upsfortna_optisweep_training_day1_20260317_001211",
+        "vec_upsfortna_optisweep_training_day1_20260317_001212",
+        "vec_upsfortna_optisweep_training_day1_20260317_001213",
+        "vec_upsfortna_optisweep_training_day1_20260317_001214",
+        "vec_upsfortna_optisweep_training_day1_20260317_001215",
+        "vec_upsfortna_optisweep_training_day1_20260317_001216",
+        "vec_upsfortna_optisweep_training_day1_20260317_001217",
+        "vec_upsfortna_optisweep_training_day1_20260317_001218",
+        "vec_upsfortna_optisweep_training_day1_20260317_001219",
+        "vec_upsfortna_optisweep_training_day1_20260317_001220",
+        "vec_upsfortna_optisweep_training_day1_20260317_001221",
+        "vec_upsfortna_optisweep_training_day1_20260317_001222"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000024"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Explanation of Charger IDs and Map Interaction",
+      "timestamp_start": "01:12:34.600",
+      "timestamp_end": "01:13:37.600",
+      "primary_intent": "Describe charger IDs and how to interact with map objects",
+      "operational_intents": [
+        "Explain charger IDs and their uniqueness",
+        "Describe clickable map objects and selection process",
+        "Detail icon selection for inspecting different object types"
+      ],
+      "knowledge_extraction_strategy": "Extract map interaction and object identification details",
+      "why_this_strategy": "Map interaction essential for system monitoring and debugging",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001223",
+        "vec_upsfortna_optisweep_training_day1_20260317_001224",
+        "vec_upsfortna_optisweep_training_day1_20260317_001225",
+        "vec_upsfortna_optisweep_training_day1_20260317_001226",
+        "vec_upsfortna_optisweep_training_day1_20260317_001227",
+        "vec_upsfortna_optisweep_training_day1_20260317_001228",
+        "vec_upsfortna_optisweep_training_day1_20260317_001229",
+        "vec_upsfortna_optisweep_training_day1_20260317_001230",
+        "vec_upsfortna_optisweep_training_day1_20260317_001231",
+        "vec_upsfortna_optisweep_training_day1_20260317_001232",
+        "vec_upsfortna_optisweep_training_day1_20260317_001233",
+        "vec_upsfortna_optisweep_training_day1_20260317_001234",
+        "vec_upsfortna_optisweep_training_day1_20260317_001235",
+        "vec_upsfortna_optisweep_training_day1_20260317_001236",
+        "vec_upsfortna_optisweep_training_day1_20260317_001237",
+        "vec_upsfortna_optisweep_training_day1_20260317_001238",
+        "vec_upsfortna_optisweep_training_day1_20260317_001239"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000024"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

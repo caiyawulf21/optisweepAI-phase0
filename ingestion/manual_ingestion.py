@@ -9,6 +9,9 @@ from backend.app.seed.local_dataset_mapper import DATASET_PATHS, export_bundle_t
 from backend.app.seed.local_graph_exporter import export_graphs
 
 
+DEFAULT_CANDIDATE_DESTINATION = Path("data/curated/candidate_incident_records.json")
+
+
 def copy_local_record(source: Path, destination: Path) -> None:
     raw = json.loads(source.read_text(encoding="utf-8"))
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -66,14 +69,14 @@ def run_manual_ingestion(source: Path, destination: Path, auto_export: bool = Fa
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Copy manually curated CAT-1 records into the local Phase 0 data store.")
+    parser = argparse.ArgumentParser(description="Copy manually curated candidate records into the local Phase 0 data store.")
     parser.add_argument("source", type=Path)
     parser.add_argument("--destination", type=Path)
     parser.add_argument("--auto-export", action="store_true")
     parser.add_argument("--generate-graphs", action="store_true")
     parser.add_argument("--data-root", type=Path, default=Path("data"))
     args = parser.parse_args()
-    destination = args.destination or (args.source if args.auto_export else Path("data/curated/cat1_records.json"))
+    destination = args.destination or (args.source if args.auto_export else DEFAULT_CANDIDATE_DESTINATION)
     result = run_manual_ingestion(
         args.source,
         destination,

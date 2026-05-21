@@ -1,0 +1,19 @@
+{
+  "operational_scenes": [
+    {
+      "operational_scene_id": "ops_scene_cand_upsfortna_optisweep_training_day1_20260317_000026_001",
+      "candidate_segment_id": "cand_upsfortna_optisweep_training_day1_20260317_000026",
+      "timestamp_start": "00:08:13.200",
+      "timestamp_end": "00:08:29.640",
+      "intent": "Explain how RMS queues robot movement tasks and executes them sequentially by sending commands to the AGV.",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000126",
+        "vec_upsfortna_optisweep_training_day1_20260317_000127",
+        "vec_upsfortna_optisweep_training_day1_20260317_000128",
+        "vec_upsfortna_optisweep_training_day1_20260317_000129",
+        "vec_upsfortna_optisweep_training_day1_20260317_000130"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

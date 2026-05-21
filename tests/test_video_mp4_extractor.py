@@ -178,11 +178,18 @@ def test_vtt_transcript_is_parsed_with_structured_source_refs_and_near_frame_ali
     bundle = json.loads(Path(result["output_bundle_path"]).read_text(encoding="utf-8"))
     segments = bundle["records"]["video_transcript_segments"]
     alignments = bundle["records"]["video_alignment_records"]
+    frames = bundle["records"]["video_frame_artifacts"]
+    baseline_frames = [frame for frame in frames if frame["frame_capture_reason"] == "baseline_interval"]
+    cue_anchor_frames = [frame for frame in frames if frame["frame_capture_reason"] == "vtt_cue_midpoint"]
 
     assert [segment["transcript_text"] for segment in segments] == [
         "RMS map is shown.",
         "Heartbeat timeout is mentioned.",
     ]
+    assert len(baseline_frames) == 3
+    assert len(cue_anchor_frames) == 2
+    assert cue_anchor_frames[0]["artifact_id"] == "vf_vtt_video_cue_000001_midpoint"
+    assert cue_anchor_frames[0]["vtt_cue_ids"] == ["cue-intro-1"]
     assert {segment["transcript_status"] for segment in segments} == {"provided"}
     assert segments[0]["source_refs"] == [
         {
@@ -194,6 +201,38 @@ def test_vtt_transcript_is_parsed_with_structured_source_refs_and_near_frame_ali
         }
     ]
     assert segments[0]["aligned_frame_ids"]
+    assert segments[0]["aligned_frame_ids"] == ["vf_vtt_video_cue_000001_midpoint"]
+    assert segments[0]["alignment_method"] == "cue_midpoint_frame"
+    assert segments[0]["alignment_distance_seconds"] <= 0.1
+    assert segments[0]["alignment_quality"] == "near"
     assert alignments[0]["frame_artifact_ids"] == segments[0]["aligned_frame_ids"]
+    assert alignments[0]["aligned_frames"] == [
+        {
+            "artifact_id": "vf_vtt_video_cue_000001_midpoint",
+            "timestamp": cue_anchor_frames[0]["timestamp"],
+            "timestamp_seconds": cue_anchor_frames[0]["timestamp_seconds"],
+            "frame_index": cue_anchor_frames[0]["frame_index"],
+            "sequence_id": cue_anchor_frames[0]["sequence_id"],
+            "scene_id": cue_anchor_frames[0]["scene_id"],
+            "frame_range": cue_anchor_frames[0]["frame_range"],
+            "image_path": cue_anchor_frames[0]["image_path"],
+            "frame_capture_reason": "vtt_cue_midpoint",
+            "frame_capture_reasons": ["vtt_cue_midpoint"],
+            "vtt_cue_ids": ["cue-intro-1"],
+            "vtt_cue_indices": [1],
+            "source_refs": cue_anchor_frames[0]["source_refs"],
+            "frame_lookup_status": "matched",
+        }
+    ]
+    assert alignments[0]["transcript_text"] == "RMS map is shown."
+    assert alignments[0]["transcript_status"] == "provided"
+    assert alignments[0]["speaker"] == "unknown"
+    assert alignments[0]["transcript_source_refs"] == segments[0]["source_refs"]
+    assert alignments[0]["alignment_method"] == "cue_midpoint_frame"
+    assert alignments[0]["alignment_distance_seconds"] <= 0.1
+    assert alignments[0]["alignment_quality"] == "near"
+    assert result["extraction_report"]["baseline_frame_count"] == 3
+    assert result["extraction_report"]["cue_anchor_frame_count"] == 2
+    assert result["extraction_report"]["weak_alignment_count"] == 0
     assert 0 < result["extraction_report"]["transcript_coverage_percent"] < 100.0
     assert not (tmp_path / "data" / "context" / "context_reference.json").exists()

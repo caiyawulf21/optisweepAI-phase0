@@ -1,0 +1,31 @@
+[
+  {
+    "artifact_id": "vf_training_video_cue_000001_midpoint",
+    "video_id": "training_video",
+    "timestamp": "00:00:15.000",
+    "artifact_type": "alarm",
+    "frame_path": "data/video_evidence/training_video/frames/frame_000001.jpg",
+    "visible_text": [
+      "RMS Map Heartbeat Alarm"
+    ],
+    "visual_summary": "RMS map UI with AGV heartbeat alarm text visible.",
+    "components_visible": [
+      "RMS map",
+      "heartbeat",
+      "alarm"
+    ],
+    "observed_signals": [
+      "alarm",
+      "heartbeat"
+    ],
+    "linked_transcript_segment_ids": [
+      "vts_training_video_000001"
+    ],
+    "linked_evidence_chunk_ids": [
+      "vec_training_video_000001"
+    ],
+    "storage_uri": "",
+    "validation_status": "needs_review",
+    "retrieval_text": "RMS map UI with AGV heartbeat alarm text visible. RMS Map Heartbeat Alarm RMS map heartbeat alarm alarm heartbeat"
+  }
+]

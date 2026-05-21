@@ -1,0 +1,52 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_112_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        112
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0112"
+      ],
+      "unit_type": "operational_process",
+      "title": "Database housekeeping jobs run every 12 hours",
+      "systems": [
+        "database"
+      ],
+      "components": [
+        "database jobs"
+      ],
+      "summary": "The slide states that a DBA has set up jobs to perform housekeeping on the database every 12 hours.",
+      "observed_evidence": [
+        "Slide title: \"Database jobs / A DBA has setup jobs to run house\"",
+        "Visible text: \"A DBA has setup jobs to run house keeping on the database every 12 hours\""
+      ],
+      "relationships": [
+        {
+          "relationship_type": "managed_by",
+          "target": "DBA"
+        },
+        {
+          "relationship_type": "applies_to",
+          "target": "database"
+        }
+      ],
+      "retrieval_text": "Database jobs. A DBA has setup jobs to run housekeeping on the database every 12 hours.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "candidate_type": "procedure",
+      "title": "Run or configure database housekeeping jobs",
+      "reason": "The slide mentions that jobs exist and run every 12 hours, but it does not provide explicit reusable action steps for running, configuring, validating, or troubleshooting them.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:112",
+        "artifact:slide_artifact_optisweep_training_internal_0112"
+      ]
+    }
+  ]
+}

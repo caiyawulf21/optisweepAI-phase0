@@ -1,0 +1,98 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "ku_upsfortna_optisweep_training_day1_20260317_000079_01",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000079"
+      ],
+      "source_artifact_ids": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002076_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002079_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002083_midpoint"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002076",
+        "vec_upsfortna_optisweep_training_day1_20260317_002077",
+        "vec_upsfortna_optisweep_training_day1_20260317_002078",
+        "vec_upsfortna_optisweep_training_day1_20260317_002079",
+        "vec_upsfortna_optisweep_training_day1_20260317_002080",
+        "vec_upsfortna_optisweep_training_day1_20260317_002081",
+        "vec_upsfortna_optisweep_training_day1_20260317_002082",
+        "vec_upsfortna_optisweep_training_day1_20260317_002083"
+      ],
+      "artifact_refs": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002076_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002079_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002083_midpoint"
+      ],
+      "timestamp_start": "02:14:08.587",
+      "timestamp_end": "02:14:34.720",
+      "unit_type": "concept",
+      "title": "Fault display mapping: System vs AGV faults",
+      "systems": [
+        "AGV"
+      ],
+      "components": [],
+      "summary": "Faults are split: general system faults show on the left, AGV-related faults on the right. Example: if an AGV is commanded to move and no in‑progress/movement occurs, it appears on the right; communication-loss type items appear on the left.",
+      "observed_evidence": [
+        "So if we tell an AGB to move and we haven't gotten in progress... it's a system fault...",
+        "On the left, you'll see system faults and on the right there's AGV system faults.",
+        "If we told an AGV to move but it hasn't moved, it'll be on the right."
+      ],
+      "relationships": [
+        "Loss of communication -> listed under system faults (left panel).",
+        "AGV command not starting -> listed under AGV system faults (right panel).",
+        "Screen organizes faults by scope (system-wide vs AGV-specific)."
+      ],
+      "retrieval_text": "Fault screen: left = system faults (e.g., comms loss); right = AGV system faults. If an AGV is told to move but no in-progress/movement, it shows on the right.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "ku_upsfortna_optisweep_training_day1_20260317_000079_02",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000079"
+      ],
+      "source_artifact_ids": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002085_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002088_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002090_midpoint"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002085",
+        "vec_upsfortna_optisweep_training_day1_20260317_002086",
+        "vec_upsfortna_optisweep_training_day1_20260317_002087",
+        "vec_upsfortna_optisweep_training_day1_20260317_002088",
+        "vec_upsfortna_optisweep_training_day1_20260317_002089",
+        "vec_upsfortna_optisweep_training_day1_20260317_002090"
+      ],
+      "artifact_refs": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002085_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002088_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002090_midpoint"
+      ],
+      "timestamp_start": "02:14:38.760",
+      "timestamp_end": "02:15:07.280",
+      "unit_type": "concept",
+      "title": "Remote monitoring constraints and workarounds (RMS/Ignition)",
+      "systems": [
+        "RMS",
+        "Ignition"
+      ],
+      "components": [],
+      "summary": "Thin-client environments limit remote visibility of RMS screens. Current workaround is to pull data via APIs or query the database to mirror on-screen info. Long term, replicating these views in Ignition is desired for easier remote access.",
+      "observed_evidence": [
+        "Because they're on thin clients, we can't see our mess.",
+        "We're kind of dependent on either pulling an API...",
+        "…or using the database to see what's on their screen."
+      ],
+      "relationships": [
+        "Thin clients -> restrict direct RMS screen sharing.",
+        "APIs/DB -> used to mirror RMS screen data for remote support.",
+        "Desired: replicate RMS views in Ignition for easier access."
+      ],
+      "retrieval_text": "Remote RMS visibility is limited on thin clients; teams pull via API or database to see what’s on-screen. Goal: replicate views in Ignition for easier remote access.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": []
+}

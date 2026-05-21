@@ -1,0 +1,112 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0133_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        133
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0133"
+      ],
+      "unit_type": "ui_concept",
+      "title": "RMS robot control screen is referenced for unplanned restart verification",
+      "systems": [
+        "RMS"
+      ],
+      "components": [
+        "robotControl screen",
+        "Robot"
+      ],
+      "summary": "The slide references logging into RMS and confirming that the robot control screen loads before UPS removes the master estop during an unplanned restart.",
+      "observed_evidence": [
+        "Slide title: 'Services / Unplanned restart'",
+        "Visible text: 'Log into RMS and confirm the screen loads before having UPS remove the master estop'",
+        "Visible text includes RMS URL ending in '/monitor/robotControl'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "supports",
+          "target": "proc_optisweep_training_internal_0133_01"
+        }
+      ],
+      "retrieval_text": "Services unplanned restart guidance references RMS robotControl screen verification. User should log into RMS and confirm the screen loads before UPS removes the master estop. URL shown: fortna-rms-primary.txrth.otnet.ups.com/static/rms/#/monitor/robotControl.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0133_01",
+      "title": "Verify RMS robot control screen before master estop removal during unplanned restart",
+      "procedure_type": "validation_check",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        133
+      ],
+      "systems": [
+        "RMS"
+      ],
+      "components": [
+        "robotControl screen",
+        "master estop",
+        "Robot"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "An unplanned restart situation exists",
+        "Access to RMS is available",
+        "UPS is prepared to remove the master estop after confirmation"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0133"
+      ],
+      "procedure_visual_summary": "Slide titled 'Services / Unplanned restart' states to log into RMS and confirm the screen loads before having UPS remove the master estop. The RMS robotControl URL is shown.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Log into RMS and navigate to the robot control screen shown on the slide.",
+          "expected_outcome": "The RMS robot control screen is opened or attempting to load.",
+          "validation_check": "Confirm the target RMS screen is reached.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:133",
+            "artifact:slide_artifact_optisweep_training_internal_0133"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0133"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0133"
+          ],
+          "visual_region_hint": "Center text region containing 'Log into RMS' and the displayed robotControl URL."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Confirm that the screen loads before having UPS remove the master estop.",
+          "expected_outcome": "The RMS screen has loaded prior to master estop removal.",
+          "validation_check": "Verify the screen is loaded before UPS proceeds with master estop removal.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:133",
+            "artifact:slide_artifact_optisweep_training_internal_0133"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0133"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0133"
+          ],
+          "visual_region_hint": "Center text region containing 'confirm the screen loads before having UPS remove the master estop'."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0133_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Unplanned restart check: log into RMS, open the robotControl screen, and confirm the screen loads before UPS removes the master estop."
+    }
+  ],
+  "discarded_candidates": []
+}

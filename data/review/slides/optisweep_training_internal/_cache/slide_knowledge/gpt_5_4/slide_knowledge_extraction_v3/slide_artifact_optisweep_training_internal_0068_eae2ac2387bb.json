@@ -1,0 +1,122 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0068_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        68
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0068"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "LatticeCodeModel maps lattice codes to StationId values",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "Geek AGV Database",
+        "LatticeCodeModel"
+      ],
+      "summary": "The LatticeCodeModel stores lattice codes together with their respective StationId. This table is used as the mapping reference between station identifiers and the lattice code required by Geek.",
+      "observed_evidence": [
+        "Slide text states: 'The LatticeCodeModel stores the lattice codes and their respective StationId.'",
+        "Slide title and section identify this as part of the Geek AGV Database.",
+        "Visual element is identified as a database schema/reference slide."
+      ],
+      "relationships": [
+        {
+          "relationship_type": "maps",
+          "from_component": "LatticeCodeModel",
+          "to_component": "StationId",
+          "details": "Stores the relationship between lattice codes and station identifiers."
+        }
+      ],
+      "retrieval_text": "Geek AGV Database LatticeCodeModel database reference. LatticeCodeModel stores lattice codes and their respective StationId values. Used as a mapping table between StationId and lattice code.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0068_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        68
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0068"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Geek Comm converts robotics StationId requests into required lattice codes",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Geek Comm module",
+        "robotics module",
+        "LatticeCodeModel"
+      ],
+      "summary": "When tote induction or drop-off occurs, Geek requires the location's lattice code. The Geek Comm module uses the LatticeCodeModel table to convert a StationId from a robotics module request into the lattice code expected by Geek.",
+      "observed_evidence": [
+        "Slide text states: 'When a tote is inducted or dropped off. Geek requires a lattice code of the location.'",
+        "Slide text states: 'Geek Comm module uses this table to covert the StationId from robotics module request to the lattice code Geek requires.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "uses",
+          "from_component": "Geek Comm module",
+          "to_component": "LatticeCodeModel",
+          "details": "Uses the table as a lookup reference."
+        },
+        {
+          "relationship_type": "converts",
+          "from_component": "robotics module request StationId",
+          "to_component": "Geek-required lattice code",
+          "details": "Conversion occurs to satisfy Geek location input requirements during tote movements."
+        }
+      ],
+      "retrieval_text": "Geek Comm module uses LatticeCodeModel to convert StationId from robotics module requests into the lattice code required by Geek. This applies when a tote is inducted or dropped off.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0068_01",
+      "title": "No explicit operator or support procedure on LatticeCodeModel slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        68
+      ],
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Geek AGV Database",
+        "LatticeCodeModel",
+        "Geek Comm module",
+        "robotics module"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide describes database mapping behavior and module interaction only."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0068"
+      ],
+      "procedure_visual_summary": "Database reference slide describing LatticeCodeModel storage and how Geek Comm uses it to convert StationId to lattice code.",
+      "steps": [],
+      "warnings": [
+        "Do not infer edit, lookup, or validation steps from this slide because no action sequence is provided."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0068_01",
+        "oku_optisweep_training_internal_0068_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide provides database model context and system behavior, but no explicit reusable action steps."
+    }
+  ],
+  "discarded_candidates": []
+}

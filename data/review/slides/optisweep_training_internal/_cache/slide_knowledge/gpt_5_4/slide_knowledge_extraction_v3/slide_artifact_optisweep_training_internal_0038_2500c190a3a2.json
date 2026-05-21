@@ -1,0 +1,96 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0038_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        38
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0038"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "Main statistics provide core system statistics categories",
+      "systems": [
+        "OptiSweep overall system"
+      ],
+      "components": [
+        "Tipper",
+        "Hospital"
+      ],
+      "summary": "The slide identifies a statistics area described as Main Statistics for core system statistics and lists statistic types including Tippers, Estop, and Volume.",
+      "observed_evidence": [
+        "Slide title: Overall System / Statistics",
+        "Bullet: Main Statistics: Core system statistics",
+        "Bullet: Types of Statistics:",
+        "Sub-bullets: Tippers",
+        "Sub-bullets: Estop",
+        "Sub-bullets: Volume (Total Exchanges, To Tipper, To Hospital)"
+      ],
+      "relationships": [
+        {
+          "relation": "includes_statistic_type",
+          "target": "Tippers"
+        },
+        {
+          "relation": "includes_statistic_type",
+          "target": "Estop"
+        },
+        {
+          "relation": "includes_statistic_type",
+          "target": "Volume"
+        },
+        {
+          "relation": "volume_subtypes_include",
+          "target": "Total Exchanges"
+        },
+        {
+          "relation": "volume_subtypes_include",
+          "target": "To Tipper"
+        },
+        {
+          "relation": "volume_subtypes_include",
+          "target": "To Hospital"
+        }
+      ],
+      "retrieval_text": "Overall System Statistics slide states that Main Statistics are core system statistics. Types of statistics listed are Tippers, Estop, and Volume, where Volume includes Total Exchanges, To Tipper, and To Hospital.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0038_01",
+      "title": "No explicit procedure on statistics overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        38
+      ],
+      "systems": [
+        "OptiSweep overall system"
+      ],
+      "components": [
+        "Tipper",
+        "Hospital"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0038"
+      ],
+      "procedure_visual_summary": "Overview slide listing system statistics categories: Tippers, Estop, and Volume metrics.",
+      "steps": [],
+      "warnings": [
+        "Slide is an overview of statistic categories only.",
+        "No explicit action sequence, navigation path, or validation procedure is shown."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0038_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide only enumerates statistics categories and does not provide reusable operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,123 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Planning for Peak System Capacity",
+      "timestamp_start": "00:49:12.143",
+      "timestamp_end": "00:50:06.800",
+      "primary_intent": "Explain how to plan system resources for peak load",
+      "operational_intents": [
+        "Discuss need for additional APBS, sorters, and tippers",
+        "Describe UPS planning approach for worst-case scenarios",
+        "Introduce system testing and simulation based on peak values"
+      ],
+      "knowledge_extraction_strategy": "Extract planning and resource allocation details",
+      "why_this_strategy": "Focus on peak capacity planning and system simulation",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000017"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000017"
+      ]
+    },
+    {
+      "scene_title": "Introduction to Robot Management System (RMS)",
+      "timestamp_start": "00:50:06.800",
+      "timestamp_end": "00:51:44.480",
+      "primary_intent": "Explain RMS role and access methods",
+      "operational_intents": [
+        "Define RMS as the control system for AGVs",
+        "Describe RMS web application access via unique IP",
+        "Explain communication between RMS and Optisweep via REST API"
+      ],
+      "knowledge_extraction_strategy": "Extract RMS system architecture and access details",
+      "why_this_strategy": "Clarify RMS function and integration with AGVs",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000017"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000017"
+      ]
+    },
+    {
+      "scene_title": "RMS User Authentication and Overview Screen",
+      "timestamp_start": "00:51:44.480",
+      "timestamp_end": "00:52:13.760",
+      "primary_intent": "Describe RMS login and overview interface",
+      "operational_intents": [
+        "Explain login process with username and password",
+        "Describe overview screen layout and information display",
+        "Mention custom APIs developed with Geek Plus"
+      ],
+      "knowledge_extraction_strategy": "Extract user interface and authentication process",
+      "why_this_strategy": "Focus on user access and overview screen features",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000017"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000017"
+      ]
+    },
+    {
+      "scene_title": "Accessing RMS API Specifications and Support Considerations",
+      "timestamp_start": "00:52:14.480",
+      "timestamp_end": "00:54:30.192",
+      "primary_intent": "Discuss RMS API specs and support challenges",
+      "operational_intents": [
+        "Locate API specs on Confluence",
+        "Explain importance of controlled API access for support",
+        "Describe risks of bypassing official software"
+      ],
+      "knowledge_extraction_strategy": "Extract API access and support protocols",
+      "why_this_strategy": "Highlight API usage and support best practices",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000018"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000018"
+      ]
+    },
+    {
+      "scene_title": "Overview of RMS Application Navigation and Features",
+      "timestamp_start": "00:54:30.192",
+      "timestamp_end": "00:58:19.497",
+      "primary_intent": "Explain RMS UI navigation and main features",
+      "operational_intents": [
+        "Describe language selection and sidebar menu",
+        "Introduce map monitor as primary user interface",
+        "Explain RMS station and lane concepts"
+      ],
+      "knowledge_extraction_strategy": "Extract UI navigation and system overview details",
+      "why_this_strategy": "Focus on RMS interface and terminology",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000018",
+        "cand_upsfortna_optisweep_training_day1_20260317_000019"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000018",
+        "sss_upsfortna_optisweep_training_day1_20260317_000019"
+      ]
+    },
+    {
+      "scene_title": "RMS System Status Indicators and AGV Connectivity",
+      "timestamp_start": "00:58:19.497",
+      "timestamp_end": "01:01:21.680",
+      "primary_intent": "Describe RMS status indicators and AGV connection states",
+      "operational_intents": [
+        "Explain alarm history and active robot count",
+        "Describe charging robot count and error message panel",
+        "Discuss AGV disconnection causes and logging",
+        "Clarify difference between shutdown and turned off states"
+      ],
+      "knowledge_extraction_strategy": "Extract system monitoring and AGV status details",
+      "why_this_strategy": "Focus on system health and AGV connectivity monitoring",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000019",
+        "cand_upsfortna_optisweep_training_day1_20260317_000020"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000019",
+        "sss_upsfortna_optisweep_training_day1_20260317_000020"
+      ]
+    }
+  ]
+}

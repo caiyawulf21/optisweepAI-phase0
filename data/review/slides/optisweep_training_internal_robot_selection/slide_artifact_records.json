@@ -1,0 +1,536 @@
+[
+  {
+    "artifact_id": "slide_artifact_optisweep_training_internal_robot_selection_0024",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_file": "data\\OptiSweep Training Slides [INTERNAL ONLY].pdf",
+    "slide_number": 24,
+    "slide_title": "Map Monitor / Message Panel",
+    "section": "Map Monitor",
+    "visible_text": [
+      "23",
+      "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+      "Map Monitor",
+      "Message Panel",
+      "• Open message panel",
+      "• Count of active Robots",
+      "• Count of Robots charging",
+      "• Drop down to show AGV faults",
+      "• Count of AGVs disconnected",
+      "• Inspection to view details of fault",
+      "• Locate Faulted AGV",
+      "• E stop the system"
+    ],
+    "ocr_text": [],
+    "image_path": "data\\review\\slides\\optisweep_training_internal_robot_selection\\images\\slide_0024.png",
+    "visual_summary": "Map Monitor / Message Panel © FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL. Map Monitor Message Panel • Open message panel",
+    "visual_elements": [
+      {
+        "element_type": "flow",
+        "description": "Rendered slide screenshot is available as this artifact; labels come from PDF text and optional OCR.",
+        "visible_labels": [
+          "23",
+          "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+          "Map Monitor",
+          "Message Panel",
+          "• Open message panel",
+          "• Count of active Robots",
+          "• Count of Robots charging",
+          "• Drop down to show AGV faults",
+          "• Count of AGVs disconnected",
+          "• Inspection to view details of fault",
+          "• Locate Faulted AGV",
+          "• E stop the system"
+        ],
+        "systems_or_components": [
+          "AGV",
+          "Robot"
+        ]
+      }
+    ],
+    "candidate_record_types": [
+      "operational_knowledge_unit"
+    ],
+    "evidence_hints": {
+      "has_numbered_steps": false,
+      "has_action_terms": true,
+      "has_api_names": false,
+      "has_database_terms": false,
+      "has_state_terms": false,
+      "has_ui_terms": false,
+      "has_process_terms": true,
+      "candidate_record_types": [
+        "operational_knowledge_unit"
+      ]
+    },
+    "source_refs": [
+      "deck:optisweep_training_internal_robot_selection",
+      "slide:24",
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+    ],
+    "validation_status": "needs_review"
+  },
+  {
+    "artifact_id": "slide_artifact_optisweep_training_internal_robot_selection_0025",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_file": "data\\OptiSweep Training Slides [INTERNAL ONLY].pdf",
+    "slide_number": 25,
+    "slide_title": "Map Monitor / Quick Select",
+    "section": "Map Monitor",
+    "visible_text": [
+      "24",
+      "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+      "Map Monitor",
+      "Quick Select",
+      "• View all AGV active paths",
+      "• View Station Ids",
+      "• View Charger Ids",
+      "• Robot Selection",
+      "• Container Selection",
+      "• Cell Selection",
+      "• Charger Selection"
+    ],
+    "ocr_text": [],
+    "image_path": "data\\review\\slides\\optisweep_training_internal_robot_selection\\images\\slide_0025.png",
+    "visual_summary": "Map Monitor / Quick Select © FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL. Map Monitor Quick Select • View all AGV active paths",
+    "visual_elements": [
+      {
+        "element_type": "ui_screen",
+        "description": "Rendered slide screenshot is available as this artifact; labels come from PDF text and optional OCR.",
+        "visible_labels": [
+          "24",
+          "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+          "Map Monitor",
+          "Quick Select",
+          "• View all AGV active paths",
+          "• View Station Ids",
+          "• View Charger Ids",
+          "• Robot Selection",
+          "• Container Selection",
+          "• Cell Selection",
+          "• Charger Selection"
+        ],
+        "systems_or_components": [
+          "AGV",
+          "Robot"
+        ]
+      }
+    ],
+    "candidate_record_types": [
+      "ui_reference"
+    ],
+    "evidence_hints": {
+      "has_numbered_steps": false,
+      "has_action_terms": true,
+      "has_api_names": false,
+      "has_database_terms": false,
+      "has_state_terms": false,
+      "has_ui_terms": true,
+      "has_process_terms": false,
+      "candidate_record_types": [
+        "ui_reference"
+      ]
+    },
+    "source_refs": [
+      "deck:optisweep_training_internal_robot_selection",
+      "slide:25",
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0025"
+    ],
+    "validation_status": "needs_review"
+  },
+  {
+    "artifact_id": "slide_artifact_optisweep_training_internal_robot_selection_0026",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_file": "data\\OptiSweep Training Slides [INTERNAL ONLY].pdf",
+    "slide_number": 26,
+    "slide_title": "Robot Selection / Overview",
+    "section": "Robot Selection",
+    "visible_text": [
+      "25",
+      "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+      "Robot Selection",
+      "Overview",
+      "When Robot option is selected, select a robot to",
+      "view robot details.",
+      "The robot selected will have a box around it",
+      "showing its selected.",
+      "If the robot has a tote it will show under the robot Id.",
+      "If the tote has a “?” before it, that means the robot",
+      "has been removed but the tote has not. If a robot",
+      "doesn’t have a tote it will say layer_1",
+      "• Robot colors",
+      "◦Purple: robot disconnected",
+      "◦Blue/Flashing Blue: robot in task/searching for label",
+      "◦Green: robot not in a task",
+      "◦Red: fault/low battery"
+    ],
+    "ocr_text": [],
+    "image_path": "data\\review\\slides\\optisweep_training_internal_robot_selection\\images\\slide_0026.png",
+    "visual_summary": "Robot Selection / Overview © FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL. Robot Selection Overview When Robot option is selected, select a robot to",
+    "visual_elements": [
+      {
+        "element_type": "ui_screen",
+        "description": "Rendered slide screenshot is available as this artifact; labels come from PDF text and optional OCR.",
+        "visible_labels": [
+          "25",
+          "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+          "Robot Selection",
+          "Overview",
+          "When Robot option is selected, select a robot to",
+          "view robot details.",
+          "The robot selected will have a box around it",
+          "showing its selected.",
+          "If the robot has a tote it will show under the robot Id.",
+          "If the tote has a “?” before it, that means the robot",
+          "has been removed but the tote has not. If a robot",
+          "doesn’t have a tote it will say layer_1",
+          "• Robot colors",
+          "◦Purple: robot disconnected",
+          "◦Blue/Flashing Blue: robot in task/searching for label",
+          "◦Green: robot not in a task",
+          "◦Red: fault/low battery"
+        ],
+        "systems_or_components": [
+          "Robot",
+          "Tote"
+        ]
+      }
+    ],
+    "candidate_record_types": [
+      "ui_reference",
+      "operational_knowledge_unit"
+    ],
+    "evidence_hints": {
+      "has_numbered_steps": false,
+      "has_action_terms": true,
+      "has_api_names": false,
+      "has_database_terms": false,
+      "has_state_terms": false,
+      "has_ui_terms": true,
+      "has_process_terms": true,
+      "candidate_record_types": [
+        "ui_reference",
+        "operational_knowledge_unit"
+      ]
+    },
+    "source_refs": [
+      "deck:optisweep_training_internal_robot_selection",
+      "slide:26",
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0026"
+    ],
+    "validation_status": "needs_review"
+  },
+  {
+    "artifact_id": "slide_artifact_optisweep_training_internal_robot_selection_0027",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_file": "data\\OptiSweep Training Slides [INTERNAL ONLY].pdf",
+    "slide_number": 27,
+    "slide_title": "Robot Selection / Add and Remove",
+    "section": "Robot Selection",
+    "visible_text": [
+      "26",
+      "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+      "Robot Selection",
+      "Add and Remove",
+      "• Add Robot",
+      "1. Enter the corresponding robot ID",
+      "2. Click “Add”",
+      "3. The system will show that the adding",
+      "was successful.",
+      "• Remove Robot",
+      "1. Enter the corresponding robot Id or",
+      "select the robot.",
+      "2. Click “Remove”",
+      "3. The system will show that the removal"
+    ],
+    "ocr_text": [],
+    "image_path": "data\\review\\slides\\optisweep_training_internal_robot_selection\\images\\slide_0027.png",
+    "visual_summary": "Robot Selection / Add and Remove © FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL. Robot Selection Add and Remove • Add Robot",
+    "visual_elements": [
+      {
+        "element_type": "ui_screen",
+        "description": "Rendered slide screenshot is available as this artifact; labels come from PDF text and optional OCR.",
+        "visible_labels": [
+          "26",
+          "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+          "Robot Selection",
+          "Add and Remove",
+          "• Add Robot",
+          "1. Enter the corresponding robot ID",
+          "2. Click “Add”",
+          "3. The system will show that the adding",
+          "was successful.",
+          "• Remove Robot",
+          "1. Enter the corresponding robot Id or",
+          "select the robot.",
+          "2. Click “Remove”",
+          "3. The system will show that the removal"
+        ],
+        "systems_or_components": [
+          "Robot"
+        ]
+      }
+    ],
+    "candidate_record_types": [
+      "procedure",
+      "ui_reference"
+    ],
+    "evidence_hints": {
+      "has_numbered_steps": true,
+      "has_action_terms": true,
+      "has_api_names": false,
+      "has_database_terms": false,
+      "has_state_terms": false,
+      "has_ui_terms": true,
+      "has_process_terms": false,
+      "candidate_record_types": [
+        "procedure",
+        "ui_reference"
+      ]
+    },
+    "source_refs": [
+      "deck:optisweep_training_internal_robot_selection",
+      "slide:27",
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+    ],
+    "validation_status": "needs_review"
+  },
+  {
+    "artifact_id": "slide_artifact_optisweep_training_internal_robot_selection_0028",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_file": "data\\OptiSweep Training Slides [INTERNAL ONLY].pdf",
+    "slide_number": 28,
+    "slide_title": "Robot Selection / Restart",
+    "section": "Robot Selection",
+    "visible_text": [
+      "27",
+      "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+      "Robot Selection",
+      "Restart",
+      "• Restart Robot",
+      "1. Enter the corresponding robot Id or",
+      "select the robot.",
+      "2. Click “Restart”",
+      "3. The robot will restart (it is at the restart",
+      "point or on the QR code cell).",
+      "4. After starting, the robot that has been",
+      "positioned will be displayed on the",
+      "map."
+    ],
+    "ocr_text": [],
+    "image_path": "data\\review\\slides\\optisweep_training_internal_robot_selection\\images\\slide_0028.png",
+    "visual_summary": "Robot Selection / Restart © FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL. Robot Selection Restart • Restart Robot",
+    "visual_elements": [
+      {
+        "element_type": "ui_screen",
+        "description": "Rendered slide screenshot is available as this artifact; labels come from PDF text and optional OCR.",
+        "visible_labels": [
+          "27",
+          "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+          "Robot Selection",
+          "Restart",
+          "• Restart Robot",
+          "1. Enter the corresponding robot Id or",
+          "select the robot.",
+          "2. Click “Restart”",
+          "3. The robot will restart (it is at the restart",
+          "point or on the QR code cell).",
+          "4. After starting, the robot that has been",
+          "positioned will be displayed on the",
+          "map."
+        ],
+        "systems_or_components": [
+          "Robot"
+        ]
+      }
+    ],
+    "candidate_record_types": [
+      "procedure",
+      "ui_reference"
+    ],
+    "evidence_hints": {
+      "has_numbered_steps": true,
+      "has_action_terms": true,
+      "has_api_names": false,
+      "has_database_terms": false,
+      "has_state_terms": false,
+      "has_ui_terms": true,
+      "has_process_terms": false,
+      "candidate_record_types": [
+        "procedure",
+        "ui_reference"
+      ]
+    },
+    "source_refs": [
+      "deck:optisweep_training_internal_robot_selection",
+      "slide:28",
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028"
+    ],
+    "validation_status": "needs_review"
+  },
+  {
+    "artifact_id": "slide_artifact_optisweep_training_internal_robot_selection_0029",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_file": "data\\OptiSweep Training Slides [INTERNAL ONLY].pdf",
+    "slide_number": 29,
+    "slide_title": "Robot Selection / Go-to function",
+    "section": "Robot Selection",
+    "visible_text": [
+      "28",
+      "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+      "Robot Selection",
+      "Go-to function",
+      "An AGV not in a task can be sent to any",
+      "square. This is helpful when trying to",
+      "recover quickly. Example if a Tipper goes",
+      "down and an AGV will not leave. You can",
+      "remove and add the agv and use the go to",
+      "function to drop it off at the hospital. The",
+      "AGV will pickup a new task once it’s tote",
+      "has been removed",
+      "1. Select an AGV",
+      "2. Select Go to",
+      "3. Select which square you want the AGV",
+      "to go to",
+      "4. Select Confirm",
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "ocr_text": [],
+    "image_path": "data\\review\\slides\\optisweep_training_internal_robot_selection\\images\\slide_0029.png",
+    "visual_summary": "Robot Selection / Go-to function © FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL. Robot Selection Go-to function An AGV not in a task can be sent to any",
+    "visual_elements": [
+      {
+        "element_type": "ui_screen",
+        "description": "Rendered slide screenshot is available as this artifact; labels come from PDF text and optional OCR.",
+        "visible_labels": [
+          "28",
+          "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+          "Robot Selection",
+          "Go-to function",
+          "An AGV not in a task can be sent to any",
+          "square. This is helpful when trying to",
+          "recover quickly. Example if a Tipper goes",
+          "down and an AGV will not leave. You can",
+          "remove and add the agv and use the go to",
+          "function to drop it off at the hospital. The",
+          "AGV will pickup a new task once it’s tote",
+          "has been removed",
+          "1. Select an AGV",
+          "2. Select Go to",
+          "3. Select which square you want the AGV",
+          "to go to",
+          "4. Select Confirm",
+          "1",
+          "2",
+          "3"
+        ],
+        "systems_or_components": [
+          "AGV",
+          "Tipper",
+          "Hospital",
+          "Robot",
+          "Tote"
+        ]
+      }
+    ],
+    "candidate_record_types": [
+      "procedure",
+      "ui_reference",
+      "operational_knowledge_unit"
+    ],
+    "evidence_hints": {
+      "has_numbered_steps": true,
+      "has_action_terms": true,
+      "has_api_names": false,
+      "has_database_terms": false,
+      "has_state_terms": false,
+      "has_ui_terms": true,
+      "has_process_terms": true,
+      "candidate_record_types": [
+        "procedure",
+        "ui_reference",
+        "operational_knowledge_unit"
+      ]
+    },
+    "source_refs": [
+      "deck:optisweep_training_internal_robot_selection",
+      "slide:29",
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+    ],
+    "validation_status": "needs_review"
+  },
+  {
+    "artifact_id": "slide_artifact_optisweep_training_internal_robot_selection_0030",
+    "deck_id": "optisweep_training_internal_robot_selection",
+    "source_file": "data\\OptiSweep Training Slides [INTERNAL ONLY].pdf",
+    "slide_number": 30,
+    "slide_title": "Container Selection / Totes",
+    "section": "Container Selection",
+    "visible_text": [
+      "29",
+      "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+      "Container Selection",
+      "Totes",
+      "• Dark blue indicates the presence of a",
+      "tote. While light blue represents empty",
+      "rack. If you select it, a box icon will show",
+      "as well as the tote number",
+      "• You can also find a tote by typing the",
+      "number in and selecting the rack or AGV",
+      "it’s located on if its in the system.",
+      "1",
+      "2"
+    ],
+    "ocr_text": [],
+    "image_path": "data\\review\\slides\\optisweep_training_internal_robot_selection\\images\\slide_0030.png",
+    "visual_summary": "Container Selection / Totes © FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL. Container Selection Totes • Dark blue indicates the presence of a",
+    "visual_elements": [
+      {
+        "element_type": "ui_screen",
+        "description": "Rendered slide screenshot is available as this artifact; labels come from PDF text and optional OCR.",
+        "visible_labels": [
+          "29",
+          "© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.",
+          "Container Selection",
+          "Totes",
+          "• Dark blue indicates the presence of a",
+          "tote. While light blue represents empty",
+          "rack. If you select it, a box icon will show",
+          "as well as the tote number",
+          "• You can also find a tote by typing the",
+          "number in and selecting the rack or AGV",
+          "it’s located on if its in the system.",
+          "1",
+          "2"
+        ],
+        "systems_or_components": [
+          "AGV",
+          "Tote"
+        ]
+      }
+    ],
+    "candidate_record_types": [
+      "ui_reference"
+    ],
+    "evidence_hints": {
+      "has_numbered_steps": false,
+      "has_action_terms": true,
+      "has_api_names": false,
+      "has_database_terms": false,
+      "has_state_terms": false,
+      "has_ui_terms": true,
+      "has_process_terms": false,
+      "candidate_record_types": [
+        "ui_reference"
+      ]
+    },
+    "source_refs": [
+      "deck:optisweep_training_internal_robot_selection",
+      "slide:30",
+      "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+    ],
+    "validation_status": "needs_review"
+  }
+]

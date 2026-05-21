@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "cand_upsfortna_optisweep_training_day1_20260317_000037_s1",
+      "timestamp_start": "00:10:59.690",
+      "timestamp_end": "00:11:21.440",
+      "intent": "Explain the software integration stack: OptiSweep as the integrating software, Ignition as the OPC server communicating with tippers, and feeding data to AVEVA via OPC integration.",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000181",
+        "vec_upsfortna_optisweep_training_day1_20260317_000182",
+        "vec_upsfortna_optisweep_training_day1_20260317_000183",
+        "vec_upsfortna_optisweep_training_day1_20260317_000184",
+        "vec_upsfortna_optisweep_training_day1_20260317_000185"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

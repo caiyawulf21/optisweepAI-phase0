@@ -1,0 +1,118 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGB Removal Guidelines and Customer Interaction",
+      "timestamp_start": "01:37:57.973",
+      "timestamp_end": "01:38:53.720",
+      "primary_intent": "Explain do's and don'ts regarding AGB removal and customer guidance",
+      "operational_intents": [
+        "Communicate restrictions on removing AGB from Geek",
+        "Advise directing customers to use AVEVA or hospital",
+        "Clarify control and information flow when removing boxes"
+      ],
+      "knowledge_extraction_strategy": "Extract rules and customer interaction protocols",
+      "why_this_strategy": "Focus on operational restrictions and customer guidance",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000033"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000033"
+      ]
+    },
+    {
+      "scene_title": "Cell Selection and QR Code Usage",
+      "timestamp_start": "01:38:53.760",
+      "timestamp_end": "01:40:05.460",
+      "primary_intent": "Describe cell selection and interpretation of QR codes",
+      "operational_intents": [
+        "Explain how to view QR code by selecting cells",
+        "Identify special cells as stations with workstation IDs",
+        "Demonstrate use of cell codes for operator instructions"
+      ],
+      "knowledge_extraction_strategy": "Extract cell code identification and operator communication methods",
+      "why_this_strategy": "Clarify cell and QR code operational usage",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000033"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000033"
+      ]
+    },
+    {
+      "scene_title": "Load and Unload Direction Nodes Overview",
+      "timestamp_start": "01:40:05.460",
+      "timestamp_end": "01:41:02.960",
+      "primary_intent": "Explain load and unload direction nodes and their operational impact",
+      "operational_intents": [
+        "Clarify design issues related to load/unload directions",
+        "Describe unload direction allowing only AGVs without totes",
+        "Introduce concept of load direction activation"
+      ],
+      "knowledge_extraction_strategy": "Extract operational constraints and design considerations",
+      "why_this_strategy": "Separate design issues from support responsibilities",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000033"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000033"
+      ]
+    },
+    {
+      "scene_title": "AGV Access Between Cells Based on Tote Status",
+      "timestamp_start": "01:41:02.960",
+      "timestamp_end": "01:43:02.960",
+      "primary_intent": "Detail AGV movement permissions between cells based on tote presence",
+      "operational_intents": [
+        "Explain access rules for AGVs with and without totes",
+        "Identify exceptions in thematic maps",
+        "Discuss cell code uniqueness and related data structures"
+      ],
+      "knowledge_extraction_strategy": "Extract movement rules and data interpretation",
+      "why_this_strategy": "Clarify AGV access control and cell code meaning",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000034"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000034"
+      ]
+    },
+    {
+      "scene_title": "Workstation ID and Node Code Details",
+      "timestamp_start": "01:43:02.960",
+      "timestamp_end": "01:44:06.460",
+      "primary_intent": "Explain workstation ID visibility and node code relevance",
+      "operational_intents": [
+        "Show how to identify workstation IDs on cells",
+        "Clarify which geek-related data is operationally relevant",
+        "Discuss default values and their significance"
+      ],
+      "knowledge_extraction_strategy": "Extract workstation identification and data filtering methods",
+      "why_this_strategy": "Focus on relevant operational identifiers",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000034"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000034"
+      ]
+    },
+    {
+      "scene_title": "Charger Selection and Manual AGV Charging Procedures",
+      "timestamp_start": "01:44:06.460",
+      "timestamp_end": "01:47:06.800",
+      "primary_intent": "Describe charger selection features and manual charging process",
+      "operational_intents": [
+        "Identify charger status and associated robot",
+        "Explain disabling/enabling chargers in RMS and Geek",
+        "Outline manual intervention for low battery AGVs"
+      ],
+      "knowledge_extraction_strategy": "Extract charger management and manual override procedures",
+      "why_this_strategy": "Highlight critical charging operations and controls",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000035"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000035"
+      ]
+    }
+  ]
+}

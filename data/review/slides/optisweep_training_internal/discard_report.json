@@ -1,0 +1,988 @@
+[
+  {
+    "candidate_id": "proc_optisweep_training_internal_0004_02",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      4
+    ],
+    "discard_reasons": [
+      "no concrete action steps"
+    ],
+    "failed_rules": [
+      "no_concrete_action_steps"
+    ],
+    "original_candidate_summary": "Process a full destination in a Belted ACB bag station flow"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0006_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      6
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit AGV operating procedure present on slide"
+  },
+  {
+    "candidate_id": "discarded_optisweep_training_internal_0007_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      7
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit operational procedure on tote racking impact slide"
+  },
+  {
+    "candidate_id": "proc_optisweep_training_internal_0008_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      8
+    ],
+    "discard_reasons": [
+      "no concrete action steps"
+    ],
+    "failed_rules": [
+      "no_concrete_action_steps"
+    ],
+    "original_candidate_summary": "Operate tipper station tote dump cycle"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0009_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      9
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable procedure present on software components overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0010_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      10
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "Discarded procedure candidate: sort lifecycle phase descriptions"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_11_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      11
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable operator or support procedure explicitly defined on parcel lifecycle slide"
+  },
+  {
+    "candidate_id": "proc_optisweep_training_internal_022_02",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      22
+    ],
+    "discard_reasons": [
+      "no concrete action steps"
+    ],
+    "failed_rules": [
+      "no_concrete_action_steps"
+    ],
+    "original_candidate_summary": "Expand or collapse the Home screen menu"
+  },
+  {
+    "candidate_id": "proc_optisweep_training_internal_0036_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      36
+    ],
+    "discard_reasons": [
+      "no concrete action steps"
+    ],
+    "failed_rules": [
+      "no_concrete_action_steps"
+    ],
+    "original_candidate_summary": "Initiate bag out by sorter leg"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0038_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      38
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure on statistics overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0039_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      39
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable procedure on HMI Calculations overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0042_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      42
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "Hot bin response behavior overview"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0043_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      43
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "Use Aveva API page overall system functions"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0047_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      47
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable procedure present on System Metrics / Aveva API page slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0050_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      50
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from Tote Tasks / Aveva API page"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_58_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      58
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable procedure present on module breakdown slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0060_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      60
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit operator or support procedure on OPC Comm Module detailed design slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_61_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      61
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable operator or support procedure present on Sorter Sweeper detailed design slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0064_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      64
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure present on database overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0065_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      65
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable procedure present on EntityLogs overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0068_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      68
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit operator or support procedure on LatticeCodeModel slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0069_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      69
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure on OpcConfiguration and OpcTags slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0072_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      72
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable procedure on SorterSideDatabaseModel overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0073_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      73
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure on SortLocationsDatabaseModel slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0074_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      74
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit shutdown staging update procedure present"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0075_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      75
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit charging database procedure present on slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0077_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      77
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure present on Tipper database slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0079_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      79
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure on Robot States slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0080_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      80
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from Robot States Sorter reference slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0081_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      81
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure present on Robot Tote Database Model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0082_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      82
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from Robot Command Database Model overview"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0083_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      83
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure present on Robot Task Database Model slide"
+  },
+  {
+    "candidate_id": "discarded_optisweep_training_internal_0084_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      84
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from AGV Error Model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_85_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      85
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit AGV error handling procedure on slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0086_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      86
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from Location Active Dwell Model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0088_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      88
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from System Database Model state list slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0089_001",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      89
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from Sorter Sweeper Database overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0090_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      90
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from Sorter Sweeper Database foundation slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0091_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      91
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure on Sorter Model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0092_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      92
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure on location model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0093_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      93
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure on Sorter Sweeper database location model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0095_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      95
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from Tipper Station model overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0096_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      96
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure on Tipper Model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0097_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      97
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure present on tag model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0098_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      98
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure on Bits Model slide"
+  },
+  {
+    "candidate_id": "pca_optisweep_training_internal_0100_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      100
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure on item models slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_101_001",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      101
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure on destination model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0102_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      102
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable procedure present on Ignition lane activity model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0103_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      103
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure present on Tote Model slide"
+  },
+  {
+    "candidate_id": "discarded_optisweep_training_internal_0104_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      104
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure on Tote Config Model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_105_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      105
+    ],
+    "discard_reasons": [
+      "no concrete action steps"
+    ],
+    "failed_rules": [
+      "no_concrete_action_steps"
+    ],
+    "original_candidate_summary": "Exchange record lifecycle during chute closure and tote replacement"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0107_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      107
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure on AGV Status Model slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0109_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      109
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure present for Reset Metrics sort cycle handling"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_111_001",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      111
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit procedure on Task Model slide"
+  },
+  {
+    "candidate_id": "discarded_optisweep_training_internal_114_no_procedure",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      114
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure candidate from APIs overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0116_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      116
+    ],
+    "discard_reasons": [
+      "no concrete action steps"
+    ],
+    "failed_rules": [
+      "no_concrete_action_steps"
+    ],
+    "original_candidate_summary": "Invoke System Shutdown API when the system is in a running state"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0117_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      117
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted for MF1 missing bagouts slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_118_none",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      118
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No explicit reusable procedure on AGV API reference slide"
+  },
+  {
+    "candidate_id": "proc_optisweep_training_internal_119_resendgeekcommand_recovery_candidate",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      119
+    ],
+    "discard_reasons": [
+      "no concrete action steps"
+    ],
+    "failed_rules": [
+      "no_concrete_action_steps"
+    ],
+    "original_candidate_summary": "Use ResendGeekCommand to resend a missed request to Geek+"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_121_none",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      121
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from tote API summary slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_124_001",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      124
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No reusable procedure present on tag mapping slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_128_no_explicit_procedure",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      128
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "No procedure extracted from service overview slide"
+  },
+  {
+    "candidate_id": "proc_attempt_optisweep_training_internal_0138_01",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [
+      138
+    ],
+    "discard_reasons": [
+      "missing steps"
+    ],
+    "failed_rules": [
+      "missing_steps"
+    ],
+    "original_candidate_summary": "Diagnose sorter-side missing AGV underneath sorter"
+  },
+  {
+    "candidate_id": "llm_discard_03cdfdaf1676",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_93d74a733838",
+    "candidate_type": "knowledge_unit",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_ff3fbfcd2483",
+    "candidate_type": "knowledge_unit",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_0509e4c73ffa",
+    "candidate_type": "knowledge_unit",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_010ee65c09c0",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_467e76f930eb",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_05ffa6d59a13",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_9b855699bb72",
+    "candidate_type": "knowledge_unit",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_019a9694f904",
+    "candidate_type": "knowledge_unit",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_0bf814932d00",
+    "candidate_type": "procedure",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_856532111f02",
+    "candidate_type": "knowledge_unit",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_0f0bb393230b",
+    "candidate_type": "knowledge_unit",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  },
+  {
+    "candidate_id": "llm_discard_b40dbcaf4ba5",
+    "candidate_type": "knowledge_unit",
+    "source_slide_numbers": [],
+    "discard_reasons": [],
+    "failed_rules": [],
+    "original_candidate_summary": ""
+  }
+]

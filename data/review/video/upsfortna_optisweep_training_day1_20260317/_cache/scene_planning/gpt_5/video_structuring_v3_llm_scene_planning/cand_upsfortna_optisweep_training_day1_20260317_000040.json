@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "scene_cand_upsfortna_optisweep_training_day1_20260317_000040_1",
+      "timestamp_start": "00:11:47.000",
+      "timestamp_end": "00:11:52.960",
+      "intent": "Clarify whether the discussed item is an industry-standard protocol and agree to look it up to confirm.",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000196",
+        "vec_upsfortna_optisweep_training_day1_20260317_000197",
+        "vec_upsfortna_optisweep_training_day1_20260317_000198",
+        "vec_upsfortna_optisweep_training_day1_20260317_000199",
+        "vec_upsfortna_optisweep_training_day1_20260317_000200"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

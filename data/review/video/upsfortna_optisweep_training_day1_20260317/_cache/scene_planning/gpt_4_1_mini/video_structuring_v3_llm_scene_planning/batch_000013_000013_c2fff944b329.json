@@ -1,0 +1,147 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Shutdown Location Overview and AGV Behavior",
+      "timestamp_start": "00:37:06.240",
+      "timestamp_end": "00:37:48.640",
+      "primary_intent": "Explain shutdown locations and AGV positioning",
+      "operational_intents": [
+        "Describe locations under the rack",
+        "Differentiate AGVs with and without totes",
+        "Explain shutdown movement behavior"
+      ],
+      "knowledge_extraction_strategy": "Extract shutdown location and AGV behavior details",
+      "why_this_strategy": "Focus on shutdown location and AGV movement distinctions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000606",
+        "vec_upsfortna_optisweep_training_day1_20260317_000607",
+        "vec_upsfortna_optisweep_training_day1_20260317_000608",
+        "vec_upsfortna_optisweep_training_day1_20260317_000609",
+        "vec_upsfortna_optisweep_training_day1_20260317_000610",
+        "vec_upsfortna_optisweep_training_day1_20260317_000611",
+        "vec_upsfortna_optisweep_training_day1_20260317_000612",
+        "vec_upsfortna_optisweep_training_day1_20260317_000613",
+        "vec_upsfortna_optisweep_training_day1_20260317_000614",
+        "vec_upsfortna_optisweep_training_day1_20260317_000615",
+        "vec_upsfortna_optisweep_training_day1_20260317_000616",
+        "vec_upsfortna_optisweep_training_day1_20260317_000617",
+        "vec_upsfortna_optisweep_training_day1_20260317_000618"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000013"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Back Out State and Manual Tote Handling",
+      "timestamp_start": "00:37:48.640",
+      "timestamp_end": "00:38:23.922",
+      "primary_intent": "Describe back out state and manual tote processing",
+      "operational_intents": [
+        "Explain back out cycle behavior",
+        "Detail manual pickup of totes",
+        "Describe exchange process at bag out"
+      ],
+      "knowledge_extraction_strategy": "Extract back out and manual tote handling procedures",
+      "why_this_strategy": "Clarify manual tote handling and exchange during back out",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000619",
+        "vec_upsfortna_optisweep_training_day1_20260317_000620",
+        "vec_upsfortna_optisweep_training_day1_20260317_000621",
+        "vec_upsfortna_optisweep_training_day1_20260317_000622",
+        "vec_upsfortna_optisweep_training_day1_20260317_000623"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000013"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Bag Out Process and AGV Movement Strategy",
+      "timestamp_start": "00:38:23.922",
+      "timestamp_end": "00:39:13.960",
+      "primary_intent": "Explain bag out process and AGV routing",
+      "operational_intents": [
+        "Describe closing of shoots and bag out initiation",
+        "Explain exchange marking for items",
+        "Detail AGV movement from back to front"
+      ],
+      "knowledge_extraction_strategy": "Extract bag out and AGV routing details",
+      "why_this_strategy": "Focus on bag out steps and AGV travel optimization",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000624",
+        "vec_upsfortna_optisweep_training_day1_20260317_000625",
+        "vec_upsfortna_optisweep_training_day1_20260317_000626",
+        "vec_upsfortna_optisweep_training_day1_20260317_000627",
+        "vec_upsfortna_optisweep_training_day1_20260317_000628",
+        "vec_upsfortna_optisweep_training_day1_20260317_000629",
+        "vec_upsfortna_optisweep_training_day1_20260317_000630",
+        "vec_upsfortna_optisweep_training_day1_20260317_000631",
+        "vec_upsfortna_optisweep_training_day1_20260317_000632",
+        "vec_upsfortna_optisweep_training_day1_20260317_000633",
+        "vec_upsfortna_optisweep_training_day1_20260317_000634",
+        "vec_upsfortna_optisweep_training_day1_20260317_000635",
+        "vec_upsfortna_optisweep_training_day1_20260317_000636",
+        "vec_upsfortna_optisweep_training_day1_20260317_000637",
+        "vec_upsfortna_optisweep_training_day1_20260317_000638",
+        "vec_upsfortna_optisweep_training_day1_20260317_000639",
+        "vec_upsfortna_optisweep_training_day1_20260317_000640"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000013"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Completion of Back Out and Readiness for Next Sort",
+      "timestamp_start": "00:39:13.960",
+      "timestamp_end": "00:39:23.040",
+      "primary_intent": "Confirm system state post back out",
+      "operational_intents": [
+        "Verify all items are out of system",
+        "Confirm readiness for next sort cycle"
+      ],
+      "knowledge_extraction_strategy": "Extract system state and readiness confirmation",
+      "why_this_strategy": "Capture end-of-cycle system status",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000641",
+        "vec_upsfortna_optisweep_training_day1_20260317_000642"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000013"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "High Volume Sorting and Sort Transition Challenges",
+      "timestamp_start": "00:39:23.040",
+      "timestamp_end": "00:40:08.840",
+      "primary_intent": "Discuss high volume sorting and sort transitions",
+      "operational_intents": [
+        "Explain continuous sorting in high volume environments",
+        "Describe typical sort phases and transitions",
+        "Highlight challenges in stopping between sorts"
+      ],
+      "knowledge_extraction_strategy": "Extract high volume sorting and transition insights",
+      "why_this_strategy": "Focus on operational challenges in high volume sorting",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000643",
+        "vec_upsfortna_optisweep_training_day1_20260317_000644",
+        "vec_upsfortna_optisweep_training_day1_20260317_000645",
+        "vec_upsfortna_optisweep_training_day1_20260317_000646",
+        "vec_upsfortna_optisweep_training_day1_20260317_000647",
+        "vec_upsfortna_optisweep_training_day1_20260317_000648",
+        "vec_upsfortna_optisweep_training_day1_20260317_000649",
+        "vec_upsfortna_optisweep_training_day1_20260317_000650",
+        "vec_upsfortna_optisweep_training_day1_20260317_000651",
+        "vec_upsfortna_optisweep_training_day1_20260317_000652",
+        "vec_upsfortna_optisweep_training_day1_20260317_000653",
+        "vec_upsfortna_optisweep_training_day1_20260317_000654"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000013"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

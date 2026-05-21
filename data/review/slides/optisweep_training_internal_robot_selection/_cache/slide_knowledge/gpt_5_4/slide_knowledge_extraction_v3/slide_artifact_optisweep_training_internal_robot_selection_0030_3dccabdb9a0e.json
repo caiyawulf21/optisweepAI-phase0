@@ -1,0 +1,168 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_030_01",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        30
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Tote presence and empty rack are indicated by color in Container Selection",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "Tote",
+        "Rack",
+        "Container Selection UI"
+      ],
+      "summary": "In the Container Selection Totes view, dark blue indicates a tote is present and light blue represents an empty rack. Selecting the item shows a box icon and the tote number.",
+      "observed_evidence": [
+        "Slide text states: 'Dark blue indicates the presence of a tote. While light blue represents empty rack.'",
+        "Slide text states: 'If you select it, a box icon will show as well as the tote number.'",
+        "Slide title and section identify the UI context as 'Container Selection / Totes'."
+      ],
+      "relationships": [
+        {
+          "relationship_type": "indicates",
+          "from": "Dark blue UI color",
+          "to": "Tote present"
+        },
+        {
+          "relationship_type": "indicates",
+          "from": "Light blue UI color",
+          "to": "Empty rack"
+        },
+        {
+          "relationship_type": "selection_reveals",
+          "from": "Selected tote/rack item",
+          "to": "Box icon and tote number"
+        }
+      ],
+      "retrieval_text": "Container Selection Totes UI reference: dark blue means a tote is present, light blue means the rack is empty. Selecting the item shows a box icon and the tote number.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_030_02",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        30
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Totes can be located by tote number in the Container Selection interface",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "Tote",
+        "Rack",
+        "Container Selection UI",
+        "Tote number input"
+      ],
+      "summary": "The slide indicates that a user can find a tote by typing in the tote number and then selecting the rack or AGV where it is located, if the tote exists in the system.",
+      "observed_evidence": [
+        "Slide text states: 'You can also find a tote by typing the number in and selecting the rack or AGV it’s located on if its in the system.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "searches_for",
+          "from": "Tote number input",
+          "to": "Tote"
+        },
+        {
+          "relationship_type": "locates_on",
+          "from": "Tote",
+          "to": "Rack or AGV"
+        }
+      ],
+      "retrieval_text": "Container Selection Totes allows tote lookup by entering a tote number. If the tote is in the system, the user can identify and select the rack or AGV where it is located.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_robot_selection_030_01",
+      "title": "Find a tote by tote number in Container Selection",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        30
+      ],
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "Container Selection UI",
+        "Tote",
+        "Rack",
+        "Tote number input"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is in the Container Selection Totes interface.",
+        "A tote number is available.",
+        "The tote may exist in the system."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+      ],
+      "procedure_visual_summary": "Slide describes the Container Selection Totes screen, including color indicators for tote presence and a tote-number-based lookup that identifies the rack or AGV location.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "In the Container Selection Totes interface, type the tote number into the tote lookup/input area.",
+          "expected_outcome": "The system uses the entered tote number to look for the tote record.",
+          "validation_check": "A tote corresponding to the entered number is found if it is in the system.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:30",
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+          ],
+          "visual_region_hint": "Container Selection Totes screen area containing the tote number entry control."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Select the rack or AGV where the tote is located.",
+          "expected_outcome": "The tote location is identified through the selected rack or AGV.",
+          "validation_check": "The selected rack or AGV corresponds to the tote location when the tote is in the system.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:30",
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+          ],
+          "visual_region_hint": "Rack or AGV selection area within the Container Selection Totes interface."
+        }
+      ],
+      "warnings": [
+        "The slide only states this works if the tote is in the system.",
+        "The exact field names and click sequence are not shown on the slide."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_robot_selection_030_01",
+        "oku_optisweep_training_internal_robot_selection_030_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure candidate for locating a tote in Container Selection: enter the tote number, then select the rack or AGV where the tote is located if the tote exists in the system."
+    }
+  ],
+  "discarded_candidates": []
+}

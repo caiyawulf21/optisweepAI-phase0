@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "cand_upsfortna_optisweep_training_day1_20260317_000002_scene_01",
+      "timestamp_start": "00:00:54.880",
+      "timestamp_end": "00:01:13.050",
+      "intent": "Brief coordination on participant whereabouts, confirming if Darrell is tied up in a meeting with Harvey and whether Harvey is onsite before proceeding.",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000006",
+        "vec_upsfortna_optisweep_training_day1_20260317_000007",
+        "vec_upsfortna_optisweep_training_day1_20260317_000008",
+        "vec_upsfortna_optisweep_training_day1_20260317_000009",
+        "vec_upsfortna_optisweep_training_day1_20260317_000010"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "video_metadata": {
+    "video_id": "training_video",
+    "duration_seconds": 90,
+    "source_video_path": "data/raw_videos/training.mp4"
+  },
+  "structuring_metadata": {
+    "mode": "full",
+    "structured_at": "2026-05-19T17:54:48.921559+00:00",
+    "input_dir": "C:\\Users\\caiyawulf\\AppData\\Local\\Temp\\pytest-of-CaiyaWulf\\pytest-29\\test_video_structure_agent_rej0\\input",
+    "output_dir": "data\\context",
+    "review_dir": "C:\\Users\\caiyawulf\\AppData\\Local\\Temp\\pytest-of-CaiyaWulf\\pytest-29\\test_video_structure_agent_rej0\\review",
+    "window_seconds": 60,
+    "llm_status": "fallback_keyword_structuring"
+  },
+  "trust_boundary": {
+    "raw_extraction_is_trusted_context": false,
+    "dataset0_write_allowed": false,
+    "validation_status": "needs_review"
+  },
+  "source_inputs": {
+    "transcript_segment_count": 1,
+    "frame_artifact_count": 1,
+    "ocr_record_count": 1,
+    "alignment_record_count": 1
+  },
+  "records": {
+    "transcript_aligned_evidence_chunks": [
+      {
+        "chunk_id": "vec_training_video_000001",
+        "video_id": "training_video",
+        "timestamp_start": "00:00:10.000",
+        "timestamp_end": "00:00:20.000",
+        "transcript_segment_ids": [
+          "vts_training_video_000001"
+        ],
+        "frame_ids": [
+          "vf_training_video_cue_000001_midpoint"
+        ],
+        "artifact_ids": [
+          "vf_training_video_cue_000001_midpoint"
+        ],
+        "transcript_text": "First open the RMS map, then check the AGV heartbeat alarm.",
+        "ocr_text": [
+          "RMS Map Heartbeat Alarm"
+        ],
+        "visual_summary": "RMS map UI with AGV heartbeat alarm text visible.",
+        "components": [
+          "RMS map",
+          "heartbeat",
+          "alarm"
+        ],
+        "systems": [
+          "RMS",
+          "AGV"
+        ],
+        "observed_signals": [
+          "alarm",
+          "heartbeat"
+        ],
+        "inferred_interpretations": [],
+        "candidate_context_types": [
+          "technology_reference",
+          "ui_reference"
+        ],
+        "candidate_procedure_refs": [],
+        "source_refs": [
+          "transcript_segment:vts_training_video_000001",
+          "frame_artifact:vf_training_video_cue_000001_midpoint",
+          "{'source_type': 'vtt', 'source_path': 'data/raw_videos/training.vtt', 'timestamp_start': '00:00:10.000', 'timestamp_end': '00:00:20.000'}",
+          "video:training_video"
+        ],
+        "validation_status": "needs_review",
+        "retrieval_text": "First open the RMS map, then check the AGV heartbeat alarm. RMS Map Heartbeat Alarm RMS map UI with AGV heartbeat alarm text visible. Components: RMS map, heartbeat, alarm Systems: RMS, AGV"
+      }
+    ],
+    "source_artifacts": [
+      {
+        "artifact_id": "vf_training_video_cue_000001_midpoint",
+        "video_id": "training_video",
+        "timestamp": "00:00:15.000",
+        "artifact_type": "alarm",
+        "frame_path": "data/video_evidence/training_video/frames/frame_000001.jpg",
+        "visible_text": [
+          "RMS Map Heartbeat Alarm"
+        ],
+        "visual_summary": "RMS map UI with AGV heartbeat alarm text visible.",
+        "components_visible": [
+          "RMS map",
+          "heartbeat",
+          "alarm"
+        ],
+        "observed_signals": [
+          "alarm",
+          "heartbeat"
+        ],
+        "linked_transcript_segment_ids": [
+          "vts_training_video_000001"
+        ],
+        "linked_evidence_chunk_ids": [
+          "vec_training_video_000001"
+        ],
+        "storage_uri": "",
+        "validation_status": "needs_review",
+        "retrieval_text": "RMS map UI with AGV heartbeat alarm text visible. RMS Map Heartbeat Alarm RMS map heartbeat alarm alarm heartbeat"
+      }
+    ],
+    "context_record_candidates": [
+      {
+        "context_id": "ctx_training_video_rms_001",
+        "container_id": "phase0_context_reference",
+        "context_type": "technology_reference",
+        "title": "RMS training video reference",
+        "applies_to": [
+          "RMS"
+        ],
+        "source_refs": [
+          "transcript_segment:vts_training_video_000001",
+          "frame_artifact:vf_training_video_cue_000001_midpoint",
+          "{'source_type': 'vtt', 'source_path': 'data/raw_videos/training.vtt', 'timestamp_start': '00:00:10.000', 'timestamp_end': '00:00:20.000'}",
+          "video:training_video"
+        ],
+        "artifact_refs": [
+          "vf_training_video_cue_000001_midpoint"
+        ],
+        "evidence_chunk_refs": [
+          "vec_training_video_000001"
+        ],
+        "source_authority": "training_video",
+        "summary": "Training evidence references RMS in aligned transcript and visual evidence.",
+        "observed_evidence": [
+          "First open the RMS map, then check the AGV heartbeat alarm."
+        ],
+        "inferred_interpretations": [],
+        "validation_status": "needs_review",
+        "retrieval_text": "RMS First open the RMS map, then check the AGV heartbeat alarm."
+      },
+      {
+        "context_id": "ctx_training_video_agv_001",
+        "container_id": "phase0_context_reference",
+        "context_type": "technology_reference",
+        "title": "AGV training video reference",
+        "applies_to": [
+          "AGV"
+        ],
+        "source_refs": [
+          "transcript_segment:vts_training_video_000001",
+          "frame_artifact:vf_training_video_cue_000001_midpoint",
+          "{'source_type': 'vtt', 'source_path': 'data/raw_videos/training.vtt', 'timestamp_start': '00:00:10.000', 'timestamp_end': '00:00:20.000'}",
+          "video:training_video"
+        ],
+        "artifact_refs": [
+          "vf_training_video_cue_000001_midpoint"
+        ],
+        "evidence_chunk_refs": [
+          "vec_training_video_000001"
+        ],
+        "source_authority": "training_video",
+        "summary": "Training evidence references AGV in aligned transcript and visual evidence.",
+        "observed_evidence": [
+          "First open the RMS map, then check the AGV heartbeat alarm."
+        ],
+        "inferred_interpretations": [],
+        "validation_status": "needs_review",
+        "retrieval_text": "AGV First open the RMS map, then check the AGV heartbeat alarm."
+      }
+    ],
+    "procedure_dictionary_candidates": [
+      {
+        "procedure_id": "proc_training_video_window_001",
+        "title": "Candidate video procedure window 001",
+        "procedure_type": "navigation",
+        "components": [
+          "RMS map",
+          "heartbeat",
+          "alarm"
+        ],
+        "systems": [
+          "RMS",
+          "AGV"
+        ],
+        "role_required": "unknown",
+        "support_safe": "unknown",
+        "steps": [
+          {
+            "step_order": 1,
+            "instruction": "First open the RMS map, then check the AGV heartbeat alarm.",
+            "timestamp_start": "00:00:10.000",
+            "timestamp_end": "00:00:20.000",
+            "expected_outcome": "",
+            "validation_check": "",
+            "artifact_refs": [
+              "vf_training_video_cue_000001_midpoint"
+            ],
+            "evidence_chunk_refs": [
+              "vec_training_video_000001"
+            ]
+          }
+        ],
+        "source_video": "training_video",
+        "source_refs": [
+          "transcript_segment:vts_training_video_000001",
+          "frame_artifact:vf_training_video_cue_000001_midpoint",
+          "{'source_type': 'vtt', 'source_path': 'data/raw_videos/training.vtt', 'timestamp_start': '00:00:10.000', 'timestamp_end': '00:00:20.000'}",
+          "video:training_video"
+        ],
+        "validation_status": "needs_review",
+        "retrieval_text": "First open the RMS map, then check the AGV heartbeat alarm. RMS map heartbeat alarm RMS AGV"
+      }
+    ],
+    "workflow_evidence_candidates": [
+      {
+        "workflow_candidate_id": "wf_training_video_window_001",
+        "title": "Workflow evidence candidate window 001",
+        "operational_signature": [
+          "alarm",
+          "heartbeat"
+        ],
+        "entry_symptoms": [
+          "alarm",
+          "heartbeat"
+        ],
+        "diagnostic_sequence": [
+          "vec_training_video_000001"
+        ],
+        "resolution_patterns": [],
+        "escalation_indicators": [],
+        "procedure_refs": [
+          "proc_training_video_window_001"
+        ],
+        "artifact_refs": [
+          "vf_training_video_cue_000001_midpoint"
+        ],
+        "evidence_chunk_refs": [
+          "vec_training_video_000001"
+        ],
+        "source_video": "training_video",
+        "timestamps": [
+          "00:00:10.000",
+          "00:00:20.000"
+        ],
+        "confidence": 0.25,
+        "validation_status": "needs_review"
+      }
+    ]
+  },
+  "extraction_report": {
+    "video_id": "training_video",
+    "structured_at": "2026-05-19T17:54:48.921559+00:00",
+    "total_transcript_segments_processed": 1,
+    "total_frames_processed": 1,
+    "total_ocr_records_processed": 1,
+    "total_evidence_chunks_created": 1,
+    "total_source_artifacts_created": 1,
+    "total_context_candidates_created": 2,
+    "total_procedure_candidates_created": 1,
+    "total_workflow_evidence_candidates_created": 1,
+    "warnings": [
+      "LLM extraction used fallback_keyword_structuring; records require review before promotion.",
+      "ctx_training_video_rms_001 is missing video_id/source_video",
+      "ctx_training_video_agv_001 is missing video_id/source_video",
+      "wf_training_video_window_001 is missing source_refs"
+    ],
+    "records_needing_review": [
+      "vec_training_video_000001",
+      "vf_training_video_cue_000001_midpoint",
+      "ctx_training_video_rms_001",
+      "ctx_training_video_agv_001",
+      "proc_training_video_window_001",
+      "wf_training_video_window_001"
+    ],
+    "records_with_missing_timestamps": [],
+    "records_with_weak_evidence": [],
+    "records_with_inferred_interpretations": [],
+    "production_context_write_ran": false
+  }
+}

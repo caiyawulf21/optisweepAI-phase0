@@ -1,0 +1,739 @@
+[
+  {
+    "note_id": "rn_01",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown",
+    "severity": "medium",
+    "note": "All generated artifacts remain review-only; no restart or endpoint action was promoted to an approved executable procedure.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "rn_02",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown",
+    "severity": "high",
+    "note": "Restart targets differ across evidence: Ignition gateway restart, Optisweep Windows service restart, Optisweep services restart, and combined restart-plus-pause/unpause sequences should not be operationally merged without SME validation.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "rn_03",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown",
+    "severity": "high",
+    "note": "Endpoint-based tote actions in incident 223554 remain authorization-sensitive and should stay candidate-only until role, tooling, and approval boundaries are validated.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "rn_04",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown",
+    "severity": "medium",
+    "note": "Tipper heartbeat recurrence appears across 229374, 229716, and 229777, but direct evidence quality is uneven; 229777 relies more heavily on engineer summary than on direct heartbeat artifacts.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "rn_05",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown",
+    "severity": "medium",
+    "note": "Timeout and database-event evidence should remain secondary/candidate unless a future source package explicitly validates causal ordering.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "rn_06",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown",
+    "severity": "medium",
+    "note": "Post-restart validation repeatedly required more than service status alone; movement restoration and restoration of the originally failed function should remain separate review checkpoints.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "rn_07",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown",
+    "severity": "low",
+    "note": "Bridge/callback coordination was material in 228086 and 229777, but timing rules and ownership standards are not explicit enough to convert into a prescriptive workflow.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "rn_08",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown",
+    "severity": "medium",
+    "note": "AGV/tote anomaly review from 223554 is compatible with evidence review only; it should not be generalized into a corrective action procedure without clearer support-safe boundaries.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_orphan_workflow_hospital_blocked_add_remove_recovery_review_v1",
+    "artifact_type": "workflow",
+    "artifact_id": "hospital_blocked_add_remove_recovery_review_v1",
+    "severity": "warning",
+    "note": "Rejected generated workflow because it had no valid generated procedure linkage.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      }
+    ]
+  },
+  {
+    "note_id": "note_orphan_workflow_service_failure_restart_and_validation_review_v1",
+    "artifact_type": "workflow",
+    "artifact_id": "service_failure_restart_and_validation_review_v1",
+    "severity": "warning",
+    "note": "Rejected generated workflow because it had no valid generated procedure linkage.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_06"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_11"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      }
+    ]
+  },
+  {
+    "note_id": "note_orphan_workflow_tipper_heartbeat_no_fault_recurrence_review_v1",
+    "artifact_type": "workflow",
+    "artifact_id": "tipper_heartbeat_no_fault_recurrence_review_v1",
+    "severity": "warning",
+    "note": "Rejected generated workflow because it had no valid generated procedure linkage.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_05"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_05"
+      }
+    ]
+  },
+  {
+    "note_id": "note_orphan_workflow_timeout_and_comms_evidence_review_v1",
+    "artifact_type": "workflow",
+    "artifact_id": "timeout_and_comms_evidence_review_v1",
+    "severity": "warning",
+    "note": "Rejected generated workflow because it had no valid generated procedure linkage.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_08"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_05"
+      }
+    ]
+  },
+  {
+    "note_id": "note_orphan_workflow_bridge_and_site_coordination_review_v1",
+    "artifact_type": "workflow",
+    "artifact_id": "bridge_and_site_coordination_review_v1",
+    "severity": "warning",
+    "note": "Rejected generated workflow because it had no valid generated procedure linkage.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_05"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_02"
+      }
+    ]
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_invalid_link_link",
+    "artifact_type": "workflow",
+    "artifact_id": "unknown_workflow",
+    "severity": "warning",
+    "note": "Rejected invalid workflow/procedure link suggestion:  -> .",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_rejected_merge_rejected_executable_merge_because_restart_target_and_operational_scope_are_not_proven_identical_acro",
+    "artifact_type": "procedure",
+    "artifact_id": "rejected_merge_group",
+    "severity": "warning",
+    "note": "Rejected executable merge because restart target and operational scope are not proven identical across Ignition gateway, Optisweep Windows service, Optisweep service, and restart-plus-tipper-control sequences.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_rejected_merge_rejected_merge_because_endpoint_based_tote_actions_and_post_restart_validation_have_different_action",
+    "artifact_type": "procedure",
+    "artifact_id": "rejected_merge_group",
+    "severity": "warning",
+    "note": "Rejected merge because endpoint-based tote actions and post-restart validation have different action types, safety boundaries, and validation goals.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_rejected_merge_rejected_merge_because_one_is_evidence_review_of_agv_tote_anomalies_and_the_other_includes_correctiv",
+    "artifact_type": "procedure",
+    "artifact_id": "rejected_merge_group",
+    "severity": "warning",
+    "note": "Rejected merge because one is evidence review of AGV/tote anomalies and the other includes corrective RMS actions on AGV state.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_rejected_merge_rejected_merge_because_tipper_heartbeat_diagnostic_review_and_incident_communications_coordination_h",
+    "artifact_type": "procedure",
+    "artifact_id": "rejected_merge_group",
+    "severity": "warning",
+    "note": "Rejected merge because tipper heartbeat diagnostic review and incident communications coordination have incompatible action types and targets.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_rejected_merge_rejected_full_merge_into_a_single_narrow_procedure_because_timeout_memory_review_and_opc_endpoint_co",
+    "artifact_type": "procedure",
+    "artifact_id": "rejected_merge_group",
+    "severity": "warning",
+    "note": "Rejected full merge into a single narrow procedure because timeout/memory review and OPC endpoint communications review overlap as evidence collection but target different subsystems and validation goals.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": []
+  },
+  {
+    "note_id": "note_procedure_review_hospital_add_remove_state_v1_info_generated_procedure_has_single_case_support_and_needs_sme_review",
+    "artifact_type": "procedure",
+    "artifact_id": "review_hospital_add_remove_state_v1",
+    "severity": "info",
+    "note": "Generated procedure has single-case support and needs SME review before reuse.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      }
+    ]
+  },
+  {
+    "note_id": "note_procedure_review_hospital_add_remove_state_v1_warning_generated_procedure_may_contain_copied_case_narrative_rather_",
+    "artifact_type": "procedure",
+    "artifact_id": "review_hospital_add_remove_state_v1",
+    "severity": "warning",
+    "note": "Generated procedure may contain copied case narrative rather than reusable runbook language.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      }
+    ]
+  },
+  {
+    "note_id": "note_procedure_review_agv_tote_anomaly_evidence_v1_info_generated_procedure_has_single_case_support_and_needs_sme_review",
+    "artifact_type": "procedure",
+    "artifact_id": "review_agv_tote_anomaly_evidence_v1",
+    "severity": "info",
+    "note": "Generated procedure has single-case support and needs SME review before reuse.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_06"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      }
+    ]
+  },
+  {
+    "note_id": "note_procedure_review_agv_tote_anomaly_evidence_v1_warning_generated_procedure_may_contain_copied_case_narrative_rather_",
+    "artifact_type": "procedure",
+    "artifact_id": "review_agv_tote_anomaly_evidence_v1",
+    "severity": "warning",
+    "note": "Generated procedure may contain copied case narrative rather than reusable runbook language.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_06"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      }
+    ]
+  },
+  {
+    "note_id": "note_procedure_review_endpoint_based_tote_recovery_actions_v1_info_generated_procedure_has_single_case_support_and_needs",
+    "artifact_type": "procedure",
+    "artifact_id": "review_endpoint_based_tote_recovery_actions_v1",
+    "severity": "info",
+    "note": "Generated procedure has single-case support and needs SME review before reuse.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_09"
+      }
+    ]
+  },
+  {
+    "note_id": "note_procedure_review_endpoint_based_tote_recovery_actions_v1_warning_generated_procedure_may_contain_copied_case_narrat",
+    "artifact_type": "procedure",
+    "artifact_id": "review_endpoint_based_tote_recovery_actions_v1",
+    "severity": "warning",
+    "note": "Generated procedure may contain copied case narrative rather than reusable runbook language.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_09"
+      }
+    ]
+  },
+  {
+    "note_id": "note_procedure_validate_recovery_after_service_restart_and_readd_v1_warning_generated_procedure_may_contain_copied_case_",
+    "artifact_type": "procedure",
+    "artifact_id": "validate_recovery_after_service_restart_and_readd_v1",
+    "severity": "warning",
+    "note": "Generated procedure may contain copied case narrative rather than reusable runbook language.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      }
+    ]
+  },
+  {
+    "note_id": "note_procedure_review_service_restart_and_response_validation_v1_warning_generated_procedure_may_contain_copied_case_nar",
+    "artifact_type": "procedure",
+    "artifact_id": "review_service_restart_and_response_validation_v1",
+    "severity": "warning",
+    "note": "Generated procedure may contain copied case narrative rather than reusable runbook language.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_06"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_11"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_03"
+      }
+    ]
+  },
+  {
+    "note_id": "note_procedure_collect_service_timeout_and_comms_evidence_v1_warning_generated_procedure_may_contain_copied_case_narrati",
+    "artifact_type": "procedure",
+    "artifact_id": "collect_service_timeout_and_comms_evidence_v1",
+    "severity": "warning",
+    "note": "Generated procedure may contain copied case narrative rather than reusable runbook language.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_03"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_08"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_05"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_09"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_09"
+      }
+    ]
+  },
+  {
+    "note_id": "note_procedure_establish_bridge_and_site_coordination_v1_warning_generated_procedure_may_contain_copied_case_narrative_r",
+    "artifact_type": "procedure",
+    "artifact_id": "establish_bridge_and_site_coordination_v1",
+    "severity": "warning",
+    "note": "Generated procedure may contain copied case narrative rather than reusable runbook language.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_05"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_02"
+      }
+    ]
+  },
+  {
+    "note_id": "note_workflow_agv_flow_stopped_at_all_three_tipper_lines_nothing_coming_to_tippers_r_v1_info_generated_workflow_has_sing",
+    "artifact_type": "workflow",
+    "artifact_id": "agv_flow_stopped_at_all_three_tipper_lines_nothing_coming_to_tippers_r_v1",
+    "severity": "info",
+    "note": "Generated workflow has single-case support and needs cross-case review before promotion.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_05"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_03",
+        "source_artifact_id": "case_229716_docx_artifact_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_10",
+        "source_artifact_id": "case_229716_docx_artifact_10"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_07",
+        "source_artifact_id": "case_229716_docx_artifact_07"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_08",
+        "source_artifact_id": "case_229716_docx_artifact_08"
+      }
+    ]
+  },
+  {
+    "note_id": "note_workflow_agvs_are_moving_hospital_logout_login_performed_hospital_tote_removal_v1_info_generated_workflow_has_singl",
+    "artifact_type": "workflow",
+    "artifact_id": "agvs_are_moving_hospital_logout_login_performed_hospital_tote_removal_v1",
+    "severity": "info",
+    "note": "Generated workflow has single-case support and needs cross-case review before promotion.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_03",
+        "source_artifact_id": "case_229716_docx_artifact_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_04",
+        "source_artifact_id": "case_229716_docx_artifact_04"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "case_229716_docx_artifact_11",
+        "source_artifact_id": "case_229716_docx_artifact_11"
+      }
+    ]
+  },
+  {
+    "note_id": "note_workflow_agvs_not_moving_hospital_tote_removal_failed_no_visible_faults_reporte_v1_info_generated_workflow_has_sing",
+    "artifact_type": "workflow",
+    "artifact_id": "agvs_not_moving_hospital_tote_removal_failed_no_visible_faults_reporte_v1",
+    "severity": "info",
+    "note": "Generated workflow has single-case support and needs cross-case review before promotion.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_02"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_01",
+        "source_artifact_id": "case_228086_docx_artifact_01"
+      },
+      {
+        "incident_id": "228086",
+        "evidence_id": "case_228086_docx_artifact_05",
+        "source_artifact_id": "case_228086_docx_artifact_05"
+      }
+    ]
+  },
+  {
+    "note_id": "note_workflow_agvs_not_moving_no_fault_shown_production_seriously_impacted_v1_info_generated_workflow_has_single_case_su",
+    "artifact_type": "workflow",
+    "artifact_id": "agvs_not_moving_no_fault_shown_production_seriously_impacted_v1",
+    "severity": "info",
+    "note": "Generated workflow has single-case support and needs cross-case review before promotion.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_02"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_01",
+        "source_artifact_id": "case_229488_docx_artifact_01"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_21",
+        "source_artifact_id": "case_229488_docx_artifact_21"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_22",
+        "source_artifact_id": "case_229488_docx_artifact_22"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_02",
+        "source_artifact_id": "case_229488_docx_artifact_02"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "case_229488_docx_artifact_23",
+        "source_artifact_id": "case_229488_docx_artifact_23"
+      }
+    ]
+  },
+  {
+    "note_id": "note_workflow_agvs_stopped_with_no_visible_alarms_flow_stops_before_tipper_processin_v1_info_generated_workflow_has_sing",
+    "artifact_type": "workflow",
+    "artifact_id": "agvs_stopped_with_no_visible_alarms_flow_stops_before_tipper_processin_v1",
+    "severity": "info",
+    "note": "Generated workflow has single-case support and needs cross-case review before promotion.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_02"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_27",
+        "source_artifact_id": "case_229374_docx_artifact_27"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_35",
+        "source_artifact_id": "case_229374_docx_artifact_35"
+      }
+    ]
+  },
+  {
+    "note_id": "note_workflow_aveva_field_state_mismatch_pause_unpause_unsuccessful_tipper_heartbeat_v1_info_generated_workflow_has_sing",
+    "artifact_type": "workflow",
+    "artifact_id": "aveva_field_state_mismatch_pause_unpause_unsuccessful_tipper_heartbeat_v1",
+    "severity": "info",
+    "note": "Generated workflow has single-case support and needs cross-case review before promotion.",
+    "recommended_review_owner": "SME reviewer",
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_03"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_04"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_23",
+        "source_artifact_id": "case_229374_docx_artifact_23"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "case_229374_docx_artifact_24",
+        "source_artifact_id": "case_229374_docx_artifact_24"
+      }
+    ]
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "deck_id": "optisweep_training_internal_robot_selection",
+  "promotion_allowed": false,
+  "promotion_rule": "Slide extraction outputs require human review before becoming Dataset 0 context records or procedure dictionary records.",
+  "review_required_for": {
+    "operational_knowledge_units": [
+      "oku_optisweep_training_internal_robot_selection_24_message_panel_functions",
+      "oku_optisweep_training_internal_robot_selection_24_fault_diagnostics_from_message_panel",
+      "oku_optisweep_training_internal_robot_selection_25_01",
+      "oku_optisweep_training_internal_robot_selection_26_robot_selection_ui_behavior",
+      "oku_optisweep_training_internal_robot_selection_26_robot_tote_label_interpretation",
+      "oku_optisweep_training_internal_robot_selection_26_robot_color_status_meanings",
+      "oku_optisweep_robot_selection_add_remove_ui_27",
+      "oku_optisweep_training_internal_robot_selection_28_restart_behavior",
+      "oku_optisweep_training_internal_robot_selection_28_restart_ui",
+      "oku_optisweep_training_internal_robot_selection_29_go_to_function_behavior",
+      "oku_optisweep_training_internal_robot_selection_29_recovery_use_case_hospital_dropoff",
+      "oku_optisweep_training_internal_robot_selection_29_agv_task_resume_after_tote_removed",
+      "oku_optisweep_training_internal_robot_selection_29_go_to_ui_sequence",
+      "oku_optisweep_training_internal_robot_selection_030_01",
+      "oku_optisweep_training_internal_robot_selection_030_02"
+    ],
+    "context_record_candidates": [
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_24_message_panel_functions",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_24_fault_diagnostics_from_message_panel",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_25_01",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_26_robot_selection_ui_behavior",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_26_robot_tote_label_interpretation",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_26_robot_color_status_meanings",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_robot_selection_add_remove_ui_27",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_28_restart_behavior",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_28_restart_ui",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_29_go_to_function_behavior",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_29_recovery_use_case_hospital_dropoff",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_29_agv_task_resume_after_tote_removed",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_29_go_to_ui_sequence",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_030_01",
+      "ctx_optisweep_training_internal_robot_selection_oku_optisweep_training_internal_robot_selection_030_02"
+    ],
+    "procedure_dictionary_candidates": [
+      "proc_optisweep_training_internal_robot_selection_24_open_message_panel_and_review_faults",
+      "proc_attempt_optisweep_training_internal_robot_selection_25_01",
+      "proc_attempt_optisweep_training_internal_robot_selection_26_select_robot_view_details",
+      "proc_optisweep_add_robot_27",
+      "proc_optisweep_remove_robot_27",
+      "proc_optisweep_training_internal_robot_selection_28_restart_robot",
+      "proc_optisweep_training_internal_robot_selection_29_send_idle_agv_to_square",
+      "proc_optisweep_training_internal_robot_selection_030_01"
+    ]
+  },
+  "target_dataset0_context_file": "data/context/context_reference.json",
+  "target_dataset0_procedure_file": "data/procedures/procedure_dictionary.json",
+  "dataset0_write_ran": false
+}

@@ -1,0 +1,106 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Overview of System and Tipper Statistics Reset Mechanism",
+      "timestamp_start": "02:10:56.868",
+      "timestamp_end": "02:12:10.040",
+      "primary_intent": "Explain how system and tipper statistics reset with each sort cycle",
+      "operational_intents": [
+        "Describe the reset of metrics tied to sort GUIDs",
+        "Clarify absence of cumulative totals across sorts",
+        "Explain API and webhook interactions for resetting metrics"
+      ],
+      "knowledge_extraction_strategy": "Extract details on statistics reset tied to sort GUIDs",
+      "why_this_strategy": "Focus on metric reset process and data linkage",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002030",
+        "vec_upsfortna_optisweep_training_day1_20260317_002031",
+        "vec_upsfortna_optisweep_training_day1_20260317_002032",
+        "vec_upsfortna_optisweep_training_day1_20260317_002033",
+        "vec_upsfortna_optisweep_training_day1_20260317_002034",
+        "vec_upsfortna_optisweep_training_day1_20260317_002035",
+        "vec_upsfortna_optisweep_training_day1_20260317_002036",
+        "vec_upsfortna_optisweep_training_day1_20260317_002037",
+        "vec_upsfortna_optisweep_training_day1_20260317_002038",
+        "vec_upsfortna_optisweep_training_day1_20260317_002039",
+        "vec_upsfortna_optisweep_training_day1_20260317_002040",
+        "vec_upsfortna_optisweep_training_day1_20260317_002041",
+        "vec_upsfortna_optisweep_training_day1_20260317_002042",
+        "vec_upsfortna_optisweep_training_day1_20260317_002043",
+        "vec_upsfortna_optisweep_training_day1_20260317_002044",
+        "vec_upsfortna_optisweep_training_day1_20260317_002045",
+        "vec_upsfortna_optisweep_training_day1_20260317_002046",
+        "vec_upsfortna_optisweep_training_day1_20260317_002047"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000064"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Historical Statistics and Database Support",
+      "timestamp_start": "02:12:10.040",
+      "timestamp_end": "02:13:15.645",
+      "primary_intent": "Discuss historical data availability and database support for stats",
+      "operational_intents": [
+        "Clarify historical stats storage in database",
+        "Explain current limitations with Aviva and TLC systems",
+        "Describe future product flexibility for historical data"
+      ],
+      "knowledge_extraction_strategy": "Extract information on historical data handling and system limitations",
+      "why_this_strategy": "Focus on data retention and system compatibility",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002047",
+        "vec_upsfortna_optisweep_training_day1_20260317_002048",
+        "vec_upsfortna_optisweep_training_day1_20260317_002049",
+        "vec_upsfortna_optisweep_training_day1_20260317_002050",
+        "vec_upsfortna_optisweep_training_day1_20260317_002051",
+        "vec_upsfortna_optisweep_training_day1_20260317_002052",
+        "vec_upsfortna_optisweep_training_day1_20260317_002053",
+        "vec_upsfortna_optisweep_training_day1_20260317_002054",
+        "vec_upsfortna_optisweep_training_day1_20260317_002055",
+        "vec_upsfortna_optisweep_training_day1_20260317_002056",
+        "vec_upsfortna_optisweep_training_day1_20260317_002057",
+        "vec_upsfortna_optisweep_training_day1_20260317_002058",
+        "vec_upsfortna_optisweep_training_day1_20260317_002059",
+        "vec_upsfortna_optisweep_training_day1_20260317_002060",
+        "vec_upsfortna_optisweep_training_day1_20260317_002061",
+        "vec_upsfortna_optisweep_training_day1_20260317_002062",
+        "vec_upsfortna_optisweep_training_day1_20260317_002063",
+        "vec_upsfortna_optisweep_training_day1_20260317_002064"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000064"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Metric Validation and RMS Integration Potential",
+      "timestamp_start": "02:13:15.645",
+      "timestamp_end": "02:14:00.061",
+      "primary_intent": "Explain metric validation process and potential RMS integration with Viva HMI",
+      "operational_intents": [
+        "Describe how metrics are validated against expected values",
+        "Discuss integration of RMS section into Viva HMI",
+        "Note firewall restrictions affecting integration"
+      ],
+      "knowledge_extraction_strategy": "Extract details on validation and integration capabilities",
+      "why_this_strategy": "Focus on metric validation and system integration options",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002065",
+        "vec_upsfortna_optisweep_training_day1_20260317_002066",
+        "vec_upsfortna_optisweep_training_day1_20260317_002067",
+        "vec_upsfortna_optisweep_training_day1_20260317_002068",
+        "vec_upsfortna_optisweep_training_day1_20260317_002069",
+        "vec_upsfortna_optisweep_training_day1_20260317_002070",
+        "vec_upsfortna_optisweep_training_day1_20260317_002071",
+        "vec_upsfortna_optisweep_training_day1_20260317_002072",
+        "vec_upsfortna_optisweep_training_day1_20260317_002073"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000064"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

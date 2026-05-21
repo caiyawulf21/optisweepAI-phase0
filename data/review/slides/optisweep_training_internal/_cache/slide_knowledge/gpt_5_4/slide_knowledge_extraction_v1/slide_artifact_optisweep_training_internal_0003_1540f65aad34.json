@@ -1,0 +1,38 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_3_001",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        3
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0003",
+        "deck:optisweep_training_internal",
+        "slide:3"
+      ],
+      "unit_type": "operational_process",
+      "title": "Overview section introduces the topic 'What is Optisweep?'",
+      "systems": [
+        "Optisweep"
+      ],
+      "components": [],
+      "summary": "The slide serves as an overview/introduction and signals that upcoming content will explain what Optisweep is.",
+      "observed_evidence": [
+        "Visible text includes 'Overview'",
+        "Visible text includes 'What is Optisweep?'",
+        "Slide title shown as '3'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "introduces",
+          "target": "Optisweep"
+        }
+      ],
+      "retrieval_text": "Overview slide introducing the topic 'What is Optisweep?' for Optisweep training content. This is contextual framing rather than actionable guidance.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

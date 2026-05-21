@@ -1,0 +1,43 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0041_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        41
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0041"
+      ],
+      "unit_type": "ui_concept",
+      "title": "AGV Status page displays current AGV status",
+      "systems": [
+        "OptiSweep",
+        "AGV"
+      ],
+      "components": [
+        "AGV Status page"
+      ],
+      "summary": "The slide identifies an 'AGV Status' page within the Overall System section and states that this page shows the current status of the AGVs.",
+      "observed_evidence": [
+        "Slide title: 'Overall System / AGV Status'",
+        "Visible text: '• This page will show the current status of the AGVs'",
+        "Visual elements indicate a UI screen reference with component 'AGV'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "located_in",
+          "target": "Overall System section"
+        },
+        {
+          "relationship_type": "describes",
+          "target": "AGV current status information"
+        }
+      ],
+      "retrieval_text": "Overall System AGV Status page UI reference. This page shows the current status of the AGVs.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

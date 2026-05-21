@@ -1,0 +1,30 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "optisweep_training_internal_20_ku_1",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        20
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0020"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Geek+ RMS Walkthrough (section divider)",
+      "systems": [
+        "Geek+ RMS"
+      ],
+      "components": [],
+      "summary": "This slide appears to introduce a section titled 'Geek+ RMS Walkthrough'. It provides no procedural steps or detailed operational content.",
+      "observed_evidence": [
+        "Visible slide text includes: 'Geek+ RMS Walkthrough' and slide number '19'.",
+        "Slide presents only a title/header format without instructions or UI elements."
+      ],
+      "relationships": [],
+      "retrieval_text": "Section divider indicating start of 'Geek+ RMS Walkthrough' content; no procedures on this slide.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

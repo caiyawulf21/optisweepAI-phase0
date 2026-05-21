@@ -1,0 +1,230 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_12_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        12
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0012"
+      ],
+      "unit_type": "operational_process",
+      "title": "Sorted-parcel message updates tote membership",
+      "systems": [
+        "Chat",
+        "Software"
+      ],
+      "components": [
+        "chute",
+        "tote",
+        "rack"
+      ],
+      "summary": "When a parcel sorts down to a chute location and into a tote, a message from Chat that an item has sorted is triggered. The slide states this message is critical because without receiving or processing it, there is no record of the parcel being in a tote. Software then adds the parcel to the tote located in that rack.",
+      "observed_evidence": [
+        "“A parcel will sort down to a chute location and into a tote (hopefully)”",
+        "“This triggers the next message from Chat that an item has sorted”",
+        "“This message is critical. If not received or processed, we don’t have a record of it being in a tote.”",
+        "“Software adds that parcel to the tote located in that rack”"
+      ],
+      "relationships": [
+        {
+          "type": "depends_on",
+          "target": "sorted-item message from Chat"
+        },
+        {
+          "type": "updates",
+          "target": "tote record in rack location"
+        }
+      ],
+      "retrieval_text": "Lifecycle of a parcel: when a parcel sorts to a chute and tote, Chat sends an item-sorted message. That message is critical because if it is not received or processed there is no record of the parcel being in a tote. Software adds the parcel to the tote located in that rack.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_12_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        12
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0012"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Tote fullness is computed from accumulated parcel weight and dimensions",
+      "systems": [
+        "Software"
+      ],
+      "components": [
+        "tote",
+        "parcel"
+      ],
+      "summary": "As items sort, the software accumulates weight and dimensions for the tote. The slide also states that dimensions are scaled up or down by software based on package type, and software determines how full a tote is from that accumulated information.",
+      "observed_evidence": [
+        "“Weight and dimensions are accumulated as items sort”",
+        "“Dimensions are scaled up or down by software based on package type”",
+        "“Software determines how full a tote is”"
+      ],
+      "relationships": [
+        {
+          "type": "used_for",
+          "target": "tote fullness determination"
+        },
+        {
+          "type": "adjusted_by",
+          "target": "package type"
+        }
+      ],
+      "retrieval_text": "Software accumulates parcel weight and dimensions as items sort into a tote. Dimensions may be scaled up or down based on package type. The software uses this accumulated data to determine tote fullness.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_12_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        12
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0012"
+      ],
+      "unit_type": "state_transition",
+      "title": "Tote fullness thresholds drive exchange consideration and blocking",
+      "systems": [
+        "Software",
+        "Chat"
+      ],
+      "components": [
+        "tote",
+        "chute"
+      ],
+      "summary": "The slide defines two tote fullness thresholds. 'Pretty full' means the tote is not yet full but is close enough to begin considering an exchange. 'Full' means no more product can be diverted to that location until an exchange is completed.",
+      "observed_evidence": [
+        "“Two thresholds exist”",
+        "“Pretty full – Not full, but getting close enough to start considering an exchange”",
+        "“Full – No more product can be diverted to this location until an exchange is done”"
+      ],
+      "relationships": [
+        {
+          "type": "precedes",
+          "target": "exchange consideration"
+        },
+        {
+          "type": "blocks",
+          "target": "further diversion to location"
+        }
+      ],
+      "retrieval_text": "Two tote fullness thresholds are defined: pretty full and full. Pretty full means the tote is getting close enough to consider an exchange. Full means no more product can be diverted to that location until an exchange is done.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_12_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        12
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0012"
+      ],
+      "unit_type": "routing_rule",
+      "title": "Full tote causes chute to be marked unavailable in Chat during exchange",
+      "systems": [
+        "Chat"
+      ],
+      "components": [
+        "chute",
+        "tote"
+      ],
+      "summary": "When a tote is full, the process communicates to Chat that the chute is unavailable so that no packages are sent down while an exchange is being performed.",
+      "observed_evidence": [
+        "“When a tote is full, we tell Chat that the chute is unavailable so that no packages come down while doing an exchange”"
+      ],
+      "relationships": [
+        {
+          "type": "triggered_by",
+          "target": "tote full condition"
+        },
+        {
+          "type": "prevents",
+          "target": "packages coming down the chute during exchange"
+        }
+      ],
+      "retrieval_text": "When a tote reaches full, Chat is told that the chute is unavailable. This prevents packages from coming down the chute while a tote exchange is being performed.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_12_01",
+      "title": "Mark chute unavailable when a tote is full",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        12
+      ],
+      "systems": [
+        "Chat"
+      ],
+      "components": [
+        "tote",
+        "chute"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A tote has reached the full threshold."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0012"
+      ],
+      "procedure_visual_summary": "Slide describes parcel sorting into a tote, tote fullness thresholds, and that when a tote is full Chat is told the chute is unavailable during exchange.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Identify that the tote is in the full state.",
+          "expected_outcome": "The tote is recognized as full rather than pretty full.",
+          "validation_check": "The slide defines the full threshold as the point where no more product can be diverted to the location until an exchange is done.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:12",
+            "artifact:slide_artifact_optisweep_training_internal_0012"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0012"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0012"
+          ],
+          "visual_region_hint": "Lower half of slide where the two thresholds and full-state definition are listed."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Tell Chat that the chute is unavailable while the exchange is being done.",
+          "expected_outcome": "Packages do not come down the chute during the tote exchange.",
+          "validation_check": "The slide explicitly states that when a tote is full, Chat is told the chute is unavailable so that no packages come down while doing an exchange.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:12",
+            "artifact:slide_artifact_optisweep_training_internal_0012"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0012"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0012"
+          ],
+          "visual_region_hint": "Bottom bullet on the slide discussing full totes and chute unavailability."
+        }
+      ],
+      "warnings": [
+        "The slide does not specify the exact interface or command used to tell Chat that the chute is unavailable.",
+        "The slide does not describe the exchange steps themselves."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_12_03",
+        "oku_optisweep_training_internal_12_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Operational action candidate from slide 12: when a tote is full, tell Chat that the chute is unavailable so no packages come down during exchange. The slide gives the condition and intended result, but not the exact UI or system steps."
+    }
+  ],
+  "discarded_candidates": []
+}

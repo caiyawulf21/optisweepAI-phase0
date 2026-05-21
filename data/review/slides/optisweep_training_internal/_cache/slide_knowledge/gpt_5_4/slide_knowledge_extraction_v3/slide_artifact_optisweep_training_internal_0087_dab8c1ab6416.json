@@ -1,0 +1,114 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0087_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        87
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0087"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "System error definitions are stored in SystemErrorDefinition",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Robotics Database",
+        "SystemErrorDefinition"
+      ],
+      "summary": "The slide states that SystemErrorDefinition stores the definition of system errors.",
+      "observed_evidence": [
+        "Bullet text: 'SystemErrorDefinition stores the definition of the system errors.'",
+        "Slide section/title context: 'Robotics Database / System Error'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "stores_definitions_for",
+          "target": "system errors"
+        }
+      ],
+      "retrieval_text": "Robotics Database system error reference: SystemErrorDefinition stores the definitions of system errors.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0087_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        87
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0087"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "SystemActiveErrorModel contains currently active system errors and their attributes",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Robotics Database",
+        "SystemActiveErrorModel"
+      ],
+      "summary": "The slide indicates that SystemActiveErrorModel shows active errors currently in the system, including the error name, area, error code, and description.",
+      "observed_evidence": [
+        "Bullet text: 'The SystemActiveErrorModel shows any active errors that are currently in the system.'",
+        "Bullet text: 'The information includes the name, area, and error code as well as a description of the error.'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "contains_active_records_for",
+          "target": "system errors"
+        },
+        {
+          "relation_type": "includes_fields",
+          "target": "name, area, error code, description"
+        }
+      ],
+      "retrieval_text": "SystemActiveErrorModel in the Robotics Database shows current active system errors and includes name, area, error code, and description.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0087_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        87
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0087"
+      ],
+      "unit_type": "state_transition",
+      "title": "Resolved active errors are archived to SystemErrorActivityModel",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Robotics Database",
+        "SystemActiveErrorModel",
+        "SystemErrorActivityModel"
+      ],
+      "summary": "The slide describes a lifecycle transition in which an active error, once resolved, is archived to the SystemErrorActivityModel table.",
+      "observed_evidence": [
+        "Bullet text: 'Once an active error is resolved it is archived to the SystemErrorActivityModel table.'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "transitions_from",
+          "target": "SystemActiveErrorModel"
+        },
+        {
+          "relation_type": "transitions_to",
+          "target": "SystemErrorActivityModel"
+        },
+        {
+          "relation_type": "trigger_condition",
+          "target": "active error is resolved"
+        }
+      ],
+      "retrieval_text": "When a system active error is resolved, it is archived from the active error context to the SystemErrorActivityModel table.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

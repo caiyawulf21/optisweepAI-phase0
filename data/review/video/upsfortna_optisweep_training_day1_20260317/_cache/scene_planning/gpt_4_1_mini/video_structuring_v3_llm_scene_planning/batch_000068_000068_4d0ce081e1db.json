@@ -1,0 +1,138 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Tote Exchange Process and Lane Identification",
+      "timestamp_start": "02:23:10.520",
+      "timestamp_end": "02:23:49.760",
+      "primary_intent": "Explain how to exchange totes using API and lane naming conventions",
+      "operational_intents": [
+        "Describe tote exchange via API",
+        "Explain lane name formatting with leading zero",
+        "Discuss UPS capability for specific destination exchanges"
+      ],
+      "knowledge_extraction_strategy": "Extract procedural details and lane naming rules",
+      "why_this_strategy": "Focus on tote exchange and lane identification instructions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002217",
+        "vec_upsfortna_optisweep_training_day1_20260317_002218",
+        "vec_upsfortna_optisweep_training_day1_20260317_002219",
+        "vec_upsfortna_optisweep_training_day1_20260317_002220",
+        "vec_upsfortna_optisweep_training_day1_20260317_002221",
+        "vec_upsfortna_optisweep_training_day1_20260317_002222",
+        "vec_upsfortna_optisweep_training_day1_20260317_002223",
+        "vec_upsfortna_optisweep_training_day1_20260317_002224",
+        "vec_upsfortna_optisweep_training_day1_20260317_002225",
+        "vec_upsfortna_optisweep_training_day1_20260317_002226",
+        "vec_upsfortna_optisweep_training_day1_20260317_002227",
+        "vec_upsfortna_optisweep_training_day1_20260317_002228"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000068"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Real-Time KPI Metrics Overview",
+      "timestamp_start": "02:23:54.600",
+      "timestamp_end": "02:24:45.840",
+      "primary_intent": "Describe real-time KPIs related to destination exchanges",
+      "operational_intents": [
+        "List KPIs such as average item count, median exchange time, and miss sorts",
+        "Explain status indicators like active, bypassed, or not tracking",
+        "Discuss zone information per side"
+      ],
+      "knowledge_extraction_strategy": "Extract KPI definitions and status explanations",
+      "why_this_strategy": "Capture key performance indicators and their meanings",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002229",
+        "vec_upsfortna_optisweep_training_day1_20260317_002230",
+        "vec_upsfortna_optisweep_training_day1_20260317_002231",
+        "vec_upsfortna_optisweep_training_day1_20260317_002232",
+        "vec_upsfortna_optisweep_training_day1_20260317_002233",
+        "vec_upsfortna_optisweep_training_day1_20260317_002234",
+        "vec_upsfortna_optisweep_training_day1_20260317_002235",
+        "vec_upsfortna_optisweep_training_day1_20260317_002236",
+        "vec_upsfortna_optisweep_training_day1_20260317_002237",
+        "vec_upsfortna_optisweep_training_day1_20260317_002238",
+        "vec_upsfortna_optisweep_training_day1_20260317_002239"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000068"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Navigation and User Access Discussion",
+      "timestamp_start": "02:24:48.120",
+      "timestamp_end": "02:25:17.960",
+      "primary_intent": "Discuss navigation to metrics page and user login details",
+      "operational_intents": [
+        "Explain how to access skip metrics page",
+        "Mention user login status and personnel availability"
+      ],
+      "knowledge_extraction_strategy": "Extract navigation steps and user context",
+      "why_this_strategy": "Clarify system access and user presence",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002240",
+        "vec_upsfortna_optisweep_training_day1_20260317_002241",
+        "vec_upsfortna_optisweep_training_day1_20260317_002242",
+        "vec_upsfortna_optisweep_training_day1_20260317_002243",
+        "vec_upsfortna_optisweep_training_day1_20260317_002244"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000068"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Zone Configuration and Usage",
+      "timestamp_start": "02:25:18.920",
+      "timestamp_end": "02:25:31.680",
+      "primary_intent": "Explain zone configuration history and current usage limitations",
+      "operational_intents": [
+        "Describe ability to change configurations between sorts historically",
+        "Note current limitations due to equal zones",
+        "Mention legacy configuration presence"
+      ],
+      "knowledge_extraction_strategy": "Extract configuration history and current constraints",
+      "why_this_strategy": "Understand zone config evolution and restrictions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002245",
+        "vec_upsfortna_optisweep_training_day1_20260317_002246",
+        "vec_upsfortna_optisweep_training_day1_20260317_002247"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000068"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Tote Initialization Process",
+      "timestamp_start": "02:25:37.760",
+      "timestamp_end": "02:26:12.840",
+      "primary_intent": "Describe how to initialize totes and handle initialization responses",
+      "operational_intents": [
+        "Explain input of barcode, tote number, station, and tote ID",
+        "Describe request to initialize tote and response handling",
+        "Discuss conditions preventing initialization such as AGV status"
+      ],
+      "knowledge_extraction_strategy": "Extract tote initialization steps and error handling",
+      "why_this_strategy": "Detail tote setup and response interpretation",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002249",
+        "vec_upsfortna_optisweep_training_day1_20260317_002250",
+        "vec_upsfortna_optisweep_training_day1_20260317_002251",
+        "vec_upsfortna_optisweep_training_day1_20260317_002252",
+        "vec_upsfortna_optisweep_training_day1_20260317_002253",
+        "vec_upsfortna_optisweep_training_day1_20260317_002254",
+        "vec_upsfortna_optisweep_training_day1_20260317_002255",
+        "vec_upsfortna_optisweep_training_day1_20260317_002256",
+        "vec_upsfortna_optisweep_training_day1_20260317_002257"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000068"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

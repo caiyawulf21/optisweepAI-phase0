@@ -1,0 +1,245 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0099_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        99
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0099"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Tag Read and Tag Write logs capture tags read and written by the system",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tag Read log",
+        "Tag Write log"
+      ],
+      "summary": "The slide states that Tag Read and Tag Write logs all tags the system reads and writes.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Tipper/Tag Logging'",
+        "Visible text: 'Tag Read and Tag Write logs all tags the systems reads and writes.'"
+      ],
+      "relationships": [
+        {
+          "type": "stored_in",
+          "target": "Sorter Sweeper Database"
+        },
+        {
+          "type": "supports",
+          "target": "tag activity traceability"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Tipper/Tag Logging. Tag Read and Tag Write logs all tags the system reads and writes.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0099_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        99
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0099"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Tipper Departure Activity Model records AGV departures from the tipper",
+      "systems": [
+        "Sorter Sweeper Database",
+        "AGV"
+      ],
+      "components": [
+        "Tipper Departure Activity Model",
+        "Tipper",
+        "DropOffSorter",
+        "DropOffHospital",
+        "Tote",
+        "Tag path",
+        "fault code"
+      ],
+      "summary": "The Tipper Departure Activity Model records each time an AGV is sent away from the tipper and includes destination and related trip data.",
+      "observed_evidence": [
+        "Visible text: 'Tipper Departure Activity Model records every time an AGV is sent away from the tipper.'",
+        "Visible text: 'DropOffSorter or DropOffHospital, the Tote, the Tag path and any fault code are recorded.'"
+      ],
+      "relationships": [
+        {
+          "type": "stored_in",
+          "target": "Sorter Sweeper Database"
+        },
+        {
+          "type": "records_event_for",
+          "target": "AGV departure from tipper"
+        },
+        {
+          "type": "captures_destination",
+          "target": "DropOffSorter"
+        },
+        {
+          "type": "captures_destination",
+          "target": "DropOffHospital"
+        },
+        {
+          "type": "captures_attribute",
+          "target": "Tote"
+        },
+        {
+          "type": "captures_attribute",
+          "target": "Tag path"
+        },
+        {
+          "type": "captures_attribute",
+          "target": "fault code"
+        }
+      ],
+      "retrieval_text": "Tipper Departure Activity Model records every time an AGV is sent away from the tipper. Recorded fields include DropOffSorter or DropOffHospital, the Tote, the Tag path, and any fault code.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0099_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        99
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0099"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "Tipper and tag logging data can help narrow tipper issues",
+      "systems": [
+        "Sorter Sweeper Database",
+        "AGV"
+      ],
+      "components": [
+        "Tag Read log",
+        "Tag Write log",
+        "Tipper Departure Activity Model",
+        "Tipper"
+      ],
+      "summary": "The slide explicitly says the recorded tag and tipper departure information can be helpful in narrowing down tipper issues.",
+      "observed_evidence": [
+        "Visible text: 'This can be helpful in narrowing down tipper issues.'",
+        "Context on slide ties this statement to tag read/write logs and the Tipper Departure Activity Model."
+      ],
+      "relationships": [
+        {
+          "type": "uses_data_from",
+          "target": "Tag Read log"
+        },
+        {
+          "type": "uses_data_from",
+          "target": "Tag Write log"
+        },
+        {
+          "type": "uses_data_from",
+          "target": "Tipper Departure Activity Model"
+        },
+        {
+          "type": "supports",
+          "target": "tipper issue diagnosis"
+        }
+      ],
+      "retrieval_text": "Tag Read and Tag Write logs, together with the Tipper Departure Activity Model, can be helpful in narrowing down tipper issues.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0099_01",
+      "title": "Use Sorter Sweeper Database tag and tipper departure records to investigate tipper issues",
+      "procedure_type": "diagnostic_check",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        99
+      ],
+      "systems": [
+        "Sorter Sweeper Database",
+        "AGV"
+      ],
+      "components": [
+        "Tag Read log",
+        "Tag Write log",
+        "Tipper Departure Activity Model",
+        "Tipper"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Access to Sorter Sweeper Database records is available",
+        "A tipper issue is being investigated"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0099"
+      ],
+      "procedure_visual_summary": "Slide describes Tag Read/Tag Write logging and Tipper Departure Activity Model fields used for troubleshooting tipper issues.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Review Tag Read and Tag Write logs for tags the system read and wrote during the issue timeframe.",
+          "expected_outcome": "Relevant tag read/write activity is identified for the investigation window.",
+          "validation_check": "Tag records are present and correspond to the timeframe being investigated.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:99"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0099"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0099"
+          ],
+          "visual_region_hint": "Text block describing Tag Read and Tag Write logs"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Review the Tipper Departure Activity Model for times when an AGV was sent away from the tipper.",
+          "expected_outcome": "Departure events associated with the tipper are identified.",
+          "validation_check": "Records show AGV departures from the tipper.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:99"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0099"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0099"
+          ],
+          "visual_region_hint": "Text block describing Tipper Departure Activity Model"
+        },
+        {
+          "step_order": 3,
+          "instruction": "Check the recorded destination, tote, tag path, and any fault code in those departure records to help narrow the tipper issue.",
+          "expected_outcome": "Potential issue indicators are narrowed using departure record details.",
+          "validation_check": "Departure records include destination as DropOffSorter or DropOffHospital and may include tote, tag path, and fault code details.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:99"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0099"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0099"
+          ],
+          "visual_region_hint": "Text block listing DropOffSorter, DropOffHospital, Tote, Tag path, and fault code"
+        }
+      ],
+      "warnings": [
+        "The slide does not provide an exact database query method, UI path, or tool-specific access steps.",
+        "The slide states the records are helpful for narrowing issues, not that they conclusively identify root cause."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0099_01",
+        "oku_optisweep_training_internal_0099_02",
+        "oku_optisweep_training_internal_0099_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Diagnostic check candidate: review Tag Read and Tag Write logs and the Tipper Departure Activity Model to narrow tipper issues. Departure records include destination, tote, tag path, and fault code."
+    }
+  ],
+  "discarded_candidates": []
+}

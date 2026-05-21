@@ -1,0 +1,127 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Handling AGV Errors and Hospital Station Role",
+      "timestamp_start": "00:34:04.680",
+      "timestamp_end": "00:35:18.640",
+      "primary_intent": "Explain error detection and hospital station handling for AGVs",
+      "operational_intents": [
+        "Describe photo sensor error detection on AGVs",
+        "Explain conditions triggering hospital station routing",
+        "Clarify hospital station staffing and supervision"
+      ],
+      "knowledge_extraction_strategy": "Extract error handling and hospital station operational details",
+      "why_this_strategy": "Focus on AGV error management and hospital station role",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000559",
+        "vec_upsfortna_optisweep_training_day1_20260317_000560",
+        "vec_upsfortna_optisweep_training_day1_20260317_000561",
+        "vec_upsfortna_optisweep_training_day1_20260317_000562",
+        "vec_upsfortna_optisweep_training_day1_20260317_000563",
+        "vec_upsfortna_optisweep_training_day1_20260317_000564",
+        "vec_upsfortna_optisweep_training_day1_20260317_000565",
+        "vec_upsfortna_optisweep_training_day1_20260317_000566",
+        "vec_upsfortna_optisweep_training_day1_20260317_000567",
+        "vec_upsfortna_optisweep_training_day1_20260317_000568",
+        "vec_upsfortna_optisweep_training_day1_20260317_000569",
+        "vec_upsfortna_optisweep_training_day1_20260317_000570",
+        "vec_upsfortna_optisweep_training_day1_20260317_000571",
+        "vec_upsfortna_optisweep_training_day1_20260317_000572",
+        "vec_upsfortna_optisweep_training_day1_20260317_000573",
+        "vec_upsfortna_optisweep_training_day1_20260317_000574",
+        "vec_upsfortna_optisweep_training_day1_20260317_000575",
+        "vec_upsfortna_optisweep_training_day1_20260317_000576",
+        "vec_upsfortna_optisweep_training_day1_20260317_000577"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000012"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Layout Design Overview of Hazlet Facility",
+      "timestamp_start": "00:35:18.640",
+      "timestamp_end": "00:36:03.360",
+      "primary_intent": "Describe modular layout design and area connectivity",
+      "operational_intents": [
+        "Explain modular design with distinct connected areas",
+        "Identify key facility areas: hospitals, sorter sides, starters, tippers",
+        "Highlight entrance and exit flow control for AGVs"
+      ],
+      "knowledge_extraction_strategy": "Extract facility layout and flow control concepts",
+      "why_this_strategy": "Capture design principles and area definitions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000578",
+        "vec_upsfortna_optisweep_training_day1_20260317_000579",
+        "vec_upsfortna_optisweep_training_day1_20260317_000580",
+        "vec_upsfortna_optisweep_training_day1_20260317_000581",
+        "vec_upsfortna_optisweep_training_day1_20260317_000582",
+        "vec_upsfortna_optisweep_training_day1_20260317_000583",
+        "vec_upsfortna_optisweep_training_day1_20260317_000584",
+        "vec_upsfortna_optisweep_training_day1_20260317_000585",
+        "vec_upsfortna_optisweep_training_day1_20260317_000586",
+        "vec_upsfortna_optisweep_training_day1_20260317_000587",
+        "vec_upsfortna_optisweep_training_day1_20260317_000588",
+        "vec_upsfortna_optisweep_training_day1_20260317_000589"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000012"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Sorter Area Queue and Exchange Locations",
+      "timestamp_start": "00:36:03.360",
+      "timestamp_end": "00:36:39.654",
+      "primary_intent": "Explain sorter entrance queue and AGV staging locations",
+      "operational_intents": [
+        "Describe entrance queue function for sorter area",
+        "Identify queue locations for AGV staging before exchange",
+        "Explain sorter queue locations for tote pickup and aisle entry"
+      ],
+      "knowledge_extraction_strategy": "Extract queue and staging operational details",
+      "why_this_strategy": "Focus on sorter area AGV flow and staging",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000590",
+        "vec_upsfortna_optisweep_training_day1_20260317_000591",
+        "vec_upsfortna_optisweep_training_day1_20260317_000592",
+        "vec_upsfortna_optisweep_training_day1_20260317_000593",
+        "vec_upsfortna_optisweep_training_day1_20260317_000594",
+        "vec_upsfortna_optisweep_training_day1_20260317_000595",
+        "vec_upsfortna_optisweep_training_day1_20260317_000596",
+        "vec_upsfortna_optisweep_training_day1_20260317_000597"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000012"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Exit Queue and Shutdown Locations for AGVs",
+      "timestamp_start": "00:36:39.654",
+      "timestamp_end": "00:37:05.800",
+      "primary_intent": "Detail exit queue and shutdown staging for AGVs",
+      "operational_intents": [
+        "Explain exit queue role after exchanges",
+        "Describe shutdown queue locations for AGVs with and without totes",
+        "Mention exception locations under racks for AGVs"
+      ],
+      "knowledge_extraction_strategy": "Extract exit and shutdown queue operational details",
+      "why_this_strategy": "Capture end-of-process AGV staging and exceptions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000598",
+        "vec_upsfortna_optisweep_training_day1_20260317_000599",
+        "vec_upsfortna_optisweep_training_day1_20260317_000600",
+        "vec_upsfortna_optisweep_training_day1_20260317_000601",
+        "vec_upsfortna_optisweep_training_day1_20260317_000602",
+        "vec_upsfortna_optisweep_training_day1_20260317_000603",
+        "vec_upsfortna_optisweep_training_day1_20260317_000604",
+        "vec_upsfortna_optisweep_training_day1_20260317_000605"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000012"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

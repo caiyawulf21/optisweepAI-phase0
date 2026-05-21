@@ -1,0 +1,29 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "optisweep_training_internal_s117_mf1_glossary",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        117
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0117"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "MF1 — Missing bagouts",
+      "systems": [],
+      "components": [],
+      "summary": "Defines the term/code 'MF1' as 'Missing bagouts'.",
+      "observed_evidence": [
+        "Slide text shows: 'MF1'",
+        "Slide text shows: 'Missing bagouts'",
+        "Slide label and metadata: 'Slide 115', 'Mitchel Flynn, 2026-03-11T20:17:35.445'"
+      ],
+      "relationships": [],
+      "retrieval_text": "MF1 corresponds to: Missing bagouts.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

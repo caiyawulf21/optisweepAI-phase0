@@ -1,0 +1,257 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0036_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        36
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0036"
+      ],
+      "unit_type": "system_behavior",
+      "title": "System bag out closes destinations and exchanges totes containing parcels",
+      "systems": [
+        "OptiSweep sorter system"
+      ],
+      "components": [
+        "Bag Out Control",
+        "destinations",
+        "totes"
+      ],
+      "summary": "The slide states that a system bag out closes all destinations and exchanges all totes that contain parcels.",
+      "observed_evidence": [
+        "Bullet: 'System Bag out will close all destinations and exchange all totes with parcels in them.'"
+      ],
+      "relationships": [
+        {
+          "relation": "affects",
+          "target": "destinations"
+        },
+        {
+          "relation": "affects",
+          "target": "totes with parcels"
+        }
+      ],
+      "retrieval_text": "Overall System Bag Out Control: system bag out closes all destinations and exchanges all totes with parcels in them.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0036_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        36
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0036"
+      ],
+      "unit_type": "operational_process",
+      "title": "Bag out can be performed by sorter leg",
+      "systems": [
+        "OptiSweep sorter system"
+      ],
+      "components": [
+        "Bag Out Control",
+        "sorter leg"
+      ],
+      "summary": "The slide indicates that a user may choose to perform bag out by leg of the sorter rather than system-wide.",
+      "observed_evidence": [
+        "Bullet: 'A user could also choose to bag out by leg of the sorter.'"
+      ],
+      "relationships": [
+        {
+          "relation": "scope_option_for",
+          "target": "bag out"
+        }
+      ],
+      "retrieval_text": "Bag Out Control supports bag out by leg of the sorter as an alternative scope to full system bag out.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0036_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        36
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0036"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Cancel bag out cancels exchange tasks not already in process during manual bag out",
+      "systems": [
+        "OptiSweep sorter system"
+      ],
+      "components": [
+        "manual bag out",
+        "cancel bag out",
+        "exchange task"
+      ],
+      "summary": "For a manual bag out event, Fortna offers a cancel bag out function that cancels any exchange task that is not already in process.",
+      "observed_evidence": [
+        "Bullet: 'In the event of a manual bag out Fortna offers a cancel bag out that will cancel any exchange task that is not in process.'"
+      ],
+      "relationships": [
+        {
+          "relation": "available_during",
+          "target": "manual bag out"
+        },
+        {
+          "relation": "cancels",
+          "target": "exchange task not in process"
+        }
+      ],
+      "retrieval_text": "During manual bag out, cancel bag out cancels exchange tasks that are not yet in process.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0036_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        36
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0036"
+      ],
+      "unit_type": "routing_rule",
+      "title": "Pre bag out exchanges the lowest 25 percent of destinations per sorter leg",
+      "systems": [
+        "OptiSweep sorter system"
+      ],
+      "components": [
+        "pre bag out",
+        "destinations",
+        "sorter leg"
+      ],
+      "summary": "The slide defines a pre bag out behavior that exchanges the lowest 25% of destinations for each leg of the sorter.",
+      "observed_evidence": [
+        "Bullet: 'Pre bag out exchanges the lowest 25% of destinations per leg of the sorter.'"
+      ],
+      "relationships": [
+        {
+          "relation": "applies_per",
+          "target": "sorter leg"
+        },
+        {
+          "relation": "targets_subset_of",
+          "target": "lowest 25% of destinations"
+        }
+      ],
+      "retrieval_text": "Pre bag out behavior: exchange the lowest 25 percent of destinations per leg of the sorter.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0036_01",
+      "title": "Initiate bag out by sorter leg",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        36
+      ],
+      "systems": [
+        "OptiSweep sorter system"
+      ],
+      "components": [
+        "Bag Out Control",
+        "sorter leg"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Bag out capability is available in the system",
+        "An operator or user needs to perform bag out for a specific sorter leg"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0036"
+      ],
+      "procedure_visual_summary": "Slide titled 'Overall System / Bag Out Control' with bullets describing system bag out, bag out by leg, cancel bag out, and pre bag out behavior.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Choose to bag out by leg of the sorter.",
+          "expected_outcome": "Bag out is scoped to a sorter leg instead of the entire system.",
+          "validation_check": "Confirm the intended bag out scope is by sorter leg.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:36",
+            "artifact:slide_artifact_optisweep_training_internal_0036"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0036"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0036"
+          ],
+          "visual_region_hint": "No specific UI region shown; evidence comes from slide bullet text."
+        }
+      ],
+      "warnings": [
+        "The slide does not show the UI path, control name, or full execution sequence for this action."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0036_01",
+        "oku_optisweep_training_internal_0036_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure candidate: bag out by leg of the sorter. Slide only explicitly states that a user can choose this scope; detailed UI steps are not provided."
+    },
+    {
+      "procedure_id": "proc_optisweep_training_internal_0036_02",
+      "title": "Cancel manual bag out exchange tasks not in process",
+      "procedure_type": "recovery_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        36
+      ],
+      "systems": [
+        "OptiSweep sorter system"
+      ],
+      "components": [
+        "manual bag out",
+        "cancel bag out",
+        "exchange task"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A manual bag out event is in progress or has been initiated",
+        "There are exchange tasks associated with the bag out"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0036"
+      ],
+      "procedure_visual_summary": "Slide titled 'Overall System / Bag Out Control' describing cancel bag out behavior during manual bag out.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Use cancel bag out during a manual bag out event.",
+          "expected_outcome": "Exchange tasks that are not already in process are canceled.",
+          "validation_check": "Verify that only exchange tasks not in process are canceled.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:36",
+            "artifact:slide_artifact_optisweep_training_internal_0036"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0036"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0036"
+          ],
+          "visual_region_hint": "No specific UI region shown; evidence comes from slide bullet text."
+        }
+      ],
+      "warnings": [
+        "The slide does not provide the exact trigger, UI location, or command sequence for cancel bag out.",
+        "The slide explicitly limits cancellation to exchange tasks that are not in process."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0036_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure candidate: cancel bag out during manual bag out to cancel exchange tasks not in process. Detailed execution steps are not shown on the slide."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,129 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Overview of Sorter Sensor Limitations and Data Issues",
+      "timestamp_start": "00:24:59.143",
+      "timestamp_end": "00:25:38.600",
+      "primary_intent": "Explain sensor limitations and data challenges in the sorter system",
+      "operational_intents": [
+        "Describe absence of photo eyes and sensors",
+        "Discuss data missingness and backup system role",
+        "Highlight specific data measurement issues"
+      ],
+      "knowledge_extraction_strategy": "Extract system sensor and data issue details",
+      "why_this_strategy": "Clarifies sensor and data context for troubleshooting",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000417",
+        "vec_upsfortna_optisweep_training_day1_20260317_000418",
+        "vec_upsfortna_optisweep_training_day1_20260317_000419",
+        "vec_upsfortna_optisweep_training_day1_20260317_000420",
+        "vec_upsfortna_optisweep_training_day1_20260317_000421",
+        "vec_upsfortna_optisweep_training_day1_20260317_000422",
+        "vec_upsfortna_optisweep_training_day1_20260317_000423",
+        "vec_upsfortna_optisweep_training_day1_20260317_000424",
+        "vec_upsfortna_optisweep_training_day1_20260317_000425",
+        "vec_upsfortna_optisweep_training_day1_20260317_000426",
+        "vec_upsfortna_optisweep_training_day1_20260317_000427",
+        "vec_upsfortna_optisweep_training_day1_20260317_000428",
+        "vec_upsfortna_optisweep_training_day1_20260317_000429",
+        "vec_upsfortna_optisweep_training_day1_20260317_000430",
+        "vec_upsfortna_optisweep_training_day1_20260317_000431",
+        "vec_upsfortna_optisweep_training_day1_20260317_000432",
+        "vec_upsfortna_optisweep_training_day1_20260317_000433",
+        "vec_upsfortna_optisweep_training_day1_20260317_000434",
+        "vec_upsfortna_optisweep_training_day1_20260317_000435",
+        "vec_upsfortna_optisweep_training_day1_20260317_000436"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000009"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Handling Parcels Not Sorted to Shooter and Tracking",
+      "timestamp_start": "00:25:54.640",
+      "timestamp_end": "00:26:42.520",
+      "primary_intent": "Explain process for parcels that miss sorting and tracking methods",
+      "operational_intents": [
+        "Describe what happens if parcel misses shooter",
+        "Explain off-end handling and destination tracking",
+        "Discuss system cleanup after sorting or rejection"
+      ],
+      "knowledge_extraction_strategy": "Extract parcel handling and tracking procedures",
+      "why_this_strategy": "Details operational flow for missed parcel sorting",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000437",
+        "vec_upsfortna_optisweep_training_day1_20260317_000438",
+        "vec_upsfortna_optisweep_training_day1_20260317_000439",
+        "vec_upsfortna_optisweep_training_day1_20260317_000440",
+        "vec_upsfortna_optisweep_training_day1_20260317_000441",
+        "vec_upsfortna_optisweep_training_day1_20260317_000442",
+        "vec_upsfortna_optisweep_training_day1_20260317_000443",
+        "vec_upsfortna_optisweep_training_day1_20260317_000444",
+        "vec_upsfortna_optisweep_training_day1_20260317_000445",
+        "vec_upsfortna_optisweep_training_day1_20260317_000446",
+        "vec_upsfortna_optisweep_training_day1_20260317_000447",
+        "vec_upsfortna_optisweep_training_day1_20260317_000448",
+        "vec_upsfortna_optisweep_training_day1_20260317_000449",
+        "vec_upsfortna_optisweep_training_day1_20260317_000450"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000009"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Shoot Closure and Reopening Process Based on Thresholds",
+      "timestamp_start": "00:26:50.000",
+      "timestamp_end": "00:27:09.280",
+      "primary_intent": "Describe shoot closure and reopening triggered by weight/dimension thresholds",
+      "operational_intents": [
+        "Explain sending destination close directive",
+        "Describe shoot closing and reopening sequence"
+      ],
+      "knowledge_extraction_strategy": "Extract shoot management procedures",
+      "why_this_strategy": "Captures operational control of shoot status",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000450",
+        "vec_upsfortna_optisweep_training_day1_20260317_000451",
+        "vec_upsfortna_optisweep_training_day1_20260317_000452",
+        "vec_upsfortna_optisweep_training_day1_20260317_000453",
+        "vec_upsfortna_optisweep_training_day1_20260317_000454"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000009"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV Tote Exchange Process and Coordination",
+      "timestamp_start": "00:27:09.680",
+      "timestamp_end": "00:28:01.650",
+      "primary_intent": "Explain automated guided vehicle (AGV) tote exchange and staging process",
+      "operational_intents": [
+        "Describe staging conditions for exchange",
+        "Explain AGV positioning and tote lifting",
+        "Detail coordinated movement of AGVs during exchange"
+      ],
+      "knowledge_extraction_strategy": "Extract AGV tote exchange operational steps",
+      "why_this_strategy": "Details coordinated AGV tote handling process",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000455",
+        "vec_upsfortna_optisweep_training_day1_20260317_000456",
+        "vec_upsfortna_optisweep_training_day1_20260317_000457",
+        "vec_upsfortna_optisweep_training_day1_20260317_000458",
+        "vec_upsfortna_optisweep_training_day1_20260317_000459",
+        "vec_upsfortna_optisweep_training_day1_20260317_000460",
+        "vec_upsfortna_optisweep_training_day1_20260317_000461",
+        "vec_upsfortna_optisweep_training_day1_20260317_000462",
+        "vec_upsfortna_optisweep_training_day1_20260317_000463",
+        "vec_upsfortna_optisweep_training_day1_20260317_000464",
+        "vec_upsfortna_optisweep_training_day1_20260317_000465"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000009"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0066_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        66
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0066"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Task Id To Request Id table tracks AGV, current Geek Task ID, and robotics engine command GUID",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Audit Database",
+        "Task Id To Request Id table",
+        "Audits table",
+        "robotics engine"
+      ],
+      "summary": "The slide states that the Task Id To Request Id table records the AgvId, the current Geek Task ID, and the command GUID sent by the robotics engine.",
+      "observed_evidence": [
+        "Slide title: 'Audit Database / Task Id To Request Id'",
+        "Visible text: 'Tracks the AgvId, the current Geek Task ID, and the command guid sent by robotics engine.'",
+        "Visual element identified as database_schema",
+        "Systems/components hint includes AGV and Robot"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "tracked_by",
+          "target": "Task Id To Request Id table",
+          "details": "Tracks AgvId, current Geek Task ID, and command GUID sent by robotics engine."
+        }
+      ],
+      "retrieval_text": "Audit Database Task Id To Request Id table tracks AgvId, current Geek Task ID, and command GUID sent by the robotics engine.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0066_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        66
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0066"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Changes to Task Id To Request Id are tracked in the Audits table",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Task Id To Request Id table",
+        "Audits table",
+        "Audit Database"
+      ],
+      "summary": "The slide indicates that modifications to the Task Id To Request Id table are recorded in the Audits table.",
+      "observed_evidence": [
+        "Visible text: 'Changes to this table are tracked in the Audits table.'",
+        "Slide section: 'Audit Database'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "audit_logged_in",
+          "source": "Task Id To Request Id table",
+          "target": "Audits table",
+          "details": "Changes to the Task Id To Request Id table are tracked in Audits."
+        }
+      ],
+      "retrieval_text": "In the Audit Database, changes to the Task Id To Request Id table are tracked in the Audits table.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "candidate_type": "procedure",
+      "title": "Audit Database / Task Id To Request Id",
+      "reason": "Slide contains descriptive database reference information only. It does not provide explicit action steps, checks, or a reusable operational sequence.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:66",
+        "artifact:slide_artifact_optisweep_training_internal_0066"
+      ]
+    }
+  ]
+}

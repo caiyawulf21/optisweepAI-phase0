@@ -1,0 +1,80 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Unknown Slide Segment 49",
+      "timestamp_start": "02:00:59.760",
+      "timestamp_end": "02:00:59.880",
+      "primary_intent": "Review slide content",
+      "operational_intents": [
+        "Assess slide information",
+        "Prepare for content validation"
+      ],
+      "knowledge_extraction_strategy": "Review slide and transcript for content",
+      "why_this_strategy": "Slide content unknown, requires review",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000049"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000049"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Unknown Slide Segment 50",
+      "timestamp_start": "02:01:29.760",
+      "timestamp_end": "02:01:29.880",
+      "primary_intent": "Review slide content",
+      "operational_intents": [
+        "Assess slide information",
+        "Prepare for content validation"
+      ],
+      "knowledge_extraction_strategy": "Review slide and transcript for content",
+      "why_this_strategy": "Slide content unknown, requires review",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000050"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000050"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Unknown Slide Segment 51",
+      "timestamp_start": "02:01:59.760",
+      "timestamp_end": "02:01:59.880",
+      "primary_intent": "Review slide content",
+      "operational_intents": [
+        "Assess slide information",
+        "Prepare for content validation"
+      ],
+      "knowledge_extraction_strategy": "Review slide and transcript for content",
+      "why_this_strategy": "Slide content unknown, requires review",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000051"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000051"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Unknown Slide Segment 52",
+      "timestamp_start": "02:02:29.760",
+      "timestamp_end": "02:02:29.880",
+      "primary_intent": "Review slide content",
+      "operational_intents": [
+        "Assess slide information",
+        "Prepare for content validation"
+      ],
+      "knowledge_extraction_strategy": "Review slide and transcript for content",
+      "why_this_strategy": "Slide content unknown, requires review",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000052"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000052"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

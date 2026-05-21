@@ -1,0 +1,138 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_028_01",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        28
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Robot Selection restart workflow UI",
+      "systems": [
+        "Robot Selection"
+      ],
+      "components": [
+        "Robot",
+        "Restart action",
+        "Map"
+      ],
+      "summary": "The Robot Selection screen includes a Restart function for a selected robot. The user can enter the corresponding robot ID or select the robot, then click Restart. After startup, the positioned robot is displayed on the map.",
+      "observed_evidence": [
+        "Slide title: 'Robot Selection / Restart'",
+        "Bullet: 'Restart Robot'",
+        "Step 1: 'Enter the corresponding robot Id or select the robot.'",
+        "Step 2: 'Click “Restart”'",
+        "Step 4: 'After starting, the robot that has been positioned will be displayed on the map.'"
+      ],
+      "relationships": [],
+      "retrieval_text": "Robot Selection restart UI allows a user to enter a robot ID or select a robot, click Restart, and after startup the positioned robot is displayed on the map.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_028_02",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        28
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Robot restart location condition and post-start display behavior",
+      "systems": [
+        "Robot Selection"
+      ],
+      "components": [
+        "Robot",
+        "Restart point",
+        "QR code cell",
+        "Map"
+      ],
+      "summary": "When restarted from the Robot Selection workflow, the robot restarts while at the restart point or on the QR code cell. After starting, the positioned robot is shown on the map.",
+      "observed_evidence": [
+        "Step 3: 'The robot will restart (it is at the restart point or on the QR code cell).'",
+        "Step 4: 'After starting, the robot that has been positioned will be displayed on the map.'"
+      ],
+      "relationships": [],
+      "retrieval_text": "Robot restart behavior: the robot restarts at the restart point or on the QR code cell, and after startup the positioned robot appears on the map.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_robot_selection_028_01",
+      "title": "Restart a robot from Robot Selection",
+      "procedure_type": "service_restart",
+      "source_deck": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        28
+      ],
+      "systems": [
+        "Robot Selection"
+      ],
+      "components": [
+        "Robot",
+        "Restart action",
+        "Map"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A robot can be identified by corresponding robot ID or by selecting it in the interface."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028"
+      ],
+      "procedure_visual_summary": "Slide-level screenshot for Robot Selection / Restart showing restart instructions for selecting a robot by ID or selection and using the Restart action.",
+      "steps": [
+        {
+          "step_number": 1,
+          "action": "Enter the corresponding robot ID or select the robot.",
+          "expected_result": "The target robot is identified for restart.",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028"
+          ],
+          "visual_region_hint": "Robot Selection screen area where robot ID entry or robot selection occurs."
+        },
+        {
+          "step_number": 2,
+          "action": "Click \"Restart\".",
+          "expected_result": "The restart command is initiated for the selected robot.",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028"
+          ],
+          "visual_region_hint": "Restart button or control on the Robot Selection screen."
+        },
+        {
+          "step_number": 3,
+          "action": "Allow the robot to restart.",
+          "expected_result": "The robot restarts while at the restart point or on the QR code cell.",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028"
+          ],
+          "visual_region_hint": "General Robot Selection / restart workflow context; no specific UI control shown for this state."
+        },
+        {
+          "step_number": 4,
+          "action": "Verify the post-start display.",
+          "expected_result": "After starting, the robot that has been positioned is displayed on the map.",
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0028"
+          ],
+          "visual_region_hint": "Map area where the positioned robot is displayed after startup."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_robot_selection_028_01",
+        "oku_optisweep_training_internal_robot_selection_028_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure to restart a robot from Robot Selection: enter the corresponding robot ID or select the robot, click Restart, the robot restarts at the restart point or QR code cell, and after startup the positioned robot is displayed on the map."
+    }
+  ],
+  "discarded_candidates": []
+}

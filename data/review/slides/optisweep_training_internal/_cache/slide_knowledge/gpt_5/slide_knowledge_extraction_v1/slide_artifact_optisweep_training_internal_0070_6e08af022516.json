@@ -1,0 +1,30 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "optisweep_training_internal_s70_k1",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        70
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0070"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "Robotics Database (Overview)",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [],
+      "summary": "This slide is a section overview introducing the topic 'Robotics Database' within the OptiSweep internal training deck. It provides no operational details, procedures, or technical specifics on this slide.",
+      "observed_evidence": [
+        "Slide text includes: 'Robotics Database' and 'Overview'",
+        "Deck context: OptiSweep Training Slides [INTERNAL ONLY]"
+      ],
+      "relationships": [],
+      "retrieval_text": "Section divider for 'Robotics Database' in the OptiSweep internal training deck; no actionable steps or technical details on this slide.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

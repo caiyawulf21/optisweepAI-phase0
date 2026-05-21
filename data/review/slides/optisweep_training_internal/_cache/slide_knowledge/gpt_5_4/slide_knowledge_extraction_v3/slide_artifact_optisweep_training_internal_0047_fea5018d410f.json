@@ -1,0 +1,157 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0047_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        47
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0047"
+      ],
+      "unit_type": "api_capability",
+      "title": "Aveva API page provides real-time KPI tracking for item exchanges",
+      "systems": [
+        "Aveva",
+        "automated sorting system"
+      ],
+      "components": [
+        "Aveva API page"
+      ],
+      "summary": "The slide identifies an Aveva API page used for real-time tracking of KPIs related to item exchanges in an automated sorting system.",
+      "observed_evidence": [
+        "Slide title: 'System Metrics / Aveva API page'",
+        "Bullet text: 'Real-time tracking of KPIs for item exchanges in an automated sorting system.'",
+        "Visual elements list system/component: 'Aveva'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "monitors",
+          "target": "item exchanges in an automated sorting system"
+        }
+      ],
+      "retrieval_text": "System Metrics slide describing an Aveva API page that supports real-time KPI tracking for item exchanges in an automated sorting system.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0047_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        47
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0047"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Aveva API page exposes exchange-related KPI fields",
+      "systems": [
+        "Aveva",
+        "automated sorting system"
+      ],
+      "components": [
+        "Aveva API page"
+      ],
+      "summary": "The Aveva API page includes named KPI and status fields associated with exchange activity, lane identity, and zone context.",
+      "observed_evidence": [
+        "Listed fields: 'Average Item Count Per Exchange'",
+        "Listed fields: 'Median System Generated Exchange(s)'",
+        "Listed fields: 'Lane Name'",
+        "Listed fields: 'Last System Generated Exchange'",
+        "Listed fields: 'Number of Exchanges'",
+        "Listed fields: 'Number of HotBins'",
+        "Listed fields: 'Number of MissSorts'",
+        "Listed fields: 'Number of SurePost'",
+        "Listed fields: 'Percent of Exchanges'",
+        "Listed fields: 'Status'",
+        "Listed fields: 'Zone'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "includes_field",
+          "target": "Average Item Count Per Exchange"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Median System Generated Exchange(s)"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Lane Name"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Last System Generated Exchange"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Number of Exchanges"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Number of HotBins"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Number of MissSorts"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Number of SurePost"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Percent of Exchanges"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Status"
+        },
+        {
+          "relationship_type": "includes_field",
+          "target": "Zone"
+        }
+      ],
+      "retrieval_text": "Aveva API page UI/reference slide listing exchange KPI fields: Average Item Count Per Exchange, Median System Generated Exchange(s), Lane Name, Last System Generated Exchange, Number of Exchanges, Number of HotBins, Number of MissSorts, Number of SurePost, Percent of Exchanges, Status, and Zone.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0047_01",
+      "title": "No reusable procedure present on System Metrics / Aveva API page slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        47
+      ],
+      "systems": [
+        "Aveva",
+        "automated sorting system"
+      ],
+      "components": [
+        "Aveva API page"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is viewing the System Metrics / Aveva API page context"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0047"
+      ],
+      "procedure_visual_summary": "Slide lists KPI fields available on the Aveva API page but does not show an action sequence, controls, or numbered workflow.",
+      "steps": [],
+      "warnings": [
+        "Slide is a KPI/API page overview and field list, not an explicit operational procedure.",
+        "No exact navigation path, button interaction, query example, or validation sequence is provided."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0047_01",
+        "oku_optisweep_training_internal_0047_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate for slide 47 because the slide provides an Aveva API page overview and KPI field list without explicit reusable action steps."
+    }
+  ],
+  "discarded_candidates": []
+}

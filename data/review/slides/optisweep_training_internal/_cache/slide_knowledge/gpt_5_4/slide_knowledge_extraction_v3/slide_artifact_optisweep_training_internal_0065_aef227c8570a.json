@@ -1,0 +1,116 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0065_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        65
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0065"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "OPTISweep uses EntityLogs database for logging",
+      "systems": [
+        "OptiSweep",
+        "Fortna WCS"
+      ],
+      "components": [
+        "EntityLogs"
+      ],
+      "summary": "The slide states that Fortna’s WCS creates several databases by default at install time, and that OPTISweep utilizes entity logs for logging.",
+      "observed_evidence": [
+        "Slide title: 'OptiSweep Databases / EntityLogs'",
+        "Visible text: 'At install Fortna’s WCS creates several databases as default. OPTISweep only utilizes entity logs for logging.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "created_by",
+          "target": "Fortna WCS",
+          "evidence": "At install Fortna’s WCS creates several databases as default."
+        },
+        {
+          "relationship_type": "used_by",
+          "target": "OptiSweep",
+          "evidence": "OPTISweep only utilizes entity logs for logging."
+        }
+      ],
+      "retrieval_text": "OptiSweep Databases EntityLogs. At install Fortna’s WCS creates several databases as default. OPTISweep only utilizes entity logs for logging.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0065_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        65
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0065"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "DeveloperLogs is listed under EntityLogs context",
+      "systems": [
+        "OptiSweep",
+        "Fortna WCS"
+      ],
+      "components": [
+        "EntityLogs",
+        "DeveloperLogs"
+      ],
+      "summary": "The slide includes a bullet for DeveloperLogs within the EntityLogs/database discussion, indicating DeveloperLogs is a named log-related database element or category referenced for this context.",
+      "observed_evidence": [
+        "Visible text bullet: '• DeveloperLogs'",
+        "Slide section/title context: 'OptiSweep Databases' and 'EntityLogs'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "associated_with",
+          "target": "EntityLogs",
+          "evidence": "DeveloperLogs appears as a bullet on the EntityLogs slide."
+        }
+      ],
+      "retrieval_text": "Within OptiSweep Databases / EntityLogs, the slide lists DeveloperLogs as a related log database element.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0065_01",
+      "title": "No reusable procedure present on EntityLogs overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        65
+      ],
+      "systems": [
+        "OptiSweep",
+        "Fortna WCS"
+      ],
+      "components": [
+        "EntityLogs",
+        "DeveloperLogs"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is reviewing database/logging architecture context for OptiSweep."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0065"
+      ],
+      "procedure_visual_summary": "Overview slide describing database usage for logging; no explicit action sequence or operator workflow is shown.",
+      "steps": [],
+      "warnings": [
+        "The slide describes database/logging context only.",
+        "No explicit steps, checks, or actions are provided."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0065_01",
+        "oku_optisweep_training_internal_0065_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide only states that Fortna WCS creates several databases by default and that OPTISweep uses entity logs for logging, with a DeveloperLogs bullet, but it does not provide an action sequence."
+    }
+  ],
+  "discarded_candidates": []
+}

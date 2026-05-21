@@ -1,0 +1,113 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_85_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        85
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0085"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "AgvActiveErrorDatabaseModel stores current AGV active errors",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "AgvActiveErrorDatabaseModel"
+      ],
+      "summary": "The AgvActiveErrorDatabaseModel table logs AGV active errors that are currently in the system. The slide states the table includes the robot name/code, error code, error description, and sort guid identifying during which sort the error occurred.",
+      "observed_evidence": [
+        "“The AgvActiveErrorDatabaseModel table logs any AGV active errors that are currently in the system.”",
+        "“The table includes the name (robot code), error code, and a description of the error.”",
+        "“Lastly it also provides the sort guid which is used to identify during what sort the error occurred.”"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "archives_to",
+          "target": "AGVErrorActivityDatabaseModel",
+          "evidence": "Resolved or removed AGV errors are archived to the AGVErrorActivityDatabaseModel."
+        }
+      ],
+      "retrieval_text": "Robotics Database AGV Error. AgvActiveErrorDatabaseModel records current AGV active errors in the system. Stored information includes robot name or code, error code, error description, and sort guid used to identify the sort during which the error occurred.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_85_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        85
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0085"
+      ],
+      "unit_type": "operational_process",
+      "title": "Resolved or removed AGV errors are archived from active error storage",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "AgvActiveErrorDatabaseModel",
+        "AGVErrorActivityDatabaseModel"
+      ],
+      "summary": "The slide describes an error record lifecycle in which active AGV errors remain in the active error table while current, and are archived to AGVErrorActivityDatabaseModel when the error is resolved or the AGV is removed.",
+      "observed_evidence": [
+        "“When error is resolved or the AGV is removed they are archived to the AGVErrorActivityDatabaseModel”"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "source_table",
+          "target": "AgvActiveErrorDatabaseModel",
+          "evidence": "Active errors are logged in AgvActiveErrorDatabaseModel."
+        },
+        {
+          "relationship_type": "archive_table",
+          "target": "AGVErrorActivityDatabaseModel",
+          "evidence": "Resolved or removed AGV errors are archived to AGVErrorActivityDatabaseModel."
+        }
+      ],
+      "retrieval_text": "AGV error record lifecycle: current AGV active errors are logged in AgvActiveErrorDatabaseModel. When an error is resolved or the AGV is removed, the error records are archived to AGVErrorActivityDatabaseModel.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_85_01",
+      "title": "No explicit AGV error handling procedure on slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        85
+      ],
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "AgvActiveErrorDatabaseModel",
+        "AGVErrorActivityDatabaseModel"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide is describing database storage behavior for AGV errors."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0085"
+      ],
+      "procedure_visual_summary": "Slide contains descriptive bullets about AGV error tables and archival behavior, with no numbered or sequenced operator actions.",
+      "steps": [],
+      "warnings": [
+        "The slide does not provide an explicit action sequence for viewing, resolving, archiving, or validating AGV errors.",
+        "Archival behavior appears to be system-described behavior rather than a manual procedure."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_85_01",
+        "oku_optisweep_training_internal_85_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide only describes AGV error database tables and archival behavior. No reusable operational steps are explicitly stated."
+    }
+  ],
+  "discarded_candidates": []
+}

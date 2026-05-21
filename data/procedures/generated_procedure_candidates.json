@@ -1,0 +1,1096 @@
+[
+  {
+    "procedure_id": "review_hospital_add_remove_state_v1",
+    "title": "Review hospital add and remove state before and after recovery",
+    "issue_category": "CAT-1",
+    "purpose": "Capture a reusable symptom and recovery validation pattern for hospital station add/remove asymmetry without asserting root cause.",
+    "source_procedure_candidate_ids": [
+      "proc_223554_review_hospital_add_remove_state"
+    ],
+    "action_tuple": {
+      "action_type": "review_state",
+      "target_system": "hospital_station",
+      "target_component": "tote_add_remove_flow",
+      "operational_scope": "single_hospital_station",
+      "role_required": "support",
+      "support_safe": true,
+      "validation_goal": "confirm pre-recovery add/remove asymmetry and post-recovery restoration"
+    },
+    "operational_intent": "Capture a reusable symptom and recovery validation pattern for hospital station add/remove asymmetry without asserting root cause.",
+    "role_required": "support",
+    "support_safe": true,
+    "preconditions": [
+      "Incident evidence indicates hospital tote handling problems.",
+      "At least one source artifact or chat record is available for review."
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "instruction": "Record whether hospital remove works while add fails, using only source-backed evidence.",
+        "validation_check": "confirm pre-recovery add/remove asymmetry and post-recovery restoration",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_05"
+          },
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_10"
+          }
+        ],
+        "image_refs": [
+          "case_223554_docx_artifact_07",
+          "case_223554_docx_artifact_15"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 2,
+        "instruction": "Record any source-backed indication that the station or related robot was not in normal operating state.",
+        "validation_check": "confirm pre-recovery add/remove asymmetry and post-recovery restoration",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_05"
+          },
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_10"
+          }
+        ],
+        "image_refs": [
+          "case_223554_docx_artifact_07",
+          "case_223554_docx_artifact_15"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 3,
+        "instruction": "Record the first source-backed confirmation that both add and remove functions were restored.",
+        "validation_check": "confirm pre-recovery add/remove asymmetry and post-recovery restoration",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_05"
+          },
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_10"
+          }
+        ],
+        "image_refs": [
+          "case_223554_docx_artifact_07",
+          "case_223554_docx_artifact_15"
+        ],
+        "screenshot_required": false
+      }
+    ],
+    "do_not_do": [
+      "Do not treat suspected AGV/tote mismatch as validated root cause.",
+      "Do not convert recovery notes into a restart procedure."
+    ],
+    "validation_checks": [
+      "confirm pre-recovery add/remove asymmetry and post-recovery restoration"
+    ],
+    "escalation_conditions": [
+      "Hospital symptom pattern cannot be confirmed from evidence.",
+      "Post-recovery evidence does not confirm both add and remove functions."
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_05"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      }
+    ],
+    "source_artifacts": [
+      "case_223554_docx_artifact_07",
+      "case_223554_docx_artifact_15"
+    ],
+    "confidence": 0.84,
+    "status": "candidate_extracted",
+    "validation_status": "needs_review"
+  },
+  {
+    "procedure_id": "review_agv_tote_anomaly_evidence_v1",
+    "title": "Review AGV placement and tote association anomaly evidence",
+    "issue_category": "CAT-1",
+    "purpose": "Document AGV and tote-state anomalies associated with blocked flow while keeping cause statements candidate-only.",
+    "source_procedure_candidate_ids": [
+      "proc_223554_review_agv_misplacement_and_disconnected_tote_evidence"
+    ],
+    "action_tuple": {
+      "action_type": "review_state",
+      "target_system": "agv_management",
+      "target_component": "agv_and_tote_association",
+      "operational_scope": "incident_specific_affected_assets",
+      "role_required": "support",
+      "support_safe": true,
+      "validation_goal": "identify source-backed AGV placement and disconnected tote anomalies"
+    },
+    "operational_intent": "Document AGV and tote-state anomalies associated with blocked flow while keeping cause statements candidate-only.",
+    "role_required": "support",
+    "support_safe": true,
+    "preconditions": [
+      "Evidence references specific AGV IDs or tote IDs.",
+      "Robot detail or summary artifacts are available."
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "instruction": "List each AGV and tote identifier explicitly named in the evidence.",
+        "validation_check": "identify source-backed AGV placement and disconnected tote anomalies",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_06"
+          },
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_08"
+          }
+        ],
+        "image_refs": [
+          "case_223554_docx_artifact_08",
+          "case_223554_docx_artifact_10"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 2,
+        "instruction": "Capture source-backed observations of wrong-zone, under-rack, pickup-location, or disconnected-tote conditions.",
+        "validation_check": "identify source-backed AGV placement and disconnected tote anomalies",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_06"
+          },
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_08"
+          }
+        ],
+        "image_refs": [
+          "case_223554_docx_artifact_08",
+          "case_223554_docx_artifact_10"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 3,
+        "instruction": "Preserve any visible robot detail fields only when clearly readable.",
+        "validation_check": "identify source-backed AGV placement and disconnected tote anomalies",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_06"
+          },
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_08"
+          }
+        ],
+        "image_refs": [
+          "case_223554_docx_artifact_08",
+          "case_223554_docx_artifact_10"
+        ],
+        "screenshot_required": false
+      }
+    ],
+    "do_not_do": [
+      "Do not upgrade anomaly observations to validated root cause.",
+      "Do not infer hidden robot fields from noisy screenshots."
+    ],
+    "validation_checks": [
+      "identify source-backed AGV placement and disconnected tote anomalies"
+    ],
+    "escalation_conditions": [
+      "AGV identity cannot be confirmed.",
+      "Multiple conflicting AGV/tote anomaly descriptions appear in evidence."
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_06"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      }
+    ],
+    "source_artifacts": [
+      "case_223554_docx_artifact_08",
+      "case_223554_docx_artifact_10"
+    ],
+    "confidence": 0.79,
+    "status": "candidate_extracted",
+    "validation_status": "needs_review"
+  },
+  {
+    "procedure_id": "review_endpoint_based_tote_recovery_actions_v1",
+    "title": "Review endpoint-based tote recovery actions and authorization gaps",
+    "issue_category": "CAT-1",
+    "purpose": "Preserve evidence of endpoint-based tote actions used during recovery while clearly marking missing approval and process details.",
+    "source_procedure_candidate_ids": [
+      "proc_223554_document_api_dog_tote_recovery_actions"
+    ],
+    "action_tuple": {
+      "action_type": "review_action",
+      "target_system": "endpoint_based_tote_control",
+      "target_component": "tote_induct_remove_actions",
+      "operational_scope": "single_recovery_event",
+      "role_required": "support",
+      "support_safe": true,
+      "validation_goal": "confirm what endpoint-based tote actions were used and what authorization gaps remain"
+    },
+    "operational_intent": "Preserve evidence of endpoint-based tote actions used during recovery while clearly marking missing approval and process details.",
+    "role_required": "support",
+    "support_safe": true,
+    "preconditions": [
+      "Evidence mentions endpoint-based tote actions.",
+      "Normal-path tote action failure is documented."
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "instruction": "Record the tote action that failed through the normal interface.",
+        "validation_check": "confirm what endpoint-based tote actions were used and what authorization gaps remain",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_08"
+          },
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_09"
+          }
+        ],
+        "image_refs": [
+          "case_223554_docx_artifact_10",
+          "case_223554_docx_artifact_11"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 2,
+        "instruction": "Record the endpoint-based tote action that was used during recovery.",
+        "validation_check": "confirm what endpoint-based tote actions were used and what authorization gaps remain",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_08"
+          },
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_09"
+          }
+        ],
+        "image_refs": [
+          "case_223554_docx_artifact_10",
+          "case_223554_docx_artifact_11"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 3,
+        "instruction": "Record any source-backed note that process documentation, training, or authorization review was requested.",
+        "validation_check": "confirm what endpoint-based tote actions were used and what authorization gaps remain",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_08"
+          },
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_09"
+          }
+        ],
+        "image_refs": [
+          "case_223554_docx_artifact_10",
+          "case_223554_docx_artifact_11"
+        ],
+        "screenshot_required": false
+      }
+    ],
+    "do_not_do": [
+      "Do not convert this review artifact into an approved operational procedure.",
+      "Do not assume endpoint use is authorized for all roles."
+    ],
+    "validation_checks": [
+      "confirm what endpoint-based tote actions were used and what authorization gaps remain"
+    ],
+    "escalation_conditions": [
+      "Endpoint-based action is mentioned without enough context to identify what changed.",
+      "Authorization or process ownership is unclear."
+    ],
+    "related_incidents": [
+      "223554"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_08"
+      },
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_09"
+      }
+    ],
+    "source_artifacts": [
+      "case_223554_docx_artifact_10",
+      "case_223554_docx_artifact_11"
+    ],
+    "confidence": 0.68,
+    "status": "candidate_extracted",
+    "validation_status": "needs_review"
+  },
+  {
+    "procedure_id": "validate_recovery_after_service_restart_and_readd_v1",
+    "title": "Validate recovery after documented service restart and asset re-add",
+    "issue_category": "CAT-1",
+    "purpose": "Create a reusable post-recovery validation pattern for incidents where restart and re-add actions are documented but execution details remain incomplete.",
+    "source_procedure_candidate_ids": [
+      "proc_223554_validate_recovery_after_service_reset_and_robot_readd",
+      "proc_229488_validate_recovery_and_document_rca_pending_candidate",
+      "proc_229716_validate_agv_and_hospital_recovery_after_restart"
+    ],
+    "action_tuple": {
+      "action_type": "validate_recovery",
+      "target_system": "wcs_and_operational_flow",
+      "target_component": "post_restart_operational_state",
+      "operational_scope": "affected_area_or_site",
+      "role_required": "support",
+      "support_safe": true,
+      "validation_goal": "confirm restored movement and restored affected function after documented recovery actions"
+    },
+    "operational_intent": "Create a reusable post-recovery validation pattern for incidents where restart and re-add actions are documented but execution details remain incomplete.",
+    "role_required": "support",
+    "support_safe": true,
+    "preconditions": [
+      "A restart or equivalent recovery action is already documented.",
+      "Post-action site or support updates are available."
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "instruction": "Capture the first source-backed indication that movement or production resumed.",
+        "validation_check": "confirm restored movement and restored affected function after documented recovery actions",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_10"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_08"
+          }
+        ],
+        "image_refs": [
+          "case_229488_docx_artifact_23",
+          "case_229716_docx_artifact_11"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 2,
+        "instruction": "Capture the first source-backed indication that the originally failed operational function was restored.",
+        "validation_check": "confirm restored movement and restored affected function after documented recovery actions",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_10"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_08"
+          }
+        ],
+        "image_refs": [
+          "case_229488_docx_artifact_23",
+          "case_229716_docx_artifact_11"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 3,
+        "instruction": "Record any remaining follow-up risks separately from the main recovery confirmation.",
+        "validation_check": "confirm restored movement and restored affected function after documented recovery actions",
+        "evidence_refs": [
+          {
+            "incident_id": "223554",
+            "evidence_id": "chunk_223554_10"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_08"
+          }
+        ],
+        "image_refs": [
+          "case_229488_docx_artifact_23",
+          "case_229716_docx_artifact_11"
+        ],
+        "screenshot_required": false
+      }
+    ],
+    "do_not_do": [
+      "Do not treat restart completion alone as recovery validation.",
+      "Do not mark root cause as validated based only on restored operation."
+    ],
+    "validation_checks": [
+      "confirm restored movement and restored affected function after documented recovery actions"
+    ],
+    "escalation_conditions": [
+      "Movement resumes but the originally failed function remains impaired.",
+      "Recovery is reported without any source-backed operational confirmation."
+    ],
+    "related_incidents": [
+      "223554",
+      "229488",
+      "229716"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "223554",
+        "evidence_id": "chunk_223554_10"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_08"
+      }
+    ],
+    "source_artifacts": [
+      "case_229488_docx_artifact_23",
+      "case_229716_docx_artifact_11"
+    ],
+    "confidence": 0.83,
+    "status": "candidate_extracted",
+    "validation_status": "needs_review"
+  },
+  {
+    "procedure_id": "review_service_restart_and_response_validation_v1",
+    "title": "Review service restart path and response validation evidence",
+    "issue_category": "CAT-1",
+    "purpose": "Capture a reusable review pattern for incidents where service-layer restart and response checks were used to restore application responsiveness.",
+    "source_procedure_candidate_ids": [
+      "proc_228086_restart_optisweep_ignition_and_validate",
+      "proc_229374_02",
+      "proc_229488_restart_optisweep_windows_service_candidate",
+      "proc_229716_coordinate_estop_and_restart_optisweep_service",
+      "proc_229777_coordinate_master_estop_and_remote_optisweep_restart"
+    ],
+    "action_tuple": {
+      "action_type": "review_action",
+      "target_system": "wcs_service_stack",
+      "target_component": "service_restart_and_health_check",
+      "operational_scope": "site_service_layer",
+      "role_required": "engineer",
+      "support_safe": false,
+      "validation_goal": "confirm documented restart target and post-restart response evidence"
+    },
+    "operational_intent": "Capture a reusable review pattern for incidents where service-layer restart and response checks were used to restore application responsiveness.",
+    "role_required": "engineer",
+    "support_safe": false,
+    "preconditions": [
+      "Evidence explicitly documents a service restart target.",
+      "A post-restart validation or recovery note exists."
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "instruction": "Record the exact restart target named in the evidence.",
+        "validation_check": "confirm documented restart target and post-restart response evidence",
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_06"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_11"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_06"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_03"
+          }
+        ],
+        "image_refs": [
+          "case_228086_docx_artifact_14",
+          "case_229374_docx_artifact_41"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 2,
+        "instruction": "Record any required coordination state such as E-stop, site hold, or engineer-only access.",
+        "validation_check": "confirm documented restart target and post-restart response evidence",
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_06"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_11"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_06"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_03"
+          }
+        ],
+        "image_refs": [
+          "case_228086_docx_artifact_14",
+          "case_229374_docx_artifact_41"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 3,
+        "instruction": "Record the first post-restart evidence showing service response, movement restoration, or site recovery.",
+        "validation_check": "confirm documented restart target and post-restart response evidence",
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_06"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_11"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_06"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_03"
+          }
+        ],
+        "image_refs": [
+          "case_228086_docx_artifact_14",
+          "case_229374_docx_artifact_41"
+        ],
+        "screenshot_required": false
+      }
+    ],
+    "do_not_do": [
+      "Do not merge this into a single executable restart procedure without SME review of target-specific differences.",
+      "Do not assume Ignition restart, Optisweep service restart, and combined restart paths are equivalent."
+    ],
+    "validation_checks": [
+      "confirm documented restart target and post-restart response evidence"
+    ],
+    "escalation_conditions": [
+      "Restart target is ambiguous across artifacts.",
+      "Recovery is reported without a clear post-restart validation signal."
+    ],
+    "related_incidents": [
+      "228086",
+      "229374",
+      "229488",
+      "229716",
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_06"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_11"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_06"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_03"
+      }
+    ],
+    "source_artifacts": [
+      "case_228086_docx_artifact_14",
+      "case_229374_docx_artifact_41"
+    ],
+    "confidence": 0.76,
+    "status": "candidate_extracted",
+    "validation_status": "needs_review"
+  },
+  {
+    "procedure_id": "review_tipper_heartbeat_no_fault_signature_v1",
+    "title": "Review tipper heartbeat timeout and no-fault signature",
+    "issue_category": "CAT-1",
+    "purpose": "Capture the recurring symptom signature where flow stops near tippers while local fault views remain clear or inconclusive.",
+    "source_procedure_candidate_ids": [
+      "proc_229374_01",
+      "proc_229716_review_tipper_heartbeat_and_rms_fault_state",
+      "proc_229777_review_and_document_tipper_heartbeat_recurrence"
+    ],
+    "action_tuple": {
+      "action_type": "review_state",
+      "target_system": "tipper_and_flow_control",
+      "target_component": "heartbeat_and_local_fault_views",
+      "operational_scope": "affected_tipper_lines",
+      "role_required": "support",
+      "support_safe": true,
+      "validation_goal": "confirm heartbeat abnormality and no-fault presentation from source evidence"
+    },
+    "operational_intent": "Capture the recurring symptom signature where flow stops near tippers while local fault views remain clear or inconclusive.",
+    "role_required": "support",
+    "support_safe": true,
+    "preconditions": [
+      "Incident evidence indicates stalled flow to tippers or startup waiting state.",
+      "Heartbeat or local-state evidence is available."
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "instruction": "Record the source-backed flow symptom near the tippers.",
+        "validation_check": "confirm heartbeat abnormality and no-fault presentation from source evidence",
+        "evidence_refs": [
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_05"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_05"
+          }
+        ],
+        "image_refs": [
+          "case_229374_docx_artifact_23",
+          "case_229716_docx_artifact_03"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 2,
+        "instruction": "Record any heartbeat timeout, zero, failed, or stale indication visible in evidence.",
+        "validation_check": "confirm heartbeat abnormality and no-fault presentation from source evidence",
+        "evidence_refs": [
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_05"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_05"
+          }
+        ],
+        "image_refs": [
+          "case_229374_docx_artifact_23",
+          "case_229716_docx_artifact_03"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 3,
+        "instruction": "Record whether RMS, HMI, or local alarm views showed no clear fault at the same time.",
+        "validation_check": "confirm heartbeat abnormality and no-fault presentation from source evidence",
+        "evidence_refs": [
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_03"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_05"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_05"
+          }
+        ],
+        "image_refs": [
+          "case_229374_docx_artifact_23",
+          "case_229716_docx_artifact_03"
+        ],
+        "screenshot_required": false
+      }
+    ],
+    "do_not_do": [
+      "Do not infer OT-side root cause from heartbeat symptoms alone.",
+      "Do not assume all recurrence cases have identical heartbeat evidence quality."
+    ],
+    "validation_checks": [
+      "confirm heartbeat abnormality and no-fault presentation from source evidence"
+    ],
+    "escalation_conditions": [
+      "Heartbeat condition cannot be confirmed from available evidence.",
+      "Visible hardware alarms suggest a different failure mode."
+    ],
+    "related_incidents": [
+      "229374",
+      "229716",
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_03"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_05"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_05"
+      }
+    ],
+    "source_artifacts": [
+      "case_229374_docx_artifact_23",
+      "case_229716_docx_artifact_03"
+    ],
+    "confidence": 0.87,
+    "status": "candidate_extracted",
+    "validation_status": "needs_review"
+  },
+  {
+    "procedure_id": "collect_service_timeout_and_comms_evidence_v1",
+    "title": "Collect service timeout and communications evidence for review",
+    "issue_category": "CAT-1",
+    "purpose": "Preserve a bounded evidence-collection pattern for timeout, disconnect, and communications-instability investigations without asserting causality.",
+    "source_procedure_candidate_ids": [
+      "proc_228086_collect_wcs_server_application_timeout_and_memory_evidence",
+      "proc_229374_03",
+      "proc_229374_04",
+      "proc_229488_collect_opc_ua_disconnect_and_alarm_evidence_candidate",
+      "proc_229716_collect_server_event_ignition_and_db_timeout_evidence",
+      "proc_229777_collect_wcs_server_application_event_evidence_for_timeout_or_disconnect_pattern"
+    ],
+    "action_tuple": {
+      "action_type": "collect_evidence",
+      "target_system": "wcs_application_and_comms",
+      "target_component": "events_logs_and_endpoint_errors",
+      "operational_scope": "site_service_layer",
+      "role_required": "support",
+      "support_safe": true,
+      "validation_goal": "capture raw timeout and communications evidence for manual review"
+    },
+    "operational_intent": "Preserve a bounded evidence-collection pattern for timeout, disconnect, and communications-instability investigations without asserting causality.",
+    "role_required": "support",
+    "support_safe": true,
+    "preconditions": [
+      "Logs, screenshots, or event views are available.",
+      "Incident has unresolved timeout, disconnect, or recurrence questions."
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "instruction": "Capture raw event or log evidence with timestamps and source system names.",
+        "validation_check": "capture raw timeout and communications evidence for manual review",
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_03"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_08"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_05"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_09"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_09"
+          }
+        ],
+        "image_refs": [
+          "case_229374_docx_artifact_02",
+          "case_229488_docx_artifact_04"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 2,
+        "instruction": "Capture any visible timeout, connection reset, keep-alive, or communications error strings exactly as shown.",
+        "validation_check": "capture raw timeout and communications evidence for manual review",
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_03"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_08"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_05"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_09"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_09"
+          }
+        ],
+        "image_refs": [
+          "case_229374_docx_artifact_02",
+          "case_229488_docx_artifact_04"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 3,
+        "instruction": "Record evidence gaps explicitly when requested logs or views were not available.",
+        "validation_check": "capture raw timeout and communications evidence for manual review",
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_03"
+          },
+          {
+            "incident_id": "229374",
+            "evidence_id": "chunk_229374_08"
+          },
+          {
+            "incident_id": "229488",
+            "evidence_id": "chunk_229488_05"
+          },
+          {
+            "incident_id": "229716",
+            "evidence_id": "chunk_229716_09"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_09"
+          }
+        ],
+        "image_refs": [
+          "case_229374_docx_artifact_02",
+          "case_229488_docx_artifact_04"
+        ],
+        "screenshot_required": false
+      }
+    ],
+    "do_not_do": [
+      "Do not label timeout evidence as initiating root cause unless explicitly validated.",
+      "Do not paraphrase raw error text when exact wording is visible."
+    ],
+    "validation_checks": [
+      "capture raw timeout and communications evidence for manual review"
+    ],
+    "escalation_conditions": [
+      "Required logs are unavailable.",
+      "Evidence suggests recurring communications instability beyond support review scope."
+    ],
+    "related_incidents": [
+      "228086",
+      "229374",
+      "229488",
+      "229716",
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_03"
+      },
+      {
+        "incident_id": "229374",
+        "evidence_id": "chunk_229374_08"
+      },
+      {
+        "incident_id": "229488",
+        "evidence_id": "chunk_229488_05"
+      },
+      {
+        "incident_id": "229716",
+        "evidence_id": "chunk_229716_09"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_09"
+      }
+    ],
+    "source_artifacts": [
+      "case_229374_docx_artifact_02",
+      "case_229488_docx_artifact_04"
+    ],
+    "confidence": 0.82,
+    "status": "candidate_extracted",
+    "validation_status": "needs_review"
+  },
+  {
+    "procedure_id": "establish_bridge_and_site_coordination_v1",
+    "title": "Establish customer bridge and site coordination for incident handling",
+    "issue_category": "CAT-1",
+    "purpose": "Preserve a reusable coordination pattern for incidents where missing bridge participation or unclear site state delays technical recovery.",
+    "source_procedure_candidate_ids": [
+      "proc_228086_establish_customer_bridge_and_site_coordination_for_cat1_recovery",
+      "proc_229777_manage_callback_and_resolution_updates_during_cat1_recurrence"
+    ],
+    "action_tuple": {
+      "action_type": "coordinate_incident",
+      "target_system": "incident_communications",
+      "target_component": "customer_bridge_and_site_state",
+      "operational_scope": "incident_wide",
+      "role_required": "support",
+      "support_safe": true,
+      "validation_goal": "confirm active bridge participation and current site operating state"
+    },
+    "operational_intent": "Preserve a reusable coordination pattern for incidents where missing bridge participation or unclear site state delays technical recovery.",
+    "role_required": "support",
+    "support_safe": true,
+    "preconditions": [
+      "Incident is active and customer/site coordination affects recovery timing."
+    ],
+    "steps": [
+      {
+        "step_number": 1,
+        "instruction": "Confirm whether a customer-facing bridge or callback path is active.",
+        "validation_check": "confirm active bridge participation and current site operating state",
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_05"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_02"
+          }
+        ],
+        "image_refs": [
+          "case_228086_docx_artifact_08"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 2,
+        "instruction": "Confirm who is actively investigating and who is onsite.",
+        "validation_check": "confirm active bridge participation and current site operating state",
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_05"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_02"
+          }
+        ],
+        "image_refs": [
+          "case_228086_docx_artifact_08"
+        ],
+        "screenshot_required": false
+      },
+      {
+        "step_number": 3,
+        "instruction": "Record current site state such as manual operation, E-stop, or waiting-for-update condition.",
+        "validation_check": "confirm active bridge participation and current site operating state",
+        "evidence_refs": [
+          {
+            "incident_id": "228086",
+            "evidence_id": "chunk_228086_05"
+          },
+          {
+            "incident_id": "229777",
+            "evidence_id": "chunk_229777_02"
+          }
+        ],
+        "image_refs": [
+          "case_228086_docx_artifact_08"
+        ],
+        "screenshot_required": false
+      }
+    ],
+    "do_not_do": [
+      "Do not treat internal-only chat as equivalent to a customer bridge.",
+      "Do not proceed as though site state is known when evidence shows it is unclear."
+    ],
+    "validation_checks": [
+      "confirm active bridge participation and current site operating state"
+    ],
+    "escalation_conditions": [
+      "No onsite contact joins or confirms status.",
+      "Customer is waiting for callback with no active owner visible."
+    ],
+    "related_incidents": [
+      "228086",
+      "229777"
+    ],
+    "evidence_refs": [
+      {
+        "incident_id": "228086",
+        "evidence_id": "chunk_228086_05"
+      },
+      {
+        "incident_id": "229777",
+        "evidence_id": "chunk_229777_02"
+      }
+    ],
+    "source_artifacts": [
+      "case_228086_docx_artifact_08"
+    ],
+    "confidence": 0.74,
+    "status": "candidate_extracted",
+    "validation_status": "needs_review"
+  }
+]

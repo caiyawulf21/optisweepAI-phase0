@@ -1,0 +1,169 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGV Access Rules Between Cells",
+      "timestamp_start": "01:41:02.960",
+      "timestamp_end": "01:41:28.720",
+      "primary_intent": "Explain AGV access restrictions between cells based on tote possession",
+      "operational_intents": [
+        "Describe conditions for AGV movement between cells",
+        "Clarify exceptions in access rules"
+      ],
+      "knowledge_extraction_strategy": "Extract access rule definitions and exceptions",
+      "why_this_strategy": "Focus on AGV movement constraints and exceptions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001706",
+        "vec_upsfortna_optisweep_training_day1_20260317_001707",
+        "vec_upsfortna_optisweep_training_day1_20260317_001708",
+        "vec_upsfortna_optisweep_training_day1_20260317_001709",
+        "vec_upsfortna_optisweep_training_day1_20260317_001710",
+        "vec_upsfortna_optisweep_training_day1_20260317_001711",
+        "vec_upsfortna_optisweep_training_day1_20260317_001712"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000034"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Understanding Cell Code Data Structure",
+      "timestamp_start": "01:41:33.920",
+      "timestamp_end": "01:42:08.400",
+      "primary_intent": "Clarify the nature and format of cell codes in the system",
+      "operational_intents": [
+        "Explain if cell codes are arrays or strings",
+        "Describe uniqueness and representation of cell codes"
+      ],
+      "knowledge_extraction_strategy": "Identify data type and uniqueness of cell codes",
+      "why_this_strategy": "Clarify data structure for accurate system understanding",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001713",
+        "vec_upsfortna_optisweep_training_day1_20260317_001714",
+        "vec_upsfortna_optisweep_training_day1_20260317_001715",
+        "vec_upsfortna_optisweep_training_day1_20260317_001716",
+        "vec_upsfortna_optisweep_training_day1_20260317_001717",
+        "vec_upsfortna_optisweep_training_day1_20260317_001718",
+        "vec_upsfortna_optisweep_training_day1_20260317_001719",
+        "vec_upsfortna_optisweep_training_day1_20260317_001720",
+        "vec_upsfortna_optisweep_training_day1_20260317_001721",
+        "vec_upsfortna_optisweep_training_day1_20260317_001722",
+        "vec_upsfortna_optisweep_training_day1_20260317_001723",
+        "vec_upsfortna_optisweep_training_day1_20260317_001724",
+        "vec_upsfortna_optisweep_training_day1_20260317_001725",
+        "vec_upsfortna_optisweep_training_day1_20260317_001726"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000034"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Interpreting Route and QR Code Identifiers",
+      "timestamp_start": "01:42:08.920",
+      "timestamp_end": "01:42:41.240",
+      "primary_intent": "Explain the meaning of route IDs, directions, and QR codes",
+      "operational_intents": [
+        "Differentiate route IDs from directions and QR codes",
+        "Describe physical significance of QR codes"
+      ],
+      "knowledge_extraction_strategy": "Extract definitions and relationships of identifiers",
+      "why_this_strategy": "Clarify identifier roles for navigation and mapping",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001727",
+        "vec_upsfortna_optisweep_training_day1_20260317_001728",
+        "vec_upsfortna_optisweep_training_day1_20260317_001729",
+        "vec_upsfortna_optisweep_training_day1_20260317_001730",
+        "vec_upsfortna_optisweep_training_day1_20260317_001731",
+        "vec_upsfortna_optisweep_training_day1_20260317_001732",
+        "vec_upsfortna_optisweep_training_day1_20260317_001733",
+        "vec_upsfortna_optisweep_training_day1_20260317_001734",
+        "vec_upsfortna_optisweep_training_day1_20260317_001735",
+        "vec_upsfortna_optisweep_training_day1_20260317_001736",
+        "vec_upsfortna_optisweep_training_day1_20260317_001737",
+        "vec_upsfortna_optisweep_training_day1_20260317_001738",
+        "vec_upsfortna_optisweep_training_day1_20260317_001739",
+        "vec_upsfortna_optisweep_training_day1_20260317_001740"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000034"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Relevant Features and Applications of QR Codes",
+      "timestamp_start": "01:42:41.240",
+      "timestamp_end": "01:43:02.760",
+      "primary_intent": "Identify which QR code features apply to the current system",
+      "operational_intents": [
+        "Highlight applicable QR code features",
+        "Exclude irrelevant applications"
+      ],
+      "knowledge_extraction_strategy": "Filter relevant QR code features for system context",
+      "why_this_strategy": "Focus on applicable features for operational clarity",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001741",
+        "vec_upsfortna_optisweep_training_day1_20260317_001742",
+        "vec_upsfortna_optisweep_training_day1_20260317_001743",
+        "vec_upsfortna_optisweep_training_day1_20260317_001744",
+        "vec_upsfortna_optisweep_training_day1_20260317_001745"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000034"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Impact of Map Changes on Cell Codes",
+      "timestamp_start": "01:43:02.960",
+      "timestamp_end": "01:43:27.760",
+      "primary_intent": "Explain how map modifications affect cell codes and node concerns",
+      "operational_intents": [
+        "Describe variability of cell codes with map changes",
+        "Clarify focus on node identity over load direction"
+      ],
+      "knowledge_extraction_strategy": "Extract rules on cell code stability and node relevance",
+      "why_this_strategy": "Understand effects of map updates on system identifiers",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001746",
+        "vec_upsfortna_optisweep_training_day1_20260317_001747",
+        "vec_upsfortna_optisweep_training_day1_20260317_001748",
+        "vec_upsfortna_optisweep_training_day1_20260317_001749",
+        "vec_upsfortna_optisweep_training_day1_20260317_001750",
+        "vec_upsfortna_optisweep_training_day1_20260317_001751",
+        "vec_upsfortna_optisweep_training_day1_20260317_001752"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000034"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Special Properties of Stations and QR Code Usage",
+      "timestamp_start": "01:43:32.442",
+      "timestamp_end": "01:44:06.460",
+      "primary_intent": "Describe station properties affecting AGV access and QR code roles",
+      "operational_intents": [
+        "Explain directional access at stations",
+        "Clarify QR code as load direction node code"
+      ],
+      "knowledge_extraction_strategy": "Extract station access rules and QR code significance",
+      "why_this_strategy": "Detail station-specific operational constraints",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001753",
+        "vec_upsfortna_optisweep_training_day1_20260317_001754",
+        "vec_upsfortna_optisweep_training_day1_20260317_001755",
+        "vec_upsfortna_optisweep_training_day1_20260317_001756",
+        "vec_upsfortna_optisweep_training_day1_20260317_001757",
+        "vec_upsfortna_optisweep_training_day1_20260317_001758",
+        "vec_upsfortna_optisweep_training_day1_20260317_001759",
+        "vec_upsfortna_optisweep_training_day1_20260317_001760",
+        "vec_upsfortna_optisweep_training_day1_20260317_001761",
+        "vec_upsfortna_optisweep_training_day1_20260317_001762"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000034"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

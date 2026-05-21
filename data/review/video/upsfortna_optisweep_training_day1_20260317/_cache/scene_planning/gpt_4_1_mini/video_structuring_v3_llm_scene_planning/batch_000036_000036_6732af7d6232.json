@@ -1,0 +1,151 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Manual Charging Boost for AGV",
+      "timestamp_start": "01:47:07.840",
+      "timestamp_end": "01:47:21.880",
+      "primary_intent": "Explain manual intervention to boost AGV charging",
+      "operational_intents": [
+        "Describe why manual movement of AGV is needed",
+        "Explain the process of giving AGV a charging boost"
+      ],
+      "knowledge_extraction_strategy": "Extract explanation of manual charging rationale and steps",
+      "why_this_strategy": "Clarifies manual charging intervention purpose",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001816",
+        "vec_upsfortna_optisweep_training_day1_20260317_001817",
+        "vec_upsfortna_optisweep_training_day1_20260317_001818",
+        "vec_upsfortna_optisweep_training_day1_20260317_001819",
+        "vec_upsfortna_optisweep_training_day1_20260317_001820"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000036"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Post-Charging AGV Task Assignment and Charger Re-enabling",
+      "timestamp_start": "01:47:21.880",
+      "timestamp_end": "01:47:38.840",
+      "primary_intent": "Describe AGV task pickup and charger reactivation process",
+      "operational_intents": [
+        "Explain AGV task pickup after charging",
+        "Describe enabling charging location for queue management"
+      ],
+      "knowledge_extraction_strategy": "Extract process for AGV task assignment and charger management",
+      "why_this_strategy": "Details post-charging operational steps",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001821",
+        "vec_upsfortna_optisweep_training_day1_20260317_001822",
+        "vec_upsfortna_optisweep_training_day1_20260317_001823"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000036"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Charging Control and Software Interaction",
+      "timestamp_start": "01:47:38.840",
+      "timestamp_end": "01:48:19.920",
+      "primary_intent": "Explain charging control roles and software callbacks",
+      "operational_intents": [
+        "Clarify Geek's role in charging control",
+        "Describe disabling/enabling charger callbacks and database status"
+      ],
+      "knowledge_extraction_strategy": "Extract details on charging control software interactions",
+      "why_this_strategy": "Clarifies software control over charging stations",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001824",
+        "vec_upsfortna_optisweep_training_day1_20260317_001825",
+        "vec_upsfortna_optisweep_training_day1_20260317_001826",
+        "vec_upsfortna_optisweep_training_day1_20260317_001827",
+        "vec_upsfortna_optisweep_training_day1_20260317_001828",
+        "vec_upsfortna_optisweep_training_day1_20260317_001829",
+        "vec_upsfortna_optisweep_training_day1_20260317_001830",
+        "vec_upsfortna_optisweep_training_day1_20260317_001831",
+        "vec_upsfortna_optisweep_training_day1_20260317_001832",
+        "vec_upsfortna_optisweep_training_day1_20260317_001833",
+        "vec_upsfortna_optisweep_training_day1_20260317_001834",
+        "vec_upsfortna_optisweep_training_day1_20260317_001835",
+        "vec_upsfortna_optisweep_training_day1_20260317_001836"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000036"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "OptiSweep Software Overview and Modules",
+      "timestamp_start": "01:48:19.920",
+      "timestamp_end": "01:49:20.880",
+      "primary_intent": "Describe OptiSweep software and its components",
+      "operational_intents": [
+        "Explain OptiSweep's role in charging and exchanges",
+        "Outline software modules and state machines"
+      ],
+      "knowledge_extraction_strategy": "Extract software architecture and module details",
+      "why_this_strategy": "Provides understanding of core software managing AGVs",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001837",
+        "vec_upsfortna_optisweep_training_day1_20260317_001838",
+        "vec_upsfortna_optisweep_training_day1_20260317_001839",
+        "vec_upsfortna_optisweep_training_day1_20260317_001840",
+        "vec_upsfortna_optisweep_training_day1_20260317_001841",
+        "vec_upsfortna_optisweep_training_day1_20260317_001842",
+        "vec_upsfortna_optisweep_training_day1_20260317_001843",
+        "vec_upsfortna_optisweep_training_day1_20260317_001844",
+        "vec_upsfortna_optisweep_training_day1_20260317_001845",
+        "vec_upsfortna_optisweep_training_day1_20260317_001846",
+        "vec_upsfortna_optisweep_training_day1_20260317_001847",
+        "vec_upsfortna_optisweep_training_day1_20260317_001848",
+        "vec_upsfortna_optisweep_training_day1_20260317_001849",
+        "vec_upsfortna_optisweep_training_day1_20260317_001850",
+        "vec_upsfortna_optisweep_training_day1_20260317_001851",
+        "vec_upsfortna_optisweep_training_day1_20260317_001852",
+        "vec_upsfortna_optisweep_training_day1_20260317_001853",
+        "vec_upsfortna_optisweep_training_day1_20260317_001854",
+        "vec_upsfortna_optisweep_training_day1_20260317_001855",
+        "vec_upsfortna_optisweep_training_day1_20260317_001856",
+        "vec_upsfortna_optisweep_training_day1_20260317_001857",
+        "vec_upsfortna_optisweep_training_day1_20260317_001858",
+        "vec_upsfortna_optisweep_training_day1_20260317_001859"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000036"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Battery Charge Cutoff and Manual Charging Cases",
+      "timestamp_start": "01:49:20.880",
+      "timestamp_end": "01:50:12.191",
+      "primary_intent": "Discuss battery cutoff thresholds and manual charging scenarios",
+      "operational_intents": [
+        "Explain battery percentage cutoff for charging",
+        "Describe manual charging cases and system shutdown impact"
+      ],
+      "knowledge_extraction_strategy": "Extract operational rules for charging and exceptions",
+      "why_this_strategy": "Clarifies charging thresholds and manual override situations",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001860",
+        "vec_upsfortna_optisweep_training_day1_20260317_001861",
+        "vec_upsfortna_optisweep_training_day1_20260317_001862",
+        "vec_upsfortna_optisweep_training_day1_20260317_001863",
+        "vec_upsfortna_optisweep_training_day1_20260317_001864",
+        "vec_upsfortna_optisweep_training_day1_20260317_001865",
+        "vec_upsfortna_optisweep_training_day1_20260317_001866",
+        "vec_upsfortna_optisweep_training_day1_20260317_001867",
+        "vec_upsfortna_optisweep_training_day1_20260317_001868",
+        "vec_upsfortna_optisweep_training_day1_20260317_001869",
+        "vec_upsfortna_optisweep_training_day1_20260317_001870",
+        "vec_upsfortna_optisweep_training_day1_20260317_001871",
+        "vec_upsfortna_optisweep_training_day1_20260317_001872"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000036"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

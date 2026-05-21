@@ -1,0 +1,141 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0060_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        60
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0060"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "OPC communication module mediates data exchange between Ignition/OPC and SorterSweeper",
+      "systems": [
+        "Ignition",
+        "OPC server",
+        "SorterSweeper"
+      ],
+      "components": [
+        "OPC communication module",
+        "built-in tag provider"
+      ],
+      "summary": "The slide describes the OPC communication module as the intermediary between Ignition-connected tags and the SorterSweeper module. It connects to the OPC server, subscribes to tags, forwards tag updates for processing, and receives outbound messages from SorterSweeper to write back to the OPC server.",
+      "observed_evidence": [
+        "Ignition's built-in tag provider is used to connect to the hospital and tippers, relaying the relevant tags.",
+        "The OPC communication module connects to the OPC server and subscribes to tags.",
+        "When a tag is updated, it sends the update to the SorterSweeper module for processing.",
+        "SorterSweeper also sends messages to the OPC communication module, which writes the data to the OPC server."
+      ],
+      "relationships": [
+        {
+          "from": "Ignition built-in tag provider",
+          "to": "hospital and tippers",
+          "relationship": "connects_to_and_relays_tags_from"
+        },
+        {
+          "from": "OPC communication module",
+          "to": "OPC server",
+          "relationship": "connects_to_and_subscribes_to_tags"
+        },
+        {
+          "from": "OPC communication module",
+          "to": "SorterSweeper module",
+          "relationship": "forwards_tag_updates_for_processing"
+        },
+        {
+          "from": "SorterSweeper module",
+          "to": "OPC communication module",
+          "relationship": "sends_messages_for_writeback"
+        },
+        {
+          "from": "OPC communication module",
+          "to": "OPC server",
+          "relationship": "writes_data_to"
+        }
+      ],
+      "retrieval_text": "OPC Comm Module detailed design: Ignition built-in tag provider connects to hospital and tippers and relays relevant tags. OPC communication module connects to OPC server, subscribes to tags, sends tag updates to SorterSweeper for processing, and writes SorterSweeper messages back to the OPC server.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0060_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        60
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0060"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Tag update flow from OPC subscription to SorterSweeper processing",
+      "systems": [
+        "OPC server",
+        "SorterSweeper"
+      ],
+      "components": [
+        "OPC communication module"
+      ],
+      "summary": "The slide defines runtime behavior for subscribed OPC tags: when a tag changes, the OPC communication module passes the update to SorterSweeper for processing. It also defines the reverse behavior where SorterSweeper sends messages to the OPC communication module for OPC server writes.",
+      "observed_evidence": [
+        "The OPC communication module connects to the OPC server and subscribes to tags.",
+        "When a tag is updated, it sends the update to the SorterSweeper module for processing.",
+        "SorterSweeper also sends messages to the OPC communication module, which writes the data to the OPC server."
+      ],
+      "relationships": [
+        {
+          "trigger": "tag is updated",
+          "actor": "OPC communication module",
+          "action": "sends update to SorterSweeper module"
+        },
+        {
+          "trigger": "SorterSweeper sends messages",
+          "actor": "OPC communication module",
+          "action": "writes data to OPC server"
+        }
+      ],
+      "retrieval_text": "Runtime behavior of OPC communication module: subscribes to OPC tags, forwards updated tag values to SorterSweeper for processing, and accepts SorterSweeper messages to write data back to the OPC server.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0060_01",
+      "title": "No explicit operator or support procedure on OPC Comm Module detailed design slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        60
+      ],
+      "systems": [
+        "Ignition",
+        "OPC server",
+        "SorterSweeper"
+      ],
+      "components": [
+        "OPC communication module",
+        "built-in tag provider"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide is describing module design and message flow rather than an executable task sequence."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0060"
+      ],
+      "procedure_visual_summary": "Bullet list describing OPC communication design: tag provider connections, OPC subscription behavior, forwarding tag updates to SorterSweeper, and writeback from SorterSweeper to OPC server.",
+      "steps": [],
+      "warnings": [
+        "No explicit reusable action sequence, ordered steps, or user actions are provided on the slide.",
+        "Creating a procedure from this slide would require inventing operational steps not present in the source."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0060_01",
+        "oku_optisweep_training_internal_0060_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: slide contains architectural and runtime behavior information for the OPC communication module, but no explicit task steps for configuration, diagnostics, navigation, or operations."
+    }
+  ],
+  "discarded_candidates": []
+}

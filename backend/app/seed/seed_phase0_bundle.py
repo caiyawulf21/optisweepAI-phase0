@@ -10,7 +10,6 @@ from backend.app.repositories.escalation_repository import EscalationRepository
 from backend.app.repositories.evidence_repository import EvidenceRepository
 from backend.app.repositories.incident_repository import IncidentRepository
 from backend.app.repositories.ingestion_run_repository import IngestionRunRepository
-from backend.app.repositories.procedure_repository import ProcedureRepository
 from backend.app.repositories.relationship_repository import RelationshipRepository
 from backend.app.repositories.timeline_repository import TimelineRepository
 from backend.app.repositories.workflow_candidate_repository import WorkflowCandidateRepository
@@ -22,7 +21,6 @@ REPOSITORIES = {
     "timeline_events": TimelineRepository,
     "raw_evidence_chunks": EvidenceRepository,
     "source_artifacts": ArtifactRepository,
-    "procedure_dictionary": ProcedureRepository,
     "workflow_candidates": WorkflowCandidateRepository,
     "escalation_summaries": EscalationRepository,
     "knowledge_relationships": RelationshipRepository,

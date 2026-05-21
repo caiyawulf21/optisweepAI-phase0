@@ -1,0 +1,108 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Remote Access and Authorization for OT Network",
+      "timestamp_start": "01:19:44.634",
+      "timestamp_end": "01:20:20.497",
+      "primary_intent": "Explain remote access requirements and authorization process",
+      "operational_intents": [
+        "Describe access to software application via IP",
+        "Clarify VPN and Z Scaler authorization for OT network access"
+      ],
+      "knowledge_extraction_strategy": "Extract access protocols and authorization steps",
+      "why_this_strategy": "Focus on remote access and security authorization",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001336",
+        "vec_upsfortna_optisweep_training_day1_20260317_001337",
+        "vec_upsfortna_optisweep_training_day1_20260317_001338",
+        "vec_upsfortna_optisweep_training_day1_20260317_001339",
+        "vec_upsfortna_optisweep_training_day1_20260317_001340",
+        "vec_upsfortna_optisweep_training_day1_20260317_001341",
+        "vec_upsfortna_optisweep_training_day1_20260317_001342",
+        "vec_upsfortna_optisweep_training_day1_20260317_001343",
+        "vec_upsfortna_optisweep_training_day1_20260317_001344",
+        "vec_upsfortna_optisweep_training_day1_20260317_001345",
+        "vec_upsfortna_optisweep_training_day1_20260317_001346",
+        "vec_upsfortna_optisweep_training_day1_20260317_001347"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000027"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Adding and Selecting Robots in RMS",
+      "timestamp_start": "01:20:26.520",
+      "timestamp_end": "01:21:12.840",
+      "primary_intent": "Demonstrate how to add and select robots in the RMS interface",
+      "operational_intents": [
+        "Input robot ID or select from list",
+        "Explain robot ID shortcuts and display on shop floor HMIs"
+      ],
+      "knowledge_extraction_strategy": "Extract robot addition and selection procedures",
+      "why_this_strategy": "Focus on robot management in RMS system",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001348",
+        "vec_upsfortna_optisweep_training_day1_20260317_001349",
+        "vec_upsfortna_optisweep_training_day1_20260317_001350",
+        "vec_upsfortna_optisweep_training_day1_20260317_001351",
+        "vec_upsfortna_optisweep_training_day1_20260317_001352",
+        "vec_upsfortna_optisweep_training_day1_20260317_001353",
+        "vec_upsfortna_optisweep_training_day1_20260317_001354",
+        "vec_upsfortna_optisweep_training_day1_20260317_001355",
+        "vec_upsfortna_optisweep_training_day1_20260317_001356",
+        "vec_upsfortna_optisweep_training_day1_20260317_001357",
+        "vec_upsfortna_optisweep_training_day1_20260317_001358",
+        "vec_upsfortna_optisweep_training_day1_20260317_001359",
+        "vec_upsfortna_optisweep_training_day1_20260317_001360",
+        "vec_upsfortna_optisweep_training_day1_20260317_001361",
+        "vec_upsfortna_optisweep_training_day1_20260317_001362"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000027"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Robot Restart Procedure and Cautions",
+      "timestamp_start": "01:21:21.120",
+      "timestamp_end": "01:22:45.080",
+      "primary_intent": "Explain how to restart a robot and handle restart issues",
+      "operational_intents": [
+        "Describe restart steps via RMS interface",
+        "Warn about robot position and label recognition issues",
+        "Explain manual intervention with E stop and label alignment",
+        "Describe visual indicators of robot status on map"
+      ],
+      "knowledge_extraction_strategy": "Extract restart process and troubleshooting steps",
+      "why_this_strategy": "Focus on restart operations and error handling",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001363",
+        "vec_upsfortna_optisweep_training_day1_20260317_001364",
+        "vec_upsfortna_optisweep_training_day1_20260317_001365",
+        "vec_upsfortna_optisweep_training_day1_20260317_001366",
+        "vec_upsfortna_optisweep_training_day1_20260317_001367",
+        "vec_upsfortna_optisweep_training_day1_20260317_001368",
+        "vec_upsfortna_optisweep_training_day1_20260317_001369",
+        "vec_upsfortna_optisweep_training_day1_20260317_001370",
+        "vec_upsfortna_optisweep_training_day1_20260317_001371",
+        "vec_upsfortna_optisweep_training_day1_20260317_001372",
+        "vec_upsfortna_optisweep_training_day1_20260317_001373",
+        "vec_upsfortna_optisweep_training_day1_20260317_001374",
+        "vec_upsfortna_optisweep_training_day1_20260317_001375",
+        "vec_upsfortna_optisweep_training_day1_20260317_001376",
+        "vec_upsfortna_optisweep_training_day1_20260317_001377",
+        "vec_upsfortna_optisweep_training_day1_20260317_001378",
+        "vec_upsfortna_optisweep_training_day1_20260317_001379",
+        "vec_upsfortna_optisweep_training_day1_20260317_001380",
+        "vec_upsfortna_optisweep_training_day1_20260317_001381",
+        "vec_upsfortna_optisweep_training_day1_20260317_001382",
+        "vec_upsfortna_optisweep_training_day1_20260317_001383"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000027"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

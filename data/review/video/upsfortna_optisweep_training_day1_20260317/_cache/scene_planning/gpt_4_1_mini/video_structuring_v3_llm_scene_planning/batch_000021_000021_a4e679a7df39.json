@@ -1,0 +1,133 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Clarifying AGV System and Map Status",
+      "timestamp_start": "01:01:21.960",
+      "timestamp_end": "01:02:10.800",
+      "primary_intent": "Explain the difference between AGVs in the system versus on the map",
+      "operational_intents": [
+        "Define what it means for AGVs to be in the system but not on the map",
+        "Discuss the status of AGVs that are turned off versus removed"
+      ],
+      "knowledge_extraction_strategy": "Extract distinctions between system and map AGV statuses",
+      "why_this_strategy": "Clarifies key operational definitions for AGV management",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001035",
+        "vec_upsfortna_optisweep_training_day1_20260317_001036",
+        "vec_upsfortna_optisweep_training_day1_20260317_001037",
+        "vec_upsfortna_optisweep_training_day1_20260317_001038",
+        "vec_upsfortna_optisweep_training_day1_20260317_001039",
+        "vec_upsfortna_optisweep_training_day1_20260317_001040",
+        "vec_upsfortna_optisweep_training_day1_20260317_001041",
+        "vec_upsfortna_optisweep_training_day1_20260317_001042",
+        "vec_upsfortna_optisweep_training_day1_20260317_001043",
+        "vec_upsfortna_optisweep_training_day1_20260317_001044",
+        "vec_upsfortna_optisweep_training_day1_20260317_001045",
+        "vec_upsfortna_optisweep_training_day1_20260317_001046",
+        "vec_upsfortna_optisweep_training_day1_20260317_001047",
+        "vec_upsfortna_optisweep_training_day1_20260317_001048",
+        "vec_upsfortna_optisweep_training_day1_20260317_001049",
+        "vec_upsfortna_optisweep_training_day1_20260317_001050",
+        "vec_upsfortna_optisweep_training_day1_20260317_001051",
+        "vec_upsfortna_optisweep_training_day1_20260317_001052"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000021"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Impact of AGV Status Changes on Map and System Counts",
+      "timestamp_start": "01:02:10.800",
+      "timestamp_end": "01:02:58.000",
+      "primary_intent": "Explain how turning AGVs on/off affects map and system counts",
+      "operational_intents": [
+        "Describe how AGV counts change when toggling status",
+        "Clarify the difference between disconnected and removed AGVs"
+      ],
+      "knowledge_extraction_strategy": "Extract operational effects of AGV status toggling",
+      "why_this_strategy": "Details operational impact on system and map representation",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001053",
+        "vec_upsfortna_optisweep_training_day1_20260317_001054",
+        "vec_upsfortna_optisweep_training_day1_20260317_001055",
+        "vec_upsfortna_optisweep_training_day1_20260317_001056",
+        "vec_upsfortna_optisweep_training_day1_20260317_001057",
+        "vec_upsfortna_optisweep_training_day1_20260317_001058",
+        "vec_upsfortna_optisweep_training_day1_20260317_001059",
+        "vec_upsfortna_optisweep_training_day1_20260317_001060",
+        "vec_upsfortna_optisweep_training_day1_20260317_001061",
+        "vec_upsfortna_optisweep_training_day1_20260317_001062",
+        "vec_upsfortna_optisweep_training_day1_20260317_001063",
+        "vec_upsfortna_optisweep_training_day1_20260317_001064",
+        "vec_upsfortna_optisweep_training_day1_20260317_001065"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000021"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Understanding Disconnected AGVs on the Map",
+      "timestamp_start": "01:03:02.920",
+      "timestamp_end": "01:03:54.567",
+      "primary_intent": "Explain how disconnected AGVs appear on the map and system",
+      "operational_intents": [
+        "Describe visual indicators for disconnected AGVs",
+        "Explain removal process from the map versus system"
+      ],
+      "knowledge_extraction_strategy": "Extract procedures for managing disconnected AGVs",
+      "why_this_strategy": "Clarifies map representation and removal actions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001066",
+        "vec_upsfortna_optisweep_training_day1_20260317_001067",
+        "vec_upsfortna_optisweep_training_day1_20260317_001068",
+        "vec_upsfortna_optisweep_training_day1_20260317_001069",
+        "vec_upsfortna_optisweep_training_day1_20260317_001070",
+        "vec_upsfortna_optisweep_training_day1_20260317_001071",
+        "vec_upsfortna_optisweep_training_day1_20260317_001072",
+        "vec_upsfortna_optisweep_training_day1_20260317_001073",
+        "vec_upsfortna_optisweep_training_day1_20260317_001074",
+        "vec_upsfortna_optisweep_training_day1_20260317_001075",
+        "vec_upsfortna_optisweep_training_day1_20260317_001076",
+        "vec_upsfortna_optisweep_training_day1_20260317_001077",
+        "vec_upsfortna_optisweep_training_day1_20260317_001078",
+        "vec_upsfortna_optisweep_training_day1_20260317_001079",
+        "vec_upsfortna_optisweep_training_day1_20260317_001080",
+        "vec_upsfortna_optisweep_training_day1_20260317_001081"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000021"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Introducing New AGVs and System Association",
+      "timestamp_start": "01:03:54.567",
+      "timestamp_end": "01:04:26.029",
+      "primary_intent": "Explain process for adding new AGVs and system association",
+      "operational_intents": [
+        "Describe how new AGVs associate with system and map",
+        "Explain use case for replacing repaired AGVs"
+      ],
+      "knowledge_extraction_strategy": "Extract procedures for AGV introduction and replacement",
+      "why_this_strategy": "Details system integration for new or replacement AGVs",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001082",
+        "vec_upsfortna_optisweep_training_day1_20260317_001083",
+        "vec_upsfortna_optisweep_training_day1_20260317_001084",
+        "vec_upsfortna_optisweep_training_day1_20260317_001085",
+        "vec_upsfortna_optisweep_training_day1_20260317_001086",
+        "vec_upsfortna_optisweep_training_day1_20260317_001087",
+        "vec_upsfortna_optisweep_training_day1_20260317_001088",
+        "vec_upsfortna_optisweep_training_day1_20260317_001089",
+        "vec_upsfortna_optisweep_training_day1_20260317_001090",
+        "vec_upsfortna_optisweep_training_day1_20260317_001091"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000021"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

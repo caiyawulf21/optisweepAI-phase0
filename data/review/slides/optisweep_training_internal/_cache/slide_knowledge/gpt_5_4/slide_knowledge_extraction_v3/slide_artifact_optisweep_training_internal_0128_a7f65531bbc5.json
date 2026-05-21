@@ -1,0 +1,184 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_128_primary_service_required_programs",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        128
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0128"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Primary service requires three running programs for system operation",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Ignition",
+        "Stunnel",
+        "OptiSweep"
+      ],
+      "summary": "The slide states that on the primary service there are three programs that must be running for the system to run: Ignition, Stunnel, and OptiSweep.",
+      "observed_evidence": [
+        "Slide text: \"On the primary service there are 3 programs that must be running for the system to run\"",
+        "Bullet list names the programs: \"Ignition\", \"Stunnel\", and \"OptiSweep\""
+      ],
+      "relationships": [
+        {
+          "type": "requires_running_component",
+          "from": "primary service",
+          "to": "Ignition"
+        },
+        {
+          "type": "requires_running_component",
+          "from": "primary service",
+          "to": "Stunnel"
+        },
+        {
+          "type": "requires_running_component",
+          "from": "primary service",
+          "to": "OptiSweep"
+        }
+      ],
+      "retrieval_text": "On the primary service, three programs must be running for the OptiSweep system to run: Ignition, Stunnel, and OptiSweep.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_128_ignition_opc_connections",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        128
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0128"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Ignition is used for OPC connections",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Ignition"
+      ],
+      "summary": "The slide identifies Ignition as the program used for OPC connections on the primary service.",
+      "observed_evidence": [
+        "Bullet text: \"Ignition\"",
+        "Sub-bullet text: \"Used for opc connections\""
+      ],
+      "relationships": [
+        {
+          "type": "used_for",
+          "from": "Ignition",
+          "to": "OPC connections"
+        }
+      ],
+      "retrieval_text": "Ignition is the service/program on the primary service used for OPC connections.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_128_stunnel_secure_encryption",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        128
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0128"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Stunnel provides secure encryption for UPS xle chat",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Stunnel"
+      ],
+      "summary": "The slide identifies Stunnel as the program used for secure encryption to UPS xle chat.",
+      "observed_evidence": [
+        "Bullet text: \"Stunnel\"",
+        "Sub-bullet text: \"Used for secure encryption to UPS xle chat\""
+      ],
+      "relationships": [
+        {
+          "type": "used_for",
+          "from": "Stunnel",
+          "to": "secure encryption to UPS xle chat"
+        }
+      ],
+      "retrieval_text": "Stunnel is used for secure encryption to UPS xle chat on the primary service.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_128_optisweep_service_coordinates_operations",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        128
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0128"
+      ],
+      "unit_type": "operational_process",
+      "title": "OptiSweep service coordinates system operations",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "OptiSweep"
+      ],
+      "summary": "The slide describes the OptiSweep program as FORTNA's service that coordinates all operations.",
+      "observed_evidence": [
+        "Bullet text: \"OptiSweep\"",
+        "Sub-bullet text: \"Fortna’s service that coordinates all operations.\""
+      ],
+      "relationships": [
+        {
+          "type": "coordinates",
+          "from": "OptiSweep",
+          "to": "all operations"
+        }
+      ],
+      "retrieval_text": "The OptiSweep service is described as FORTNA's service that coordinates all operations.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_128_no_explicit_procedure",
+      "title": "No procedure extracted from service overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        128
+      ],
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Ignition",
+        "Stunnel",
+        "OptiSweep"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0128"
+      ],
+      "procedure_visual_summary": "Slide lists three programs on the primary service that must be running and describes each program's role, but does not show action steps or checks.",
+      "steps": [],
+      "warnings": [
+        "Slide provides component requirements and roles only.",
+        "No explicit action sequence, validation flow, restart instruction, or navigation path is shown."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_128_primary_service_required_programs",
+        "oku_optisweep_training_internal_128_ignition_opc_connections",
+        "oku_optisweep_training_internal_128_stunnel_secure_encryption",
+        "oku_optisweep_training_internal_128_optisweep_service_coordinates_operations"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide is an overview of required services and their purposes, not an explicit reusable procedure."
+    }
+  ],
+  "discarded_candidates": []
+}

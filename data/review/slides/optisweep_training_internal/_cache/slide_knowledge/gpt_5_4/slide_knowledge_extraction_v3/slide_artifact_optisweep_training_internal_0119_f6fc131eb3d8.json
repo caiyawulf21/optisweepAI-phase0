@@ -1,0 +1,176 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_119_agv_getagvstatuses_api_capability",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        119
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0119"
+      ],
+      "unit_type": "api_capability",
+      "title": "GetAGVStatuses returns current AGV state, command, vitals, and errors",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "GetAGVStatuses API"
+      ],
+      "summary": "The GetAGVStatuses API shows the current state of the AGV, its current command, vitals, any AGV errors, and system errors.",
+      "observed_evidence": [
+        "Slide heading: 'APIs / AGVs'",
+        "Bullet text: 'GetAGVStatuses: Shows the current State of the AGV, its current command, vitals, any AGV errors and System errors.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "provides_status_for",
+          "target": "AGV"
+        },
+        {
+          "relationship_type": "exposes",
+          "target": "AGV state"
+        },
+        {
+          "relationship_type": "exposes",
+          "target": "current command"
+        },
+        {
+          "relationship_type": "exposes",
+          "target": "vitals"
+        },
+        {
+          "relationship_type": "exposes",
+          "target": "AGV errors"
+        },
+        {
+          "relationship_type": "exposes",
+          "target": "system errors"
+        }
+      ],
+      "retrieval_text": "API capability for AGVs: GetAGVStatuses shows the current AGV state, current command, vitals, AGV errors, and system errors.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_119_agv_resendgeekcommand_api_capability",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        119
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0119"
+      ],
+      "unit_type": "api_capability",
+      "title": "ResendGeekCommand resends a request to Geek+ using a command GUID",
+      "systems": [
+        "AGV",
+        "Geek+"
+      ],
+      "components": [
+        "ResendGeekCommand API"
+      ],
+      "summary": "The ResendGeekCommand API requires a command GUID and resends the request to Geek+. The slide notes it is helpful when an unplanned restart occurred and Geek+ missed the original request.",
+      "observed_evidence": [
+        "Slide heading: 'APIs / AGVs'",
+        "Bullet text: 'ResendGeekCommand: Requires a command guid. It will resend the request to Geek+. Helpful in the event of an unplanned restart and Geek+ missed the request.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "requires",
+          "target": "command guid"
+        },
+        {
+          "relationship_type": "resends_request_to",
+          "target": "Geek+"
+        },
+        {
+          "relationship_type": "useful_after",
+          "target": "unplanned restart"
+        },
+        {
+          "relationship_type": "addresses_condition",
+          "target": "Geek+ missed request"
+        }
+      ],
+      "retrieval_text": "API capability for AGVs: ResendGeekCommand requires a command GUID and resends the request to Geek+. It is described as helpful after an unplanned restart when Geek+ missed the request.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_119_resendgeekcommand_recovery_candidate",
+      "title": "Use ResendGeekCommand to resend a missed request to Geek+",
+      "procedure_type": "recovery_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        119
+      ],
+      "systems": [
+        "AGV",
+        "Geek+"
+      ],
+      "components": [
+        "ResendGeekCommand API"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A command GUID is available",
+        "There is an indication that Geek+ missed a request",
+        "Context may include an unplanned restart, as stated on the slide"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0119"
+      ],
+      "procedure_visual_summary": "Bullet list under AGVs describing ResendGeekCommand, its required command GUID, and its use after an unplanned restart when Geek+ missed the request.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Obtain the command GUID for the request that needs to be resent.",
+          "expected_outcome": "A command GUID is available for use with ResendGeekCommand.",
+          "validation_check": "Confirm the required command GUID is present.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:119",
+            "artifact:slide_artifact_optisweep_training_internal_0119"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0119"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0119"
+          ],
+          "visual_region_hint": "AGVs bullet for ResendGeekCommand"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Use ResendGeekCommand to resend the request to Geek+.",
+          "expected_outcome": "The request is resent to Geek+.",
+          "validation_check": "Verify the resend action was issued to Geek+.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:119",
+            "artifact:slide_artifact_optisweep_training_internal_0119"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0119"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0119"
+          ],
+          "visual_region_hint": "AGVs bullet for ResendGeekCommand"
+        }
+      ],
+      "warnings": [
+        "The slide provides API purpose and input requirement, but does not show the exact invocation method or interface.",
+        "This candidate is inferred only from the explicit bullet text and requires review before operational use."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_119_agv_resendgeekcommand_api_capability"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Recovery-oriented API action candidate: ResendGeekCommand requires a command GUID and resends the request to Geek+. The slide says it is helpful after an unplanned restart when Geek+ missed the request."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,76 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0138_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        138
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0138"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "AGV-related test scenario categories for sorter-side issues",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "sorter",
+        "RMS"
+      ],
+      "summary": "The slide lists AGV-related test or troubleshooting scenarios, including a missing AGV underneath the sorter, AGV tracking error or lost path, object blocking the AGV, AGV losing battery, RMS showing two AGVs on top of each other, and adding or removing an AGV.",
+      "observed_evidence": [
+        "Slide title: 'Test scenarios / 1. Sorter side missing agv underneath sorter'",
+        "Visible list items: '2. Agv tracking error/lost path?', '3. Object blocking agv', '4. Agv losing battery?', '5. Rms showing two agvs on top of each other?', '6. Add agv / remove agv'",
+        "Visible note: 'This happened recently at haslet'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "enumerates",
+          "target": "sorter-side and AGV fault/test scenarios"
+        }
+      ],
+      "retrieval_text": "Test scenarios for AGV operations include sorter side missing AGV underneath sorter, AGV tracking error or lost path, object blocking AGV, AGV losing battery, RMS showing two AGVs on top of each other, and add/remove AGV. The slide notes that the duplicate AGV display issue recently happened at Haslet.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0138_01",
+      "title": "Diagnose sorter-side missing AGV underneath sorter",
+      "procedure_type": "diagnostic_check",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        138
+      ],
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "sorter"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A sorter-side issue is being investigated",
+        "A suspected condition exists where an AGV is missing underneath the sorter"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0138"
+      ],
+      "procedure_visual_summary": "Slide lists multiple AGV test scenarios, with the first scenario titled 'Sorter side missing agv underneath sorter'. No procedural steps or UI interactions are shown.",
+      "steps": [],
+      "warnings": [
+        "The slide identifies a scenario only and does not provide explicit diagnostic or recovery steps.",
+        "Do not infer a troubleshooting sequence from this slide alone."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0138",
+        "oku_optisweep_training_internal_0138_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Candidate diagnostic check for a sorter-side missing AGV underneath sorter was considered, but slide 138 only names the scenario and related AGV test cases without providing reusable step-by-step guidance."
+    }
+  ],
+  "discarded_candidates": []
+}

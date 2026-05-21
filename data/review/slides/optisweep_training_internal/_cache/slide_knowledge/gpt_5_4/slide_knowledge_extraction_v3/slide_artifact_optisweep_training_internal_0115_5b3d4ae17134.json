@@ -1,0 +1,216 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_115_api_openallchutes",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        115
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0115"
+      ],
+      "unit_type": "api_capability",
+      "title": "OpenAllChutes API opens all closed chutes",
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "chutes"
+      ],
+      "summary": "The OpenAllChutes API opens all closed chutes. The slide indicates it is helpful when a closeout was performed but the sort was not cycled and startup is needed again.",
+      "observed_evidence": [
+        "“OpenAllChutes: Will open all closed chutes.”",
+        "“This is helpful in the event they did a close out but did not cycle the sort and they want to startup again.”"
+      ],
+      "relationships": [
+        {
+          "relation_type": "supports",
+          "target": "system startup after closeout without sort cycle"
+        }
+      ],
+      "retrieval_text": "API capability: OpenAllChutes opens all closed chutes. Used when closeout was done but the sort was not cycled and the system needs to be started again.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_115_api_cancelcloseout",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        115
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0115"
+      ],
+      "unit_type": "api_capability",
+      "title": "CancelCloseout API cancels closeout exchanges not in process",
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "close out exchanges"
+      ],
+      "summary": "The CancelCloseout API cancels all closeout exchanges that are not in process. The slide states it is used when the customer performs a manual bagout.",
+      "observed_evidence": [
+        "“CancelCloseout: Will cancel all close out exchanges that are not in process.”",
+        "“Used when the customer does a manual bagout.”"
+      ],
+      "relationships": [
+        {
+          "relation_type": "used_when",
+          "target": "manual bagout"
+        }
+      ],
+      "retrieval_text": "API capability: CancelCloseout cancels all closeout exchanges not currently in process. It is used when the customer performs a manual bagout.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_115_api_getagvfaultstats",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        115
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0115"
+      ],
+      "unit_type": "api_capability",
+      "title": "GetAGVFaultStats API returns current AGV fault statistics",
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "AGV"
+      ],
+      "summary": "The GetAGVFaultStats API retrieves the current AGV fault statistics.",
+      "observed_evidence": [
+        "“GetAGVFaultStats: Will get the current AGV fault stats.”"
+      ],
+      "relationships": [
+        {
+          "relation_type": "reports_on",
+          "target": "current AGV faults"
+        }
+      ],
+      "retrieval_text": "API capability: GetAGVFaultStats returns the current AGV fault stats.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_115_api_systemstate",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        115
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0115"
+      ],
+      "unit_type": "api_capability",
+      "title": "System State API returns the current system state",
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "system state"
+      ],
+      "summary": "The System State API retrieves the current state of the system.",
+      "observed_evidence": [
+        "“System State: Will get the current state of the system.”"
+      ],
+      "relationships": [
+        {
+          "relation_type": "reports_on",
+          "target": "current system state"
+        }
+      ],
+      "retrieval_text": "API capability: System State gets the current state of the system.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_115_api_systemstartup",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        115
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0115"
+      ],
+      "unit_type": "state_transition",
+      "title": "System Startup API starts the system from shutdown state",
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "system state"
+      ],
+      "summary": "The System Startup API starts the system if it is currently in a shutdown state, indicating a state-dependent startup transition.",
+      "observed_evidence": [
+        "“System Startup: Will startup the system if its in a shutdown state.”"
+      ],
+      "relationships": [
+        {
+          "relation_type": "precondition",
+          "target": "system is in shutdown state"
+        },
+        {
+          "relation_type": "causes",
+          "target": "system startup"
+        }
+      ],
+      "retrieval_text": "State transition and API capability: System Startup starts the system when the system is in a shutdown state.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_115_systemstartup_from_shutdown",
+      "title": "Start the system using the System Startup API when in shutdown state",
+      "procedure_type": "api_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        115
+      ],
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "system state"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "System is in a shutdown state."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0115"
+      ],
+      "procedure_visual_summary": "Bullet list of system APIs including System Startup and System State descriptions.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Use the System Startup API.",
+          "expected_outcome": "The system starts up if it is in a shutdown state.",
+          "validation_check": "Confirm the system was in shutdown state before issuing the API call and verify that startup occurs.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:115",
+            "artifact:slide_artifact_optisweep_training_internal_0115"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0115"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0115"
+          ],
+          "visual_region_hint": "System API bullet list, lower portion of slide"
+        }
+      ],
+      "warnings": [
+        "The slide does not provide API invocation syntax, interface, or post-start verification details."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_115_api_systemstate",
+        "oku_optisweep_training_internal_115_api_systemstartup"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure candidate: use the System Startup API to start the system when it is in shutdown state. The slide gives only the condition and outcome, not exact call details."
+    }
+  ],
+  "discarded_candidates": []
+}

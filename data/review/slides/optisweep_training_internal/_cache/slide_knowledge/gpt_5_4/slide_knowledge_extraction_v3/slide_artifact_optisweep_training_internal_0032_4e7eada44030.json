@@ -1,0 +1,212 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0032_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        32
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0032"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Charger Selection screen allows viewing charger information by selecting a charger",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Charger Selection",
+        "charger"
+      ],
+      "summary": "The slide states that when Charger Selection is selected, a charger can be selected to view charger information.",
+      "observed_evidence": [
+        "Visible text: 'When charger selection is selected select a charger to view charger information.'",
+        "Slide title: 'Charger Selection / select a charger to view charger'",
+        "Visual labels include numbered callouts 1, 2, 3 indicating referenced UI areas."
+      ],
+      "relationships": [],
+      "retrieval_text": "Charger Selection UI concept: selecting Charger Selection and then selecting a charger displays charger information.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0032_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        32
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0032"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Disabling a charger prevents other robots from being sent to that charger",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "charger",
+        "charging station"
+      ],
+      "summary": "The slide describes that a charger can be disabled for manual charging use, and when disabled, no other robot is sent to that charger.",
+      "observed_evidence": [
+        "Visible text: 'If you need to use a charger to manually charge a robot you can disable a charger so that no other robot is sent to that charger.'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "affects",
+          "target": "charger assignment behavior",
+          "evidence": "Disabling the charger prevents other robots from being sent there."
+        }
+      ],
+      "retrieval_text": "System behavior for charger management: disabling a charger reserves it from automatic robot assignment so other robots are not sent to that charger during manual charging activity.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0032_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        32
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0032"
+      ],
+      "unit_type": "operational_process",
+      "title": "Manual charging uses a disabled charging station so a desired AGV can be pushed into it",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "charger",
+        "charging station"
+      ],
+      "summary": "For manual charging, the charger is disabled first, after which the desired AGV can be pushed into the disabled charging station.",
+      "observed_evidence": [
+        "Visible text: 'If you need to use a charger to manually charge a robot you can disable a charger...'",
+        "Visible text: 'Once the charger is disable, desired AGV can be pushed in to the disabled charging station.'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "precondition_for",
+          "target": "placing desired AGV into charging station",
+          "evidence": "The slide says the AGV can be pushed in once the charger is disabled."
+        }
+      ],
+      "retrieval_text": "Operational process for manual charging: disable the charger first, then push the desired AGV into the disabled charging station for manual charge use.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0032_01",
+      "title": "Disable a charger to manually charge a desired AGV",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        32
+      ],
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Charger Selection",
+        "charger",
+        "charging station"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A charger is available in the Charger Selection screen.",
+        "A robot/AGV needs to be manually charged."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0032"
+      ],
+      "procedure_visual_summary": "Slide shows the Charger Selection screen with numbered callouts and text explaining that a charger can be selected, disabled, and then used for manual charging by pushing the desired AGV into the disabled charging station.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Open or select Charger Selection.",
+          "expected_outcome": "The Charger Selection screen is active.",
+          "validation_check": "Charger Selection is visible.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:32"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0032"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0032"
+          ],
+          "visual_region_hint": "Charger Selection screen area referenced by the slide title and numbered UI callouts."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Select the charger you need to use for manual charging.",
+          "expected_outcome": "The selected charger information is shown.",
+          "validation_check": "Charger information is displayed for the selected charger.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:32"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0032"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0032"
+          ],
+          "visual_region_hint": "Charger list or charger selection area indicated by UI callouts."
+        },
+        {
+          "step_order": 3,
+          "instruction": "Disable the selected charger so no other robot is sent to that charger.",
+          "expected_outcome": "The charger is disabled and excluded from normal robot assignment.",
+          "validation_check": "The charger shows as disabled or is understood to no longer accept other robot assignments.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:32"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0032"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0032"
+          ],
+          "visual_region_hint": "Selected charger controls/details area; exact disable control not legible from text."
+        },
+        {
+          "step_order": 4,
+          "instruction": "Push the desired AGV into the disabled charging station.",
+          "expected_outcome": "The desired AGV is positioned in the disabled charging station for manual charging.",
+          "validation_check": "The desired AGV is in the disabled charging station.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:32"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0032"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0032"
+          ],
+          "visual_region_hint": "Physical charging station referenced by slide text; not explicitly shown in detail."
+        }
+      ],
+      "warnings": [
+        "The slide does not provide exact UI control names for disabling the charger.",
+        "The slide does not state how to re-enable the charger after manual charging."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0032_01",
+        "oku_optisweep_training_internal_0032_02",
+        "oku_optisweep_training_internal_0032_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure candidate for manual charging: open Charger Selection, select the charger to view its information, disable that charger so other robots are not sent to it, then push the desired AGV into the disabled charging station."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,719 @@
+[
+  {
+    "procedure_id": "proc_optisweep_training_internal_robot_selection_24_open_message_panel_and_review_faults",
+    "title": "Open the message panel and review AGV fault information",
+    "procedure_type": "diagnostic_check",
+    "source_deck": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      24
+    ],
+    "systems": [
+      "Map Monitor",
+      "AGV",
+      "Robot"
+    ],
+    "components": [
+      "Message Panel"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User is in the Map Monitor screen.",
+      "Message Panel is available in the current UI."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_robot_selection_0024"
+    ],
+    "procedure_visual_summary": "Slide lists Message Panel actions and indicators including opening the panel, robot counts, AGV fault dropdown, disconnected AGV count, fault inspection, and locating a faulted AGV.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open the Message Panel in Map Monitor.",
+        "expected_outcome": "The message panel is visible.",
+        "validation_check": "Confirm the message panel is open and accessible.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:24",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "visual_region_hint": "Message Panel area in Map Monitor UI"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Review the displayed counts for active robots, robots charging, and AGVs disconnected.",
+        "expected_outcome": "Current status counts are visible in the panel.",
+        "validation_check": "Verify that the panel shows robot activity, charging, and disconnected AGV counts.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:24",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "visual_region_hint": "Status/count section within the Message Panel"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Use the dropdown to show AGV faults.",
+        "expected_outcome": "AGV fault entries are displayed.",
+        "validation_check": "Confirm fault information appears after expanding the dropdown.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:24",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "visual_region_hint": "AGV faults dropdown in the Message Panel"
+      },
+      {
+        "step_order": 4,
+        "instruction": "Inspect a fault to view its details.",
+        "expected_outcome": "Details for the selected fault are shown.",
+        "validation_check": "Verify that fault detail information is displayed for inspection.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:24",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "visual_region_hint": "Fault list/detail area within the Message Panel"
+      },
+      {
+        "step_order": 5,
+        "instruction": "Use the available locate function to locate the faulted AGV.",
+        "expected_outcome": "The UI identifies or navigates to the faulted AGV location.",
+        "validation_check": "Confirm the faulted AGV can be located from the message panel.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:24",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0024"
+        ],
+        "visual_region_hint": "Locate Faulted AGV control in the Message Panel"
+      }
+    ],
+    "warnings": [
+      "The slide lists capabilities but does not fully specify exact UI control names or sequence details beyond the bullets.",
+      "The slide mentions 'E stop the system' but does not provide enough explicit procedural detail here to form a safe E-stop procedure."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_robot_selection_24_message_panel_functions",
+      "oku_optisweep_training_internal_robot_selection_24_fault_diagnostics_from_message_panel"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Diagnostic check from Map Monitor Message Panel: open message panel, review active robot, charging robot, and disconnected AGV counts, expand AGV faults dropdown, inspect fault details, and locate a faulted AGV."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_robot_selection_25_01",
+    "title": "Use Map Monitor Quick Select options",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      25
+    ],
+    "systems": [
+      "AGV",
+      "Robot"
+    ],
+    "components": [
+      "Map Monitor",
+      "Quick Select"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User is viewing the Map Monitor screen.",
+      "Quick Select controls are available in the UI."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_robot_selection_0025"
+    ],
+    "procedure_visual_summary": "Slide lists Quick Select capabilities in Map Monitor for viewing AGV paths, station IDs, charger IDs, and selecting robots, containers, cells, and chargers.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open or view the Map Monitor Quick Select area.",
+        "expected_outcome": "Quick Select options are visible.",
+        "validation_check": "Confirm the Map Monitor Quick Select options are displayed.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:25"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0025"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0025"
+        ],
+        "visual_region_hint": "Map Monitor / Quick Select area"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Use the available Quick Select options as needed to view AGV active paths, station IDs, charger IDs, or to select a robot, container, cell, or charger.",
+        "expected_outcome": "The selected map visibility or selection function is applied.",
+        "validation_check": "Confirm the requested visibility item or object selection is shown in Map Monitor.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:25"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0025"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0025"
+        ],
+        "visual_region_hint": "Quick Select option list"
+      }
+    ],
+    "warnings": [
+      "The slide lists available Quick Select functions but does not show exact button names, control locations, or detailed interaction sequence."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_robot_selection_25_01"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Navigation candidate for Map Monitor Quick Select. From Map Monitor, use Quick Select to view AGV active paths, station IDs, charger IDs, or select robots, containers, cells, and chargers. Exact UI interaction details are not shown on the slide."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_robot_selection_26_select_robot_view_details",
+    "title": "Select a robot in Robot Selection to view details",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      26
+    ],
+    "systems": [
+      "OptiSweep"
+    ],
+    "components": [
+      "Robot Selection UI",
+      "Robot"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Robot option is selected in the UI."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_robot_selection_0026"
+    ],
+    "procedure_visual_summary": "Overview slide describing Robot Selection behavior, selected robot highlighting, tote text under robot ID, and robot color meanings.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "With the Robot option selected, select a robot in the Robot Selection view.",
+        "expected_outcome": "The selected robot is highlighted with a box around it and robot details are shown.",
+        "validation_check": "Confirm a box appears around the chosen robot and robot details become visible.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:26",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0026"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0026"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0026"
+        ],
+        "visual_region_hint": "Robot Selection area containing robot icons/list and selected robot highlight box."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_robot_selection_26_robot_selection_ui_behavior",
+      "oku_optisweep_training_internal_robot_selection_26_robot_tote_label_interpretation",
+      "oku_optisweep_training_internal_robot_selection_26_robot_color_status_meanings"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Navigation candidate from Robot Selection overview: with Robot option selected, select a robot to view robot details. Selected robot is shown with a box around it."
+  },
+  {
+    "procedure_id": "proc_optisweep_add_robot_27",
+    "title": "Add a robot from Robot Selection",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      27
+    ],
+    "systems": [
+      "Robot"
+    ],
+    "components": [
+      "Robot Selection UI"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User is on the Robot Selection screen.",
+      "The corresponding robot ID is available."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_robot_selection_0027"
+    ],
+    "procedure_visual_summary": "Slide-level screenshot showing Robot Selection / Add and Remove instructions for Add Robot and Remove Robot.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Enter the corresponding robot ID.",
+        "expected_outcome": "The robot ID is entered in the Robot Selection UI.",
+        "validation_check": "Verify the intended robot ID is populated in the entry field.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "visual_region_hint": "Robot Selection add area with robot ID entry field"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Click \"Add\".",
+        "expected_outcome": "The add action is submitted for the entered robot ID.",
+        "validation_check": "Verify the Add button was clicked and the system processes the request.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "visual_region_hint": "Add button in the Robot Selection add area"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Confirm that the system shows the adding was successful.",
+        "expected_outcome": "A success indication confirms the robot was added.",
+        "validation_check": "Verify the UI displays a success message or status indicating the add completed successfully.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "visual_region_hint": "System message or status area after add action"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_robot_selection_add_remove_ui_27"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure to add a robot from Robot Selection: enter the corresponding robot ID, click Add, and confirm the system shows the adding was successful."
+  },
+  {
+    "procedure_id": "proc_optisweep_remove_robot_27",
+    "title": "Remove a robot from Robot Selection",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      27
+    ],
+    "systems": [
+      "Robot"
+    ],
+    "components": [
+      "Robot Selection UI"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User is on the Robot Selection screen.",
+      "The target robot can be identified by corresponding robot ID or selected in the UI."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_robot_selection_0027"
+    ],
+    "procedure_visual_summary": "Slide-level screenshot showing Robot Selection / Add and Remove instructions for Add Robot and Remove Robot.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Enter the corresponding robot ID or select the robot.",
+        "expected_outcome": "The target robot is identified for removal.",
+        "validation_check": "Verify the intended robot is selected or its corresponding robot ID is entered.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "visual_region_hint": "Robot Selection remove area with robot list or ID field"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Click \"Remove\".",
+        "expected_outcome": "The remove action is submitted for the selected or entered robot.",
+        "validation_check": "Verify the Remove button was clicked and the system processes the removal request.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "visual_region_hint": "Remove button in the Robot Selection remove area"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Confirm that the system shows the removal was successful.",
+        "expected_outcome": "A success indication confirms the robot was removed.",
+        "validation_check": "Verify the UI displays a success message or status indicating the removal completed successfully.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0027"
+        ],
+        "visual_region_hint": "System message or status area after remove action"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_robot_selection_add_remove_ui_27"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure to remove a robot from Robot Selection: enter the corresponding robot ID or select the robot, click Remove, and confirm the system shows the removal was successful."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_robot_selection_28_restart_robot",
+    "title": "Restart a selected robot",
+    "procedure_type": "service_restart",
+    "source_deck": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      28
+    ],
+    "systems": [
+      "Robot"
+    ],
+    "components": [
+      "Robot ID input",
+      "Robot selection",
+      "Restart button",
+      "Map display"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "The Robot Selection restart interface is available.",
+      "The operator knows the corresponding robot ID or can identify the robot for selection."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_robot_selection_0028"
+    ],
+    "procedure_visual_summary": "Slide titled 'Robot Selection / Restart' with numbered instructions for restarting a robot by entering robot ID or selecting a robot, clicking Restart, and observing the robot on the map after startup.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Enter the corresponding robot ID or select the robot.",
+        "expected_outcome": "The target robot is identified for the restart action.",
+        "validation_check": "The intended robot has been entered or selected in the Robot Selection interface.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:28"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0028"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0028"
+        ],
+        "visual_region_hint": "Robot selection area or robot ID entry field in the Robot Selection / Restart screen."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Click 'Restart'.",
+        "expected_outcome": "The restart command is issued for the selected robot.",
+        "validation_check": "The Restart control has been activated for the identified robot.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:28"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0028"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0028"
+        ],
+        "visual_region_hint": "Restart button in the Robot Selection / Restart interface."
+      },
+      {
+        "step_order": 3,
+        "instruction": "Allow the robot to restart.",
+        "expected_outcome": "The robot restarts at the restart point or on the QR code cell.",
+        "validation_check": "The robot restart occurs and its restart location matches the slide description.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:28"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0028"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0028"
+        ],
+        "visual_region_hint": "System response area or map context associated with robot restart status."
+      },
+      {
+        "step_order": 4,
+        "instruction": "After the robot starts, verify that the positioned robot is displayed on the map.",
+        "expected_outcome": "The restarted and positioned robot appears on the map.",
+        "validation_check": "The robot is visible on the map after startup.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:28"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0028"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0028"
+        ],
+        "visual_region_hint": "Map display area showing robot position after restart."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_robot_selection_28_restart_behavior",
+      "oku_optisweep_training_internal_robot_selection_28_restart_ui"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure to restart a robot from Robot Selection / Restart: enter the corresponding robot ID or select the robot, click Restart, allow the robot to restart at the restart point or on the QR code cell, and verify the positioned robot is displayed on the map after starting."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_robot_selection_29_send_idle_agv_to_square",
+    "title": "Send an idle AGV to a selected square using Go-to",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      29
+    ],
+    "systems": [
+      "AGV",
+      "Robot Selection"
+    ],
+    "components": [
+      "AGV",
+      "Go to",
+      "square selection",
+      "Confirm"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "AGV is not in a task"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_robot_selection_0029"
+    ],
+    "procedure_visual_summary": "Slide titled 'Robot Selection / Go-to function' with numbered UI actions for selecting an AGV, selecting Go to, choosing a square, and confirming.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Select an AGV.",
+        "expected_outcome": "An AGV is chosen for the Go-to action.",
+        "validation_check": "The target AGV is selected in the Robot Selection UI.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:29",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "visual_region_hint": "Numbered step 1 area on the slide; Robot Selection action list."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Select Go to.",
+        "expected_outcome": "The Go-to function is initiated for the selected AGV.",
+        "validation_check": "The Go to option is chosen for the AGV.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:29",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "visual_region_hint": "Numbered step 2 area on the slide; Go to action in the Robot Selection UI."
+      },
+      {
+        "step_order": 3,
+        "instruction": "Select which square you want the AGV to go to.",
+        "expected_outcome": "A destination square is chosen for the AGV.",
+        "validation_check": "The intended square is selected.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:29",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "visual_region_hint": "Numbered step 3 area on the slide; destination square selection."
+      },
+      {
+        "step_order": 4,
+        "instruction": "Select Confirm.",
+        "expected_outcome": "The Go-to command is submitted for the selected AGV and square.",
+        "validation_check": "The Go-to action is confirmed.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:29",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0029"
+        ],
+        "visual_region_hint": "Numbered step 4 area on the slide; confirm action."
+      }
+    ],
+    "warnings": [
+      "The slide states this applies to an AGV not in a task.",
+      "The slide provides a recovery example, but does not give a complete remove/add AGV procedure."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_robot_selection_29_go_to_function_behavior",
+      "oku_optisweep_training_internal_robot_selection_29_recovery_use_case_hospital_dropoff",
+      "oku_optisweep_training_internal_robot_selection_29_agv_task_resume_after_tote_removed",
+      "oku_optisweep_training_internal_robot_selection_29_go_to_ui_sequence"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure candidate for Robot Selection Go-to function: for an AGV not in a task, select an AGV, select Go to, select which square you want the AGV to go to, and select Confirm."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_robot_selection_030_01",
+    "title": "Find a tote by tote number in Container Selection",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal_robot_selection",
+    "source_slide_numbers": [
+      30
+    ],
+    "systems": [
+      "AGV"
+    ],
+    "components": [
+      "Container Selection UI",
+      "Tote",
+      "Rack",
+      "Tote number input"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User is in the Container Selection Totes interface.",
+      "A tote number is available.",
+      "The tote may exist in the system."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_robot_selection_0030"
+    ],
+    "procedure_visual_summary": "Slide describes the Container Selection Totes screen, including color indicators for tote presence and a tote-number-based lookup that identifies the rack or AGV location.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "In the Container Selection Totes interface, type the tote number into the tote lookup/input area.",
+        "expected_outcome": "The system uses the entered tote number to look for the tote record.",
+        "validation_check": "A tote corresponding to the entered number is found if it is in the system.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:30",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0030"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0030"
+        ],
+        "visual_region_hint": "Container Selection Totes screen area containing the tote number entry control."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Select the rack or AGV where the tote is located.",
+        "expected_outcome": "The tote location is identified through the selected rack or AGV.",
+        "validation_check": "The selected rack or AGV corresponds to the tote location when the tote is in the system.",
+        "source_refs": [
+          "deck:optisweep_training_internal_robot_selection",
+          "slide:30",
+          "artifact:slide_artifact_optisweep_training_internal_robot_selection_0030"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0030"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_robot_selection_0030"
+        ],
+        "visual_region_hint": "Rack or AGV selection area within the Container Selection Totes interface."
+      }
+    ],
+    "warnings": [
+      "The slide only states this works if the tote is in the system.",
+      "The exact field names and click sequence are not shown on the slide."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_robot_selection_030_01",
+      "oku_optisweep_training_internal_robot_selection_030_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure candidate for locating a tote in Container Selection: enter the tote number, then select the rack or AGV where the tote is located if the tote exists in the system."
+  }
+]

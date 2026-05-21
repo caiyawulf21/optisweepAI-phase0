@@ -1,0 +1,117 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0042_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        42
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0042"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Hot bin totes trigger chute close and exchange behavior",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Hot bin",
+        "Tote",
+        "Chute"
+      ],
+      "summary": "The slide states that hot bins trigger all totes marked as hot bin to close chute and exchange.",
+      "observed_evidence": [
+        "Visible text: 'Hot bins will trigger all totes that are marked as hot bin to close chute and exchange.'"
+      ],
+      "relationships": [
+        {
+          "relation": "affects",
+          "target": "Totes marked as hot bin"
+        },
+        {
+          "relation": "causes",
+          "target": "Chute close and exchange"
+        }
+      ],
+      "retrieval_text": "Overall System / Hot bin: Hot bins will trigger all totes that are marked as hot bin to close chute and exchange.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0042_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        42
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0042"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Disabling hot bin does not reopen chutes after exchange completion",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Hot bin",
+        "Chute",
+        "Exchange"
+      ],
+      "summary": "The slide indicates that disabling hot bin will not reopen chutes after the exchange has completed.",
+      "observed_evidence": [
+        "Visible text: 'Hot bin disable will not reopen chutes after the exchange is complete.'"
+      ],
+      "relationships": [
+        {
+          "relation": "does_not_cause",
+          "target": "Chute reopen after exchange completion"
+        },
+        {
+          "relation": "condition",
+          "target": "Exchange complete"
+        }
+      ],
+      "retrieval_text": "Overall System / Hot bin: Hot bin disable will not reopen chutes after the exchange is complete.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0042_01",
+      "title": "Hot bin response behavior overview",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        42
+      ],
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Hot bin",
+        "Tote",
+        "Chute"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Totes are marked as hot bin",
+        "A hot bin condition or status is active"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0042"
+      ],
+      "procedure_visual_summary": "Slide describes the behavior of hot bin totes causing chute close and exchange, and notes that disabling hot bin does not reopen chutes after exchange completion.",
+      "steps": [],
+      "warnings": [
+        "Slide provides behavior statements only and does not give an explicit action sequence.",
+        "Do not infer an operator or support procedure for disabling or recovering chutes from this slide alone."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0042_01",
+        "oku_optisweep_training_internal_0042_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as executable procedure candidate: slide only states that hot bins trigger marked totes to close chute and exchange, and that disabling hot bin will not reopen chutes after exchange is complete. No explicit reusable steps are provided."
+    }
+  ],
+  "discarded_candidates": []
+}

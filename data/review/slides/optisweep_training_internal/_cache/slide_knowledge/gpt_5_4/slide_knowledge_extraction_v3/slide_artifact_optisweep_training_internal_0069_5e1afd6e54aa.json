@@ -1,0 +1,151 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0069_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        69
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0069"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "OpcConfiguration table stores OPC connection parameters",
+      "systems": [
+        "OPC Comms Database",
+        "OPC"
+      ],
+      "components": [
+        "OpcConfiguration table"
+      ],
+      "summary": "The slide states that the OpcConfiguration table stores the connection parameters required for the software to bridge the gap to the OPC.",
+      "observed_evidence": [
+        "Visible text: \"The OpcConfiguration table stores the connection parameters required for the software to bridge the gap to the OPC.\"",
+        "Slide section/title references OPC Comms Database."
+      ],
+      "relationships": [
+        {
+          "relationship_type": "stores",
+          "target": "OPC connection parameters"
+        },
+        {
+          "relationship_type": "supports",
+          "target": "software bridge to OPC"
+        }
+      ],
+      "retrieval_text": "In the OPC Comms Database, the OpcConfiguration table stores the connection parameters required for the software to bridge to the OPC.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0069_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        69
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0069"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "OpcTags table defines tags subscribed on startup",
+      "systems": [
+        "OPC Comms Database",
+        "OPC"
+      ],
+      "components": [
+        "OpcTags table"
+      ],
+      "summary": "The slide states that OpcTags stores the tags that will be subscribed to on startup.",
+      "observed_evidence": [
+        "Visible text: \"OpcTags stores the tags that on startup will be subscribed to.\""
+      ],
+      "relationships": [
+        {
+          "relationship_type": "stores",
+          "target": "startup subscription tags"
+        },
+        {
+          "relationship_type": "drives",
+          "target": "startup OPC tag subscription behavior"
+        }
+      ],
+      "retrieval_text": "The OpcTags table in the OPC Comms Database stores the tags that are subscribed to on startup.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0069_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        69
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0069"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Software subscribes to stored OPC tags at startup",
+      "systems": [
+        "OPC Comms Database",
+        "OPC"
+      ],
+      "components": [
+        "OpcTags table",
+        "software"
+      ],
+      "summary": "The slide indicates a startup behavior where the software subscribes to the tags stored in OpcTags.",
+      "observed_evidence": [
+        "Visible text: \"OpcTags stores the tags that on startup will be subscribed to.\""
+      ],
+      "relationships": [
+        {
+          "relationship_type": "uses",
+          "target": "OpcTags table"
+        },
+        {
+          "relationship_type": "occurs_at",
+          "target": "startup"
+        }
+      ],
+      "retrieval_text": "On startup, the software subscribes to OPC tags stored in the OpcTags table.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0069_01",
+      "title": "No explicit procedure on OpcConfiguration and OpcTags slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        69
+      ],
+      "systems": [
+        "OPC Comms Database",
+        "OPC"
+      ],
+      "components": [
+        "OpcConfiguration table",
+        "OpcTags table"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0069"
+      ],
+      "procedure_visual_summary": "Slide describes database table purposes for OpcConfiguration and OpcTags but does not show an action sequence, UI flow, or ordered task steps.",
+      "steps": [],
+      "warnings": [
+        "Slide provides database context only.",
+        "No explicit reusable action guidance or ordered steps are present."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0069",
+        "oku_optisweep_training_internal_0069_01",
+        "oku_optisweep_training_internal_0069_02",
+        "oku_optisweep_training_internal_0069_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "This slide is not an actionable procedure. It documents that OpcConfiguration stores OPC connection parameters and OpcTags stores tags subscribed to at startup."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,248 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0116_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        116
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0116"
+      ],
+      "unit_type": "api_capability",
+      "title": "System API includes shutdown, closeout, purge, metrics reset, and zone configuration endpoints",
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "System API",
+        "Tote",
+        "Chutes",
+        "Zone configuration",
+        "Metrics"
+      ],
+      "summary": "The slide lists System API capabilities: shutting down the system when running, closeout for bag-out by closing chutes and exchanging totes with parcels, purge to exchange every tote in the system, ResetMetrics to generate a new sort GUID when UPS cycles a sort, GetZoneConfig to show current zone configuration, and UpdateZoneConfig to change zone configuration though it is noted as never used.",
+      "observed_evidence": [
+        "“System Shutdown: Will shutdown the system if its in a running state.”",
+        "“CloseOut: When the customer wants to bag out this will close all chutes and exchange any totes with parcels.”",
+        "“Purge: Will exchange every tote in the system.”",
+        "“ResetMetrics: Is called when UPS cycles a sort. Generates a new sort guid for metrics to be tracked.”",
+        "“GetZoneConfig: shows the current zone configuration.”",
+        "“UpdateZoneConfig: Allows the customer to change the zone configuration. This is never used.”"
+      ],
+      "relationships": [
+        {
+          "type": "affects",
+          "target": "system running state",
+          "evidence": "System Shutdown applies if the system is in a running state."
+        },
+        {
+          "type": "affects",
+          "target": "chutes",
+          "evidence": "CloseOut closes all chutes."
+        },
+        {
+          "type": "affects",
+          "target": "totes with parcels",
+          "evidence": "CloseOut exchanges any totes with parcels; Purge exchanges every tote in the system."
+        },
+        {
+          "type": "affects",
+          "target": "sort metrics tracking",
+          "evidence": "ResetMetrics generates a new sort GUID for metrics tracking."
+        },
+        {
+          "type": "reads",
+          "target": "zone configuration",
+          "evidence": "GetZoneConfig shows the current zone configuration."
+        },
+        {
+          "type": "writes",
+          "target": "zone configuration",
+          "evidence": "UpdateZoneConfig allows the customer to change the zone configuration."
+        }
+      ],
+      "retrieval_text": "APIs System slide. System API capabilities include System Shutdown for shutting down if running, CloseOut for bag-out by closing all chutes and exchanging totes with parcels, Purge to exchange every tote in the system, ResetMetrics when UPS cycles a sort to generate a new sort GUID for metrics tracking, GetZoneConfig to show current zone configuration, and UpdateZoneConfig to change zone configuration though noted as never used.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0116_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        116
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0116"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Bag-out and purge behaviors exchange totes under different scopes",
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "CloseOut",
+        "Purge",
+        "Tote",
+        "Chutes"
+      ],
+      "summary": "The slide distinguishes CloseOut from Purge. CloseOut is used when the customer wants to bag out and closes all chutes while exchanging totes that contain parcels. Purge exchanges every tote in the system.",
+      "observed_evidence": [
+        "“CloseOut: When the customer wants to bag out this will close all chutes and exchange any totes with parcels.”",
+        "“Purge: Will exchange every tote in the system.”"
+      ],
+      "relationships": [
+        {
+          "type": "contrasts_with",
+          "target": "Purge",
+          "evidence": "CloseOut exchanges totes with parcels, while Purge exchanges every tote in the system."
+        },
+        {
+          "type": "affects",
+          "target": "all chutes",
+          "evidence": "CloseOut closes all chutes."
+        }
+      ],
+      "retrieval_text": "CloseOut versus Purge behavior on the System API slide: CloseOut is for customer bag-out, closes all chutes, and exchanges totes containing parcels. Purge exchanges every tote in the system.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0116_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        116
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0116"
+      ],
+      "unit_type": "operational_process",
+      "title": "ResetMetrics is tied to UPS sort cycling and starts a new metrics tracking identifier",
+      "systems": [
+        "OptiSweep system",
+        "UPS sort process"
+      ],
+      "components": [
+        "ResetMetrics",
+        "Metrics",
+        "Sort GUID"
+      ],
+      "summary": "The slide states that ResetMetrics is called when UPS cycles a sort and that it generates a new sort GUID so metrics can be tracked under the new sort cycle.",
+      "observed_evidence": [
+        "“ResetMetrics: Is called when UPS cycles a sort. Generates a new sort guid for metrics to be tracked.”"
+      ],
+      "relationships": [
+        {
+          "type": "triggered_by",
+          "target": "UPS cycles a sort",
+          "evidence": "ResetMetrics is called when UPS cycles a sort."
+        },
+        {
+          "type": "creates",
+          "target": "new sort GUID",
+          "evidence": "The API generates a new sort guid for metrics tracking."
+        }
+      ],
+      "retrieval_text": "ResetMetrics operational behavior: called when UPS cycles a sort and generates a new sort GUID for metrics tracking.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0116_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        116
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0116"
+      ],
+      "unit_type": "api_capability",
+      "title": "Zone configuration can be read and can technically be updated, though update is noted as unused",
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "GetZoneConfig",
+        "UpdateZoneConfig",
+        "Zone configuration"
+      ],
+      "summary": "The slide documents two zone configuration APIs: GetZoneConfig to display the current zone configuration and UpdateZoneConfig to change it. The update operation is explicitly noted as never used.",
+      "observed_evidence": [
+        "“GetZoneConfig: shows the current zone configuration.”",
+        "“UpdateZoneConfig: Allows the customer to change the zone configuration. This is never used.”"
+      ],
+      "relationships": [
+        {
+          "type": "reads",
+          "target": "current zone configuration",
+          "evidence": "GetZoneConfig shows the current zone configuration."
+        },
+        {
+          "type": "writes",
+          "target": "zone configuration",
+          "evidence": "UpdateZoneConfig allows the customer to change the zone configuration."
+        },
+        {
+          "type": "usage_note",
+          "target": "UpdateZoneConfig",
+          "evidence": "The slide states this endpoint is never used."
+        }
+      ],
+      "retrieval_text": "Zone configuration APIs on the System slide: GetZoneConfig shows the current zone configuration. UpdateZoneConfig allows changing the zone configuration, but the slide notes it is never used.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0116_01",
+      "title": "Invoke System Shutdown API when the system is in a running state",
+      "procedure_type": "api_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        116
+      ],
+      "systems": [
+        "OptiSweep system"
+      ],
+      "components": [
+        "System Shutdown",
+        "System API"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "System is in a running state"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0116"
+      ],
+      "procedure_visual_summary": "Slide lists the System Shutdown API and states it will shut down the system if it is in a running state.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Call the System Shutdown API for the system.",
+          "expected_outcome": "The system shuts down if it is currently in a running state.",
+          "validation_check": "Confirm the system is no longer running after the API call.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:116",
+            "artifact:slide_artifact_optisweep_training_internal_0116"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0116"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0116"
+          ],
+          "visual_region_hint": "Bullet list under APIs / System, first bullet for System Shutdown."
+        }
+      ],
+      "warnings": [
+        "The slide provides API capability description only and does not show invocation method, parameters, or confirmation method."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0116_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Candidate API action from System slide: System Shutdown can be called to shut down the system if it is in a running state. Slide does not provide exact API request details."
+    }
+  ],
+  "discarded_candidates": []
+}

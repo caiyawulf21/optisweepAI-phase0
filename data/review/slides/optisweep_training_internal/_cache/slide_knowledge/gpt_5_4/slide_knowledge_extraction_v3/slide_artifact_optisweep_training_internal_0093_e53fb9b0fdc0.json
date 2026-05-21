@@ -1,0 +1,196 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0093_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        93
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0093"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Sorter Location reporting attributes in the Sorter Sweeper database location model",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Sorter Location",
+        "Tipper"
+      ],
+      "summary": "The slide defines reporting-related attributes for Sorter Location records in the Sorter Sweeper database location model, including sorter side, zone, sequence from sorter entrance, UPS chute number, lane delay prediction usage, lane status values, KeepClose behavior, and TiperSelect usage for GLD.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Location Model'",
+        "Text: 'Sorter Location have attributes for reporting'",
+        "Listed attributes: SorterName, Zone, Sequence, Lane, LaneDelay, LaneStatus, KeepClose, TiperSelect",
+        "LaneStatus values shown: Active, Bypassed, NotTracking",
+        "Text: 'LaneDelay: used for straight line sorters to predict when packages will divert'",
+        "Text: 'KeepClose: if the chute should remain closed after the exchange'",
+        "Text: 'TiperSelect: If a location has a specified tipper it needs to tip at. Used for GLD.'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "enumerates_fields_for",
+          "target": "Sorter Location"
+        },
+        {
+          "relation_type": "includes_state_field",
+          "target": "LaneStatus"
+        },
+        {
+          "relation_type": "references_component",
+          "target": "Tipper"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database location model slide describing Sorter Location attributes for reporting. Fields include SorterName for sorter side, Zone, Sequence starting from sorter entrance, Lane as UPS chute number, LaneDelay for straight line sorter divert prediction, LaneStatus values Active Bypassed NotTracking, KeepClose to keep chute closed after exchange, and TiperSelect for specified tipper used for GLD.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0093_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        93
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0093"
+      ],
+      "unit_type": "system_behavior",
+      "title": "LaneDelay is used to predict divert timing on straight line sorters",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Sorter Location"
+      ],
+      "summary": "The LaneDelay attribute is used for straight line sorters to predict when packages will divert.",
+      "observed_evidence": [
+        "Text: 'LaneDelay: used for straight line sorters to predict when packages will divert'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "describes_behavior_of",
+          "target": "LaneDelay"
+        },
+        {
+          "relation_type": "applies_to",
+          "target": "straight line sorters"
+        }
+      ],
+      "retrieval_text": "LaneDelay in the Sorter Location model is used on straight line sorters to predict package divert timing.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0093_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        93
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0093"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "LaneStatus values for sorter locations",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Sorter Location"
+      ],
+      "summary": "The slide defines LaneStatus values for sorter locations: Active means the chute is open, Bypassed means the chute is closed, and NotTracking means destinations are not being used yet.",
+      "observed_evidence": [
+        "Text: 'LaneStatus:'",
+        "Text: 'Active: chute is open'",
+        "Text: 'Bypassed: chute is closed'",
+        "Text: 'NotTracking: destinations that are not being used yet'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "defines_values_for",
+          "target": "LaneStatus"
+        }
+      ],
+      "retrieval_text": "LaneStatus definitions in Sorter Sweeper Database: Active means chute open, Bypassed means chute closed, NotTracking means destinations not being used yet.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0093_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        93
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0093"
+      ],
+      "unit_type": "routing_rule",
+      "title": "KeepClose and TiperSelect location attributes affect chute and tipper handling",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Sorter Location",
+        "Tipper"
+      ],
+      "summary": "KeepClose indicates whether a chute should remain closed after the exchange. TiperSelect indicates that a location must tip at a specified tipper and is used for GLD.",
+      "observed_evidence": [
+        "Text: 'KeepClose: if the chute should remain closed after the exchange'",
+        "Text: 'TiperSelect: If a location has a specified tipper it needs to tip at. Used for GLD.'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "controls_post_exchange_state",
+          "target": "KeepClose"
+        },
+        {
+          "relation_type": "constrains_tip_destination",
+          "target": "TiperSelect"
+        },
+        {
+          "relation_type": "used_for",
+          "target": "GLD"
+        }
+      ],
+      "retrieval_text": "Sorter Location attributes affecting routing and handling include KeepClose, which keeps a chute closed after the exchange, and TiperSelect, which requires tipping at a specified tipper and is used for GLD.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0093_01",
+      "title": "No explicit reusable procedure on Sorter Sweeper database location model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        93
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Sorter Location"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Viewer is reviewing the Sorter Sweeper Database location model documentation"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0093"
+      ],
+      "procedure_visual_summary": "Bullet list describing Sorter Location reporting attributes and LaneStatus meanings; no ordered actions or UI workflow shown.",
+      "steps": [],
+      "warnings": [
+        "Slide provides field definitions and behavior descriptions, not an action sequence.",
+        "No explicit configuration, navigation, validation, or operational steps are present."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0093_01",
+        "oku_optisweep_training_internal_0093_02",
+        "oku_optisweep_training_internal_0093_03",
+        "oku_optisweep_training_internal_0093_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide is a database/location model reference listing Sorter Location attributes, LaneStatus definitions, LaneDelay behavior, KeepClose, and TiperSelect usage without explicit operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,123 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Robot Selection Overview and Detail Panel Introduction",
+      "timestamp_start": "01:13:41.320",
+      "timestamp_end": "01:14:11.680",
+      "primary_intent": "Explain how to select a robot and view its detailed information panel",
+      "operational_intents": [
+        "Demonstrate robot selection process",
+        "Describe how to access and expand robot details panel"
+      ],
+      "knowledge_extraction_strategy": "Extract robot selection and detail panel usage information",
+      "why_this_strategy": "Focus on initial robot selection and detail panel access",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001240",
+        "vec_upsfortna_optisweep_training_day1_20260317_001241",
+        "vec_upsfortna_optisweep_training_day1_20260317_001242",
+        "vec_upsfortna_optisweep_training_day1_20260317_001243",
+        "vec_upsfortna_optisweep_training_day1_20260317_001244",
+        "vec_upsfortna_optisweep_training_day1_20260317_001245",
+        "vec_upsfortna_optisweep_training_day1_20260317_001246"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000025"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Key Robot Details and Identification",
+      "timestamp_start": "01:14:11.680",
+      "timestamp_end": "01:14:42.160",
+      "primary_intent": "Identify important robot details such as robot ID and location",
+      "operational_intents": [
+        "Highlight significance of robot ID",
+        "Explain robot location and cell code"
+      ],
+      "knowledge_extraction_strategy": "Extract key robot identification details",
+      "why_this_strategy": "Focus on critical robot identifiers for troubleshooting",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001247",
+        "vec_upsfortna_optisweep_training_day1_20260317_001248",
+        "vec_upsfortna_optisweep_training_day1_20260317_001249",
+        "vec_upsfortna_optisweep_training_day1_20260317_001250",
+        "vec_upsfortna_optisweep_training_day1_20260317_001251",
+        "vec_upsfortna_optisweep_training_day1_20260317_001252",
+        "vec_upsfortna_optisweep_training_day1_20260317_001253",
+        "vec_upsfortna_optisweep_training_day1_20260317_001254"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000025"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Robot Tote Identification and Status Indicators",
+      "timestamp_start": "01:14:42.160",
+      "timestamp_end": "01:15:56.680",
+      "primary_intent": "Explain how to identify if a robot is carrying a tote and tote status",
+      "operational_intents": [
+        "Describe tote ID and its significance",
+        "Explain visual indicators of tote presence and removal"
+      ],
+      "knowledge_extraction_strategy": "Extract information on tote identification and robot-tote relationship",
+      "why_this_strategy": "Clarify tote presence and removal procedures",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001255",
+        "vec_upsfortna_optisweep_training_day1_20260317_001256",
+        "vec_upsfortna_optisweep_training_day1_20260317_001257",
+        "vec_upsfortna_optisweep_training_day1_20260317_001258",
+        "vec_upsfortna_optisweep_training_day1_20260317_001259",
+        "vec_upsfortna_optisweep_training_day1_20260317_001260",
+        "vec_upsfortna_optisweep_training_day1_20260317_001261",
+        "vec_upsfortna_optisweep_training_day1_20260317_001262",
+        "vec_upsfortna_optisweep_training_day1_20260317_001263",
+        "vec_upsfortna_optisweep_training_day1_20260317_001264",
+        "vec_upsfortna_optisweep_training_day1_20260317_001265",
+        "vec_upsfortna_optisweep_training_day1_20260317_001266",
+        "vec_upsfortna_optisweep_training_day1_20260317_001267",
+        "vec_upsfortna_optisweep_training_day1_20260317_001268",
+        "vec_upsfortna_optisweep_training_day1_20260317_001269",
+        "vec_upsfortna_optisweep_training_day1_20260317_001270",
+        "vec_upsfortna_optisweep_training_day1_20260317_001271",
+        "vec_upsfortna_optisweep_training_day1_20260317_001272",
+        "vec_upsfortna_optisweep_training_day1_20260317_001273",
+        "vec_upsfortna_optisweep_training_day1_20260317_001274"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000025"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Robot LED Color Codes and Status Indicators",
+      "timestamp_start": "01:15:56.680",
+      "timestamp_end": "01:16:41.320",
+      "primary_intent": "Describe the meaning of robot LED colors and their status indications",
+      "operational_intents": [
+        "Explain purple LED meaning",
+        "Explain blue and flashing blue LED meanings"
+      ],
+      "knowledge_extraction_strategy": "Extract LED color code meanings for robot status monitoring",
+      "why_this_strategy": "Clarify robot status via LED indicators",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001275",
+        "vec_upsfortna_optisweep_training_day1_20260317_001276",
+        "vec_upsfortna_optisweep_training_day1_20260317_001277",
+        "vec_upsfortna_optisweep_training_day1_20260317_001278",
+        "vec_upsfortna_optisweep_training_day1_20260317_001279",
+        "vec_upsfortna_optisweep_training_day1_20260317_001280",
+        "vec_upsfortna_optisweep_training_day1_20260317_001281",
+        "vec_upsfortna_optisweep_training_day1_20260317_001282",
+        "vec_upsfortna_optisweep_training_day1_20260317_001283",
+        "vec_upsfortna_optisweep_training_day1_20260317_001284",
+        "vec_upsfortna_optisweep_training_day1_20260317_001285",
+        "vec_upsfortna_optisweep_training_day1_20260317_001286"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000025"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

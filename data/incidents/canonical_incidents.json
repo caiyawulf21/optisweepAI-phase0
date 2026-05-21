@@ -1,148 +1,1110 @@
 [
   {
     "record_type": "canonical_incident",
-    "incident_id": "229374",
-    "source_file": "data/Case 229374 Data.docx",
-    "source_section": "Teams Chat Data",
-    "source_page": 33,
-    "source_ref": "Case 229374 Data.docx#media=image31.png",
-    "confidence": 0.7854,
+    "synthesis_level": "HIGH",
+    "incident_id": "223554",
+    "source_file": "data/Case 223554 Data.docx",
+    "source_section": "Salesforce Case Data; Teams Chat Data",
+    "source_page": 12,
+    "source_ref": "Case 223554 Data.docx#media=image12.png",
+    "confidence": 0.8064,
     "validation_status": "candidate_extracted",
     "requires_manual_review": true,
     "missing_fields": [
-      "explicit validated root cause",
-      "exact service names restarted",
-      "exact occurrence time of operational stop",
-      "full actor role mapping for all participants"
+      "exact occurrence time of initial operational failure",
+      "explicit confirmation of who performed Optisweep service reset",
+      "explicit confirmation of exact sequence between service reset and API-based tote/AGV cleanup",
+      "validated root cause"
     ],
     "extraction_notes": [
-      "Canonical summary synthesized from Salesforce-style case updates, Teams chat, and RCA screenshots only.",
-      "Subject line OCR used raw term 'AVGs'; normalized to AGVs per instruction.",
-      "Recovery after restart treated as candidate basis only, not validated root cause."
+      "Canonical summary synthesized from Salesforce case creation/closure, work order screenshots, and Teams post-incident discussion.",
+      "Source package contains mixed signals from original early-morning incident and later same-day recurrence/recovery discussion; sequence requires manual review.",
+      "Root cause remains candidate only because recovery after restart and cleanup does not validate cause."
     ],
-    "container_id": "incident_229374",
+    "container_id": "incident_223554",
     "dataset_record_type": "Dataset 1 - Canonical Incident Record",
-    "case_id": "229374",
-    "source_case_id": "00229374",
-    "title": "UPS Haslet AGVs stopped moving; Optisweep service restored operations after restart",
-    "retrieval_text": "Case 00229374 at UPS Fort Worth, TX (Haslet) reported that AGVs were not moving and nothing was feeding the tippers during preload. Site reported robots appeared to have tasks and totes but stopped before tipper lines, could not remove product at the hospital area, and RMS showed no robot errors. Remote troubleshooting was delayed by UPS-side Zscaler/VPN access issues. Site-side checks included operator station status, AVEVA review, pause/unpause attempts, and heartbeat checks, with Tipper 1 reported at 0 while other tippers had nonzero heartbeat values. Once access to 10.27.80.165 was obtained through a field PC, support observed Ignition up, reviewed database timeout and OPC/heartbeat-related evidence, and Mitchel Flynn restarted Optisweep services. The site continued to run after the restart. Root cause was not explicitly validated in source evidence.",
+    "case_id": "223554",
+    "source_case_id": "00223554",
+    "title": "ACB hospital station unable to induct after robot shutdown state and AGV/tote recovery actions",
+    "retrieval_text": "Case 223554 at UPS Fort Worth (Haslet) involved the ACB hospital station being unable to induct totes while a robot remained in shutdown state and could not return to normal operation. Source records show the case was opened around 2:11-2:12 AM on 2025-09-26, escalated through CBRE/work order handling, and later documented as resolved after support actions. Teams evidence indicates operators could remove totes but could not add totes at the hospital, with AGVs observed under the rack and at least one AGV showing a disconnected tote association. Recovery actions included removing AGVs 1542188 and 1555028, using API dog to induct a tote to move the system forward, removing tote 51 associated with AGV 1555012 via API dog when hospital removal failed, and re-adding robots. Salesforce closure text states resolution details were to reset Optisweep services and have site restart the Hospital Lane. Root cause is not validated; candidate interpretations include stale AGV/tote association state after AGV removal, robot shutdown state requiring service reset, and recovery complications when tipper stations were not paused.",
+    "requires_role_review": true,
     "validated_root_cause": false,
     "candidate_inferred_causes": [
       {
-        "cause_summary": "Optisweep service degradation or stalled service state affecting heartbeat/data flow between WCS, Ignition, and field systems",
-        "basis": "Service restart restored operations; source notes state restart was prompted after finding missing heartbeats; multiple observations suggest data was not being passed properly while robots still had tasks.",
-        "confidence": 0.79,
+        "cause_summary": "Hospital induction was likely blocked by stale AGV/tote association state after an AGV was removed without removing the associated tote.",
+        "basis": "Teams follow-up states they likely removed an AGV without removing the associated tote, and later summary references AGV 1555012 with disconnected tote 51 plus inability to add totes at hospital.",
+        "confidence": 0.82,
         "validation_status": "candidate_extracted",
         "requires_manual_review": true
       },
       {
-        "cause_summary": "Database query timeout activity in WCSWebApplication may have contributed to the incident",
-        "basis": "RCA evidence shows Event ID 10100 and 20102 at 4/4/2026 1:48:37 AM with execution timeout expired and failed DbCommand messages; later case notes reference database timeouts around 2 AM site time.",
-        "confidence": 0.68,
+        "cause_summary": "Robot shutdown state at the ACB hospital station likely required Optisweep service reset and hospital lane restart to return to normal operation.",
+        "basis": "Salesforce closure email states robot was in shutdown state, issue happened before under prior case, and resolution details were to reset Optisweep services and have site restart Hospital Lane.",
+        "confidence": 0.77,
         "validation_status": "candidate_extracted",
         "requires_manual_review": true
       },
       {
-        "cause_summary": "OPC communications or heartbeat path disruption between Optisweep/Ignition and tipper or hospital interfaces",
-        "basis": "Evidence includes missing heartbeat discussion, AVEVA showing tippers closed while field showed open, pause/unpause ineffective, and multiple OPC write errors / Bad at OPC comms messages in shared screenshots.",
-        "confidence": 0.74,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "UPS-side Zscaler/VPN outage impeded diagnosis but was not proven to be the operational root cause",
-        "basis": "Multiple Teams and case notes document inability to remote in due to Validation Pending 2 / Zscaler issues; however, site symptoms existed independently and operations were restored after service restart.",
+        "cause_summary": "Recovery complexity may have been worsened because tipper stations were not paused while hospital recovery was underway, causing totes to continue routing to hospital.",
+        "basis": "Teams summary notes operators need to put the station on pause when not present at the tippers or everything will end up going to hospital during recovery.",
         "confidence": 0.61,
         "validation_status": "candidate_extracted",
         "requires_manual_review": true
       }
     ],
     "observed_failure_signals": [
-      "agv_fleet_not_moving",
-      "tipper_feed_stopped",
-      "agv_tasks_not_progressing",
-      "hospital_product_removal_hangs",
-      "aveva_tipper_state_mismatch",
-      "missing_heartbeat_signals",
-      "system_estopped_after_manual_bag_out"
+      "hospital_station_unable_to_induct_totes",
+      "robot_shutdown_state",
+      "robot_unable_to_return_to_normal_state",
+      "hospital_can_remove_totes_but_cannot_add_totes",
+      "empty_totes_going_to_hospital_after_tip"
     ],
     "diagnostic_signals": [
-      "rms_shows_no_robot_errors",
-      "operator_station_beacons_green",
-      "no_active_operator_station_alarms",
-      "pause_unpause_attempt_failed",
-      "tipper_heartbeat_values_inconsistent",
-      "ignition_up",
-      "wcswebapplication_db_timeout_events",
-      "opc_write_error_messages",
-      "null_reference_exception_messages"
+      "agv_with_disconnected_tote_observed",
+      "two_agvs_under_rack_same_zone_observed",
+      "agv_does_not_belong_in_zone_suspected",
+      "tipper_heartbeat_check_requested",
+      "possible_prior_agv_removed_without_associated_tote"
     ],
     "action_signals": [
-      "support_hotline_contact_attempts",
-      "mdi_contacts_engaged",
-      "site_requested_aveva_screenshots",
-      "site_requested_rms_message_panel_review",
-      "site_performed_pause_unpause",
+      "case_opened",
+      "cbre_work_order_created",
+      "teams_bridge_posted",
+      "site_contacted_for_on_site_support",
+      "agv_1542188_removed",
+      "agv_1555028_removed",
+      "api_dog_used_to_induct_tote",
+      "api_dog_used_to_remove_tote_51",
+      "additional_agvs_removed_for_recovery",
+      "robots_readded",
+      "optisweep_services_reset_documented",
+      "hospital_lane_restart_documented"
+    ],
+    "recovery_validation_signals": [
+      "hospital_can_add_and_remove_totes",
+      "system_started_moving",
+      "hospital_clearing_up",
+      "system_running_now",
+      "robots_readded_and_running",
+      "case_resolved",
+      "case_closed"
+    ],
+    "escalation_signals": [
+      "teams_support_bridge_engaged",
+      "on_site_personnel_requested",
+      "zane_bubb_dispatched_to_site",
+      "support_line_not_called",
+      "escalation_path_review_requested",
+      "project_execution_team_contact_path_requested"
+    ],
+    "raw_terms": [
+      "acb hospital unable to induct",
+      "robot is in a shut down state",
+      "need to reset services",
+      "they can remove totes but they cannot add",
+      "removed an AGV without removing the associated tote",
+      "AGV 1555028",
+      "AGV 1542188",
+      "AGV 1555012",
+      "disconnected tote 51",
+      "API dog",
+      "Aveva",
+      "Empty totes going to hospital after tip"
+    ],
+    "normalized_terms": [
+      "acb_hospital_station_unable_to_induct",
+      "robot_shutdown_state",
+      "optisweep_service_reset",
+      "hospital_remove_tote_works_add_tote_fails",
+      "agv_removed_without_associated_tote",
+      "agv_1555028",
+      "agv_1542188",
+      "agv_1555012",
+      "disconnected_tote_51",
+      "api_dog_tool",
+      "aveva",
+      "empty_totes_routed_to_hospital_after_tip"
+    ],
+    "normalization_confidence": 0.88,
+    "linked_incident_ids": [
+      "223554"
+    ],
+    "linked_event_ids": [
+      "evt_223554_01",
+      "evt_223554_02",
+      "evt_223554_03",
+      "evt_223554_04",
+      "evt_223554_05",
+      "evt_223554_06",
+      "evt_223554_07",
+      "evt_223554_08",
+      "evt_223554_09",
+      "evt_223554_10"
+    ],
+    "linked_chunk_ids": [
+      "chunk_223554_01",
+      "chunk_223554_02",
+      "chunk_223554_03",
+      "chunk_223554_04",
+      "chunk_223554_05",
+      "chunk_223554_06",
+      "chunk_223554_07",
+      "chunk_223554_08",
+      "chunk_223554_09",
+      "chunk_223554_10"
+    ],
+    "linked_artifact_ids": [
+      "case_223554_docx_artifact_01",
+      "case_223554_docx_artifact_02",
+      "case_223554_docx_artifact_03",
+      "case_223554_docx_artifact_04",
+      "case_223554_docx_artifact_05",
+      "case_223554_docx_artifact_06",
+      "case_223554_docx_artifact_07",
+      "case_223554_docx_artifact_08",
+      "case_223554_docx_artifact_09",
+      "case_223554_docx_artifact_10",
+      "case_223554_docx_artifact_11",
+      "case_223554_docx_artifact_12",
+      "case_223554_docx_artifact_13",
+      "case_223554_docx_artifact_14",
+      "case_223554_docx_artifact_15"
+    ],
+    "linked_procedure_ids": [],
+    "linked_workflow_ids": [],
+    "role_constraints": [
+      "L2_L3_software_support"
+    ],
+    "required_permissions": [
+      "case_review_access"
+    ],
+    "source_artifact_ids": [
+      "case_223554_docx_artifact_01",
+      "case_223554_docx_artifact_02",
+      "case_223554_docx_artifact_03",
+      "case_223554_docx_artifact_04",
+      "case_223554_docx_artifact_05",
+      "case_223554_docx_artifact_06",
+      "case_223554_docx_artifact_07",
+      "case_223554_docx_artifact_08",
+      "case_223554_docx_artifact_09",
+      "case_223554_docx_artifact_10",
+      "case_223554_docx_artifact_11",
+      "case_223554_docx_artifact_12",
+      "case_223554_docx_artifact_13",
+      "case_223554_docx_artifact_14",
+      "case_223554_docx_artifact_15"
+    ],
+    "source_artifact_paths": [
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_01.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_02.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_03.jpeg",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_04.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_05.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_06.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_07.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_08.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_09.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_10.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_11.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_12.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_13.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_14.png",
+      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_15.png"
+    ],
+    "embedded_artifact_ids": [],
+    "embedded_artifact_paths": [],
+    "source_region_refs": [
+      "region_223554_001",
+      "region_223554_002",
+      "region_223554_003",
+      "region_223554_004",
+      "region_223554_005",
+      "region_223554_006",
+      "region_223554_007",
+      "region_223554_008",
+      "region_223554_009",
+      "region_223554_010",
+      "region_223554_011",
+      "region_223554_012",
+      "region_223554_013",
+      "region_223554_014",
+      "region_223554_015"
+    ],
+    "source_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "escalated": true,
+    "workflow_candidate": true,
+    "overlay_applied": true,
+    "contextual_overlays": [
+      {
+        "overlay_id": "l4_project_team_overlay",
+        "overlay_type": "user_provided_context",
+        "overlay_summary": "User indicated project team escalation occurred for the active case.",
+        "applies_conditionally": true,
+        "validation_status": "unverified_overlay",
+        "case_id": "223554",
+        "escalation_target": "L4_engineering_project_team",
+        "overlay_source": "user_message",
+        "applies_to": [
+          "canonical_incident",
+          "teams_derived_records",
+          "escalation_summary_template"
+        ]
+      }
+    ],
+    "overlay_application_reason": "Conditional user-provided context is attached because the record summarizes the incident, escalation handoff, or Teams-derived evidence.",
+    "escalation_targets": [
+      "L4_engineering_project_team"
+    ],
+    "support_tiers_involved": [],
+    "organizational_roles": [
+      "software_support"
+    ],
+    "linked_relationships": [
+      {
+        "target_id": "evt_223554_01",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_223554_02",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_223554_03",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_223554_04",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_223554_05",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_223554_06",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_223554_07",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_223554_08",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_223554_09",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_223554_10",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "chunk_223554_01",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_223554_02",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_223554_03",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_223554_04",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_223554_05",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_223554_06",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_223554_07",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_223554_08",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_223554_09",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_223554_10",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "case_223554_docx_artifact_01",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_02",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_03",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_04",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_05",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_06",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_07",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_08",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_09",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_10",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_11",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_12",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_13",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_14",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_223554_docx_artifact_15",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      }
+    ],
+    "quality_tier": "llm_operational_synthesis",
+    "eligible_for_cross_incident_synthesis": true,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_blockers": [],
+    "pattern_candidate_notes": "",
+    "comparable_signal_groups": [],
+    "recurrence_evidence_refs": [],
+    "local_dataset_id": "223554",
+    "ingestion_version": 1
+  },
+  {
+    "record_type": "canonical_incident",
+    "synthesis_level": "HIGH",
+    "incident_id": "228086",
+    "source_file": "data/Case 228086 Data.docx",
+    "source_section": "Teams Chat Data",
+    "source_page": 1,
+    "source_ref": "data/Case 228086 Data.docx#case=228086",
+    "confidence": 0.8896,
+    "validation_status": "candidate_extracted",
+    "requires_manual_review": true,
+    "missing_fields": [
+      "exact service restart timestamp",
+      "exact time AGV sync corrections completed",
+      "explicit closure timestamp",
+      "explicit log collection confirmation"
+    ],
+    "extraction_notes": [
+      "Canonical summary combines deterministic CAT-1 context for case 228086 with Teams-derived operational timeline evidence.",
+      "Memory-usage cause is source-provided in category context, but Teams discussion also questioned whether memory caused the crash; therefore root cause remains unvalidated in this output.",
+      "Teams evidence confirms escalation behavior and remote troubleshooting coordination."
+    ],
+    "container_id": "incident_228086",
+    "dataset_record_type": "Dataset 1 - Canonical Incident Record",
+    "case_id": "228086",
+    "source_case_id": "228086",
+    "title": "AGVs stopped during normal operation with no visible faults after OptiSweep/WCS web application fault and out-of-sync AGV states",
+    "retrieval_text": "Case 228086 at UPS Haslet, TX is a CAT-1 WCS/Service Failure candidate incident. During normal operation on 2026-02-20, AGVs stopped moving with no visible faults and the system still showed standard operation mode. Teams evidence reported 4-6 bots not moving, inability to remove totes from the hospital, question marks on the HMI, and no failed AGVs. Source category context states the web application faulted at 6:36 AM due to memory usage, causing a service crash and AGVs to lose sync. Troubleshooting included remote access, review of Ignition memory trend and uptime, restart of the OptiSweep/Ignition service, review of AGV status and API responses, and correction of out-of-sync AGVs in RMS. Recovery completed the same day, with the site resuming auto bag-out, but infrastructure follow-up was still needed for memory and log sizing.",
+    "requires_role_review": true,
+    "linked_incident_ids": [
+      "228086"
+    ],
+    "linked_event_ids": [
+      "evt_228086_01",
+      "evt_228086_02",
+      "evt_228086_03",
+      "evt_228086_04",
+      "evt_228086_05",
+      "evt_228086_06",
+      "evt_228086_07",
+      "evt_228086_08",
+      "evt_228086_09",
+      "evt_228086_10"
+    ],
+    "linked_chunk_ids": [
+      "chunk_228086_01",
+      "chunk_228086_02",
+      "chunk_228086_03",
+      "chunk_228086_04",
+      "chunk_228086_05",
+      "chunk_228086_06",
+      "chunk_228086_07",
+      "chunk_228086_08",
+      "chunk_228086_09"
+    ],
+    "linked_artifact_ids": [
+      "case_228086_docx_artifact_01",
+      "case_228086_docx_artifact_02",
+      "case_228086_docx_artifact_03",
+      "case_228086_docx_artifact_04",
+      "case_228086_docx_artifact_05",
+      "case_228086_docx_artifact_06",
+      "case_228086_docx_artifact_07",
+      "case_228086_docx_artifact_08",
+      "case_228086_docx_artifact_09",
+      "case_228086_docx_artifact_10",
+      "case_228086_docx_artifact_11",
+      "case_228086_docx_artifact_12",
+      "case_228086_docx_artifact_13",
+      "case_228086_docx_artifact_14",
+      "case_228086_docx_artifact_15",
+      "case_228086_docx_artifact_16",
+      "case_228086_docx_artifact_17",
+      "case_228086_docx_artifact_18"
+    ],
+    "linked_procedure_ids": [],
+    "linked_workflow_ids": [],
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "site": "UPS Haslet, TX",
+    "validated_root_cause": false,
+    "candidate_inferred_causes": [
+      {
+        "cause_summary": "OptiSweep/WCS web application or related service fault likely caused AGVs to lose sync and stop moving.",
+        "basis": "Dataset context for case 228086 states the web application faulted at 6:36 AM due to memory usage and the service crash caused AGVs to lose sync; Teams evidence shows AGVs stopped with no visible faults and later troubleshooting focused on service health and restart.",
+        "confidence": 0.82,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      },
+      {
+        "cause_summary": "High memory usage may have contributed to the web application or Ignition service fault, but this was debated during troubleshooting and not conclusively validated in the chat evidence.",
+        "basis": "Teams messages asked how memory was looking and requested a 24-hour memory snapshot, while a later message stated there was no indication memory caused a crash. Source category context separately attributes the web application fault to memory usage.",
+        "confidence": 0.63,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      },
+      {
+        "cause_summary": "Service interruption left multiple AGVs in incorrect or out-of-sync states that required RMS correction after restart.",
+        "basis": "Source category context for case 228086 explicitly says engineers opened RMS, identified AGVs in incorrect/out-of-sync state, and corrected each one by one. Teams screenshots also show AGV status/API review and mention a zone missing an AGV.",
+        "confidence": 0.79,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      }
+    ],
+    "observed_failure_signals": [
+      "agvs_not_moving",
+      "system_showing_standard_operation_mode",
+      "no_visible_faults_reported",
+      "hospital_tote_removal_failed",
+      "hmi_question_marks_displayed",
+      "multiple_agvs_stopped_in_various_areas"
+    ],
+    "diagnostic_signals": [
+      "memory_trend_review_requested",
+      "ignition_crash_hypothesis_raised",
+      "no_failed_agvs_reported",
+      "no_fault_reported_during_normal_operation",
+      "main_status_page_uptime_check_suggested",
+      "agv_status_api_reviewed",
+      "zone_missing_agv_signal_mentioned",
+      "optisweep_service_running_state_viewed"
+    ],
+    "action_signals": [
+      "tech_support_hotline_started",
+      "remote_access_obtained_via_rdp",
+      "site_manually_bagging_out",
+      "e_stop_coordination_discussed",
+      "gateway_restart_command_executed",
+      "optisweep_service_restart_performed",
+      "agv_states_corrected_in_rms",
+      "customer_bridge_call_started_late"
+    ],
+    "recovery_validation_signals": [
+      "memory_trend_looking_better",
+      "service_responding_to_api_requests_after_restart",
+      "site_resumed_auto_bag_out",
+      "incident_resolved_same_day"
+    ],
+    "escalation_signals": [
+      "teams_support_bridge_engaged",
+      "tech_support_hotline_active",
+      "additional_resources_requested",
+      "customer_update_gap_identified",
+      "customer_bridge_missing_complaint",
+      "infrastructure_follow_up_required_for_log_sizing",
+      "l4_project_team_overlay_present_unverified"
+    ],
+    "raw_terms": [
+      {
+        "term": "4-6 bots currently not moving in various areas after heartbeat issue",
+        "source_ref": "Case 228086 Data.docx#media=image1.png",
+        "normalization_confidence": 0.86
+      },
+      {
+        "term": "They can't remove totes from hospital either and question marks on hmi",
+        "source_ref": "Case 228086 Data.docx#media=image1.png",
+        "normalization_confidence": 0.95
+      },
+      {
+        "term": "there was no fault or any failed AGVs",
+        "source_ref": "Case 228086 Data.docx#media=image1.png",
+        "normalization_confidence": 0.97
+      },
+      {
+        "term": "Web application faulted at 6:36 AM",
+        "source_ref": "data/Case 228086 Data.docx#case=228086_context",
+        "normalization_confidence": 0.99
+      },
+      {
+        "term": "No indication here that memory caused a crash",
+        "source_ref": "Case 228086 Data.docx#media=image5.png",
+        "normalization_confidence": 0.96
+      },
+      {
+        "term": "From the system state it never started bag out",
+        "source_ref": "Case 228086 Data.docx#media=image8.png",
+        "normalization_confidence": 0.95
+      },
+      {
+        "term": "No you can see in system errors a zone is missing an agv",
+        "source_ref": "Case 228086 Data.docx#media=image9.png",
+        "normalization_confidence": 0.93
+      }
+    ],
+    "normalized_terms": [
+      "AGVs not moving",
+      "hospital tote removal failed",
+      "HMI question marks",
+      "no visible faults",
+      "web application fault at 6:36 AM",
+      "memory trend review",
+      "OptiSweep service restart",
+      "Ignition gateway restart",
+      "AGV out-of-sync state correction in RMS",
+      "site resumed auto bag-out"
+    ],
+    "normalization_confidence": 0.87,
+    "role_constraints": [
+      "L2_L3_software_support"
+    ],
+    "required_permissions": [
+      "case_review_access"
+    ],
+    "source_artifact_ids": [
+      "case_228086_docx_artifact_01",
+      "case_228086_docx_artifact_02",
+      "case_228086_docx_artifact_03",
+      "case_228086_docx_artifact_04",
+      "case_228086_docx_artifact_05",
+      "case_228086_docx_artifact_06",
+      "case_228086_docx_artifact_07",
+      "case_228086_docx_artifact_08",
+      "case_228086_docx_artifact_09",
+      "case_228086_docx_artifact_10",
+      "case_228086_docx_artifact_11",
+      "case_228086_docx_artifact_12",
+      "case_228086_docx_artifact_13",
+      "case_228086_docx_artifact_14",
+      "case_228086_docx_artifact_15",
+      "case_228086_docx_artifact_16",
+      "case_228086_docx_artifact_17",
+      "case_228086_docx_artifact_18"
+    ],
+    "source_artifact_paths": [
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_01.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_02.jpeg",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_03.jpeg",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_04.jpeg",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_05.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_06.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_07.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_08.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_09.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_10.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_11.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_12.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_13.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_14.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_15.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_16.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_17.png",
+      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_18.png"
+    ],
+    "embedded_artifact_ids": [],
+    "embedded_artifact_paths": [],
+    "source_region_refs": [
+      "region_228086_001",
+      "region_228086_002",
+      "region_228086_003",
+      "region_228086_004",
+      "region_228086_005",
+      "region_228086_006",
+      "region_228086_007",
+      "region_228086_008",
+      "region_228086_009",
+      "region_228086_010",
+      "region_228086_011",
+      "region_228086_012",
+      "region_228086_013",
+      "region_228086_014",
+      "region_228086_015",
+      "region_228086_016",
+      "region_228086_017",
+      "region_228086_018"
+    ],
+    "source_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "escalated": true,
+    "workflow_candidate": true,
+    "overlay_applied": true,
+    "contextual_overlays": [
+      {
+        "overlay_id": "l4_project_team_overlay",
+        "overlay_type": "user_provided_context",
+        "overlay_summary": "User indicated project team escalation occurred for the active case.",
+        "applies_conditionally": true,
+        "validation_status": "unverified_overlay",
+        "case_id": "228086",
+        "escalation_target": "L4_engineering_project_team",
+        "overlay_source": "user_message",
+        "applies_to": [
+          "canonical_incident",
+          "teams_derived_records",
+          "escalation_summary_template"
+        ]
+      }
+    ],
+    "overlay_application_reason": "Conditional user-provided context is attached because the record summarizes the incident, escalation handoff, or Teams-derived evidence.",
+    "escalation_targets": [
+      "L4_engineering_project_team"
+    ],
+    "support_tiers_involved": [],
+    "organizational_roles": [
+      "software_support"
+    ],
+    "linked_relationships": [
+      {
+        "target_id": "evt_228086_01",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_228086_02",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_228086_03",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_228086_04",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_228086_05",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_228086_06",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_228086_07",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_228086_08",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_228086_09",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_228086_10",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "chunk_228086_01",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_228086_02",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_228086_03",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_228086_04",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_228086_05",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_228086_06",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_228086_07",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_228086_08",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_228086_09",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "case_228086_docx_artifact_01",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_02",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_03",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_04",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_05",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_06",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_07",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_08",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_09",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_10",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_11",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_12",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_13",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_14",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_15",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_16",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_17",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_228086_docx_artifact_18",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      }
+    ],
+    "quality_tier": "llm_operational_synthesis",
+    "eligible_for_cross_incident_synthesis": true,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_blockers": [],
+    "pattern_candidate_notes": "",
+    "comparable_signal_groups": [],
+    "recurrence_evidence_refs": [],
+    "local_dataset_id": "228086",
+    "ingestion_version": 1
+  },
+  {
+    "record_type": "canonical_incident",
+    "synthesis_level": "HIGH",
+    "incident_id": "229374",
+    "source_file": "data/Case 229374 Data.docx",
+    "source_section": "Teams Chat Data; RCA Evidence",
+    "source_page": 33,
+    "source_ref": "Case 229374 Data.docx#media=image31.png",
+    "confidence": 0.7854,
+    "validation_status": "candidate_extracted",
+    "requires_manual_review": true,
+    "missing_fields": [
+      "exact incident occurrence timestamp",
+      "explicit validated root cause statement inside primary case notes",
+      "full documented step-by-step recovery sequence after remote access restored"
+    ],
+    "extraction_notes": [
+      "Canonical summary synthesized from Salesforce-style case updates, Teams escalation thread, and RCA screenshots.",
+      "Category context deterministically maps case 229374 to CAT-1: WCS/Service Failure.",
+      "Root cause remains unvalidated in output despite strong source context because phase rules prohibit validated claim without explicit confirmation in incident evidence."
+    ],
+    "dataset_record_type": "Dataset 1 - Canonical Incident Record",
+    "container_id": "incident_229374",
+    "case_id": "229374",
+    "source_case_id": "00229374",
+    "title": "AGV movement stopped mid-sort with tipper heartbeat failure and hospital tote removal hang",
+    "retrieval_text": "UPS Haslet CAT-1 WCS/Service Failure incident where AGVs stopped mid-sort, no active alarms were visible on RMS/operator stations, tippers showed heartbeat problems, AVEVA showed tippers closed while field state was open, hospital tote removal hung on processing, remote recovery was delayed by UPS ZScaler VPN outage, and service restart later restored operation. RCA evidence also showed WCSWebApplication database timeout and OPC/OPC-UA communication-related errors, but these remained candidate contributing signals rather than validated root cause.",
+    "validated_root_cause": false,
+    "candidate_inferred_causes": [
+      {
+        "cause_summary": "WCS/Ignition likely lost stable OPC/OPC-UA communication with tipper-side endpoint(s), causing heartbeat failure and downstream AGV/tipper coordination loss.",
+        "basis": "Source context for case 229374 states WCS/Ignition lost stable OPC-UA communication with tipper OTnet endpoint; incident evidence shows missing/zero heartbeat behavior, AVEVA/field state mismatch, repeated OPC communication errors, and recovery after Optisweep service restart.",
+        "confidence": 0.84,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      },
+      {
+        "cause_summary": "Database query timeout errors were present during the incident window but may have been secondary symptoms rather than the initiating failure.",
+        "basis": "RCA screenshots show WCSWebApplication event IDs 10100 and 20102 at 4/4/2026 1:48:37 AM with execution timeout errors; source category context explicitly notes DB timeouts were secondary symptoms.",
+        "confidence": 0.73,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      },
+      {
+        "cause_summary": "OT-side controls or device faults may have contributed to the communication loss.",
+        "basis": "RCA alarm screenshot shows RIO Module Ethernet Failure, ClearLink module not communicating, and VFD 1/2 not detected around 07.04.2026 21:15:49-21:15:52; category context ties these to the likely initiating side but does not validate them as final root cause.",
+        "confidence": 0.69,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      }
+    ],
+    "observed_failure_signals": [
+      "agvs_stopped_mid_sort",
+      "no_agvs_moving_to_tippers",
+      "hospital_tote_removal_hangs",
+      "tippers_heartbeat_failure",
+      "tipper_1_heartbeat_zero",
+      "aveva_tippers_shown_closed_while_field_open",
+      "rms_shows_no_robot_errors"
+    ],
+    "diagnostic_signals": [
+      "operator_station_beacons_green",
+      "no_active_operator_station_alarms",
+      "pause_unpause_tipper_unsuccessful",
+      "wcswebapplication_event_10100_execution_timeout",
+      "wcswebapplication_event_20102_dbcommand_timeout",
+      "opc_comms_bad_at_opc_comms_errors",
+      "uasc_client_connection_reset_to_10_27_80_157",
+      "field_pc_rdp_to_10_27_80_165_used_for_access"
+    ],
+    "action_signals": [
+      "support_case_created",
+      "software_team_escalated",
+      "site_asked_to_check_aveva_alarms",
+      "site_asked_to_pause_unpause_tipper",
       "site_collected_heartbeat_values",
-      "field_pc_used_for_visibility",
-      "rdp_to_wcs_server_10_27_80_165",
-      "database_review_attempted",
-      "optisweep_services_restarted",
-      "low_battery_robots_removed_and_charged"
+      "site_removed_low_battery_agvs_and_totes",
+      "engineer_restarted_optisweep_services"
     ],
     "recovery_validation_signals": [
       "system_operational_after_service_restart",
-      "site_continued_to_run_after_restart",
+      "site_continued_running_after_restart",
       "case_resolved_after_restart"
     ],
     "escalation_signals": [
       "support_hotline_voicemail_issue",
-      "case_owner_changed_to_ethan_crowder",
-      "status_escalated_waiting_on_another_department",
+      "case_escalated_waiting_on_another_department",
       "priyanka_tanpure_requested_for_assistance",
-      "mdi_personnel_engaged",
-      "ups_it_supervisors_engaged_for_access_issue",
-      "zscaler_incident_inc6369082_referenced"
+      "remote_access_blocked_by_zscaler",
+      "ups_incident_inc6369082_validation_pending_2",
+      "mdi_or_project_team_contacts_sought"
     ],
     "raw_terms": [
       "AVGs aren't moving",
-      "no AGV's are moving",
+      "tipers",
       "ZScaler",
-      "Validation Pending 2",
+      "AVEVA",
       "wCSWebApplication",
       "Execution Timeout Expired",
-      "HandleAtSorter",
-      "WriteOpcTagAsync",
-      "Tipper 1: 0",
-      "manual bag out"
+      "BadatOpcComms",
+      "RIO Module Ethernet Failure",
+      "ClearLink Module not communicating",
+      "VFD 1 is not detected",
+      "VFD 2 is not detected"
     ],
     "normalized_terms": [
       "AGVs aren't moving",
-      "AGV fleet not moving",
-      "Zscaler",
-      "Validation Pending 2",
+      "tippers",
+      "ZScaler",
+      "AVEVA",
       "WCSWebApplication",
-      "execution timeout expired",
-      "handle_at_sorter",
-      "write_opc_tag_async",
-      "tipper_1_heartbeat_zero",
-      "manual_bag_out"
+      "execution_timeout_expired",
+      "bad_at_opc_comms",
+      "rio_module_ethernet_failure",
+      "clearlink_module_not_communicating",
+      "vfd_1_not_detected",
+      "vfd_2_not_detected"
     ],
-    "normalization_confidence": 0.94,
+    "normalization_confidence": 0.91,
     "linked_incident_ids": [
       "229374"
     ],
     "linked_event_ids": [
-      "evt_229374_01",
-      "evt_229374_02",
-      "evt_229374_03",
-      "evt_229374_04",
-      "evt_229374_05",
-      "evt_229374_06",
-      "evt_229374_07",
-      "evt_229374_08",
-      "evt_229374_09",
-      "evt_229374_10"
+      "event_229374_01",
+      "event_229374_02",
+      "event_229374_03",
+      "event_229374_04",
+      "event_229374_05",
+      "event_229374_06",
+      "event_229374_07",
+      "event_229374_08",
+      "event_229374_09",
+      "event_229374_10"
     ],
     "linked_chunk_ids": [
       "chunk_229374_01",
@@ -154,7 +1116,8 @@
       "chunk_229374_07",
       "chunk_229374_08",
       "chunk_229374_09",
-      "chunk_229374_10"
+      "chunk_229374_10",
+      "chunk_229374_11"
     ],
     "linked_artifact_ids": [
       "case_229374_docx_artifact_01",
@@ -437,52 +1400,52 @@
     ],
     "linked_relationships": [
       {
-        "target_id": "evt_229374_01",
+        "target_id": "event_229374_01",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
       {
-        "target_id": "evt_229374_02",
+        "target_id": "event_229374_02",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
       {
-        "target_id": "evt_229374_03",
+        "target_id": "event_229374_03",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
       {
-        "target_id": "evt_229374_04",
+        "target_id": "event_229374_04",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
       {
-        "target_id": "evt_229374_05",
+        "target_id": "event_229374_05",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
       {
-        "target_id": "evt_229374_06",
+        "target_id": "event_229374_06",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
       {
-        "target_id": "evt_229374_07",
+        "target_id": "event_229374_07",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
       {
-        "target_id": "evt_229374_08",
+        "target_id": "event_229374_08",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
       {
-        "target_id": "evt_229374_09",
+        "target_id": "event_229374_09",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
       {
-        "target_id": "evt_229374_10",
+        "target_id": "event_229374_10",
         "relationship_type": "references",
         "relationship_confidence": 0.72
       },
@@ -533,6 +1496,11 @@
       },
       {
         "target_id": "chunk_229374_10",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229374_11",
         "relationship_type": "supports",
         "relationship_confidence": 0.8
       },
@@ -766,1365 +1734,20 @@
         "relationship_type": "references",
         "relationship_confidence": 0.82
       }
-    ]
-  },
-  {
-    "record_type": "canonical_incident",
-    "incident_id": "228086",
-    "source_file": "data/Case 228086 Data.docx",
-    "source_section": "Teams Chat Data",
-    "source_page": 1,
-    "source_ref": "Case 228086 Data.docx#media=image1.png",
-    "confidence": 0.8896,
-    "validation_status": "candidate_extracted",
-    "requires_manual_review": true,
-    "missing_fields": [
-      "confirmed incident start time",
-      "confirmed recovery completion time",
-      "validated root cause",
-      "explicit closure summary",
-      "explicit site/system owner confirmation"
     ],
-    "extraction_notes": [
-      "Canonical incident synthesized from Teams chat screenshots and embedded operational screenshots only.",
-      "Several screenshots contain OCR noise; operational facts were limited to repeated, corroborated statements.",
-      "Later screenshots include restart guidance and follow-up discussion, but do not explicitly confirm whether restart occurred during the active incident."
-    ],
-    "container_id": "incident_228086",
-    "dataset_record_type": "dataset_1_canonical_incident",
-    "case_id": "228086",
-    "source_case_id": "228086",
-    "title": "UPS TXRTH WCS/service failure with AGVs not moving, tote removal blocked, and suspected Ignition/OptiSweep service disruption",
-    "retrieval_text": "Case 228086 candidate CAT-1 WCS/service failure at UPS TXRTH on 2026-02-20. Reported symptoms included 4-6 AGVs not moving in various areas after a heartbeat issue, inability to remove totes from hospital, question marks on the HMI, and suspected Ignition crash or OptiSweep service disruption. Troubleshooting included remote access, review of Ignition memory trend and uptime/performance pages, RMS and AGV status review, GetAgvStatuses API testing, and later restart-oriented guidance for Ignition and OptiSweep validation. Evidence does not validate root cause. Escalation and customer communication gaps were also documented, especially lack of a proper UPS bridge call.",
-    "requires_role_review": true,
-    "validated_root_cause": false,
-    "candidate_inferred_causes": [
-      {
-        "cause_summary": "Ignition gateway crash or instability may have contributed to the service disruption",
-        "basis": "Multiple participants explicitly questioned whether Ignition crashed; memory trend and uptime/performance pages were reviewed; restart guidance for Ignition was later shared.",
-        "confidence": 0.63,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "OptiSweep service responsiveness issue may have contributed to AGV status/control disruption",
-        "basis": "Source mentions building saying something about OptiSweep, later guidance says to verify service response using GetAgvStatuses and restart OptiSweep if no response is given.",
-        "confidence": 0.66,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "Heartbeat-related communication issue may have caused AGVs to stop moving without explicit AGV faults",
-        "basis": "Initial report states 4-6 bots not moving after heartbeat issue, while another message says there was no fault or failed AGVs and it happened during normal operation.",
-        "confidence": 0.71,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "A zone-level AGV/system state inconsistency may have existed",
-        "basis": "Later message states system errors showed a zone missing an AGV; RMS/HMI screenshots also show .NET Control not created and system/AGV error areas.",
-        "confidence": 0.58,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      }
-    ],
-    "observed_failure_signals": [
-      "agvs_not_moving_after_heartbeat_issue",
-      "tote_removal_blocked_at_hospital",
-      "hmi_question_marks_displayed",
-      "wcs_or_service_disruption_suspected",
-      "zone_missing_agv_reported"
-    ],
-    "diagnostic_signals": [
-      "ignition_memory_trend_reviewed",
-      "ignition_cpu_or_uptime_check_requested",
-      "rms_agv_status_view_reviewed",
-      "get_agv_statuses_api_test_returned_200",
-      "system_errors_view_reviewed"
-    ],
-    "action_signals": [
-      "tech_support_hotline_started",
-      "remote_access_and_rdp_started",
-      "customer_call_participants_added",
-      "bag_out_and_estop_coordination_discussed",
-      "group_bridge_call_started_or_requested",
-      "ignition_restart_guidance_shared",
-      "optisweep_service_restart_guidance_shared"
-    ],
-    "recovery_validation_signals": [
-      "memory_trend_later_looking_better",
-      "guidance_to_confirm_service_response_with_repeat_api_request",
-      "guidance_to_release_estop_only_after_service_confirmation"
-    ],
-    "escalation_signals": [
-      "teams_thread_indicates_active_escalation",
-      "tech_support_call_confirmed",
-      "additional_resources_requested",
-      "onsite_startup_support_discussed_if_root_cause_unknown",
-      "customer_bridge_gap_caused_complaint",
-      "project_team_escalation_overlay_present_unverified"
-    ],
-    "raw_terms": [
-      "4-6 bots currently not moving in various areas after heartbeat issue",
-      "They can't remove totes from hospital either and question marks on hmi",
-      "Ignition crash?",
-      "there was no fault or any failed AGVs",
-      ".NET Control not created",
-      "No indication here that memory caused a crash",
-      "a zone is missing an agv",
-      "GetAgvStatuses",
-      "OptiSweep"
-    ],
-    "normalized_terms": [
-      "4-6 AGVs not moving in various areas after heartbeat issue",
-      "tote removal blocked at hospital",
-      "HMI question marks displayed",
-      "suspected Ignition crash",
-      "no failed AGVs reported",
-      ".NET Control not created",
-      "memory review did not indicate crash",
-      "zone missing an AGV",
-      "GetAgvStatuses API",
-      "OptiSweep service"
-    ],
-    "normalization_confidence": 0.88,
-    "linked_incident_ids": [
-      "228086"
-    ],
-    "linked_event_ids": [
-      "event_228086_01",
-      "event_228086_02",
-      "event_228086_03",
-      "event_228086_04",
-      "event_228086_05",
-      "event_228086_06",
-      "event_228086_07",
-      "event_228086_08",
-      "event_228086_09",
-      "event_228086_10"
-    ],
-    "linked_chunk_ids": [
-      "chunk_228086_01",
-      "chunk_228086_02",
-      "chunk_228086_03",
-      "chunk_228086_04",
-      "chunk_228086_05",
-      "chunk_228086_06",
-      "chunk_228086_07",
-      "chunk_228086_08",
-      "chunk_228086_09",
-      "chunk_228086_10",
-      "chunk_228086_11"
-    ],
-    "linked_artifact_ids": [
-      "case_228086_docx_artifact_01",
-      "case_228086_docx_artifact_02",
-      "case_228086_docx_artifact_03",
-      "case_228086_docx_artifact_04",
-      "case_228086_docx_artifact_05",
-      "case_228086_docx_artifact_06",
-      "case_228086_docx_artifact_07",
-      "case_228086_docx_artifact_08",
-      "case_228086_docx_artifact_09",
-      "case_228086_docx_artifact_10",
-      "case_228086_docx_artifact_11",
-      "case_228086_docx_artifact_12",
-      "case_228086_docx_artifact_13",
-      "case_228086_docx_artifact_14",
-      "case_228086_docx_artifact_15",
-      "case_228086_docx_artifact_16",
-      "case_228086_docx_artifact_17",
-      "case_228086_docx_artifact_18"
-    ],
-    "linked_procedure_ids": [],
-    "linked_workflow_ids": [],
-    "source_artifact_ids": [
-      "case_228086_docx_artifact_01",
-      "case_228086_docx_artifact_02",
-      "case_228086_docx_artifact_03",
-      "case_228086_docx_artifact_04",
-      "case_228086_docx_artifact_05",
-      "case_228086_docx_artifact_06",
-      "case_228086_docx_artifact_07",
-      "case_228086_docx_artifact_08",
-      "case_228086_docx_artifact_09",
-      "case_228086_docx_artifact_10",
-      "case_228086_docx_artifact_11",
-      "case_228086_docx_artifact_12",
-      "case_228086_docx_artifact_13",
-      "case_228086_docx_artifact_14",
-      "case_228086_docx_artifact_15",
-      "case_228086_docx_artifact_16",
-      "case_228086_docx_artifact_17",
-      "case_228086_docx_artifact_18"
-    ],
-    "source_artifact_paths": [
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_01.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_02.jpeg",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_03.jpeg",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_04.jpeg",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_05.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_06.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_07.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_08.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_09.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_10.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_11.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_12.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_13.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_14.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_15.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_16.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_17.png",
-      "output/phase0/case_228086_docx_agent/artifacts/docx_media/case_228086_docx_image_18.png"
-    ],
-    "embedded_artifact_ids": [],
-    "embedded_artifact_paths": [],
-    "source_region_refs": [
-      "region_228086_001",
-      "region_228086_002",
-      "region_228086_003",
-      "region_228086_004",
-      "region_228086_005",
-      "region_228086_006",
-      "region_228086_007",
-      "region_228086_008",
-      "region_228086_009",
-      "region_228086_010",
-      "region_228086_011",
-      "region_228086_012",
-      "region_228086_013",
-      "region_228086_014",
-      "region_228086_015",
-      "region_228086_016",
-      "region_228086_017",
-      "region_228086_018"
-    ],
-    "source_pages": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18
-    ],
-    "escalated": true,
-    "role_constraints": [
-      "L2_L3_software_support"
-    ],
-    "required_permissions": [
-      "case_review_access"
-    ],
-    "workflow_candidate": true,
-    "overlay_applied": true,
-    "contextual_overlays": [
-      {
-        "overlay_id": "l4_project_team_overlay",
-        "overlay_type": "user_provided_context",
-        "overlay_summary": "User indicated project team escalation occurred for the active case.",
-        "applies_conditionally": true,
-        "validation_status": "unverified_overlay",
-        "case_id": "228086",
-        "escalation_target": "L4_engineering_project_team",
-        "overlay_source": "user_message",
-        "applies_to": [
-          "canonical_incident",
-          "teams_derived_records",
-          "escalation_summary_template"
-        ]
-      }
-    ],
-    "overlay_application_reason": "Conditional user-provided context is attached because the record summarizes the incident, escalation handoff, or Teams-derived evidence.",
-    "escalation_targets": [
-      "L4_engineering_project_team"
-    ],
-    "support_tiers_involved": [],
-    "organizational_roles": [
-      "software_support"
-    ],
-    "linked_relationships": [
-      {
-        "target_id": "event_228086_01",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_228086_02",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_228086_03",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_228086_04",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_228086_05",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_228086_06",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_228086_07",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_228086_08",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_228086_09",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_228086_10",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "chunk_228086_01",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_02",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_03",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_04",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_05",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_06",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_07",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_08",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_09",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_10",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_228086_11",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "case_228086_docx_artifact_01",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_02",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_03",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_04",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_05",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_06",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_07",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_08",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_09",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_10",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_11",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_12",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_13",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_14",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_15",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_16",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_17",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_228086_docx_artifact_18",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      }
-    ],
-    "local_dataset_id": "228086",
+    "quality_tier": "llm_operational_synthesis",
+    "eligible_for_cross_incident_synthesis": true,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_blockers": [],
+    "pattern_candidate_notes": "",
+    "comparable_signal_groups": [],
+    "recurrence_evidence_refs": [],
+    "local_dataset_id": "229374",
     "ingestion_version": 1
   },
   {
     "record_type": "canonical_incident",
-    "incident_id": "223554",
-    "source_file": "data/Case 223554 Data.docx",
-    "source_section": "Salesforce Case Data; Teams Chat Data",
-    "source_page": 12,
-    "source_ref": "Case 223554 Data.docx#media=image12.png",
-    "confidence": 0.8064,
-    "validation_status": "candidate_extracted",
-    "requires_manual_review": true,
-    "missing_fields": [
-      "validated_root_cause",
-      "exact relationship between early-morning incident and evening Teams troubleshooting thread",
-      "confirmed occurrence time for some Teams-described actions",
-      "confirmed actor roles for all participants"
-    ],
-    "extraction_notes": [
-      "Canonical incident synthesized from Salesforce case creation/closure, CBRE work order details, and Teams troubleshooting/escalation discussion.",
-      "Source package appears to contain both the primary early-morning incident timeline and later retrospective/possibly recurring same-day operational discussion.",
-      "Root cause remains candidate only because source contains conflicting or partial explanations."
-    ],
-    "container_id": "incident_223554",
-    "dataset_record_type": "Dataset 1 - Canonical Incident Record",
-    "case_id": "223554",
-    "source_case_id": "00223554",
-    "title": "UPS Fort Worth Haslet ACB hospital station unable to induct totes with AGV/tote state mismatch and recovery actions required",
-    "retrieval_text": "Case 00223554 at UPS Fort Worth, TX (Haslet) involved the ACB hospital station being unable to induct totes. Source records show the case opened around 2:11-2:12 AM on 2025-09-26, a CBRE work order was entered at 1:35 AM CST, and a Teams bridge was posted at 3:05 AM. Salesforce updates state the original issue was resolved by 4:07 AM with the site able to add and remove totes, and all robots were re-added by 5:05 AM. Later Teams discussion on the evening of 2025-09-26 describes a related or recurring hospital/tipper disruption where totes could be removed but not added, AGVs 1542188 and 1555028 were removed, AGV 1555012 had a disconnected tote 51, and API dog/Aveva endpoints were used to induce tote movement and remove a stuck tote. Multiple messages suggest a candidate cause involving an AGV being removed without removing its associated tote, but root cause is not explicitly validated in the source.",
-    "validated_root_cause": false,
-    "candidate_inferred_causes": [
-      {
-        "cause_summary": "Hospital station disablement due to AGV being removed without removing the associated tote",
-        "basis": "Teams messages state this explanation was provided by Andy and Zane, and later troubleshooting messages repeatedly reference removed AGVs with associated tote mismatch as the likely cause.",
-        "confidence": 0.79,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "Hospital induct issue compounded by disconnected tote state and AGVs not picking up tasks under the rack",
-        "basis": "Ekram Nafis summary at 9:06 PM reports AGV 012 with disconnected tote in system, AGVs 188 and 028 under the rack not picking up tasks, and uncertainty on what caused that state.",
-        "confidence": 0.72,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "Initial incident described as hospital station server/services issue requiring OptiSweep service reset and site restart",
-        "basis": "CBRE work order and Salesforce closure email describe AGV hospital station server issues and resolution details of resetting OptiSweep services and restarting Hospital Lane.",
-        "confidence": 0.68,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      }
-    ],
-    "observed_failure_signals": [
-      "hospital_station_unable_to_induct_totes",
-      "totes_can_be_removed_but_not_added",
-      "robot_in_shutdown_state",
-      "empty_totes_going_to_hospital_after_tip",
-      "agv_not_picking_up_tasks",
-      "system_down_or_unable_to_start_sort"
-    ],
-    "diagnostic_signals": [
-      "suspected_agv_removed_without_associated_tote_removed",
-      "agv_1555028_in_wrong_zone_under_rack",
-      "agv_1542188_at_hospital_pickup_location",
-      "agv_1555012_with_disconnected_tote_51",
-      "tipper_heartbeat_check_requested",
-      "lost_connection_reported"
-    ],
-    "action_signals": [
-      "case_opened",
-      "cbre_work_order_created",
-      "teams_bridge_posted",
-      "agvs_removed_for_recovery",
-      "api_dog_used_to_induct_tote",
-      "api_dog_used_to_remove_stuck_tote",
-      "robots_readded",
-      "optisweep_services_reset_reported",
-      "site_restart_reported",
-      "onsite_support_contacted"
-    ],
-    "recovery_validation_signals": [
-      "able_to_add_and_remove_totes",
-      "system_started_moving",
-      "hospital_clearing",
-      "system_running_now",
-      "all_robots_readded",
-      "site_back_up_and_running",
-      "site_running_100_percent"
-    ],
-    "escalation_signals": [
-      "teams_chat_escalation_present",
-      "onsite_personnel_dispatched",
-      "zane_bubb_added_to_chat_for_support",
-      "support_line_not_called",
-      "discussion_requested_on_escalation_path",
-      "request_for_faster_project_execution_team_path"
-    ],
-    "raw_terms": [
-      "acb hospital unable to induct",
-      "AGV hospital station is having server issues, need to reset services",
-      "robot is in a shut down state",
-      "Empty totes going to hospital after tip",
-      "This AGV doesn't belong here",
-      "APl dog",
-      "Aveva",
-      "removed an AGV without removing the associated tote"
-    ],
-    "normalized_terms": [
-      "acb_hospital_unable_to_induct",
-      "hospital_station_server_issue",
-      "robot_shutdown_state",
-      "empty_totes_to_hospital_after_tip",
-      "agv_out_of_place",
-      "api_dog",
-      "aveva",
-      "agv_removed_without_associated_tote_removed"
-    ],
-    "normalization_confidence": 0.86,
-    "linked_incident_ids": [
-      "223554"
-    ],
-    "linked_event_ids": [
-      "evt_223554_01",
-      "evt_223554_02",
-      "evt_223554_03",
-      "evt_223554_04",
-      "evt_223554_05",
-      "evt_223554_06",
-      "evt_223554_07",
-      "evt_223554_08",
-      "evt_223554_09",
-      "evt_223554_10"
-    ],
-    "linked_chunk_ids": [
-      "chunk_223554_01",
-      "chunk_223554_02",
-      "chunk_223554_03",
-      "chunk_223554_04",
-      "chunk_223554_05",
-      "chunk_223554_06",
-      "chunk_223554_07",
-      "chunk_223554_08",
-      "chunk_223554_09",
-      "chunk_223554_10",
-      "chunk_223554_11"
-    ],
-    "linked_artifact_ids": [
-      "case_223554_docx_artifact_01",
-      "case_223554_docx_artifact_02",
-      "case_223554_docx_artifact_03",
-      "case_223554_docx_artifact_04",
-      "case_223554_docx_artifact_05",
-      "case_223554_docx_artifact_06",
-      "case_223554_docx_artifact_07",
-      "case_223554_docx_artifact_08",
-      "case_223554_docx_artifact_09",
-      "case_223554_docx_artifact_10",
-      "case_223554_docx_artifact_11",
-      "case_223554_docx_artifact_12",
-      "case_223554_docx_artifact_13",
-      "case_223554_docx_artifact_14",
-      "case_223554_docx_artifact_15"
-    ],
-    "linked_procedure_ids": [],
-    "linked_workflow_ids": [],
-    "requires_role_review": true,
-    "source_artifact_ids": [
-      "case_223554_docx_artifact_01",
-      "case_223554_docx_artifact_02",
-      "case_223554_docx_artifact_03",
-      "case_223554_docx_artifact_04",
-      "case_223554_docx_artifact_05",
-      "case_223554_docx_artifact_06",
-      "case_223554_docx_artifact_07",
-      "case_223554_docx_artifact_08",
-      "case_223554_docx_artifact_09",
-      "case_223554_docx_artifact_10",
-      "case_223554_docx_artifact_11",
-      "case_223554_docx_artifact_12",
-      "case_223554_docx_artifact_13",
-      "case_223554_docx_artifact_14",
-      "case_223554_docx_artifact_15"
-    ],
-    "source_artifact_paths": [
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_01.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_02.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_03.jpeg",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_04.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_05.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_06.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_07.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_08.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_09.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_10.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_11.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_12.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_13.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_14.png",
-      "output/phase0/case_223554_docx_agent/artifacts/docx_media/case_223554_docx_image_15.png"
-    ],
-    "embedded_artifact_ids": [],
-    "embedded_artifact_paths": [],
-    "source_region_refs": [
-      "region_223554_001",
-      "region_223554_002",
-      "region_223554_003",
-      "region_223554_004",
-      "region_223554_005",
-      "region_223554_006",
-      "region_223554_007",
-      "region_223554_008",
-      "region_223554_009",
-      "region_223554_010",
-      "region_223554_011",
-      "region_223554_012",
-      "region_223554_013",
-      "region_223554_014",
-      "region_223554_015"
-    ],
-    "source_pages": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15
-    ],
-    "escalated": true,
-    "role_constraints": [
-      "L2_L3_software_support"
-    ],
-    "required_permissions": [
-      "case_review_access"
-    ],
-    "workflow_candidate": true,
-    "overlay_applied": true,
-    "contextual_overlays": [
-      {
-        "overlay_id": "l4_project_team_overlay",
-        "overlay_type": "user_provided_context",
-        "overlay_summary": "User indicated project team escalation occurred for the active case.",
-        "applies_conditionally": true,
-        "validation_status": "unverified_overlay",
-        "case_id": "223554",
-        "escalation_target": "L4_engineering_project_team",
-        "overlay_source": "user_message",
-        "applies_to": [
-          "canonical_incident",
-          "teams_derived_records",
-          "escalation_summary_template"
-        ]
-      }
-    ],
-    "overlay_application_reason": "Conditional user-provided context is attached because the record summarizes the incident, escalation handoff, or Teams-derived evidence.",
-    "escalation_targets": [
-      "L4_engineering_project_team"
-    ],
-    "support_tiers_involved": [],
-    "organizational_roles": [
-      "software_support"
-    ],
-    "linked_relationships": [
-      {
-        "target_id": "evt_223554_01",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "evt_223554_02",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "evt_223554_03",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "evt_223554_04",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "evt_223554_05",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "evt_223554_06",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "evt_223554_07",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "evt_223554_08",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "evt_223554_09",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "evt_223554_10",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "chunk_223554_01",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_02",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_03",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_04",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_05",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_06",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_07",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_08",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_09",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_10",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_223554_11",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "case_223554_docx_artifact_01",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_02",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_03",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_04",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_05",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_06",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_07",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_08",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_09",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_10",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_11",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_12",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_13",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_14",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_223554_docx_artifact_15",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      }
-    ],
-    "local_dataset_id": "223554",
-    "ingestion_version": 1
-  },
-  {
-    "record_type": "canonical_incident",
-    "incident_id": "229716",
-    "source_file": "data/Case 229716 Data.docx",
-    "source_section": "Salesforce Case Data / Teams Chat Data / Haslet Support Chat",
-    "source_page": 5,
-    "source_ref": "Case 229716 Data.docx#media=image5.png",
-    "confidence": 0.8112,
-    "validation_status": "candidate_extracted",
-    "requires_manual_review": true,
-    "missing_fields": [
-      "exact incident occurrence timestamp for initial production impact",
-      "validated root cause",
-      "exact DB log collection status",
-      "exact switch log findings",
-      "whether tipper pause/unpause was actually performed"
-    ],
-    "extraction_notes": [
-      "Incident summary synthesized from Salesforce case creation, escalation, L2 notes, Teams troubleshooting, and closure summary.",
-      "OCR uses ACD/AVG/avg inconsistently; normalized to AGV where robot/tipper/hospital context supports it.",
-      "System-generated Salesforce status transitions on page 1 appear visually compressed and may not reflect exact chronology without manual review."
-    ],
-    "container_id": "incident_229716",
-    "dataset_record_type": "Dataset 1 - Canonical Incident Record",
-    "case_id": "229716",
-    "source_case_id": "00229716",
-    "title": "UPS Fort Worth (Haslet) AGV/tipper flow stoppage with heartbeat timeout indications; service restart restored operation",
-    "retrieval_text": "Case 00229716 at UPS Fort Worth, TX (Haslet) reported that after startup everything was waiting, no path was showing, and nothing was coming to the tippers. During sort start, AGVs lined up to go to tippers and all three lines stopped. Operators could not remove a tote at the hospital. Tippers showed heartbeat timeout while remaining active and enabled, with no RMS faults noted. L2 remotely investigated, coordinated escalation in Teams and Salesforce, and under direction from Mitchel Flynn the team E-stopped the AGVs, restarted the Optisweep service, removed the E-stop, and may have paused/unpaused tippers. Antonio confirmed proper AGV operation and hospital function afterward. Ignition and Windows event logs were saved, and switch log follow-up was assigned. Root cause was not explicitly validated in the source.",
-    "validated_root_cause": false,
-    "candidate_inferred_causes": [
-      {
-        "cause_summary": "Optisweep service degradation or hung service state affecting AGV-to-tipper flow and hospital tote removal",
-        "basis": "Recovery followed E-stop and Optisweep service restart; Teams guidance explicitly selected Optisweep rather than Ignition OPC; symptoms included all three lines stopping and heartbeat timeout indications.",
-        "confidence": 0.73,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "Tipper communication or heartbeat issue visible at the application layer",
-        "basis": "Justin documented all tippers showing heartbeat timeout while status remained active and enabled, and screenshots referenced tipper alarms and heartbeat views.",
-        "confidence": 0.66,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "Underlying network or switch-related issue contributing to heartbeat loss or service disruption",
-        "basis": "Resolution notes and Teams follow-up requested UPS switch logs, indicating unresolved infrastructure questions remained after recovery.",
-        "confidence": 0.48,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      }
-    ],
-    "observed_failure_signals": [
-      "agv_flow_waiting_no_path",
-      "nothing_coming_to_tippers",
-      "three_lines_stopped",
-      "hospital_tote_removal_failed",
-      "tipper_heartbeat_timeout"
-    ],
-    "diagnostic_signals": [
-      "tippers_status_active",
-      "tippers_enabled_no_rms_faults",
-      "heartbeat_statistics_requested",
-      "tipper_alarm_and_heartbeat_views_reviewed"
-    ],
-    "action_signals": [
-      "case_escalated_to_another_department",
-      "l2_remote_investigation_started",
-      "site_connection_initiated",
-      "agvs_estopped",
-      "optisweep_service_restarted",
-      "estop_removed",
-      "possible_tipper_pause_unpause",
-      "ignition_and_windows_event_logs_saved",
-      "db_logs_requested",
-      "switch_logs_follow_up_assigned"
-    ],
-    "recovery_validation_signals": [
-      "agvs_are_moving",
-      "hospital_logout_login_restored_tote_removal",
-      "totes_removable_now",
-      "system_operational_call_disengaged",
-      "antonio_confirmed_proper_agv_operation",
-      "antonio_confirmed_hospital_function"
-    ],
-    "escalation_signals": [
-      "teams_support_chat_active",
-      "salesforce_status_in_progress_to_escalated",
-      "fortna_support_requested_assistance",
-      "l2_engaged",
-      "internal_poc_identified",
-      "project_manager_follow_up_assigned",
-      "customer_visibility_high_due_to_ups_visit"
-    ],
-    "raw_terms": [
-      "ACD system",
-      "AVG system",
-      "avgs lined up to go to tippers",
-      "All Tippers showing heartbeat timeout",
-      "nothing is comming to the tippers",
-      "everything is waiting, not showing any path",
-      "Hospital function",
-      "Restarted Optisweep service"
-    ],
-    "normalized_terms": [
-      "AGV system",
-      "AGVs lined up to go to tippers",
-      "tipper heartbeat timeout",
-      "nothing coming to the tippers",
-      "system waiting with no path shown",
-      "hospital function",
-      "Optisweep service restart"
-    ],
-    "normalization_confidence": 0.79,
-    "linked_incident_ids": [
-      "229716"
-    ],
-    "linked_event_ids": [
-      "event_229716_01",
-      "event_229716_02",
-      "event_229716_03",
-      "event_229716_04",
-      "event_229716_05",
-      "event_229716_06",
-      "event_229716_07",
-      "event_229716_08",
-      "event_229716_09",
-      "event_229716_10"
-    ],
-    "linked_chunk_ids": [
-      "chunk_229716_01",
-      "chunk_229716_02",
-      "chunk_229716_03",
-      "chunk_229716_04",
-      "chunk_229716_05",
-      "chunk_229716_06",
-      "chunk_229716_07",
-      "chunk_229716_08",
-      "chunk_229716_09",
-      "chunk_229716_10"
-    ],
-    "linked_artifact_ids": [
-      "case_229716_docx_artifact_01",
-      "case_229716_docx_artifact_02",
-      "case_229716_docx_artifact_03",
-      "case_229716_docx_artifact_04",
-      "case_229716_docx_artifact_05",
-      "case_229716_docx_artifact_06",
-      "case_229716_docx_artifact_07",
-      "case_229716_docx_artifact_08",
-      "case_229716_docx_artifact_09",
-      "case_229716_docx_artifact_10",
-      "case_229716_docx_artifact_11",
-      "case_229716_docx_artifact_12"
-    ],
-    "linked_procedure_ids": [],
-    "linked_workflow_ids": [],
-    "requires_role_review": true,
-    "source_artifact_ids": [
-      "case_229716_docx_artifact_01",
-      "case_229716_docx_artifact_02",
-      "case_229716_docx_artifact_03",
-      "case_229716_docx_artifact_04",
-      "case_229716_docx_artifact_05",
-      "case_229716_docx_artifact_06",
-      "case_229716_docx_artifact_07",
-      "case_229716_docx_artifact_08",
-      "case_229716_docx_artifact_09",
-      "case_229716_docx_artifact_10",
-      "case_229716_docx_artifact_11",
-      "case_229716_docx_artifact_12"
-    ],
-    "source_artifact_paths": [
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_01.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_02.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_03.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_04.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_05.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_06.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_07.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_08.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_09.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_10.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_11.png",
-      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_12.png"
-    ],
-    "embedded_artifact_ids": [],
-    "embedded_artifact_paths": [],
-    "source_region_refs": [
-      "region_229716_001",
-      "region_229716_002",
-      "region_229716_003",
-      "region_229716_004",
-      "region_229716_005",
-      "region_229716_006",
-      "region_229716_007",
-      "region_229716_008",
-      "region_229716_009",
-      "region_229716_010",
-      "region_229716_011",
-      "region_229716_012"
-    ],
-    "source_pages": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12
-    ],
-    "escalated": true,
-    "role_constraints": [
-      "L2_L3_software_support"
-    ],
-    "required_permissions": [
-      "case_review_access"
-    ],
-    "workflow_candidate": true,
-    "overlay_applied": true,
-    "contextual_overlays": [
-      {
-        "overlay_id": "l4_project_team_overlay",
-        "overlay_type": "user_provided_context",
-        "overlay_summary": "User indicated project team escalation occurred for the active case.",
-        "applies_conditionally": true,
-        "validation_status": "unverified_overlay",
-        "case_id": "229716",
-        "escalation_target": "L4_engineering_project_team",
-        "overlay_source": "user_message",
-        "applies_to": [
-          "canonical_incident",
-          "teams_derived_records",
-          "escalation_summary_template"
-        ]
-      }
-    ],
-    "overlay_application_reason": "Conditional user-provided context is attached because the record summarizes the incident, escalation handoff, or Teams-derived evidence.",
-    "escalation_targets": [
-      "L4_engineering_project_team"
-    ],
-    "support_tiers_involved": [],
-    "organizational_roles": [
-      "software_support"
-    ],
-    "linked_relationships": [
-      {
-        "target_id": "event_229716_01",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_229716_02",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_229716_03",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_229716_04",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_229716_05",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_229716_06",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_229716_07",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_229716_08",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_229716_09",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "event_229716_10",
-        "relationship_type": "references",
-        "relationship_confidence": 0.72
-      },
-      {
-        "target_id": "chunk_229716_01",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_229716_02",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_229716_03",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_229716_04",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_229716_05",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_229716_06",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_229716_07",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_229716_08",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_229716_09",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "chunk_229716_10",
-        "relationship_type": "supports",
-        "relationship_confidence": 0.8
-      },
-      {
-        "target_id": "case_229716_docx_artifact_01",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_02",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_03",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_04",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_05",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_06",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_07",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_08",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_09",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_10",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_11",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      },
-      {
-        "target_id": "case_229716_docx_artifact_12",
-        "relationship_type": "references",
-        "relationship_confidence": 0.82
-      }
-    ],
-    "local_dataset_id": "229716",
-    "ingestion_version": 1
-  },
-  {
-    "record_type": "canonical_incident",
+    "synthesis_level": "HIGH",
     "incident_id": "229488",
     "source_file": "data/Case 229488  Data.docx",
     "source_section": "Teams Chat Data",
@@ -2134,114 +1757,20 @@
     "validation_status": "candidate_extracted",
     "requires_manual_review": true,
     "missing_fields": [
-      "exact incident start time before first report",
-      "validated root cause",
-      "complete list of troubleshooting steps before restart",
-      "definitive ownership for follow-up engineering actions"
+      "exact incident occurrence start time",
+      "explicit validated root cause for case 229488",
+      "explicit confirmation whether service was stopped versus hung",
+      "complete list of steps attempted before restart"
     ],
     "extraction_notes": [
-      "Canonical incident synthesized from Teams, Salesforce case screenshots, and visual log/alarm screenshots.",
-      "Subject OCR showed 'AVGs aren't moving'; normalized to AGVs per Phase 0 rule.",
-      "Observed signals and inferred causes separated; no validated root cause claimed."
+      "Canonical summary prioritizes case-specific evidence over dataset context but uses dataset context to preserve source-provided category grounding.",
+      "Later log and alarm evidence appears investigative and may include related environmental issues beyond the immediate 9:03-9:36 AM recovery window.",
+      "Recovery after restart is treated as recovery evidence only, not proof of validated root cause."
     ],
+    "dataset_record_type": "Dataset 1 - Canonical Incident Record",
     "container_id": "incident_229488",
-    "dataset_record_type": "dataset_1_canonical_incident",
     "case_id": "229488",
     "source_case_id": "00229488",
-    "title": "UPS Haslet AGV movement stoppage with repeated station/OPC UA disconnect behavior; service restart restored production",
-    "retrieval_text": "Case 00229488 at UPS Fort Worth, TX (Haslet) documents a repeat production-impacting incident where AGVs were not moving and operations referenced the same issue from Saturday case 00229374 / JIRA CSPO-9007. Early triage noted most tippers in run position except two, a heartbeat reported as flat at 550, and operators manually clearing areas to prevent service failures. The case was escalated to software support and internal escalation resources. Customer pressure emphasized restoring operations within 30 minutes while also obtaining root cause and timeline details. At approximately 9:27 AM on 4/8/2026, the Optisweep Windows service was restarted remotely, after which the site was reported operating and getting production. Later investigation referenced Ignition and visual alarm evidence showing hospital lane and GLD1/OPC UA connection resets, including 4/7 21:15 events with RIO Module Ethernet Failure, ClearLink module communication loss, VFD not detected alarms, and OPC UA connection reset behavior. Additional 4/8 and 4/9 evidence showed connection resets on 10.27.80.156 and 10.27.80.157, keep-alive failures, subscription transfer failures, reconnect/rebuild activity, and discussion of possible network degradation. Root cause was not validated in the source.",
-    "validated_root_cause": false,
-    "candidate_inferred_causes": [
-      {
-        "cause_summary": "Network degradation or intermittent communications instability impacted OPC UA/station connectivity and downstream system behavior.",
-        "basis": "Teams discussion at 4/8 5:54 PM states best guess was network degradation based on DB event logs showing timeouts, with assumed OPC communications impact; multiple connection reset and keep-alive failure screenshots support communications instability.",
-        "confidence": 0.72,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "GLD1 / hospital lane ethernet or controller-side communication fault around 4/7 21:15 contributed to recurring disconnect symptoms seen again on 4/8.",
-        "basis": "Wesley Saunders update cites a connection fault on GLD1 at 21:15 on 4/7 due to ethernet failure, aligned with visual alarm evidence showing RIO Module Ethernet Failure and ClearLink communication alarms plus OPC UA reset on 10.27.80.248.",
-        "confidence": 0.76,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      },
-      {
-        "cause_summary": "Optisweep service state or subscription handling degraded after communications faults, and restart temporarily restored operations.",
-        "basis": "Restart of Optisweep Windows service restored production at 9:27-9:30 AM; later logs show reconnecting sessions, subscription transfer failures, and monitored item rebuild activity. Recovery after restart is not proof of root cause.",
-        "confidence": 0.63,
-        "validation_status": "candidate_extracted",
-        "requires_manual_review": true
-      }
-    ],
-    "observed_failure_signals": [
-      "agv_not_moving",
-      "production_seriously_impacted",
-      "heartbeat_flat_550",
-      "station_disconnects",
-      "hospital_lane_connection_reset",
-      "opc_ua_connection_reset",
-      "tipper_comms_faults"
-    ],
-    "diagnostic_signals": [
-      "tippers_run_position_except_two",
-      "no_hmi_system_level_error_reported",
-      "gld1_connection_fault_4_7_21_15",
-      "rio_module_ethernet_failure_alarm",
-      "clearlink_module_not_communicating",
-      "vfd_not_detected",
-      "keep_alive_failure_exceeds_threshold",
-      "subscription_transfer_failed_bad_service_unsupported",
-      "session_not_connected_reconnecting",
-      "heartbeat_restored_after_manual_reset"
-    ],
-    "action_signals": [
-      "manual_area_clearing",
-      "case_escalated_to_sw_support",
-      "internal_escalation_chat_created",
-      "optisweep_windows_service_restarted",
-      "logs_reviewed_in_ignition",
-      "manual_ignition_reset_performed",
-      "timeline_and_daily_reporting_requested"
-    ],
-    "recovery_validation_signals": [
-      "site_operating_and_getting_production",
-      "system_startup_successful_after_restart",
-      "heartbeats_reestablished_after_ignition_reset",
-      "only_one_disconnect_reported_next_morning"
-    ],
-    "escalation_signals": [
-      "repeat_issue_from_prior_case_00229374",
-      "jira_reference_cspo_9007",
-      "salesforce_status_escalated_waiting_on_another_department",
-      "to_cse_sw_support_l2_request_sent",
-      "customer_requested_root_cause_same_day",
-      "customer_requested_recovery_within_30_minutes",
-      "ups_leadership_requested_root_cause_call"
-    ],
-    "raw_terms": [
-      "AVGs aren't moving",
-      "heartbeat signal",
-      "Sitting flat at 550",
-      "hospital lane connection was reset multiple times today",
-      "RIO Module Ethernet Failure",
-      "Exception caught: Connection reset",
-      "Keep Alive failureCount=2 exceeds failuresAllowed=1",
-      "Subscription transfer failed",
-      "ReSubscribeMonitoredItemsAsync: rebuilding 622 monitored items"
-    ],
-    "normalized_terms": [
-      "AGVs are not moving",
-      "heartbeat_signal",
-      "heartbeat_flat_550",
-      "hospital_lane_connection_reset",
-      "rio_module_ethernet_failure",
-      "opc_ua_connection_reset",
-      "keep_alive_failure_threshold_exceeded",
-      "subscription_transfer_failed",
-      "resubscribe_monitored_items_rebuild"
-    ],
-    "normalization_confidence": 0.93,
     "linked_incident_ids": [
       "229488"
     ],
@@ -2297,12 +1826,103 @@
     ],
     "linked_procedure_ids": [],
     "linked_workflow_ids": [],
-    "role_constraints": [
-      "L2_L3_software_support"
+    "title": "AGVs stopped with no visible fault; Optisweep Windows service restart restored production while root cause investigation continued",
+    "retrieval_text": "Case 229488 at UPS Haslet, TX was a CAT-1 WCS/Service Failure where AGVs were not moving and no fault was reported. Teams and Salesforce evidence show the issue was treated as a recurrence of Saturday case 229374. Early checks reported tippers mostly in run position, heartbeat sitting flat at 550, and no HMI system-level errors. The case was escalated to software support, and the Optisweep Windows service was restarted remotely around 9:27-9:30 AM. The site then started up and returned to production. Later investigation captured OPC UA connection resets involving hospital controller 10.27.80.157, GLD1 10.27.80.248, and OP station 3 10.27.80.156, plus prior-night tipper alarms including RIO Module Ethernet Failure, ClearLink module not communicating, VFD not detected, and IO Link Master not detected. Recovery after restart was observed, but the source does not validate a final root cause for case 229488.",
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "validated_root_cause": false,
+    "candidate_inferred_causes": [
+      {
+        "cause_summary": "Optisweep Windows service was stopped or unresponsive at incident time.",
+        "basis": "Dataset context for case 229488 states the Optisweep Windows service stopped or became unresponsive, and the service restart was followed by production recovery.",
+        "confidence": 0.79,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      },
+      {
+        "cause_summary": "Underlying OPC UA or network communication instability may have contributed to the service failure pattern.",
+        "basis": "Post-incident investigation captured connection resets for hospital controller .157, GLD1 .248, and OP station 3 .156, along with prior-night tipper communication alarms and discussion of network degradation.",
+        "confidence": 0.67,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      },
+      {
+        "cause_summary": "This incident may be a recurrence of the prior Saturday Haslet failure pattern rather than an isolated one-off service stop.",
+        "basis": "Teams messages explicitly state the site was having the same issue again as Saturday case 229374 and recommended repeating the prior restart-based recovery.",
+        "confidence": 0.84,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      }
     ],
-    "required_permissions": [
-      "case_review_access"
+    "observed_failure_signals": [
+      "agvs_not_moving",
+      "no_fault_shown",
+      "tipper_heartbeat_flat",
+      "hospital_controller_connection_resets_observed"
     ],
+    "diagnostic_signals": [
+      "tippers_mostly_in_run_position",
+      "no_hmi_system_level_error_reported",
+      "opc_ua_connection_reset_10_27_80_157",
+      "opc_ua_connection_reset_10_27_80_248",
+      "opc_ua_connection_reset_10_27_80_156",
+      "tipper_alarm_history_shows_rio_ethernet_failure",
+      "tipper_alarm_history_shows_clearlink_not_communicating",
+      "tipper_alarm_history_shows_vfd_not_detected",
+      "tipper_alarm_history_shows_io_link_master_not_detected",
+      "keep_alive_failure_exceeds_threshold"
+    ],
+    "action_signals": [
+      "case_escalated_to_software_support",
+      "remote_connection_loaded_to_site",
+      "optisweep_windows_service_restarted",
+      "client_informed_of_restart",
+      "logs_pulled_for_rca",
+      "manual_ignition_reset_performed_for_observation"
+    ],
+    "recovery_validation_signals": [
+      "site_startup_attempted_after_restart",
+      "site_operating_and_getting_production",
+      "heartbeats_reestablished_after_manual_ignition_reset",
+      "heartbeat_last_379_msec_observed"
+    ],
+    "escalation_signals": [
+      "same_issue_as_prior_case_229374",
+      "customer_requested_root_cause_same_day",
+      "customer_requested_recovery_within_30_minutes",
+      "internal_escalation_chat_created",
+      "salesforce_status_escalated_waiting_on_another_department",
+      "l2_software_support_requested",
+      "leadership_root_cause_call_requested"
+    ],
+    "raw_terms": [
+      "AVGs aren't moving",
+      "heartbeat signal",
+      "Sitting flat at 550",
+      "Optisweep windows service",
+      "Exception caught: Connection reset",
+      "RIO Module Ethernet Failure",
+      "ClearLink Module not communicating",
+      "VFD 1 is not detected",
+      "VFD 2 is not detected",
+      "The IO Link Master is not detected",
+      "Keep Alive failureCount=2 exceeds failuresAllowed=1",
+      "ReSubscribeMonitoredItemsAsync: rebuilding 622 monitored items"
+    ],
+    "normalized_terms": [
+      "AGVs aren't moving",
+      "tipper heartbeat",
+      "heartbeat_flat_at_550",
+      "Optisweep Windows service",
+      "opc_ua_connection_reset",
+      "rio_module_ethernet_failure",
+      "clearlink_module_not_communicating",
+      "vfd_1_not_detected",
+      "vfd_2_not_detected",
+      "io_link_master_not_detected",
+      "keep_alive_failure_exceeds_threshold",
+      "resubscribe_monitored_items_rebuild"
+    ],
+    "normalization_confidence": 0.9,
     "requires_role_review": true,
     "source_artifact_ids": [
       "case_229488_docx_artifact_01",
@@ -2411,6 +2031,12 @@
       24
     ],
     "escalated": true,
+    "role_constraints": [
+      "L2_L3_software_support"
+    ],
+    "required_permissions": [
+      "case_review_access"
+    ],
     "workflow_candidate": true,
     "overlay_applied": true,
     "contextual_overlays": [
@@ -2660,117 +2286,463 @@
         "relationship_confidence": 0.82
       }
     ],
+    "quality_tier": "llm_operational_synthesis",
+    "eligible_for_cross_incident_synthesis": true,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_blockers": [],
+    "pattern_candidate_notes": "",
+    "comparable_signal_groups": [],
+    "recurrence_evidence_refs": [],
     "local_dataset_id": "229488",
     "ingestion_version": 1
   },
   {
     "record_type": "canonical_incident",
-    "incident_id": "229777",
-    "source_file": "data/Case 229777 Data.docx",
-    "source_section": "Salesforce Case Data",
-    "source_page": 4,
-    "source_ref": "Case 229777 Data.docx#media=image4.png",
-    "confidence": 0.9184,
+    "synthesis_level": "HIGH",
+    "incident_id": "229716",
+    "source_file": "data/Case 229716 Data.docx",
+    "source_section": "Salesforce Case Data; Teams Chat Data / Haslet Support Chat",
+    "source_page": 1,
+    "source_ref": "Case 229716 Data.docx#media=image1.png",
+    "confidence": 0.8112,
     "validation_status": "candidate_extracted",
     "requires_manual_review": true,
     "missing_fields": [
-      "explicit outage start timestamp in Salesforce",
-      "explicit system component name for ACD OCR term",
-      "validated root cause confirmation",
-      "explicit closure timestamp beyond documented case updates"
+      "exact incident occurrence timestamp",
+      "exact service host name for restart",
+      "confirmed root cause",
+      "DB logs collection method",
+      "whether tipper pause/unpause was actually performed"
     ],
     "extraction_notes": [
-      "Canonical incident is anchored to the 2026-04-18 outage and recovery, not the 2026-04-29 follow-up diagnostic discussion.",
-      "OCR term AVG normalized to AGV based on WCS/robot context.",
-      "Description contains OCR inconsistency between AVG and ACD; preserved in raw_terms and not treated as validated component naming.",
-      "User-provided overlay indicating project team escalation is preserved as conditional escalation context only and not treated as verified evidence."
+      "Canonical summary synthesized from Salesforce case updates, Teams chat, and dataset context for explicit case 229716.",
+      "OCR terms ACD/AVG/avgs normalized to AGV where operational context clearly indicates robots.",
+      "Root cause kept unvalidated because source says exact OT-side initiating cause was not re-isolated."
     ],
-    "container_id": "incident_229777",
+    "container_id": "incident_229716",
     "dataset_record_type": "Dataset 1 - Canonical Incident Record",
-    "case_id": "229777",
-    "source_case_id": "00229777",
-    "title": "UPS Haslet OptiSweep/AGV startup stoppage with no paths to tippers; tipper heartbeat failure observed and service restart restored flow",
-    "retrieval_text": "Case 00229777 at UPS Fort Worth, TX (Haslet) describes an OptiSweep/AGV system startup issue where everything was waiting, no path was shown, and nothing was coming up to the tippers. Teams chat logged OptiSweep stopping around 5:25 AM on 2026-04-18. Kieran Hardy connected to the system, observed that the tipper heartbeat had failed similar to case 229716, and recovery actions included client placing the master e-stop on while OptiSweep was restarted and the tippers were paused and unpaused. The system was reported back up and running and the client agreed the case could be closed. Later Teams discussion on 2026-04-29 referenced network troubleshooting, disconnect logging, AGV-side logs, RMS/Athena logs, and a robot with frequent disconnect history, but these appear to be follow-on diagnostic context rather than the original outage event.",
+    "case_id": "229716",
+    "source_case_id": "00229716",
+    "title": "AGV flow stopped at all three tipper lines with heartbeat timeout and hospital tote removal blocked",
+    "retrieval_text": "Case 229716 at UPS Haslet, TX matches CAT-1 WCS/Service Failure pattern. Sort started normally, then as AGVs lined up to go to tippers all three lines stopped. Nothing was coming to the tippers, all tippers showed heartbeat timeout while status remained active/enabled, and no faults were visible on the RMS screen. Hospital tote removal would not execute until recovery actions were taken. L2 remotely connected, reviewed heartbeat/alarm views, and engineer guidance directed an E-stop of AGVs, Optisweep service restart, E-stop removal, and possible tipper pause/unpause. After restart, AGVs resumed movement and hospital tote removal recovered after a hospital log out/in. Ignition and Windows event logs were saved, and switch log follow-up was requested. Source states same pattern as prior incidents, but exact initiating OT-side cause was not re-isolated, so root cause remains unvalidated.",
+    "issue_category": "CAT-1: WCS/Service Failure",
     "validated_root_cause": false,
     "candidate_inferred_causes": [
       {
-        "cause_summary": "Tipper heartbeat failure may have caused the OptiSweep/AGV startup stoppage and lack of flow to tippers.",
-        "basis": "Salesforce resolution details explicitly state the engineer saw that the tipper heartbeat had failed, and recovery followed restart plus tipper pause/unpause.",
+        "cause_summary": "Tipper heartbeat failure or loss of stable WCS-to-tipper communication likely caused AGV flow to stop at all three lines and blocked hospital tote actions.",
+        "basis": "Source summary for case 229716 states all tippers showed heartbeat timeout with status active and no RMS faults; dataset context notes same pattern as case 229374.",
         "confidence": 0.84,
         "validation_status": "candidate_extracted",
         "requires_manual_review": true
       },
       {
-        "cause_summary": "The incident may be related to a recurring issue pattern similar to case 229716.",
-        "basis": "Salesforce resolution notes state the heartbeat failure was the same as case 229716.",
-        "confidence": 0.72,
+        "cause_summary": "Optisweep service degradation or unresponsive state likely contributed because recovery followed E-stop and Optisweep service restart.",
+        "basis": "Teams and Salesforce resolution notes state the system was E-stopped and the Optisweep service restarted, after which AGV and hospital functions recovered.",
+        "confidence": 0.73,
         "validation_status": "candidate_extracted",
         "requires_manual_review": true
       },
       {
-        "cause_summary": "Underlying network or AGV disconnect behavior may be a contributing factor, but this is not confirmed for the outage itself.",
-        "basis": "Later Teams discussion on 2026-04-29 references network troubleshooting, disconnect data, AGV-side logs, and a robot described as a frequent disconnect unit.",
-        "confidence": 0.41,
+        "cause_summary": "Underlying OT or switch-side issue may have contributed, but was not confirmed in this case.",
+        "basis": "Resolution notes requested server event logs, Ignition logs, and UPS switch log follow-up; dataset context says exact OT-side initiating cause was not re-isolated.",
+        "confidence": 0.46,
         "validation_status": "candidate_extracted",
         "requires_manual_review": true
       }
     ],
     "observed_failure_signals": [
-      "optisweep_stopped",
-      "system_waiting_state",
-      "no_path_displayed",
-      "nothing_reaching_tippers",
-      "tipper_heartbeat_failed"
+      "agv_flow_stopped_at_all_three_tipper_lines",
+      "nothing_coming_to_tippers",
+      "tipper_heartbeat_timeout_status_active",
+      "hospital_tote_removal_command_did_not_execute",
+      "system_waiting_no_path_shown"
     ],
     "diagnostic_signals": [
-      "engineer_connected_to_system",
-      "tipper_heartbeat_failure_observed",
-      "similarity_to_case_229716_noted",
-      "disconnect_data_requested_for_review",
-      "agv_disconnect_history_discussed"
+      "rms_screen_no_faults_visible",
+      "tippers_enabled_without_faults",
+      "heartbeat_statistics_review_requested",
+      "tipper_alarm_and_heartbeat_views_reviewed"
     ],
     "action_signals": [
-      "customer_callback_requested",
-      "engineer_dialed_into_system",
-      "master_e_stop_applied_by_client",
-      "optisweep_restarted",
-      "tippers_paused_unpaused",
-      "diagnostic_logging_requested",
-      "disconnect_logs_requested",
-      "agv_side_logs_considered",
-      "rms_athena_logs_discussed"
+      "l2_remote_connection_started",
+      "internal_escalation_to_another_department",
+      "agvs_e_stopped",
+      "optisweep_service_restarted",
+      "e_stop_removed",
+      "tipper_pause_unpause_considered",
+      "hospital_logout_login_performed",
+      "ignition_logs_saved",
+      "windows_event_logs_saved",
+      "switch_log_follow_up_requested"
     ],
     "recovery_validation_signals": [
-      "system_back_up_and_running",
-      "everything_came_back_on",
-      "client_confirmed_satisfaction_for_case_closure"
+      "agvs_are_moving",
+      "hospital_tote_removal_restored",
+      "system_operational_call_disengaged",
+      "antonio_confirmed_proper_agv_operation",
+      "antonio_confirmed_hospital_function"
     ],
     "escalation_signals": [
-      "teams_support_chat_used_for_coordination",
-      "ups_waiting_for_callback",
-      "request_for_help_later_today",
-      "diagnostic_logging_support_requested",
-      "conditional_project_team_escalation_overlay_present"
+      "case_status_in_progress_to_escalated_waiting_on_another_department",
+      "fortna_technical_support_requested_assistance",
+      "l2_engaged_for_remote_investigation",
+      "teams_support_bridge_active",
+      "project_manager_follow_up_requested_on_switch_logs"
     ],
     "raw_terms": [
-      "AVG system",
       "ACD system",
-      "optisweep stopping ~5:25",
-      "tipper heartbeat had failed",
-      "paused/unpaused the tippers",
-      "disconnect logs",
-      "athena log",
-      "purple lights"
+      "AVG system",
+      "avgs lined up to go to tippers",
+      "All Tippers showing heartbeat timeout, status active",
+      "no faults on RMS screen",
+      "nothing is coming to the tippers",
+      "E-stopped system and Restarted Optisweep service"
     ],
     "normalized_terms": [
       "AGV system",
-      "OptiSweep",
-      "tipper heartbeat failure",
-      "AGV disconnect logs",
-      "RMS Athena logs",
-      "AGV induction issue"
+      "AGVs lined up to go to tippers",
+      "tipper heartbeat timeout",
+      "RMS no visible faults",
+      "nothing coming to tippers",
+      "E-stopped system and restarted Optisweep service"
     ],
-    "normalization_confidence": 0.83,
+    "normalization_confidence": 0.9,
+    "linked_incident_ids": [
+      "229716"
+    ],
+    "linked_event_ids": [
+      "evt_229716_01",
+      "evt_229716_02",
+      "evt_229716_03",
+      "evt_229716_04",
+      "evt_229716_05",
+      "evt_229716_06",
+      "evt_229716_07",
+      "evt_229716_08",
+      "evt_229716_09",
+      "evt_229716_10"
+    ],
+    "linked_chunk_ids": [
+      "chunk_229716_01",
+      "chunk_229716_02",
+      "chunk_229716_03",
+      "chunk_229716_04",
+      "chunk_229716_05",
+      "chunk_229716_06",
+      "chunk_229716_07",
+      "chunk_229716_08",
+      "chunk_229716_09",
+      "chunk_229716_10"
+    ],
+    "linked_artifact_ids": [
+      "case_229716_docx_artifact_01",
+      "case_229716_docx_artifact_02",
+      "case_229716_docx_artifact_03",
+      "case_229716_docx_artifact_04",
+      "case_229716_docx_artifact_05",
+      "case_229716_docx_artifact_06",
+      "case_229716_docx_artifact_07",
+      "case_229716_docx_artifact_08",
+      "case_229716_docx_artifact_09",
+      "case_229716_docx_artifact_10",
+      "case_229716_docx_artifact_11",
+      "case_229716_docx_artifact_12"
+    ],
+    "linked_procedure_ids": [],
+    "linked_workflow_ids": [],
+    "requires_role_review": true,
+    "role_constraints": [
+      "L2_L3_software_support"
+    ],
+    "required_permissions": [
+      "case_review_access"
+    ],
+    "source_artifact_ids": [
+      "case_229716_docx_artifact_01",
+      "case_229716_docx_artifact_02",
+      "case_229716_docx_artifact_03",
+      "case_229716_docx_artifact_04",
+      "case_229716_docx_artifact_05",
+      "case_229716_docx_artifact_06",
+      "case_229716_docx_artifact_07",
+      "case_229716_docx_artifact_08",
+      "case_229716_docx_artifact_09",
+      "case_229716_docx_artifact_10",
+      "case_229716_docx_artifact_11",
+      "case_229716_docx_artifact_12"
+    ],
+    "source_artifact_paths": [
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_01.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_02.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_03.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_04.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_05.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_06.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_07.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_08.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_09.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_10.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_11.png",
+      "output/phase0/case_229716_docx_agent/artifacts/docx_media/case_229716_docx_image_12.png"
+    ],
+    "embedded_artifact_ids": [],
+    "embedded_artifact_paths": [],
+    "source_region_refs": [
+      "region_229716_001",
+      "region_229716_002",
+      "region_229716_003",
+      "region_229716_004",
+      "region_229716_005",
+      "region_229716_006",
+      "region_229716_007",
+      "region_229716_008",
+      "region_229716_009",
+      "region_229716_010",
+      "region_229716_011",
+      "region_229716_012"
+    ],
+    "source_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "escalated": true,
+    "workflow_candidate": true,
+    "overlay_applied": true,
+    "contextual_overlays": [
+      {
+        "overlay_id": "l4_project_team_overlay",
+        "overlay_type": "user_provided_context",
+        "overlay_summary": "User indicated project team escalation occurred for the active case.",
+        "applies_conditionally": true,
+        "validation_status": "unverified_overlay",
+        "case_id": "229716",
+        "escalation_target": "L4_engineering_project_team",
+        "overlay_source": "user_message",
+        "applies_to": [
+          "canonical_incident",
+          "teams_derived_records",
+          "escalation_summary_template"
+        ]
+      }
+    ],
+    "overlay_application_reason": "Conditional user-provided context is attached because the record summarizes the incident, escalation handoff, or Teams-derived evidence.",
+    "escalation_targets": [
+      "L4_engineering_project_team"
+    ],
+    "support_tiers_involved": [],
+    "organizational_roles": [
+      "software_support"
+    ],
+    "linked_relationships": [
+      {
+        "target_id": "evt_229716_01",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_229716_02",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_229716_03",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_229716_04",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_229716_05",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_229716_06",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_229716_07",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_229716_08",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_229716_09",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "evt_229716_10",
+        "relationship_type": "references",
+        "relationship_confidence": 0.72
+      },
+      {
+        "target_id": "chunk_229716_01",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229716_02",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229716_03",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229716_04",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229716_05",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229716_06",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229716_07",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229716_08",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229716_09",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "chunk_229716_10",
+        "relationship_type": "supports",
+        "relationship_confidence": 0.8
+      },
+      {
+        "target_id": "case_229716_docx_artifact_01",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_02",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_03",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_04",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_05",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_06",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_07",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_08",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_09",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_10",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_11",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      },
+      {
+        "target_id": "case_229716_docx_artifact_12",
+        "relationship_type": "references",
+        "relationship_confidence": 0.82
+      }
+    ],
+    "quality_tier": "llm_operational_synthesis",
+    "eligible_for_cross_incident_synthesis": true,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_blockers": [],
+    "pattern_candidate_notes": "",
+    "comparable_signal_groups": [],
+    "recurrence_evidence_refs": [],
+    "local_dataset_id": "229716",
+    "ingestion_version": 1
+  },
+  {
+    "record_type": "canonical_incident",
+    "synthesis_level": "HIGH",
+    "incident_id": "229777",
+    "source_file": "data/Case 229777 Data.docx",
+    "source_section": "Salesforce Case Data; Teams Chat Data",
+    "source_page": 3,
+    "source_ref": "Case 229777 Data.docx#media=image3.png; Case 229777 Data.docx#media=image4.png; Case 229777 Data.docx#media=image1.png",
+    "confidence": 0.9184,
+    "validation_status": "candidate_extracted",
+    "requires_manual_review": true,
+    "missing_fields": [
+      "exact occurrence timestamp for initial failure",
+      "explicit hospital function validation in case-specific evidence",
+      "explicit logs collected for the April 18 incident"
+    ],
+    "extraction_notes": [
+      "Category grounded by deterministic case lookup to CAT-1: WCS/Service Failure.",
+      "Root cause is kept unvalidated per Phase 0 rules even though source references same pattern as case 229716.",
+      "OCR terms AVG/ACD normalized to AGV only in normalized terms and summary context."
+    ],
+    "container_id": "incident_229777",
+    "dataset_record_type": "Dataset 1 - Canonical Incident Record",
+    "case_id": "229777",
+    "source_case_id": "00229777",
+    "title": "Startup state stalled with no path to tippers and recurring tipper heartbeat failure pattern",
+    "retrieval_text": "Case 229777 at UPS Haslet, TX is a CAT-1 WCS/Service Failure candidate incident. The system was put to startup and everything was waiting, with no path shown and nothing reaching the tippers. Salesforce and Teams evidence indicate the engineer dialed into the system, observed that the tipper heartbeat had failed in the same pattern as case 229716, had the client place the master E-stop on, restarted Optisweep, and paused/unpaused the tippers. The system then came back up and running and the client agreed the case could be closed. This is a recurrence pattern, but validated root cause is not established in this case package.",
+    "requires_role_review": true,
     "linked_incident_ids": [
       "229777"
     ],
@@ -2806,7 +2778,83 @@
     ],
     "linked_procedure_ids": [],
     "linked_workflow_ids": [],
-    "requires_role_review": true,
+    "issue_category": "CAT-1: WCS/Service Failure",
+    "site": "UPS Haslet, TX",
+    "component": [
+      "WCS/Ignition",
+      "Optisweep service",
+      "tipper heartbeat",
+      "AGV fleet"
+    ],
+    "observed_failure_signals": [
+      "system_startup_waiting_state",
+      "no_path_shown_to_tippers",
+      "nothing_reaching_tippers",
+      "agv_flow_stalled"
+    ],
+    "diagnostic_signals": [
+      "tipper_heartbeat_failed",
+      "same_pattern_as_case_229716"
+    ],
+    "action_signals": [
+      "engineer_dialed_into_system",
+      "client_master_e_stop_on",
+      "optisweep_service_restarted",
+      "tippers_paused_unpaused"
+    ],
+    "recovery_validation_signals": [
+      "system_back_up_and_running",
+      "everything_came_back_on",
+      "client_approved_case_closure"
+    ],
+    "escalation_signals": [
+      "teams_support_chat_engaged",
+      "customer_waiting_for_callback",
+      "engineer_remote_investigation_started",
+      "recurrence_noted_same_issue_again"
+    ],
+    "validated_root_cause": false,
+    "candidate_inferred_causes": [
+      {
+        "cause_summary": "Recurring tipper heartbeat failure likely caused the startup stall and lack of flow to the tippers.",
+        "basis": "Salesforce resolution details state the engineer dialed in and saw that the tipper heartbeat had failed, the same as case 229716, and recovery followed Optisweep restart plus tipper pause/unpause.",
+        "confidence": 0.89,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      },
+      {
+        "cause_summary": "A WCS/Ignition or Optisweep service communication issue may have contributed to the tipper heartbeat failure pattern.",
+        "basis": "The issue is categorized as CAT-1 WCS/Service Failure and recovery occurred after restarting Optisweep, but this case package does not explicitly validate the initiating technical cause.",
+        "confidence": 0.68,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      }
+    ],
+    "raw_terms": [
+      "Problems with the AVG system",
+      "Problems with the ACD system",
+      "everything is waiting",
+      "not showing any path",
+      "nothing is coming up to the tippers",
+      "tipper heartbeat had failed",
+      "same as case 229716",
+      "master e-stop",
+      "restarted the optisweep",
+      "paused/unpaused the tippers",
+      "system back up and running"
+    ],
+    "normalized_terms": [
+      "Problems with the AGV system",
+      "system_startup_waiting_state",
+      "no_path_shown",
+      "nothing_reaching_tippers",
+      "tipper_heartbeat_failed",
+      "master_e_stop",
+      "optisweep_service_restart",
+      "tippers_pause_unpause",
+      "system_back_up_and_running"
+    ],
+    "normalization_confidence": 0.9,
     "role_constraints": [
       "L2_L3_software_support"
     ],
@@ -2989,6 +3037,15 @@
         "relationship_confidence": 0.82
       }
     ],
+    "quality_tier": "llm_operational_synthesis",
+    "eligible_for_cross_incident_synthesis": false,
+    "eligible_for_workflow_grouping": false,
+    "synthesis_blockers": [
+      "validation_not_passed"
+    ],
+    "pattern_candidate_notes": "",
+    "comparable_signal_groups": [],
+    "recurrence_evidence_refs": [],
     "local_dataset_id": "229777",
     "ingestion_version": 1
   }

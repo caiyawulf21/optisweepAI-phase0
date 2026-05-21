@@ -1,0 +1,217 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_robot_selection_add_remove_ui_27",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        27
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Robot Selection supports add and remove actions for robots by ID or selection",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Robot Selection UI"
+      ],
+      "summary": "The Robot Selection screen includes actions to add a robot by entering its corresponding robot ID and clicking Add, and to remove a robot by entering the corresponding robot ID or selecting the robot and clicking Remove. The system displays success feedback for add and remove actions.",
+      "observed_evidence": [
+        "Slide title: 'Robot Selection / Add and Remove'",
+        "Visible text: 'Add Robot'",
+        "Visible text: '1. Enter the corresponding robot ID'",
+        "Visible text: '2. Click “Add”'",
+        "Visible text: '3. The system will show that the adding was successful.'",
+        "Visible text: 'Remove Robot'",
+        "Visible text: '1. Enter the corresponding robot Id or select the robot.'",
+        "Visible text: '2. Click “Remove”'",
+        "Visible text: '3. The system will show that the removal'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "supports",
+          "target": "proc_optisweep_add_robot_27"
+        },
+        {
+          "relationship_type": "supports",
+          "target": "proc_optisweep_remove_robot_27"
+        }
+      ],
+      "retrieval_text": "Robot Selection Add and Remove screen supports adding a robot by entering the corresponding robot ID and clicking Add, and removing a robot by entering the corresponding robot ID or selecting the robot and clicking Remove. The system shows success feedback for add and remove operations.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_add_robot_27",
+      "title": "Add a robot from Robot Selection",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        27
+      ],
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Robot Selection UI"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is on the Robot Selection screen.",
+        "The corresponding robot ID is available."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+      ],
+      "procedure_visual_summary": "Slide-level screenshot showing Robot Selection / Add and Remove instructions for Add Robot and Remove Robot.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Enter the corresponding robot ID.",
+          "expected_outcome": "The robot ID is entered in the Robot Selection UI.",
+          "validation_check": "Verify the intended robot ID is populated in the entry field.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:27"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "visual_region_hint": "Robot Selection add area with robot ID entry field"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Click \"Add\".",
+          "expected_outcome": "The add action is submitted for the entered robot ID.",
+          "validation_check": "Verify the Add button was clicked and the system processes the request.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:27"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "visual_region_hint": "Add button in the Robot Selection add area"
+        },
+        {
+          "step_order": 3,
+          "instruction": "Confirm that the system shows the adding was successful.",
+          "expected_outcome": "A success indication confirms the robot was added.",
+          "validation_check": "Verify the UI displays a success message or status indicating the add completed successfully.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:27"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "visual_region_hint": "System message or status area after add action"
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_robot_selection_add_remove_ui_27"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure to add a robot from Robot Selection: enter the corresponding robot ID, click Add, and confirm the system shows the adding was successful."
+    },
+    {
+      "procedure_id": "proc_optisweep_remove_robot_27",
+      "title": "Remove a robot from Robot Selection",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        27
+      ],
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Robot Selection UI"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is on the Robot Selection screen.",
+        "The target robot can be identified by corresponding robot ID or selected in the UI."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+      ],
+      "procedure_visual_summary": "Slide-level screenshot showing Robot Selection / Add and Remove instructions for Add Robot and Remove Robot.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Enter the corresponding robot ID or select the robot.",
+          "expected_outcome": "The target robot is identified for removal.",
+          "validation_check": "Verify the intended robot is selected or its corresponding robot ID is entered.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:27"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "visual_region_hint": "Robot Selection remove area with robot list or ID field"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Click \"Remove\".",
+          "expected_outcome": "The remove action is submitted for the selected or entered robot.",
+          "validation_check": "Verify the Remove button was clicked and the system processes the removal request.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:27"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "visual_region_hint": "Remove button in the Robot Selection remove area"
+        },
+        {
+          "step_order": 3,
+          "instruction": "Confirm that the system shows the removal was successful.",
+          "expected_outcome": "A success indication confirms the robot was removed.",
+          "validation_check": "Verify the UI displays a success message or status indicating the removal completed successfully.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:27"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0027"
+          ],
+          "visual_region_hint": "System message or status area after remove action"
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_robot_selection_add_remove_ui_27"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Procedure to remove a robot from Robot Selection: enter the corresponding robot ID or select the robot, click Remove, and confirm the system shows the removal was successful."
+    }
+  ],
+  "discarded_candidates": []
+}

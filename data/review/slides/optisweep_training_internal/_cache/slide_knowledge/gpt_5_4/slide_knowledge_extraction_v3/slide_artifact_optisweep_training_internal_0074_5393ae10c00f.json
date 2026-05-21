@@ -1,0 +1,135 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0074_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        74
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0074"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "ShutDownStaging table defines AGV shutdown staging destinations",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "ShutDownStaging table",
+        "AGV",
+        "Tote",
+        "off the end queue",
+        "center staging queue",
+        "sorter locations"
+      ],
+      "summary": "The slide states that the ShutDownStaging table maps where AGVs should go during a shutdown state. Destination mapping depends on whether the AGV has a tote.",
+      "observed_evidence": [
+        "Slide title: 'Robotics Database / Shut Down Staging Database Model'",
+        "Visible text: 'The ShutDownStaging table maps where AGVs should go during a shutdown state.'",
+        "Visible text: 'AGVs with totes have an off the end queue and a queue in the center to stage at.'",
+        "Visible text: 'AGVs without totes are mapped to sorter locations.'"
+      ],
+      "relationships": [
+        {
+          "type": "maps_destinations_for",
+          "from": "ShutDownStaging table",
+          "to": "AGV shutdown staging"
+        },
+        {
+          "type": "conditional_on",
+          "from": "AGV shutdown destination",
+          "to": "tote presence"
+        }
+      ],
+      "retrieval_text": "Robotics Database Shut Down Staging Database Model. The ShutDownStaging table maps where AGVs should go during a shutdown state. AGVs with totes are assigned an off the end queue and a center staging queue. AGVs without totes are mapped to sorter locations.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0074_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        74
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0074"
+      ],
+      "unit_type": "routing_rule",
+      "title": "Shutdown staging routing differs for AGVs with totes versus without totes",
+      "systems": [
+        "Robotics Database",
+        "AGV system"
+      ],
+      "components": [
+        "AGV",
+        "Tote",
+        "off the end queue",
+        "center staging queue",
+        "sorter locations",
+        "ShutDownStaging table"
+      ],
+      "summary": "During shutdown, AGV routing is conditionally assigned by tote status. AGVs carrying totes are routed to queue-based staging areas, while AGVs without totes are routed to sorter locations.",
+      "observed_evidence": [
+        "Visible text identifies shutdown-state destination logic for AGVs",
+        "Visible text: 'AGVs with totes have an off the end queue and a queue in the center to stage at.'",
+        "Visible text: 'AGVs without totes are mapped to sorter locations.'"
+      ],
+      "relationships": [
+        {
+          "type": "routes",
+          "from": "AGVs with totes",
+          "to": [
+            "off the end queue",
+            "center staging queue"
+          ]
+        },
+        {
+          "type": "routes",
+          "from": "AGVs without totes",
+          "to": "sorter locations"
+        }
+      ],
+      "retrieval_text": "Shutdown staging routing rule: AGVs with totes stage in an off the end queue and a center queue. AGVs without totes are mapped to sorter locations. This mapping is represented in the ShutDownStaging table.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0074_01",
+      "title": "No explicit shutdown staging update procedure present",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        74
+      ],
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "ShutDownStaging table",
+        "AGV"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A shutdown staging database model is being described"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0074"
+      ],
+      "procedure_visual_summary": "Slide describes the ShutDownStaging table and conditional AGV destination mapping during shutdown, but does not show steps, UI actions, queries, or an editable workflow.",
+      "steps": [],
+      "warnings": [
+        "Do not infer database update or verification steps from this slide alone.",
+        "The slide provides routing/model context rather than an operational sequence."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0074",
+        "oku_optisweep_training_internal_0074_01",
+        "oku_optisweep_training_internal_0074_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: the slide explains the ShutDownStaging database model and AGV shutdown routing rules, but does not provide explicit reusable action steps."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,167 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGVS Startup and Shutdown Behavior",
+      "timestamp_start": "00:15:53.120",
+      "timestamp_end": "00:16:17.280",
+      "primary_intent": "Explain AGVS behavior during startup and shutdown",
+      "operational_intents": [
+        "Describe delays caused by AGVS waiting for exchanges",
+        "Discuss startup delays due to charger waiting"
+      ],
+      "knowledge_extraction_strategy": "Extract system behavior and delay causes",
+      "why_this_strategy": "Focus on AGVS operational timing issues",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000269",
+        "vec_upsfortna_optisweep_training_day1_000270",
+        "vec_upsfortna_optisweep_training_day1_000271",
+        "vec_upsfortna_optisweep_training_day1_000272",
+        "vec_upsfortna_optisweep_training_day1_000273",
+        "vec_upsfortna_optisweep_training_day1_000274",
+        "vec_upsfortna_optisweep_training_day1_000275"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000006"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Database and Message Flow Deep Dive Preparation",
+      "timestamp_start": "00:16:17.280",
+      "timestamp_end": "00:16:28.120",
+      "primary_intent": "Prepare for detailed database and message flow discussion",
+      "operational_intents": [
+        "Schedule deep dive session",
+        "Share Confluence resources"
+      ],
+      "knowledge_extraction_strategy": "Identify resources and plan for detailed analysis",
+      "why_this_strategy": "Set context for upcoming technical deep dive",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000276",
+        "vec_upsfortna_optisweep_training_day1_20260317_000277",
+        "vec_upsfortna_optisweep_training_day1_20260317_000278"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000006"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Parcel Unloading and Induction Process Overview",
+      "timestamp_start": "00:16:28.120",
+      "timestamp_end": "00:17:12.680",
+      "primary_intent": "Describe parcel unloading and induction onto sorter belts",
+      "operational_intents": [
+        "Explain bulk unloading from trailers",
+        "Detail parcel travel on belts to sorter inductions",
+        "Outline message triggers with tracking and dimension data"
+      ],
+      "knowledge_extraction_strategy": "Extract process flow and data triggers",
+      "why_this_strategy": "Clarify parcel handling and data capture steps",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000279",
+        "vec_upsfortna_optisweep_training_day1_20260317_000280",
+        "vec_upsfortna_optisweep_training_day1_20260317_000281",
+        "vec_upsfortna_optisweep_training_day1_20260317_000282",
+        "vec_upsfortna_optisweep_training_day1_20260317_000283",
+        "vec_upsfortna_optisweep_training_day1_20260317_000284",
+        "vec_upsfortna_optisweep_training_day1_20260317_000285",
+        "vec_upsfortna_optisweep_training_day1_20260317_000286",
+        "vec_upsfortna_optisweep_training_day1_20260317_000287",
+        "vec_upsfortna_optisweep_training_day1_20260317_000288"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000006"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Dimension Data Challenges and System Responses",
+      "timestamp_start": "00:17:12.680",
+      "timestamp_end": "00:17:36.720",
+      "primary_intent": "Discuss issues with dimension data and system handling",
+      "operational_intents": [
+        "Identify causes of missing dimension data",
+        "Explain default dimension assignment",
+        "Describe impact of power loss on dimensioners"
+      ],
+      "knowledge_extraction_strategy": "Capture error conditions and fallback mechanisms",
+      "why_this_strategy": "Highlight dimension data reliability concerns",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000289",
+        "vec_upsfortna_optisweep_training_day1_20260317_000290",
+        "vec_upsfortna_optisweep_training_day1_20260317_000291",
+        "vec_upsfortna_optisweep_training_day1_20260317_000292",
+        "vec_upsfortna_optisweep_training_day1_20260317_000293",
+        "vec_upsfortna_optisweep_training_day1_20260317_000294"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000006"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Auto Index vs Manual Induction Discussion",
+      "timestamp_start": "00:17:36.720",
+      "timestamp_end": "00:18:37.520",
+      "primary_intent": "Clarify differences between auto index and manual induction",
+      "operational_intents": [
+        "Compare UPS system auto index to other systems",
+        "Discuss manual handling of tilt trays",
+        "Explain industry perspectives on auto induct classification"
+      ],
+      "knowledge_extraction_strategy": "Distinguish operational definitions and practices",
+      "why_this_strategy": "Resolve terminology and process differences",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000295",
+        "vec_upsfortna_optisweep_training_day1_20260317_000296",
+        "vec_upsfortna_optisweep_training_day1_20260317_000297",
+        "vec_upsfortna_optisweep_training_day1_20260317_000298",
+        "vec_upsfortna_optisweep_training_day1_20260317_000299",
+        "vec_upsfortna_optisweep_training_day1_20260317_000300",
+        "vec_upsfortna_optisweep_training_day1_20260317_000301",
+        "vec_upsfortna_optisweep_training_day1_20260317_000302",
+        "vec_upsfortna_optisweep_training_day1_20260317_000303",
+        "vec_upsfortna_optisweep_training_day1_20260317_000304",
+        "vec_upsfortna_optisweep_training_day1_20260317_000305",
+        "vec_upsfortna_optisweep_training_day1_20260317_000306",
+        "vec_upsfortna_optisweep_training_day1_20260317_000307",
+        "vec_upsfortna_optisweep_training_day1_20260317_000308",
+        "vec_upsfortna_optisweep_training_day1_20260317_000309",
+        "vec_upsfortna_optisweep_training_day1_20260317_000310",
+        "vec_upsfortna_optisweep_training_day1_20260317_000311",
+        "vec_upsfortna_optisweep_training_day1_20260317_000312",
+        "vec_upsfortna_optisweep_training_day1_20260317_000313",
+        "vec_upsfortna_optisweep_training_day1_20260317_000314",
+        "vec_upsfortna_optisweep_training_day1_20260317_000315"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000006"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Parcel Data Acquisition and Routing Indication",
+      "timestamp_start": "00:18:37.520",
+      "timestamp_end": "00:18:53.370",
+      "primary_intent": "Summarize parcel data collection and routing info",
+      "operational_intents": [
+        "Confirm dimension data availability",
+        "Identify parcel routing destination indication",
+        "Explain scanned data message contents"
+      ],
+      "knowledge_extraction_strategy": "Extract final data points for parcel processing",
+      "why_this_strategy": "Complete parcel data and routing overview",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000316",
+        "vec_upsfortna_optisweep_training_day1_20260317_000317",
+        "vec_upsfortna_optisweep_training_day1_20260317_000318",
+        "vec_upsfortna_optisweep_training_day1_20260317_000319"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000006"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

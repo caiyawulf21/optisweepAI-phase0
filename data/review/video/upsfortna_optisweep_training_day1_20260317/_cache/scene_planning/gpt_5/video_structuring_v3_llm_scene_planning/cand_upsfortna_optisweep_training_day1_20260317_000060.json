@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "cand_upsfortna_optisweep_training_day1_20260317_000060_s1",
+      "timestamp_start": "00:17:47.080",
+      "timestamp_end": "00:18:04.000",
+      "intent": "Clarify that while not officially labeled auto index, the current setup effectively operates like auto index, contrasting it with past manual tilt-tray induction and noting minimal human involvement.",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000296",
+        "vec_upsfortna_optisweep_training_day1_20260317_000297",
+        "vec_upsfortna_optisweep_training_day1_20260317_000298",
+        "vec_upsfortna_optisweep_training_day1_20260317_000299",
+        "vec_upsfortna_optisweep_training_day1_20260317_000300"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

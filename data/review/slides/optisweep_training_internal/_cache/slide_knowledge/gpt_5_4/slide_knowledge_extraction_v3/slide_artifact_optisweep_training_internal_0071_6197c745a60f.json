@@ -1,0 +1,147 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0071_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        71
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0071"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "RobotLocationDatabaseModel stores robot location attributes and control parameters",
+      "systems": [
+        "Robot",
+        "AGV"
+      ],
+      "components": [
+        "RobotLocationDatabaseModel"
+      ],
+      "summary": "The slide states that the RobotLocationDatabaseModel table contains information about locations, including station number, occupancy, zone, close out zone, location type, maximum number of AGVs allowed at a location, and whether dwell time tracking is enabled.",
+      "observed_evidence": [
+        "The RobotLocationDatabaseModel table contains all the information about the locations",
+        "including the station number, whether it is occupied or not, zone, its close out zone, the location type, the max number of agvs allowed at that location, and whether the location should be tracked for dwell time."
+      ],
+      "relationships": [
+        {
+          "relation_type": "defines",
+          "target": "location records"
+        },
+        {
+          "relation_type": "supports",
+          "target": "location occupancy tracking"
+        },
+        {
+          "relation_type": "supports",
+          "target": "zone and close out zone assignment"
+        },
+        {
+          "relation_type": "supports",
+          "target": "AGV capacity limits per location"
+        },
+        {
+          "relation_type": "supports",
+          "target": "dwell time tracking"
+        }
+      ],
+      "retrieval_text": "RobotLocationDatabaseModel table reference. Stores robot location data including station number, occupied status, zone, close out zone, location type, max AGVs allowed at the location, and whether dwell time should be tracked.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0071_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        71
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0071"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "Robot location types enumerated in RobotLocationDatabaseModel",
+      "systems": [
+        "Robot",
+        "AGV"
+      ],
+      "components": [
+        "RobotLocationDatabaseModel"
+      ],
+      "summary": "The slide provides a list of location types used in the robot location database model.",
+      "observed_evidence": [
+        "Location types",
+        "Sorter",
+        "SorterEntranceQueue",
+        "SorterQueue",
+        "SorterExitQueue",
+        "Tipper",
+        "TipperQueue",
+        "TipperExitQueue",
+        "HospitalDropOff",
+        "HospitalEntranceQueue",
+        "HospitalPickup",
+        "HospitalExitQueue",
+        "ShutDownOffTheEnd",
+        "ShutDownQueue",
+        "GLDPreQueueEntrance",
+        "GLDPreQueueExit"
+      ],
+      "relationships": [
+        {
+          "relation_type": "enumerates",
+          "target": "valid location type values"
+        },
+        {
+          "relation_type": "belongs_to",
+          "target": "RobotLocationDatabaseModel"
+        }
+      ],
+      "retrieval_text": "Robot location types in RobotLocationDatabaseModel include Sorter, SorterEntranceQueue, SorterQueue, SorterExitQueue, Tipper, TipperQueue, TipperExitQueue, HospitalDropOff, HospitalEntranceQueue, HospitalPickup, HospitalExitQueue, ShutDownOffTheEnd, ShutDownQueue, GLDPreQueueEntrance, and GLDPreQueueExit.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0071_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        71
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0071"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Robot location records include enablement status values",
+      "systems": [
+        "Robot",
+        "AGV"
+      ],
+      "components": [
+        "RobotLocationDatabaseModel"
+      ],
+      "summary": "The slide identifies the location status values associated with robot locations: Enabled, Stopped, and Disabled.",
+      "observed_evidence": [
+        "Location Status",
+        "Enabled",
+        "Stopped",
+        "Disabled"
+      ],
+      "relationships": [
+        {
+          "relation_type": "enumerates",
+          "target": "location status values"
+        },
+        {
+          "relation_type": "belongs_to",
+          "target": "robot location records"
+        }
+      ],
+      "retrieval_text": "Robot location status values shown on the slide are Enabled, Stopped, and Disabled. These statuses are part of the robot location database model context.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "title": "Manage or update robot location records",
+      "reason": "The slide describes database fields, enumerated location types, and location statuses, but does not provide explicit action steps or a reusable operational sequence."
+    }
+  ]
+}

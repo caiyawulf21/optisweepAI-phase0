@@ -1,0 +1,128 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Tote and AGV Association and Removal Process",
+      "timestamp_start": "01:28:52.170",
+      "timestamp_end": "01:29:26.840",
+      "primary_intent": "Explain the process of removing AGV and tote association",
+      "operational_intents": [
+        "Describe how tote remains on tote stand but is associated with AGV",
+        "Explain removal and re-adding of AGV at location"
+      ],
+      "knowledge_extraction_strategy": "Extract process steps and system behavior",
+      "why_this_strategy": "Focus on tote-AGV handling procedure",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001470",
+        "vec_upsfortna_optisweep_training_day1_20260317_001471",
+        "vec_upsfortna_optisweep_training_day1_20260317_001472",
+        "vec_upsfortna_optisweep_training_day1_20260317_001473",
+        "vec_upsfortna_optisweep_training_day1_20260317_001474",
+        "vec_upsfortna_optisweep_training_day1_20260317_001475",
+        "vec_upsfortna_optisweep_training_day1_20260317_001476",
+        "vec_upsfortna_optisweep_training_day1_20260317_001477",
+        "vec_upsfortna_optisweep_training_day1_20260317_001478"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000030"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Identifying Incorrect Tote Placement on Racks",
+      "timestamp_start": "01:29:33.240",
+      "timestamp_end": "01:30:02.720",
+      "primary_intent": "Explain how to detect and verify tote placement on racks",
+      "operational_intents": [
+        "Use rack color and click function to identify tote on rack",
+        "Compare expected tote ID with actual tote ID to find discrepancies"
+      ],
+      "knowledge_extraction_strategy": "Extract verification and troubleshooting methods",
+      "why_this_strategy": "Focus on tote location verification process",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001479",
+        "vec_upsfortna_optisweep_training_day1_20260317_001480",
+        "vec_upsfortna_optisweep_training_day1_20260317_001481",
+        "vec_upsfortna_optisweep_training_day1_20260317_001482",
+        "vec_upsfortna_optisweep_training_day1_20260317_001483",
+        "vec_upsfortna_optisweep_training_day1_20260317_001484",
+        "vec_upsfortna_optisweep_training_day1_20260317_001485"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000030"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Finding and Correcting Lost or Incorrect Totes",
+      "timestamp_start": "01:30:04.400",
+      "timestamp_end": "01:30:59.200",
+      "primary_intent": "Demonstrate how to locate and fix misplaced totes in the system",
+      "operational_intents": [
+        "Search for tote by typing tote number in container section",
+        "Navigate to tote location on map",
+        "Perform tote swap or removal and re-addition"
+      ],
+      "knowledge_extraction_strategy": "Extract search and correction procedures",
+      "why_this_strategy": "Focus on tote recovery and correction workflow",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001486",
+        "vec_upsfortna_optisweep_training_day1_20260317_001487",
+        "vec_upsfortna_optisweep_training_day1_20260317_001488",
+        "vec_upsfortna_optisweep_training_day1_20260317_001489",
+        "vec_upsfortna_optisweep_training_day1_20260317_001490",
+        "vec_upsfortna_optisweep_training_day1_20260317_001491",
+        "vec_upsfortna_optisweep_training_day1_20260317_001492",
+        "vec_upsfortna_optisweep_training_day1_20260317_001493",
+        "vec_upsfortna_optisweep_training_day1_20260317_001494",
+        "vec_upsfortna_optisweep_training_day1_20260317_001495",
+        "vec_upsfortna_optisweep_training_day1_20260317_001496",
+        "vec_upsfortna_optisweep_training_day1_20260317_001497",
+        "vec_upsfortna_optisweep_training_day1_20260317_001498",
+        "vec_upsfortna_optisweep_training_day1_20260317_001499",
+        "vec_upsfortna_optisweep_training_day1_20260317_001500"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000030"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Labeling and Verification of System Components",
+      "timestamp_start": "01:31:04.120",
+      "timestamp_end": "01:31:53.400",
+      "primary_intent": "Explain labeling system for totes, robots, racks, and locations",
+      "operational_intents": [
+        "Describe label matching between physical items and system map",
+        "Explain use of QR codes and node codes for location verification",
+        "Demonstrate how to verify AGV location using node codes"
+      ],
+      "knowledge_extraction_strategy": "Extract labeling and verification details",
+      "why_this_strategy": "Focus on physical and system label correlation",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001501",
+        "vec_upsfortna_optisweep_training_day1_20260317_001502",
+        "vec_upsfortna_optisweep_training_day1_20260317_001503",
+        "vec_upsfortna_optisweep_training_day1_20260317_001504",
+        "vec_upsfortna_optisweep_training_day1_20260317_001505",
+        "vec_upsfortna_optisweep_training_day1_20260317_001506",
+        "vec_upsfortna_optisweep_training_day1_20260317_001507",
+        "vec_upsfortna_optisweep_training_day1_20260317_001508",
+        "vec_upsfortna_optisweep_training_day1_20260317_001509",
+        "vec_upsfortna_optisweep_training_day1_20260317_001510",
+        "vec_upsfortna_optisweep_training_day1_20260317_001511",
+        "vec_upsfortna_optisweep_training_day1_20260317_001512",
+        "vec_upsfortna_optisweep_training_day1_20260317_001513",
+        "vec_upsfortna_optisweep_training_day1_20260317_001514",
+        "vec_upsfortna_optisweep_training_day1_20260317_001515",
+        "vec_upsfortna_optisweep_training_day1_20260317_001516",
+        "vec_upsfortna_optisweep_training_day1_20260317_001517",
+        "vec_upsfortna_optisweep_training_day1_20260317_001518",
+        "vec_upsfortna_optisweep_training_day1_20260317_001519"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000030"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Diagnosing Issues Between OPC and Aviva",
+      "timestamp_start": "02:29:13.604",
+      "timestamp_end": "02:30:12.720",
+      "primary_intent": "Explain how to identify the source of issues between OPC and Aviva systems",
+      "operational_intents": [
+        "Clarify the role of Aviva as an HMI showing service status",
+        "Discuss limitations of Aviva in managing faults",
+        "Describe use of APIs for system state control"
+      ],
+      "knowledge_extraction_strategy": "Extract diagnostic approach and system roles",
+      "why_this_strategy": "Focus on understanding system interaction and fault diagnosis",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002304",
+        "vec_upsfortna_optisweep_training_day1_20260317_002305",
+        "vec_upsfortna_optisweep_training_day1_20260317_002306",
+        "vec_upsfortna_optisweep_training_day1_20260317_002307",
+        "vec_upsfortna_optisweep_training_day1_20260317_002308",
+        "vec_upsfortna_optisweep_training_day1_20260317_002309",
+        "vec_upsfortna_optisweep_training_day1_20260317_002310",
+        "vec_upsfortna_optisweep_training_day1_20260317_002311",
+        "vec_upsfortna_optisweep_training_day1_20260317_002312",
+        "vec_upsfortna_optisweep_training_day1_20260317_002313",
+        "vec_upsfortna_optisweep_training_day1_20260317_002314",
+        "vec_upsfortna_optisweep_training_day1_20260317_002315",
+        "vec_upsfortna_optisweep_training_day1_20260317_002316",
+        "vec_upsfortna_optisweep_training_day1_20260317_002317",
+        "vec_upsfortna_optisweep_training_day1_20260317_002318",
+        "vec_upsfortna_optisweep_training_day1_20260317_002319",
+        "vec_upsfortna_optisweep_training_day1_20260317_002320",
+        "vec_upsfortna_optisweep_training_day1_20260317_002321",
+        "vec_upsfortna_optisweep_training_day1_20260317_002322",
+        "vec_upsfortna_optisweep_training_day1_20260317_002323",
+        "vec_upsfortna_optisweep_training_day1_20260317_002324",
+        "vec_upsfortna_optisweep_training_day1_20260317_002325",
+        "vec_upsfortna_optisweep_training_day1_20260317_002326",
+        "vec_upsfortna_optisweep_training_day1_20260317_002327"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000070"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Error Categories and API Response Handling",
+      "timestamp_start": "02:30:12.720",
+      "timestamp_end": "02:30:56.120",
+      "primary_intent": "Describe types of errors and how to interpret API responses",
+      "operational_intents": [
+        "Explain REST API error codes (4XX, 5XX)",
+        "Define business exceptions and system exceptions",
+        "Discuss error information needed for diagnosis"
+      ],
+      "knowledge_extraction_strategy": "Extract error classification and diagnostic criteria",
+      "why_this_strategy": "Clarify error types for troubleshooting",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002328",
+        "vec_upsfortna_optisweep_training_day1_20260317_002329",
+        "vec_upsfortna_optisweep_training_day1_20260317_002330",
+        "vec_upsfortna_optisweep_training_day1_20260317_002331",
+        "vec_upsfortna_optisweep_training_day1_20260317_002332",
+        "vec_upsfortna_optisweep_training_day1_20260317_002333",
+        "vec_upsfortna_optisweep_training_day1_20260317_002334",
+        "vec_upsfortna_optisweep_training_day1_20260317_002335",
+        "vec_upsfortna_optisweep_training_day1_20260317_002336",
+        "vec_upsfortna_optisweep_training_day1_20260317_002337",
+        "vec_upsfortna_optisweep_training_day1_20260317_002338",
+        "vec_upsfortna_optisweep_training_day1_20260317_002339",
+        "vec_upsfortna_optisweep_training_day1_20260317_002340",
+        "vec_upsfortna_optisweep_training_day1_20260317_002341",
+        "vec_upsfortna_optisweep_training_day1_20260317_002342",
+        "vec_upsfortna_optisweep_training_day1_20260317_002343"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000070"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Diagnosing Write Errors and System State Verification",
+      "timestamp_start": "02:30:56.120",
+      "timestamp_end": "02:32:15.400",
+      "primary_intent": "Outline steps to verify system state and diagnose communication issues",
+      "operational_intents": [
+        "Check system state in WCS or Opti Sweep after API errors",
+        "Determine if issue is Aviva or communication related",
+        "Guide operator on what to observe and record",
+        "Emphasize importance of note-taking for support"
+      ],
+      "knowledge_extraction_strategy": "Extract diagnostic workflow and operator guidance",
+      "why_this_strategy": "Capture operational steps for issue diagnosis",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002344",
+        "vec_upsfortna_optisweep_training_day1_20260317_002345",
+        "vec_upsfortna_optisweep_training_day1_20260317_002346",
+        "vec_upsfortna_optisweep_training_day1_20260317_002347",
+        "vec_upsfortna_optisweep_training_day1_20260317_002348",
+        "vec_upsfortna_optisweep_training_day1_20260317_002349",
+        "vec_upsfortna_optisweep_training_day1_20260317_002350",
+        "vec_upsfortna_optisweep_training_day1_20260317_002351",
+        "vec_upsfortna_optisweep_training_day1_20260317_002352",
+        "vec_upsfortna_optisweep_training_day1_20260317_002353",
+        "vec_upsfortna_optisweep_training_day1_20260317_002354",
+        "vec_upsfortna_optisweep_training_day1_20260317_002355",
+        "vec_upsfortna_optisweep_training_day1_20260317_002356",
+        "vec_upsfortna_optisweep_training_day1_20260317_002357",
+        "vec_upsfortna_optisweep_training_day1_20260317_002358",
+        "vec_upsfortna_optisweep_training_day1_20260317_002359",
+        "vec_upsfortna_optisweep_training_day1_20260317_002360",
+        "vec_upsfortna_optisweep_training_day1_20260317_002361",
+        "vec_upsfortna_optisweep_training_day1_20260317_002362",
+        "vec_upsfortna_optisweep_training_day1_20260317_002363",
+        "vec_upsfortna_optisweep_training_day1_20260317_002364",
+        "vec_upsfortna_optisweep_training_day1_20260317_002365"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000070"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

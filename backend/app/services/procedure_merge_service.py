@@ -48,6 +48,14 @@ class ProcedureMergeService:
     def _has_evidence_backed_overlap(self, candidates: list[ProcedureCandidate]) -> bool:
         if len(candidates) < 2:
             return False
+        if any(
+            not candidate.title
+            or not candidate.operational_intent
+            or not candidate.role_required
+            or candidate.support_safe is None
+            for candidate in candidates
+        ):
+            return False
         incident_ids = {incident for candidate in candidates for incident in candidate.related_incidents}
         evidence_incidents = {ref.incident_id for candidate in candidates for ref in candidate.evidence_refs}
         evidence_sources = {

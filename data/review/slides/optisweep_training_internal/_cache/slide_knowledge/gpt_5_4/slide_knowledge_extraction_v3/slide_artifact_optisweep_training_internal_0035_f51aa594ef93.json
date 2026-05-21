@@ -1,0 +1,421 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0035_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        35
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0035"
+      ],
+      "unit_type": "ui_concept",
+      "title": "System Detail screen serves as the home screen for overview and navigation",
+      "systems": [
+        "HMI",
+        "AGV"
+      ],
+      "components": [
+        "System Detail",
+        "Main Menu",
+        "System Layout",
+        "Controls & Info"
+      ],
+      "summary": "The System Detail screen is described as the home screen for system overview and navigation. It provides access to subscreens, displays layout/status areas, and includes system control and information functions.",
+      "observed_evidence": [
+        "“Purpose: Home screen for system overview and navigation”",
+        "“Main Menu: Navigate subscreens – Detail, Statistics, HMI Calculations, API, RMS”",
+        "“System Layout: Shows Sorter, Tippers, Hospital, GLDS, CS Estops and AGV Errors”",
+        "“Controls & Info: Start/Stop system, Bag Out, Purge, view Metrics (Destinations), AGV status, Tote”"
+      ],
+      "relationships": [
+        {
+          "type": "contains",
+          "target": "Main Menu"
+        },
+        {
+          "type": "contains",
+          "target": "System Layout"
+        },
+        {
+          "type": "contains",
+          "target": "Controls & Info"
+        },
+        {
+          "type": "provides_navigation_to",
+          "target": "Detail, Statistics, HMI Calculations, API, RMS"
+        }
+      ],
+      "retrieval_text": "System Detail is the home screen for system overview and navigation. It includes a Main Menu for Detail, Statistics, HMI Calculations, API, and RMS; a System Layout showing Sorter, Tippers, Hospital, GLDS, CS Estops, and AGV Errors; and Controls & Info for Start/Stop, Bag Out, Purge, Metrics, AGV status, and Tote.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0035_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        35
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0035"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Main Menu provides navigation to operational subscreens",
+      "systems": [
+        "HMI"
+      ],
+      "components": [
+        "Main Menu",
+        "Detail",
+        "Statistics",
+        "HMI Calculations",
+        "API",
+        "RMS"
+      ],
+      "summary": "The Main Menu on the System Detail screen is used to navigate between subscreens including Detail, Statistics, HMI Calculations, API, and RMS.",
+      "observed_evidence": [
+        "“Main Menu: Navigate subscreens – Detail, Statistics, HMI Calculations, API, RMS”"
+      ],
+      "relationships": [
+        {
+          "type": "navigates_to",
+          "target": "Detail"
+        },
+        {
+          "type": "navigates_to",
+          "target": "Statistics"
+        },
+        {
+          "type": "navigates_to",
+          "target": "HMI Calculations"
+        },
+        {
+          "type": "navigates_to",
+          "target": "API"
+        },
+        {
+          "type": "navigates_to",
+          "target": "RMS"
+        }
+      ],
+      "retrieval_text": "Main Menu navigation on the System Detail screen includes Detail, Statistics, HMI Calculations, API, and RMS subscreens.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0035_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        35
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0035"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Subscreen refresh workaround uses the ACB1 – AMR TT selection",
+      "systems": [
+        "HMI"
+      ],
+      "components": [
+        "Main Menu",
+        "ACB1 – AMR TT"
+      ],
+      "summary": "If a subscreen does not update, the slide gives a tip to click “ACB1 – AMR TT” as a refresh or update workaround.",
+      "observed_evidence": [
+        "“Tip: Click ‘ACB1 – AMR TT’ if a subscreen does not update”"
+      ],
+      "relationships": [
+        {
+          "type": "workaround_for",
+          "target": "subscreen does not update"
+        }
+      ],
+      "retrieval_text": "When a subscreen does not update on the HMI, the slide advises clicking “ACB1 – AMR TT” as a workaround.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0035_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        35
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0035"
+      ],
+      "unit_type": "ui_concept",
+      "title": "System Layout shows major equipment and alert areas",
+      "systems": [
+        "HMI",
+        "AGV"
+      ],
+      "components": [
+        "System Layout",
+        "Sorter",
+        "Tippers",
+        "Hospital",
+        "GLDS",
+        "CS Estops",
+        "AGV Errors"
+      ],
+      "summary": "The System Layout area visually presents key equipment and alert categories including Sorter, Tippers, Hospital, GLDS, CS Estops, and AGV Errors.",
+      "observed_evidence": [
+        "“System Layout: Shows Sorter, Tippers, Hospital, GLDS, CS Estops and AGV Errors”"
+      ],
+      "relationships": [
+        {
+          "type": "displays",
+          "target": "Sorter"
+        },
+        {
+          "type": "displays",
+          "target": "Tippers"
+        },
+        {
+          "type": "displays",
+          "target": "Hospital"
+        },
+        {
+          "type": "displays",
+          "target": "GLDS"
+        },
+        {
+          "type": "displays",
+          "target": "CS Estops"
+        },
+        {
+          "type": "displays",
+          "target": "AGV Errors"
+        }
+      ],
+      "retrieval_text": "The System Layout section shows Sorter, Tippers, Hospital, GLDS, CS Estops, and AGV Errors on the System Detail screen.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0035_05",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        35
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0035"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Layout icons can be clicked for more information on selected components",
+      "systems": [
+        "HMI"
+      ],
+      "components": [
+        "System Layout",
+        "Tippers",
+        "Hospitals",
+        "GLDS"
+      ],
+      "summary": "The slide indicates that icons in the layout can be selected to access more information for Tippers, Hospitals, and GLDS.",
+      "observed_evidence": [
+        "“Click icons for more info on Tippers/Hospitals/GLDS”"
+      ],
+      "relationships": [
+        {
+          "type": "provides_detail_for",
+          "target": "Tippers"
+        },
+        {
+          "type": "provides_detail_for",
+          "target": "Hospitals"
+        },
+        {
+          "type": "provides_detail_for",
+          "target": "GLDS"
+        }
+      ],
+      "retrieval_text": "On the System Detail layout, clicking icons provides more information for Tippers, Hospitals, and GLDS.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0035_06",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        35
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0035"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Controls & Info section includes system control and status functions",
+      "systems": [
+        "HMI",
+        "AGV"
+      ],
+      "components": [
+        "Controls & Info",
+        "Start/Stop system",
+        "Bag Out",
+        "Purge",
+        "Metrics",
+        "AGV status",
+        "Tote"
+      ],
+      "summary": "The Controls & Info area includes actions and information displays for system start/stop, Bag Out, Purge, destination metrics, AGV status, and Tote-related information.",
+      "observed_evidence": [
+        "“Controls & Info: Start/Stop system, Bag Out, Purge, view Metrics (Destinations), AGV status, Tote”"
+      ],
+      "relationships": [
+        {
+          "type": "includes_control",
+          "target": "Start/Stop system"
+        },
+        {
+          "type": "includes_control",
+          "target": "Bag Out"
+        },
+        {
+          "type": "includes_control",
+          "target": "Purge"
+        },
+        {
+          "type": "includes_information_view",
+          "target": "Metrics (Destinations)"
+        },
+        {
+          "type": "includes_information_view",
+          "target": "AGV status"
+        },
+        {
+          "type": "includes_information_view",
+          "target": "Tote"
+        }
+      ],
+      "retrieval_text": "Controls & Info on the System Detail screen includes Start/Stop system, Bag Out, Purge, Metrics (Destinations), AGV status, and Tote information.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0035_01",
+      "title": "Navigate to additional information for Tippers, Hospitals, or GLDS from System Detail",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        35
+      ],
+      "systems": [
+        "HMI"
+      ],
+      "components": [
+        "System Detail",
+        "System Layout",
+        "Tippers",
+        "Hospitals",
+        "GLDS"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is on the System Detail screen.",
+        "Relevant icons for Tippers, Hospitals, or GLDS are visible in the System Layout area."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0035"
+      ],
+      "procedure_visual_summary": "Slide describes the System Detail home screen and states that icons in the System Layout can be clicked for more information on Tippers, Hospitals, and GLDS.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Open or remain on the System Detail screen.",
+          "expected_outcome": "The home screen for system overview and navigation is displayed.",
+          "validation_check": "Confirm the screen corresponds to System Detail / Overall System.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:35",
+            "artifact:slide_artifact_optisweep_training_internal_0035"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0035"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0035"
+          ],
+          "visual_region_hint": "Overall System / System Detail screen"
+        },
+        {
+          "step_order": 2,
+          "instruction": "In the System Layout area, click the icon for the desired Tipper, Hospital, or GLDS item.",
+          "expected_outcome": "More information for the selected Tipper, Hospital, or GLDS item is shown.",
+          "validation_check": "Confirm that additional information opens or updates for the selected icon.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:35",
+            "artifact:slide_artifact_optisweep_training_internal_0035"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0035"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0035"
+          ],
+          "visual_region_hint": "System Layout icons for Tippers / Hospitals / GLDS"
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0035_01",
+        "oku_optisweep_training_internal_0035_04",
+        "oku_optisweep_training_internal_0035_05"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "From the System Detail screen, click icons in the System Layout to view more information on Tippers, Hospitals, or GLDS."
+    },
+    {
+      "procedure_id": "proc_optisweep_training_internal_0035_02",
+      "title": "Refresh a subscreen by clicking ACB1 – AMR TT when the subscreen does not update",
+      "procedure_type": "recovery_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        35
+      ],
+      "systems": [
+        "HMI"
+      ],
+      "components": [
+        "Main Menu",
+        "ACB1 – AMR TT"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A subscreen is open or being viewed.",
+        "The subscreen does not update."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0035"
+      ],
+      "procedure_visual_summary": "Slide includes a tip stating to click “ACB1 – AMR TT” if a subscreen does not update.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "If a subscreen does not update, click “ACB1 – AMR TT.”",
+          "expected_outcome": "The subscreen may refresh or begin updating.",
+          "validation_check": "Confirm whether the previously non-updating subscreen now updates.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:35",
+            "artifact:slide_artifact_optisweep_training_internal_0035"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0035"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0035"
+          ],
+          "visual_region_hint": "UI element labeled ACB1 – AMR TT on the System Detail / subscreen navigation area"
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0035_02",
+        "oku_optisweep_training_internal_0035_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "If a subscreen does not update, click “ACB1 – AMR TT” as a refresh workaround."
+    }
+  ],
+  "discarded_candidates": []
+}

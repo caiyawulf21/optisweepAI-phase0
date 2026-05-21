@@ -1,0 +1,56 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0067_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        67
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0067"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "GeekAgvActionLoggingModel logs AGV tasks to Geek+",
+      "systems": [
+        "AGV",
+        "Geek+"
+      ],
+      "components": [
+        "GeekAgvActionLoggingModel"
+      ],
+      "summary": "The slide states that the GeekAgvActionLoggingModel logs all task activity to Geek+.",
+      "observed_evidence": [
+        "Slide title: 'Geek AGV Database / Geek AGV Action Logging Models'",
+        "Visible text: 'The GeekAgvActionLoggingModel logs all task to Geek+.'",
+        "Candidate record type indicates database reference"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "logs_to",
+          "source": "GeekAgvActionLoggingModel",
+          "target": "Geek+"
+        },
+        {
+          "relationship_type": "applies_to",
+          "source": "GeekAgvActionLoggingModel",
+          "target": "AGV tasks"
+        }
+      ],
+      "retrieval_text": "Geek AGV database reference: GeekAgvActionLoggingModel is a database/logging model that logs AGV task activity to Geek+.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "candidate_type": "procedure",
+      "title": "Use GeekAgvActionLoggingModel for task logging",
+      "reason": "The slide describes database model behavior only and does not provide an explicit action sequence, user steps, or reusable operational procedure.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:67",
+        "artifact:slide_artifact_optisweep_training_internal_0067"
+      ]
+    }
+  ]
+}

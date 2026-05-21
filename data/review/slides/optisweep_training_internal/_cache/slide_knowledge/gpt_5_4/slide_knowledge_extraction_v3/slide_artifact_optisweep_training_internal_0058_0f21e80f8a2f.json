@@ -1,0 +1,255 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_58_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        58
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0058"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "SorterSweeper module orchestrates tote, tote tipper, and sorter movements",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "SorterSweeper Module",
+        "Tote",
+        "Tote tipper",
+        "Sorter"
+      ],
+      "summary": "The slide states that the SorterSweeper Module orchestrates movements of totes, tote tippers, and the sorter.",
+      "observed_evidence": [
+        "Visible text: 'SorterSweeper Module'",
+        "Visible text: 'Orchestrates movements of Totes, tote tippers, and sorter'"
+      ],
+      "relationships": [
+        {
+          "from": "SorterSweeper Module",
+          "to": "Tote",
+          "relation": "orchestrates movement of"
+        },
+        {
+          "from": "SorterSweeper Module",
+          "to": "Tote tipper",
+          "relation": "orchestrates movement of"
+        },
+        {
+          "from": "SorterSweeper Module",
+          "to": "Sorter",
+          "relation": "orchestrates movement of"
+        }
+      ],
+      "retrieval_text": "Module breakdown states that the SorterSweeper Module orchestrates movements of totes, tote tippers, and sorter equipment.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_58_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        58
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0058"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Robotics module manages AGV tasks from SorterSweeper directives",
+      "systems": [
+        "OptiSweep",
+        "AGV"
+      ],
+      "components": [
+        "Robotics Module",
+        "SorterSweeper Module",
+        "AGV"
+      ],
+      "summary": "The slide describes the Robotics Module as managing AGV tasks based on directives from the SorterSweeper Module.",
+      "observed_evidence": [
+        "Visible text: 'Robotics Module'",
+        "Visible text: 'Manages AGV tasks based on SorterSweeper directives'"
+      ],
+      "relationships": [
+        {
+          "from": "SorterSweeper Module",
+          "to": "Robotics Module",
+          "relation": "provides directives to"
+        },
+        {
+          "from": "Robotics Module",
+          "to": "AGV",
+          "relation": "manages tasks for"
+        }
+      ],
+      "retrieval_text": "Robotics Module manages AGV tasks using directives from the SorterSweeper Module.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_58_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        58
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0058"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "OPC Comm module handles communication between SorterSweeper and OPC server",
+      "systems": [
+        "OptiSweep",
+        "OPC server"
+      ],
+      "components": [
+        "OPC Comm Module",
+        "SorterSweeper Module",
+        "OPC server"
+      ],
+      "summary": "The slide identifies the OPC Comm Module as the communication layer between the SorterSweeper Module and the OPC server.",
+      "observed_evidence": [
+        "Visible text: 'OPC Comm Module'",
+        "Visible text: 'Manages communication between the SorterSweeper module and the OPC server.'"
+      ],
+      "relationships": [
+        {
+          "from": "OPC Comm Module",
+          "to": "SorterSweeper Module",
+          "relation": "manages communication for"
+        },
+        {
+          "from": "OPC Comm Module",
+          "to": "OPC server",
+          "relation": "manages communication with"
+        }
+      ],
+      "retrieval_text": "OPC Comm Module manages communication between the SorterSweeper Module and the OPC server.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_58_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        58
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0058"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Geek+ Comm module handles communication between Robotics module and Geek+ RMS",
+      "systems": [
+        "OptiSweep",
+        "Geek+ RMS"
+      ],
+      "components": [
+        "Geek+ Comm Module",
+        "Robotics Module",
+        "Geek+ RMS server"
+      ],
+      "summary": "The slide states that the Geek+ Comm Module manages communication between the Robotics Module and the Geek+ RMS server.",
+      "observed_evidence": [
+        "Visible text: 'Geek+ Comm Module'",
+        "Visible text: 'Manages communication between the Robotics module and the Geek+ RMS server.'"
+      ],
+      "relationships": [
+        {
+          "from": "Geek+ Comm Module",
+          "to": "Robotics Module",
+          "relation": "manages communication for"
+        },
+        {
+          "from": "Geek+ Comm Module",
+          "to": "Geek+ RMS server",
+          "relation": "manages communication with"
+        }
+      ],
+      "retrieval_text": "Geek+ Comm Module is the communication layer between the Robotics Module and the Geek+ RMS server.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_58_05",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        58
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0058"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "XLe Comm module handles communication between SorterSweeper and UPS chat server",
+      "systems": [
+        "OptiSweep",
+        "UPS chat server"
+      ],
+      "components": [
+        "XLe Comm Module",
+        "SorterSweeper Module",
+        "UPS chat server"
+      ],
+      "summary": "The slide describes the XLe Comm Module as managing communication between the SorterSweeper Module and the UPS chat server.",
+      "observed_evidence": [
+        "Visible text: 'XLe Comm Module'",
+        "Visible text: 'Manages communication between the SorterSweeper module and the UPS chat server.'"
+      ],
+      "relationships": [
+        {
+          "from": "XLe Comm Module",
+          "to": "SorterSweeper Module",
+          "relation": "manages communication for"
+        },
+        {
+          "from": "XLe Comm Module",
+          "to": "UPS chat server",
+          "relation": "manages communication with"
+        }
+      ],
+      "retrieval_text": "XLe Comm Module manages communication between the SorterSweeper Module and the UPS chat server.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_58_01",
+      "title": "No reusable procedure present on module breakdown slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        58
+      ],
+      "systems": [
+        "OptiSweep",
+        "Geek+ RMS",
+        "OPC server",
+        "UPS chat server"
+      ],
+      "components": [
+        "SorterSweeper Module",
+        "Robotics Module",
+        "OPC Comm Module",
+        "Geek+ Comm Module",
+        "XLe Comm Module"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewer is interpreting a high-level module overview slide."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0058"
+      ],
+      "procedure_visual_summary": "Bullet list module breakdown slide describing responsibilities and communication links among SorterSweeper, Robotics, OPC Comm, Geek+ Comm, and XLe Comm modules.",
+      "steps": [],
+      "warnings": [
+        "Slide contains architectural responsibilities only.",
+        "No explicit action sequence, operator workflow, diagnostic check, or configuration steps are shown."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0058",
+        "deck:optisweep_training_internal",
+        "slide:58"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: this slide is a module breakdown overview that describes component responsibilities and communication paths, but it does not provide explicit operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

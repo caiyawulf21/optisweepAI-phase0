@@ -1,0 +1,104 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_upsfortna_optisweep_training_day1_20260317_000085_01",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000085"
+      ],
+      "source_artifact_ids": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000069"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002258",
+        "vec_upsfortna_optisweep_training_day1_20260317_002259",
+        "vec_upsfortna_optisweep_training_day1_20260317_002260",
+        "vec_upsfortna_optisweep_training_day1_20260317_002261",
+        "vec_upsfortna_optisweep_training_day1_20260317_002262",
+        "vec_upsfortna_optisweep_training_day1_20260317_002263",
+        "vec_upsfortna_optisweep_training_day1_20260317_002264",
+        "vec_upsfortna_optisweep_training_day1_20260317_002265",
+        "vec_upsfortna_optisweep_training_day1_20260317_002266",
+        "vec_upsfortna_optisweep_training_day1_20260317_002267",
+        "vec_upsfortna_optisweep_training_day1_20260317_002268",
+        "vec_upsfortna_optisweep_training_day1_20260317_002269"
+      ],
+      "artifact_refs": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002258_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002262_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002266_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002269_midpoint"
+      ],
+      "timestamp_start": "02:26:12.840",
+      "timestamp_end": "02:27:09.246",
+      "unit_type": "concept",
+      "title": "Tote status fields and exchange readiness indicators",
+      "systems": [],
+      "components": [
+        "tote",
+        "station"
+      ],
+      "summary": "Tote status view shows init reason, current task, exchange type/priority, readiness for exchange, whether an AUV is behind it, station, sorter task UID, task name (e.g., pickup tote), errors, and tote ID.",
+      "observed_evidence": [
+        "tote status of why it wasn't initialized",
+        "shows the current task and what kind of exchange type ... if it's ready for exchange",
+        "if there's an AUV behind it ... what stations it's at ... sorter task UID ... any error ... the tote ID"
+      ],
+      "relationships": [
+        "tote -> station: location displayed",
+        "tote -> task: current task and exchange type",
+        "tote -> error: visible if present"
+      ],
+      "retrieval_text": "Tote status view includes: init reason, current task, exchange type/priority, exchange readiness, AUV behind, station, sorter task UID, task name (pickup tote), errors, tote ID.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_upsfortna_optisweep_training_day1_20260317_000085_02",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000085"
+      ],
+      "source_artifact_ids": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000069"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002270",
+        "vec_upsfortna_optisweep_training_day1_20260317_002271",
+        "vec_upsfortna_optisweep_training_day1_20260317_002272",
+        "vec_upsfortna_optisweep_training_day1_20260317_002273",
+        "vec_upsfortna_optisweep_training_day1_20260317_002274",
+        "vec_upsfortna_optisweep_training_day1_20260317_002275",
+        "vec_upsfortna_optisweep_training_day1_20260317_002276",
+        "vec_upsfortna_optisweep_training_day1_20260317_002277",
+        "vec_upsfortna_optisweep_training_day1_20260317_002278",
+        "vec_upsfortna_optisweep_training_day1_20260317_002279"
+      ],
+      "artifact_refs": [
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002271_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002273_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002276_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002278_midpoint"
+      ],
+      "timestamp_start": "02:27:09.246",
+      "timestamp_end": "02:27:48.320",
+      "unit_type": "concept",
+      "title": "Exchange thresholds and calculation methods",
+      "systems": [],
+      "components": [
+        "tote"
+      ],
+      "summary": "Exchange settings use thresholds for queue, pickup, priority, and close (e.g., 60/70/80%). Methods can be counts, cube, or a mix. Customers can update, but values are typically finalized with the UPS project team at the end of UAT.",
+      "observed_evidence": [
+        "you have a queue, a pick up, a priority and a close ... sixty 70 80%",
+        "software has the ability to do it based off counts ... method is either counts cube or cube and counts",
+        "updated by the customer ... finalize it with the project team with UPS at the end of UAT"
+      ],
+      "relationships": [
+        "thresholds -> methods: counts | cube | combined",
+        "thresholds -> stages: queue | pickup | priority | close",
+        "governance -> thresholds: customer update; finalized end of UAT"
+      ],
+      "retrieval_text": "Exchange thresholds: queue, pickup, priority, close (e.g., 60/70/80%). Methods: counts, cube, or both. Customer can update; typically finalized with UPS project team at end of UAT.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": []
+}

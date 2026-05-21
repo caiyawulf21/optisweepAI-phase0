@@ -1,0 +1,22 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "No Content Segment",
+      "timestamp_start": "02:00:59.760",
+      "timestamp_end": "02:00:59.880",
+      "primary_intent": "Identify absence of operational content",
+      "operational_intents": [
+        "Confirm no actionable information present"
+      ],
+      "knowledge_extraction_strategy": "Skip extraction due to lack of content",
+      "why_this_strategy": "No transcript or slide content to analyze",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001975"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000049"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

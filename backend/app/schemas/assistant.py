@@ -33,7 +33,7 @@ class RetrievalResult(BaseModel):
     record_id: str
     source_case_id: str | None = None
     title: str
-    issue_category: str = "CAT-1"
+    issue_category: str | None = None
     failure_signature: str | None = None
     matched_signals: list[str] = Field(default_factory=list)
     confidence: float = 0.0

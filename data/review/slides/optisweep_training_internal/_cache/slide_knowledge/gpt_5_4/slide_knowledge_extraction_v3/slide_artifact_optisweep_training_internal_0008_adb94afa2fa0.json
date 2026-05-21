@@ -1,0 +1,223 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0008_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        8
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0008"
+      ],
+      "unit_type": "operational_process",
+      "title": "Tipper station tote handling sequence",
+      "systems": [
+        "Tipper Station",
+        "AGV"
+      ],
+      "components": [
+        "Tipper",
+        "Tote",
+        "Tipping arm",
+        "Chute"
+      ],
+      "summary": "The slide describes the operating sequence of a tipper station: a tipper clamps a tote from the AGV, actuates a tipping arm to dump contents onto a chute, and then places the tote back onto the AGV top.",
+      "observed_evidence": [
+        "“Each station has two tippers”",
+        "“Tipper will clamp tote from AGV”",
+        "“Actuates tipping arm to dump contents onto chute”",
+        "“Places tote back onto AGV top”"
+      ],
+      "relationships": [
+        {
+          "type": "sequence",
+          "from": "Tipper clamps tote from AGV",
+          "to": "Tipper arm dumps contents onto chute"
+        },
+        {
+          "type": "sequence",
+          "from": "Tipper arm dumps contents onto chute",
+          "to": "Tote placed back onto AGV top"
+        },
+        {
+          "type": "composition",
+          "from": "Tipper Station",
+          "to": "Two tippers"
+        }
+      ],
+      "retrieval_text": "Tipper Station operational process: each station has two tippers. Tipper clamps tote from AGV, actuates tipping arm to dump contents onto chute, then places tote back onto AGV top.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0008_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        8
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0008"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Tipper station local HMI supports operation and fault recovery",
+      "systems": [
+        "Tipper Station"
+      ],
+      "components": [
+        "HMI"
+      ],
+      "summary": "Each tipper station includes a self-contained HMI intended for operation and fault recovery activities.",
+      "observed_evidence": [
+        "“Self-contained HMI for operation and fault recovery”"
+      ],
+      "relationships": [
+        {
+          "type": "supports",
+          "from": "HMI",
+          "to": "Tipper station operation"
+        },
+        {
+          "type": "supports",
+          "from": "HMI",
+          "to": "Fault recovery"
+        }
+      ],
+      "retrieval_text": "Tipper Station HMI: self-contained HMI is provided for station operation and fault recovery.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0008_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        8
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0008"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Operator controls associated with tipper readiness and emergency stop",
+      "systems": [
+        "Tipper Station"
+      ],
+      "components": [
+        "Estop",
+        "Ready to tip button"
+      ],
+      "summary": "The slide indicates operators are equipped with an emergency stop and ready-to-tip buttons associated with tipper operation.",
+      "observed_evidence": [
+        "“Operators equipped with Estop and ready to tip buttons.”"
+      ],
+      "relationships": [
+        {
+          "type": "association",
+          "from": "Operator",
+          "to": "Estop"
+        },
+        {
+          "type": "association",
+          "from": "Operator",
+          "to": "Ready to tip button"
+        }
+      ],
+      "retrieval_text": "Tipper Station operator controls: operators have Estop and ready-to-tip buttons for station interaction.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0008_01",
+      "title": "Operate tipper station tote dump cycle",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        8
+      ],
+      "systems": [
+        "Tipper Station",
+        "AGV"
+      ],
+      "components": [
+        "Tipper",
+        "Tote",
+        "Tipping arm",
+        "Chute"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A tote is present on an AGV at the tipper station."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0008"
+      ],
+      "procedure_visual_summary": "Slide describes the tipper handling flow and mentions local HMI plus operator Estop and ready-to-tip buttons; no detailed UI sequence is shown.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Clamp the tote from the AGV using the tipper.",
+          "expected_outcome": "The tote is secured by the tipper.",
+          "validation_check": "Tote is clamped by the tipper rather than resting only on the AGV.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:8",
+            "artifact:slide_artifact_optisweep_training_internal_0008"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0008"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0008"
+          ],
+          "visual_region_hint": "Main bullet list under 'Tipper Station'"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Actuate the tipping arm to dump the tote contents onto the chute.",
+          "expected_outcome": "Contents are discharged from the tote onto the chute.",
+          "validation_check": "Contents move from the tote to the chute during the tipping action.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:8",
+            "artifact:slide_artifact_optisweep_training_internal_0008"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0008"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0008"
+          ],
+          "visual_region_hint": "Main bullet list under 'Tipper Station'"
+        },
+        {
+          "step_order": 3,
+          "instruction": "Place the tote back onto the top of the AGV.",
+          "expected_outcome": "The emptied tote is returned to the AGV top.",
+          "validation_check": "Tote is back on the AGV after the dump cycle.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:8",
+            "artifact:slide_artifact_optisweep_training_internal_0008"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0008"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0008"
+          ],
+          "visual_region_hint": "Main bullet list under 'Tipper Station'"
+        }
+      ],
+      "warnings": [
+        "The slide does not specify how the cycle is initiated via HMI or buttons.",
+        "The slide mentions Estop and ready-to-tip buttons but does not provide a complete operator action sequence."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0008_01",
+        "oku_optisweep_training_internal_0008_02",
+        "oku_optisweep_training_internal_0008_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Candidate procedure for tipper station operation: clamp tote from AGV, actuate tipping arm to dump contents onto chute, then place tote back onto AGV top. HMI and operator buttons are mentioned but not procedurally defined."
+    }
+  ],
+  "discarded_candidates": []
+}

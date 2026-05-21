@@ -25,6 +25,7 @@ ARTIFACT_DIR = OUTPUT_DIR / "artifacts" / "docx_media"
 EMBEDDED_ARTIFACT_DIR = OUTPUT_DIR / "artifacts" / "embedded_regions"
 INTERPRETATION_ENGINE = "phase0_agent_cached_llm_v1"
 AZURE_OPENAI_CONFIG_PATH = ROOT / "config" / "azure_openai.local.json"
+INGESTION_EXAMPLES_PATH = ROOT / "prompts" / "phase0_ingestion_examples.json"
 L4_SUPPORT_TIER = "L4_engineering_project_team"
 L4_ESCALATION_SIGNAL = "l4_project_team_escalation"
 AGENT_LLM_CONTEXT_OVERLAY = {
@@ -61,8 +62,24 @@ ROLE_TO_ORGANIZATIONAL_ROLE = {
 SOURCE_FILES = [
     "prompts/phase0_system_prompt.txt",
     "docs/Phase0 Cat1 Dataset Seed Records V1.docx",
+    "docs/Optisweep Issue Categories.docx",
     toolkit.ACTIVE_SOURCE_FILE,
 ]
+
+SYNTHESIS_POLICY = {
+    "canonical_incident": "HIGH",
+    "timeline_event": "MEDIUM_HIGH",
+    "raw_evidence_chunk": "LOW_MEDIUM",
+    "source_artifact_reference": "LOW",
+    "procedure_candidate": "HIGH_WHEN_EVIDENCE_SUPPORTS",
+    "workflow_candidate_step": "HIGH",
+    "escalation_summary_template": "HIGH",
+    "candidate_incident_record": "HIGH_SUMMARY_PROJECTION",
+    "context_reference": "CURATED_CONTEXT_ONLY",
+}
+
+FALLBACK_QUALITY_TIER = "fallback_review_only"
+LLM_QUALITY_TIER = "llm_operational_synthesis"
 
 
 def qn(local_name: str) -> str:
@@ -187,6 +204,36 @@ def clean_text(value: str | None) -> str:
 
 def relative_path(path: Path) -> str:
     return str(path.relative_to(ROOT)).replace("\\", "/")
+
+
+def load_ingestion_examples() -> dict[str, Any]:
+    if not INGESTION_EXAMPLES_PATH.exists():
+        return {
+            "examples_source": relative_path(INGESTION_EXAMPLES_PATH),
+            "examples_used": False,
+        }
+    examples = json.loads(INGESTION_EXAMPLES_PATH.read_text(encoding="utf-8"))
+    return {
+        "examples_source": relative_path(INGESTION_EXAMPLES_PATH),
+        "examples_version": examples.get("examples_version"),
+        "examples_used": True,
+        "examples": examples,
+    }
+
+
+def compact_ingestion_examples(examples_context: dict[str, Any]) -> dict[str, Any]:
+    if not examples_context.get("examples_used"):
+        return examples_context
+    examples = examples_context.get("examples", {})
+    return {
+        "examples_source": examples_context.get("examples_source"),
+        "examples_version": examples_context.get("examples_version"),
+        "examples_used": True,
+        "good_canonical_incident_example": examples.get("good_canonical_incident_example"),
+        "good_procedure_candidate_example": examples.get("good_procedure_candidate_example"),
+        "good_workflow_candidate_example": examples.get("good_workflow_candidate_example"),
+        "bad_examples": examples.get("bad_examples", []),
+    }
 
 
 def relationship_targets(archive: zipfile.ZipFile) -> dict[str, str]:
@@ -686,6 +733,7 @@ def compact_region(region: dict[str, Any]) -> dict[str, Any]:
 def llm_output_contract(state: Phase0AgentState) -> dict[str, Any]:
     signal_buckets = toolkit.SIGNAL_BUCKETS
     return {
+        "synthesis_policy": SYNTHESIS_POLICY,
         "top_level_keys": [
             "canonical_incident",
             "semantic_chunks",
@@ -704,9 +752,13 @@ def llm_output_contract(state: Phase0AgentState) -> dict[str, Any]:
             "Use only supplied OCR/layout/region evidence and reference context.",
             "workflow_candidate_steps represent incidence workflow definitions for the current incident, not approved runtime workflow definitions.",
             "Name incidence workflows by entry points, initial symptoms, and candidate diagnoses so a later LangGraph workflow-builder agent can group similar incidents.",
-            "Normalize OCR avg/AVG to AGV for robot/fleet/RMS/tipper/hospital/WCS context. Preserve raw avg in raw_terms, but use AGV/agv in normalized outputs and signal names.",
+            "Preserve source symptom and classification language. OCR corrections may be captured beside raw terms, but do not convert source language into hardcoded operational labels.",
             "Procedure candidates must include detailed, screenshot-linked steps when evidence supports them. If a step cannot be grounded in this case, record it as a refinement gap instead of inventing details.",
             "Evidence collection procedures must identify tool/system, visible screen or view, evidence to capture, data fields to preserve, validation check, screenshot_artifact_ids, and source_region_refs when available.",
+            "Do not emit procedure steps with instruction, operator_action, or action equal to 'None'.",
+            "If procedure evidence is weak, emit a skeletal refinement placeholder with procedure_steps: [] and candidate_refinement_questions.",
+            "Non-fallback workflow names must be symptom-driven and must not start with case_<case_id>.",
+            "Fallback output is review-only and not eligible for workflow grouping or cross-incident synthesis.",
         ],
         "canonical_incident_required": [
             "container_id",
@@ -788,6 +840,13 @@ def llm_output_contract(state: Phase0AgentState) -> dict[str, Any]:
             "region_ids",
             "procedure_category_status",
             "promotion_blockers",
+            "quality_tier",
+            "eligible_for_cross_incident_synthesis",
+            "eligible_for_workflow_grouping",
+            "synthesis_blockers",
+            "pattern_candidate_notes",
+            "comparable_signal_groups",
+            "recurrence_evidence_refs",
         ],
         "procedure_step_required": [
             "step_number",
@@ -827,6 +886,13 @@ def llm_output_contract(state: Phase0AgentState) -> dict[str, Any]:
             "role_constraints",
             "required_permissions",
             "requires_role_review",
+            "quality_tier",
+            "eligible_for_cross_incident_synthesis",
+            "eligible_for_workflow_grouping",
+            "synthesis_blockers",
+            "pattern_candidate_notes",
+            "comparable_signal_groups",
+            "recurrence_evidence_refs",
         ],
         "escalation_summary_required": [
             "trigger_reason",
@@ -866,11 +932,13 @@ def build_llm_input_packet(state: Phase0AgentState) -> dict[str, Any]:
         for region in state.semantic_regions.get("regions", [])
     ]
     packet = {
-        "task": "Interpret Phase 0 CAT-1 incident evidence into candidate operational incident intelligence.",
+        "task": "Interpret Phase 0 incident evidence into candidate operational incident intelligence using source-provided category context.",
         "case_id": state.case_id,
         "source_file": state.active_source_file,
         "phase0_system_prompt": state.prompt_text,
         "dataset_context": toolkit.dataset_context_packet(state.reference),
+        "dataset_synthesis_policy": SYNTHESIS_POLICY,
+        "ingestion_examples": load_ingestion_examples(),
         "ocr_pages": [compact_ocr_page(page) for page in state.ocr_data.get("pages", [])],
         "layout_blocks": [compact_layout_page(page) for page in state.layout_blocks.get("pages", [])],
         "semantic_regions": [compact_region(region) for region in state.semantic_regions.get("regions", [])],
@@ -983,6 +1051,8 @@ def build_llm_stage_packet(base_packet: dict[str, Any], state: Phase0AgentState,
         "source_file": base_packet["source_file"],
         "phase0_system_prompt": truncate_text(base_packet.get("phase0_system_prompt"), 14000),
         "dataset_context": base_packet["dataset_context"],
+        "dataset_synthesis_policy": base_packet["dataset_synthesis_policy"],
+        "ingestion_examples": compact_ingestion_examples(base_packet["ingestion_examples"]),
         "ocr_pages": [] if use_slim_source else base_packet["ocr_pages"],
         "layout_blocks": [] if use_slim_source else base_packet["layout_blocks"],
         "semantic_regions": compact_region_manifest(base_packet["semantic_regions"]) if use_slim_source else base_packet["semantic_regions"],
@@ -1059,6 +1129,33 @@ def call_azure_openai_stage(client: Any, config: dict[str, Any], stage_packet: d
     return parse_json_response(content), usage
 
 
+def call_azure_openai_stage_repair(
+    client: Any,
+    config: dict[str, Any],
+    stage_packet: dict[str, Any],
+    validation_errors: list[str],
+    raw_response_path: Path,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    repair_packet = {
+        "repair_task": "Repair only the failed stage JSON. Return no prose.",
+        "stage": stage_packet["stage"],
+        "validation_errors": validation_errors,
+        "required_output_contract": stage_packet["required_output_contract"],
+        "previous_stage_outputs": stage_packet.get("previous_stage_outputs", {}),
+        "stage_instruction": stage_packet["stage_instruction"],
+        "dataset_synthesis_policy": stage_packet.get("dataset_synthesis_policy"),
+        "ingestion_examples": stage_packet.get("ingestion_examples"),
+        "semantic_regions": stage_packet.get("semantic_regions", []),
+        "artifact_refs": stage_packet.get("artifact_refs", []),
+        "allowed_region_ids": [
+            region.get("region_id")
+            for region in stage_packet.get("semantic_regions", [])
+            if region.get("region_id")
+        ],
+    }
+    return call_azure_openai_stage(client, config, repair_packet, raw_response_path)
+
+
 def normalize_llm_procedure_values(interpretations: dict[str, Any]) -> None:
     detail_values = {"high", "medium", "low", "skeletal"}
     status_values = {"case_derived", "needs_multi_incident_refinement", "ready_for_sme_review"}
@@ -1074,6 +1171,116 @@ def normalize_llm_procedure_values(interpretations: dict[str, Any]) -> None:
             procedure["procedure_refinement_status"] = "needs_multi_incident_refinement" if status in {"needs_sme_review", "case-grounded_draft", "draft"} else "case_derived"
 
 
+def is_case_named_workflow(name: str | None, case_id: str) -> bool:
+    return bool(name and re.match(rf"^case_{re.escape(str(case_id))}(?:_|$)", name))
+
+
+def validate_procedure_candidate_shape(procedure: dict[str, Any], index: int) -> list[str]:
+    errors = []
+    steps = procedure.get("procedure_steps", [])
+    detail_level = procedure.get("procedure_detail_level")
+    quality_tier = procedure.get("quality_tier")
+    if detail_level == "skeletal" and steps and quality_tier != FALLBACK_QUALITY_TIER:
+        errors.append(f"procedure_candidates[{index}] skeletal procedure must be review-only or use procedure_steps: []")
+    for step_index, step in enumerate(steps, start=1):
+        instruction = step.get("instruction") or step.get("operator_action") or step.get("action")
+        if str(instruction).strip().lower() == "none":
+            errors.append(f"procedure_candidates[{index}].procedure_steps[{step_index}] instruction must not be None")
+        operator_action = step.get("operator_action")
+        gap_notes = step.get("refinement_gap_notes")
+        if not operator_action and not gap_notes:
+            errors.append(f"procedure_candidates[{index}].procedure_steps[{step_index}] missing operator_action and refinement_gap_notes")
+    return errors
+
+
+def validate_workflow_candidate_shape(workflow: dict[str, Any], index: int, case_id: str) -> list[str]:
+    errors = []
+    name = workflow.get("candidate_workflow_name") or workflow.get("workflow_id")
+    is_fallback = workflow.get("fallback_only") is True or workflow.get("quality_tier") == FALLBACK_QUALITY_TIER
+    if is_case_named_workflow(name, case_id) and not is_fallback:
+        errors.append(f"workflow_candidate_steps[{index}] non-fallback workflow name is case-number driven")
+    if not is_fallback:
+        for field_name in ["entry_conditions", "required_signals", "evidence_refs", "procedure_refs"]:
+            if not workflow.get(field_name):
+                errors.append(f"workflow_candidate_steps[{index}] missing {field_name}")
+    return errors
+
+
+def validate_stage_output(stage_output: dict[str, Any], spec: dict[str, Any], state: Phase0AgentState) -> list[str]:
+    errors = [f"missing {key}" for key in spec["output_keys"] if key not in stage_output]
+    contract = llm_stage_contract(state, spec["output_keys"])
+    region_ids = {region["region_id"] for region in state.semantic_regions.get("regions", [])}
+    required_by_collection = {
+        "semantic_chunks": contract.get("semantic_chunk_required", []),
+        "timeline_events": contract.get("timeline_event_required", []),
+        "procedure_candidates": contract.get("procedure_candidate_required", []),
+        "workflow_candidate_steps": contract.get("workflow_step_required", []),
+    }
+    for field_name in contract.get("canonical_incident_required", []):
+        if "canonical_incident" in stage_output and field_name not in stage_output["canonical_incident"]:
+            errors.append(f"canonical_incident missing {field_name}")
+    for field_name in contract.get("escalation_summary_required", []):
+        if "escalation_summary_template" in stage_output and field_name not in stage_output["escalation_summary_template"]:
+            errors.append(f"escalation_summary_template missing {field_name}")
+    for collection_name, required_fields in required_by_collection.items():
+        if collection_name not in stage_output:
+            continue
+        collection = stage_output.get(collection_name)
+        if not isinstance(collection, list) or not collection:
+            errors.append(f"{collection_name} must be a non-empty list")
+            continue
+        for index, item in enumerate(collection, start=1):
+            for field_name in required_fields:
+                if field_name not in item:
+                    errors.append(f"{collection_name}[{index}] missing {field_name}")
+            item_regions = item.get("region_ids", [])
+            if not isinstance(item_regions, list) or not item_regions:
+                errors.append(f"{collection_name}[{index}] missing region_ids")
+            elif not set(item_regions).issubset(region_ids):
+                errors.append(f"{collection_name}[{index}] has unknown region_ids")
+    for index, procedure in enumerate(stage_output.get("procedure_candidates", []), start=1):
+        errors.extend(validate_procedure_candidate_shape(procedure, index))
+        for step_index, step in enumerate(procedure.get("procedure_steps", []), start=1):
+            for field_name in contract.get("procedure_step_required", []):
+                if field_name not in step:
+                    errors.append(f"procedure_candidates[{index}].procedure_steps[{step_index}] missing {field_name}")
+            if step.get("evidence_quality") not in {"high", "medium", "low"}:
+                errors.append(f"procedure_candidates[{index}].procedure_steps[{step_index}] invalid evidence_quality")
+            if not isinstance(step.get("screenshot_artifact_ids"), list):
+                errors.append(f"procedure_candidates[{index}].procedure_steps[{step_index}] screenshot_artifact_ids must be a list")
+            if not isinstance(step.get("source_region_refs"), list):
+                errors.append(f"procedure_candidates[{index}].procedure_steps[{step_index}] source_region_refs must be a list")
+    for index, workflow in enumerate(stage_output.get("workflow_candidate_steps", []), start=1):
+        errors.extend(validate_workflow_candidate_shape(workflow, index, state.case_id))
+    return errors
+
+
+def fallback_quality_fields(reason: str | None) -> dict[str, Any]:
+    return {
+        "quality_tier": FALLBACK_QUALITY_TIER,
+        "fallback_only": True,
+        "eligible_for_cross_incident_synthesis": False,
+        "eligible_for_workflow_grouping": False,
+        "fallback_reason": reason,
+        "requires_manual_reingestion": True,
+        "synthesis_blockers": ["fallback_generic_output"],
+        "pattern_candidate_notes": "Fallback output is retained for debugging and manual review only.",
+        "comparable_signal_groups": [],
+        "recurrence_evidence_refs": [],
+    }
+
+
+def apply_fallback_markers_to_interpretations(interpretations: dict[str, Any], reason: str | None) -> None:
+    fields = fallback_quality_fields(reason)
+    for key in ["canonical_incident", "escalation_summary_template"]:
+        if isinstance(interpretations.get(key), dict):
+            interpretations[key].update(fields)
+    for key in ["semantic_chunks", "timeline_events", "procedure_candidates", "workflow_candidate_steps"]:
+        for record in interpretations.get(key, []):
+            if isinstance(record, dict):
+                record.update(fields)
+
+
 def interpret_with_llm_or_fallback(state: Phase0AgentState) -> dict[str, Any]:
     try:
         interpretations = interpret_semantic_regions_with_llm(state)
@@ -1086,6 +1293,7 @@ def interpret_with_llm_or_fallback(state: Phase0AgentState) -> dict[str, Any]:
         state.llm_status = "fallback_generic"
         state.llm_error = str(exc)
         fallback = build_generic_interpretations(state)
+        apply_fallback_markers_to_interpretations(fallback, state.llm_error)
         fallback.setdefault("metadata", {})
         fallback["metadata"].update(
             {
@@ -1116,15 +1324,35 @@ def interpret_semantic_regions_with_llm(state: Phase0AgentState) -> dict[str, An
     stage_usages = []
     stage_raw_response_paths = []
     stage_input_paths = []
+    retry_metadata = []
     for spec in llm_stage_specs():
         stage_packet = build_llm_stage_packet(packet, state, spec, interpretations)
         stage_input_path = state.extracted_dir / f"{state.output_prefix}_llm_input_packet_{spec['stage']}.json"
         raw_response_path = state.extracted_dir / f"{state.output_prefix}_llm_raw_response_{spec['stage']}.json"
         write_json(stage_input_path, stage_packet)
         stage_output, stage_usage = call_azure_openai_stage(client, config, stage_packet, raw_response_path)
-        missing_keys = [key for key in spec["output_keys"] if key not in stage_output]
-        if missing_keys:
-            raise ValueError(f"LLM stage {spec['stage']} missing keys: {', '.join(missing_keys)}")
+        stage_errors = validate_stage_output(stage_output, spec, state)
+        if stage_errors:
+            retry_raw_response_path = state.extracted_dir / f"{state.output_prefix}_llm_raw_response_{spec['stage']}_retry.json"
+            retry_metadata.append(
+                {
+                    "stage": spec["stage"],
+                    "llm_retry_attempted": True,
+                    "llm_retry_reason": "; ".join(stage_errors),
+                    "llm_retry_succeeded": False,
+                }
+            )
+            stage_output, retry_usage = call_azure_openai_stage_repair(client, config, stage_packet, stage_errors, retry_raw_response_path)
+            stage_usage = {
+                "prompt_tokens": (stage_usage.get("prompt_tokens") or 0) + (retry_usage.get("prompt_tokens") or 0),
+                "completion_tokens": (stage_usage.get("completion_tokens") or 0) + (retry_usage.get("completion_tokens") or 0),
+                "total_tokens": (stage_usage.get("total_tokens") or 0) + (retry_usage.get("total_tokens") or 0),
+            }
+            stage_errors = validate_stage_output(stage_output, spec, state)
+            retry_metadata[-1]["llm_retry_succeeded"] = not stage_errors
+            stage_raw_response_paths.append(relative_path(retry_raw_response_path))
+        if stage_errors:
+            raise ValueError(f"LLM stage {spec['stage']} failed validation after retry: {'; '.join(stage_errors)}")
         interpretations.update({key: stage_output[key] for key in spec["output_keys"]})
         stage_usages.append({"stage": spec["stage"], **stage_usage})
         state.llm_usage = merge_llm_usage(stage_usages)
@@ -1146,6 +1374,11 @@ def interpret_semantic_regions_with_llm(state: Phase0AgentState) -> dict[str, An
             "llm_stage_input_paths": stage_input_paths,
             "llm_stage_raw_response_paths": stage_raw_response_paths,
             "llm_stage_count": len(stage_raw_response_paths),
+            "llm_retry_attempted": any(item["llm_retry_attempted"] for item in retry_metadata),
+            "llm_retry_metadata": retry_metadata,
+            "examples_source": packet["ingestion_examples"].get("examples_source"),
+            "examples_version": packet["ingestion_examples"].get("examples_version"),
+            "examples_used": packet["ingestion_examples"].get("examples_used", False),
         }
     )
     interpretations.setdefault("dataset_context_used", packet["dataset_context"])
@@ -1211,6 +1444,7 @@ def validate_llm_interpretation(interpretations: dict[str, Any], state: Phase0Ag
         if field_name not in interpretations["escalation_summary_template"]:
             errors.append(f"escalation_summary_template missing {field_name}")
     for index, procedure in enumerate(interpretations.get("procedure_candidates", []), start=1):
+        errors.extend(validate_procedure_candidate_shape(procedure, index))
         if procedure.get("procedure_detail_level") not in {"high", "medium", "low", "skeletal"}:
             errors.append(f"procedure_candidates[{index}] invalid procedure_detail_level")
         if procedure.get("procedure_refinement_status") not in {"case_derived", "needs_multi_incident_refinement", "ready_for_sme_review"}:
@@ -1231,6 +1465,8 @@ def validate_llm_interpretation(interpretations: dict[str, Any], state: Phase0Ag
                 errors.append(f"procedure_candidates[{index}].procedure_steps[{step_index}] screenshot_artifact_ids must be a list")
             if not isinstance(step.get("source_region_refs"), list):
                 errors.append(f"procedure_candidates[{index}].procedure_steps[{step_index}] source_region_refs must be a list")
+    for index, workflow in enumerate(interpretations.get("workflow_candidate_steps", []), start=1):
+        errors.extend(validate_workflow_candidate_shape(workflow, index, state.case_id))
     if len(interpretations.get("semantic_chunks", [])) >= len(state.semantic_regions.get("regions", [])) and len(state.semantic_regions.get("regions", [])) > 12:
         errors.append("semantic_chunks appear one-to-one with screenshots instead of meaningfully grouped")
     return errors
@@ -1286,11 +1522,11 @@ def build_generic_interpretations(state: Phase0AgentState) -> dict[str, Any]:
         },
         "dataset_context_used": toolkit.dataset_context_packet(state.reference),
         "canonical_incident": {
-            "container_id": "phase0_cat1_wcs_service_failure",
+            "container_id": "phase0_candidate_incident",
             "dataset_record_type": "incident_summary",
             "case_id": state.case_id,
             "source_case_id": state.case_id,
-            "title": f"Case {state.case_id} - Candidate CAT-1 operational incident from DOCX screenshot evidence",
+            "title": f"Case {state.case_id} - Candidate operational incident from DOCX screenshot evidence",
             "retrieval_text": all_text[:2000],
             "validated_root_cause": False,
             "candidate_inferred_causes": [],
@@ -1364,42 +1600,16 @@ def generic_procedures(state: Phase0AgentState, chunks: list[dict[str, Any]], ev
                 "supporting_evidence_chunks": evidence_chunks,
                 "supporting_timeline_events": evidence_events,
                 "supporting_artifacts": artifact_ids,
-                "refinement_opportunities": ["Review against additional CAT-1 incidents before promotion."],
+                "refinement_opportunities": ["Review against additional source-classified incidents before promotion."],
                 "procedure_detail_level": "skeletal",
                 "procedure_refinement_status": "needs_multi_incident_refinement",
                 "missing_operational_details": ["Exact system navigation and screenshots must be reviewed by an SME before promotion."],
                 "required_screenshot_examples": ["Screenshot showing the relevant system/view before action.", "Screenshot showing the captured evidence or validation state."],
                 "candidate_refinement_questions": ["Which exact screen, menu, log path, or evidence export method should be used for this procedure?"],
-                "procedure_steps": [
-                    {
-                        "step_number": 1,
-                        "step_name": "Review source evidence",
-                        "step_goal": "Confirm whether the source package supports this candidate procedure.",
-                        "operator_action": "Review source screenshot and OCR evidence for this candidate procedure.",
-                        "system_or_tool": "source screenshots and case record",
-                        "navigation_path": None,
-                        "screen_or_view_name": None,
-                        "evidence_to_capture": artifact_ids[:1],
-                        "data_fields_to_record": ["source artifact id", "visible timestamp", "visible error or state text"],
-                        "expected_visual_indicators": ["Source screenshot or OCR text supports the candidate procedure."],
-                        "validation_check": "Relevant operational context is confirmed before reuse.",
-                        "screenshot_artifact_ids": artifact_ids[:1],
-                        "source_region_refs": [],
-                        "expected_result": "Relevant operational context is confirmed before reuse.",
-                        "required_tools_or_systems": ["source screenshots"],
-                        "related_artifacts": artifact_ids[:1],
-                        "supporting_evidence_chunks": evidence_chunks[:2],
-                        "supporting_timeline_events": evidence_events[:2],
-                        "validation_signal_refs": signals,
-                        "risk_notes": ["Candidate step requires manual review."],
-                        "escalation_boundary": "Do not treat this as approved procedure without SME validation.",
-                        "requires_role_review": True,
-                        "requires_sme_validation": True,
-                        "refinement_gap_notes": ["Procedure is OCR-derived and needs SME confirmation of exact navigation and capture method."],
-                        "evidence_quality": "low",
-                        "evidence_quality_notes": "Generated from OCR and screenshot context for a new case; SME review required.",
-                    }
-                ],
+                "procedure_steps": [],
+                "quality_tier": FALLBACK_QUALITY_TIER,
+                "eligible_for_cross_incident_synthesis": False,
+                "eligible_for_workflow_grouping": False,
                 "region_ids": [f"region_{state.case_id}_{index:03d}" for index in range(1, min(6, len(chunks)) + 1)],
                 "procedure_category_status": "candidate",
                 "promotion_blockers": ["Requires SME review before promotion.", "Requires repeated incident evidence before multi-case maturity."],
@@ -1416,6 +1626,10 @@ def generic_workflows(state: Phase0AgentState, procedures: list[dict[str, Any]],
                 "workflow_step_id": f"case_{state.case_id}_workflow_step_{index:03d}",
                 "container_id": "phase0_workflow_candidates",
                 "candidate_workflow_name": f"case_{state.case_id}_candidate_triage_flow_v1",
+                "fallback_only": True,
+                "quality_tier": FALLBACK_QUALITY_TIER,
+                "eligible_for_cross_incident_synthesis": False,
+                "eligible_for_workflow_grouping": False,
                 "step_type": "decision",
                 "question": f"Does the source evidence support routing to {procedure['procedure_name']}?",
                 "why_asked": "Workflow routing remains candidate-level until reviewed.",
@@ -1681,6 +1895,20 @@ def apply_artifact_roles(records: dict[str, Any]) -> None:
         record["artifact_role_status"] = "candidate"
 
 
+def apply_initial_quality_metadata(state: Phase0AgentState) -> None:
+    fallback = state.llm_status == "fallback_generic"
+    for record in flat_records(state.records):
+        record.setdefault("quality_tier", FALLBACK_QUALITY_TIER if fallback else LLM_QUALITY_TIER)
+        record.setdefault("eligible_for_cross_incident_synthesis", False)
+        record.setdefault("eligible_for_workflow_grouping", False)
+        record.setdefault("synthesis_blockers", [])
+        record.setdefault("pattern_candidate_notes", "")
+        record.setdefault("comparable_signal_groups", [])
+        record.setdefault("recurrence_evidence_refs", [])
+        if fallback:
+            record.update(fallback_quality_fields(state.llm_error))
+
+
 def apply_agent_refinements(state: Phase0AgentState) -> None:
     normalize_case_relationship_ids(state.records, state.case_id)
     apply_contextual_overlays_to_records(state)
@@ -1688,6 +1916,7 @@ def apply_agent_refinements(state: Phase0AgentState) -> None:
     prune_relationship_links(state.records)
     apply_workflow_node_shape(state.records)
     apply_artifact_roles(state.records)
+    apply_initial_quality_metadata(state)
 
 
 def normalize_case_relationship_ids(records: dict[str, Any], case_id: str) -> None:
@@ -1703,6 +1932,7 @@ def normalize_case_relationship_ids(records: dict[str, Any], case_id: str) -> No
 def base_record(state: Phase0AgentState, record_type: str, section: Any, page: Any, source_ref: str, confidence: float, missing_fields: list[str], notes: list[str]) -> dict[str, Any]:
     return {
         "record_type": record_type,
+        "synthesis_level": SYNTHESIS_POLICY.get(record_type, "UNSPECIFIED"),
         "incident_id": state.case_id,
         "source_file": state.active_source_file,
         "source_section": section,
@@ -1830,7 +2060,7 @@ def build_generic_records(state: Phase0AgentState) -> dict[str, Any]:
             **base_record(state, "procedure_candidate", "Mixed Screenshot Evidence", refs["source_pages"], ",".join(refs["source_region_refs"]), refs["confidence"], ["approval_status"], ["Generic procedure candidate from OCR evidence."]),
             **toolkit.ensure_procedure_contract(detailed_proc),
             "procedure_id": detailed_proc["procedure_candidate_id"],
-            "container_id": "phase0_procedure_dictionary",
+            "container_id": "phase0_procedure_candidates",
             **toolkit.review_fields(detailed_proc.get("role_requirements", []), detailed_proc.get("required_permissions", [])),
             "source_artifact_ids": refs["source_artifact_ids"],
             "source_artifact_paths": refs["source_artifact_paths"],
@@ -1894,11 +2124,12 @@ def build_records_node(state: Phase0AgentState) -> Phase0AgentState:
         "bundle_metadata": {
             "incident_id": state.case_id,
             "phase": "0",
-            "category": "CAT-1: WCS / Service Failure",
+            "category": state.records.get("canonical_incident", {}).get("issue_category") or toolkit.dataset_context_packet(state.reference).get("deterministic_issue_category"),
             "created_at": utc_now(),
             "source_files": [
                 "prompts/phase0_system_prompt.txt",
                 "docs/Phase0 Cat1 Dataset Seed Records V1.docx",
+                "docs/Optisweep Issue Categories.docx",
                 state.active_source_file,
             ],
             "ocr_engine": "PaddleOCR 3.5.0 / PaddlePaddle 3.2.2 / PP-OCRv5 server det+rec",
@@ -1910,6 +2141,7 @@ def build_records_node(state: Phase0AgentState) -> Phase0AgentState:
             "agent_name": "Phase 0 Ingestion Agent",
             "agent_version": "phase0_ingestion_agent_v1",
             "contextual_overlays": copy.deepcopy(state.contextual_overlays),
+            "synthesis_policy": SYNTHESIS_POLICY,
             "validation_status": "candidate_extracted",
             "requires_manual_review": True,
         },
@@ -1921,6 +2153,7 @@ def build_records_node(state: Phase0AgentState) -> Phase0AgentState:
 def validate_records_node(state: Phase0AgentState) -> Phase0AgentState:
     state.validation_report = validate_generic_records(state) if state.use_generic_interpretation else toolkit.validate_records(state.records, state.interpretations)
     apply_agent_validation_checks(state)
+    apply_final_synthesis_eligibility(state)
     if state.validation_report.get("validation_status") != "passed":
         state.halted = True
         state.halt_reason = "validation_failed"
@@ -2054,6 +2287,44 @@ def apply_agent_validation_checks(state: Phase0AgentState) -> None:
         state.validation_report["validation_status"] = "failed"
 
 
+def has_source_refs(record: dict[str, Any]) -> bool:
+    return bool(record.get("source_ref") or record.get("source_region_refs") or record.get("source_artifact_ids") or record.get("evidence_refs"))
+
+
+def has_signal_bucket(record: dict[str, Any]) -> bool:
+    return any(record.get(bucket) for bucket in toolkit.SIGNAL_BUCKETS)
+
+
+def apply_final_synthesis_eligibility(state: Phase0AgentState) -> None:
+    passed = state.validation_report.get("validation_status") == "passed"
+    for record in flat_records(state.records):
+        fallback = record.get("quality_tier") == FALLBACK_QUALITY_TIER or state.llm_status == "fallback_generic"
+        skeletal = record.get("procedure_detail_level") == "skeletal"
+        eligible = (
+            passed
+            and not fallback
+            and has_source_refs(record)
+            and has_signal_bucket(record)
+            and not skeletal
+        )
+        if record.get("record_type") in {"raw_evidence_chunk", "source_artifact_reference", "timeline_event"}:
+            eligible = False
+        record["eligible_for_cross_incident_synthesis"] = eligible
+        record["eligible_for_workflow_grouping"] = eligible and record.get("record_type") == "workflow_candidate_step"
+        blockers = list(record.get("synthesis_blockers", []))
+        if not passed:
+            blockers.append("validation_not_passed")
+        if fallback:
+            blockers.append("fallback_review_only")
+        if skeletal:
+            blockers.append("skeletal_candidate")
+        if not has_source_refs(record):
+            blockers.append("missing_source_refs")
+        if not has_signal_bucket(record):
+            blockers.append("missing_signal_buckets")
+        record["synthesis_blockers"] = list(dict.fromkeys(blockers))
+
+
 def write_outputs_node(state: Phase0AgentState) -> Phase0AgentState:
     write_json(state.extracted_dir / f"{state.output_prefix}_docx_ocr.json", state.ocr_data)
     write_json(state.extracted_dir / f"{state.output_prefix}_layout_blocks.json", state.layout_blocks)
@@ -2143,6 +2414,7 @@ def build_trace_payload(state: Phase0AgentState) -> dict[str, Any]:
         "source_files": [
             "prompts/phase0_system_prompt.txt",
             "docs/Phase0 Cat1 Dataset Seed Records V1.docx",
+            "docs/Optisweep Issue Categories.docx",
             state.active_source_file,
         ],
         "contextual_overlays": copy.deepcopy(state.contextual_overlays),

@@ -1,0 +1,194 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_051_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        51
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0051"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Tote Exchange Settings interface exposes configurable tote exchange parameters on the Aveva API page",
+      "systems": [
+        "Aveva",
+        "Tote"
+      ],
+      "components": [
+        "Tote Exchange Settings interface",
+        "Aveva API page"
+      ],
+      "summary": "The slide states that the Tote Exchange Settings interface allows users to view and manage parameters related to the tote exchange process from an Aveva API page.",
+      "observed_evidence": [
+        "Slide title: 'Tote Exchange Settings / Aveva API page'",
+        "Text: 'The Tote Exchange Settings interface enables users to view and manage parameters related to the tote exchange process.'",
+        "Visual element indicates a rendered UI screen with labels from the slide."
+      ],
+      "relationships": [
+        {
+          "relationship_type": "contains",
+          "target": "Cube Threshold Pickup"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Cube Threshold Priority"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Cube Threshold Close"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Count Threshold Pickup"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Count Threshold Priority"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Count Threshold Close"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Maximum Weight"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Weight Threshold"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Method"
+        }
+      ],
+      "retrieval_text": "Tote Exchange Settings Aveva API page UI concept. Interface enables users to view and manage tote exchange process parameters. Listed components include Cube Threshold Pickup, Cube Threshold Priority, Cube Threshold Close, Count Threshold Pickup, Count Threshold Priority, Count Threshold Close, Maximum Weight, Weight Threshold, and Method.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_051_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        51
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0051"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Tote exchange parameterization includes cube, count, and weight thresholds plus selectable method logic",
+      "systems": [
+        "Aveva",
+        "Tote"
+      ],
+      "components": [
+        "Tote exchange process",
+        "Tote Exchange Settings"
+      ],
+      "summary": "The tote exchange process is governed by configurable threshold parameters across cube, count, and weight dimensions, along with a method selection that includes count, cube, or combined cube-and-count behavior.",
+      "observed_evidence": [
+        "Listed parameters: Cube Threshold Pickup, Cube Threshold Priority, Cube Threshold Close",
+        "Listed parameters: Count Threshold Pickup, Count Threshold Priority, Count Threshold Close",
+        "Listed parameters: Maximum Weight, Weight Threshold",
+        "Listed parameter and values: Method; Count, Cube, Cube and Count"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "parameter_group",
+          "target": "cube thresholds"
+        },
+        {
+          "relationship_type": "parameter_group",
+          "target": "count thresholds"
+        },
+        {
+          "relationship_type": "parameter_group",
+          "target": "weight thresholds"
+        },
+        {
+          "relationship_type": "includes_selection",
+          "target": "Method = Count | Cube | Cube and Count"
+        }
+      ],
+      "retrieval_text": "Tote exchange settings indicate operational behavior is parameterized by cube thresholds, count thresholds, maximum weight, weight threshold, and a method selector. Method options shown are Count, Cube, and Cube and Count.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_051_01",
+      "title": "View tote exchange settings on the Aveva API page",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        51
+      ],
+      "systems": [
+        "Aveva"
+      ],
+      "components": [
+        "Tote Exchange Settings interface",
+        "Aveva API page"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User has access to the Aveva API page.",
+        "Tote Exchange Settings interface is available in the environment."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0051"
+      ],
+      "procedure_visual_summary": "Slide-level screenshot references the Tote Exchange Settings / Aveva API page and lists available tote exchange parameters.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Open or navigate to the Tote Exchange Settings area on the Aveva API page.",
+          "expected_outcome": "The Tote Exchange Settings interface is visible.",
+          "validation_check": "Confirm the page shows tote exchange-related settings fields or labels.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:51",
+            "artifact:slide_artifact_optisweep_training_internal_0051"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0051"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0051"
+          ],
+          "visual_region_hint": "Slide-level UI screenshot showing the Tote Exchange Settings / Aveva API page."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Review the listed tote exchange parameters available on the interface.",
+          "expected_outcome": "The user can identify configurable parameters such as cube thresholds, count thresholds, weight settings, and method.",
+          "validation_check": "Confirm the interface includes fields or labels matching the parameter names listed on the slide.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:51",
+            "artifact:slide_artifact_optisweep_training_internal_0051"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0051"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0051"
+          ],
+          "visual_region_hint": "Parameter list area associated with Tote Exchange Settings."
+        }
+      ],
+      "warnings": [
+        "The slide confirms the interface and available parameters but does not provide an exact click path or save/apply sequence.",
+        "The slide states users can view and manage parameters, but no explicit edit workflow is shown."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_051_01",
+        "oku_optisweep_training_internal_051_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Candidate navigation procedure for viewing Tote Exchange Settings on the Aveva API page. Evidence supports opening the Tote Exchange Settings interface and reviewing listed parameters, but does not provide a full configuration sequence."
+    }
+  ],
+  "discarded_candidates": []
+}

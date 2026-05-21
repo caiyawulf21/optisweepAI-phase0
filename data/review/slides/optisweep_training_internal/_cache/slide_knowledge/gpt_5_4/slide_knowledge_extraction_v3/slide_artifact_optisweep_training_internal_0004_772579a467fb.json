@@ -1,0 +1,457 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0004_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        4
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0004"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "OptiSweep is FORTNA's automated consolidated bagging solution using AGVs and tippers",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "AGV",
+        "Tipper",
+        "Consolidated Bagging (ACB)"
+      ],
+      "summary": "The slide defines OptiSweep as a FORTNA-developed automated Consolidated Bagging solution that uses AGVs and tippers to provide a flexible and scalable bagging system.",
+      "observed_evidence": [
+        "“FORTNA developed an automated Consolidated Bagging (ACB) solution utilizing AGVs and tippers to create a flexible and scalable bagging system.”"
+      ],
+      "relationships": [
+        {
+          "type": "uses_components",
+          "from": "OptiSweep",
+          "to": "AGV"
+        },
+        {
+          "type": "uses_components",
+          "from": "OptiSweep",
+          "to": "Tipper"
+        },
+        {
+          "type": "implements",
+          "from": "OptiSweep",
+          "to": "Consolidated Bagging (ACB)"
+        }
+      ],
+      "retrieval_text": "OptiSweep is described as FORTNA's automated Consolidated Bagging (ACB) solution. It utilizes AGVs and tippers to create a flexible and scalable bagging system.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0004_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        4
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0004"
+      ],
+      "unit_type": "operational_process",
+      "title": "Traditional small sort bagging process requires operator-managed full-bag handling",
+      "systems": [
+        "Traditional small sort system"
+      ],
+      "components": [
+        "Sorter",
+        "Destination",
+        "Bag",
+        "Label",
+        "Takeaway belt",
+        "Chute"
+      ],
+      "summary": "In the traditional small sort process, operators are assigned groups of destinations on a sorter. Parcels divert into bags, and when a bag is full the operator performs manual closing, labeling, bag sealing, takeaway placement, and chute reopening.",
+      "observed_evidence": [
+        "“In a traditional small sort system. Operators are assigned sections of destinations (20-25) on a sorter.”",
+        "“Parcels divert down the destination and fall into a bag.”",
+        "“When the bag becomes full an operator closes the destination, prints a label, applies the label to the bag, zips up the bag, places the bag on a takeaway belt, and then reopens the chute.”"
+      ],
+      "relationships": [
+        {
+          "type": "operator_assigned_to",
+          "from": "Operator",
+          "to": "sections of destinations (20-25)"
+        },
+        {
+          "type": "parcels_flow_to",
+          "from": "Destination",
+          "to": "Bag"
+        },
+        {
+          "type": "full_bag_triggers",
+          "from": "Bag full condition",
+          "to": "destination close, label print/apply, bag zip, takeaway placement, chute reopen"
+        }
+      ],
+      "retrieval_text": "Traditional small sort bagging uses operators assigned to 20-25 destinations on a sorter. Parcels divert into a bag. When the bag is full, the operator closes the destination, prints and applies a label, zips the bag, places it on a takeaway belt, and reopens the chute.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0004_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        4
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0004"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Belted ACB full-destination handling drops bin to takeaway conveyor and bag station",
+      "systems": [
+        "Belted ACB solution"
+      ],
+      "components": [
+        "Destination",
+        "Bin",
+        "Takeaway conveyor",
+        "Chute",
+        "Bag station",
+        "Label",
+        "Bag",
+        "Takeaway belt"
+      ],
+      "summary": "In the Belted ACB solution, a full destination causes the bin to drop onto a takeaway conveyor. Packages are conveyed as a slug down a chute into a bag station, where the user labels and zips the bag and places it on a takeaway belt.",
+      "observed_evidence": [
+        "“In a Belted ACB solution when a destination is full the bin is dropped on a takeaway conveyor”",
+        "“that conveys the packages as a slug that go down a chute into a bag station”",
+        "“where the user applies a label, zips up the bag and places it on a takeaway belt.”"
+      ],
+      "relationships": [
+        {
+          "type": "full_destination_causes",
+          "from": "Destination full condition",
+          "to": "Bin dropped on takeaway conveyor"
+        },
+        {
+          "type": "conveys",
+          "from": "Takeaway conveyor",
+          "to": "Packages as a slug"
+        },
+        {
+          "type": "feeds",
+          "from": "Chute",
+          "to": "Bag station"
+        }
+      ],
+      "retrieval_text": "In the Belted ACB solution, when a destination is full the bin is dropped on a takeaway conveyor. The conveyor moves packages as a slug down a chute into a bag station, where the user applies a label, zips the bag, and places it on a takeaway belt.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0004_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        4
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0004"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "AGVs and tippers support modular scaling and adaptation to existing sorters",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "AGV",
+        "Tipper",
+        "Existing sorters",
+        "Maps"
+      ],
+      "summary": "FORTNA's design intent is to make the bagging solution modular and adaptive with minimal modification to existing sorters. AGVs and tippers are identified as the means to scale solutions and tailor maps to current building sorter layouts.",
+      "observed_evidence": [
+        "“Fortna wanted a more modular and adaptive design that would need little modification to existing sorters.”",
+        "“By utilizing AGVs and tippers we can scale solutions and tailor maps to existing building sorters.”"
+      ],
+      "relationships": [
+        {
+          "type": "enables",
+          "from": "AGVs and tippers",
+          "to": "solution scaling"
+        },
+        {
+          "type": "enables",
+          "from": "AGVs and tippers",
+          "to": "map tailoring to existing building sorters"
+        },
+        {
+          "type": "design_goal",
+          "from": "OptiSweep design",
+          "to": "little modification to existing sorters"
+        }
+      ],
+      "retrieval_text": "The slide states that Fortna wanted a modular and adaptive design requiring little modification to existing sorters. Using AGVs and tippers allows the solution to scale and lets maps be tailored to existing building sorters.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0004_01",
+      "title": "Handle a full bag in a traditional small sort system",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        4
+      ],
+      "systems": [
+        "Traditional small sort system"
+      ],
+      "components": [
+        "Destination",
+        "Bag",
+        "Label",
+        "Takeaway belt",
+        "Chute"
+      ],
+      "role_required": "operator",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Operator is assigned sorter destinations",
+        "A parcel bag at a destination has become full"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0004"
+      ],
+      "procedure_visual_summary": "Text slide comparing traditional and Fortna solutions; no UI, but includes explicit traditional full-bag handling sequence.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Close the destination when the bag becomes full.",
+          "expected_outcome": "The full destination is closed.",
+          "validation_check": "Destination has been closed for the full bag condition.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the traditional small sort system process."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Print a label.",
+          "expected_outcome": "A label is available for the full bag.",
+          "validation_check": "Label has been printed.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the traditional small sort system process."
+        },
+        {
+          "step_order": 3,
+          "instruction": "Apply the label to the bag.",
+          "expected_outcome": "The bag is labeled.",
+          "validation_check": "Printed label is attached to the bag.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the traditional small sort system process."
+        },
+        {
+          "step_order": 4,
+          "instruction": "Zip up the bag.",
+          "expected_outcome": "The full bag is closed.",
+          "validation_check": "Bag is zipped.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the traditional small sort system process."
+        },
+        {
+          "step_order": 5,
+          "instruction": "Place the bag on a takeaway belt.",
+          "expected_outcome": "The bag is transferred to takeaway.",
+          "validation_check": "Bag is on the takeaway belt.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the traditional small sort system process."
+        },
+        {
+          "step_order": 6,
+          "instruction": "Reopen the chute.",
+          "expected_outcome": "The chute is reopened for continued parcel flow.",
+          "validation_check": "Chute has been reopened after bag removal.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the traditional small sort system process."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0004_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Traditional full-bag handling procedure: when the bag becomes full, the operator closes the destination, prints a label, applies the label to the bag, zips the bag, places it on a takeaway belt, and reopens the chute."
+    },
+    {
+      "procedure_id": "proc_optisweep_training_internal_0004_02",
+      "title": "Process a full destination in a Belted ACB bag station flow",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        4
+      ],
+      "systems": [
+        "Belted ACB solution"
+      ],
+      "components": [
+        "Destination",
+        "Bin",
+        "Takeaway conveyor",
+        "Chute",
+        "Bag station",
+        "Label",
+        "Bag",
+        "Takeaway belt"
+      ],
+      "role_required": "operator",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A destination in the Belted ACB solution is full",
+        "Packages have been conveyed to the bag station"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0004"
+      ],
+      "procedure_visual_summary": "Text slide describing Belted ACB flow from full destination to conveyor, chute, and bag station, with user actions at the station.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Allow the full destination's bin to be dropped onto the takeaway conveyor.",
+          "expected_outcome": "The bin is transferred from the full destination to the takeaway conveyor.",
+          "validation_check": "Bin has been dropped onto the takeaway conveyor.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the Belted ACB solution flow."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Receive the packages at the bag station after they travel as a slug down the chute.",
+          "expected_outcome": "Packages arrive at the bag station for bagging.",
+          "validation_check": "Packages have reached the bag station.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the Belted ACB solution flow."
+        },
+        {
+          "step_order": 3,
+          "instruction": "Apply a label to the bag at the bag station.",
+          "expected_outcome": "The bag is labeled.",
+          "validation_check": "Label has been applied to the bag.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the Belted ACB solution flow."
+        },
+        {
+          "step_order": 4,
+          "instruction": "Zip up the bag.",
+          "expected_outcome": "The bag is closed.",
+          "validation_check": "Bag is zipped.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the Belted ACB solution flow."
+        },
+        {
+          "step_order": 5,
+          "instruction": "Place the bag on a takeaway belt.",
+          "expected_outcome": "The completed bag is moved to takeaway.",
+          "validation_check": "Bag is on the takeaway belt.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:4"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0004"
+          ],
+          "visual_region_hint": "Bullet describing the Belted ACB solution flow."
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0004_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Belted ACB full-destination flow: when a destination is full, the bin is dropped on a takeaway conveyor, packages move as a slug down a chute into a bag station, and the user applies a label, zips the bag, and places it on a takeaway belt."
+    }
+  ],
+  "discarded_candidates": []
+}

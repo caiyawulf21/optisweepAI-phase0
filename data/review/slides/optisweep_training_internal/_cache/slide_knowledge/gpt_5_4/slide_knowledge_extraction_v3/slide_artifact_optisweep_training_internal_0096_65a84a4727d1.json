@@ -1,0 +1,246 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0096_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        96
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0096"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Tipper model defines tipper records for all stations",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tipper"
+      ],
+      "summary": "The Tipper model is a database reference that defines all tippers in all stations and includes identifying, printer, location, and status fields.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Tipper Model'",
+        "Text: 'Tipper model defines all tippers in all stations.'",
+        "Bullets list fields including TipperId, PrinterName, PrinterIp, Printer, LocationId, and TipperStatus."
+      ],
+      "relationships": [
+        {
+          "relation": "defines",
+          "target": "all tippers in all stations"
+        },
+        {
+          "relation": "includes_field",
+          "target": "TipperId"
+        },
+        {
+          "relation": "includes_field",
+          "target": "PrinterName"
+        },
+        {
+          "relation": "includes_field",
+          "target": "PrinterIp"
+        },
+        {
+          "relation": "includes_field",
+          "target": "Printer"
+        },
+        {
+          "relation": "includes_field",
+          "target": "LocationId"
+        },
+        {
+          "relation": "includes_field",
+          "target": "TipperStatus"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Tipper model defines all tippers in all stations. Tipper database model includes TipperId, PrinterName, PrinterIp, Printer, LocationId, and TipperStatus.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0096_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        96
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0096"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "TipperId identifies the tipper and may encode right/left position",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tipper"
+      ],
+      "summary": "TipperId is the name of the tipper. The slide states a naming convention is used to represent right and left tipper positions in an operator station, though the exact character is truncated in the visible text.",
+      "observed_evidence": [
+        "Bullet: 'TipperId: Name of the tipper.'",
+        "Bullet continues: 'We use a b to represent Right Left tipper in an operator station.'",
+        "Visible text appears truncated, so the exact notation should be validated."
+      ],
+      "relationships": [
+        {
+          "relation": "describes_field",
+          "target": "TipperId"
+        },
+        {
+          "relation": "associated_with",
+          "target": "operator station right/left tipper representation"
+        }
+      ],
+      "retrieval_text": "TipperId is the name of the tipper. The TipperId naming convention is used to represent right and left tipper positions in an operator station, but the exact notation on the slide is truncated and needs validation.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0096_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        96
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0096"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Printer-related Tipper fields are used when sending UPS print label directives",
+      "systems": [
+        "Sorter Sweeper Database",
+        "UPS"
+      ],
+      "components": [
+        "Tipper",
+        "PrinterName",
+        "PrinterIp",
+        "Printer"
+      ],
+      "summary": "The printer-related fields in the Tipper model are settings used when sending a PL (Print Label) directive to UPS.",
+      "observed_evidence": [
+        "Bullet: 'PrinterName, PrinterIp, Printer, are settings we use when sending a PL (Print Label) directive to UPS.'"
+      ],
+      "relationships": [
+        {
+          "relation": "uses_fields",
+          "target": "PrinterName, PrinterIp, Printer"
+        },
+        {
+          "relation": "supports_action",
+          "target": "sending PL (Print Label) directive to UPS"
+        }
+      ],
+      "retrieval_text": "In the Tipper model, PrinterName, PrinterIp, and Printer are settings used when sending a PL Print Label directive to UPS.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0096_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        96
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0096"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "LocationId links a tipper to a station in Geek",
+      "systems": [
+        "Sorter Sweeper Database",
+        "Geek"
+      ],
+      "components": [
+        "Tipper",
+        "LocationId"
+      ],
+      "summary": "The LocationId field associates the tipper record with a station in Geek.",
+      "observed_evidence": [
+        "Bullet: 'LocationId: Station in Geek to the tipper'"
+      ],
+      "relationships": [
+        {
+          "relation": "maps_component_to_system_location",
+          "target": "station in Geek"
+        },
+        {
+          "relation": "describes_field",
+          "target": "LocationId"
+        }
+      ],
+      "retrieval_text": "LocationId in the Tipper model links the tipper to a station in Geek.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0096_05",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        96
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0096"
+      ],
+      "unit_type": "system_behavior",
+      "title": "TipperStatus indicates whether a tipper is ready, not ready, or disabled",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tipper",
+        "TipperStatus"
+      ],
+      "summary": "The TipperStatus field records the operational availability state of a tipper as Ready, NotReady, or Disabled.",
+      "observed_evidence": [
+        "Bullet: 'TipperStatus: if the tipper is Ready, NotReady, or Disabled.'"
+      ],
+      "relationships": [
+        {
+          "relation": "describes_field",
+          "target": "TipperStatus"
+        },
+        {
+          "relation": "allowed_values",
+          "target": "Ready, NotReady, Disabled"
+        }
+      ],
+      "retrieval_text": "TipperStatus in the Tipper model indicates whether the tipper is Ready, NotReady, or Disabled.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0096_01",
+      "title": "No explicit reusable procedure on Tipper Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        96
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tipper"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A Tipper model record exists or is being referenced in the Sorter Sweeper Database."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0096"
+      ],
+      "procedure_visual_summary": "Slide is a database model description listing Tipper fields and meanings; it does not show a UI workflow or stepwise action sequence.",
+      "steps": [],
+      "warnings": [
+        "The slide provides field definitions and status values, not an explicit action sequence.",
+        "Visible text for the TipperId naming convention is truncated and should be validated before operational use."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0096_01",
+        "oku_optisweep_training_internal_0096_02",
+        "oku_optisweep_training_internal_0096_03",
+        "oku_optisweep_training_internal_0096_04",
+        "oku_optisweep_training_internal_0096_05"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide describes the Tipper database model, its fields, and status values, but does not provide explicit operational steps or a reusable action sequence."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,182 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0009_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        9
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0009"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "UPS Corp software stack components listed for OptiSweep environment",
+      "systems": [
+        "OptiSweep",
+        "UPS Corp"
+      ],
+      "components": [
+        "OptiSweep software",
+        "Aveva",
+        "HMI",
+        "Ignition",
+        "OPC Server",
+        "Chat xLE",
+        "S-Tunnel",
+        "OTNet"
+      ],
+      "summary": "The slide identifies software components associated with the UPS Corp environment: OptiSweep software, Aveva as HMI, Ignition as OPC Server, Chat xLE for UPS communications chat, and S-Tunnel providing encryption from OTNet to UPS Corp.",
+      "observed_evidence": [
+        "Bullet list on slide titled 'Software / UPS Corp'",
+        "Visible text: 'OptiSweep software'",
+        "Visible text: 'Aveva - HMI'",
+        "Visible text: 'Ignition - OPC Server'",
+        "Visible text: 'Chat xLE – UPS communications chat'",
+        "Visible text: 'S-Tunnel – Encryption from OTNet to'",
+        "Visible text continuation: 'UPS Corp'"
+      ],
+      "relationships": [
+        {
+          "from": "Aveva",
+          "to": "HMI",
+          "relationship_type": "serves_as"
+        },
+        {
+          "from": "Ignition",
+          "to": "OPC Server",
+          "relationship_type": "serves_as"
+        },
+        {
+          "from": "Chat xLE",
+          "to": "UPS communications",
+          "relationship_type": "supports"
+        },
+        {
+          "from": "S-Tunnel",
+          "to": "UPS Corp",
+          "relationship_type": "encrypts_connection_to"
+        },
+        {
+          "from": "S-Tunnel",
+          "to": "OTNet",
+          "relationship_type": "originates_from"
+        }
+      ],
+      "retrieval_text": "Software / UPS Corp slide lists OptiSweep software stack components: Aveva is the HMI, Ignition is the OPC Server, Chat xLE is used for UPS communications chat, and S-Tunnel provides encryption from OTNet to UPS Corp.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0009_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        9
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0009"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Aveva identified as HMI in the OptiSweep software environment",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Aveva",
+        "HMI"
+      ],
+      "summary": "The slide explicitly maps Aveva to the HMI role within the software environment.",
+      "observed_evidence": [
+        "Visible text: 'Aveva - HMI'"
+      ],
+      "relationships": [
+        {
+          "from": "Aveva",
+          "to": "HMI",
+          "relationship_type": "serves_as"
+        }
+      ],
+      "retrieval_text": "Aveva is identified on the slide as the HMI component for the OptiSweep software environment.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0009_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        9
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0009"
+      ],
+      "unit_type": "system_behavior",
+      "title": "S-Tunnel provides encrypted connectivity from OTNet to UPS Corp",
+      "systems": [
+        "UPS Corp",
+        "OTNet"
+      ],
+      "components": [
+        "S-Tunnel"
+      ],
+      "summary": "The slide states that S-Tunnel is used for encryption on the path from OTNet to UPS Corp.",
+      "observed_evidence": [
+        "Visible text: 'S-Tunnel – Encryption from OTNet to'",
+        "Visible text continuation: 'UPS Corp'"
+      ],
+      "relationships": [
+        {
+          "from": "S-Tunnel",
+          "to": "OTNet",
+          "relationship_type": "encrypts_traffic_from"
+        },
+        {
+          "from": "S-Tunnel",
+          "to": "UPS Corp",
+          "relationship_type": "encrypts_traffic_to"
+        }
+      ],
+      "retrieval_text": "S-Tunnel is described as providing encryption from OTNet to UPS Corp.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0009_01",
+      "title": "No reusable procedure present on software components overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        9
+      ],
+      "systems": [
+        "OptiSweep",
+        "UPS Corp"
+      ],
+      "components": [
+        "OptiSweep software",
+        "Aveva",
+        "Ignition",
+        "Chat xLE",
+        "S-Tunnel"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0009"
+      ],
+      "procedure_visual_summary": "Bullet-list overview of software components and their roles; no buttons, fields, sequence, or operator actions shown.",
+      "steps": [],
+      "warnings": [
+        "Slide is an overview/list of software components, not an action sequence.",
+        "No explicit operational steps, navigation path, validation checks, or recovery actions are provided."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0009",
+        "oku_optisweep_training_internal_0009_01",
+        "oku_optisweep_training_internal_0009_02",
+        "oku_optisweep_training_internal_0009_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: slide 9 lists software components and roles for UPS Corp (Aveva HMI, Ignition OPC Server, Chat xLE, S-Tunnel) but does not provide a reusable operational procedure."
+    }
+  ],
+  "discarded_candidates": []
+}

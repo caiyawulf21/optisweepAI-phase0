@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "cand_upsfortna_optisweep_training_day1_20260317_000044_scene_1",
+      "start_time": "00:12:55.120",
+      "end_time": "00:13:09.840",
+      "intent": "Establish the need for WCS to communicate from the OT island to the UPS island to determine actions like which chute to close, while acknowledging UPS’s security posture to limit unnecessary data sharing.",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000216",
+        "vec_upsfortna_optisweep_training_day1_20260317_000217",
+        "vec_upsfortna_optisweep_training_day1_20260317_000218",
+        "vec_upsfortna_optisweep_training_day1_20260317_000219",
+        "vec_upsfortna_optisweep_training_day1_20260317_000220"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

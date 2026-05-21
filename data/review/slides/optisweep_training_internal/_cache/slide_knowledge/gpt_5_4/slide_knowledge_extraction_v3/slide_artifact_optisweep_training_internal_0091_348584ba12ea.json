@@ -1,0 +1,186 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0091_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        91
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0091"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Sorter Model defines sorter legs and site-specific leg counts",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Sorter Model"
+      ],
+      "summary": "The slide states that the Sorter Model defines sorter legs. It also provides site-specific context that Haslet has 4 legs and McKinney has 2.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Sorter Model'",
+        "Text: 'The Sorter Model define our sorter legs.'",
+        "Text: 'At Haslet we have 4 legs and only 2 at McKinney.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "defines",
+          "target": "sorter legs"
+        },
+        {
+          "relationship_type": "site_variation",
+          "target": "Haslet=4 legs; McKinney=2 legs"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Sorter Model defines sorter legs. Haslet has 4 legs and McKinney has 2 legs.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0091_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        91
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0091"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Sorter Model field: Name represents side ordering from RMS map",
+      "systems": [
+        "Sorter Sweeper Database",
+        "RMS"
+      ],
+      "components": [
+        "Sorter Model",
+        "Name field"
+      ],
+      "summary": "The Name field identifies the side, and the slide says the ordering follows the RMS map from top to bottom.",
+      "observed_evidence": [
+        "Bullet: 'Name: of the side. From RMS map we go from top to bottom.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "field_meaning",
+          "target": "Name = side"
+        },
+        {
+          "relationship_type": "derived_from",
+          "target": "RMS map ordering from top to bottom"
+        }
+      ],
+      "retrieval_text": "Sorter Model Name field identifies the side and follows RMS map ordering from top to bottom.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0091_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        91
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0091"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Sorter Model field: XleIp is the receiver IP address used for sorter messages",
+      "systems": [
+        "Sorter Sweeper Database",
+        "sorter"
+      ],
+      "components": [
+        "Sorter Model",
+        "XleIp field"
+      ],
+      "summary": "The XleIp field stores the receiver IP address used when messages are sent to the sorter.",
+      "observed_evidence": [
+        "Bullet: 'XleIp: Receiver Ip address when we send messages to the sorter.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "field_meaning",
+          "target": "XleIp = receiver IP address"
+        },
+        {
+          "relationship_type": "used_for",
+          "target": "sending messages to sorter"
+        }
+      ],
+      "retrieval_text": "Sorter Model XleIp field is the receiver IP address used when sending messages to the sorter.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0091_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        91
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0091"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Sorter Model field: XleName is the receiver name used for sorter messages",
+      "systems": [
+        "Sorter Sweeper Database",
+        "sorter"
+      ],
+      "components": [
+        "Sorter Model",
+        "XleName field"
+      ],
+      "summary": "The XleName field stores the receiver name used when messages are sent to the sorter.",
+      "observed_evidence": [
+        "Bullet: 'XleName: Receiver name when we send messages to the sorter.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "field_meaning",
+          "target": "XleName = receiver name"
+        },
+        {
+          "relationship_type": "used_for",
+          "target": "sending messages to sorter"
+        }
+      ],
+      "retrieval_text": "Sorter Model XleName field is the receiver name used when sending messages to the sorter.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0091_01",
+      "title": "No explicit procedure on Sorter Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        91
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Sorter Model"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0091"
+      ],
+      "procedure_visual_summary": "Slide describes Sorter Model and field meanings for sorter legs and message destination fields, but does not provide an action sequence.",
+      "steps": [],
+      "warnings": [
+        "Slide contains descriptive database model information only.",
+        "No explicit reusable action steps or configuration sequence are shown."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0091_01",
+        "oku_optisweep_training_internal_0091_02",
+        "oku_optisweep_training_internal_0091_03",
+        "oku_optisweep_training_internal_0091_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate because slide 91 is descriptive only: Sorter Model defines sorter legs and fields Name, XleIp, and XleName, without operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

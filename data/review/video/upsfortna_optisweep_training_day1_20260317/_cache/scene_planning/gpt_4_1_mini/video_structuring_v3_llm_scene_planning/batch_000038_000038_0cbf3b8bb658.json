@@ -1,0 +1,88 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Battery Charging and Management Procedures",
+      "timestamp_start": "01:53:16.449",
+      "timestamp_end": "01:53:46.600",
+      "primary_intent": "Explain battery charging behavior and quick charge thresholds",
+      "operational_intents": [
+        "Describe automatic charging capabilities",
+        "Explain charging speed at low battery levels",
+        "Highlight importance of maintaining charger activation"
+      ],
+      "knowledge_extraction_strategy": "Extract detailed charging process and operational cautions",
+      "why_this_strategy": "Focus on battery management and charger usage instructions",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001938",
+        "vec_upsfortna_optisweep_training_day1_20260317_001939",
+        "vec_upsfortna_optisweep_training_day1_20260317_001940",
+        "vec_upsfortna_optisweep_training_day1_20260317_001941",
+        "vec_upsfortna_optisweep_training_day1_20260317_001942",
+        "vec_upsfortna_optisweep_training_day1_20260317_001943",
+        "vec_upsfortna_optisweep_training_day1_20260317_001944",
+        "vec_upsfortna_optisweep_training_day1_20260317_001945",
+        "vec_upsfortna_optisweep_training_day1_20260317_001946"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000038"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Charger Usage and Site Management Considerations",
+      "timestamp_start": "01:53:46.680",
+      "timestamp_end": "01:54:16.080",
+      "primary_intent": "Discuss charger management on different site sizes and potential issues",
+      "operational_intents": [
+        "Emphasize turning chargers back on after removal",
+        "Explain impact of limited chargers on charging time",
+        "Warn about consequences of forgetting to enable chargers"
+      ],
+      "knowledge_extraction_strategy": "Extract operational best practices for charger management",
+      "why_this_strategy": "Capture site-specific charger usage and troubleshooting advice",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001947",
+        "vec_upsfortna_optisweep_training_day1_20260317_001948",
+        "vec_upsfortna_optisweep_training_day1_20260317_001949",
+        "vec_upsfortna_optisweep_training_day1_20260317_001950",
+        "vec_upsfortna_optisweep_training_day1_20260317_001951",
+        "vec_upsfortna_optisweep_training_day1_20260317_001952",
+        "vec_upsfortna_optisweep_training_day1_20260317_001953",
+        "vec_upsfortna_optisweep_training_day1_20260317_001954"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000038"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Transition and Break Planning",
+      "timestamp_start": "01:54:16.080",
+      "timestamp_end": "01:54:58.560",
+      "primary_intent": "Conclude RMS section and discuss break timing",
+      "operational_intents": [
+        "Signal end of RMS training content",
+        "Coordinate break timing and team readiness",
+        "Discuss time management for breaks"
+      ],
+      "knowledge_extraction_strategy": "Extract cues for session transitions and break management",
+      "why_this_strategy": "Identify operational pauses and team coordination points",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001954",
+        "vec_upsfortna_optisweep_training_day1_20260317_001955",
+        "vec_upsfortna_optisweep_training_day1_20260317_001956",
+        "vec_upsfortna_optisweep_training_day1_20260317_001957",
+        "vec_upsfortna_optisweep_training_day1_20260317_001958",
+        "vec_upsfortna_optisweep_training_day1_20260317_001959",
+        "vec_upsfortna_optisweep_training_day1_20260317_001960",
+        "vec_upsfortna_optisweep_training_day1_20260317_001961",
+        "vec_upsfortna_optisweep_training_day1_20260317_001962",
+        "vec_upsfortna_optisweep_training_day1_20260317_001963"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000038"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

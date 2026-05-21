@@ -1,0 +1,33 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_1_1",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        1
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0001",
+        "deck:optisweep_training_internal",
+        "slide:1"
+      ],
+      "unit_type": "ui_concept",
+      "title": "OptiSweep training deck cover identifies product and positioning tagline",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [],
+      "summary": "The slide is a title/cover slide for OptiSweep training and presents the tagline 'Redefining consolidation for tomorrow.'",
+      "observed_evidence": [
+        "Visible text: 'OptiSweep – Training'",
+        "Visible text: 'Redefining consolidation for tomorrow'",
+        "Visual summary repeats the same two text elements"
+      ],
+      "relationships": [],
+      "retrieval_text": "OptiSweep training cover slide. Product name: OptiSweep. Training deck title: OptiSweep – Training. Tagline: Redefining consolidation for tomorrow.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

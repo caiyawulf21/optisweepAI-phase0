@@ -1,0 +1,173 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Object Selection and Map Interaction",
+      "timestamp_start": "01:34:55.280",
+      "timestamp_end": "01:35:12.520",
+      "primary_intent": "Explain how to select objects on the system map",
+      "operational_intents": [
+        "Clarify map interaction limitations",
+        "Describe object selection process",
+        "Differentiate between AGB and cell selection"
+      ],
+      "knowledge_extraction_strategy": "Extract object selection and map interaction details",
+      "why_this_strategy": "Focus on understanding map selection mechanics",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001584",
+        "vec_upsfortna_optisweep_training_day1_20260317_001585",
+        "vec_upsfortna_optisweep_training_day1_20260317_001586",
+        "vec_upsfortna_optisweep_training_day1_20260317_001587",
+        "vec_upsfortna_optisweep_training_day1_20260317_001588",
+        "vec_upsfortna_optisweep_training_day1_20260317_001589",
+        "vec_upsfortna_optisweep_training_day1_20260317_001590",
+        "vec_upsfortna_optisweep_training_day1_20260317_001591",
+        "vec_upsfortna_optisweep_training_day1_20260317_001592",
+        "vec_upsfortna_optisweep_training_day1_20260317_001593"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000032"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Viewing Information for Different Object Types",
+      "timestamp_start": "01:35:12.520",
+      "timestamp_end": "01:35:56.800",
+      "primary_intent": "Demonstrate how selecting different object types shows specific information",
+      "operational_intents": [
+        "Show AGV information on cell selection",
+        "Show rack information on cell selection",
+        "Explain charger selection and HV display",
+        "Explain symbol meanings and hover features"
+      ],
+      "knowledge_extraction_strategy": "Extract object-specific information display methods",
+      "why_this_strategy": "Capture how information varies by object type",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001594",
+        "vec_upsfortna_optisweep_training_day1_20260317_001595",
+        "vec_upsfortna_optisweep_training_day1_20260317_001596",
+        "vec_upsfortna_optisweep_training_day1_20260317_001597",
+        "vec_upsfortna_optisweep_training_day1_20260317_001598",
+        "vec_upsfortna_optisweep_training_day1_20260317_001599",
+        "vec_upsfortna_optisweep_training_day1_20260317_001600",
+        "vec_upsfortna_optisweep_training_day1_20260317_001601",
+        "vec_upsfortna_optisweep_training_day1_20260317_001602",
+        "vec_upsfortna_optisweep_training_day1_20260317_001603",
+        "vec_upsfortna_optisweep_training_day1_20260317_001604",
+        "vec_upsfortna_optisweep_training_day1_20260317_001605",
+        "vec_upsfortna_optisweep_training_day1_20260317_001606",
+        "vec_upsfortna_optisweep_training_day1_20260317_001607",
+        "vec_upsfortna_optisweep_training_day1_20260317_001608",
+        "vec_upsfortna_optisweep_training_day1_20260317_001609",
+        "vec_upsfortna_optisweep_training_day1_20260317_001610",
+        "vec_upsfortna_optisweep_training_day1_20260317_001611",
+        "vec_upsfortna_optisweep_training_day1_20260317_001612"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000032"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Identifying Problematic Clicks and Map Interaction Warnings",
+      "timestamp_start": "01:36:01.440",
+      "timestamp_end": "01:36:39.200",
+      "primary_intent": "Highlight areas and actions on the map that cause issues",
+      "operational_intents": [
+        "Point out where not to click",
+        "Explain consequences of incorrect clicks",
+        "Describe visual indicators of invalid clicks"
+      ],
+      "knowledge_extraction_strategy": "Extract warnings and best practices for map interaction",
+      "why_this_strategy": "Prevent operational errors from incorrect clicks",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001614",
+        "vec_upsfortna_optisweep_training_day1_20260317_001615",
+        "vec_upsfortna_optisweep_training_day1_20260317_001616",
+        "vec_upsfortna_optisweep_training_day1_20260317_001617",
+        "vec_upsfortna_optisweep_training_day1_20260317_001618",
+        "vec_upsfortna_optisweep_training_day1_20260317_001619",
+        "vec_upsfortna_optisweep_training_day1_20260317_001620"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000032"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Risks of Removing AGBs and Access Control",
+      "timestamp_start": "01:36:19.360",
+      "timestamp_end": "01:37:17.280",
+      "primary_intent": "Explain dangers of removing AGBs and user access restrictions",
+      "operational_intents": [
+        "Describe worst-case scenario of removing AGBs",
+        "Explain credential requirements for removal",
+        "Clarify operator vs supervisor access levels",
+        "Discuss risks of unauthorized system changes"
+      ],
+      "knowledge_extraction_strategy": "Extract operational risks and access control policies",
+      "why_this_strategy": "Highlight critical safety and security procedures",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001621",
+        "vec_upsfortna_optisweep_training_day1_20260317_001622",
+        "vec_upsfortna_optisweep_training_day1_20260317_001623",
+        "vec_upsfortna_optisweep_training_day1_20260317_001624",
+        "vec_upsfortna_optisweep_training_day1_20260317_001625",
+        "vec_upsfortna_optisweep_training_day1_20260317_001626",
+        "vec_upsfortna_optisweep_training_day1_20260317_001627",
+        "vec_upsfortna_optisweep_training_day1_20260317_001628",
+        "vec_upsfortna_optisweep_training_day1_20260317_001629",
+        "vec_upsfortna_optisweep_training_day1_20260317_001630",
+        "vec_upsfortna_optisweep_training_day1_20260317_001631",
+        "vec_upsfortna_optisweep_training_day1_20260317_001632",
+        "vec_upsfortna_optisweep_training_day1_20260317_001633",
+        "vec_upsfortna_optisweep_training_day1_20260317_001634",
+        "vec_upsfortna_optisweep_training_day1_20260317_001635",
+        "vec_upsfortna_optisweep_training_day1_20260317_001636",
+        "vec_upsfortna_optisweep_training_day1_20260317_001637",
+        "vec_upsfortna_optisweep_training_day1_20260317_001638",
+        "vec_upsfortna_optisweep_training_day1_20260317_001639",
+        "vec_upsfortna_optisweep_training_day1_20260317_001640",
+        "vec_upsfortna_optisweep_training_day1_20260317_001641",
+        "vec_upsfortna_optisweep_training_day1_20260317_001642",
+        "vec_upsfortna_optisweep_training_day1_20260317_001643"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000032"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Warnings and System Behavior on Removing AGBs",
+      "timestamp_start": "01:37:17.280",
+      "timestamp_end": "01:37:57.973",
+      "primary_intent": "Describe system warnings and limitations when removing AGBs or totes",
+      "operational_intents": [
+        "Explain warning prompts on removal",
+        "Clarify system assumptions about user knowledge",
+        "Discuss inability to remove totes directly without API"
+      ],
+      "knowledge_extraction_strategy": "Extract system response and user interaction constraints",
+      "why_this_strategy": "Understand system safeguards and removal procedures",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001644",
+        "vec_upsfortna_optisweep_training_day1_20260317_001645",
+        "vec_upsfortna_optisweep_training_day1_20260317_001646",
+        "vec_upsfortna_optisweep_training_day1_20260317_001647",
+        "vec_upsfortna_optisweep_training_day1_20260317_001648",
+        "vec_upsfortna_optisweep_training_day1_20260317_001649",
+        "vec_upsfortna_optisweep_training_day1_20260317_001650",
+        "vec_upsfortna_optisweep_training_day1_20260317_001651",
+        "vec_upsfortna_optisweep_training_day1_20260317_001652",
+        "vec_upsfortna_optisweep_training_day1_20260317_001653",
+        "vec_upsfortna_optisweep_training_day1_20260317_001654",
+        "vec_upsfortna_optisweep_training_day1_20260317_001655",
+        "vec_upsfortna_optisweep_training_day1_20260317_001656"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000032"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

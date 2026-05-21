@@ -1,0 +1,119 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Robot Selection Overview and Details",
+      "timestamp_start": "01:13:41.320",
+      "timestamp_end": "01:15:54.680",
+      "primary_intent": "Explain robot selection interface and detail panel",
+      "operational_intents": [
+        "Describe how to select a robot",
+        "Explain robot detail panel visibility and contents",
+        "Identify key robot information such as robot ID and location",
+        "Interpret tote presence and ID on robot"
+      ],
+      "knowledge_extraction_strategy": "Segment by UI feature and robot info explanation",
+      "why_this_strategy": "Distinct UI elements and robot info topics covered",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000025"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000025"
+      ]
+    },
+    {
+      "scene_title": "Robot Tote Status and LED Color Indicators",
+      "timestamp_start": "01:15:54.680",
+      "timestamp_end": "01:16:41.320",
+      "primary_intent": "Explain robot tote status and LED color meanings",
+      "operational_intents": [
+        "Interpret tote presence indicators on robot panel",
+        "Explain meaning of question mark on tote ID",
+        "Describe LED colors and their status indications"
+      ],
+      "knowledge_extraction_strategy": "Group related robot status indicators",
+      "why_this_strategy": "LED colors and tote status form a coherent status topic",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000025"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000025"
+      ]
+    },
+    {
+      "scene_title": "Robot Status Colors and Introduction to Robot Add/Remove",
+      "timestamp_start": "01:16:42.760",
+      "timestamp_end": "01:17:53.640",
+      "primary_intent": "Explain robot status colors and basic add/remove mechanics",
+      "operational_intents": [
+        "Describe robot status LED colors and fault indications",
+        "Introduce how to add a robot via robot ID",
+        "Introduce how to remove a robot via robot ID or selection"
+      ],
+      "knowledge_extraction_strategy": "Combine status explanation with add/remove introduction",
+      "why_this_strategy": "Add/remove closely follows status color explanation",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000026"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000026"
+      ]
+    },
+    {
+      "scene_title": "Handling Physical Robots Not in System and Removal Best Practices",
+      "timestamp_start": "01:17:53.640",
+      "timestamp_end": "01:19:44.634",
+      "primary_intent": "Explain issues with physical robots not in system and proper removal",
+      "operational_intents": [
+        "Describe problems when physical robot remains but removed logically",
+        "Explain robot right of way and obstacle detection",
+        "Outline correct procedure to remove robot safely"
+      ],
+      "knowledge_extraction_strategy": "Focus on removal issues and safety procedures",
+      "why_this_strategy": "Distinct operational topic on removal and physical/logical mismatch",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000026"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000026"
+      ]
+    },
+    {
+      "scene_title": "Remote Access and Robot Restart Procedures",
+      "timestamp_start": "01:19:44.634",
+      "timestamp_end": "01:22:45.080",
+      "primary_intent": "Explain remote access requirements and robot restart process",
+      "operational_intents": [
+        "Describe network access and VPN requirements for remote support",
+        "Explain how to restart a robot via interface",
+        "Discuss robot behavior after restart and label detection"
+      ],
+      "knowledge_extraction_strategy": "Group remote access and restart operational steps",
+      "why_this_strategy": "Remote access and restart are related operational tasks",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000027"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000027"
+      ]
+    },
+    {
+      "scene_title": "Robot Task Recovery and Go To Function Usage",
+      "timestamp_start": "01:22:45.760",
+      "timestamp_end": "01:25:50.600",
+      "primary_intent": "Explain task recovery after restart and using go to function",
+      "operational_intents": [
+        "Describe task retention after robot restart",
+        "Explain procedure to remove and re-add robot with tote handling",
+        "Demonstrate go to function to move robot to target location"
+      ],
+      "knowledge_extraction_strategy": "Combine restart recovery with robot repositioning",
+      "why_this_strategy": "Task recovery and go to function form continuous operational flow",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000028"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000028"
+      ]
+    }
+  ]
+}

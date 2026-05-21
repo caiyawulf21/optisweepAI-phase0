@@ -1,0 +1,121 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_robot_selection_25_01",
+      "deck_id": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        25
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0025"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Map Monitor Quick Select provides map visibility toggles and selection shortcuts",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Map Monitor",
+        "Quick Select"
+      ],
+      "summary": "The Map Monitor Quick Select area includes options to view all AGV active paths, station IDs, and charger IDs, and includes selection functions for robots, containers, cells, and chargers.",
+      "observed_evidence": [
+        "Slide title: 'Map Monitor / Quick Select'",
+        "Visible text: 'View all AGV active paths'",
+        "Visible text: 'View Station Ids'",
+        "Visible text: 'View Charger Ids'",
+        "Visible text: 'Robot Selection'",
+        "Visible text: 'Container Selection'",
+        "Visible text: 'Cell Selection'",
+        "Visible text: 'Charger Selection'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "contains",
+          "target": "Map visibility options"
+        },
+        {
+          "relationship_type": "contains",
+          "target": "Selection functions for robots, containers, cells, and chargers"
+        }
+      ],
+      "retrieval_text": "Map Monitor Quick Select UI reference. Quick Select supports viewing all AGV active paths, viewing station IDs, viewing charger IDs, and selecting robots, containers, cells, and chargers from the Map Monitor.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_robot_selection_25_01",
+      "title": "Use Map Monitor Quick Select options",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal_robot_selection",
+      "source_slide_numbers": [
+        25
+      ],
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "Map Monitor",
+        "Quick Select"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User is viewing the Map Monitor screen.",
+        "Quick Select controls are available in the UI."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_robot_selection_0025"
+      ],
+      "procedure_visual_summary": "Slide lists Quick Select capabilities in Map Monitor for viewing AGV paths, station IDs, charger IDs, and selecting robots, containers, cells, and chargers.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Open or view the Map Monitor Quick Select area.",
+          "expected_outcome": "Quick Select options are visible.",
+          "validation_check": "Confirm the Map Monitor Quick Select options are displayed.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:25"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0025"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0025"
+          ],
+          "visual_region_hint": "Map Monitor / Quick Select area"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Use the available Quick Select options as needed to view AGV active paths, station IDs, charger IDs, or to select a robot, container, cell, or charger.",
+          "expected_outcome": "The selected map visibility or selection function is applied.",
+          "validation_check": "Confirm the requested visibility item or object selection is shown in Map Monitor.",
+          "source_refs": [
+            "deck:optisweep_training_internal_robot_selection",
+            "slide:25"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0025"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_robot_selection_0025"
+          ],
+          "visual_region_hint": "Quick Select option list"
+        }
+      ],
+      "warnings": [
+        "The slide lists available Quick Select functions but does not show exact button names, control locations, or detailed interaction sequence."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_robot_selection_25_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Navigation candidate for Map Monitor Quick Select. From Map Monitor, use Quick Select to view AGV active paths, station IDs, charger IDs, or select robots, containers, cells, and chargers. Exact UI interaction details are not shown on the slide."
+    }
+  ],
+  "discarded_candidates": []
+}

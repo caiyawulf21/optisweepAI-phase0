@@ -1,0 +1,153 @@
+{
+  "examples_version": "phase0_ingestion_examples_v1",
+  "good_canonical_incident_example": {
+    "title": "Hospital station tote induction blocked after AGV/tote state mismatch",
+    "symptom_summary": "The site could remove totes from the hospital station but could not add new totes. Evidence showed AGVs under the rack, a disconnected tote association, and recovery after AGV/tote cleanup.",
+    "operational_signature": [
+      "hospital_induction_blocked",
+      "agv_tote_state_mismatch",
+      "manual_cleanup_recovery"
+    ],
+    "observed_failure_signals": [
+      "hospital_can_remove_totes_but_cannot_add_totes"
+    ],
+    "diagnostic_signals": [
+      "agv_tote_association_mismatch_observed"
+    ],
+    "action_signals": [
+      "agvs_removed_for_recovery",
+      "tote_removed_via_support_tool"
+    ],
+    "recovery_validation_signals": [
+      "robots_readded",
+      "hospital_flow_restored"
+    ],
+    "escalation_signals": [
+      "support_bridge_engaged"
+    ],
+    "validated_root_cause": false,
+    "candidate_inferred_causes": [
+      {
+        "cause_summary": "AGV and tote state mismatch likely blocked hospital induction.",
+        "basis": "Teams evidence references AGV removal without associated tote removal and subsequent recovery after cleanup.",
+        "confidence": 0.72,
+        "validation_status": "candidate_extracted",
+        "requires_manual_review": true
+      }
+    ]
+  },
+  "good_timeline_event_example": {
+    "event_type": "diagnostic_observation",
+    "event_summary": "Support observed that the hospital station could remove totes but could not add totes, narrowing the issue to induction/state handling rather than general station visibility.",
+    "event_occurred_at": null,
+    "event_documented_at": "2025-09-26T03:14:00",
+    "timestamp_basis": "Documented timestamp came from Teams message; occurrence time was not explicit.",
+    "actor_role": "software_support",
+    "action_taken": "Reviewed hospital station behavior and AGV/tote state.",
+    "outcome": "Candidate AGV/tote association mismatch identified for cleanup.",
+    "observed_failure_signals": [
+      "hospital_add_tote_failed"
+    ],
+    "diagnostic_signals": [
+      "agv_tote_state_mismatch_suspected"
+    ]
+  },
+  "good_semantic_chunk_example": {
+    "title": "Teams discussion identifies hospital add/remove mismatch",
+    "summary": "Teams messages show support comparing hospital tote add/remove behavior and identifying possible AGV/tote state mismatch. The chunk preserves the source discussion and links to the relevant screenshot region.",
+    "raw_source_type": "teams_chat",
+    "evidence_type": "diagnostic",
+    "raw_text_preserved": true,
+    "signal_tags": [
+      "hospital_add_tote_failed",
+      "agv_tote_state_mismatch_suspected"
+    ]
+  },
+  "good_procedure_candidate_example": {
+    "procedure_candidate_id": "review_hospital_agv_tote_state_candidate",
+    "procedure_name": "Review hospital AGV/tote state before cleanup",
+    "procedure_detail_level": "medium",
+    "procedure_goal": "Determine whether a hospital induction issue is caused by stale AGV/tote association state before cleanup is attempted.",
+    "procedure_steps": [
+      {
+        "step_number": 1,
+        "step_name": "Capture hospital station state",
+        "operator_action": "Open the relevant hospital station view and capture the visible AGV/tote association state.",
+        "system_or_tool": "RMS or support diagnostic UI",
+        "evidence_to_capture": [
+          "hospital station view",
+          "AGV id",
+          "tote id"
+        ],
+        "validation_check": "The captured evidence shows whether a tote is associated to an AGV at the hospital station.",
+        "evidence_quality": "medium",
+        "refinement_gap_notes": []
+      }
+    ],
+    "missing_operational_details": [],
+    "candidate_refinement_questions": [
+      "Which support UI is authoritative for hospital AGV/tote association state?"
+    ]
+  },
+  "good_workflow_candidate_example": {
+    "candidate_workflow_name": "hospital_induction_blocked_with_agv_tote_state_mismatch",
+    "step_type": "decision",
+    "decision_question": "Is hospital induction blocked while AGV/tote association evidence suggests stale state?",
+    "entry_conditions": [
+      "hospital cannot add totes"
+    ],
+    "required_signals": [
+      "hospital_add_tote_failed",
+      "agv_tote_state_mismatch_suspected"
+    ],
+    "negative_signals": [
+      "validated hardware fault"
+    ],
+    "procedure_refs": [
+      "review_hospital_agv_tote_state_candidate"
+    ],
+    "evidence_refs": [
+      "chunk_case_001"
+    ]
+  },
+  "good_escalation_summary_example": {
+    "handoff_summary": "Hospital induction is blocked while support evidence suggests AGV/tote state mismatch. Known facts and attempted cleanup are separated from candidate inferred causes.",
+    "known_facts": [
+      "Hospital remove tote action works.",
+      "Hospital add tote action fails."
+    ],
+    "actions_taken": [
+      "Support reviewed hospital station state.",
+      "Support removed stale AGV/tote association."
+    ],
+    "open_questions": [
+      "Which AGV/tote association was stale before cleanup?"
+    ],
+    "recommended_owner": "software_support"
+  },
+  "bad_examples": [
+    {
+      "anti_pattern": "OCR restatement",
+      "bad": "The screenshot says hospital and tote and AGV.",
+      "why_bad": "It does not synthesize operational meaning or separate observed, diagnostic, action, and recovery signals."
+    },
+    {
+      "anti_pattern": "fake procedure step",
+      "bad": {
+        "instruction": "None",
+        "operator_action": null
+      },
+      "why_bad": "A procedure step without an operator action must become a refinement placeholder, not a normal candidate step."
+    },
+    {
+      "anti_pattern": "case-number workflow",
+      "bad": "case_229716_candidate_triage_flow_v1",
+      "why_bad": "Workflow names must be symptom-driven for future grouping unless explicitly marked fallback-only."
+    },
+    {
+      "anti_pattern": "root cause overclaim",
+      "bad": "Root cause was service failure because restart fixed it.",
+      "why_bad": "Recovery after restart is candidate evidence, not validated root cause unless the source explicitly confirms it."
+    }
+  ]
+}

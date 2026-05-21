@@ -1,6 +1,7 @@
 import json
 import re
 import shutil
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -8,10 +9,16 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from backend.app.seed.issue_category_context import category_for_case, issue_category_context
+
 SOURCE_OCR_PATH = ROOT / "output" / "phase0" / "case_229716_docx" / "extracted" / "case_229716_docx_ocr.json"
 SOURCE_ARTIFACT_DIR = ROOT / "output" / "phase0" / "case_229716_docx" / "artifacts" / "docx_media"
 REFERENCE_EXTRACTION_PATH = ROOT / "output" / "phase0" / "case_229716_docx" / "extracted" / "reference_docx_extraction.json"
 PHASE0_PROMPT_PATH = ROOT / "prompts" / "phase0_system_prompt.txt"
+ISSUE_CATEGORY_DOC_PATH = ROOT / "docs" / "Optisweep Issue Categories.docx"
 OUTPUT_DIR = ROOT / "output" / "phase0" / "case_229716_docx_v2"
 EXTRACTED_DIR = OUTPUT_DIR / "extracted"
 ARTIFACT_DIR = OUTPUT_DIR / "artifacts" / "docx_media"
@@ -271,9 +278,13 @@ def dataset_context_packet(reference):
     paragraphs = reference.get("paragraphs", [])
     wanted = ["Dataset 0", "Dataset 1", "Dataset 1.5", "Dataset 2", "Dataset 5", "Source Artifact Strategy", "Initial Taxonomy", "Design Principles"]
     snippets = [text for text in paragraphs if any(marker in text for marker in wanted)][:24]
+    category_context = issue_category_context(ISSUE_CATEGORY_DOC_PATH)
     return {
         "source": "docs/Phase0 Cat1 Dataset Seed Records V1.docx",
-        "active_scope": "CAT-1: WCS / Service Failure",
+        "category_context_source": "docs/Optisweep Issue Categories.docx",
+        "active_scope": category_for_case("229716", category_context),
+        "issue_category_context": category_context,
+        "deterministic_issue_category": category_for_case("229716", category_context),
         "dataset_layers": [
             "Dataset 0 - Context / Domain Reference",
             "Dataset 1 - Canonical Incident Records",
@@ -290,8 +301,8 @@ def dataset_context_packet(reference):
             "L4_engineering_project_team": ["software fixes", "patches", "permanent corrective actions"],
         },
         "taxonomy_constraints": [
-            "CAT-1 is active scope.",
-            "CAT-2, CAT-3, and CAT-4 remain reference-only.",
+            "Use source-provided issue categories only.",
+            "CAT-1 through CAT-4 are authoritative category context, not keyword matching rules.",
             "Validated workflows, procedures, escalation thresholds, ownership rules, support-safe boundaries, and root-cause relationships must not be inferred in Phase 0.",
         ],
         "design_principles": [
@@ -311,6 +322,7 @@ def interpretation_payload(prompt_text, reference):
         "interpreter": "cursor_llm_cached_v2",
         "prompt_source": "prompts/phase0_system_prompt.txt",
         "reference_source": "docs/Phase0 Cat1 Dataset Seed Records V1.docx",
+        "category_reference_source": "docs/Optisweep Issue Categories.docx",
         "dataset_context_used": dataset_context,
         "prompt_rules_used": [
             "do_not_invent_missing_facts",
@@ -356,7 +368,7 @@ def build_interpretations(regions, prompt_text, reference):
         },
         "dataset_context_used": context["dataset_context_used"],
         "canonical_incident": {
-            "container_id": "phase0_cat1_wcs_service_failure",
+            "container_id": "phase0_candidate_incident",
             "dataset_record_type": "incident_summary",
             "case_id": "229716",
             "source_case_id": "00229716",
@@ -370,7 +382,7 @@ def build_interpretations(regions, prompt_text, reference):
             "customer": "UPS",
             "contact_name": "Antonio Rodrigo",
             "affected_asset": "Z-UPS Fort Worth, TX (Haslet)",
-            "issue_category": "CAT-1: WCS / Service Failure",
+            "issue_category": context["dataset_context_used"].get("deterministic_issue_category"),
             "failure_signature": ["no_path_to_tippers_reported", "all_lines_stopped", "tipper_heartbeat_timeout_active", "hospital_tote_removal_failed", "no_active_rms_faults_reported"],
             "operational_signature": ["agv_startup_to_tipper_flow_blocked", "tipper_flow_blocked", "candidate_service_restart_recovery_pattern"],
             "symptom_summary": "After sort startup, AGVs lined up to go to tippers and all three lines stopped. The site reported no path showing and nothing coming to tippers. Hospital tote removal failed, tippers showed heartbeat timeout active, tippers were enabled, and no RMS faults were reported.",
@@ -949,7 +961,7 @@ def build_records(regions, interpretations):
                 **base_record("procedure_candidate", "Mixed Screenshot Evidence", refs["source_pages"], ",".join(refs["source_region_refs"]), refs["confidence"], ["approval_status", "preconditions"], ["Procedure candidate filtered to require operational action context and source regions."]),
                 **proc,
                 "procedure_id": proc["procedure_candidate_id"],
-                "container_id": "phase0_procedure_dictionary",
+                "container_id": "phase0_procedure_candidates",
                 **review_fields(proc.get("role_requirements", []), proc.get("required_permissions", [])),
                 **({key: refs[key] for key in ["escalated", "escalation_source", "support_tiers_involved"] if key in refs}),
                 "source_artifact_ids": refs["source_artifact_ids"],
@@ -1163,9 +1175,9 @@ def main():
         "bundle_metadata": {
             "incident_id": "229716",
             "phase": "0",
-            "category": "CAT-1: WCS / Service Failure",
+            "category": interpretations["dataset_context_used"].get("deterministic_issue_category"),
             "created_at": datetime.now(timezone.utc).isoformat(),
-            "source_files": ["prompts/phase0_system_prompt.txt", "docs/Phase0 Cat1 Dataset Seed Records V1.docx", ACTIVE_SOURCE_FILE],
+            "source_files": ["prompts/phase0_system_prompt.txt", "docs/Phase0 Cat1 Dataset Seed Records V1.docx", "docs/Optisweep Issue Categories.docx", ACTIVE_SOURCE_FILE],
             "ocr_engine": "PaddleOCR 3.5.0 / PaddlePaddle 3.2.2 / PP-OCRv5 server det+rec",
             "interpretation_engine": "cursor_llm_cached_v2",
             "validation_status": "candidate_extracted",

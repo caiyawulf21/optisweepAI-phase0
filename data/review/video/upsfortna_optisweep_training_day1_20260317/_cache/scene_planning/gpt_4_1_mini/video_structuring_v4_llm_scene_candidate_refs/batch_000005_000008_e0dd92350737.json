@@ -1,0 +1,116 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Secure Communication Between WCS and UPS Chat",
+      "timestamp_start": "00:12:51.680",
+      "timestamp_end": "00:13:40.440",
+      "primary_intent": "Explain secure data exchange mechanism",
+      "operational_intents": [
+        "Describe communication channel between WCS and UPS chat",
+        "Explain encryption and key management"
+      ],
+      "knowledge_extraction_strategy": "Focus on communication security details",
+      "why_this_strategy": "Clarifies secure data exchange setup",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000005"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000005"
+      ]
+    },
+    {
+      "scene_title": "AGV Lifecycle and State Transitions Overview",
+      "timestamp_start": "00:13:49.600",
+      "timestamp_end": "00:15:53.120",
+      "primary_intent": "Outline AGV operational states and transitions",
+      "operational_intents": [
+        "Describe AGV startup and shutdown states",
+        "Explain sorting and bagging cycles",
+        "Discuss failure conditions for state transitions"
+      ],
+      "knowledge_extraction_strategy": "Extract lifecycle and failure mode information",
+      "why_this_strategy": "Defines AGV operational flow and error handling",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000005"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000005"
+      ]
+    },
+    {
+      "scene_title": "AGV Shutdown and Startup Behavior",
+      "timestamp_start": "00:15:53.120",
+      "timestamp_end": "00:16:19.680",
+      "primary_intent": "Describe AGV behavior during system shutdown and startup",
+      "operational_intents": [
+        "Explain delays and waiting states during shutdown/startup",
+        "Plan for detailed follow-up meetings on system behavior"
+      ],
+      "knowledge_extraction_strategy": "Capture operational nuances and planning",
+      "why_this_strategy": "Highlights critical startup/shutdown timing issues",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000006"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000006"
+      ]
+    },
+    {
+      "scene_title": "Parcel Induction and Dimension Data Acquisition",
+      "timestamp_start": "00:16:19.680",
+      "timestamp_end": "00:17:36.720",
+      "primary_intent": "Explain parcel induction process and dimension data handling",
+      "operational_intents": [
+        "Describe unloading and belt transport to sorter inductions",
+        "Detail dimension data capture and failure modes",
+        "Clarify auto index functionality differences"
+      ],
+      "knowledge_extraction_strategy": "Focus on parcel flow and data capture mechanisms",
+      "why_this_strategy": "Defines input data and system triggers",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000006"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000006"
+      ]
+    },
+    {
+      "scene_title": "Sort Message and Destination Determination",
+      "timestamp_start": "00:18:53.370",
+      "timestamp_end": "00:20:30.480",
+      "primary_intent": "Explain sort message and destination assignment logic",
+      "operational_intents": [
+        "Define potential vs destination concepts",
+        "Describe UPS internal mapping of zip codes to destinations",
+        "Explain dynamic destination assignment from ASX system"
+      ],
+      "knowledge_extraction_strategy": "Extract sorting destination logic and terminology",
+      "why_this_strategy": "Clarifies parcel routing decisions",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000007"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000007"
+      ]
+    },
+    {
+      "scene_title": "Tote Fill Levels and Pickup Prioritization",
+      "timestamp_start": "00:21:56.280",
+      "timestamp_end": "00:24:59.143",
+      "primary_intent": "Describe tote volumetric thresholds and pickup priority",
+      "operational_intents": [
+        "Explain volumetric thresholds for tote fullness",
+        "Detail priority levels for tote pickup requests",
+        "Discuss weight limits and their impact on tote handling"
+      ],
+      "knowledge_extraction_strategy": "Focus on tote management and prioritization criteria",
+      "why_this_strategy": "Defines operational thresholds for tote handling",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000008"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000008"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "explorer.excludeGitIgnore": false,
+  "files.exclude": {
+    "**/output": false,
+    "**/output/**": false
+  },
+  "search.exclude": {
+    "**/output": false,
+    "**/output/**": false
+  }
+}

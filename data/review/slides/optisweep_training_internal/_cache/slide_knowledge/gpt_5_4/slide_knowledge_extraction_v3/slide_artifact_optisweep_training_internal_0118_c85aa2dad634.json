@@ -1,0 +1,168 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_118_agv_api_remove_recover",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        118
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0118"
+      ],
+      "unit_type": "api_capability",
+      "title": "AGV membership management APIs: RemoveAgv and RecoverAGV",
+      "systems": [
+        "OptiSweep",
+        "Geek+"
+      ],
+      "components": [
+        "AGV",
+        "robotId"
+      ],
+      "summary": "The slide states that RemoveAgv requires a robotId and sends a request to Geek to remove the specified AGV from the system. RecoverAGV requires a robotId and sends a request to Geek to add the specified AGV to the system.",
+      "observed_evidence": [
+        "“RemoveAgv: Requires the robotId and will send a request to Geek to remove the specified AGV from the system.”",
+        "“RecoverAGV: Requires the robotId and will send a request to Geek to add the specified AGV to the system.”"
+      ],
+      "relationships": [
+        {
+          "type": "targets_system",
+          "target": "Geek+"
+        },
+        {
+          "type": "requires_parameter",
+          "target": "robotId"
+        },
+        {
+          "type": "affects_component",
+          "target": "AGV"
+        }
+      ],
+      "retrieval_text": "AGV API capability in OptiSweep: RemoveAgv uses robotId to request Geek+ remove a specified AGV from the system. RecoverAGV uses robotId to request Geek+ add a specified AGV to the system.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_118_agv_api_pause_resume_all_motion",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        118
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0118"
+      ],
+      "unit_type": "api_capability",
+      "title": "AGV fleet motion control APIs: PuaseAGVs and ResumeAGVs",
+      "systems": [
+        "OptiSweep",
+        "Geek+"
+      ],
+      "components": [
+        "AGV"
+      ],
+      "summary": "The slide describes APIs for pausing and resuming all AGV movement by sending requests to Geek. The slide text spells the pause API as PuaseAGVs.",
+      "observed_evidence": [
+        "“PuaseAGVs: Will make a request to Geek to pause all AGV movement.”",
+        "“ResumeAGVs: Will make a request to Geek to resume all AGV movement.”"
+      ],
+      "relationships": [
+        {
+          "type": "targets_system",
+          "target": "Geek+"
+        },
+        {
+          "type": "affects_component",
+          "target": "AGV movement"
+        }
+      ],
+      "retrieval_text": "AGV API capability in OptiSweep: PuaseAGVs sends a request to Geek+ to pause all AGV movement, and ResumeAGVs sends a request to Geek+ to resume all AGV movement. Slide text uses the spelling PuaseAGVs.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_118_agv_api_execute_active_command_after_missed_callbacks",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        118
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0118"
+      ],
+      "unit_type": "api_capability",
+      "title": "ExecutedAgvCommand API executes the AGV's active command using robotId",
+      "systems": [
+        "OptiSweep",
+        "Geek+"
+      ],
+      "components": [
+        "AGV",
+        "robotId",
+        "callbacks"
+      ],
+      "summary": "ExecutedAgvCommand requires a robotId and executes the active command the AGV currently has. The slide notes this is helpful during unplanned restarts when OptiSweep may have missed callbacks from Geek+.",
+      "observed_evidence": [
+        "“ExecutedAgvCommand: Requires a robotId and will execute the active command the AGV has.”",
+        "“This is helpful during unplanned restarts in the event that OptiSweep missed callbacks from Geek+”"
+      ],
+      "relationships": [
+        {
+          "type": "requires_parameter",
+          "target": "robotId"
+        },
+        {
+          "type": "affects_component",
+          "target": "AGV active command"
+        },
+        {
+          "type": "used_in_context",
+          "target": "unplanned restarts"
+        },
+        {
+          "type": "related_to",
+          "target": "missed callbacks from Geek+"
+        }
+      ],
+      "retrieval_text": "ExecutedAgvCommand API capability: requires robotId and executes the AGV's active command. The slide says this is useful during unplanned restarts if OptiSweep missed callbacks from Geek+.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_118_none",
+      "title": "No explicit reusable procedure on AGV API reference slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        118
+      ],
+      "systems": [
+        "OptiSweep",
+        "Geek+"
+      ],
+      "components": [
+        "AGV",
+        "robotId"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide contains API names and brief capability descriptions"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0118"
+      ],
+      "procedure_visual_summary": "Bullet list of AGV-related APIs and what each request does; no ordered steps or invocation sequence shown.",
+      "steps": [],
+      "warnings": [
+        "The slide does not provide exact invocation steps, request format, sequencing, or validation actions.",
+        "A procedure should not be inferred from this API capability list alone."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_118_agv_api_remove_recover",
+        "oku_optisweep_training_internal_118_agv_api_pause_resume_all_motion",
+        "oku_optisweep_training_internal_118_agv_api_execute_active_command_after_missed_callbacks"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate: slide 118 is an AGV API reference listing RemoveAgv, RecoverAGV, PuaseAGVs, ResumeAGVs, and ExecutedAgvCommand with brief descriptions, but it does not provide a step-by-step operational procedure."
+    }
+  ],
+  "discarded_candidates": []
+}

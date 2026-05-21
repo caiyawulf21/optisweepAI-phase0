@@ -1,0 +1,25 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "optisweep_training_internal_s34_hmi_section_header",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        "34"
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0034"
+      ],
+      "unit_type": "ui_concept",
+      "title": "HMI - Section Header",
+      "systems": [],
+      "components": [],
+      "summary": "This slide serves as a section divider introducing the HMI topic. It contains no actionable steps or configuration details.",
+      "observed_evidence": "Visible text on slide: 'HMI' with footer '© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.' and page marker '33'. No additional instructional content present.",
+      "relationships": [],
+      "retrieval_text": "HMI section header; introduces Human-Machine Interface content; overview slide with no procedures or steps.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

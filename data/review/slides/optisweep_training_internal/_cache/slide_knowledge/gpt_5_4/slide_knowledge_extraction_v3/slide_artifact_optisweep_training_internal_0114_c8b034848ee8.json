@@ -1,0 +1,151 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_114_api_overview_capability",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        114
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0114"
+      ],
+      "unit_type": "api_capability",
+      "title": "OptiSweep exposes APIs for data retrieval and request submission",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "APIs"
+      ],
+      "summary": "The slide states that OptiSweep provides APIs both to get data and to make requests.",
+      "observed_evidence": [
+        "Slide text: 'OptiSweep provides APIs to get data and to make request.'",
+        "Slide title/subtitle: 'APIs / Overview'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "provides",
+          "target": "API-based access for data retrieval"
+        },
+        {
+          "relationship_type": "provides",
+          "target": "API-based request submission"
+        }
+      ],
+      "retrieval_text": "OptiSweep API overview: OptiSweep provides APIs to get data and to make request.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_114_apidog_primary_server_reference",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        114
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0114"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Apidog is installed on the primary server for API interaction",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Apidog",
+        "primary server"
+      ],
+      "summary": "The slide indicates that Apidog is installed on the primary server, implying it is used as a tool for interacting with the OptiSweep APIs.",
+      "observed_evidence": [
+        "Slide text: 'We have Apidog installed on the primary server.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "installed_on",
+          "target": "primary server"
+        },
+        {
+          "relationship_type": "used_with",
+          "target": "OptiSweep APIs"
+        }
+      ],
+      "retrieval_text": "Apidog reference: Apidog is installed on the primary server and is associated with OptiSweep API usage.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_114_api_to_ignition_relationship",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        114
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0114"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Ignition consumes the same OptiSweep APIs",
+      "systems": [
+        "OptiSweep",
+        "Ignition"
+      ],
+      "components": [
+        "APIs"
+      ],
+      "summary": "The slide states that the same APIs used in this context also feed Ignition, indicating an integration relationship between OptiSweep APIs and Ignition.",
+      "observed_evidence": [
+        "Slide text: 'The same APIs feed Ignition.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "feeds",
+          "target": "Ignition"
+        },
+        {
+          "relationship_type": "shared_interface",
+          "target": "OptiSweep APIs"
+        }
+      ],
+      "retrieval_text": "Architecture relationship: the same OptiSweep APIs feed Ignition.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "discarded_optisweep_training_internal_114_no_procedure",
+      "title": "No procedure candidate from APIs overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        114
+      ],
+      "systems": [
+        "OptiSweep",
+        "Ignition"
+      ],
+      "components": [
+        "APIs",
+        "Apidog",
+        "primary server"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide contains only high-level API overview statements"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0114"
+      ],
+      "procedure_visual_summary": "Overview slide stating that OptiSweep provides APIs for getting data and making requests, that Apidog is installed on the primary server, and that the same APIs feed Ignition.",
+      "steps": [],
+      "warnings": [
+        "No explicit action sequence, endpoint details, or reusable operational steps are shown on the slide.",
+        "Overview content should be treated as context rather than a validated procedure."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_114_api_overview_capability",
+        "oku_optisweep_training_internal_114_apidog_primary_server_reference",
+        "oku_optisweep_training_internal_114_api_to_ignition_relationship"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate: slide is an API overview only. It describes that OptiSweep has APIs for getting data and making requests, notes Apidog on the primary server, and says the same APIs feed Ignition, but it does not provide explicit operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

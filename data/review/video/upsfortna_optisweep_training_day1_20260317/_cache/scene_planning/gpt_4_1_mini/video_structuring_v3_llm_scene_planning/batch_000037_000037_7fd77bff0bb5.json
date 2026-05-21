@@ -1,0 +1,148 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Manual Recovery of Dead AGVs",
+      "timestamp_start": "01:50:12.191",
+      "timestamp_end": "01:50:57.740",
+      "primary_intent": "Explain manual steps to recover and charge dead AGVs",
+      "operational_intents": [
+        "Identify dead AGVs",
+        "Remove AGV from RMS",
+        "Remove tote and disable chargers",
+        "Manually move AGV to charger using Dolly",
+        "Manually charge AGV until it boots up"
+      ],
+      "knowledge_extraction_strategy": "Extract detailed manual recovery steps",
+      "why_this_strategy": "Focus on physical recovery process for dead AGVs",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001873",
+        "vec_upsfortna_optisweep_training_day1_20260317_001874",
+        "vec_upsfortna_optisweep_training_day1_20260317_001875",
+        "vec_upsfortna_optisweep_training_day1_20260317_001876",
+        "vec_upsfortna_optisweep_training_day1_20260317_001877",
+        "vec_upsfortna_optisweep_training_day1_20260317_001878",
+        "vec_upsfortna_optisweep_training_day1_20260317_001879",
+        "vec_upsfortna_optisweep_training_day1_20260317_001880",
+        "vec_upsfortna_optisweep_training_day1_20260317_001881",
+        "vec_upsfortna_optisweep_training_day1_20260317_001882",
+        "vec_upsfortna_optisweep_training_day1_20260317_001883",
+        "vec_upsfortna_optisweep_training_day1_20260317_001884",
+        "vec_upsfortna_optisweep_training_day1_20260317_001885",
+        "vec_upsfortna_optisweep_training_day1_20260317_001886",
+        "vec_upsfortna_optisweep_training_day1_20260317_001887",
+        "vec_upsfortna_optisweep_training_day1_20260317_001888"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000037"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Identifying and Diagnosing AGV Battery Issues",
+      "timestamp_start": "01:50:57.740",
+      "timestamp_end": "01:51:26.320",
+      "primary_intent": "Discuss causes and symptoms of AGV battery failures",
+      "operational_intents": [
+        "Recognize prolonged inactivity leading to battery death",
+        "Understand impact of not tipping AGV on charge",
+        "Diagnose issues related to battery depletion"
+      ],
+      "knowledge_extraction_strategy": "Extract diagnostic indicators and causes",
+      "why_this_strategy": "Clarify battery failure causes and symptoms",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001888",
+        "vec_upsfortna_optisweep_training_day1_20260317_001889",
+        "vec_upsfortna_optisweep_training_day1_20260317_001890",
+        "vec_upsfortna_optisweep_training_day1_20260317_001891",
+        "vec_upsfortna_optisweep_training_day1_20260317_001892",
+        "vec_upsfortna_optisweep_training_day1_20260317_001893",
+        "vec_upsfortna_optisweep_training_day1_20260317_001894",
+        "vec_upsfortna_optisweep_training_day1_20260317_001895"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000037"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Monitoring AGV Battery Charge Levels",
+      "timestamp_start": "01:51:26.130",
+      "timestamp_end": "01:52:26.680",
+      "primary_intent": "Explain how to monitor AGV battery charge and thresholds",
+      "operational_intents": [
+        "Check power section for charge percentage",
+        "Understand charge level indicators and warnings",
+        "Recognize critical battery thresholds and effects"
+      ],
+      "knowledge_extraction_strategy": "Extract battery monitoring and threshold info",
+      "why_this_strategy": "Focus on battery charge monitoring and alerts",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001896",
+        "vec_upsfortna_optisweep_training_day1_20260317_001897",
+        "vec_upsfortna_optisweep_training_day1_20260317_001898",
+        "vec_upsfortna_optisweep_training_day1_20260317_001899",
+        "vec_upsfortna_optisweep_training_day1_20260317_001900",
+        "vec_upsfortna_optisweep_training_day1_20260317_001901",
+        "vec_upsfortna_optisweep_training_day1_20260317_001902",
+        "vec_upsfortna_optisweep_training_day1_20260317_001903",
+        "vec_upsfortna_optisweep_training_day1_20260317_001904",
+        "vec_upsfortna_optisweep_training_day1_20260317_001905",
+        "vec_upsfortna_optisweep_training_day1_20260317_001906",
+        "vec_upsfortna_optisweep_training_day1_20260317_001907",
+        "vec_upsfortna_optisweep_training_day1_20260317_001908",
+        "vec_upsfortna_optisweep_training_day1_20260317_001909",
+        "vec_upsfortna_optisweep_training_day1_20260317_001910",
+        "vec_upsfortna_optisweep_training_day1_20260317_001911",
+        "vec_upsfortna_optisweep_training_day1_20260317_001912",
+        "vec_upsfortna_optisweep_training_day1_20260317_001913",
+        "vec_upsfortna_optisweep_training_day1_20260317_001914",
+        "vec_upsfortna_optisweep_training_day1_20260317_001915",
+        "vec_upsfortna_optisweep_training_day1_20260317_001916",
+        "vec_upsfortna_optisweep_training_day1_20260317_001917",
+        "vec_upsfortna_optisweep_training_day1_20260317_001918"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000037"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Manual Charging Procedures and Power State Considerations",
+      "timestamp_start": "01:52:26.680",
+      "timestamp_end": "01:53:16.449",
+      "primary_intent": "Clarify manual charging requirements and power state behavior",
+      "operational_intents": [
+        "Determine if AGV must be on to charge manually",
+        "Discuss boot-up behavior after charging",
+        "Advise on best practices for charging and system reintegration"
+      ],
+      "knowledge_extraction_strategy": "Extract manual charging and power state details",
+      "why_this_strategy": "Resolve charging procedure uncertainties",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001919",
+        "vec_upsfortna_optisweep_training_day1_20260317_001920",
+        "vec_upsfortna_optisweep_training_day1_20260317_001921",
+        "vec_upsfortna_optisweep_training_day1_20260317_001922",
+        "vec_upsfortna_optisweep_training_day1_20260317_001923",
+        "vec_upsfortna_optisweep_training_day1_20260317_001924",
+        "vec_upsfortna_optisweep_training_day1_20260317_001925",
+        "vec_upsfortna_optisweep_training_day1_20260317_001926",
+        "vec_upsfortna_optisweep_training_day1_20260317_001927",
+        "vec_upsfortna_optisweep_training_day1_20260317_001928",
+        "vec_upsfortna_optisweep_training_day1_20260317_001929",
+        "vec_upsfortna_optisweep_training_day1_20260317_001930",
+        "vec_upsfortna_optisweep_training_day1_20260317_001931",
+        "vec_upsfortna_optisweep_training_day1_20260317_001932",
+        "vec_upsfortna_optisweep_training_day1_20260317_001933",
+        "vec_upsfortna_optisweep_training_day1_20260317_001934",
+        "vec_upsfortna_optisweep_training_day1_20260317_001935",
+        "vec_upsfortna_optisweep_training_day1_20260317_001936",
+        "vec_upsfortna_optisweep_training_day1_20260317_001937"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000037"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

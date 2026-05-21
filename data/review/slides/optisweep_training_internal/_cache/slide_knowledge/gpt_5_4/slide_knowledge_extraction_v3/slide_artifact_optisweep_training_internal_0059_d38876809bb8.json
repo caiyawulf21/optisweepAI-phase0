@@ -1,0 +1,439 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_59_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        59
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0059"
+      ],
+      "unit_type": "operational_process",
+      "title": "UPS chat interactions across tote arrival, parcel processing, and tote exit",
+      "systems": [
+        "UPS Chat Module",
+        "sorter",
+        "camera tunnel",
+        "xle",
+        "tipper",
+        "printer"
+      ],
+      "components": [
+        "chat",
+        "tote",
+        "parcel",
+        "sorter",
+        "camera tunnel",
+        "xle",
+        "tipper",
+        "printer"
+      ],
+      "summary": "The slide describes the detailed message flow handled by the UPS Chat Module. When a tote arrives to the sorter, the system sends tote inducted and destination enabled messages to chat. For parcels, the module listens for Scan data 2 from the camera tunnel, sort from xle, and sort confirmation from the sorter, using those messages to collect parcel dimensions, load category, possible destinations, and final destination. Before a tote leaves the sorter, a destination closed message is sent to chat, and during tote tipping at the tipper, a print label message is sent to the printer using a label provided by xle.",
+      "observed_evidence": [
+        "“Tote arrives to the sorter”",
+        "“We send a tote inducted and a destination enabled message to the chat”",
+        "“We listen to message on the chat for parcels”",
+        "“Scan data 2 is sent from the camera tunnel onto the chat”",
+        "“We collect the dimensions of the parcel and the load category”",
+        "“Sort is sent from the xle (UPS version of WCS) onto the chat”",
+        "“We collect the possible destinations for the parcel”",
+        "“Sort confirmation is sent from the sorter onto the chat”",
+        "“We collect the final destination of the parcel”",
+        "“Tote ready to leave sorter”",
+        "“We send destination closed message onto the chat before doing an exchange”",
+        "“Tote tipping at tipper”",
+        "“We send a print label message to the printer so it can print a label provide by the xle”"
+      ],
+      "relationships": [
+        {
+          "type": "sends_to",
+          "from": "UPS Chat Module",
+          "to": "chat",
+          "detail": "Sends tote inducted, destination enabled, and destination closed messages"
+        },
+        {
+          "type": "receives_from",
+          "from": "camera tunnel",
+          "to": "chat",
+          "detail": "Scan data 2 is published onto chat"
+        },
+        {
+          "type": "receives_from",
+          "from": "xle",
+          "to": "chat",
+          "detail": "Sort data is published onto chat"
+        },
+        {
+          "type": "receives_from",
+          "from": "sorter",
+          "to": "chat",
+          "detail": "Sort confirmation is published onto chat"
+        },
+        {
+          "type": "sends_to",
+          "from": "UPS Chat Module",
+          "to": "printer",
+          "detail": "Sends print label message using label provided by xle"
+        }
+      ],
+      "retrieval_text": "UPS Chat Module detailed design message flow: when tote arrives to sorter, send tote inducted and destination enabled messages to chat. Listen on chat for parcel messages. Camera tunnel sends Scan data 2, used to collect parcel dimensions and load category. xle sends sort, used to collect possible destinations. Sorter sends sort confirmation, used to collect final destination. Before tote exchange when tote is ready to leave sorter, send destination closed message to chat. At tote tipping, send print label message to printer using label from xle.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_59_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        59
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0059"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Parcel data aggregation from UPS chat messages",
+      "systems": [
+        "UPS Chat Module",
+        "camera tunnel",
+        "xle",
+        "sorter"
+      ],
+      "components": [
+        "chat",
+        "parcel"
+      ],
+      "summary": "The module aggregates parcel attributes from multiple chat message sources: Scan data 2 provides dimensions and load category, xle sort provides possible destinations, and sorter sort confirmation provides the final destination.",
+      "observed_evidence": [
+        "“Scan data 2 is sent from the camera tunnel onto the chat”",
+        "“We collect the dimensions of the parcel and the load category”",
+        "“Sort is sent from the xle (UPS version of WCS) onto the chat”",
+        "“We collect the possible destinations for the parcel”",
+        "“Sort confirmation is sent from the sorter onto the chat”",
+        "“We collect the final destination of the parcel”"
+      ],
+      "relationships": [
+        {
+          "type": "derives_from",
+          "from": "parcel dimensions and load category",
+          "to": "Scan data 2",
+          "detail": "Attributes collected from camera tunnel message on chat"
+        },
+        {
+          "type": "derives_from",
+          "from": "possible destinations",
+          "to": "xle sort message",
+          "detail": "Destination options collected from xle message on chat"
+        },
+        {
+          "type": "derives_from",
+          "from": "final destination",
+          "to": "sort confirmation",
+          "detail": "Final destination collected from sorter message on chat"
+        }
+      ],
+      "retrieval_text": "UPS parcel chat processing behavior: Scan data 2 from camera tunnel gives parcel dimensions and load category; sort from xle gives possible parcel destinations; sort confirmation from sorter gives final parcel destination.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_59_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        59
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0059"
+      ],
+      "unit_type": "routing_rule",
+      "title": "Hot bin and sure post message-driven handling rules",
+      "systems": [
+        "UPS Chat Module",
+        "UPS",
+        "tipper"
+      ],
+      "components": [
+        "chat",
+        "hot bin",
+        "tote",
+        "destination",
+        "bag",
+        "poly bag",
+        "tipper"
+      ],
+      "summary": "UPS can trigger immediate handling changes through chat messages. A hot bin message causes all hot-bin totes to be exchanged immediately. When UPS indicates that a destination load is sure post, the system notifies the tipper before tipping so the bag can be changed to a poly bag.",
+      "observed_evidence": [
+        "“UPS can trigger a hot bin close out by sending us a hot bin message for all totes that are a hot bin and we do an exchange immediately.”",
+        "“UPS notifies us if it the load for a destination is a sure post.”",
+        "“We notify the tipper before the tip so they can switch out the bag to a poly bag”"
+      ],
+      "relationships": [
+        {
+          "type": "triggers",
+          "from": "UPS hot bin message",
+          "to": "immediate exchange",
+          "detail": "Applies to totes that are a hot bin"
+        },
+        {
+          "type": "triggers",
+          "from": "UPS sure post notification",
+          "to": "tipper notification",
+          "detail": "Notification occurs before tip"
+        },
+        {
+          "type": "results_in",
+          "from": "tipper notification",
+          "to": "bag switched to poly bag",
+          "detail": "Used for sure post loads"
+        }
+      ],
+      "retrieval_text": "UPS chat routing and handling rules: hot bin close out is triggered by a UPS hot bin message for all totes that are a hot bin, and the system performs an immediate exchange. If UPS indicates a destination load is sure post, the system notifies the tipper before tip so the bag can be switched to a poly bag.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_59_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        59
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0059"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "UPS Chat Module integration points in sorter workflow",
+      "systems": [
+        "UPS Chat Module",
+        "chat",
+        "camera tunnel",
+        "xle",
+        "sorter",
+        "tipper",
+        "printer"
+      ],
+      "components": [
+        "chat",
+        "camera tunnel",
+        "xle",
+        "sorter",
+        "tipper",
+        "printer"
+      ],
+      "summary": "The slide shows the UPS Chat Module as an integration layer between equipment and systems in the sorter workflow, exchanging messages with the chat bus and coordinating downstream actions involving the tipper and printer.",
+      "observed_evidence": [
+        "“Scan data 2 is sent from the camera tunnel onto the chat”",
+        "“Sort is sent from the xle (UPS version of WCS) onto the chat”",
+        "“Sort confirmation is sent from the sorter onto the chat”",
+        "“We notify the tipper before the tip”",
+        "“We send a print label message to the printer”"
+      ],
+      "relationships": [
+        {
+          "type": "integrates_with",
+          "from": "UPS Chat Module",
+          "to": "camera tunnel",
+          "detail": "Consumes Scan data 2 via chat"
+        },
+        {
+          "type": "integrates_with",
+          "from": "UPS Chat Module",
+          "to": "xle",
+          "detail": "Consumes sort and label-provided data"
+        },
+        {
+          "type": "integrates_with",
+          "from": "UPS Chat Module",
+          "to": "sorter",
+          "detail": "Consumes sort confirmation and coordinates tote state messages"
+        },
+        {
+          "type": "integrates_with",
+          "from": "UPS Chat Module",
+          "to": "tipper",
+          "detail": "Sends pre-tip notification for sure post handling"
+        },
+        {
+          "type": "integrates_with",
+          "from": "UPS Chat Module",
+          "to": "printer",
+          "detail": "Sends print label message during tote tipping"
+        }
+      ],
+      "retrieval_text": "UPS Chat Module architecture relationships: camera tunnel, xle, and sorter publish operational messages onto chat; the module uses those messages and also notifies the tipper before sure post tip events and sends print label messages to the printer during tote tipping.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_59_01",
+      "title": "Process tote lifecycle messaging in the UPS chat workflow",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        59
+      ],
+      "systems": [
+        "UPS Chat Module",
+        "sorter",
+        "tipper",
+        "printer",
+        "xle"
+      ],
+      "components": [
+        "chat",
+        "tote",
+        "tipper",
+        "printer"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A tote is moving through the sorter workflow",
+        "The UPS chat workflow is active"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0059"
+      ],
+      "procedure_visual_summary": "Slide lists tote-related chat actions at arrival, pre-exchange, and tipping stages.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "When a tote arrives to the sorter, send a tote inducted message and a destination enabled message to the chat.",
+          "expected_outcome": "The tote arrival is represented on chat with induction and destination-enabled status.",
+          "validation_check": "Confirm the tote inducted and destination enabled messages are sent onto chat.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:59",
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "visual_region_hint": "Upper bullet list under 'Tote arrives to the sorter'"
+        },
+        {
+          "step_order": 2,
+          "instruction": "When the tote is ready to leave the sorter, send a destination closed message onto the chat before doing an exchange.",
+          "expected_outcome": "The destination is closed on chat before tote exchange occurs.",
+          "validation_check": "Confirm the destination closed message is sent before exchange activity.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:59",
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "visual_region_hint": "Lower bullet list near 'Tote ready to leave sorter'"
+        },
+        {
+          "step_order": 3,
+          "instruction": "When the tote is tipping at the tipper, send a print label message to the printer so it can print a label provided by the xle.",
+          "expected_outcome": "The printer receives a print label message for the tote label provided by xle.",
+          "validation_check": "Confirm a print label message is sent to the printer during tote tipping.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:59",
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "visual_region_hint": "Bottom bullet list near 'Tote tipping at tipper'"
+        }
+      ],
+      "warnings": [
+        "The slide describes system behavior but does not specify operator interface, triggers, or manual execution details."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_59_01",
+        "oku_optisweep_training_internal_59_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Candidate procedure for tote lifecycle messaging in UPS Chat Module: on tote arrival send tote inducted and destination enabled messages; when tote is ready to leave sorter send destination closed before exchange; during tote tipping send print label message to printer using label provided by xle."
+    },
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_59_02",
+      "title": "Handle UPS hot bin and sure post notifications",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        59
+      ],
+      "systems": [
+        "UPS Chat Module",
+        "UPS",
+        "tipper"
+      ],
+      "components": [
+        "chat",
+        "hot bin",
+        "tote",
+        "tipper",
+        "bag",
+        "poly bag"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "UPS sends a hot bin or sure post related message"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0059"
+      ],
+      "procedure_visual_summary": "Slide includes two conditional message-driven handling actions: immediate hot bin exchange and pre-tip sure post notification.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "If UPS sends a hot bin message for totes that are a hot bin, perform an exchange immediately.",
+          "expected_outcome": "Hot bin totes are closed out through immediate exchange.",
+          "validation_check": "Confirm the hot bin message is received and exchange is executed immediately for affected totes.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:59",
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "visual_region_hint": "Middle-lower text block discussing hot bin close out"
+        },
+        {
+          "step_order": 2,
+          "instruction": "If UPS notifies that the load for a destination is sure post, notify the tipper before the tip so the bag can be switched to a poly bag.",
+          "expected_outcome": "The tipper is informed before tipping and the bag is changed to a poly bag for sure post handling.",
+          "validation_check": "Confirm sure post notification occurs before tip and the bag is switched to a poly bag.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:59",
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0059"
+          ],
+          "visual_region_hint": "Middle-lower text block discussing sure post handling"
+        }
+      ],
+      "warnings": [
+        "The slide does not identify whether these actions are automated system behavior or manually initiated tasks."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_59_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Candidate procedure for UPS special handling notifications: if UPS sends a hot bin message for hot-bin totes, do an exchange immediately; if UPS indicates a destination load is sure post, notify the tipper before tip so the bag can be switched to a poly bag."
+    }
+  ],
+  "discarded_candidates": []
+}

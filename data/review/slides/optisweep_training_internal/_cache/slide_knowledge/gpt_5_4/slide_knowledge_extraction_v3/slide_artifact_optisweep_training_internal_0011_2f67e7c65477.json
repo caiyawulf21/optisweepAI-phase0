@@ -1,0 +1,197 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_11_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        11
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0011"
+      ],
+      "unit_type": "operational_process",
+      "title": "Parcel lifecycle before and at sorter induction",
+      "systems": [
+        "OptiSweep",
+        "Chat"
+      ],
+      "components": [
+        "trailer unload belts",
+        "sorter induction",
+        "singulation",
+        "auto-inducts",
+        "sorter"
+      ],
+      "summary": "The slide describes the parcel flow leading into the sorter: parcels are unloaded from trailers in bulk onto belts leading to sorter induction, then singulated, then sent through auto-inducts onto the sorter. By the time the parcel is on the sorter, dimensional data is available and there is an indication of a possible destination.",
+      "observed_evidence": [
+        "“are unloaded from trailers in bulk onto a series of belts that lead to sorter induction.”",
+        "“Those parcels are singulated and travel”",
+        "“Parcels then travel through auto-inducts onto the sorter”",
+        "“At this point, a parcel is on the sorter, we have dimensional data, and we have an indication where it could be going.”"
+      ],
+      "relationships": [
+        {
+          "type": "sequence",
+          "from": "trailer unload belts",
+          "to": "sorter induction"
+        },
+        {
+          "type": "sequence",
+          "from": "sorter induction",
+          "to": "singulation"
+        },
+        {
+          "type": "sequence",
+          "from": "singulation",
+          "to": "auto-inducts"
+        },
+        {
+          "type": "sequence",
+          "from": "auto-inducts",
+          "to": "sorter"
+        }
+      ],
+      "retrieval_text": "Parcel lifecycle on slide 11: parcels are unloaded from trailers in bulk onto belts leading to sorter induction, then are singulated, then travel through auto-inducts onto the sorter. Once on the sorter, dimensional data is available and there is an indication of possible destination.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_11_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        11
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0011"
+      ],
+      "unit_type": "system_behavior",
+      "title": "First Chat message is triggered at initial induction with parcel identity and physical attributes",
+      "systems": [
+        "Chat"
+      ],
+      "components": [
+        "first message"
+      ],
+      "summary": "At the initial induction stage, the process triggers a first message from Chat that includes a tracking ID, dimensions, and package type.",
+      "observed_evidence": [
+        "“This triggers the first message from Chat with a tracking Id, dimensions, and package type”"
+      ],
+      "relationships": [
+        {
+          "type": "triggered_by",
+          "from": "first message from Chat",
+          "to": "sorter induction"
+        }
+      ],
+      "retrieval_text": "First Chat message behavior: when parcels are initially inducted, Chat sends a first message containing tracking ID, dimensions, and package type.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_11_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        11
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0011"
+      ],
+      "unit_type": "system_behavior",
+      "title": "OptiSweep assigns default dimensions when the first Chat message fails for an unknown inducted parcel",
+      "systems": [
+        "OptiSweep",
+        "Chat"
+      ],
+      "components": [
+        "first message handling",
+        "default dimensions"
+      ],
+      "summary": "If the first Chat message fails and an unknown parcel is still seen as inducted, OptiSweep assigns default dimensions to that parcel.",
+      "observed_evidence": [
+        "“If this message fails and we see something unknown inducted, it is assigned default dimensions by OptiSweep”"
+      ],
+      "relationships": [
+        {
+          "type": "fallback_on_failure",
+          "from": "first message from Chat failure",
+          "to": "default dimensions assigned by OptiSweep"
+        }
+      ],
+      "retrieval_text": "Fallback behavior for unknown inducted parcels: if the first Chat message fails and an unknown parcel is inducted, OptiSweep assigns default dimensions.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_11_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        11
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0011"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Second Chat message is triggered after singulation with barcode and destination-related data",
+      "systems": [
+        "Chat"
+      ],
+      "components": [
+        "second message",
+        "singulation"
+      ],
+      "summary": "After parcels are singulated, a second Chat message is triggered containing tracking ID, barcode data, dimensional data, and potential destination data.",
+      "observed_evidence": [
+        "“This triggers the second message from Chat with a tracking Id, barcode data, dimensional data, and potential destination data.”"
+      ],
+      "relationships": [
+        {
+          "type": "triggered_by",
+          "from": "second message from Chat",
+          "to": "singulation"
+        }
+      ],
+      "retrieval_text": "Second Chat message behavior: after singulation, Chat sends a second message with tracking ID, barcode data, dimensional data, and potential destination data.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_11_01",
+      "title": "No reusable operator or support procedure explicitly defined on parcel lifecycle slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        11
+      ],
+      "systems": [
+        "OptiSweep",
+        "Chat"
+      ],
+      "components": [
+        "sorter induction",
+        "singulation",
+        "auto-inducts",
+        "sorter"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide describes parcel flow and message triggers rather than an actionable user task"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0011"
+      ],
+      "procedure_visual_summary": "Process overview slide showing parcel movement from trailer unload to sorter, with notes about first and second Chat messages and a default-dimensions fallback.",
+      "steps": [],
+      "warnings": [
+        "Do not infer operational steps from this slide; it presents process behavior and message timing, not explicit instructions."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_11_01",
+        "oku_optisweep_training_internal_11_02",
+        "oku_optisweep_training_internal_11_03",
+        "oku_optisweep_training_internal_11_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because slide 11 provides lifecycle context and system behavior: parcel flow, first and second Chat message triggers, and OptiSweep default-dimension fallback. It does not provide explicit reusable action steps."
+    }
+  ],
+  "discarded_candidates": []
+}

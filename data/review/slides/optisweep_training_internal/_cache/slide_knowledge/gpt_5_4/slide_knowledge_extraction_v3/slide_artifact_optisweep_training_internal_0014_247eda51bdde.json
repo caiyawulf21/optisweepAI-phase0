@@ -1,0 +1,351 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_14_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        14
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0014"
+      ],
+      "unit_type": "routing_rule",
+      "title": "Sorter exit queue assigns full-tote AGVs to specific tippers using round-robin across available enabled tippers",
+      "systems": [
+        "AGV",
+        "Tipper"
+      ],
+      "components": [
+        "Sorter exit queue",
+        "Tipper entrance queue",
+        "Tote"
+      ],
+      "summary": "A full tote riding on an AGV is assigned a specific tipper when it reaches the sorter exit queue. The assignment is described as a round-robin across available, enabled tippers serviced by that queue, after which the AGV is sent to the selected tipper entrance queue.",
+      "observed_evidence": [
+        "“A full tote now sits in the aisle on an AGV.”",
+        "“When it reaches the sorter exit queue it is assigned a specific tipper”",
+        "“This is a round-robin to available, enabled tippers serviced by this queue”",
+        "“This AGV is sent to the tipper entrance queue”"
+      ],
+      "relationships": [
+        {
+          "type": "routes_to",
+          "from": "Sorter exit queue",
+          "to": "Tipper entrance queue"
+        },
+        {
+          "type": "assigns",
+          "from": "Sorter exit queue",
+          "to": "Specific tipper"
+        },
+        {
+          "type": "selection_rule",
+          "from": "Sorter exit queue",
+          "to": "Available, enabled tippers serviced by the queue"
+        }
+      ],
+      "retrieval_text": "In tipping, a full tote on an AGV is assigned a specific tipper when it reaches the sorter exit queue. Assignment is round-robin across available enabled tippers serviced by that queue, and the AGV is then sent to the tipper entrance queue.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_14_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        14
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0014"
+      ],
+      "unit_type": "queueing_rule",
+      "title": "AGV is released from tipper entrance queue when first in line and the assigned tipper is available",
+      "systems": [
+        "AGV",
+        "Tipper"
+      ],
+      "components": [
+        "Tipper entrance queue",
+        "Tipper"
+      ],
+      "summary": "The AGV waits in the tipper entrance queue until it reaches the front of the line and the tipper becomes available. At that point the AGV is sent to the tipper.",
+      "observed_evidence": [
+        "“This AGV is sent to the tipper entrance queue”",
+        "“When the AGV reaches the front of the line, and the tipper becomes available the AGV is sent to the tipper”"
+      ],
+      "relationships": [
+        {
+          "type": "waits_in",
+          "from": "AGV",
+          "to": "Tipper entrance queue"
+        },
+        {
+          "type": "release_condition",
+          "from": "Tipper entrance queue",
+          "to": "AGV at front of line and tipper available"
+        }
+      ],
+      "retrieval_text": "At the tipper entrance queue, the AGV waits until it is at the front of the line and the tipper is available. Only then is the AGV sent to the tipper.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_14_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        14
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0014"
+      ],
+      "unit_type": "state_transition",
+      "title": "AGV arrival at tip location causes staged-for-tip notification to the tipper",
+      "systems": [
+        "AGV",
+        "Tipper",
+        "Software"
+      ],
+      "components": [
+        "Tip location"
+      ],
+      "summary": "After being sent from the queue, the AGV travels to the tip location. Software then informs the tipper that the AGV is staged for a tip, indicating a transition from travel to staged-ready status.",
+      "observed_evidence": [
+        "“The AGV travels to the tip location”",
+        "“software informs the tipper that the AGV is staged for a tip”"
+      ],
+      "relationships": [
+        {
+          "type": "state_change",
+          "from": "AGV traveling to tip location",
+          "to": "AGV staged for a tip"
+        },
+        {
+          "type": "notifies",
+          "from": "Software",
+          "to": "Tipper"
+        }
+      ],
+      "retrieval_text": "When the AGV reaches the tip location, software informs the tipper that the AGV is staged for a tip. This describes the transition from travel to staged-for-tip status.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_14_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        14
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0014"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Software monitors tipping progress and triggers Chat message to prompt bag-label printing",
+      "systems": [
+        "Software",
+        "Chat",
+        "UPS",
+        "Tipper"
+      ],
+      "components": [
+        "Bag label process"
+      ],
+      "summary": "During the tip operation, software monitors tip progress and sends Chat a message that prompts UPS to print a bag label.",
+      "observed_evidence": [
+        "“In the meantime, software is monitoring the tip progress”",
+        "“sends Chat a message to prompt UPS to print a bag label”"
+      ],
+      "relationships": [
+        {
+          "type": "monitors",
+          "from": "Software",
+          "to": "Tip progress"
+        },
+        {
+          "type": "sends_message_to",
+          "from": "Software",
+          "to": "Chat"
+        },
+        {
+          "type": "prompts",
+          "from": "Chat message",
+          "to": "UPS print a bag label"
+        }
+      ],
+      "retrieval_text": "While the tipper is performing a tip, software monitors the tip progress and sends a Chat message to prompt UPS to print a bag label.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_14_05",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        14
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0014"
+      ],
+      "unit_type": "operational_process",
+      "title": "Post-tip handling returns the empty tote and prepares the next bag",
+      "systems": [
+        "AGV",
+        "Tipper"
+      ],
+      "components": [
+        "Empty tote",
+        "Bag label",
+        "Bag",
+        "Takeaway conveyor"
+      ],
+      "summary": "After tipping, the empty tote is returned to the AGV. The operator then applies the printed bag label, places the bag on a takeaway conveyor, and hangs the next empty bag for the next tip.",
+      "observed_evidence": [
+        "“The empty tote is returned to the AGV”",
+        "“The operator applies the bag label to the bag”",
+        "“places the bag on a takeaway conveyor”",
+        "“hangs the next empty bag for the next tip”"
+      ],
+      "relationships": [
+        {
+          "type": "returns_to",
+          "from": "Empty tote",
+          "to": "AGV"
+        },
+        {
+          "type": "handled_by",
+          "from": "Bag labeling and placement",
+          "to": "Operator"
+        }
+      ],
+      "retrieval_text": "After the tip is complete, the empty tote is returned to the AGV. The operator applies the bag label to the bag, places the bag on a takeaway conveyor, and hangs the next empty bag for the next tip.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_14_01",
+      "title": "Start a tip and complete post-tip bag handling at the tipper",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        14
+      ],
+      "systems": [
+        "AGV",
+        "Tipper"
+      ],
+      "components": [
+        "Tipper",
+        "Tote",
+        "Bag label",
+        "Bag",
+        "Takeaway conveyor"
+      ],
+      "role_required": "operator",
+      "support_safe": "unknown",
+      "preconditions": [
+        "The AGV has been sent to the tipper and reaches the tip location.",
+        "Software has informed the tipper that the AGV is staged for a tip.",
+        "The operator is at the tipper."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0014"
+      ],
+      "procedure_visual_summary": "Slide describes the tipping flow from AGV arrival at the tipper through operator button press, automated tip, empty tote return, label application, bag placement on takeaway conveyor, and hanging the next empty bag.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "When the AGV is staged for a tip, push the button to start the tip.",
+          "expected_outcome": "The tipper starts the tip cycle.",
+          "validation_check": "The tipper begins clamping and tip motion after the button press.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:14",
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "visual_region_hint": "Text region describing operator action and tip start"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Allow the tipper to clamp the tote and perform the tip.",
+          "expected_outcome": "The tote is tipped by the machine.",
+          "validation_check": "The slide states the tipper clamps the tote and performs the tip.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:14",
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "visual_region_hint": "Text region describing tipper automated action"
+        },
+        {
+          "step_order": 3,
+          "instruction": "After the tip, take the bag label and apply it to the bag.",
+          "expected_outcome": "The bag is labeled for downstream handling.",
+          "validation_check": "A bag label is present on the bag.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:14",
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "visual_region_hint": "Lower text region describing operator post-tip actions"
+        },
+        {
+          "step_order": 4,
+          "instruction": "Place the bag on the takeaway conveyor.",
+          "expected_outcome": "The bag is transferred to the takeaway conveyor.",
+          "validation_check": "The bag is no longer at the tipper and is on the takeaway conveyor.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:14",
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "visual_region_hint": "Lower text region describing operator post-tip actions"
+        },
+        {
+          "step_order": 5,
+          "instruction": "Hang the next empty bag for the next tip.",
+          "expected_outcome": "The tipper station is prepared for the next tipping cycle.",
+          "validation_check": "A new empty bag is hung and ready for the next tip.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:14",
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0014"
+          ],
+          "visual_region_hint": "Lower text region describing operator post-tip actions"
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_14_03",
+        "oku_optisweep_training_internal_14_04",
+        "oku_optisweep_training_internal_14_05"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Operator tipping action on slide 14: when the AGV is staged for a tip, the operator pushes a button to start the tip. The tipper clamps the tote and performs the tip. Afterward, the operator applies the bag label to the bag, places the bag on a takeaway conveyor, and hangs the next empty bag for the next tip."
+    }
+  ],
+  "discarded_candidates": []
+}

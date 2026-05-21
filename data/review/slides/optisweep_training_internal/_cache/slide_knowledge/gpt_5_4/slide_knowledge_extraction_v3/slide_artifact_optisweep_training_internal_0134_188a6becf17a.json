@@ -1,0 +1,142 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0134_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        134
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0134"
+      ],
+      "unit_type": "operational_process",
+      "title": "Unplanned restart check references backup WCS host and SQL Server Agent status",
+      "systems": [
+        "WCS",
+        "SQL Server"
+      ],
+      "components": [
+        "fortna-wcs-backup.txrth.otnet.ups.com",
+        "SQL Server Configuration Manager",
+        "SQL Server Agent"
+      ],
+      "summary": "The slide indicates that for an unplanned restart scenario, the operator/support user should RDP into the backup WCS host and verify in SQL Server Configuration Manager that SQL Server Agent is running.",
+      "observed_evidence": [
+        "Slide title: \"Services / Unplanned restart\"",
+        "Visible text: \"Rdp into fortna-wcs-\"",
+        "Visible text: \"backup.txrth.otnet.ups.com\"",
+        "Visible text: \"Open sql server configuration manager\"",
+        "Visible text: \"and make sure SLQ server agent is\"",
+        "Visible text: \"running\""
+      ],
+      "relationships": [
+        {
+          "relation": "involves",
+          "target": "fortna-wcs-backup.txrth.otnet.ups.com"
+        },
+        {
+          "relation": "checks_state_of",
+          "target": "SQL Server Agent"
+        }
+      ],
+      "retrieval_text": "Services unplanned restart: RDP into fortna-wcs-backup.txrth.otnet.ups.com, open SQL Server Configuration Manager, and make sure SQL Server Agent is running.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0134_01",
+      "title": "Verify SQL Server Agent is running on backup WCS host during unplanned restart",
+      "procedure_type": "validation_check",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        134
+      ],
+      "systems": [
+        "WCS",
+        "SQL Server"
+      ],
+      "components": [
+        "fortna-wcs-backup.txrth.otnet.ups.com",
+        "SQL Server Configuration Manager",
+        "SQL Server Agent"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Unplanned restart scenario",
+        "Access to RDP into fortna-wcs-backup.txrth.otnet.ups.com"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0134"
+      ],
+      "procedure_visual_summary": "Slide states to RDP into the backup WCS server, open SQL Server Configuration Manager, and ensure SQL Server Agent is running.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "RDP into fortna-wcs-backup.txrth.otnet.ups.com.",
+          "expected_outcome": "Remote session is opened on the backup WCS host.",
+          "validation_check": "You are connected to fortna-wcs-backup.txrth.otnet.ups.com.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:134",
+            "artifact:slide_artifact_optisweep_training_internal_0134"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0134"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0134"
+          ],
+          "visual_region_hint": "Main slide text area containing the line 'Rdp into fortna-wcs-' and hostname continuation."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Open SQL Server Configuration Manager.",
+          "expected_outcome": "SQL Server Configuration Manager is open on the host.",
+          "validation_check": "The SQL Server Configuration Manager application is visible.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:134",
+            "artifact:slide_artifact_optisweep_training_internal_0134"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0134"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0134"
+          ],
+          "visual_region_hint": "Main slide text area containing 'Open sql server configuration manager'."
+        },
+        {
+          "step_order": 3,
+          "instruction": "Make sure SQL Server Agent is running.",
+          "expected_outcome": "SQL Server Agent is confirmed to be in the running state.",
+          "validation_check": "SQL Server Agent status shows running.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:134",
+            "artifact:slide_artifact_optisweep_training_internal_0134"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0134"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0134"
+          ],
+          "visual_region_hint": "Main slide text area containing 'make sure SLQ server agent is running'."
+        }
+      ],
+      "warnings": [
+        "The slide does not provide remediation steps if SQL Server Agent is not running.",
+        "The slide text appears to contain a typo: 'SLQ server agent' likely refers to 'SQL Server Agent'."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0134_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Unplanned restart validation: RDP to fortna-wcs-backup.txrth.otnet.ups.com, open SQL Server Configuration Manager, and verify SQL Server Agent is running."
+    }
+  ],
+  "discarded_candidates": []
+}

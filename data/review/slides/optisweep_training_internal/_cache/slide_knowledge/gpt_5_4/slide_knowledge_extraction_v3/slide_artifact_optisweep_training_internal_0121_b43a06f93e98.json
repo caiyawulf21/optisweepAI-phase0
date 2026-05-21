@@ -1,0 +1,215 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_121_api_initialize_tote",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        121
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0121"
+      ],
+      "unit_type": "api_capability",
+      "title": "InitializeTote API adds a tote to the system using ToteId and StationId",
+      "systems": [
+        "APIs"
+      ],
+      "components": [
+        "Tote",
+        "InitializeTote"
+      ],
+      "summary": "The slide states that InitializeTote requires a ToteId and a StationId and is used to add a tote to the system.",
+      "observed_evidence": [
+        "Slide section/title text: APIs / Totes",
+        "Bullet text: 'InitalizeTote: Requires a ToteId and a StationId to add a tote to the system.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "requires_parameters",
+          "target": "ToteId, StationId"
+        },
+        {
+          "relationship_type": "applies_to",
+          "target": "Tote"
+        }
+      ],
+      "retrieval_text": "API capability for totes: InitializeTote requires ToteId and StationId to add a tote to the system.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_121_api_exchange_tote",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        121
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0121"
+      ],
+      "unit_type": "api_capability",
+      "title": "ExchangeTote API exchanges a specific tote by ToteName",
+      "systems": [
+        "APIs"
+      ],
+      "components": [
+        "Tote",
+        "ExchangeTote"
+      ],
+      "summary": "The slide states that ExchangeTote requires a ToteName and will exchange that specific tote.",
+      "observed_evidence": [
+        "Slide section/title text: APIs / Totes",
+        "Bullet text: 'ExchangeTote: Requires a ToteName and will exchange that specific tote.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "requires_parameters",
+          "target": "ToteName"
+        },
+        {
+          "relationship_type": "applies_to",
+          "target": "specific tote"
+        }
+      ],
+      "retrieval_text": "API capability for totes: ExchangeTote requires ToteName and exchanges that specific tote.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_121_api_exchange_lane",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        121
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0121"
+      ],
+      "unit_type": "api_capability",
+      "title": "ExchangeLane API exchanges a specific destination by LaneName",
+      "systems": [
+        "APIs"
+      ],
+      "components": [
+        "Tote",
+        "ExchangeLane"
+      ],
+      "summary": "The slide states that ExchangeLane requires a LaneName and will exchange that specific destination.",
+      "observed_evidence": [
+        "Slide section/title text: APIs / Totes",
+        "Bullet text: 'ExchangeLane: requires a LaneName and will exchange that specific destination.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "requires_parameters",
+          "target": "LaneName"
+        },
+        {
+          "relationship_type": "applies_to",
+          "target": "specific destination"
+        }
+      ],
+      "retrieval_text": "API capability for tote exchange: ExchangeLane requires LaneName and exchanges that specific destination.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_121_api_get_exchange_settings",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        121
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0121"
+      ],
+      "unit_type": "api_capability",
+      "title": "GetExchangeSettings API returns current exchange settings",
+      "systems": [
+        "APIs"
+      ],
+      "components": [
+        "Tote",
+        "GetExchangeSettings"
+      ],
+      "summary": "The slide states that GetExchangeSettings will show the current exchange settings.",
+      "observed_evidence": [
+        "Slide section/title text: APIs / Totes",
+        "Bullet text: 'GetExchangeSeettings: Will show the current exchange settings.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "returns_information_about",
+          "target": "current exchange settings"
+        }
+      ],
+      "retrieval_text": "API capability for exchange configuration: GetExchangeSettings shows the current exchange settings.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_121_api_update_exchange",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        121
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0121"
+      ],
+      "unit_type": "api_capability",
+      "title": "UpdateExchange API adjusts exchange settings",
+      "systems": [
+        "APIs"
+      ],
+      "components": [
+        "Tote",
+        "UpdateExchange"
+      ],
+      "summary": "The slide states that UpdateExchange allows the customer to adjust the exchange settings.",
+      "observed_evidence": [
+        "Slide section/title text: APIs / Totes",
+        "Bullet text: 'UpdateExchange: Allows the customer to adjust the exchange settings.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "modifies",
+          "target": "exchange settings"
+        }
+      ],
+      "retrieval_text": "API capability for exchange configuration: UpdateExchange allows adjustment of exchange settings.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_121_none",
+      "title": "No procedure extracted from tote API summary slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        121
+      ],
+      "systems": [
+        "APIs"
+      ],
+      "components": [
+        "Tote"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0121"
+      ],
+      "procedure_visual_summary": "Single slide listing tote-related API names and short capability descriptions; no ordered sequence or invocation example is shown.",
+      "steps": [],
+      "warnings": [
+        "The slide lists API capabilities and required parameters but does not provide an explicit reusable action sequence.",
+        "No request format, call sequence, or validation workflow is shown."
+      ],
+      "related_context_refs": [
+        "ku_optisweep_training_internal_121_api_initialize_tote",
+        "ku_optisweep_training_internal_121_api_exchange_tote",
+        "ku_optisweep_training_internal_121_api_exchange_lane",
+        "ku_optisweep_training_internal_121_api_get_exchange_settings",
+        "ku_optisweep_training_internal_121_api_update_exchange"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate: slide 121 is an API reference summary for tote operations and exchange settings, not an explicit procedure."
+    }
+  ],
+  "discarded_candidates": []
+}

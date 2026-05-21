@@ -1,0 +1,219 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0082_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        82
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0082"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "RobotCommandDatabaseModel tracks requested AGV robot command status",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "RobotCommandDatabaseModel",
+        "robotics module"
+      ],
+      "summary": "The slide states that the RobotCommandDatabaseModel table tracks the status of robot commands requested by the robotics module for AGVs.",
+      "observed_evidence": [
+        "Slide text: 'The RobotCommandDatabaseModel table tracks the status of the robot commands requested by the robotics module for AGVs.'",
+        "Slide title: 'Robotics Database / Robot Command Database Model'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "tracks_status_of",
+          "target": "robot commands"
+        },
+        {
+          "relation_type": "requested_by",
+          "target": "robotics module"
+        },
+        {
+          "relation_type": "applies_to",
+          "target": "AGVs"
+        }
+      ],
+      "retrieval_text": "RobotCommandDatabaseModel is a robotics database table that tracks status of robot commands requested by the robotics module for AGVs.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0082_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        82
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0082"
+      ],
+      "unit_type": "api_capability",
+      "title": "Robot command names represented in RobotCommandDatabaseModel",
+      "systems": [
+        "AGV",
+        "Robot",
+        "Tote"
+      ],
+      "components": [
+        "RobotCommandDatabaseModel"
+      ],
+      "summary": "The slide enumerates robot command names whose status is tracked in the RobotCommandDatabaseModel table.",
+      "observed_evidence": [
+        "Command list shown on slide under 'Command Names'",
+        "Visible commands include: EmptyGoTo, PickupTote, MoveTote, DropOffTote, InductTote, RemoveTote, ReleaseAgv, InitializeAgv, RecoverAgv, SystemRecover, SystemStop, RemoveAgv, UpdateBox, GetInventoryToteLocation, GetChargersStatus, GoCharge, CancelRequest"
+      ],
+      "relationships": [
+        {
+          "relation_type": "includes_command",
+          "target": "EmptyGoTo"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "PickupTote"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "MoveTote"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "DropOffTote"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "InductTote"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "RemoveTote"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "ReleaseAgv"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "InitializeAgv"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "RecoverAgv"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "SystemRecover"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "SystemStop"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "RemoveAgv"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "UpdateBox"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "GetInventoryToteLocation"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "GetChargersStatus"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "GoCharge"
+        },
+        {
+          "relation_type": "includes_command",
+          "target": "CancelRequest"
+        }
+      ],
+      "retrieval_text": "RobotCommandDatabaseModel command names include EmptyGoTo, PickupTote, MoveTote, DropOffTote, InductTote, RemoveTote, ReleaseAgv, InitializeAgv, RecoverAgv, SystemRecover, SystemStop, RemoveAgv, UpdateBox, GetInventoryToteLocation, GetChargersStatus, GoCharge, and CancelRequest.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0082_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        82
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0082"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Completed robot commands are archived to RobotCommandActivity",
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "RobotCommandDatabaseModel",
+        "RobotCommandActivity"
+      ],
+      "summary": "The slide states that when commands are complete, they are archived to RobotCommandActivity.",
+      "observed_evidence": [
+        "Slide text: 'When Commands are complete. They are archived to RobotCommandActivity'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "archives_to",
+          "target": "RobotCommandActivity"
+        },
+        {
+          "relation_type": "trigger_condition",
+          "target": "command completion"
+        }
+      ],
+      "retrieval_text": "Completed robot commands are archived from the active robot command tracking model to RobotCommandActivity when the commands are complete.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0082_01",
+      "title": "No procedure extracted from Robot Command Database Model overview",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        82
+      ],
+      "systems": [
+        "AGV",
+        "Robot"
+      ],
+      "components": [
+        "RobotCommandDatabaseModel",
+        "RobotCommandActivity"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewer is examining slide 82 content about robotics database structures and command names."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0082"
+      ],
+      "procedure_visual_summary": "Slide presents a database model description and a list of command names, plus a note that completed commands are archived to RobotCommandActivity.",
+      "steps": [],
+      "warnings": [
+        "The slide does not provide an explicit action sequence, operator workflow, or support procedure.",
+        "Command names are listed without instructions for issuing, validating, or recovering commands."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0082_01",
+        "oku_optisweep_training_internal_0082_02",
+        "oku_optisweep_training_internal_0082_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because slide 82 is a database/model overview with command names and archival behavior, but no explicit reusable steps."
+    }
+  ],
+  "discarded_candidates": []
+}

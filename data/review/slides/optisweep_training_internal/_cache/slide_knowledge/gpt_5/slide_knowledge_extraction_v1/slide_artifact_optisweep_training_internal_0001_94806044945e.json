@@ -1,0 +1,31 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "optisweep_training_internal_s1_glossary_1",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        1
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0001"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "OptiSweep Training – Introductory Slide",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [],
+      "summary": "Introductory slide for the OptiSweep training deck. It presents the product/training name and a tagline indicating a focus on consolidation.",
+      "observed_evidence": [
+        "Visible text: \"OptiSweep – Training\"",
+        "Visible text: \"Redefining consolidation for tomorrow\"",
+        "Slide appears to be a title/cover slide with no operational steps shown."
+      ],
+      "relationships": [],
+      "retrieval_text": "Slide 1 (OptiSweep – Training): title slide introducing the OptiSweep training with the tagline 'Redefining consolidation for tomorrow.'",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

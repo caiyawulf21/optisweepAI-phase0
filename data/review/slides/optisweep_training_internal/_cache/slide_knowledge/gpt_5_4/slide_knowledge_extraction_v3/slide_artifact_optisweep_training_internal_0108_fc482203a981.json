@@ -1,0 +1,86 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0108_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        108
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0108"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Estop model stores estop identity, Geek area ID, and active estop status",
+      "systems": [
+        "Sorter Sweeper Database",
+        "Geek"
+      ],
+      "components": [
+        "Estop model"
+      ],
+      "summary": "The slide states that callbacks are received from Geek for estops, and that the Estop model shows the estop name, Geek AreaId, and whether it is actively estopped.",
+      "observed_evidence": [
+        "Slide text: 'We receive callbacks from Geek for estops.'",
+        "Slide text: 'Estop model shows the Name of the estop, Geeks AreaId, and if its actively estopped.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "fed_by",
+          "target": "Geek estop callbacks",
+          "evidence": "We receive callbacks from Geek for estops."
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Estop model reference. Geek sends callbacks for estops. The Estop model contains the estop name, Geek AreaId, and whether the estop is actively estopped.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0108_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        108
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0108"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Estop release creates an estop activity record",
+      "systems": [
+        "Sorter Sweeper Database",
+        "Geek"
+      ],
+      "components": [
+        "Estop activity model"
+      ],
+      "summary": "When an estop is released, the system adds a record to the estop activity model.",
+      "observed_evidence": [
+        "Slide text: 'When an Estop is released a record is added to estop activity model.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "writes_to",
+          "target": "Estop activity model",
+          "evidence": "When an Estop is released a record is added to estop activity model."
+        },
+        {
+          "relationship_type": "triggered_by",
+          "target": "Estop released event",
+          "evidence": "When an Estop is released..."
+        }
+      ],
+      "retrieval_text": "Estop release behavior in Sorter Sweeper Database. When an estop is released, a record is added to the estop activity model.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "title": "Handle estop callback or review estop data",
+      "reason": "The slide describes database fields and event-driven recording behavior but does not provide an explicit operator or support action sequence, so no reusable procedure can be extracted without inventing steps.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:108",
+        "artifact:slide_artifact_optisweep_training_internal_0108"
+      ]
+    }
+  ]
+}

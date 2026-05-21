@@ -1,0 +1,223 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0081_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        81
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0081"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "RobotToteDatabseModel stores tote identity, state, location, and robot assignment",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "RobotToteDatabseModel",
+        "Tote",
+        "Robot"
+      ],
+      "summary": "The slide states that the RobotToteDatabseModel table contains tote information for all totes in the system, including toteid, tote state, locationid, and robot id.",
+      "observed_evidence": [
+        "Slide text: \"The RobotToteDatabseModel table contains the tote information including toteid, the state of the tote, the locationid, and the robot id for all the totes in the system.\"",
+        "Slide title: \"Robot Tote Database Model\"",
+        "Section header: \"Robotics Database\""
+      ],
+      "relationships": [
+        {
+          "type": "stores_fields",
+          "target": "toteid"
+        },
+        {
+          "type": "stores_fields",
+          "target": "tote state"
+        },
+        {
+          "type": "stores_fields",
+          "target": "locationid"
+        },
+        {
+          "type": "stores_fields",
+          "target": "robot id"
+        },
+        {
+          "type": "applies_to",
+          "target": "all totes in the system"
+        }
+      ],
+      "retrieval_text": "RobotToteDatabseModel database table reference. In the Robotics Database, the Robot Tote Database Model stores tote information including toteid, tote state, locationid, and robot id for all totes in the system.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0081_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        81
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0081"
+      ],
+      "unit_type": "state_transition",
+      "title": "Robot tote model uses enumerated tote lifecycle and routing states",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "RobotToteDatabseModel",
+        "Tote",
+        "Tipper",
+        "Hospital",
+        "Sorter"
+      ],
+      "summary": "The slide lists tote states tracked in the RobotToteDatabseModel, covering request, pickup, delivery to sorter or hospital, induction, and removal conditions.",
+      "observed_evidence": [
+        "Slide subsection: \"Tote States\"",
+        "Listed states: PickupToteRequested, TotePickedUp, MoveOutSorterRequested, AtTipper, DropOffSorterRequested, DroppedOffSorter, DropOffHospitalRequested, DroppedOffHospital, InductToteRequested, ToteInducted, RemoveToteRequested, ToteRemoved"
+      ],
+      "relationships": [
+        {
+          "type": "state_defined_for",
+          "target": "Tote"
+        },
+        {
+          "type": "includes_state",
+          "target": "PickupToteRequested"
+        },
+        {
+          "type": "includes_state",
+          "target": "TotePickedUp"
+        },
+        {
+          "type": "includes_state",
+          "target": "MoveOutSorterRequested"
+        },
+        {
+          "type": "includes_state",
+          "target": "AtTipper"
+        },
+        {
+          "type": "includes_state",
+          "target": "DropOffSorterRequested"
+        },
+        {
+          "type": "includes_state",
+          "target": "DroppedOffSorter"
+        },
+        {
+          "type": "includes_state",
+          "target": "DropOffHospitalRequested"
+        },
+        {
+          "type": "includes_state",
+          "target": "DroppedOffHospital"
+        },
+        {
+          "type": "includes_state",
+          "target": "InductToteRequested"
+        },
+        {
+          "type": "includes_state",
+          "target": "ToteInducted"
+        },
+        {
+          "type": "includes_state",
+          "target": "RemoveToteRequested"
+        },
+        {
+          "type": "includes_state",
+          "target": "ToteRemoved"
+        }
+      ],
+      "retrieval_text": "Robot tote states in RobotToteDatabseModel. Tote States listed on the slide are PickupToteRequested, TotePickedUp, MoveOutSorterRequested, AtTipper, DropOffSorterRequested, DroppedOffSorter, DropOffHospitalRequested, DroppedOffHospital, InductToteRequested, ToteInducted, RemoveToteRequested, and ToteRemoved.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0081_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        81
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0081"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Robot tote state model reflects tote handling requests and completions across destinations",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "Tote",
+        "Robot",
+        "Sorter",
+        "Hospital",
+        "Tipper"
+      ],
+      "summary": "The observed state names indicate that tote handling is tracked as requested and completed events for pickup, sorter drop-off, hospital drop-off, induction, and removal, with an intermediate AtTipper state also represented.",
+      "observed_evidence": [
+        "Request/completion style state pairs are listed on the slide, including PickupToteRequested/TotePickedUp, DropOffSorterRequested/DroppedOffSorter, DropOffHospitalRequested/DroppedOffHospital, InductToteRequested/ToteInducted, and RemoveToteRequested/ToteRemoved",
+        "The state list also includes MoveOutSorterRequested and AtTipper"
+      ],
+      "relationships": [
+        {
+          "type": "tracks_behavior_of",
+          "target": "tote handling lifecycle"
+        },
+        {
+          "type": "routes_to",
+          "target": "Sorter"
+        },
+        {
+          "type": "routes_to",
+          "target": "Hospital"
+        },
+        {
+          "type": "passes_through",
+          "target": "Tipper"
+        }
+      ],
+      "retrieval_text": "System behavior in the robotics tote database indicates tote handling is modeled with requested and completed states for pickup, sorter drop-off, hospital drop-off, induction, and removal, plus states such as MoveOutSorterRequested and AtTipper.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0081_01",
+      "title": "No explicit procedure present on Robot Tote Database Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        81
+      ],
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "RobotToteDatabseModel"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewer is examining slide 81 for procedure content"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0081"
+      ],
+      "procedure_visual_summary": "Slide presents a database model description and a list of tote states, with no numbered or imperative action sequence.",
+      "steps": [],
+      "warnings": [
+        "The slide lists database fields and tote states but does not provide operator or support actions.",
+        "No reusable action guidance or exact sequence is explicitly stated."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0081_01",
+        "oku_optisweep_training_internal_0081_02",
+        "oku_optisweep_training_internal_0081_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate for slide 81. The Robot Tote Database Model slide contains database context and tote state definitions, not explicit operational steps or instructions."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,123 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Tote Status and Exchange Thresholds Overview",
+      "timestamp_start": "02:26:12.840",
+      "timestamp_end": "02:27:52.640",
+      "primary_intent": "Explain tote status details and exchange threshold settings",
+      "operational_intents": [
+        "Describe tote status information and initialization",
+        "Explain current task and exchange types for totes",
+        "Detail threshold percentages and methods for exchanges",
+        "Clarify software capabilities for threshold updates"
+      ],
+      "knowledge_extraction_strategy": "Extract detailed operational parameters and threshold configurations",
+      "why_this_strategy": "Focus on tote status and exchange threshold operational details",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000069"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000069"
+      ]
+    },
+    {
+      "scene_title": "Access and Diagnostic Procedures for Aviva System",
+      "timestamp_start": "02:27:52.760",
+      "timestamp_end": "02:29:13.604",
+      "primary_intent": "Clarify access restrictions and initial diagnostic steps for Aviva",
+      "operational_intents": [
+        "Explain lack of direct access to Aviva for support",
+        "Describe first step diagnostics using RMS screen",
+        "Outline communication protocols with UPS and operators",
+        "Clarify system boundaries and data flow limitations"
+      ],
+      "knowledge_extraction_strategy": "Identify access policies and initial diagnostic workflows",
+      "why_this_strategy": "Define operational boundaries and first response diagnostics",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000069"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000069"
+      ]
+    },
+    {
+      "scene_title": "Diagnosing Issues Between OPC and Aviva Systems",
+      "timestamp_start": "02:29:13.604",
+      "timestamp_end": "02:31:16.080",
+      "primary_intent": "Explain how to diagnose issues between OPC and Aviva",
+      "operational_intents": [
+        "Describe Aviva as an HMI showing service status only",
+        "Explain API usage for system state and fault detection",
+        "Differentiate types of errors: REST API, business exceptions, system exceptions",
+        "Outline steps to verify system state and communication issues"
+      ],
+      "knowledge_extraction_strategy": "Extract diagnostic criteria and error classification methods",
+      "why_this_strategy": "Focus on operational diagnosis of system integration issues",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000070"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000070"
+      ]
+    },
+    {
+      "scene_title": "Support Role and Diagnostic Workflow for System Issues",
+      "timestamp_start": "02:31:16.640",
+      "timestamp_end": "02:32:15.400",
+      "primary_intent": "Define support responsibilities and diagnostic workflow",
+      "operational_intents": [
+        "Emphasize note-taking for later diagnosis",
+        "Explain how to determine if issue is Aviva or communication related",
+        "Describe operator guidance for diagnostics",
+        "Outline use of system status and commands for troubleshooting"
+      ],
+      "knowledge_extraction_strategy": "Capture support procedures and diagnostic communication protocols",
+      "why_this_strategy": "Clarify support operational workflow during incidents",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000070"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000070"
+      ]
+    },
+    {
+      "scene_title": "Incident Management and Escalation Procedures",
+      "timestamp_start": "02:32:15.680",
+      "timestamp_end": "02:35:16.160",
+      "primary_intent": "Discuss incident management, escalation, and collaboration",
+      "operational_intents": [
+        "Explain urgency and SLA requirements for P1 issues",
+        "Differentiate error types and corresponding escalation paths",
+        "Describe runbook usage for business exceptions",
+        "Outline collaboration between support, HMI team, and infrastructure",
+        "Discuss API monitoring and callback mechanisms for issue tracking"
+      ],
+      "knowledge_extraction_strategy": "Extract incident response and escalation protocols",
+      "why_this_strategy": "Focus on operational incident handling and team coordination",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000071"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000071"
+      ]
+    },
+    {
+      "scene_title": "Handling Recurring Issues in Support",
+      "timestamp_start": "02:35:16.360",
+      "timestamp_end": "02:35:26.480",
+      "primary_intent": "Address challenges and strategies for recurring issues",
+      "operational_intents": [
+        "Acknowledge problems caused by recurring issues",
+        "Discuss expectations for support in preventing repeats"
+      ],
+      "knowledge_extraction_strategy": "Identify operational challenges and support improvement areas",
+      "why_this_strategy": "Highlight recurring issue management in support",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000072"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000072"
+      ]
+    }
+  ]
+}

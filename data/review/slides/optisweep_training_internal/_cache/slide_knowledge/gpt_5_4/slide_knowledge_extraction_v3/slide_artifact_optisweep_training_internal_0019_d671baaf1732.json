@@ -1,0 +1,57 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0019_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        19
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0019"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "Modularization groups layout around Tipper, Hospital, and Charger components",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "Tipper",
+        "Hospital",
+        "Charger"
+      ],
+      "summary": "The slide presents modularization within Layout Design and identifies Tipper, Hospital, and Charger as the visible component modules or layout elements.",
+      "observed_evidence": {
+        "slide_title": "Layout Design / Modularization",
+        "visible_text": [
+          "Layout Design",
+          "Modularization",
+          "Tipper",
+          "Hospital",
+          "Charger"
+        ],
+        "visual_summary": "Layout Design / Modularization © FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL. Layout Design Modularization •"
+      },
+      "relationships": [
+        {
+          "relationship_type": "includes_components",
+          "source": "Layout Design Modularization",
+          "target": "Tipper"
+        },
+        {
+          "relationship_type": "includes_components",
+          "source": "Layout Design Modularization",
+          "target": "Hospital"
+        },
+        {
+          "relationship_type": "includes_components",
+          "source": "Layout Design Modularization",
+          "target": "Charger"
+        }
+      ],
+      "retrieval_text": "Layout Design modularization slide showing Tipper, Hospital, and Charger as components or modules within the layout design context.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

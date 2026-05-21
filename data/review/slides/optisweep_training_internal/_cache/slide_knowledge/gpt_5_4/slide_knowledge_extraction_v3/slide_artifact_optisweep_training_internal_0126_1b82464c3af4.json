@@ -1,0 +1,151 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0126_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        126
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0126"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Ignition Gateway OPC Connections page shows current connection status",
+      "systems": [
+        "Ignition"
+      ],
+      "components": [
+        "Ignition Gateway UI",
+        "Config",
+        "OPC",
+        "OPC Connections"
+      ],
+      "summary": "The slide indicates that within the Ignition Gateway UI, navigating under Config > OPC > OPC Connections allows viewing the current connections.",
+      "observed_evidence": [
+        "Visible text: 'Under Config, OPC, OPC Connections you can view the current connections.'",
+        "Slide title: 'Ignition Gateway UI / you can view the current connections.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "monitors",
+          "target": "current OPC connections"
+        }
+      ],
+      "retrieval_text": "In Ignition Gateway UI, the Config > OPC > OPC Connections area is used to view current connections.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0126_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        126
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0126"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Powered-off tippers may appear as Faulted in OPC connections view",
+      "systems": [
+        "Ignition"
+      ],
+      "components": [
+        "OPC Connections",
+        "Tipper 7",
+        "Tipper 8"
+      ],
+      "summary": "The example on the slide shows that when tipper 7 and tipper 8 are powered off, their connection status is displayed as Faulted in the OPC Connections view.",
+      "observed_evidence": [
+        "Visible text: 'In this example both tipper 7 and 8 are powered off and show Faulted.'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "state_observed_in",
+          "target": "Ignition Gateway UI OPC Connections"
+        },
+        {
+          "relationship_type": "condition_to_state",
+          "target": "powered off -> Faulted"
+        }
+      ],
+      "retrieval_text": "In the Ignition Gateway OPC Connections view, powered-off devices such as tipper 7 and tipper 8 may show a Faulted status.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0126_01",
+      "title": "Navigate to OPC Connections to check current connection status",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        126
+      ],
+      "systems": [
+        "Ignition"
+      ],
+      "components": [
+        "Ignition Gateway UI",
+        "Config",
+        "OPC",
+        "OPC Connections"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Access to the Ignition Gateway UI is available."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0126"
+      ],
+      "procedure_visual_summary": "Slide text references the Ignition Gateway UI navigation path Config > OPC > OPC Connections for viewing current connections.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "In the Ignition Gateway UI, open Config.",
+          "expected_outcome": "The Config area is open.",
+          "validation_check": "Config is selected in the Ignition Gateway UI.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:126",
+            "artifact:slide_artifact_optisweep_training_internal_0126"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0126"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0126"
+          ],
+          "visual_region_hint": "Ignition Gateway UI navigation path referenced in slide text"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Under Config, open OPC, then select OPC Connections.",
+          "expected_outcome": "The OPC Connections page is displayed.",
+          "validation_check": "The UI is showing current connections.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:126",
+            "artifact:slide_artifact_optisweep_training_internal_0126"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0126"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0126"
+          ],
+          "visual_region_hint": "Config > OPC > OPC Connections path referenced in slide text"
+        }
+      ],
+      "warnings": [
+        "The slide provides only the navigation path and viewing purpose; it does not provide additional diagnostic or corrective steps."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0126_01",
+        "oku_optisweep_training_internal_0126_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "To check current connections in Ignition Gateway UI, navigate to Config > OPC > OPC Connections. The slide also notes that powered-off tippers can appear as Faulted in this view."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,118 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0083_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        83
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0083"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "RobotTaskDatabaseModel tracks sorter sweeper tote task status",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "RobotTaskDatabaseModel",
+        "sorter sweeper module",
+        "tote task"
+      ],
+      "summary": "The slide states that the RobotTaskDatabaseModel table tracks the status of tote tasks requested by the sorter sweeper module.",
+      "observed_evidence": [
+        "Slide title: 'Robot Task Database Model'",
+        "Bullet text: 'The RobotTaskDatabaseModel table tracks the status of the tote task requested by the sorter sweeper module.'"
+      ],
+      "relationships": [
+        {
+          "relation": "tracks_status_of",
+          "source": "RobotTaskDatabaseModel",
+          "target": "tote task"
+        },
+        {
+          "relation": "requested_by",
+          "source": "tote task",
+          "target": "sorter sweeper module"
+        }
+      ],
+      "retrieval_text": "RobotTaskDatabaseModel table in the Robotics Database tracks status for tote tasks requested by the sorter sweeper module.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0083_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        83
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0083"
+      ],
+      "unit_type": "state_transition",
+      "title": "Completed robot tasks are archived to RobotTaskActivity",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "RobotTaskDatabaseModel",
+        "RobotTaskActivity"
+      ],
+      "summary": "The slide indicates that when robot tasks are complete, they are archived from the active task model into RobotTaskActivity.",
+      "observed_evidence": [
+        "Bullet text: 'When tasks are complete. They are archived to RobotTaskActivity'"
+      ],
+      "relationships": [
+        {
+          "relation": "archived_to",
+          "source": "completed tasks",
+          "target": "RobotTaskActivity"
+        },
+        {
+          "relation": "lifecycle_follow_on_from",
+          "source": "RobotTaskActivity",
+          "target": "RobotTaskDatabaseModel"
+        }
+      ],
+      "retrieval_text": "In the Robotics Database model, completed tasks are archived to RobotTaskActivity after being tracked in RobotTaskDatabaseModel.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0083_01",
+      "title": "No explicit procedure present on Robot Task Database Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        83
+      ],
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "RobotTaskDatabaseModel",
+        "RobotTaskActivity"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide contains descriptive database model information only"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0083"
+      ],
+      "procedure_visual_summary": "Slide describes database table purpose and archive destination for completed tasks; no ordered steps, UI actions, commands, or operator workflow are shown.",
+      "steps": [],
+      "warnings": [
+        "Do not infer database operations or archival procedures from this slide alone."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0083_01",
+        "oku_optisweep_training_internal_0083_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide only states that RobotTaskDatabaseModel tracks tote task status and completed tasks are archived to RobotTaskActivity, without actionable steps."
+    }
+  ],
+  "discarded_candidates": []
+}

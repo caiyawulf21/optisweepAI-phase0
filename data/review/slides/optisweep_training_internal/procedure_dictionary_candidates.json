@@ -1,0 +1,3626 @@
+[
+  {
+    "procedure_id": "proc_optisweep_training_internal_0004_01",
+    "title": "Handle a full bag in a traditional small sort system",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      4
+    ],
+    "systems": [
+      "Traditional small sort system"
+    ],
+    "components": [
+      "Destination",
+      "Bag",
+      "Label",
+      "Takeaway belt",
+      "Chute"
+    ],
+    "role_required": "operator",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Operator is assigned sorter destinations",
+      "A parcel bag at a destination has become full"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0004"
+    ],
+    "procedure_visual_summary": "Text slide comparing traditional and Fortna solutions; no UI, but includes explicit traditional full-bag handling sequence.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Close the destination when the bag becomes full.",
+        "expected_outcome": "The full destination is closed.",
+        "validation_check": "Destination has been closed for the full bag condition.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:4"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "visual_region_hint": "Bullet describing the traditional small sort system process."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Print a label.",
+        "expected_outcome": "A label is available for the full bag.",
+        "validation_check": "Label has been printed.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:4"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "visual_region_hint": "Bullet describing the traditional small sort system process."
+      },
+      {
+        "step_order": 3,
+        "instruction": "Apply the label to the bag.",
+        "expected_outcome": "The bag is labeled.",
+        "validation_check": "Printed label is attached to the bag.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:4"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "visual_region_hint": "Bullet describing the traditional small sort system process."
+      },
+      {
+        "step_order": 4,
+        "instruction": "Zip up the bag.",
+        "expected_outcome": "The full bag is closed.",
+        "validation_check": "Bag is zipped.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:4"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "visual_region_hint": "Bullet describing the traditional small sort system process."
+      },
+      {
+        "step_order": 5,
+        "instruction": "Place the bag on a takeaway belt.",
+        "expected_outcome": "The bag is transferred to takeaway.",
+        "validation_check": "Bag is on the takeaway belt.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:4"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "visual_region_hint": "Bullet describing the traditional small sort system process."
+      },
+      {
+        "step_order": 6,
+        "instruction": "Reopen the chute.",
+        "expected_outcome": "The chute is reopened for continued parcel flow.",
+        "validation_check": "Chute has been reopened after bag removal.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:4"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0004"
+        ],
+        "visual_region_hint": "Bullet describing the traditional small sort system process."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0004_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Traditional full-bag handling procedure: when the bag becomes full, the operator closes the destination, prints a label, applies the label to the bag, zips the bag, places it on a takeaway belt, and reopens the chute."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_12_01",
+    "title": "Mark chute unavailable when a tote is full",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      12
+    ],
+    "systems": [
+      "Chat"
+    ],
+    "components": [
+      "tote",
+      "chute"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A tote has reached the full threshold."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0012"
+    ],
+    "procedure_visual_summary": "Slide describes parcel sorting into a tote, tote fullness thresholds, and that when a tote is full Chat is told the chute is unavailable during exchange.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Identify that the tote is in the full state.",
+        "expected_outcome": "The tote is recognized as full rather than pretty full.",
+        "validation_check": "The slide defines the full threshold as the point where no more product can be diverted to the location until an exchange is done.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:12",
+          "artifact:slide_artifact_optisweep_training_internal_0012"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0012"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0012"
+        ],
+        "visual_region_hint": "Lower half of slide where the two thresholds and full-state definition are listed."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Tell Chat that the chute is unavailable while the exchange is being done.",
+        "expected_outcome": "Packages do not come down the chute during the tote exchange.",
+        "validation_check": "The slide explicitly states that when a tote is full, Chat is told the chute is unavailable so that no packages come down while doing an exchange.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:12",
+          "artifact:slide_artifact_optisweep_training_internal_0012"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0012"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0012"
+        ],
+        "visual_region_hint": "Bottom bullet on the slide discussing full totes and chute unavailability."
+      }
+    ],
+    "warnings": [
+      "The slide does not specify the exact interface or command used to tell Chat that the chute is unavailable.",
+      "The slide does not describe the exchange steps themselves."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_12_03",
+      "oku_optisweep_training_internal_12_04"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Operational action candidate from slide 12: when a tote is full, tell Chat that the chute is unavailable so no packages come down during exchange. The slide gives the condition and intended result, but not the exact UI or system steps."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_13_stage_exchange_for_full_tote",
+    "title": "Stage and complete a tote exchange when a tote is full or nearly full",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      13
+    ],
+    "systems": [
+      "AGV",
+      "sorter",
+      "racking"
+    ],
+    "components": [
+      "full tote",
+      "empty tote",
+      "zone-designated AGV with no tote",
+      "AGV with empty tote",
+      "rack location",
+      "aisle"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A tote is imminently full or completely full.",
+      "A no-tote AGV is designated to the tote's zone.",
+      "An AGV carrying an empty tote is available."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0013"
+    ],
+    "procedure_visual_summary": "Slide describes AGV exchange staging around a full tote, including a zone-designated AGV positioning under racking, an empty-tote AGV approaching from behind under the sorter, the full-tote AGV moving into the aisle, and the empty tote being lowered into the rack location.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Initiate exchange staging when a tote is imminently full or completely full.",
+        "expected_outcome": "The system enters an exchange scenario for the affected tote.",
+        "validation_check": "The slide states exchange staging can happen when a tote is imminently full or completely full.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:13",
+          "artifact:slide_artifact_optisweep_training_internal_0013"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "visual_region_hint": "Upper text block describing exchange trigger conditions."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Move the zone-designated AGV with no tote under the racking to position for a lift.",
+        "expected_outcome": "A no-tote AGV is positioned under the racking for the tote lift.",
+        "validation_check": "The AGV is described as moving under the racking to position for a lift.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:13",
+          "artifact:slide_artifact_optisweep_training_internal_0013"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "visual_region_hint": "Middle text block beginning with 'An AGV with no tote...'."
+      },
+      {
+        "step_order": 3,
+        "instruction": "Lift the tote into position.",
+        "expected_outcome": "The tote is lifted and ready for the exchange movement.",
+        "validation_check": "The slide explicitly states the tote is lifted in position.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:13",
+          "artifact:slide_artifact_optisweep_training_internal_0013"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "visual_region_hint": "Bullet line stating 'The tote is lifted in position'."
+      },
+      {
+        "step_order": 4,
+        "instruction": "Move an AGV carrying an empty tote under the sorter to the position behind that tote.",
+        "expected_outcome": "The replacement empty tote is staged behind the tote being exchanged.",
+        "validation_check": "The slide states the AGV with an empty tote travels under the sorter to the position behind that tote.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:13",
+          "artifact:slide_artifact_optisweep_training_internal_0013"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "visual_region_hint": "Middle-lower text block beginning with 'An AGV with an empty tote...'."
+      },
+      {
+        "step_order": 5,
+        "instruction": "Move the AGV with the full tote out into the aisle.",
+        "expected_outcome": "The full tote clears the rack location.",
+        "validation_check": "The slide states the AGV with the full tote moves out into the aisle.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:13",
+          "artifact:slide_artifact_optisweep_training_internal_0013"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "visual_region_hint": "Lower text block describing full-tote AGV movement into the aisle."
+      },
+      {
+        "step_order": 6,
+        "instruction": "Move the AGV with the empty tote into the rack location and lower its empty tote into the rack.",
+        "expected_outcome": "An empty tote is placed into the rack location vacated by the full tote.",
+        "validation_check": "The slide states the AGV with the empty tote moves into that rack location and lowers its empty tote into the rack.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:13",
+          "artifact:slide_artifact_optisweep_training_internal_0013"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "visual_region_hint": "Lower text block describing empty-tote placement into the rack."
+      },
+      {
+        "step_order": 7,
+        "instruction": "Treat the AGV left with no tote as the AGV that will pick up the next full tote in that zone.",
+        "expected_outcome": "The no-tote AGV is reassigned as the next full-tote pickup vehicle for the zone.",
+        "validation_check": "The slide states this AGV with no tote becomes the AGV that will pick up the next full tote in that zone.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:13",
+          "artifact:slide_artifact_optisweep_training_internal_0013"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0013"
+        ],
+        "visual_region_hint": "Final bullet text at bottom of slide."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_13_exchange_staging_process",
+      "oku_optisweep_training_internal_13_exchange_assignment_behavior"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Operational action for tote exchange staging: when a tote is imminently full or full, position a zone-designated no-tote AGV under the racking for lift, lift the tote, move an empty-tote AGV under the sorter behind the tote, move the full-tote AGV into the aisle, move the empty-tote AGV into the rack location and lower the empty tote, then use the resulting no-tote AGV as the next full-tote pickup AGV for that zone."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_14_01",
+    "title": "Start a tip and complete post-tip bag handling at the tipper",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      14
+    ],
+    "systems": [
+      "AGV",
+      "Tipper"
+    ],
+    "components": [
+      "Tipper",
+      "Tote",
+      "Bag label",
+      "Bag",
+      "Takeaway conveyor"
+    ],
+    "role_required": "operator",
+    "support_safe": "unknown",
+    "preconditions": [
+      "The AGV has been sent to the tipper and reaches the tip location.",
+      "Software has informed the tipper that the AGV is staged for a tip.",
+      "The operator is at the tipper."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0014"
+    ],
+    "procedure_visual_summary": "Slide describes the tipping flow from AGV arrival at the tipper through operator button press, automated tip, empty tote return, label application, bag placement on takeaway conveyor, and hanging the next empty bag.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "When the AGV is staged for a tip, push the button to start the tip.",
+        "expected_outcome": "The tipper starts the tip cycle.",
+        "validation_check": "The tipper begins clamping and tip motion after the button press.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:14",
+          "artifact:slide_artifact_optisweep_training_internal_0014"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "visual_region_hint": "Text region describing operator action and tip start"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Allow the tipper to clamp the tote and perform the tip.",
+        "expected_outcome": "The tote is tipped by the machine.",
+        "validation_check": "The slide states the tipper clamps the tote and performs the tip.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:14",
+          "artifact:slide_artifact_optisweep_training_internal_0014"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "visual_region_hint": "Text region describing tipper automated action"
+      },
+      {
+        "step_order": 3,
+        "instruction": "After the tip, take the bag label and apply it to the bag.",
+        "expected_outcome": "The bag is labeled for downstream handling.",
+        "validation_check": "A bag label is present on the bag.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:14",
+          "artifact:slide_artifact_optisweep_training_internal_0014"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "visual_region_hint": "Lower text region describing operator post-tip actions"
+      },
+      {
+        "step_order": 4,
+        "instruction": "Place the bag on the takeaway conveyor.",
+        "expected_outcome": "The bag is transferred to the takeaway conveyor.",
+        "validation_check": "The bag is no longer at the tipper and is on the takeaway conveyor.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:14",
+          "artifact:slide_artifact_optisweep_training_internal_0014"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "visual_region_hint": "Lower text region describing operator post-tip actions"
+      },
+      {
+        "step_order": 5,
+        "instruction": "Hang the next empty bag for the next tip.",
+        "expected_outcome": "The tipper station is prepared for the next tipping cycle.",
+        "validation_check": "A new empty bag is hung and ready for the next tip.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:14",
+          "artifact:slide_artifact_optisweep_training_internal_0014"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0014"
+        ],
+        "visual_region_hint": "Lower text region describing operator post-tip actions"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_14_03",
+      "oku_optisweep_training_internal_14_04",
+      "oku_optisweep_training_internal_14_05"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Operator tipping action on slide 14: when the AGV is staged for a tip, the operator pushes a button to start the tip. The tipper clamps the tote and performs the tip. Afterward, the operator applies the bag label to the bag, places the bag on a takeaway conveyor, and hangs the next empty bag for the next tip."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0015_01",
+    "title": "Route AGV after full cycle completion based on system condition",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      15
+    ],
+    "systems": [
+      "AGV",
+      "Tipper",
+      "software"
+    ],
+    "components": [
+      "Hospital",
+      "charger",
+      "sorter entrance queue",
+      "empty tote"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "The full cycle is complete",
+      "The tipper informs software that the AGV is clear to move out"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0015"
+    ],
+    "procedure_visual_summary": "Slide states return behavior after cycle completion and lists destination outcomes for failed tip, low battery, and normal completion.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Wait for the full cycle to complete and for the tipper to inform software that the AGV is clear to move out.",
+        "expected_outcome": "Software has clearance status indicating the AGV can depart.",
+        "validation_check": "Confirm slide-stated clearance condition exists: the tipper has informed software the AGV is clear to move out.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:15",
+          "artifact:slide_artifact_optisweep_training_internal_0015"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0015"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0015"
+        ],
+        "visual_region_hint": "Main body text under 'The Return'"
+      },
+      {
+        "step_order": 2,
+        "instruction": "If the tip failed, route the AGV to Hospital.",
+        "expected_outcome": "The AGV is sent to Hospital following a failed tip.",
+        "validation_check": "Verify the AGV destination is Hospital when tip status is failed.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:15",
+          "artifact:slide_artifact_optisweep_training_internal_0015"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0015"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0015"
+        ],
+        "visual_region_hint": "Bullet list in lower half of slide"
+      },
+      {
+        "step_order": 3,
+        "instruction": "If the battery level is low, route the AGV to the charger.",
+        "expected_outcome": "The AGV is sent to the charger when battery is low.",
+        "validation_check": "Verify the AGV destination is charger when battery level is low.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:15",
+          "artifact:slide_artifact_optisweep_training_internal_0015"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0015"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0015"
+        ],
+        "visual_region_hint": "Bullet list in lower half of slide"
+      },
+      {
+        "step_order": 4,
+        "instruction": "If all conditions are good, return the AGV to the sorter entrance queue with an empty tote for its next exchange.",
+        "expected_outcome": "The AGV rejoins the sorter entrance queue carrying an empty tote for reuse.",
+        "validation_check": "Verify the AGV returns to the sorter entrance queue and has an empty tote for the next exchange.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:15",
+          "artifact:slide_artifact_optisweep_training_internal_0015"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0015"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0015"
+        ],
+        "visual_region_hint": "Bullet list in lower half of slide"
+      }
+    ],
+    "warnings": [
+      "The slide provides routing outcomes but does not specify who performs the routing action or the interface used.",
+      "Decision logic is limited to the conditions explicitly shown on the slide."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0015_01",
+      "oku_optisweep_training_internal_0015_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Operational action candidate for AGV return routing after full cycle completion: once tipper informs software AGV is clear to move out, send failed tip to Hospital, low battery to charger, otherwise return AGV to sorter entrance queue with empty tote for next exchange."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_16_001",
+    "title": "Transition an AGV from one area to another via the common exit",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      16
+    ],
+    "systems": [
+      "AGV"
+    ],
+    "components": [
+      "Hospital",
+      "SorterSide",
+      "Charger",
+      "Tipper"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "An AGV is in one defined layout area.",
+      "A destination area is different from the current area.",
+      "The layout uses distinct areas connected by a common entrance and exit."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0016"
+    ],
+    "procedure_visual_summary": "Slide describes a layout rule: distinct areas are connected by a common entrance and exit, and AGVs must go to the exit before entering the next area. Areas listed are Hospital, SorterSide, Charger, and Tipper.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "When an AGV needs to move from its current area to a different area, route the AGV to the common exit first.",
+        "expected_outcome": "The AGV leaves the current area through the shared exit path.",
+        "validation_check": "Confirm the AGV goes to the exit before attempting entry into another area.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:16",
+          "artifact:slide_artifact_optisweep_training_internal_0016"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0016"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0016"
+        ],
+        "visual_region_hint": "Main bullet text describing area-to-area movement through the exit"
+      },
+      {
+        "step_order": 2,
+        "instruction": "After reaching the exit, direct the AGV to enter the destination area.",
+        "expected_outcome": "The AGV enters the next area only after passing through the exit path.",
+        "validation_check": "Confirm area entry occurs only after the AGV has gone to the exit.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:16",
+          "artifact:slide_artifact_optisweep_training_internal_0016"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0016"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0016"
+        ],
+        "visual_region_hint": "Main bullet text stating the AGV must go to the exit before entering the next area"
+      }
+    ],
+    "warnings": [
+      "The slide provides a routing rule but not a detailed execution method or control interface.",
+      "No explicit user action, UI workflow, or command sequence is shown on the slide."
+    ],
+    "related_context_refs": [
+      "ku_optisweep_training_internal_16_001",
+      "ku_optisweep_training_internal_16_002"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure candidate for AGV inter-area transition: move the AGV to the common exit first, then enter the destination area. Based directly on the slide rule that AGVs must go to the exit before entering the next area in the modular layout."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_022_01",
+    "title": "Open Map Monitor from the Home screen right-side menu",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      22
+    ],
+    "systems": [
+      "OptiSweep"
+    ],
+    "components": [
+      "Home screen",
+      "Right-side menu",
+      "Map Monitor",
+      "AGV"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User is on the OptiSweep Home screen.",
+      "The right-side menu is available in the UI."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0022"
+    ],
+    "procedure_visual_summary": "Slide describes Home screen controls on the right side, including an expandable menu and a Map Monitor option used to view the map and AGV movements.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "On the Home screen, go to the right side of the interface and expand the menu.",
+        "expected_outcome": "Menu options become visible.",
+        "validation_check": "The right-side menu is expanded and additional options are shown.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:22",
+          "artifact:slide_artifact_optisweep_training_internal_0022"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0022"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0022"
+        ],
+        "visual_region_hint": "Right side of the Home screen where the expandable menu is located."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Select Map Monitor from the right-side menu.",
+        "expected_outcome": "Map Monitor opens.",
+        "validation_check": "The user can view the map and AGV movements.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:22",
+          "artifact:slide_artifact_optisweep_training_internal_0022"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0022"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0022"
+        ],
+        "visual_region_hint": "Expanded menu area on the right side containing the Map Monitor option."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_022_02",
+      "oku_optisweep_training_internal_022_03",
+      "oku_optisweep_training_internal_022_04"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "From the OptiSweep Home screen, expand the right-side menu and select Map Monitor to view the map and AGV movements."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0024_01",
+    "title": "Open the message panel and review AGV fault information",
+    "procedure_type": "diagnostic_check",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      24
+    ],
+    "systems": [
+      "OptiSweep",
+      "AGV",
+      "Robot"
+    ],
+    "components": [
+      "Map Monitor",
+      "Message Panel"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User is in the Map Monitor screen.",
+      "Message Panel is available in the UI."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0024"
+    ],
+    "procedure_visual_summary": "Slide lists Message Panel actions and information available in Map Monitor, including opening the panel, fault drop-down, inspection, locating a faulted AGV, and counts for robot and AGV states.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open the message panel in Map Monitor.",
+        "expected_outcome": "The Message Panel is visible.",
+        "validation_check": "Confirm the message panel opens.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:24",
+          "artifact:slide_artifact_optisweep_training_internal_0024"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0024"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0024"
+        ],
+        "visual_region_hint": "Map Monitor Message Panel area"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Use the drop-down to show AGV faults.",
+        "expected_outcome": "AGV fault entries are displayed.",
+        "validation_check": "Confirm AGV faults are shown in the panel.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:24",
+          "artifact:slide_artifact_optisweep_training_internal_0024"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0024"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0024"
+        ],
+        "visual_region_hint": "Message Panel fault drop-down"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Inspect a fault to view its details.",
+        "expected_outcome": "Fault detail information is shown for the selected fault.",
+        "validation_check": "Confirm fault details are visible.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:24",
+          "artifact:slide_artifact_optisweep_training_internal_0024"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0024"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0024"
+        ],
+        "visual_region_hint": "Message Panel inspection/details area"
+      },
+      {
+        "step_order": 4,
+        "instruction": "Locate the faulted AGV from the message panel.",
+        "expected_outcome": "The selected faulted AGV is located in the interface.",
+        "validation_check": "Confirm the UI indicates the faulted AGV location.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:24",
+          "artifact:slide_artifact_optisweep_training_internal_0024"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0024"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0024"
+        ],
+        "visual_region_hint": "Message Panel locate faulted AGV control"
+      }
+    ],
+    "warnings": [
+      "The slide also mentions 'E stop the system' but does not provide an explicit action sequence; no E-stop procedure is extracted from this slide.",
+      "UI control names and exact interaction details are not shown beyond the listed bullets."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0024_01",
+      "oku_optisweep_training_internal_0024_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Diagnostic check candidate for Map Monitor Message Panel: open the message panel, use the drop-down to show AGV faults, inspect fault details, and locate the faulted AGV."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_0025_01",
+    "title": "Use Map Monitor Quick Select options",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      25
+    ],
+    "systems": [
+      "AGV",
+      "Robot"
+    ],
+    "components": [
+      "Map Monitor",
+      "Quick Select"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Map Monitor screen is available",
+      "Quick Select area is visible"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0025"
+    ],
+    "procedure_visual_summary": "Slide lists Quick Select functions in Map Monitor, including path and ID visibility plus object selection types.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open or view the Map Monitor Quick Select area.",
+        "expected_outcome": "Quick Select options are visible.",
+        "validation_check": "Options listed in the Quick Select area can be seen.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:25",
+          "artifact:slide_artifact_optisweep_training_internal_0025"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0025"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0025"
+        ],
+        "visual_region_hint": "Map Monitor Quick Select list area"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Use the available Quick Select options to view AGV active paths, Station IDs, or Charger IDs, or to select a robot, container, cell, or charger as needed.",
+        "expected_outcome": "The requested view or selection option is used from Quick Select.",
+        "validation_check": "The desired Quick Select option is present in the interface.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:25",
+          "artifact:slide_artifact_optisweep_training_internal_0025"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0025"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0025"
+        ],
+        "visual_region_hint": "Bullet list describing Quick Select functions"
+      }
+    ],
+    "warnings": [
+      "The slide identifies available Quick Select functions but does not show exact click sequence or UI controls."
+    ],
+    "related_context_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_0025"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Navigation candidate for Map Monitor Quick Select. The slide shows that Quick Select can be used to view AGV active paths, Station IDs, Charger IDs, and to select robots, containers, cells, and chargers, but it does not provide exact UI interaction details."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_0026_01",
+    "title": "Select a robot to view robot details",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      26
+    ],
+    "systems": [
+      "OptiSweep UI"
+    ],
+    "components": [
+      "Robot selection option",
+      "Robot tile/list item",
+      "Robot details view"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "The Robot option is available in the UI."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0026"
+    ],
+    "procedure_visual_summary": "Slide describes Robot Selection overview and indicates that selecting a robot shows details and places a box around the selected robot.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "With the Robot option selected, select a robot in the UI.",
+        "expected_outcome": "The selected robot's details are shown.",
+        "validation_check": "A box appears around the selected robot.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:26",
+          "artifact:slide_artifact_optisweep_training_internal_0026"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0026"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0026"
+        ],
+        "visual_region_hint": "Robot selection area showing robot entries and selection highlight"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0026_01",
+      "oku_optisweep_training_internal_0026_02",
+      "oku_optisweep_training_internal_0026_03"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Navigation attempt: when Robot option is selected, select a robot to view robot details. Validation is a box around the selected robot."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_27_add_robot",
+    "title": "Add a robot from the Robot Selection screen",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      27
+    ],
+    "systems": [
+      "Robot"
+    ],
+    "components": [
+      "Robot Selection UI"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Access to the Robot Selection screen",
+      "The corresponding robot ID is known"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0027"
+    ],
+    "procedure_visual_summary": "Slide titled 'Robot Selection / Add and Remove' with numbered steps for adding and removing robots in the Robot Selection interface.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Enter the corresponding robot ID.",
+        "expected_outcome": "The robot ID is populated in the Robot Selection interface.",
+        "validation_check": "Confirm the intended robot ID has been entered.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "visual_region_hint": "Robot Selection screen area with robot ID entry field"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Click \"Add\".",
+        "expected_outcome": "The system processes the add request for the entered robot ID.",
+        "validation_check": "Confirm the Add action was triggered from the Robot Selection interface.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "visual_region_hint": "Add button on the Robot Selection screen"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Verify that the system shows that the adding was successful.",
+        "expected_outcome": "A success indication is displayed for the add action.",
+        "validation_check": "Confirm the interface shows successful add feedback.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "visual_region_hint": "System feedback or confirmation message area on the Robot Selection screen"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_27_robot_selection_add_remove_ui"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure to add robot in Robot Selection: enter corresponding robot ID, click Add, verify the system shows adding was successful."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_27_remove_robot",
+    "title": "Remove a robot from the Robot Selection screen",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      27
+    ],
+    "systems": [
+      "Robot"
+    ],
+    "components": [
+      "Robot Selection UI"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Access to the Robot Selection screen",
+      "The target robot can be identified by robot ID or selected in the interface"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0027"
+    ],
+    "procedure_visual_summary": "Slide titled 'Robot Selection / Add and Remove' with numbered steps for adding and removing robots in the Robot Selection interface.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Enter the corresponding robot ID or select the robot.",
+        "expected_outcome": "The target robot is identified in the Robot Selection interface.",
+        "validation_check": "Confirm the intended robot is selected or identified by the entered robot ID.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "visual_region_hint": "Robot Selection screen area with robot list and/or robot ID field"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Click \"Remove\".",
+        "expected_outcome": "The system processes the removal request for the selected or identified robot.",
+        "validation_check": "Confirm the Remove action was triggered from the Robot Selection interface.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "visual_region_hint": "Remove button on the Robot Selection screen"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Verify that the system shows that the removal was successful.",
+        "expected_outcome": "A success indication is displayed for the removal action.",
+        "validation_check": "Confirm the interface shows successful removal feedback.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:27"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0027"
+        ],
+        "visual_region_hint": "System feedback or confirmation message area on the Robot Selection screen"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_27_robot_selection_add_remove_ui"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure to remove robot in Robot Selection: enter corresponding robot ID or select the robot, click Remove, verify the system shows removal was successful."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0028_01",
+    "title": "Restart a robot from Robot Selection",
+    "procedure_type": "service_restart",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      28
+    ],
+    "systems": [
+      "Robot"
+    ],
+    "components": [
+      "Robot Selection",
+      "Restart",
+      "Map"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Robot Selection Restart UI is available.",
+      "A target robot can be identified by robot ID or direct selection.",
+      "Slide indicates restart occurs when the robot is at the restart point or on the QR code cell."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0028"
+    ],
+    "procedure_visual_summary": "Slide describing Robot Selection > Restart with numbered steps for selecting a robot, clicking Restart, and observing the robot on the map.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Enter the corresponding robot ID or select the robot.",
+        "expected_outcome": "The target robot is selected for restart.",
+        "validation_check": "A corresponding robot has been identified in the Restart workflow.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:28",
+          "artifact:slide_artifact_optisweep_training_internal_0028"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0028"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0028"
+        ],
+        "visual_region_hint": "Robot Selection Restart area where robot ID entry or robot selection is performed."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Click \"Restart\".",
+        "expected_outcome": "A restart command is issued for the selected robot.",
+        "validation_check": "The Restart control has been activated for the selected robot.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:28",
+          "artifact:slide_artifact_optisweep_training_internal_0028"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0028"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0028"
+        ],
+        "visual_region_hint": "Restart button/control in the Robot Selection Restart interface."
+      },
+      {
+        "step_order": 3,
+        "instruction": "Allow the robot to restart.",
+        "expected_outcome": "The robot restarts.",
+        "validation_check": "The slide states the robot will restart when it is at the restart point or on the QR code cell.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:28",
+          "artifact:slide_artifact_optisweep_training_internal_0028"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0028"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0028"
+        ],
+        "visual_region_hint": "Restart status/result described in the Robot Selection Restart workflow."
+      },
+      {
+        "step_order": 4,
+        "instruction": "After the robot starts, confirm that the positioned robot is displayed on the map.",
+        "expected_outcome": "The restarted and positioned robot appears on the map.",
+        "validation_check": "The robot that has been positioned is displayed on the map.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:28",
+          "artifact:slide_artifact_optisweep_training_internal_0028"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0028"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0028"
+        ],
+        "visual_region_hint": "Map display area showing the robot after startup."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0028_01",
+      "oku_optisweep_training_internal_0028_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure to restart a robot from Robot Selection: enter the corresponding robot ID or select the robot, click Restart, the robot will restart when it is at the restart point or on the QR code cell, and after starting the positioned robot will be displayed on the map."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0029_01",
+    "title": "Send an AGV to a selected square using Go-to",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      29
+    ],
+    "systems": [
+      "AGV"
+    ],
+    "components": [
+      "Robot Selection",
+      "Go to",
+      "square selector",
+      "Confirm"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "The AGV is not in a task"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0029"
+    ],
+    "procedure_visual_summary": "Slide shows Robot Selection / Go-to function with numbered action cues: 1 select an AGV, 2 select Go to, 3 select destination square, 4 select Confirm.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Select an AGV.",
+        "expected_outcome": "An AGV is selected in the Robot Selection interface.",
+        "validation_check": "The intended AGV is highlighted or otherwise shown as selected.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:29"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0029"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0029"
+        ],
+        "visual_region_hint": "UI callout labeled 1 near AGV selection area"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Select Go to.",
+        "expected_outcome": "The Go-to action is opened for the selected AGV.",
+        "validation_check": "The Go-to option is activated for the selected AGV.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:29"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0029"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0029"
+        ],
+        "visual_region_hint": "UI callout labeled 2 near Go to control"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Select which square you want the AGV to go to.",
+        "expected_outcome": "A destination square is chosen for the AGV.",
+        "validation_check": "The intended square is selected as the destination.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:29"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0029"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0029"
+        ],
+        "visual_region_hint": "UI callout labeled 3 near square selection area"
+      },
+      {
+        "step_order": 4,
+        "instruction": "Select Confirm.",
+        "expected_outcome": "The Go-to command is submitted and the AGV is sent to the selected square.",
+        "validation_check": "The destination is confirmed and the AGV is assigned to go to the chosen square.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:29"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0029"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0029"
+        ],
+        "visual_region_hint": "UI callout labeled 4 near Confirm control"
+      }
+    ],
+    "warnings": [
+      "This procedure applies only to an AGV not in a task."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0029_01",
+      "oku_optisweep_training_internal_0029_02",
+      "oku_optisweep_training_internal_0029_03",
+      "oku_optisweep_training_internal_0029_04"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure to send an idle AGV to a square using Go-to: select an AGV, select Go to, choose the destination square, and select Confirm. Slide states this applies when the AGV is not in a task."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0030_01",
+    "title": "Find a tote in Container Selection by tote number",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      30
+    ],
+    "systems": [
+      "OptiSweep"
+    ],
+    "components": [
+      "Container Selection UI",
+      "Tote",
+      "Rack",
+      "AGV"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User has access to the Container Selection tote view.",
+      "The tote exists in the system for location results to be shown."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0030"
+    ],
+    "procedure_visual_summary": "Slide describes tote color indicators and says a tote can be found by typing the tote number; the location may be shown on a rack or AGV.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "In the Container Selection tote interface, type in the tote number.",
+        "expected_outcome": "The system attempts to locate the tote by its number.",
+        "validation_check": "A matching tote result or location indication appears if the tote is in the system.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:30",
+          "artifact:slide_artifact_optisweep_training_internal_0030"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0030"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0030"
+        ],
+        "visual_region_hint": "Container Selection tote search/input area"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Select the rack or AGV where the tote is located, if the tote is found in the system.",
+        "expected_outcome": "The tote's location is identified on the corresponding rack or AGV.",
+        "validation_check": "The selected rack or AGV corresponds to the located tote.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:30",
+          "artifact:slide_artifact_optisweep_training_internal_0030"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0030"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0030"
+        ],
+        "visual_region_hint": "Rack or AGV selection area in Container Selection"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0030_01",
+      "oku_optisweep_training_internal_0030_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure candidate for locating a tote in Container Selection: enter the tote number, then select the rack or AGV where it is located if the tote exists in the system."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0031_01",
+    "title": "View cell information and QR code from Cell Selection",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      31
+    ],
+    "systems": [
+      "OptiSweep"
+    ],
+    "components": [
+      "Cell Selection UI"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Cell Selection is available in the UI",
+      "Cell selection mode is selected"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0031"
+    ],
+    "procedure_visual_summary": "Slide describes selecting a cell in Cell Selection to view cell information including a QR code.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Select Cell Selection in the UI.",
+        "expected_outcome": "Cell selection mode is active.",
+        "validation_check": "The UI is in Cell Selection mode.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:31",
+          "artifact:slide_artifact_optisweep_training_internal_0031"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0031"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0031"
+        ],
+        "visual_region_hint": "Cell Selection area referenced by the slide title and bullet text."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Select a cell.",
+        "expected_outcome": "Cell information is shown, including the QR code.",
+        "validation_check": "A QR code appears in the cell information view.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:31",
+          "artifact:slide_artifact_optisweep_training_internal_0031"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0031"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0031"
+        ],
+        "visual_region_hint": "Cell grid or selectable cell area implied by the Cell Selection screen."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0031_01",
+      "oku_optisweep_training_internal_0031_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "To view cell information and a QR code in Cell Selection, activate Cell Selection and select a cell. The selected cell displays information including its QR code."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0031_02",
+    "title": "View station ID and QR code by selecting an orange cell",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      31
+    ],
+    "systems": [
+      "OptiSweep"
+    ],
+    "components": [
+      "Cell Selection UI"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Cell Selection is available in the UI",
+      "An orange cell is visible"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0031"
+    ],
+    "procedure_visual_summary": "Slide explains that orange cells represent stations and selecting one shows station ID with QR code.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "In Cell Selection, identify an orange cell.",
+        "expected_outcome": "A station cell is identified.",
+        "validation_check": "The selected candidate cell is orange, which the slide indicates represents a station.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:31",
+          "artifact:slide_artifact_optisweep_training_internal_0031"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0031"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0031"
+        ],
+        "visual_region_hint": "Cell grid area containing orange cells."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Select the orange cell.",
+        "expected_outcome": "The UI shows the station ID along with the QR code.",
+        "validation_check": "Station ID and QR code are both displayed.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:31",
+          "artifact:slide_artifact_optisweep_training_internal_0031"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0031"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0031"
+        ],
+        "visual_region_hint": "Orange station cell and resulting information display area."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0031_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "In Cell Selection, orange cells represent stations. Selecting an orange cell displays the station ID together with the QR code."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0032_01",
+    "title": "Disable a charger to manually charge a desired AGV",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      32
+    ],
+    "systems": [
+      "AGV",
+      "Robot"
+    ],
+    "components": [
+      "Charger Selection",
+      "charger",
+      "charging station"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A charger is available in the Charger Selection screen.",
+      "A robot/AGV needs to be manually charged."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0032"
+    ],
+    "procedure_visual_summary": "Slide shows the Charger Selection screen with numbered callouts and text explaining that a charger can be selected, disabled, and then used for manual charging by pushing the desired AGV into the disabled charging station.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open or select Charger Selection.",
+        "expected_outcome": "The Charger Selection screen is active.",
+        "validation_check": "Charger Selection is visible.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:32"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0032"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0032"
+        ],
+        "visual_region_hint": "Charger Selection screen area referenced by the slide title and numbered UI callouts."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Select the charger you need to use for manual charging.",
+        "expected_outcome": "The selected charger information is shown.",
+        "validation_check": "Charger information is displayed for the selected charger.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:32"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0032"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0032"
+        ],
+        "visual_region_hint": "Charger list or charger selection area indicated by UI callouts."
+      },
+      {
+        "step_order": 3,
+        "instruction": "Disable the selected charger so no other robot is sent to that charger.",
+        "expected_outcome": "The charger is disabled and excluded from normal robot assignment.",
+        "validation_check": "The charger shows as disabled or is understood to no longer accept other robot assignments.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:32"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0032"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0032"
+        ],
+        "visual_region_hint": "Selected charger controls/details area; exact disable control not legible from text."
+      },
+      {
+        "step_order": 4,
+        "instruction": "Push the desired AGV into the disabled charging station.",
+        "expected_outcome": "The desired AGV is positioned in the disabled charging station for manual charging.",
+        "validation_check": "The desired AGV is in the disabled charging station.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:32"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0032"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0032"
+        ],
+        "visual_region_hint": "Physical charging station referenced by slide text; not explicitly shown in detail."
+      }
+    ],
+    "warnings": [
+      "The slide does not provide exact UI control names for disabling the charger.",
+      "The slide does not state how to re-enable the charger after manual charging."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0032_01",
+      "oku_optisweep_training_internal_0032_02",
+      "oku_optisweep_training_internal_0032_03"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure candidate for manual charging: open Charger Selection, select the charger to view its information, disable that charger so other robots are not sent to it, then push the desired AGV into the disabled charging station."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0035_01",
+    "title": "Navigate to additional information for Tippers, Hospitals, or GLDS from System Detail",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      35
+    ],
+    "systems": [
+      "HMI"
+    ],
+    "components": [
+      "System Detail",
+      "System Layout",
+      "Tippers",
+      "Hospitals",
+      "GLDS"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User is on the System Detail screen.",
+      "Relevant icons for Tippers, Hospitals, or GLDS are visible in the System Layout area."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0035"
+    ],
+    "procedure_visual_summary": "Slide describes the System Detail home screen and states that icons in the System Layout can be clicked for more information on Tippers, Hospitals, and GLDS.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open or remain on the System Detail screen.",
+        "expected_outcome": "The home screen for system overview and navigation is displayed.",
+        "validation_check": "Confirm the screen corresponds to System Detail / Overall System.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:35",
+          "artifact:slide_artifact_optisweep_training_internal_0035"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0035"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0035"
+        ],
+        "visual_region_hint": "Overall System / System Detail screen"
+      },
+      {
+        "step_order": 2,
+        "instruction": "In the System Layout area, click the icon for the desired Tipper, Hospital, or GLDS item.",
+        "expected_outcome": "More information for the selected Tipper, Hospital, or GLDS item is shown.",
+        "validation_check": "Confirm that additional information opens or updates for the selected icon.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:35",
+          "artifact:slide_artifact_optisweep_training_internal_0035"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0035"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0035"
+        ],
+        "visual_region_hint": "System Layout icons for Tippers / Hospitals / GLDS"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0035_01",
+      "oku_optisweep_training_internal_0035_04",
+      "oku_optisweep_training_internal_0035_05"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "From the System Detail screen, click icons in the System Layout to view more information on Tippers, Hospitals, or GLDS."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0035_02",
+    "title": "Refresh a subscreen by clicking ACB1 – AMR TT when the subscreen does not update",
+    "procedure_type": "recovery_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      35
+    ],
+    "systems": [
+      "HMI"
+    ],
+    "components": [
+      "Main Menu",
+      "ACB1 – AMR TT"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A subscreen is open or being viewed.",
+      "The subscreen does not update."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0035"
+    ],
+    "procedure_visual_summary": "Slide includes a tip stating to click “ACB1 – AMR TT” if a subscreen does not update.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "If a subscreen does not update, click “ACB1 – AMR TT.”",
+        "expected_outcome": "The subscreen may refresh or begin updating.",
+        "validation_check": "Confirm whether the previously non-updating subscreen now updates.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:35",
+          "artifact:slide_artifact_optisweep_training_internal_0035"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0035"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0035"
+        ],
+        "visual_region_hint": "UI element labeled ACB1 – AMR TT on the System Detail / subscreen navigation area"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0035_02",
+      "oku_optisweep_training_internal_0035_03"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "If a subscreen does not update, click “ACB1 – AMR TT” as a refresh workaround."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0036_02",
+    "title": "Cancel manual bag out exchange tasks not in process",
+    "procedure_type": "recovery_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      36
+    ],
+    "systems": [
+      "OptiSweep sorter system"
+    ],
+    "components": [
+      "manual bag out",
+      "cancel bag out",
+      "exchange task"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A manual bag out event is in progress or has been initiated",
+      "There are exchange tasks associated with the bag out"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0036"
+    ],
+    "procedure_visual_summary": "Slide titled 'Overall System / Bag Out Control' describing cancel bag out behavior during manual bag out.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Use cancel bag out during a manual bag out event.",
+        "expected_outcome": "Exchange tasks that are not already in process are canceled.",
+        "validation_check": "Verify that only exchange tasks not in process are canceled.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:36",
+          "artifact:slide_artifact_optisweep_training_internal_0036"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0036"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0036"
+        ],
+        "visual_region_hint": "No specific UI region shown; evidence comes from slide bullet text."
+      }
+    ],
+    "warnings": [
+      "The slide does not provide the exact trigger, UI location, or command sequence for cancel bag out.",
+      "The slide explicitly limits cancellation to exchange tasks that are not in process."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0036_03"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure candidate: cancel bag out during manual bag out to cancel exchange tasks not in process. Detailed execution steps are not shown on the slide."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_0037_01",
+    "title": "Review AGV status information on the AGV Status screen",
+    "procedure_type": "diagnostic_check",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      37
+    ],
+    "systems": [
+      "OptiSweep",
+      "AGV"
+    ],
+    "components": [
+      "AGV Status screen",
+      "Top Section",
+      "Bottom Section"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "AGV Status screen is open"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0037"
+    ],
+    "procedure_visual_summary": "Slide describes the AGV Status screen layout with a top section for all AGVs and a bottom section for AGVs with errors and additional details.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Review the top section of the AGV Status screen to see detailed information for all AGVs.",
+        "expected_outcome": "All AGVs are visible with details such as ID, status, destination, and errors.",
+        "validation_check": "Confirm the top section contains AGV ID, status, destination, and error information.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:37",
+          "artifact:slide_artifact_optisweep_training_internal_0037"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0037"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0037"
+        ],
+        "visual_region_hint": "Top section of the AGV Status screen"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Check the bottom section to identify whether any AGVs with errors are listed with additional details.",
+        "expected_outcome": "If AGV errors exist, the bottom section shows only AGVs with errors and provides added detail.",
+        "validation_check": "Confirm the bottom section is populated only by AGVs with errors.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:37",
+          "artifact:slide_artifact_optisweep_training_internal_0037"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0037"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0037"
+        ],
+        "visual_region_hint": "Bottom section of the AGV Status screen"
+      }
+    ],
+    "warnings": [
+      "The slide describes screen content but does not provide a full navigation path or remediation actions."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0037_01",
+      "oku_optisweep_training_internal_0037_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Diagnostic check candidate for AGV Status screen. Review the top section for all AGV details including ID, status, destination, and errors. Review the bottom section for AGVs with errors and additional details. Slide provides screen usage guidance but limited step detail."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_0040_01",
+    "title": "Review RMS page fault areas",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      40
+    ],
+    "systems": [
+      "Geek+ RMS",
+      "AGV"
+    ],
+    "components": [
+      "RMS web page",
+      "system faults area",
+      "active AGV faults area"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Appropriate firewall rules are open, as stated on the slide."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0040"
+    ],
+    "procedure_visual_summary": "Slide describes the RMS web page and identifies left-side system faults and right-side active AGV faults.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open or view the Geek+ RMS web page if appropriate firewall rules are open.",
+        "expected_outcome": "The RMS web page is visible.",
+        "validation_check": "Confirm the Geek+ RMS web page is displayed.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:40",
+          "artifact:slide_artifact_optisweep_training_internal_0040"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0040"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0040"
+        ],
+        "visual_region_hint": "Overall RMS page"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Check the left side of the RMS page for system faults.",
+        "expected_outcome": "System faults, if present, are shown on the left.",
+        "validation_check": "Verify whether a system fault area is present on the left side.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:40",
+          "artifact:slide_artifact_optisweep_training_internal_0040"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0040"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0040"
+        ],
+        "visual_region_hint": "Left side of RMS page"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Check the right side of the RMS page for active AGV faults.",
+        "expected_outcome": "Active AGV faults, if present, are shown on the right.",
+        "validation_check": "Verify whether an active AGV fault area is present on the right side.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:40",
+          "artifact:slide_artifact_optisweep_training_internal_0040"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0040"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0040"
+        ],
+        "visual_region_hint": "Right side of RMS page"
+      }
+    ],
+    "warnings": [
+      "This candidate is based on descriptive slide text rather than a fully documented action sequence."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0040_01",
+      "oku_optisweep_training_internal_0040_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Navigation candidate for RMS review: if firewall rules permit access, view the Geek+ RMS web page, then review system faults on the left and active AGV faults on the right."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_0044_01",
+    "title": "Open related pages from the Aveva API page",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      44
+    ],
+    "systems": [
+      "Aveva",
+      "OptiSweep"
+    ],
+    "components": [
+      "Aveva API page",
+      "Bag Out controls",
+      "Metrics page",
+      "Zone configuration page",
+      "Current errors view"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User is viewing the Aveva API page."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0044"
+    ],
+    "procedure_visual_summary": "Slide lists Aveva API page controls including Bag Out control, Get metrics, Zone configuration, and Get errors, each described as opening a related page or controls.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "From the Aveva API page, select one of the available controls based on the information needed: Bag Out control, Get metrics, Zone configuration, or Get errors.",
+        "expected_outcome": "The corresponding controls or page should open from the Aveva API page.",
+        "validation_check": "Confirm that additional bag out controls, the metrics page, the zone configuration page, or the current errors view appears.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:44",
+          "artifact:slide_artifact_optisweep_training_internal_0044"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0044"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0044"
+        ],
+        "visual_region_hint": "Bullet list on the Aveva API page description showing Bag Out control, Get metrics, Zone configuration, and Get errors."
+      }
+    ],
+    "warnings": [
+      "The slide identifies available controls and their outcomes but does not show the exact UI sequence or resulting screens."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0044_01"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Navigation candidate from slide 44: on the Aveva API page, selecting Bag Out control opens additional bag out controls, Get metrics opens the metrics page, Zone configuration opens the zone configuration page, and Get errors opens the current errors."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_45_01",
+    "title": "Execute AGV command after RMS fails to send a completion callback",
+    "procedure_type": "recovery_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      45
+    ],
+    "systems": [
+      "Aveva",
+      "Geek+ RMS",
+      "AGV"
+    ],
+    "components": [
+      "Aveva API page",
+      "Execute AGV command"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "An RMS crash or RMS callback failure has occurred",
+      "The AGV has completed its task",
+      "The user has the AGV ID"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0045"
+    ],
+    "procedure_visual_summary": "Slide lists the Aveva API page recovery capability 'Execute AGV command' and explains that users can specify an AGV ID when RMS fails to send a callback.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open the Aveva API page and locate the 'Execute AGV command' recovery function.",
+        "expected_outcome": "The relevant API recovery function is identified for use.",
+        "validation_check": "The slide names 'Execute AGV command' as the recovery mechanism.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:45",
+          "artifact:slide_artifact_optisweep_training_internal_0045"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0045"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0045"
+        ],
+        "visual_region_hint": "Slide body bullet list under 'In the event of an RMS crash, we have also implemented recovery mechanisms.'"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Specify the AGV ID for the AGV that completed its task when RMS did not send a callback.",
+        "expected_outcome": "The completed AGV is identified to the recovery function using its AGV ID.",
+        "validation_check": "The slide explicitly states that users can specify an AGV ID that has completed its task when RMS fails to send a callback.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:45",
+          "artifact:slide_artifact_optisweep_training_internal_0045"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0045"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0045"
+        ],
+        "visual_region_hint": "Bullet and explanatory text for 'Execute AGV command'"
+      }
+    ],
+    "warnings": [
+      "The slide does not provide exact UI fields, request format, or submission sequence.",
+      "The slide does not state the resulting system response after the command is executed."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_45_02",
+      "oku_optisweep_training_internal_45_03"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Recovery action candidate: use Execute AGV command on the Aveva API page when RMS fails to send a callback for an AGV that completed its task. The slide only supports locating the function and specifying the AGV ID; additional execution details are not shown."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_45_02",
+    "title": "Resend a Geek command using its command GUID after an error",
+    "procedure_type": "recovery_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      45
+    ],
+    "systems": [
+      "Aveva",
+      "Geek+ RMS"
+    ],
+    "components": [
+      "Aveva API page",
+      "Resend Geek Command"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A command was sent to Geek and encountered an error",
+      "The command GUID is available"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0045"
+    ],
+    "procedure_visual_summary": "Slide lists the recovery capability 'Resend Geek Command' and explains that users can specify a command GUID for a command sent to Geek that encountered an error.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open the Aveva API page and locate the 'Resend Geek Command' function.",
+        "expected_outcome": "The resend recovery function is available for use.",
+        "validation_check": "The slide explicitly lists 'Resend Geek Command' as a recovery mechanism.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:45",
+          "artifact:slide_artifact_optisweep_training_internal_0045"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0045"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0045"
+        ],
+        "visual_region_hint": "Slide body bullet list under RMS crash recovery mechanisms"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Specify the command GUID for the command that was sent to Geek and encountered an error.",
+        "expected_outcome": "The errored command is identified by GUID for resend handling.",
+        "validation_check": "The slide states that users can specify a command GUID that was sent to Geek but encountered an error.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:45",
+          "artifact:slide_artifact_optisweep_training_internal_0045"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0045"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0045"
+        ],
+        "visual_region_hint": "Bullet and explanatory text for 'Resend Geek Command'"
+      }
+    ],
+    "warnings": [
+      "The slide does not provide exact submission steps, request parameters beyond command GUID, or confirmation behavior.",
+      "The slide does not describe when to avoid resending a command."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_45_02",
+      "oku_optisweep_training_internal_45_04"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Recovery action candidate: use Resend Geek Command on the Aveva API page by specifying the command GUID for a command sent to Geek that encountered an error. The slide provides only high-level action guidance."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0049_01",
+    "title": "Initialize a tote from the Aveva API page",
+    "procedure_type": "api_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      49
+    ],
+    "systems": [
+      "Aveva"
+    ],
+    "components": [
+      "Initialize Tote interface",
+      "Request to Initialize Tote button",
+      "Response field",
+      "Tote"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Initialize Tote interface is accessible",
+      "BarcodeID, StationID, and ToteID values are available"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0049"
+    ],
+    "procedure_visual_summary": "Slide-level screenshot for the Initialize Tote / Aveva API page describing required fields, request button, and response field behavior.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Enter the required tote initialization information: BarcodeID, StationID, and ToteID.",
+        "expected_outcome": "The initialize tote request details are populated in the interface.",
+        "validation_check": "All three values needed by the page are specified.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:49",
+          "artifact:slide_artifact_optisweep_training_internal_0049"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0049"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0049"
+        ],
+        "visual_region_hint": "Initialize Tote form fields for BarcodeID, StationID, and ToteID on the Aveva API page"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Click the \"Request to Initialize Tote\" button.",
+        "expected_outcome": "The system sends the tote initialization command using the provided details.",
+        "validation_check": "The request is submitted from the page.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:49",
+          "artifact:slide_artifact_optisweep_training_internal_0049"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0049"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0049"
+        ],
+        "visual_region_hint": "\"Request to Initialize Tote\" button"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Review the \"Response\" field for the result of the initialization request.",
+        "expected_outcome": "The response field shows either a confirmation message or an error message.",
+        "validation_check": "Successful initialization is indicated by a confirmation message; failed initialization is indicated by an error message.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:49",
+          "artifact:slide_artifact_optisweep_training_internal_0049"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0049"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0049"
+        ],
+        "visual_region_hint": "\"Response\" field"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "ku_optisweep_training_internal_0049_01",
+      "ku_optisweep_training_internal_0049_02",
+      "ku_optisweep_training_internal_0049_03"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "To initialize a tote from the Aveva API page, provide BarcodeID, StationID, and ToteID, click Request to Initialize Tote, and review the Response field for a confirmation or error message."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_051_01",
+    "title": "View tote exchange settings on the Aveva API page",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      51
+    ],
+    "systems": [
+      "Aveva"
+    ],
+    "components": [
+      "Tote Exchange Settings interface",
+      "Aveva API page"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "User has access to the Aveva API page.",
+      "Tote Exchange Settings interface is available in the environment."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0051"
+    ],
+    "procedure_visual_summary": "Slide-level screenshot references the Tote Exchange Settings / Aveva API page and lists available tote exchange parameters.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open or navigate to the Tote Exchange Settings area on the Aveva API page.",
+        "expected_outcome": "The Tote Exchange Settings interface is visible.",
+        "validation_check": "Confirm the page shows tote exchange-related settings fields or labels.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:51",
+          "artifact:slide_artifact_optisweep_training_internal_0051"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0051"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0051"
+        ],
+        "visual_region_hint": "Slide-level UI screenshot showing the Tote Exchange Settings / Aveva API page."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Review the listed tote exchange parameters available on the interface.",
+        "expected_outcome": "The user can identify configurable parameters such as cube thresholds, count thresholds, weight settings, and method.",
+        "validation_check": "Confirm the interface includes fields or labels matching the parameter names listed on the slide.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:51",
+          "artifact:slide_artifact_optisweep_training_internal_0051"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0051"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0051"
+        ],
+        "visual_region_hint": "Parameter list area associated with Tote Exchange Settings."
+      }
+    ],
+    "warnings": [
+      "The slide confirms the interface and available parameters but does not provide an exact click path or save/apply sequence.",
+      "The slide states users can view and manage parameters, but no explicit edit workflow is shown."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_051_01",
+      "oku_optisweep_training_internal_051_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Candidate navigation procedure for viewing Tote Exchange Settings on the Aveva API page. Evidence supports opening the Tote Exchange Settings interface and reviewing listed parameters, but does not provide a full configuration sequence."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_59_01",
+    "title": "Process tote lifecycle messaging in the UPS chat workflow",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      59
+    ],
+    "systems": [
+      "UPS Chat Module",
+      "sorter",
+      "tipper",
+      "printer",
+      "xle"
+    ],
+    "components": [
+      "chat",
+      "tote",
+      "tipper",
+      "printer"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A tote is moving through the sorter workflow",
+      "The UPS chat workflow is active"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0059"
+    ],
+    "procedure_visual_summary": "Slide lists tote-related chat actions at arrival, pre-exchange, and tipping stages.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "When a tote arrives to the sorter, send a tote inducted message and a destination enabled message to the chat.",
+        "expected_outcome": "The tote arrival is represented on chat with induction and destination-enabled status.",
+        "validation_check": "Confirm the tote inducted and destination enabled messages are sent onto chat.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:59",
+          "artifact:slide_artifact_optisweep_training_internal_0059"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "visual_region_hint": "Upper bullet list under 'Tote arrives to the sorter'"
+      },
+      {
+        "step_order": 2,
+        "instruction": "When the tote is ready to leave the sorter, send a destination closed message onto the chat before doing an exchange.",
+        "expected_outcome": "The destination is closed on chat before tote exchange occurs.",
+        "validation_check": "Confirm the destination closed message is sent before exchange activity.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:59",
+          "artifact:slide_artifact_optisweep_training_internal_0059"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "visual_region_hint": "Lower bullet list near 'Tote ready to leave sorter'"
+      },
+      {
+        "step_order": 3,
+        "instruction": "When the tote is tipping at the tipper, send a print label message to the printer so it can print a label provided by the xle.",
+        "expected_outcome": "The printer receives a print label message for the tote label provided by xle.",
+        "validation_check": "Confirm a print label message is sent to the printer during tote tipping.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:59",
+          "artifact:slide_artifact_optisweep_training_internal_0059"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "visual_region_hint": "Bottom bullet list near 'Tote tipping at tipper'"
+      }
+    ],
+    "warnings": [
+      "The slide describes system behavior but does not specify operator interface, triggers, or manual execution details."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_59_01",
+      "oku_optisweep_training_internal_59_04"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Candidate procedure for tote lifecycle messaging in UPS Chat Module: on tote arrival send tote inducted and destination enabled messages; when tote is ready to leave sorter send destination closed before exchange; during tote tipping send print label message to printer using label provided by xle."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_59_02",
+    "title": "Handle UPS hot bin and sure post notifications",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      59
+    ],
+    "systems": [
+      "UPS Chat Module",
+      "UPS",
+      "tipper"
+    ],
+    "components": [
+      "chat",
+      "hot bin",
+      "tote",
+      "tipper",
+      "bag",
+      "poly bag"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "UPS sends a hot bin or sure post related message"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0059"
+    ],
+    "procedure_visual_summary": "Slide includes two conditional message-driven handling actions: immediate hot bin exchange and pre-tip sure post notification.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "If UPS sends a hot bin message for totes that are a hot bin, perform an exchange immediately.",
+        "expected_outcome": "Hot bin totes are closed out through immediate exchange.",
+        "validation_check": "Confirm the hot bin message is received and exchange is executed immediately for affected totes.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:59",
+          "artifact:slide_artifact_optisweep_training_internal_0059"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "visual_region_hint": "Middle-lower text block discussing hot bin close out"
+      },
+      {
+        "step_order": 2,
+        "instruction": "If UPS notifies that the load for a destination is sure post, notify the tipper before the tip so the bag can be switched to a poly bag.",
+        "expected_outcome": "The tipper is informed before tipping and the bag is changed to a poly bag for sure post handling.",
+        "validation_check": "Confirm sure post notification occurs before tip and the bag is switched to a poly bag.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:59",
+          "artifact:slide_artifact_optisweep_training_internal_0059"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0059"
+        ],
+        "visual_region_hint": "Middle-lower text block discussing sure post handling"
+      }
+    ],
+    "warnings": [
+      "The slide does not identify whether these actions are automated system behavior or manually initiated tasks."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_59_03"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Candidate procedure for UPS special handling notifications: if UPS sends a hot bin message for hot-bin totes, do an exchange immediately; if UPS indicates a destination load is sure post, notify the tipper before tip so the bag can be switched to a poly bag."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_0076_01",
+    "title": "Initialize a newly added AGV during running state using cell code to hospital lookup",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      76
+    ],
+    "systems": [
+      "AGV system",
+      "Robotics Database",
+      "Geek"
+    ],
+    "components": [
+      "AGV",
+      "CellCode table",
+      "Missing zone under sorter",
+      "Hospital",
+      "Initialize command"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A new AGV is being added to the system",
+      "The system is in a running state"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0076"
+    ],
+    "procedure_visual_summary": "Text-only slide describing database tables and runtime behavior for adding a new AGV, including missing-zone check, cell code hospital lookup, and Initialize command to Geek.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Check whether the newly added AGV's current cell code is in a missing zone under the sorter.",
+        "expected_outcome": "You determine whether the AGV is currently in a missing zone under the sorter.",
+        "validation_check": "The AGV current cell code has been evaluated against the missing-zone condition described on the slide.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:76",
+          "artifact:slide_artifact_optisweep_training_internal_0076"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0076"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0076"
+        ],
+        "visual_region_hint": "Bullet describing CellCodeDatabaseModel and new AGV behavior"
+      },
+      {
+        "step_order": 2,
+        "instruction": "If the AGV current cell code is not in a missing zone under the sorter, use the CellCode table to look up the hospital connected to that cell code.",
+        "expected_outcome": "The hospital associated with the AGV current cell code is identified.",
+        "validation_check": "A hospital mapping is obtained from the CellCode table for the AGV current cell code.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:76",
+          "artifact:slide_artifact_optisweep_training_internal_0076"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0076"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0076"
+        ],
+        "visual_region_hint": "Bullet describing CellCode table lookup to connected hospital"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Send an Initialize command to Geek.",
+        "expected_outcome": "Geek receives the Initialize command for the newly added AGV context.",
+        "validation_check": "The Initialize command has been issued after hospital lookup.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:76",
+          "artifact:slide_artifact_optisweep_training_internal_0076"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0076"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0076"
+        ],
+        "visual_region_hint": "Final clause of CellCodeDatabaseModel bullet mentioning Initialize command to Geek"
+      }
+    ],
+    "warnings": [
+      "The slide only specifies the branch for when the AGV current cell code is not in a missing zone; it does not define what to do if it is in a missing zone.",
+      "The slide does not specify the interface, command format, or operator actions for sending the Initialize command."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0076_03",
+      "oku_optisweep_training_internal_0076_04"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure candidate from Robotics Database Hospital slide: when adding a new AGV in running state, check whether the AGV current cell code is in a missing zone under the sorter. If not, use the CellCode table to look up the connected hospital and send an Initialize command to Geek."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_0099_01",
+    "title": "Use Sorter Sweeper Database tag and tipper departure records to investigate tipper issues",
+    "procedure_type": "diagnostic_check",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      99
+    ],
+    "systems": [
+      "Sorter Sweeper Database",
+      "AGV"
+    ],
+    "components": [
+      "Tag Read log",
+      "Tag Write log",
+      "Tipper Departure Activity Model",
+      "Tipper"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Access to Sorter Sweeper Database records is available",
+      "A tipper issue is being investigated"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0099"
+    ],
+    "procedure_visual_summary": "Slide describes Tag Read/Tag Write logging and Tipper Departure Activity Model fields used for troubleshooting tipper issues.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Review Tag Read and Tag Write logs for tags the system read and wrote during the issue timeframe.",
+        "expected_outcome": "Relevant tag read/write activity is identified for the investigation window.",
+        "validation_check": "Tag records are present and correspond to the timeframe being investigated.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:99"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0099"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0099"
+        ],
+        "visual_region_hint": "Text block describing Tag Read and Tag Write logs"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Review the Tipper Departure Activity Model for times when an AGV was sent away from the tipper.",
+        "expected_outcome": "Departure events associated with the tipper are identified.",
+        "validation_check": "Records show AGV departures from the tipper.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:99"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0099"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0099"
+        ],
+        "visual_region_hint": "Text block describing Tipper Departure Activity Model"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Check the recorded destination, tote, tag path, and any fault code in those departure records to help narrow the tipper issue.",
+        "expected_outcome": "Potential issue indicators are narrowed using departure record details.",
+        "validation_check": "Departure records include destination as DropOffSorter or DropOffHospital and may include tote, tag path, and fault code details.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:99"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0099"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0099"
+        ],
+        "visual_region_hint": "Text block listing DropOffSorter, DropOffHospital, Tote, Tag path, and fault code"
+      }
+    ],
+    "warnings": [
+      "The slide does not provide an exact database query method, UI path, or tool-specific access steps.",
+      "The slide states the records are helpful for narrowing issues, not that they conclusively identify root cause."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0099_01",
+      "oku_optisweep_training_internal_0099_02",
+      "oku_optisweep_training_internal_0099_03"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Diagnostic check candidate: review Tag Read and Tag Write logs and the Tipper Departure Activity Model to narrow tipper issues. Departure records include destination, tote, tag path, and fault code."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_106_01",
+    "title": "BagOut/CloseOut handling lifecycle described by Active Bag Out model",
+    "procedure_type": "operational_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      106
+    ],
+    "systems": [
+      "Sorter Sweeper Database"
+    ],
+    "components": [
+      "Active Bag Out",
+      "bagout activity",
+      "open chutes",
+      "Tote"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A BagOut or CloseOut has been requested."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0106"
+    ],
+    "procedure_visual_summary": "Slide describes the Active Bag Out model behavior after a BagOut/CloseOut request, including chute closure, tote exchange marking, Active Bag Out entry creation, closure after tip, and archival.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "On a BagOut or CloseOut request, close all open chutes.",
+        "expected_outcome": "All open chutes are closed.",
+        "validation_check": "Confirm the slide states that all open chutes are closed when a BagOut/CloseOut is requested.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:106",
+          "artifact:slide_artifact_optisweep_training_internal_0106"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Mark any tote that contains an item for exchange.",
+        "expected_outcome": "Totes with items are identified as exchange candidates.",
+        "validation_check": "Confirm the slide states that any tote with an item in it is marked for exchange.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:106",
+          "artifact:slide_artifact_optisweep_training_internal_0106"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Create an entry in Active Bag Out, similar to the exchange tables.",
+        "expected_outcome": "An Active Bag Out record exists for the exchange condition.",
+        "validation_check": "Confirm the slide states that an entry is made in Active Bag Out similar to the exchange tables.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:106",
+          "artifact:slide_artifact_optisweep_training_internal_0106"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+      },
+      {
+        "step_order": 4,
+        "instruction": "Close the bagout once the tote has been tipped.",
+        "expected_outcome": "The bagout is closed after tote tipping occurs.",
+        "validation_check": "Confirm the slide states that the bagout closes once the tote has been tipped.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:106",
+          "artifact:slide_artifact_optisweep_training_internal_0106"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+      },
+      {
+        "step_order": 5,
+        "instruction": "Archive the record to bagout activity.",
+        "expected_outcome": "The completed bagout record is moved to bagout activity.",
+        "validation_check": "Confirm the slide states that the record is archived to bagout activity.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:106",
+          "artifact:slide_artifact_optisweep_training_internal_0106"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0106"
+        ],
+        "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+      }
+    ],
+    "warnings": [
+      "The slide describes system/database behavior rather than an explicit operator-facing procedure.",
+      "No initiating interface, command, or exact user action sequence is shown on the slide."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_106_01",
+      "oku_optisweep_training_internal_106_02",
+      "oku_optisweep_training_internal_106_03"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Candidate procedure from Active Bag Out model: after a BagOut/CloseOut request, close open chutes, mark totes with items for exchange, create an Active Bag Out entry, close the bagout once the tote has been tipped, and archive the record to bagout activity. This appears to be a lifecycle description and may be system behavior rather than a user-executed procedure."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_115_systemstartup_from_shutdown",
+    "title": "Start the system using the System Startup API when in shutdown state",
+    "procedure_type": "api_action",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      115
+    ],
+    "systems": [
+      "OptiSweep system"
+    ],
+    "components": [
+      "system state"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "System is in a shutdown state."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0115"
+    ],
+    "procedure_visual_summary": "Bullet list of system APIs including System Startup and System State descriptions.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Use the System Startup API.",
+        "expected_outcome": "The system starts up if it is in a shutdown state.",
+        "validation_check": "Confirm the system was in shutdown state before issuing the API call and verify that startup occurs.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:115",
+          "artifact:slide_artifact_optisweep_training_internal_0115"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0115"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0115"
+        ],
+        "visual_region_hint": "System API bullet list, lower portion of slide"
+      }
+    ],
+    "warnings": [
+      "The slide does not provide API invocation syntax, interface, or post-start verification details."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_115_api_systemstate",
+      "oku_optisweep_training_internal_115_api_systemstartup"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure candidate: use the System Startup API to start the system when it is in shutdown state. The slide gives only the condition and outcome, not exact call details."
+  },
+  {
+    "procedure_id": "proc_attempt_optisweep_training_internal_0125_01",
+    "title": "Open the Ignition Gateway UI in a web browser",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      125
+    ],
+    "systems": [
+      "Ignition"
+    ],
+    "components": [
+      "Ignition Gateway UI",
+      "web browser"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A system hosting Ignition is available",
+      "A web browser is available",
+      "The shown localhost URL is reachable from the machine being used"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0125"
+    ],
+    "procedure_visual_summary": "Slide shows the Ignition Gateway UI topic, states that Ignition can be accessed through the web browser, and displays a localhost Gateway/status URL.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open a web browser.",
+        "expected_outcome": "A browser window is available for entering a URL.",
+        "validation_check": "Browser is open and ready for navigation.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:125",
+          "artifact:slide_artifact_optisweep_training_internal_0125"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0125"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0125"
+        ],
+        "visual_region_hint": "Slide bullet stating access is through the web browser."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Navigate to the displayed Ignition Gateway URL: http://localhost:8088/web/status/sys.performance?2",
+        "expected_outcome": "The Ignition Gateway UI/status page is opened in the browser.",
+        "validation_check": "The browser loads the Ignition Gateway page associated with the displayed URL.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:125",
+          "artifact:slide_artifact_optisweep_training_internal_0125"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0125"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0125"
+        ],
+        "visual_region_hint": "Displayed URL text near the bottom of the slide."
+      }
+    ],
+    "warnings": [
+      "The slide provides only a single example URL and does not describe alternate hosts, ports, login requirements, or expected page content in detail."
+    ],
+    "related_context_refs": [
+      "artifact:slide_artifact_optisweep_training_internal_0125"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Navigation candidate: open a web browser and access the Ignition Gateway UI using the displayed URL http://localhost:8088/web/status/sys.performance?2. Based directly on slide text stating Ignition can be accessed through the web browser."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0126_01",
+    "title": "Navigate to OPC Connections to check current connection status",
+    "procedure_type": "navigation",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      126
+    ],
+    "systems": [
+      "Ignition"
+    ],
+    "components": [
+      "Ignition Gateway UI",
+      "Config",
+      "OPC",
+      "OPC Connections"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Access to the Ignition Gateway UI is available."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0126"
+    ],
+    "procedure_visual_summary": "Slide text references the Ignition Gateway UI navigation path Config > OPC > OPC Connections for viewing current connections.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "In the Ignition Gateway UI, open Config.",
+        "expected_outcome": "The Config area is open.",
+        "validation_check": "Config is selected in the Ignition Gateway UI.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:126",
+          "artifact:slide_artifact_optisweep_training_internal_0126"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0126"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0126"
+        ],
+        "visual_region_hint": "Ignition Gateway UI navigation path referenced in slide text"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Under Config, open OPC, then select OPC Connections.",
+        "expected_outcome": "The OPC Connections page is displayed.",
+        "validation_check": "The UI is showing current connections.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:126",
+          "artifact:slide_artifact_optisweep_training_internal_0126"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0126"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0126"
+        ],
+        "visual_region_hint": "Config > OPC > OPC Connections path referenced in slide text"
+      }
+    ],
+    "warnings": [
+      "The slide provides only the navigation path and viewing purpose; it does not provide additional diagnostic or corrective steps."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0126_01",
+      "oku_optisweep_training_internal_0126_02"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "To check current connections in Ignition Gateway UI, navigate to Config > OPC > OPC Connections. The slide also notes that powered-off tippers can appear as Faulted in this view."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0129_01",
+    "title": "Verify SQL connectivity from the primary WCS server during an unplanned restart",
+    "procedure_type": "diagnostic_check",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      129
+    ],
+    "systems": [
+      "SQL Server"
+    ],
+    "components": [
+      "fortna-wcs-primary.txrth.otnet.ups.com",
+      "SQL Server Management Studio"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "An unplanned restart scenario is being investigated.",
+      "Remote desktop access to fortna-wcs-primary.txrth.otnet.ups.com is available.",
+      "SQL Server Management Studio is available on the target host."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0129"
+    ],
+    "procedure_visual_summary": "Slide titled 'Services / Unplanned restart' with text instructing the user to RDP into fortna-wcs-primary.txrth.otnet.ups.com and open SQL Server Management Studio to check connectivity.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "RDP into fortna-wcs-primary.txrth.otnet.ups.com.",
+        "expected_outcome": "A remote session to the primary WCS host is established.",
+        "validation_check": "You are logged into fortna-wcs-primary.txrth.otnet.ups.com.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:129",
+          "artifact:slide_artifact_optisweep_training_internal_0129"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0129"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0129"
+        ],
+        "visual_region_hint": "Center text area containing the RDP host instruction."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Open SQL Server Management Studio.",
+        "expected_outcome": "SQL Server Management Studio is launched on the remote host.",
+        "validation_check": "The SQL Server Management Studio application is open.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:129",
+          "artifact:slide_artifact_optisweep_training_internal_0129"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0129"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0129"
+        ],
+        "visual_region_hint": "Center text area containing the SQL Server Management Studio instruction."
+      },
+      {
+        "step_order": 3,
+        "instruction": "Check that you can connect in SQL Server Management Studio.",
+        "expected_outcome": "A successful SQL connection can be established from the primary WCS host.",
+        "validation_check": "SQL Server Management Studio shows a successful connection rather than a connection failure.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:129",
+          "artifact:slide_artifact_optisweep_training_internal_0129"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0129"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0129"
+        ],
+        "visual_region_hint": "Center text area containing the connectivity check instruction."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0129_01"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Diagnostic check for services unplanned restart: RDP into fortna-wcs-primary.txrth.otnet.ups.com, open SQL Server Management Studio, and verify that SQL connectivity works."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0130_01",
+    "title": "Check tipper heartbeat via browser during unplanned restart",
+    "procedure_type": "diagnostic_check",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      130
+    ],
+    "systems": [
+      "OptiSweep"
+    ],
+    "components": [
+      "Tipper"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "A tipper IP address is known.",
+      "A web browser is available.",
+      "The check is being performed in the context of an unplanned restart."
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0130"
+    ],
+    "procedure_visual_summary": "Slide titled 'Services / Unplanned restart' instructs checking whether tippers are getting heartbeat and notes browser access using a tipper IP, with an example URL shown.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Check to make sure the tippers are getting heartbeat.",
+        "expected_outcome": "You determine whether heartbeat is being received by the tippers.",
+        "validation_check": "Heartbeat status for the tipper can be observed or confirmed.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:130"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0130"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0130"
+        ],
+        "visual_region_hint": "Main body text under 'Unplanned restart'"
+      },
+      {
+        "step_order": 2,
+        "instruction": "Connect via a web browser using a tipper IP, for example by opening the shown WebVisu address pattern.",
+        "expected_outcome": "The browser connects to the tipper's web interface.",
+        "validation_check": "The tipper web page loads using the tipper IP and port/path shown on the slide example.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:130"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0130"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0130"
+        ],
+        "visual_region_hint": "Lower body text containing the example URL"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0130_01"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Procedure candidate for unplanned restart: verify tipper heartbeat by connecting in a web browser to the tipper IP. Example shown: http://10.27.80.154:8080/webvisu.htm."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0131_01",
+    "title": "Restart OptiSweep service when heartbeat is flatlined after startup order issue",
+    "procedure_type": "service_restart",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      131
+    ],
+    "systems": [
+      "OptiSweep",
+      "Ignition",
+      "WCS"
+    ],
+    "components": [
+      "heartbeat",
+      "OptiSweep service"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Heartbeat is observed to be flatlined",
+      "Possible condition noted by slide: Ignition came up later than WCS"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0131"
+    ],
+    "procedure_visual_summary": "Slide states that if the heartbeat is flatlined, Ignition probably started later than WCS and OptiSweep needs to be restarted.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Check whether the heartbeat is flatlined.",
+        "expected_outcome": "The heartbeat condition is confirmed as flatlined.",
+        "validation_check": "Heartbeat appears flatlined.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:131"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0131"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0131"
+        ],
+        "visual_region_hint": "Main slide text under 'Unplanned restart'"
+      },
+      {
+        "step_order": 2,
+        "instruction": "If the heartbeat is flatlined, restart the OptiSweep service.",
+        "expected_outcome": "OptiSweep service is restarted in response to the flatlined heartbeat condition.",
+        "validation_check": "OptiSweep service restart has been performed; no further validation is stated on the slide.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:131"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0131"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0131"
+        ],
+        "visual_region_hint": "Main slide text under 'Unplanned restart'"
+      }
+    ],
+    "warnings": [
+      "The slide provides no exact restart sequence or interface details.",
+      "The statement that Ignition came up later than WCS is presented as a probable cause, not a confirmed diagnosis."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0131_01"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Service restart candidate: when heartbeat is flatlined, the slide indicates Ignition may have started after WCS and the OptiSweep service should be restarted."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0132_01",
+    "title": "Check stunnel connections during unplanned restart",
+    "procedure_type": "validation_check",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      132
+    ],
+    "systems": [
+      "Stunnel"
+    ],
+    "components": [
+      "Connections view",
+      "AI01",
+      "AI02",
+      "SortationChat"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Stunnel application is accessible"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0132"
+    ],
+    "procedure_visual_summary": "Slide titled 'Services / Unplanned restart' instructs the user to open stunnel, select File > Connections, and verify three connections are shown: AI01, AI02, and SortationChat.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Open stunnel.",
+        "expected_outcome": "The stunnel application is open.",
+        "validation_check": "Stunnel window is visible.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:132",
+          "artifact:slide_artifact_optisweep_training_internal_0132"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0132"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0132"
+        ],
+        "visual_region_hint": "stunnel application referenced by slide text"
+      },
+      {
+        "step_order": 2,
+        "instruction": "In stunnel, click File, then click Connections.",
+        "expected_outcome": "The connections view or dialog opens.",
+        "validation_check": "A stunnel connections listing is displayed.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:132",
+          "artifact:slide_artifact_optisweep_training_internal_0132"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0132"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0132"
+        ],
+        "visual_region_hint": "File menu and Connections option in stunnel"
+      },
+      {
+        "step_order": 3,
+        "instruction": "Verify that the connections shown are AI01, AI02, and SortationChat.",
+        "expected_outcome": "Three connections are visible: AI01, AI02, and SortationChat.",
+        "validation_check": "Exactly these three connection names are shown.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:132",
+          "artifact:slide_artifact_optisweep_training_internal_0132"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0132"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0132"
+        ],
+        "visual_region_hint": "Connections list in stunnel"
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0132_01"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Validation check for unplanned restart: open stunnel, go to File > Connections, and confirm the three connections AI01, AI02, and SortationChat are present."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0133_01",
+    "title": "Verify RMS robot control screen before master estop removal during unplanned restart",
+    "procedure_type": "validation_check",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      133
+    ],
+    "systems": [
+      "RMS"
+    ],
+    "components": [
+      "robotControl screen",
+      "master estop",
+      "Robot"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "An unplanned restart situation exists",
+      "Access to RMS is available",
+      "UPS is prepared to remove the master estop after confirmation"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0133"
+    ],
+    "procedure_visual_summary": "Slide titled 'Services / Unplanned restart' states to log into RMS and confirm the screen loads before having UPS remove the master estop. The RMS robotControl URL is shown.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "Log into RMS and navigate to the robot control screen shown on the slide.",
+        "expected_outcome": "The RMS robot control screen is opened or attempting to load.",
+        "validation_check": "Confirm the target RMS screen is reached.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:133",
+          "artifact:slide_artifact_optisweep_training_internal_0133"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0133"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0133"
+        ],
+        "visual_region_hint": "Center text region containing 'Log into RMS' and the displayed robotControl URL."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Confirm that the screen loads before having UPS remove the master estop.",
+        "expected_outcome": "The RMS screen has loaded prior to master estop removal.",
+        "validation_check": "Verify the screen is loaded before UPS proceeds with master estop removal.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:133",
+          "artifact:slide_artifact_optisweep_training_internal_0133"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0133"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0133"
+        ],
+        "visual_region_hint": "Center text region containing 'confirm the screen loads before having UPS remove the master estop'."
+      }
+    ],
+    "warnings": [],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0133_01"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Unplanned restart check: log into RMS, open the robotControl screen, and confirm the screen loads before UPS removes the master estop."
+  },
+  {
+    "procedure_id": "proc_optisweep_training_internal_0134_01",
+    "title": "Verify SQL Server Agent is running on backup WCS host during unplanned restart",
+    "procedure_type": "validation_check",
+    "source_deck": "optisweep_training_internal",
+    "source_slide_numbers": [
+      134
+    ],
+    "systems": [
+      "WCS",
+      "SQL Server"
+    ],
+    "components": [
+      "fortna-wcs-backup.txrth.otnet.ups.com",
+      "SQL Server Configuration Manager",
+      "SQL Server Agent"
+    ],
+    "role_required": "unknown",
+    "support_safe": "unknown",
+    "preconditions": [
+      "Unplanned restart scenario",
+      "Access to RDP into fortna-wcs-backup.txrth.otnet.ups.com"
+    ],
+    "procedure_screenshot_refs": [
+      "slide_artifact_optisweep_training_internal_0134"
+    ],
+    "procedure_visual_summary": "Slide states to RDP into the backup WCS server, open SQL Server Configuration Manager, and ensure SQL Server Agent is running.",
+    "steps": [
+      {
+        "step_order": 1,
+        "instruction": "RDP into fortna-wcs-backup.txrth.otnet.ups.com.",
+        "expected_outcome": "Remote session is opened on the backup WCS host.",
+        "validation_check": "You are connected to fortna-wcs-backup.txrth.otnet.ups.com.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:134",
+          "artifact:slide_artifact_optisweep_training_internal_0134"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0134"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0134"
+        ],
+        "visual_region_hint": "Main slide text area containing the line 'Rdp into fortna-wcs-' and hostname continuation."
+      },
+      {
+        "step_order": 2,
+        "instruction": "Open SQL Server Configuration Manager.",
+        "expected_outcome": "SQL Server Configuration Manager is open on the host.",
+        "validation_check": "The SQL Server Configuration Manager application is visible.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:134",
+          "artifact:slide_artifact_optisweep_training_internal_0134"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0134"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0134"
+        ],
+        "visual_region_hint": "Main slide text area containing 'Open sql server configuration manager'."
+      },
+      {
+        "step_order": 3,
+        "instruction": "Make sure SQL Server Agent is running.",
+        "expected_outcome": "SQL Server Agent is confirmed to be in the running state.",
+        "validation_check": "SQL Server Agent status shows running.",
+        "source_refs": [
+          "deck:optisweep_training_internal",
+          "slide:134",
+          "artifact:slide_artifact_optisweep_training_internal_0134"
+        ],
+        "artifact_refs": [
+          "slide_artifact_optisweep_training_internal_0134"
+        ],
+        "screenshot_refs": [
+          "slide_artifact_optisweep_training_internal_0134"
+        ],
+        "visual_region_hint": "Main slide text area containing 'make sure SLQ server agent is running'."
+      }
+    ],
+    "warnings": [
+      "The slide does not provide remediation steps if SQL Server Agent is not running.",
+      "The slide text appears to contain a typo: 'SLQ server agent' likely refers to 'SQL Server Agent'."
+    ],
+    "related_context_refs": [
+      "oku_optisweep_training_internal_0134_01"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "Unplanned restart validation: RDP to fortna-wcs-backup.txrth.otnet.ups.com, open SQL Server Configuration Manager, and verify SQL Server Agent is running."
+  }
+]

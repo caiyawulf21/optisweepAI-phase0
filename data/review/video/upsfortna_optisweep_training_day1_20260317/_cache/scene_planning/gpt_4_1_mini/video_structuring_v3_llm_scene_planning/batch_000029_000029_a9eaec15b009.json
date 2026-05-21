@@ -1,0 +1,88 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AUV Reinitialization and Tote Handling Process",
+      "timestamp_start": "01:25:50.720",
+      "timestamp_end": "01:26:46.920",
+      "primary_intent": "Explain the procedure for reinitializing the AUV by removing and adding it back to the hospital location",
+      "operational_intents": [
+        "Describe sending a go-to function to the hospital",
+        "Explain tote removal and reinitialization process",
+        "Clarify WCS reinitialization conditions related to tote binding"
+      ],
+      "knowledge_extraction_strategy": "Extract procedural steps and conditions for AUV reinitialization",
+      "why_this_strategy": "Focus on operational steps for AUV and tote reinitialization",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001425",
+        "vec_upsfortna_optisweep_training_day1_20260317_001426",
+        "vec_upsfortna_optisweep_training_day1_20260317_001427",
+        "vec_upsfortna_optisweep_training_day1_20260317_001428",
+        "vec_upsfortna_optisweep_training_day1_20260317_001429",
+        "vec_upsfortna_optisweep_training_day1_20260317_001430",
+        "vec_upsfortna_optisweep_training_day1_20260317_001431",
+        "vec_upsfortna_optisweep_training_day1_20260317_001432",
+        "vec_upsfortna_optisweep_training_day1_20260317_001433",
+        "vec_upsfortna_optisweep_training_day1_20260317_001434",
+        "vec_upsfortna_optisweep_training_day1_20260317_001435",
+        "vec_upsfortna_optisweep_training_day1_20260317_001436"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000029"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Container Selection and Rack Color Coding",
+      "timestamp_start": "01:26:47.240",
+      "timestamp_end": "01:28:52.170",
+      "primary_intent": "Describe container selection interface and rack color coding for tote presence",
+      "operational_intents": [
+        "Explain how to access rack information via container selection",
+        "Describe meaning of dark blue and light blue rack colors",
+        "Identify how to detect tote presence or absence using rack colors",
+        "Discuss implications of incorrect tote addition and detection"
+      ],
+      "knowledge_extraction_strategy": "Extract interface usage and color coding interpretation for tote management",
+      "why_this_strategy": "Focus on identifying and troubleshooting tote presence via rack colors",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001437",
+        "vec_upsfortna_optisweep_training_day1_20260317_001438",
+        "vec_upsfortna_optisweep_training_day1_20260317_001439",
+        "vec_upsfortna_optisweep_training_day1_20260317_001440",
+        "vec_upsfortna_optisweep_training_day1_20260317_001441",
+        "vec_upsfortna_optisweep_training_day1_20260317_001442",
+        "vec_upsfortna_optisweep_training_day1_20260317_001443",
+        "vec_upsfortna_optisweep_training_day1_20260317_001444",
+        "vec_upsfortna_optisweep_training_day1_20260317_001445",
+        "vec_upsfortna_optisweep_training_day1_20260317_001446",
+        "vec_upsfortna_optisweep_training_day1_20260317_001447",
+        "vec_upsfortna_optisweep_training_day1_20260317_001448",
+        "vec_upsfortna_optisweep_training_day1_20260317_001449",
+        "vec_upsfortna_optisweep_training_day1_20260317_001450",
+        "vec_upsfortna_optisweep_training_day1_20260317_001451",
+        "vec_upsfortna_optisweep_training_day1_20260317_001452",
+        "vec_upsfortna_optisweep_training_day1_20260317_001453",
+        "vec_upsfortna_optisweep_training_day1_20260317_001454",
+        "vec_upsfortna_optisweep_training_day1_20260317_001455",
+        "vec_upsfortna_optisweep_training_day1_20260317_001456",
+        "vec_upsfortna_optisweep_training_day1_20260317_001457",
+        "vec_upsfortna_optisweep_training_day1_20260317_001458",
+        "vec_upsfortna_optisweep_training_day1_20260317_001459",
+        "vec_upsfortna_optisweep_training_day1_20260317_001460",
+        "vec_upsfortna_optisweep_training_day1_20260317_001461",
+        "vec_upsfortna_optisweep_training_day1_20260317_001462",
+        "vec_upsfortna_optisweep_training_day1_20260317_001463",
+        "vec_upsfortna_optisweep_training_day1_20260317_001464",
+        "vec_upsfortna_optisweep_training_day1_20260317_001465",
+        "vec_upsfortna_optisweep_training_day1_20260317_001466",
+        "vec_upsfortna_optisweep_training_day1_20260317_001467",
+        "vec_upsfortna_optisweep_training_day1_20260317_001468",
+        "vec_upsfortna_optisweep_training_day1_20260317_001469"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000029"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

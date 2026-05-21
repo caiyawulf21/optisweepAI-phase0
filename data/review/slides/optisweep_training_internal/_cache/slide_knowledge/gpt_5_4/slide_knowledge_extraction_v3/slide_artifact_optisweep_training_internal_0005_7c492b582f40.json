@@ -1,0 +1,68 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "ku_optisweep_training_internal_0005_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        5
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0005"
+      ],
+      "unit_type": "architecture_relationship",
+      "title": "OptiSweep overview lists core system elements",
+      "systems": [
+        "OptiSweep"
+      ],
+      "components": [
+        "UPS Chat",
+        "Tote Tip Stations",
+        "Geek+ AGVs",
+        "Hospital Controller",
+        "OptiSweep Software",
+        "Aveva HMI"
+      ],
+      "summary": "The slide identifies the core elements associated with the OptiSweep environment as UPS Chat, Tote Tip Stations, Geek+ AGVs, Hospital Controller, OptiSweep Software, and Aveva HMI.",
+      "observed_evidence": [
+        "Slide title: 'Overview / Core Elements'",
+        "Bullet list includes: 'UPS Chat', 'Tote Tip Stations', 'Geek+ AGVs', 'Hospital Controller', 'OptiSweep Software', 'Aveva HMI'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "has_core_elements",
+          "source": "OptiSweep environment",
+          "target": "UPS Chat"
+        },
+        {
+          "relationship_type": "has_core_elements",
+          "source": "OptiSweep environment",
+          "target": "Tote Tip Stations"
+        },
+        {
+          "relationship_type": "has_core_elements",
+          "source": "OptiSweep environment",
+          "target": "Geek+ AGVs"
+        },
+        {
+          "relationship_type": "has_core_elements",
+          "source": "OptiSweep environment",
+          "target": "Hospital Controller"
+        },
+        {
+          "relationship_type": "has_core_elements",
+          "source": "OptiSweep environment",
+          "target": "OptiSweep Software"
+        },
+        {
+          "relationship_type": "has_core_elements",
+          "source": "OptiSweep environment",
+          "target": "Aveva HMI"
+        }
+      ],
+      "retrieval_text": "Overview slide for OptiSweep core elements. The listed components are UPS Chat, Tote Tip Stations, Geek+ AGVs, Hospital Controller, OptiSweep Software, and Aveva HMI. This is architectural context rather than a procedure.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

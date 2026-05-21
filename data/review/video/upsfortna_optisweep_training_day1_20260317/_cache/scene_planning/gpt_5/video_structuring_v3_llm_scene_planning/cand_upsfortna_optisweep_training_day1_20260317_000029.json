@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "scene_cand_upsfortna_optisweep_training_day1_20260317_000029_001",
+      "timestamp_start": "00:08:54.280",
+      "timestamp_end": "00:08:59.520",
+      "scene_intent": "Clarify which robot is being referenced and qualify that the system's 'real-time' behavior is relative within the RMS discussion.",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000141",
+        "vec_upsfortna_optisweep_training_day1_20260317_000142",
+        "vec_upsfortna_optisweep_training_day1_20260317_000143",
+        "vec_upsfortna_optisweep_training_day1_20260317_000144",
+        "vec_upsfortna_optisweep_training_day1_20260317_000145"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

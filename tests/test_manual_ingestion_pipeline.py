@@ -84,7 +84,7 @@ def test_manual_ingestion_auto_export_does_not_create_approved_runtime_records(t
 
     run_manual_ingestion(source, source, auto_export=True, data_root=data_root)
 
-    curated = json.loads((data_root / "curated" / "cat1_records.json").read_text(encoding="utf-8"))
+    curated = json.loads((data_root / "curated" / "candidate_incident_records.json").read_text(encoding="utf-8"))
     workflows = json.loads((data_root / "workflows" / "workflow_candidates.json").read_text(encoding="utf-8"))
 
     assert {record["validation_status"] for record in curated} == {"candidate_extracted"}

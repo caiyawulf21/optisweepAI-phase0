@@ -1,0 +1,102 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0072_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        72
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0072"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "SorterSideDatabaseModel defines sorter legs and associated queue and status fields",
+      "systems": [
+        "Robot",
+        "Tipper"
+      ],
+      "components": [
+        "SorterSideDatabaseModel",
+        "sorter side",
+        "entrance queue location",
+        "exit queue location",
+        "tipper count",
+        "disabled flag"
+      ],
+      "summary": "The slide states that the SorterSideDatabaseModel defines the legs of the sorter. The table includes each sorter side's entrance and exit queue locations, the tipper count, and whether the sorter side is disabled.",
+      "observed_evidence": [
+        "Slide title: 'Robotics Database / Sorter Side Database Model'",
+        "Visible text: 'The SorterSideDatabaseModel defines the legs of the sorter.'",
+        "Visible text: 'The table includes the enterance and exit queue locations of each soterside, as well as the tipper count and whether the sorterside is disabled or not.'",
+        "Visual element classified as database_schema"
+      ],
+      "relationships": [
+        {
+          "type": "defines",
+          "from": "SorterSideDatabaseModel",
+          "to": "sorter legs"
+        },
+        {
+          "type": "stores",
+          "from": "SorterSideDatabaseModel",
+          "to": "entrance queue location"
+        },
+        {
+          "type": "stores",
+          "from": "SorterSideDatabaseModel",
+          "to": "exit queue location"
+        },
+        {
+          "type": "stores",
+          "from": "SorterSideDatabaseModel",
+          "to": "tipper count"
+        },
+        {
+          "type": "stores",
+          "from": "SorterSideDatabaseModel",
+          "to": "sorter side disabled status"
+        }
+      ],
+      "retrieval_text": "SorterSideDatabaseModel database table reference for robotics database. Defines sorter legs or sorter sides. Includes entrance queue location, exit queue location, tipper count, and disabled status for each sorter side.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0072_01",
+      "title": "No reusable procedure on SorterSideDatabaseModel overview slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        72
+      ],
+      "systems": [
+        "Robot",
+        "Tipper"
+      ],
+      "components": [
+        "SorterSideDatabaseModel"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewer is examining slide 72 database model description"
+      ],
+      "procedure_screenshot_refs": [
+        "slide_artifact_optisweep_training_internal_0072"
+      ],
+      "procedure_visual_summary": "Database model overview slide describing SorterSideDatabaseModel fields and purpose, without action steps or UI interactions.",
+      "steps": [],
+      "warnings": [
+        "Slide provides descriptive schema context only.",
+        "No explicit action sequence, validation workflow, or configuration instructions are shown."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0072_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate for slide 72. The slide is a database model reference describing SorterSideDatabaseModel fields and purpose, not an actionable operational or configuration procedure."
+    }
+  ],
+  "discarded_candidates": []
+}

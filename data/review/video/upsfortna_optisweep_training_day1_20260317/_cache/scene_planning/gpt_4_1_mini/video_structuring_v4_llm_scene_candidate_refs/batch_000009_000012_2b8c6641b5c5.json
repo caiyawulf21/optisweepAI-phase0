@@ -1,0 +1,120 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Sorter Shoot Data and Parcel Handling Overview",
+      "timestamp_start": "00:24:59.143",
+      "timestamp_end": "00:26:53.120",
+      "primary_intent": "Explain sorter shoot data issues and parcel handling when shoots close",
+      "operational_intents": [
+        "Describe lack of sensors and data types used",
+        "Discuss shoot overfilling and data loss scenarios",
+        "Explain parcel handling when not sorted to shoot",
+        "Detail shoot closing and reopening process based on thresholds"
+      ],
+      "knowledge_extraction_strategy": "Segment by data issues and parcel flow",
+      "why_this_strategy": "Distinct topics on data and parcel handling",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000009"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000009"
+      ]
+    },
+    {
+      "scene_title": "AGV Tote Exchange Process and Coordination",
+      "timestamp_start": "00:26:53.120",
+      "timestamp_end": "00:28:01.650",
+      "primary_intent": "Describe AGV tote exchange staging and movement coordination",
+      "operational_intents": [
+        "Explain staging conditions for tote exchange",
+        "Detail AGV positioning and tote lifting",
+        "Describe simultaneous AGV movements during exchange"
+      ],
+      "knowledge_extraction_strategy": "Focus on exchange process steps",
+      "why_this_strategy": "Coherent operational sequence on tote exchange",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000009"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000009"
+      ]
+    },
+    {
+      "scene_title": "AGV Role Transition and Chute Operation",
+      "timestamp_start": "00:28:01.650",
+      "timestamp_end": "00:29:32.686",
+      "primary_intent": "Explain AGV role changes and chute opening/closing logic",
+      "operational_intents": [
+        "Describe AGV role after dropping tote",
+        "Explain timing of chute opening relative to AGV movement",
+        "Discuss software commands for AGV movement coordination",
+        "Detail chute closing conditions"
+      ],
+      "knowledge_extraction_strategy": "Segment by AGV role and chute control",
+      "why_this_strategy": "Distinct operational controls and timing",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000010"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000010"
+      ]
+    },
+    {
+      "scene_title": "Exchange Timing and Shoot Closure Management",
+      "timestamp_start": "00:29:32.686",
+      "timestamp_end": "00:31:02.520",
+      "primary_intent": "Discuss timing goals for exchanges and shoot closure impacts",
+      "operational_intents": [
+        "Explain exchange timing thresholds and goals",
+        "Describe consequences of shoot closure on exchange time",
+        "Discuss end of cycle and shift options for shoot management"
+      ],
+      "knowledge_extraction_strategy": "Group timing and management topics",
+      "why_this_strategy": "Related operational timing and control",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000010"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000010"
+      ]
+    },
+    {
+      "scene_title": "Tipper Queue and Tipping Process",
+      "timestamp_start": "00:31:03.720",
+      "timestamp_end": "00:33:19.360",
+      "primary_intent": "Describe AGV arrival at tipper and tipping operation",
+      "operational_intents": [
+        "Explain AGV arrival and tipper availability",
+        "Detail tipping initiation and operator interaction",
+        "Describe software monitoring and bag label printing"
+      ],
+      "knowledge_extraction_strategy": "Focus on tipping operational steps",
+      "why_this_strategy": "Coherent tipping process sequence",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000011"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000011"
+      ]
+    },
+    {
+      "scene_title": "AGV Post-Tip Actions and Exception Handling",
+      "timestamp_start": "00:33:19.360",
+      "timestamp_end": "00:34:04.160",
+      "primary_intent": "Explain AGV actions after tipping and handling failures",
+      "operational_intents": [
+        "Describe AGV return to sorter or hospital after tip",
+        "Discuss failure scenarios and hospital routing",
+        "Explain battery charging and system continuity"
+      ],
+      "knowledge_extraction_strategy": "Segment by post-tip and exception handling",
+      "why_this_strategy": "Distinct post-tip operational flows",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000011"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000011"
+      ]
+    }
+  ]
+}

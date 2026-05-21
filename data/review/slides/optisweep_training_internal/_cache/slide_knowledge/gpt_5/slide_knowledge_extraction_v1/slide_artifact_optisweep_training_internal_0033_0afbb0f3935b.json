@@ -1,0 +1,31 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "optisweep_training_internal_33_ku_aveva_walkthrough_section",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        33
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0033"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Aveva Walkthrough (section header)",
+      "systems": [
+        "Aveva"
+      ],
+      "components": [],
+      "summary": "Slide indicates a section transition labeled 'Aveva Walkthrough'. It signals upcoming walkthrough content but provides no actionable steps or operational details.",
+      "observed_evidence": [
+        "Visible text on slide: 'Aveva Walkthrough'",
+        "Footer: '© FORTNA ALL RIGHTS RESERVED. CONFIDENTIAL.'",
+        "Slide number: '32' displayed"
+      ],
+      "relationships": [],
+      "retrieval_text": "Section divider slide labeled 'Aveva Walkthrough' in the OptiSweep internal training deck. No procedures or operational steps present; denotes start of Aveva-related walkthrough content.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

@@ -1,0 +1,49 @@
+[
+  {
+    "chunk_id": "vec_training_video_000001",
+    "video_id": "training_video",
+    "timestamp_start": "00:00:10.000",
+    "timestamp_end": "00:00:20.000",
+    "transcript_segment_ids": [
+      "vts_training_video_000001"
+    ],
+    "frame_ids": [
+      "vf_training_video_cue_000001_midpoint"
+    ],
+    "artifact_ids": [
+      "vf_training_video_cue_000001_midpoint"
+    ],
+    "transcript_text": "First open the RMS map, then check the AGV heartbeat alarm.",
+    "ocr_text": [
+      "RMS Map Heartbeat Alarm"
+    ],
+    "visual_summary": "RMS map UI with AGV heartbeat alarm text visible.",
+    "components": [
+      "RMS map",
+      "heartbeat",
+      "alarm"
+    ],
+    "systems": [
+      "RMS",
+      "AGV"
+    ],
+    "observed_signals": [
+      "alarm",
+      "heartbeat"
+    ],
+    "inferred_interpretations": [],
+    "candidate_context_types": [
+      "technology_reference",
+      "ui_reference"
+    ],
+    "candidate_procedure_refs": [],
+    "source_refs": [
+      "transcript_segment:vts_training_video_000001",
+      "frame_artifact:vf_training_video_cue_000001_midpoint",
+      "{'source_type': 'vtt', 'source_path': 'data/raw_videos/training.vtt', 'timestamp_start': '00:00:10.000', 'timestamp_end': '00:00:20.000'}",
+      "video:training_video"
+    ],
+    "validation_status": "needs_review",
+    "retrieval_text": "First open the RMS map, then check the AGV heartbeat alarm. RMS Map Heartbeat Alarm RMS map UI with AGV heartbeat alarm text visible. Components: RMS map, heartbeat, alarm Systems: RMS, AGV"
+  }
+]

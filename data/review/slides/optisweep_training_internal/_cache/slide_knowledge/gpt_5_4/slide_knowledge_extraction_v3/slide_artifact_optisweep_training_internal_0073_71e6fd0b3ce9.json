@@ -1,0 +1,178 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0073_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        73
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0073"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "SortLocationsDatabaseModel stores sorter locations and associated queue locations",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "SortLocationsDatabaseModel",
+        "sorter locations",
+        "queue locations",
+        "AGV",
+        "empty tote"
+      ],
+      "summary": "The slide states that the SortLocationsDatabaseModel table contains all sorter locations and their respective queue locations. Queue locations are defined as the locations behind the sorter location where an AGV with an empty tote moves to fill during an exchange.",
+      "observed_evidence": [
+        "“The SortLocationsDatabaseModel table contains all the sorter locations and their respective queue locations.”",
+        "“The queue locations are the locations behind the sorter location where the agv with an empty tote will move to fill when an exchange happens.”"
+      ],
+      "relationships": [
+        {
+          "type": "contains",
+          "from": "SortLocationsDatabaseModel",
+          "to": "sorter locations"
+        },
+        {
+          "type": "associates",
+          "from": "SortLocationsDatabaseModel",
+          "to": "queue locations"
+        },
+        {
+          "type": "defines_operational_position",
+          "from": "queue locations",
+          "to": "locations behind the sorter location"
+        },
+        {
+          "type": "supports_behavior",
+          "from": "queue locations",
+          "to": "AGV with empty tote moves to fill during exchange"
+        }
+      ],
+      "retrieval_text": "SortLocationsDatabaseModel database table reference. Contains all sorter locations and their corresponding queue locations. Queue locations are behind the sorter location and are used when an AGV carrying an empty tote moves forward to fill during an exchange.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0073_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        73
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0073"
+      ],
+      "unit_type": "queueing_rule",
+      "title": "Queue locations are ordered from the sorter entrance queue and tied to sorter side",
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "SortLocationsDatabaseModel",
+        "queue locations",
+        "sorterside",
+        "sorter entrance queue"
+      ],
+      "summary": "The slide indicates that the database model also records which sorter side each location is associated with and the sequence of those locations from the sorter entrance queue.",
+      "observed_evidence": [
+        "“This table also includes which sorterside those locations are associated with as well as their sequence from the sorter entrance queue.”"
+      ],
+      "relationships": [
+        {
+          "type": "associates",
+          "from": "location",
+          "to": "sorterside"
+        },
+        {
+          "type": "orders",
+          "from": "queue locations",
+          "to": "sequence from sorter entrance queue"
+        }
+      ],
+      "retrieval_text": "SortLocationsDatabaseModel also stores sorterside association and the sequence ordering of locations from the sorter entrance queue. Useful for understanding queue position and side mapping for sorter-related locations.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0073_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        73
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0073"
+      ],
+      "unit_type": "system_behavior",
+      "title": "During exchange, an AGV with an empty tote advances from queue location to fill sorter position",
+      "systems": [
+        "Robotics Database",
+        "AGV system"
+      ],
+      "components": [
+        "AGV",
+        "empty tote",
+        "queue locations",
+        "sorter location"
+      ],
+      "summary": "The slide describes an operational behavior tied to the queue model: when an exchange occurs, an AGV with an empty tote moves from the queue location behind the sorter location to fill that position.",
+      "observed_evidence": [
+        "“The queue locations are the locations behind the sorter location where the agv with an empty tote will move to fill when an exchange happens.”"
+      ],
+      "relationships": [
+        {
+          "type": "triggered_by",
+          "from": "AGV move to fill",
+          "to": "exchange happens"
+        },
+        {
+          "type": "moves_from",
+          "from": "AGV with empty tote",
+          "to": "queue location"
+        },
+        {
+          "type": "moves_to_fill",
+          "from": "AGV with empty tote",
+          "to": "sorter location"
+        }
+      ],
+      "retrieval_text": "Operational behavior for sorter exchange: queue locations sit behind sorter locations, and when an exchange happens an AGV with an empty tote moves forward from that queue position to fill the sorter location.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0073_01",
+      "title": "No explicit reusable procedure on SortLocationsDatabaseModel slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        73
+      ],
+      "systems": [
+        "Robotics Database"
+      ],
+      "components": [
+        "SortLocationsDatabaseModel"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Viewer is referencing slide 73 in the OptiSweep training deck."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0073"
+      ],
+      "procedure_visual_summary": "Database model overview slide describing SortLocationsDatabaseModel contents and queue-location meaning; no numbered or imperative action sequence is shown.",
+      "steps": [],
+      "warnings": [
+        "Slide provides descriptive database context only.",
+        "Do not infer database query, edit, or troubleshooting steps from this slide alone."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0073_01",
+        "oku_optisweep_training_internal_0073_02",
+        "oku_optisweep_training_internal_0073_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide explains the SortLocationsDatabaseModel table and queue-location behavior but does not provide an explicit action sequence, user task, or operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

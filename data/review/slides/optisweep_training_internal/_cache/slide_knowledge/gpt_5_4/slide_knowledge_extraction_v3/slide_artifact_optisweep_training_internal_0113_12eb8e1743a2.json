@@ -1,0 +1,16 @@
+{
+  "operational_knowledge_units": [],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "candidate_type": "api_reference",
+      "title": "API Walkthrough",
+      "reason": "Slide contains only title/legal text with no visible API details, capability description, endpoints, behaviors, or actionable steps. Per rules, this is a pure title/section slide and does not support creation of operational knowledge units or procedures.",
+      "source_refs": [
+        "deck:optisweep_training_internal",
+        "slide:113",
+        "artifact:slide_artifact_optisweep_training_internal_0113"
+      ]
+    }
+  ]
+}

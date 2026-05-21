@@ -1,0 +1,76 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "uku_upsfortna_optisweep_training_day1_20260317_000090_01",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000090"
+      ],
+      "source_artifact_ids": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000072",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002427_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002428_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002429_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002430_midpoint"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002427",
+        "vec_upsfortna_optisweep_training_day1_20260317_002428",
+        "vec_upsfortna_optisweep_training_day1_20260317_002429",
+        "vec_upsfortna_optisweep_training_day1_20260317_002430"
+      ],
+      "artifact_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000072",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002427_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002428_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002429_midpoint",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002430_midpoint"
+      ],
+      "timestamp_start": "02:35:16.360",
+      "timestamp_end": "02:35:23.200",
+      "unit_type": "operational_expectation",
+      "title": "Support should prevent recurrence of known issues",
+      "systems": [],
+      "components": [],
+      "summary": "Speaker asserts recurring issues are a problem and should not keep happening; known issues should be prevented from recurring by support.",
+      "observed_evidence": [
+        "“recurring issues are a problem”",
+        "“Recurring issues should not.”",
+        "“the same issues shouldn't happen again and again”"
+      ],
+      "relationships": [],
+      "retrieval_text": "Recurring issues are a problem; known issues should not happen again and again. Support is expected to prevent repeats.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "uku_upsfortna_optisweep_training_day1_20260317_000090_02",
+      "source_scene_ids": [
+        "scene_upsfortna_optisweep_training_day1_20260317_000090"
+      ],
+      "source_artifact_ids": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000072",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002431_midpoint"
+      ],
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002431"
+      ],
+      "artifact_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000072",
+        "vf_upsfortna_optisweep_training_day1_20260317_cue_002431_midpoint"
+      ],
+      "timestamp_start": "02:35:24.320",
+      "timestamp_end": "02:35:26.480",
+      "unit_type": "clarification_needed",
+      "title": "Clarify scope of support responsibility for preventing repeats",
+      "systems": [],
+      "components": [],
+      "summary": "Speaker trails off—“does the support just…”—indicating unclear boundaries on support’s role in stopping recurring issues.",
+      "observed_evidence": [
+        "“I mean that does the support just.”"
+      ],
+      "relationships": [],
+      "retrieval_text": "Unclear statement about whether support “just” does something regarding recurring issues; responsibility boundaries need clarification.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": []
+}

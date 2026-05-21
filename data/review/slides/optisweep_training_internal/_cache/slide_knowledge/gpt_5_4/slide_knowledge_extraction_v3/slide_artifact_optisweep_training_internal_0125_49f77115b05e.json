@@ -1,0 +1,119 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0125_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        125
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0125"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Ignition Gateway can be accessed through a web browser",
+      "systems": [
+        "Ignition"
+      ],
+      "components": [
+        "Ignition Gateway UI",
+        "web browser"
+      ],
+      "summary": "The slide states that Ignition can be accessed through a web browser and shows a localhost URL for the Gateway UI/status page.",
+      "observed_evidence": [
+        "Slide title: 'Ignition Gateway UI / web browser.'",
+        "Bullet text: 'Ignition can be accessed through the web browser.'",
+        "Visible URL: 'http://localhost:8088/web/status/sys.performance?2'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "access_method",
+          "source": "web browser",
+          "target": "Ignition Gateway UI"
+        },
+        {
+          "relationship_type": "example_endpoint",
+          "source": "http://localhost:8088/web/status/sys.performance?2",
+          "target": "Ignition Gateway UI"
+        }
+      ],
+      "retrieval_text": "Ignition Gateway UI can be accessed through a web browser. Example URL shown on the slide: http://localhost:8088/web/status/sys.performance?2. This is a UI access/reference concept for Ignition Gateway.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0125_01",
+      "title": "Open the Ignition Gateway UI in a web browser",
+      "procedure_type": "navigation",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        125
+      ],
+      "systems": [
+        "Ignition"
+      ],
+      "components": [
+        "Ignition Gateway UI",
+        "web browser"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A system hosting Ignition is available",
+        "A web browser is available",
+        "The shown localhost URL is reachable from the machine being used"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0125"
+      ],
+      "procedure_visual_summary": "Slide shows the Ignition Gateway UI topic, states that Ignition can be accessed through the web browser, and displays a localhost Gateway/status URL.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Open a web browser.",
+          "expected_outcome": "A browser window is available for entering a URL.",
+          "validation_check": "Browser is open and ready for navigation.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:125",
+            "artifact:slide_artifact_optisweep_training_internal_0125"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0125"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0125"
+          ],
+          "visual_region_hint": "Slide bullet stating access is through the web browser."
+        },
+        {
+          "step_order": 2,
+          "instruction": "Navigate to the displayed Ignition Gateway URL: http://localhost:8088/web/status/sys.performance?2",
+          "expected_outcome": "The Ignition Gateway UI/status page is opened in the browser.",
+          "validation_check": "The browser loads the Ignition Gateway page associated with the displayed URL.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:125",
+            "artifact:slide_artifact_optisweep_training_internal_0125"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0125"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0125"
+          ],
+          "visual_region_hint": "Displayed URL text near the bottom of the slide."
+        }
+      ],
+      "warnings": [
+        "The slide provides only a single example URL and does not describe alternate hosts, ports, login requirements, or expected page content in detail."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0125"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Navigation candidate: open a web browser and access the Ignition Gateway UI using the displayed URL http://localhost:8088/web/status/sys.performance?2. Based directly on slide text stating Ignition can be accessed through the web browser."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,74 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0007_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        7
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0007"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Beveled tote racking design positions tote securely for parcel impact",
+      "systems": [
+        "Tote Racking"
+      ],
+      "components": [
+        "Tote",
+        "Tote racking"
+      ],
+      "summary": "The slide states that Fortna designed and installed tote racking with a beveled design intended to securely position the tote for parcel impact.",
+      "observed_evidence": [
+        "Slide title: \"Tote Racking / impact\"",
+        "Bullet: \"Fortna designed and installed\"",
+        "Bullet: \"Beveled design to securely position tote for parcel\""
+      ],
+      "relationships": [
+        {
+          "relation_type": "supports",
+          "target": "parcel impact handling"
+        },
+        {
+          "relation_type": "applies_to",
+          "target": "tote positioning"
+        }
+      ],
+      "retrieval_text": "Tote racking impact slide says Fortna designed and installed the tote racking. The beveled design securely positions the tote for parcel impact.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "discarded_optisweep_training_internal_0007_01",
+      "title": "No explicit operational procedure on tote racking impact slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        7
+      ],
+      "systems": [
+        "Tote Racking"
+      ],
+      "components": [
+        "Tote",
+        "Tote racking"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [],
+      "procedure_visual_summary": "Informational slide describing tote racking design and beveled positioning behavior; no action sequence or operator task is shown.",
+      "steps": [],
+      "warnings": [
+        "Slide contains design context only and does not provide reusable action steps."
+      ],
+      "related_context_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0007"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate because the slide only describes that Fortna designed and installed tote racking and that the beveled design securely positions the tote for parcel impact; it does not provide explicit steps."
+    }
+  ],
+  "discarded_candidates": []
+}

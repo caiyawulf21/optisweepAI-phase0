@@ -1,0 +1,83 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_111_001",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        111
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0111"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Task model tracks tasks sent to the robotics engine and archives completed tasks to task activity",
+      "systems": [
+        "Sorter Sweeper Database",
+        "Robot"
+      ],
+      "components": [
+        "Task Model",
+        "task activity",
+        "robotics engine"
+      ],
+      "summary": "The slide states that all tasks sent to the robotics engine are tracked in the task model, and when a task is completed it is archived to task activity.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Task Model'",
+        "Visible text: 'All Task sent to robotics engine are tracked in the task model.'",
+        "Visible text: 'When a task is completed its archived to task activity'",
+        "Visual element indicates a database schema context",
+        "Visual elements systems/components include 'Robot'"
+      ],
+      "relationships": [
+        {
+          "from": "task model",
+          "to": "robotics engine tasks",
+          "relationship_type": "tracks"
+        },
+        {
+          "from": "completed task",
+          "to": "task activity",
+          "relationship_type": "archived_to"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Task Model: all tasks sent to the robotics engine are tracked in the task model. When a task is completed, it is archived to task activity.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_111_001",
+      "title": "No explicit procedure on Task Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        111
+      ],
+      "systems": [
+        "Sorter Sweeper Database",
+        "Robot"
+      ],
+      "components": [
+        "Task Model",
+        "task activity",
+        "robotics engine"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [],
+      "procedure_visual_summary": "Database/task-model overview slide describing task tracking and archival behavior, without user actions or ordered steps.",
+      "steps": [],
+      "warnings": [
+        "Slide describes database behavior and storage locations, not a reusable action sequence.",
+        "No explicit action steps, UI interactions, commands, or validation sequence are shown."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_111_001"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because slide 111 provides database model behavior only: tasks sent to the robotics engine are tracked in the task model, and completed tasks are archived to task activity."
+    }
+  ],
+  "discarded_candidates": []
+}

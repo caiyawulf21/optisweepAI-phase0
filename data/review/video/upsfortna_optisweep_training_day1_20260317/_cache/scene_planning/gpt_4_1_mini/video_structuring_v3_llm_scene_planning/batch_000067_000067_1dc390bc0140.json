@@ -1,0 +1,123 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "AGV Command Completion and Resend Mechanism",
+      "timestamp_start": "02:20:08.741",
+      "timestamp_end": "02:20:52.680",
+      "primary_intent": "Explain how to complete and resend AGV commands",
+      "operational_intents": [
+        "Execute AGV command completion with full AGVID",
+        "Use resend command to retry sending callbacks after server restart"
+      ],
+      "knowledge_extraction_strategy": "Extract command execution and retry process details",
+      "why_this_strategy": "Focus on AGV command handling and retry logic",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002173",
+        "vec_upsfortna_optisweep_training_day1_20260317_002174",
+        "vec_upsfortna_optisweep_training_day1_20260317_002175",
+        "vec_upsfortna_optisweep_training_day1_20260317_002176",
+        "vec_upsfortna_optisweep_training_day1_20260317_002177",
+        "vec_upsfortna_optisweep_training_day1_20260317_002178",
+        "vec_upsfortna_optisweep_training_day1_20260317_002179",
+        "vec_upsfortna_optisweep_training_day1_20260317_002180",
+        "vec_upsfortna_optisweep_training_day1_20260317_002181",
+        "vec_upsfortna_optisweep_training_day1_20260317_002182"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000067"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Tote and AGV Initialization and Removal Procedures",
+      "timestamp_start": "02:20:55.760",
+      "timestamp_end": "02:21:32.440",
+      "primary_intent": "Describe how to initialize and remove AGVs and totes",
+      "operational_intents": [
+        "Initialize AGV via pop-up interface",
+        "Remove tote specifying station ID",
+        "Explain workaround for hardware issues affecting tote removal"
+      ],
+      "knowledge_extraction_strategy": "Extract procedures for AGV/tote management and issue handling",
+      "why_this_strategy": "Capture operational steps for tote and AGV handling",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002183",
+        "vec_upsfortna_optisweep_training_day1_20260317_002184",
+        "vec_upsfortna_optisweep_training_day1_20260317_002185",
+        "vec_upsfortna_optisweep_training_day1_20260317_002186",
+        "vec_upsfortna_optisweep_training_day1_20260317_002187",
+        "vec_upsfortna_optisweep_training_day1_20260317_002188",
+        "vec_upsfortna_optisweep_training_day1_20260317_002189",
+        "vec_upsfortna_optisweep_training_day1_20260317_002190",
+        "vec_upsfortna_optisweep_training_day1_20260317_002191",
+        "vec_upsfortna_optisweep_training_day1_20260317_002192"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000067"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Identifying Station IDs and Tote Status",
+      "timestamp_start": "02:21:33.560",
+      "timestamp_end": "02:22:23.440",
+      "primary_intent": "Explain how to determine station IDs and tote assignments",
+      "operational_intents": [
+        "Use database or RMS to find station IDs",
+        "Interpret color coding for station status",
+        "Add missing totes to stations manually"
+      ],
+      "knowledge_extraction_strategy": "Extract methods for station and tote status identification",
+      "why_this_strategy": "Clarify tote-station mapping and status verification",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002193",
+        "vec_upsfortna_optisweep_training_day1_20260317_002194",
+        "vec_upsfortna_optisweep_training_day1_20260317_002195",
+        "vec_upsfortna_optisweep_training_day1_20260317_002196",
+        "vec_upsfortna_optisweep_training_day1_20260317_002197",
+        "vec_upsfortna_optisweep_training_day1_20260317_002198",
+        "vec_upsfortna_optisweep_training_day1_20260317_002199",
+        "vec_upsfortna_optisweep_training_day1_20260317_002200",
+        "vec_upsfortna_optisweep_training_day1_20260317_002201",
+        "vec_upsfortna_optisweep_training_day1_20260317_002202",
+        "vec_upsfortna_optisweep_training_day1_20260317_002203",
+        "vec_upsfortna_optisweep_training_day1_20260317_002204",
+        "vec_upsfortna_optisweep_training_day1_20260317_002205",
+        "vec_upsfortna_optisweep_training_day1_20260317_002206",
+        "vec_upsfortna_optisweep_training_day1_20260317_002207"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000067"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Tote Task Management and Manual Exchanges",
+      "timestamp_start": "02:22:27.960",
+      "timestamp_end": "02:23:10.520",
+      "primary_intent": "Manage tote tasks and perform manual tote exchanges",
+      "operational_intents": [
+        "View current tote task statuses",
+        "Resend tote tasks",
+        "Exchange totes manually for testing or issue resolution"
+      ],
+      "knowledge_extraction_strategy": "Extract tote task management and manual exchange procedures",
+      "why_this_strategy": "Focus on tote task control and troubleshooting",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_002208",
+        "vec_upsfortna_optisweep_training_day1_20260317_002209",
+        "vec_upsfortna_optisweep_training_day1_20260317_002210",
+        "vec_upsfortna_optisweep_training_day1_20260317_002211",
+        "vec_upsfortna_optisweep_training_day1_20260317_002212",
+        "vec_upsfortna_optisweep_training_day1_20260317_002213",
+        "vec_upsfortna_optisweep_training_day1_20260317_002214",
+        "vec_upsfortna_optisweep_training_day1_20260317_002215",
+        "vec_upsfortna_optisweep_training_day1_20260317_002216"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000067"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0104_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        104
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0104"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Tote Config Model methods determine chute trigger settings",
+      "systems": [
+        "OptiSweep",
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tote",
+        "Tote Config Model"
+      ],
+      "summary": "The slide states that tote configuration determines what settings are used to trigger pickups, priority, or close chute behavior. The model includes a Method field with values Cube, Count, and CubeAndCount.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Tote Config Model'",
+        "Text: 'Tote config determines what settings are used to trigger Pickups, Priority, or Close chute.'",
+        "Text under Method: 'Cube', 'Count', 'CubeAndCount'"
+      ],
+      "relationships": [
+        {
+          "relation": "defines",
+          "target": "trigger settings for pickups, priority, and close chute"
+        },
+        {
+          "relation": "includes_field",
+          "target": "Method"
+        },
+        {
+          "relation": "allowed_values",
+          "target": [
+            "Cube",
+            "Count",
+            "CubeAndCount"
+          ]
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Tote Config Model. Tote config determines what settings are used to trigger pickups, priority, or close chute. Method values shown are Cube, Count, and CubeAndCount.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "discarded_optisweep_training_internal_0104_01",
+      "title": "No explicit procedure on Tote Config Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        104
+      ],
+      "systems": [
+        "OptiSweep",
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tote Config Model"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0104"
+      ],
+      "procedure_visual_summary": "Database model reference slide describing tote configuration behavior and listing Method values Cube, Count, and CubeAndCount.",
+      "steps": [],
+      "warnings": [
+        "Slide provides model/context information but no explicit action sequence or reusable operational steps."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0104_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate because the slide describes tote config behavior and method values, but does not provide explicit configuration or validation steps."
+    }
+  ],
+  "discarded_candidates": []
+}

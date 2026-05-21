@@ -1,0 +1,40 @@
+{
+  "operational_knowledge_units": [
+    {
+      "unit_id": "oku_upsfortna_optisweep_training_day1_20260317_000069_01",
+      "scene_id": "scene_upsfortna_optisweep_training_day1_20260317_000069",
+      "video_id": "upsfortna_optisweep_training_day1_20260317",
+      "title": "Slide context snapshot: content not discernible",
+      "intent_alignment": {
+        "primary_intent": "Review slide content",
+        "operational_intents": [
+          "Assess slide information",
+          "Prepare for content validation"
+        ]
+      },
+      "content_summary": "At the referenced timestamp, the slide/frame contains no legible text and no spoken narration. The specific slide content is unknown and requires manual validation.",
+      "extraction_strategy": "context_only",
+      "support": "unknown",
+      "evidence": {
+        "evidence_chunk_refs": [
+          "vec_upsfortna_optisweep_training_day1_20260317_001978"
+        ],
+        "slide_screen_segment_refs": [
+          "sss_upsfortna_optisweep_training_day1_20260317_000052"
+        ],
+        "representative_frame_refs": [
+          "vf_upsfortna_optisweep_training_day1_20260317_cue_001978_midpoint"
+        ],
+        "transcript_segment_refs": [
+          "vts_upsfortna_optisweep_training_day1_20260317_001978"
+        ]
+      },
+      "timestamps": {
+        "timestamp_start": "02:02:29.760",
+        "timestamp_end": "02:02:29.880"
+      },
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": []
+}

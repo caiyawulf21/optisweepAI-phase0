@@ -1,0 +1,109 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Language Settings and Sidebar Navigation",
+      "timestamp_start": "00:55:17.743",
+      "timestamp_end": "00:55:44.880",
+      "primary_intent": "Guide user to change default language and navigate sidebar",
+      "operational_intents": [
+        "Identify default language issue",
+        "Locate language settings icon",
+        "Switch interface language to English",
+        "Expand hidden sidebar menu"
+      ],
+      "knowledge_extraction_strategy": "Extract UI navigation steps and language setting details",
+      "why_this_strategy": "Focus on user interface configuration and navigation",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000935",
+        "vec_upsfortna_optisweep_training_day1_000936",
+        "vec_upsfortna_optisweep_training_day1_000937",
+        "vec_upsfortna_optisweep_training_day1_000938",
+        "vec_upsfortna_optisweep_training_day1_000939",
+        "vec_upsfortna_optisweep_training_day1_000940",
+        "vec_upsfortna_optisweep_training_day1_000941",
+        "vec_upsfortna_optisweep_training_day1_000942"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000019"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Map Monitor Overview and System Layout",
+      "timestamp_start": "00:55:44.880",
+      "timestamp_end": "00:57:44.560",
+      "primary_intent": "Explain map monitor usage and system station types",
+      "operational_intents": [
+        "Access map monitor from sidebar",
+        "Understand system overview display",
+        "Differentiate station and lane types",
+        "Clarify special location definitions and usage"
+      ],
+      "knowledge_extraction_strategy": "Extract system layout concepts and map monitor functions",
+      "why_this_strategy": "Clarify system visualization and location semantics",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_000943",
+        "vec_upsfortna_optisweep_training_day1_000944",
+        "vec_upsfortna_optisweep_training_day1_000945",
+        "vec_upsfortna_optisweep_training_day1_000946",
+        "vec_upsfortna_optisweep_training_day1_000947",
+        "vec_upsfortna_optisweep_training_day1_000948",
+        "vec_upsfortna_optisweep_training_day1_000949",
+        "vec_upsfortna_optisweep_training_day1_000950",
+        "vec_upsfortna_optisweep_training_day1_000951",
+        "vec_upsfortna_optisweep_training_day1_000952",
+        "vec_upsfortna_optisweep_training_day1_000953",
+        "vec_upsfortna_optisweep_training_day1_000954",
+        "vec_upsfortna_optisweep_training_day1_000955",
+        "vec_upsfortna_optisweep_training_day1_000956",
+        "vec_upsfortna_optisweep_training_day1_000957",
+        "vec_upsfortna_optisweep_training_day1_000958",
+        "vec_upsfortna_optisweep_training_day1_000959",
+        "vec_upsfortna_optisweep_training_day1_000960",
+        "vec_upsfortna_optisweep_training_day1_000961",
+        "vec_upsfortna_optisweep_training_day1_000962",
+        "vec_upsfortna_optisweep_training_day1_000963",
+        "vec_upsfortna_optisweep_training_day1_000964",
+        "vec_upsfortna_optisweep_training_day1_000965",
+        "vec_upsfortna_optisweep_training_day1_000966",
+        "vec_upsfortna_optisweep_training_day1_000967",
+        "vec_upsfortna_optisweep_training_day1_000968",
+        "vec_upsfortna_optisweep_training_day1_000969",
+        "vec_upsfortna_optisweep_training_day1_000970",
+        "vec_upsfortna_optisweep_training_day1_000971",
+        "vec_upsfortna_optisweep_training_day1_000972"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000019"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Right Panel Details and Message Panel Introduction",
+      "timestamp_start": "00:57:44.560",
+      "timestamp_end": "00:58:19.497",
+      "primary_intent": "Introduce right panel features including message panel",
+      "operational_intents": [
+        "Highlight right panel information",
+        "Explain open message panel function",
+        "Describe handling of active errors and warnings"
+      ],
+      "knowledge_extraction_strategy": "Extract details on system status panels and alerts",
+      "why_this_strategy": "Focus on system monitoring and alert management",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_000973",
+        "vec_upsfortna_optisweep_training_day1_000974",
+        "vec_upsfortna_optisweep_training_day1_000975",
+        "vec_upsfortna_optisweep_training_day1_000976",
+        "vec_upsfortna_optisweep_training_day1_000977",
+        "vec_upsfortna_optisweep_training_day1_000978",
+        "vec_upsfortna_optisweep_training_day1_000979",
+        "vec_upsfortna_optisweep_training_day1_000980"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000019"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

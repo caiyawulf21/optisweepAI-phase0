@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "scene_cand_upsfortna_optisweep_training_day1_20260317_000003_001",
+      "timestamp_start": "00:01:13.050",
+      "timestamp_end": "00:01:20.720",
+      "intent": "Coordinate attendee presence and arrival status (confirm Harvey’s presence and note someone is en route).",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000011",
+        "vec_upsfortna_optisweep_training_day1_20260317_000012",
+        "vec_upsfortna_optisweep_training_day1_20260317_000013",
+        "vec_upsfortna_optisweep_training_day1_20260317_000014",
+        "vec_upsfortna_optisweep_training_day1_20260317_000015"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

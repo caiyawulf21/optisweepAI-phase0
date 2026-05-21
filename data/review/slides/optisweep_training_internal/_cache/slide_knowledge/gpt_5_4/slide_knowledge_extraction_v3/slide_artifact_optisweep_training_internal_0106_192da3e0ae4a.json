@@ -1,0 +1,249 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_106_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        106
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0106"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Active Bag Out table records bag out and close out tote exchanges until tip completion",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Active Bag Out",
+        "bagout activity",
+        "Tote"
+      ],
+      "summary": "The slide describes the Active Bag Out model used when a BagOut or CloseOut is requested. Open chutes are closed, totes containing an item are marked for exchange, and an entry is created in Active Bag Out. Unlike exchange tables, the bag out is closed once the tote has been tipped, and the record is then archived to bagout activity.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Active Bag Out Model'",
+        "Visible text: 'When a BagOut/CloseOut is requested all open chutes are closed.'",
+        "Visible text: 'Any tote with an item in it is marked for exchange'",
+        "Visible text: 'similar to the exchange tables, an entry is made in Active Bag out.'",
+        "Visible text: 'The difference is it closes the bagout once the tote has been tipped.'",
+        "Visible text: 'The record is archived to bagout activity'"
+      ],
+      "relationships": [
+        {
+          "type": "similar_to",
+          "target": "exchange tables",
+          "evidence": "Visible text states the Active Bag Out entry is made 'similar to the exchange tables.'"
+        },
+        {
+          "type": "archives_to",
+          "target": "bagout activity",
+          "evidence": "Visible text states 'The record is archived to bagout activity.'"
+        }
+      ],
+      "retrieval_text": "Active Bag Out Model in the Sorter Sweeper Database: when a BagOut or CloseOut is requested, all open chutes are closed. Any tote with an item is marked for exchange and an entry is created in Active Bag Out, similar to exchange tables. The difference is that the bagout closes once the tote has been tipped, and the record is archived to bagout activity.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_106_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        106
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0106"
+      ],
+      "unit_type": "state_transition",
+      "title": "BagOut or CloseOut request triggers chute closure, exchange marking, closure after tip, and archival",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "open chutes",
+        "Active Bag Out",
+        "bagout activity",
+        "Tote"
+      ],
+      "summary": "The slide provides lifecycle behavior for a bag out or close out request. The request causes all open chutes to close, totes with items to be marked for exchange, Active Bag Out entries to be created, bagout closure after tote tipping, and archival of the record to bagout activity.",
+      "observed_evidence": [
+        "Visible text: 'When a BagOut/CloseOut is requested all open chutes are closed.'",
+        "Visible text: 'Any tote with an item in it is marked for exchange'",
+        "Visible text: 'an entry is made in Active Bag out.'",
+        "Visible text: 'it closes the bagout once the tote has been tipped.'",
+        "Visible text: 'The record is archived to bagout activity'"
+      ],
+      "relationships": [
+        {
+          "type": "triggered_by",
+          "target": "BagOut/CloseOut request",
+          "evidence": "The behavior sequence is explicitly introduced by 'When a BagOut/CloseOut is requested'."
+        }
+      ],
+      "retrieval_text": "BagOut/CloseOut state transition behavior: request causes all open chutes to close, totes with items are marked for exchange, an Active Bag Out entry is created, the bagout closes once the tote has been tipped, and the record is archived to bagout activity.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_106_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        106
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0106"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Open chutes are automatically closed when BagOut or CloseOut is requested",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "open chutes"
+      ],
+      "summary": "The slide states that a BagOut or CloseOut request causes all open chutes to be closed.",
+      "observed_evidence": [
+        "Visible text: 'When a BagOut/CloseOut is requested all open chutes are closed.'"
+      ],
+      "relationships": [
+        {
+          "type": "triggered_by",
+          "target": "BagOut/CloseOut request",
+          "evidence": "The chute-closing behavior is directly tied to the request event."
+        }
+      ],
+      "retrieval_text": "System behavior for BagOut/CloseOut: all open chutes are closed when the request is made.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_106_01",
+      "title": "BagOut/CloseOut handling lifecycle described by Active Bag Out model",
+      "procedure_type": "operational_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        106
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Active Bag Out",
+        "bagout activity",
+        "open chutes",
+        "Tote"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A BagOut or CloseOut has been requested."
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0106"
+      ],
+      "procedure_visual_summary": "Slide describes the Active Bag Out model behavior after a BagOut/CloseOut request, including chute closure, tote exchange marking, Active Bag Out entry creation, closure after tip, and archival.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "On a BagOut or CloseOut request, close all open chutes.",
+          "expected_outcome": "All open chutes are closed.",
+          "validation_check": "Confirm the slide states that all open chutes are closed when a BagOut/CloseOut is requested.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:106",
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Mark any tote that contains an item for exchange.",
+          "expected_outcome": "Totes with items are identified as exchange candidates.",
+          "validation_check": "Confirm the slide states that any tote with an item in it is marked for exchange.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:106",
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+        },
+        {
+          "step_order": 3,
+          "instruction": "Create an entry in Active Bag Out, similar to the exchange tables.",
+          "expected_outcome": "An Active Bag Out record exists for the exchange condition.",
+          "validation_check": "Confirm the slide states that an entry is made in Active Bag Out similar to the exchange tables.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:106",
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+        },
+        {
+          "step_order": 4,
+          "instruction": "Close the bagout once the tote has been tipped.",
+          "expected_outcome": "The bagout is closed after tote tipping occurs.",
+          "validation_check": "Confirm the slide states that the bagout closes once the tote has been tipped.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:106",
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+        },
+        {
+          "step_order": 5,
+          "instruction": "Archive the record to bagout activity.",
+          "expected_outcome": "The completed bagout record is moved to bagout activity.",
+          "validation_check": "Confirm the slide states that the record is archived to bagout activity.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:106",
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0106"
+          ],
+          "visual_region_hint": "Main body text under 'Active Bag Out Model'"
+        }
+      ],
+      "warnings": [
+        "The slide describes system/database behavior rather than an explicit operator-facing procedure.",
+        "No initiating interface, command, or exact user action sequence is shown on the slide."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_106_01",
+        "oku_optisweep_training_internal_106_02",
+        "oku_optisweep_training_internal_106_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Candidate procedure from Active Bag Out model: after a BagOut/CloseOut request, close open chutes, mark totes with items for exchange, create an Active Bag Out entry, close the bagout once the tote has been tipped, and archive the record to bagout activity. This appears to be a lifecycle description and may be system behavior rather than a user-executed procedure."
+    }
+  ],
+  "discarded_candidates": []
+}

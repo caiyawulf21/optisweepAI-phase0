@@ -1,0 +1,18 @@
+{
+  "operational_scenes": [
+    {
+      "scene_id": "scene_cand_upsfortna_optisweep_training_day1_20260317_000019_s1",
+      "start_time": "00:06:23.520",
+      "end_time": "00:06:38.280",
+      "operational_intent": "Clarify that the HMI software in use is standard/industry-standard across UPS systems, reassuring attendees about its commonality.",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000091",
+        "vec_upsfortna_optisweep_training_day1_20260317_000092",
+        "vec_upsfortna_optisweep_training_day1_20260317_000093",
+        "vec_upsfortna_optisweep_training_day1_20260317_000094",
+        "vec_upsfortna_optisweep_training_day1_20260317_000095"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

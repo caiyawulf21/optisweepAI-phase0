@@ -1,0 +1,172 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "API Specification Access and Documentation",
+      "timestamp_start": "00:52:14.480",
+      "timestamp_end": "00:52:29.360",
+      "primary_intent": "Inform about API specification availability and location",
+      "operational_intents": [
+        "Identify where API specs are stored",
+        "Clarify access to API documentation"
+      ],
+      "knowledge_extraction_strategy": "Extract API spec location and access details",
+      "why_this_strategy": "Clarifies source for API documentation",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000878",
+        "vec_upsfortna_optisweep_training_day1_20260317_000879",
+        "vec_upsfortna_optisweep_training_day1_20260317_000880",
+        "vec_upsfortna_optisweep_training_day1_20260317_000881",
+        "vec_upsfortna_optisweep_training_day1_20260317_000882",
+        "vec_upsfortna_optisweep_training_day1_20260317_000883",
+        "vec_upsfortna_optisweep_training_day1_20260317_000884",
+        "vec_upsfortna_optisweep_training_day1_20260317_000885",
+        "vec_upsfortna_optisweep_training_day1_20260317_000886",
+        "vec_upsfortna_optisweep_training_day1_20260317_000887"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000018"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Discussion on API Collections and Support Challenges",
+      "timestamp_start": "00:52:29.440",
+      "timestamp_end": "00:53:19.200",
+      "primary_intent": "Discuss availability and limitations of API collections for support",
+      "operational_intents": [
+        "Address sharing of Postman or Perl collections",
+        "Explain challenges in direct communication and support",
+        "Highlight importance of software control in transactions"
+      ],
+      "knowledge_extraction_strategy": "Extract support challenges and API collection usage",
+      "why_this_strategy": "Details support constraints and tooling availability",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000888",
+        "vec_upsfortna_optisweep_training_day1_20260317_000889",
+        "vec_upsfortna_optisweep_training_day1_20260317_000890",
+        "vec_upsfortna_optisweep_training_day1_20260317_000891",
+        "vec_upsfortna_optisweep_training_day1_20260317_000892",
+        "vec_upsfortna_optisweep_training_day1_20260317_000893",
+        "vec_upsfortna_optisweep_training_day1_20260317_000894",
+        "vec_upsfortna_optisweep_training_day1_20260317_000895",
+        "vec_upsfortna_optisweep_training_day1_20260317_000896",
+        "vec_upsfortna_optisweep_training_day1_20260317_000897",
+        "vec_upsfortna_optisweep_training_day1_20260317_000898",
+        "vec_upsfortna_optisweep_training_day1_20260317_000899",
+        "vec_upsfortna_optisweep_training_day1_20260317_000900",
+        "vec_upsfortna_optisweep_training_day1_20260317_000901"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000018"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Risks of Bypassing Official Software and API Usage",
+      "timestamp_start": "00:53:19.200",
+      "timestamp_end": "00:54:06.560",
+      "primary_intent": "Explain risks and issues with bypassing official software via APIs",
+      "operational_intents": [
+        "Describe consequences of bypassing official software",
+        "Clarify API role and database interaction restrictions",
+        "Emphasize importance of software synchronization"
+      ],
+      "knowledge_extraction_strategy": "Extract risks and constraints of API and software interaction",
+      "why_this_strategy": "Highlights critical integration and data consistency issues",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000902",
+        "vec_upsfortna_optisweep_training_day1_20260317_000903",
+        "vec_upsfortna_optisweep_training_day1_20260317_000904",
+        "vec_upsfortna_optisweep_training_day1_20260317_000905",
+        "vec_upsfortna_optisweep_training_day1_20260317_000906",
+        "vec_upsfortna_optisweep_training_day1_20260317_000907",
+        "vec_upsfortna_optisweep_training_day1_20260317_000908",
+        "vec_upsfortna_optisweep_training_day1_20260317_000909",
+        "vec_upsfortna_optisweep_training_day1_20260317_000910",
+        "vec_upsfortna_optisweep_training_day1_20260317_000911",
+        "vec_upsfortna_optisweep_training_day1_20260317_000912",
+        "vec_upsfortna_optisweep_training_day1_20260317_000913",
+        "vec_upsfortna_optisweep_training_day1_20260317_000914",
+        "vec_upsfortna_optisweep_training_day1_20260317_000915",
+        "vec_upsfortna_optisweep_training_day1_20260317_000916"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000018"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Planning Deep Dive Session and Next Steps",
+      "timestamp_start": "00:54:06.560",
+      "timestamp_end": "00:54:32.840",
+      "primary_intent": "Schedule and prepare for detailed technical session",
+      "operational_intents": [
+        "Plan timing for deep dive session",
+        "Identify topics for further discussion"
+      ],
+      "knowledge_extraction_strategy": "Extract session planning and topic focus",
+      "why_this_strategy": "Prepares for detailed operational knowledge extraction",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000917",
+        "vec_upsfortna_optisweep_training_day1_20260317_000918",
+        "vec_upsfortna_optisweep_training_day1_20260317_000919",
+        "vec_upsfortna_optisweep_training_day1_20260317_000920",
+        "vec_upsfortna_optisweep_training_day1_20260317_000921",
+        "vec_upsfortna_optisweep_training_day1_20260317_000922",
+        "vec_upsfortna_optisweep_training_day1_20260317_000923",
+        "vec_upsfortna_optisweep_training_day1_20260317_000924"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000018"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Overview of Armis Features and Operator Usage",
+      "timestamp_start": "00:54:32.840",
+      "timestamp_end": "00:55:01.680",
+      "primary_intent": "Describe Armis capabilities and operator benefits",
+      "operational_intents": [
+        "Explain features Armis provides",
+        "Guide operators on using Armis for ATP information",
+        "Outline troubleshooting approach via API"
+      ],
+      "knowledge_extraction_strategy": "Extract Armis feature set and operator guidance",
+      "why_this_strategy": "Supports operator understanding and problem resolution",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000925",
+        "vec_upsfortna_optisweep_training_day1_20260317_000926",
+        "vec_upsfortna_optisweep_training_day1_20260317_000927",
+        "vec_upsfortna_optisweep_training_day1_20260317_000928",
+        "vec_upsfortna_optisweep_training_day1_20260317_000929",
+        "vec_upsfortna_optisweep_training_day1_20260317_000930",
+        "vec_upsfortna_optisweep_training_day1_20260317_000931"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000018"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Navigation and Language Settings in RMS Application",
+      "timestamp_start": "00:55:01.680",
+      "timestamp_end": "00:55:17.743",
+      "primary_intent": "Explain RMS application navigation and language options",
+      "operational_intents": [
+        "Identify navigation buttons in RMS",
+        "Describe language selection feature"
+      ],
+      "knowledge_extraction_strategy": "Extract UI navigation and language setting details",
+      "why_this_strategy": "Facilitates user interface understanding",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000932",
+        "vec_upsfortna_optisweep_training_day1_20260317_000933",
+        "vec_upsfortna_optisweep_training_day1_20260317_000934"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000018"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

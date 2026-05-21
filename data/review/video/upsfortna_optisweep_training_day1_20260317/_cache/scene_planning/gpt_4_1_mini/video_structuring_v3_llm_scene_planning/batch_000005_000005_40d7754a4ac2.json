@@ -1,0 +1,115 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Secure Communication Between WCS and UPS Systems",
+      "timestamp_start": "00:12:51.680",
+      "timestamp_end": "00:13:40.440",
+      "primary_intent": "Explain secure data exchange mechanism between WCS and UPS",
+      "operational_intents": [
+        "Describe the need for secure communication",
+        "Explain encryption and key management",
+        "Clarify data sharing restrictions"
+      ],
+      "knowledge_extraction_strategy": "Extract details on secure communication protocols",
+      "why_this_strategy": "Focus on secure data exchange setup and encryption",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000215",
+        "vec_upsfortna_optisweep_training_day1_20260317_000216",
+        "vec_upsfortna_optisweep_training_day1_20260317_000217",
+        "vec_upsfortna_optisweep_training_day1_20260317_000218",
+        "vec_upsfortna_optisweep_training_day1_20260317_000219",
+        "vec_upsfortna_optisweep_training_day1_20260317_000220",
+        "vec_upsfortna_optisweep_training_day1_20260317_000221",
+        "vec_upsfortna_optisweep_training_day1_20260317_000222",
+        "vec_upsfortna_optisweep_training_day1_20260317_000223",
+        "vec_upsfortna_optisweep_training_day1_20260317_000224",
+        "vec_upsfortna_optisweep_training_day1_20260317_000225",
+        "vec_upsfortna_optisweep_training_day1_20260317_000226",
+        "vec_upsfortna_optisweep_training_day1_20260317_000227",
+        "vec_upsfortna_optisweep_training_day1_20260317_000228",
+        "vec_upsfortna_optisweep_training_day1_20260317_000229",
+        "vec_upsfortna_optisweep_training_day1_20260317_000230",
+        "vec_upsfortna_optisweep_training_day1_20260317_000231",
+        "vec_upsfortna_optisweep_training_day1_20260317_000232"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000005"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV System Lifecycle and State Transitions Overview",
+      "timestamp_start": "00:13:49.600",
+      "timestamp_end": "00:14:36.360",
+      "primary_intent": "Describe AGV lifecycle states and transitions",
+      "operational_intents": [
+        "Explain startup and shutdown states",
+        "Detail sorting and bagging operations",
+        "Outline AGV charging process"
+      ],
+      "knowledge_extraction_strategy": "Extract lifecycle stages and state transition details",
+      "why_this_strategy": "Capture operational flow of AGV system lifecycle",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000233",
+        "vec_upsfortna_optisweep_training_day1_20260317_000234",
+        "vec_upsfortna_optisweep_training_day1_20260317_000235",
+        "vec_upsfortna_optisweep_training_day1_20260317_000236",
+        "vec_upsfortna_optisweep_training_day1_20260317_000237",
+        "vec_upsfortna_optisweep_training_day1_20260317_000238",
+        "vec_upsfortna_optisweep_training_day1_20260317_000239",
+        "vec_upsfortna_optisweep_training_day1_20260317_000240",
+        "vec_upsfortna_optisweep_training_day1_20260317_000241",
+        "vec_upsfortna_optisweep_training_day1_20260317_000242",
+        "vec_upsfortna_optisweep_training_day1_20260317_000243",
+        "vec_upsfortna_optisweep_training_day1_20260317_000244",
+        "vec_upsfortna_optisweep_training_day1_20260317_000245"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000005"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Discussion on State Transition Failures and Meeting Scope",
+      "timestamp_start": "00:14:39.960",
+      "timestamp_end": "00:15:53.120",
+      "primary_intent": "Discuss potential failure modes and meeting focus",
+      "operational_intents": [
+        "Identify failure conditions for state transitions",
+        "Clarify scope and scheduling of detailed meetings",
+        "Reference existing documentation and support processes"
+      ],
+      "knowledge_extraction_strategy": "Extract failure scenarios and meeting plans",
+      "why_this_strategy": "Focus on failure conditions and coordination details",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000246",
+        "vec_upsfortna_optisweep_training_day1_20260317_000247",
+        "vec_upsfortna_optisweep_training_day1_20260317_000248",
+        "vec_upsfortna_optisweep_training_day1_20260317_000249",
+        "vec_upsfortna_optisweep_training_day1_20260317_000250",
+        "vec_upsfortna_optisweep_training_day1_20260317_000251",
+        "vec_upsfortna_optisweep_training_day1_20260317_000252",
+        "vec_upsfortna_optisweep_training_day1_20260317_000253",
+        "vec_upsfortna_optisweep_training_day1_20260317_000254",
+        "vec_upsfortna_optisweep_training_day1_20260317_000255",
+        "vec_upsfortna_optisweep_training_day1_20260317_000256",
+        "vec_upsfortna_optisweep_training_day1_20260317_000257",
+        "vec_upsfortna_optisweep_training_day1_20260317_000258",
+        "vec_upsfortna_optisweep_training_day1_20260317_000259",
+        "vec_upsfortna_optisweep_training_day1_20260317_000260",
+        "vec_upsfortna_optisweep_training_day1_20260317_000261",
+        "vec_upsfortna_optisweep_training_day1_20260317_000262",
+        "vec_upsfortna_optisweep_training_day1_20260317_000263",
+        "vec_upsfortna_optisweep_training_day1_20260317_000264",
+        "vec_upsfortna_optisweep_training_day1_20260317_000265",
+        "vec_upsfortna_optisweep_training_day1_20260317_000266",
+        "vec_upsfortna_optisweep_training_day1_20260317_000267",
+        "vec_upsfortna_optisweep_training_day1_20260317_000268"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000005"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Overview of AGV Operational States",
+      "timestamp_start": "00:46:12.120",
+      "timestamp_end": "00:46:43.192",
+      "primary_intent": "Explain the different operational states of AGVs",
+      "operational_intents": [
+        "Define shutdown state",
+        "Describe startup and running states",
+        "Clarify idle state absence"
+      ],
+      "knowledge_extraction_strategy": "Extract state definitions and transitions",
+      "why_this_strategy": "States and transitions are key for system understanding",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000763",
+        "vec_upsfortna_optisweep_training_day1_20260317_000764",
+        "vec_upsfortna_optisweep_training_day1_20260317_000765",
+        "vec_upsfortna_optisweep_training_day1_20260317_000766",
+        "vec_upsfortna_optisweep_training_day1_20260317_000767",
+        "vec_upsfortna_optisweep_training_day1_20260317_000768",
+        "vec_upsfortna_optisweep_training_day1_20260317_000769",
+        "vec_upsfortna_optisweep_training_day1_20260317_000770",
+        "vec_upsfortna_optisweep_training_day1_20260317_000771",
+        "vec_upsfortna_optisweep_training_day1_20260317_000772"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000016"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "AGV Shutdown and Charging Behavior",
+      "timestamp_start": "00:46:43.192",
+      "timestamp_end": "00:47:16.360",
+      "primary_intent": "Describe AGV behavior during shutdown and charging",
+      "operational_intents": [
+        "Explain shutdown logic for charging",
+        "Distinguish shutdown from idle state",
+        "Introduce transition mini states"
+      ],
+      "knowledge_extraction_strategy": "Focus on shutdown and charging operational details",
+      "why_this_strategy": "Shutdown and charging are critical AGV behaviors",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000772",
+        "vec_upsfortna_optisweep_training_day1_20260317_000773",
+        "vec_upsfortna_optisweep_training_day1_20260317_000774",
+        "vec_upsfortna_optisweep_training_day1_20260317_000775",
+        "vec_upsfortna_optisweep_training_day1_20260317_000776",
+        "vec_upsfortna_optisweep_training_day1_20260317_000777",
+        "vec_upsfortna_optisweep_training_day1_20260317_000778",
+        "vec_upsfortna_optisweep_training_day1_20260317_000779",
+        "vec_upsfortna_optisweep_training_day1_20260317_000780",
+        "vec_upsfortna_optisweep_training_day1_20260317_000781"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000016"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Running, Bagging Out, and Close Out States",
+      "timestamp_start": "00:47:16.640",
+      "timestamp_end": "00:47:56.920",
+      "primary_intent": "Explain operational states during sorting cycles",
+      "operational_intents": [
+        "Define running state",
+        "Describe bagging out and close out processes",
+        "Explain state transitions between running and close out"
+      ],
+      "knowledge_extraction_strategy": "Extract detailed state transition sequences",
+      "why_this_strategy": "Understanding sorting cycle states is essential",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000782",
+        "vec_upsfortna_optisweep_training_day1_20260317_000783",
+        "vec_upsfortna_optisweep_training_day1_20260317_000784",
+        "vec_upsfortna_optisweep_training_day1_20260317_000785",
+        "vec_upsfortna_optisweep_training_day1_20260317_000786",
+        "vec_upsfortna_optisweep_training_day1_20260317_000787",
+        "vec_upsfortna_optisweep_training_day1_20260317_000788",
+        "vec_upsfortna_optisweep_training_day1_20260317_000789",
+        "vec_upsfortna_optisweep_training_day1_20260317_000790",
+        "vec_upsfortna_optisweep_training_day1_20260317_000791",
+        "vec_upsfortna_optisweep_training_day1_20260317_000792"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000016"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "System Behavior During Non-Peak and Shutdown",
+      "timestamp_start": "00:48:02.480",
+      "timestamp_end": "00:48:51.840",
+      "primary_intent": "Discuss system operation during downtime and shutdown",
+      "operational_intents": [
+        "Explain preload and sorting timing",
+        "Describe operator decisions for shutdown",
+        "Clarify system state transitions during downtime"
+      ],
+      "knowledge_extraction_strategy": "Extract timing and operator control details",
+      "why_this_strategy": "Downtime management affects system efficiency",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000794",
+        "vec_upsfortna_optisweep_training_day1_20260317_000795",
+        "vec_upsfortna_optisweep_training_day1_20260317_000796",
+        "vec_upsfortna_optisweep_training_day1_20260317_000797",
+        "vec_upsfortna_optisweep_training_day1_20260317_000798",
+        "vec_upsfortna_optisweep_training_day1_20260317_000799",
+        "vec_upsfortna_optisweep_training_day1_20260317_000800",
+        "vec_upsfortna_optisweep_training_day1_20260317_000801",
+        "vec_upsfortna_optisweep_training_day1_20260317_000802",
+        "vec_upsfortna_optisweep_training_day1_20260317_000803",
+        "vec_upsfortna_optisweep_training_day1_20260317_000804",
+        "vec_upsfortna_optisweep_training_day1_20260317_000805",
+        "vec_upsfortna_optisweep_training_day1_20260317_000806",
+        "vec_upsfortna_optisweep_training_day1_20260317_000807",
+        "vec_upsfortna_optisweep_training_day1_20260317_000808",
+        "vec_upsfortna_optisweep_training_day1_20260317_000809"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000016"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Planning for Peak Operations and AGV Charging Impact",
+      "timestamp_start": "00:48:59.800",
+      "timestamp_end": "00:49:12.143",
+      "primary_intent": "Highlight peak operation planning and charging effects",
+      "operational_intents": [
+        "Discuss peak operation challenges",
+        "Explain AGV charging impact on cycle times"
+      ],
+      "knowledge_extraction_strategy": "Focus on peak planning and system performance",
+      "why_this_strategy": "Peak planning critical for operational efficiency",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000810",
+        "vec_upsfortna_optisweep_training_day1_20260317_000811",
+        "vec_upsfortna_optisweep_training_day1_20260317_000812",
+        "vec_upsfortna_optisweep_training_day1_20260317_000813"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000016"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "optisweep_training_internal_063_database_walkthrough_section_header",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        63
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0063"
+      ],
+      "unit_type": "operational_process",
+      "title": "Database Walkthrough (Section Introduction)",
+      "systems": [],
+      "components": [],
+      "summary": "Introductory slide signaling a forthcoming walkthrough of the database. Provides no operational details or steps.",
+      "observed_evidence": [
+        "Visible text on slide: \"Database Walkthrough\"",
+        "Slide is minimal, serving as a section header without instructions"
+      ],
+      "relationships": [],
+      "retrieval_text": "Section header: Database Walkthrough. Overview-only; no procedures or steps on this slide.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

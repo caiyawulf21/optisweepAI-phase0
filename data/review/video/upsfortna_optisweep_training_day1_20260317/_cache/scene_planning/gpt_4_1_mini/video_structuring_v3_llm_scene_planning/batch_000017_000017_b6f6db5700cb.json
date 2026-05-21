@@ -1,0 +1,128 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Planning for Peak System Capacity",
+      "timestamp_start": "00:49:12.143",
+      "timestamp_end": "00:49:50.760",
+      "primary_intent": "Explain how to plan system resources for peak operational demand",
+      "operational_intents": [
+        "Discuss challenges during peak periods",
+        "Identify required physical resources (APBS, sorters, tippers)",
+        "Describe UPS planning approach for peak capacity",
+        "Introduce system testing and simulation based on peak values"
+      ],
+      "knowledge_extraction_strategy": "Extract resource planning and simulation details",
+      "why_this_strategy": "Focus on peak capacity planning and resource allocation",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000814",
+        "vec_upsfortna_optisweep_training_day1_20260317_000815",
+        "vec_upsfortna_optisweep_training_day1_20260317_000816",
+        "vec_upsfortna_optisweep_training_day1_20260317_000817",
+        "vec_upsfortna_optisweep_training_day1_20260317_000818",
+        "vec_upsfortna_optisweep_training_day1_20260317_000819",
+        "vec_upsfortna_optisweep_training_day1_20260317_000820",
+        "vec_upsfortna_optisweep_training_day1_20260317_000821",
+        "vec_upsfortna_optisweep_training_day1_20260317_000822",
+        "vec_upsfortna_optisweep_training_day1_20260317_000823",
+        "vec_upsfortna_optisweep_training_day1_20260317_000824",
+        "vec_upsfortna_optisweep_training_day1_20260317_000825",
+        "vec_upsfortna_optisweep_training_day1_20260317_000826",
+        "vec_upsfortna_optisweep_training_day1_20260317_000827",
+        "vec_upsfortna_optisweep_training_day1_20260317_000828",
+        "vec_upsfortna_optisweep_training_day1_20260317_000829",
+        "vec_upsfortna_optisweep_training_day1_20260317_000830",
+        "vec_upsfortna_optisweep_training_day1_20260317_000831",
+        "vec_upsfortna_optisweep_training_day1_20260317_000832",
+        "vec_upsfortna_optisweep_training_day1_20260317_000833",
+        "vec_upsfortna_optisweep_training_day1_20260317_000834"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000017"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Introduction to RMS and AGV Control",
+      "timestamp_start": "00:49:54.920",
+      "timestamp_end": "00:50:54.624",
+      "primary_intent": "Explain the Robot Management System and its role in AGV operation",
+      "operational_intents": [
+        "Define RMS as the control system for AGVs",
+        "Describe AGVs as physical vehicles with sensors",
+        "Explain RMS commands AGVs",
+        "Introduce RMS web application access"
+      ],
+      "knowledge_extraction_strategy": "Extract RMS function and access details",
+      "why_this_strategy": "Clarify RMS role and user interface",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000835",
+        "vec_upsfortna_optisweep_training_day1_20260317_000836",
+        "vec_upsfortna_optisweep_training_day1_20260317_000837",
+        "vec_upsfortna_optisweep_training_day1_20260317_000838",
+        "vec_upsfortna_optisweep_training_day1_20260317_000839",
+        "vec_upsfortna_optisweep_training_day1_20260317_000840",
+        "vec_upsfortna_optisweep_training_day1_20260317_000841",
+        "vec_upsfortna_optisweep_training_day1_20260317_000842",
+        "vec_upsfortna_optisweep_training_day1_20260317_000843",
+        "vec_upsfortna_optisweep_training_day1_20260317_000844",
+        "vec_upsfortna_optisweep_training_day1_20260317_000845",
+        "vec_upsfortna_optisweep_training_day1_20260317_000846",
+        "vec_upsfortna_optisweep_training_day1_20260317_000847",
+        "vec_upsfortna_optisweep_training_day1_20260317_000848",
+        "vec_upsfortna_optisweep_training_day1_20260317_000849",
+        "vec_upsfortna_optisweep_training_day1_20260317_000850",
+        "vec_upsfortna_optisweep_training_day1_20260317_000851"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000017"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "RMS Communication and API Integration",
+      "timestamp_start": "00:50:54.624",
+      "timestamp_end": "00:52:13.760",
+      "primary_intent": "Detail RMS communication protocols and API usage",
+      "operational_intents": [
+        "Describe communication between RMS and Optisweep via REST API",
+        "Explain RMS web interface login process",
+        "Discuss custom and existing APIs collaboration with Geek Plus",
+        "Mention availability of API specifications"
+      ],
+      "knowledge_extraction_strategy": "Extract API and communication protocol details",
+      "why_this_strategy": "Focus on RMS integration and access methods",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_000852",
+        "vec_upsfortna_optisweep_training_day1_20260317_000853",
+        "vec_upsfortna_optisweep_training_day1_20260317_000854",
+        "vec_upsfortna_optisweep_training_day1_20260317_000855",
+        "vec_upsfortna_optisweep_training_day1_20260317_000856",
+        "vec_upsfortna_optisweep_training_day1_20260317_000857",
+        "vec_upsfortna_optisweep_training_day1_20260317_000858",
+        "vec_upsfortna_optisweep_training_day1_20260317_000859",
+        "vec_upsfortna_optisweep_training_day1_20260317_000860",
+        "vec_upsfortna_optisweep_training_day1_20260317_000861",
+        "vec_upsfortna_optisweep_training_day1_20260317_000862",
+        "vec_upsfortna_optisweep_training_day1_20260317_000863",
+        "vec_upsfortna_optisweep_training_day1_20260317_000864",
+        "vec_upsfortna_optisweep_training_day1_20260317_000865",
+        "vec_upsfortna_optisweep_training_day1_20260317_000866",
+        "vec_upsfortna_optisweep_training_day1_20260317_000867",
+        "vec_upsfortna_optisweep_training_day1_20260317_000868",
+        "vec_upsfortna_optisweep_training_day1_20260317_000869",
+        "vec_upsfortna_optisweep_training_day1_20260317_000870",
+        "vec_upsfortna_optisweep_training_day1_20260317_000871",
+        "vec_upsfortna_optisweep_training_day1_20260317_000872",
+        "vec_upsfortna_optisweep_training_day1_20260317_000873",
+        "vec_upsfortna_optisweep_training_day1_20260317_000874",
+        "vec_upsfortna_optisweep_training_day1_20260317_000875",
+        "vec_upsfortna_optisweep_training_day1_20260317_000876",
+        "vec_upsfortna_optisweep_training_day1_20260317_000877"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000017"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

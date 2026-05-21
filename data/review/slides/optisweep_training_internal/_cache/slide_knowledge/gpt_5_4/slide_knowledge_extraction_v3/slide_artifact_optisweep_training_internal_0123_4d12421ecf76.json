@@ -1,0 +1,88 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_123_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        123
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0123"
+      ],
+      "unit_type": "api_capability",
+      "title": "Ignition provides API functionality for Aveva integration",
+      "systems": [
+        "Ignition",
+        "Aveva"
+      ],
+      "components": [
+        "Ignition APIs",
+        "tags"
+      ],
+      "summary": "The slide states that Ignition has APIs intended to provide functionality to Aveva.",
+      "observed_evidence": [
+        "Slide title: 'APIs / section to give the functionality to Aveva.'",
+        "Bullet: 'Ignition has the APIs outlined in the API section to give the functionality to Aveva.'"
+      ],
+      "relationships": [
+        {
+          "type": "provides_functionality_to",
+          "from": "Ignition APIs",
+          "to": "Aveva"
+        }
+      ],
+      "retrieval_text": "Ignition exposes APIs described in the API section, and those APIs provide functionality to Aveva.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_123_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        123
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0123"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Aveva requests trigger Ignition API calls and tag recreation",
+      "systems": [
+        "Aveva",
+        "Ignition"
+      ],
+      "components": [
+        "API request flow",
+        "tags"
+      ],
+      "summary": "The slide describes a behavior where Aveva sends a request, Ignition makes an API request, and the data is recreated in tags.",
+      "observed_evidence": [
+        "Bullet: 'Aveva will send a request which Ignition will make an API request and recreate the data in tags.'"
+      ],
+      "relationships": [
+        {
+          "type": "sends_request_to",
+          "from": "Aveva",
+          "to": "Ignition"
+        },
+        {
+          "type": "triggers",
+          "from": "Ignition",
+          "to": "API request"
+        },
+        {
+          "type": "recreates_data_in",
+          "from": "API request result",
+          "to": "tags"
+        }
+      ],
+      "retrieval_text": "Operational behavior on this slide: Aveva sends a request, Ignition performs an API request, and the returned or processed data is recreated in tags.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "candidate_type": "api_action",
+      "reason": "The slide describes API capability and high-level request flow between Aveva and Ignition, but does not provide explicit reusable action steps, API names, parameters, or an operator/support procedure."
+    }
+  ]
+}

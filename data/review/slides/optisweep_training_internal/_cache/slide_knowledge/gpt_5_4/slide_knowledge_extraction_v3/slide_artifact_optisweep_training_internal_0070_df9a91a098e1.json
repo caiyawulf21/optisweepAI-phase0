@@ -1,0 +1,49 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0070_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        70
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0070"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Robotics Database overview reference",
+      "systems": [
+        "Robot"
+      ],
+      "components": [
+        "Robotics Database"
+      ],
+      "summary": "The slide identifies a Robotics Database and frames the content as an overview. It indicates the existence of a database-related component within the robotics system context, but provides no readable schema details, fields, tables, or operational interactions on this slide artifact.",
+      "observed_evidence": [
+        "Slide title text: 'Robotics Database / Overview'",
+        "Visible labels include 'Robotics Database' and 'Overview'",
+        "Visual elements classify the slide content as a database schema/reference",
+        "Systems or components metadata includes 'Robot'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "references",
+          "target": "Robotics Database"
+        },
+        {
+          "relationship_type": "applies_to",
+          "target": "Robot"
+        }
+      ],
+      "retrieval_text": "Robotics Database overview slide referencing a database component associated with Robot systems. Overview-only database reference without visible table or field details in the artifact.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": [
+    {
+      "candidate_type": "procedure",
+      "title": "Robotics Database overview procedure",
+      "reason": "Rejected because the slide is an overview/reference slide and does not present explicit action steps, navigation flow, checks, or reusable operational guidance."
+    }
+  ]
+}

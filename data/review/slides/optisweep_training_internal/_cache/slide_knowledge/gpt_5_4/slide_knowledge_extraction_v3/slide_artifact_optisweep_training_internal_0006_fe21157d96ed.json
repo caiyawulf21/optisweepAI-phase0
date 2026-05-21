@@ -1,0 +1,224 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0006_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        6
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0006"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "AGV refers to Geek+ Automated Guided Vehicles",
+      "systems": [
+        "Geek+ RMS",
+        "AGV"
+      ],
+      "components": [
+        "AGV"
+      ],
+      "summary": "The slide defines AGVs as Automated Guided Vehicles and identifies the platform in use as Geek+ AGVs.",
+      "observed_evidence": [
+        "Slide title: 'AGVs / Automated Guided Vehicles'",
+        "Bullet: 'Geek+ AGVs'"
+      ],
+      "relationships": [
+        {
+          "type": "defines",
+          "from": "AGV",
+          "to": "Automated Guided Vehicle"
+        },
+        {
+          "type": "instance_of",
+          "from": "Geek+ AGVs",
+          "to": "AGV"
+        }
+      ],
+      "retrieval_text": "AGVs means Automated Guided Vehicles. This slide identifies the vehicles in this system as Geek+ AGVs.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0006_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        6
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0006"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Geek+ AGVs operate over QR codes and are directly controlled by Geek+ RMS",
+      "systems": [
+        "Geek+ RMS",
+        "AGV"
+      ],
+      "components": [
+        "AGV"
+      ],
+      "summary": "The AGVs navigate using QR codes and are directly controlled by the Geek+ RMS system.",
+      "observed_evidence": [
+        "Bullet: 'Operate over QR codes'",
+        "Bullet: 'Directly controlled by Geek+ RMS'"
+      ],
+      "relationships": [
+        {
+          "type": "control",
+          "from": "Geek+ RMS",
+          "to": "AGV"
+        },
+        {
+          "type": "navigation_basis",
+          "from": "AGV",
+          "to": "QR codes"
+        }
+      ],
+      "retrieval_text": "Geek+ AGVs operate over QR codes. They are directly controlled by Geek+ RMS.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0006_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        6
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0006"
+      ],
+      "unit_type": "routing_rule",
+      "title": "Geek+ determines AGV movement and selects the route from point A to point B",
+      "systems": [
+        "Geek+ RMS",
+        "AGV"
+      ],
+      "components": [
+        "AGV"
+      ],
+      "summary": "Movement handling and route selection are performed by the Geek+ system rather than manually by an operator, including determining the best route between two points.",
+      "observed_evidence": [
+        "Bullet: 'Geek+ handles all movement'",
+        "Bullet: 'Geek+ determines the best route to nagivate from point A to point B'"
+      ],
+      "relationships": [
+        {
+          "type": "movement_control",
+          "from": "Geek+",
+          "to": "AGV"
+        },
+        {
+          "type": "route_selection",
+          "from": "Geek+",
+          "to": "AGV path from point A to point B"
+        }
+      ],
+      "retrieval_text": "Geek+ handles all AGV movement and determines the best route for the AGV to navigate from point A to point B.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0006_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        6
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0006"
+      ],
+      "unit_type": "system_behavior",
+      "title": "These AGVs include forward collision sensors",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "forward collision sensors",
+        "AGV"
+      ],
+      "summary": "The AGV version shown on the slide is equipped with forward collision sensors.",
+      "observed_evidence": [
+        "Bullet: 'These AGVs have forward collision sensors'"
+      ],
+      "relationships": [
+        {
+          "type": "has_component",
+          "from": "AGV",
+          "to": "forward collision sensors"
+        }
+      ],
+      "retrieval_text": "These Geek+ AGVs have forward collision sensors.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0006_05",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        6
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0006"
+      ],
+      "unit_type": "operational_process",
+      "title": "This AGV version is intended for operation in a fenced system",
+      "systems": [
+        "AGV"
+      ],
+      "components": [
+        "AGV"
+      ],
+      "summary": "The slide states that this version of AGVs is intended to operate inside a fenced system.",
+      "observed_evidence": [
+        "Bullet: 'This version of AGVs are intended to operate in a fenced system.'"
+      ],
+      "relationships": [
+        {
+          "type": "operating_environment",
+          "from": "AGV version on slide",
+          "to": "fenced system"
+        }
+      ],
+      "retrieval_text": "This version of AGVs is intended to operate in a fenced system.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0006_01",
+      "title": "No explicit AGV operating procedure present on slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        6
+      ],
+      "systems": [
+        "Geek+ RMS",
+        "AGV"
+      ],
+      "components": [
+        "AGV",
+        "forward collision sensors"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide contains descriptive AGV characteristics only"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0006"
+      ],
+      "procedure_visual_summary": "Overview slide describing Geek+ AGVs, QR-code operation, RMS control, route determination, collision sensors, and fenced-system intent.",
+      "steps": [],
+      "warnings": [
+        "Do not infer operator actions or control steps from this overview slide.",
+        "The slide describes system behavior and operating context, not a reusable action sequence."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0006_01",
+        "oku_optisweep_training_internal_0006_02",
+        "oku_optisweep_training_internal_0006_03",
+        "oku_optisweep_training_internal_0006_04",
+        "oku_optisweep_training_internal_0006_05"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because slide 6 is an overview of AGV characteristics and behavior. It does not provide explicit action steps, UI interactions, checks, or operational sequence."
+    }
+  ],
+  "discarded_candidates": []
+}

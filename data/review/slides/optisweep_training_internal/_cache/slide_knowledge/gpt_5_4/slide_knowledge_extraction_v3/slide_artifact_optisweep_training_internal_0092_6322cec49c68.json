@@ -1,0 +1,228 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0092_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        92
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0092"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Location model defines station locations with four location types",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Location Model",
+        "Location",
+        "Sorter",
+        "Tipper",
+        "Hospital",
+        "Induction"
+      ],
+      "summary": "The slide states that locations represent stations in the map and that the location model includes four types: Sorter, Tipper, Hospital, and Induction.",
+      "observed_evidence": [
+        "Locations represent stations in the map.",
+        "Locations have 4 types. Sorter, Tipper, Hospital, Induction."
+      ],
+      "relationships": [
+        {
+          "from": "Location",
+          "relationship": "represents",
+          "to": "station in the map"
+        },
+        {
+          "from": "Location Model",
+          "relationship": "includes_types",
+          "to": "Sorter, Tipper, Hospital, Induction"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database location model reference. Locations represent stations in the map. The model has four location types: Sorter, Tipper, Hospital, and Induction.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0092_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        92
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0092"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "Induction and Hospital location meanings in the location model",
+      "systems": [
+        "Sorter Sweeper Database",
+        "Hospital"
+      ],
+      "components": [
+        "Induction",
+        "Hospital",
+        "Tote"
+      ],
+      "summary": "The slide defines Induction as the specified tote induction location at the hospital and Hospital as the specified tote drop-off location at the hospital.",
+      "observed_evidence": [
+        "Induction: is the specified tote Induction location at the hospital.",
+        "Hospital: is the specified tote drop off location at the hospital."
+      ],
+      "relationships": [
+        {
+          "from": "Induction",
+          "relationship": "defined_as",
+          "to": "specified tote induction location at the hospital"
+        },
+        {
+          "from": "Hospital",
+          "relationship": "defined_as",
+          "to": "specified tote drop off location at the hospital"
+        }
+      ],
+      "retrieval_text": "Location model definitions: Induction is the specified tote induction location at the hospital. Hospital is the specified tote drop-off location at the hospital.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0092_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        92
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0092"
+      ],
+      "unit_type": "system_behavior",
+      "title": "AGV cell code matching hospital or induction location triggers hospital controller notification",
+      "systems": [
+        "AGV",
+        "Hospital controller",
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "AGV",
+        "cell code",
+        "Induction location",
+        "Hospital location",
+        "Hospital controller"
+      ],
+      "summary": "When an AGV reports a cell code that matches either the induction or hospital location, the system notifies the hospital controller of the AGV's presence.",
+      "observed_evidence": [
+        "When an AGV reports the same cell code as induction or hospital we notify the hospital controller of the presence of an AGV."
+      ],
+      "relationships": [
+        {
+          "from": "AGV reported cell code",
+          "relationship": "matches",
+          "to": "induction or hospital location"
+        },
+        {
+          "from": "system",
+          "relationship": "notifies",
+          "to": "hospital controller"
+        },
+        {
+          "from": "notification",
+          "relationship": "indicates",
+          "to": "presence of an AGV"
+        }
+      ],
+      "retrieval_text": "System behavior for hospital presence detection: if an AGV reports the same cell code as the induction or hospital location, the hospital controller is notified of the AGV presence.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0092_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        92
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0092"
+      ],
+      "unit_type": "routing_rule",
+      "title": "Completed robotics task station is used to identify tipper and notify tote arrival",
+      "systems": [
+        "Robotics engine",
+        "Tipper",
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "task completion",
+        "reported station",
+        "Tipper",
+        "Tote"
+      ],
+      "summary": "For tippers, when a task is complete from the robotics engine, the reported station is used to determine which tipper the tote is at, and that specific tipper is notified that a tote has arrived.",
+      "observed_evidence": [
+        "Tippers: when a task is complete from robotics engine we use the station it reported back to determine which tipper its at and notify that specific tipper a tote has arrived."
+      ],
+      "relationships": [
+        {
+          "from": "Robotics engine task completion",
+          "relationship": "provides",
+          "to": "reported station"
+        },
+        {
+          "from": "reported station",
+          "relationship": "determines",
+          "to": "which tipper the tote is at"
+        },
+        {
+          "from": "system",
+          "relationship": "notifies",
+          "to": "specific tipper"
+        },
+        {
+          "from": "tipper notification",
+          "relationship": "indicates",
+          "to": "tote has arrived"
+        }
+      ],
+      "retrieval_text": "Tipper routing rule: when a robotics engine task completes, use the station reported back to determine the tipper location and notify that specific tipper that a tote has arrived.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0092_01",
+      "title": "No explicit reusable procedure on location model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        92
+      ],
+      "systems": [
+        "Sorter Sweeper Database",
+        "AGV",
+        "Hospital controller",
+        "Robotics engine"
+      ],
+      "components": [
+        "Location Model",
+        "Induction",
+        "Hospital",
+        "Tipper"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide contains descriptive database model and behavior statements."
+      ],
+      "procedure_screenshot_refs": [],
+      "procedure_visual_summary": "Text slide describing location types and event-triggered notifications for hospital and tippers; no numbered or imperative steps are shown.",
+      "steps": [],
+      "warnings": [
+        "Do not infer operator or support actions from system behavior statements.",
+        "The slide describes model semantics and automatic notifications, not a user-executed workflow."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0092_01",
+        "oku_optisweep_training_internal_0092_02",
+        "oku_optisweep_training_internal_0092_03",
+        "oku_optisweep_training_internal_0092_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because slide 92 provides database model definitions and automatic system behavior for AGV and tipper notifications, but no explicit action sequence or reusable operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

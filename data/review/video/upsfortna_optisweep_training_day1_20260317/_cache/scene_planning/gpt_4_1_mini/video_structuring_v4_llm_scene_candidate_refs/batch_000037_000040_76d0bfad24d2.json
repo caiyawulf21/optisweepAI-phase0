@@ -1,0 +1,99 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Manual Recovery and Charging of Dead AGVs",
+      "timestamp_start": "01:50:12.191",
+      "timestamp_end": "01:51:21.880",
+      "primary_intent": "Explain manual procedures for handling completely dead AGVs",
+      "operational_intents": [
+        "Describe steps to remove dead AGV from system",
+        "Explain manual charging process using a dolly",
+        "Highlight challenges with dead AGVs and manual intervention"
+      ],
+      "knowledge_extraction_strategy": "Extract detailed manual recovery steps and conditions",
+      "why_this_strategy": "Focus on manual intervention for dead AGVs",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000037"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000037"
+      ]
+    },
+    {
+      "scene_title": "Monitoring AGV Battery Levels and Charging Thresholds",
+      "timestamp_start": "01:51:21.880",
+      "timestamp_end": "01:52:26.680",
+      "primary_intent": "Explain battery charge levels and system behavior thresholds",
+      "operational_intents": [
+        "Identify battery percentage indicators and their meanings",
+        "Describe system responses at various battery levels",
+        "Advise on avoiding low battery states to prevent downtime"
+      ],
+      "knowledge_extraction_strategy": "Extract battery level thresholds and system responses",
+      "why_this_strategy": "Clarify battery management and system behavior",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000037"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000037"
+      ]
+    },
+    {
+      "scene_title": "Procedures for Manual Charging and System Boot-up",
+      "timestamp_start": "01:52:26.680",
+      "timestamp_end": "01:53:16.449",
+      "primary_intent": "Discuss manual charging requirements and system boot process",
+      "operational_intents": [
+        "Clarify if AGV must be on to charge manually",
+        "Explain automatic boot-up when sufficient charge is reached",
+        "Recommend best practices for charging and system reintegration"
+      ],
+      "knowledge_extraction_strategy": "Extract manual charging conditions and boot-up behavior",
+      "why_this_strategy": "Detail manual charging and system restart process",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000037"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000037"
+      ]
+    },
+    {
+      "scene_title": "System Self-Charging and Charger Management",
+      "timestamp_start": "01:53:16.449",
+      "timestamp_end": "01:54:16.080",
+      "primary_intent": "Explain system self-charging and importance of charger management",
+      "operational_intents": [
+        "Describe how AGV charges itself after manual intervention",
+        "Highlight importance of enabling chargers after removal",
+        "Discuss impact of charger availability on charging time"
+      ],
+      "knowledge_extraction_strategy": "Extract system charging behavior and charger management tips",
+      "why_this_strategy": "Focus on system charging and charger usage",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000038"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000038"
+      ]
+    },
+    {
+      "scene_title": "Transition to Break and Team Coordination",
+      "timestamp_start": "01:54:16.080",
+      "timestamp_end": "01:55:03.120",
+      "primary_intent": "Conclude RMS section and coordinate team break",
+      "operational_intents": [
+        "Signal end of RMS training section",
+        "Discuss timing and need for break",
+        "Coordinate team readiness and schedule"
+      ],
+      "knowledge_extraction_strategy": "Extract session transition and team coordination cues",
+      "why_this_strategy": "Mark end of topic and manage session flow",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000038"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000038"
+      ]
+    }
+  ]
+}

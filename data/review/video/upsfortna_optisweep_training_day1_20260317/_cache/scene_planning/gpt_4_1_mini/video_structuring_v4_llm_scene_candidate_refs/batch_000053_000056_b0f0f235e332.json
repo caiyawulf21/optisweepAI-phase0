@@ -1,0 +1,29 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Unknown Slide Sequence with No Transcript Content",
+      "timestamp_start": "02:02:59.760",
+      "timestamp_end": "02:04:29.880",
+      "primary_intent": "Identify and review slide content",
+      "operational_intents": [
+        "Assess slide visuals for operational relevance",
+        "Determine if further content extraction is needed"
+      ],
+      "knowledge_extraction_strategy": "Defer extraction pending slide content review",
+      "why_this_strategy": "No transcript content; slides require visual review",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000053",
+        "cand_upsfortna_optisweep_training_day1_20260317_000054",
+        "cand_upsfortna_optisweep_training_day1_20260317_000055",
+        "cand_upsfortna_optisweep_training_day1_20260317_000056"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000053",
+        "sss_upsfortna_optisweep_training_day1_20260317_000054",
+        "sss_upsfortna_optisweep_training_day1_20260317_000055",
+        "sss_upsfortna_optisweep_training_day1_20260317_000056"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

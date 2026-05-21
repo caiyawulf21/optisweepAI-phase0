@@ -1,0 +1,126 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0132_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        132
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0132"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Stunnel connections view should display three connections during unplanned restart check",
+      "systems": [
+        "Stunnel"
+      ],
+      "components": [
+        "Connections view",
+        "AI01",
+        "AI02",
+        "SortationChat"
+      ],
+      "summary": "The slide indicates that in stunnel, using File > Connections should show three connections: AI01, AI02, and SortationChat.",
+      "observed_evidence": [
+        "Visible text: 'Open stunnel'",
+        "Visible text: 'Under file click connections'",
+        "Visible text: 'It should show 3 connections AI01, AI02, and SortationChat.'"
+      ],
+      "relationships": [],
+      "retrieval_text": "Services / Unplanned restart. Open stunnel. Under File click Connections. The connections view should show 3 connections: AI01, AI02, and SortationChat.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_0132_01",
+      "title": "Check stunnel connections during unplanned restart",
+      "procedure_type": "validation_check",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        132
+      ],
+      "systems": [
+        "Stunnel"
+      ],
+      "components": [
+        "Connections view",
+        "AI01",
+        "AI02",
+        "SortationChat"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Stunnel application is accessible"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0132"
+      ],
+      "procedure_visual_summary": "Slide titled 'Services / Unplanned restart' instructs the user to open stunnel, select File > Connections, and verify three connections are shown: AI01, AI02, and SortationChat.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Open stunnel.",
+          "expected_outcome": "The stunnel application is open.",
+          "validation_check": "Stunnel window is visible.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:132",
+            "artifact:slide_artifact_optisweep_training_internal_0132"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0132"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0132"
+          ],
+          "visual_region_hint": "stunnel application referenced by slide text"
+        },
+        {
+          "step_order": 2,
+          "instruction": "In stunnel, click File, then click Connections.",
+          "expected_outcome": "The connections view or dialog opens.",
+          "validation_check": "A stunnel connections listing is displayed.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:132",
+            "artifact:slide_artifact_optisweep_training_internal_0132"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0132"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0132"
+          ],
+          "visual_region_hint": "File menu and Connections option in stunnel"
+        },
+        {
+          "step_order": 3,
+          "instruction": "Verify that the connections shown are AI01, AI02, and SortationChat.",
+          "expected_outcome": "Three connections are visible: AI01, AI02, and SortationChat.",
+          "validation_check": "Exactly these three connection names are shown.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:132",
+            "artifact:slide_artifact_optisweep_training_internal_0132"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0132"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0132"
+          ],
+          "visual_region_hint": "Connections list in stunnel"
+        }
+      ],
+      "warnings": [],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0132_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Validation check for unplanned restart: open stunnel, go to File > Connections, and confirm the three connections AI01, AI02, and SortationChat are present."
+    }
+  ],
+  "discarded_candidates": []
+}

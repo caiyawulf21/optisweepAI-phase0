@@ -1,0 +1,16 @@
+[
+  {
+    "candidate_id": "uku_upsfortna_optisweep_training_day1_20260317_000090_02",
+    "candidate_type": "operational_knowledge_unit",
+    "source_scene_id": "scene_upsfortna_optisweep_training_day1_20260317_000090",
+    "discard_reasons": [
+      "invalid unit type"
+    ],
+    "failed_rules": [
+      "invalid_unit_type"
+    ],
+    "original_candidate_summary": "Clarify scope of support responsibility for preventing repeats",
+    "timestamp_start": "02:35:24.320",
+    "timestamp_end": "02:35:26.480"
+  }
+]

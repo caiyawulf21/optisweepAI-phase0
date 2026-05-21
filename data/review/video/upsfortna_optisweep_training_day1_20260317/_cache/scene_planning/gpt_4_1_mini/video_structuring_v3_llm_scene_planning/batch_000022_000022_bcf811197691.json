@@ -1,0 +1,109 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "Sign-in Sheet Distribution and Purpose",
+      "timestamp_start": "01:04:26.029",
+      "timestamp_end": "01:04:36.538",
+      "primary_intent": "Distribute sign-in sheet and explain its purpose",
+      "operational_intents": [
+        "Pass around sign-in sheet",
+        "Explain tracking attendance and survey follow-up"
+      ],
+      "knowledge_extraction_strategy": "Identify procedural steps and rationale",
+      "why_this_strategy": "Clarifies attendance tracking and feedback process",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001092",
+        "vec_upsfortna_optisweep_training_day1_20260317_001093",
+        "vec_upsfortna_optisweep_training_day1_20260317_001094",
+        "vec_upsfortna_optisweep_training_day1_20260317_001095",
+        "vec_upsfortna_optisweep_training_day1_20260317_001096"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000022"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Explanation of Robot System Status and Counts",
+      "timestamp_start": "01:04:36.538",
+      "timestamp_end": "01:06:00.560",
+      "primary_intent": "Explain robot system status and inventory counts",
+      "operational_intents": [
+        "Describe robot presence in system and RMS",
+        "Clarify robot counts and system associations"
+      ],
+      "knowledge_extraction_strategy": "Extract system status definitions and inventory details",
+      "why_this_strategy": "Differentiates robot states and counts clearly",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001097",
+        "vec_upsfortna_optisweep_training_day1_20260317_001098",
+        "vec_upsfortna_optisweep_training_day1_20260317_001099",
+        "vec_upsfortna_optisweep_training_day1_20260317_001100",
+        "vec_upsfortna_optisweep_training_day1_20260317_001101",
+        "vec_upsfortna_optisweep_training_day1_20260317_001102",
+        "vec_upsfortna_optisweep_training_day1_20260317_001103",
+        "vec_upsfortna_optisweep_training_day1_20260317_001104",
+        "vec_upsfortna_optisweep_training_day1_20260317_001105",
+        "vec_upsfortna_optisweep_training_day1_20260317_001106",
+        "vec_upsfortna_optisweep_training_day1_20260317_001107",
+        "vec_upsfortna_optisweep_training_day1_20260317_001108",
+        "vec_upsfortna_optisweep_training_day1_20260317_001109",
+        "vec_upsfortna_optisweep_training_day1_20260317_001110",
+        "vec_upsfortna_optisweep_training_day1_20260317_001111",
+        "vec_upsfortna_optisweep_training_day1_20260317_001112",
+        "vec_upsfortna_optisweep_training_day1_20260317_001113",
+        "vec_upsfortna_optisweep_training_day1_20260317_001114",
+        "vec_upsfortna_optisweep_training_day1_20260317_001115",
+        "vec_upsfortna_optisweep_training_day1_20260317_001116",
+        "vec_upsfortna_optisweep_training_day1_20260317_001117",
+        "vec_upsfortna_optisweep_training_day1_20260317_001118",
+        "vec_upsfortna_optisweep_training_day1_20260317_001119",
+        "vec_upsfortna_optisweep_training_day1_20260317_001120",
+        "vec_upsfortna_optisweep_training_day1_20260317_001121",
+        "vec_upsfortna_optisweep_training_day1_20260317_001122",
+        "vec_upsfortna_optisweep_training_day1_20260317_001123",
+        "vec_upsfortna_optisweep_training_day1_20260317_001124",
+        "vec_upsfortna_optisweep_training_day1_20260317_001125",
+        "vec_upsfortna_optisweep_training_day1_20260317_001126",
+        "vec_upsfortna_optisweep_training_day1_20260317_001127",
+        "vec_upsfortna_optisweep_training_day1_20260317_001128"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000022"
+      ],
+      "validation_status": "needs_review"
+    },
+    {
+      "scene_title": "Reasons for Removing AGVs and Maintenance Issues",
+      "timestamp_start": "01:06:30.000",
+      "timestamp_end": "01:07:29.883",
+      "primary_intent": "Explain reasons and conditions for removing AGVs",
+      "operational_intents": [
+        "Discuss common AGV faults and cleaning issues",
+        "Describe impact of preload stickers on AGV sensors",
+        "Explain maintenance and fault resolution procedures"
+      ],
+      "knowledge_extraction_strategy": "Identify fault causes and maintenance rationale",
+      "why_this_strategy": "Clarifies operational challenges and fixes",
+      "evidence_chunk_refs": [
+        "vec_upsfortna_optisweep_training_day1_20260317_001129",
+        "vec_upsfortna_optisweep_training_day1_20260317_001130",
+        "vec_upsfortna_optisweep_training_day1_20260317_001131",
+        "vec_upsfortna_optisweep_training_day1_20260317_001132",
+        "vec_upsfortna_optisweep_training_day1_20260317_001133",
+        "vec_upsfortna_optisweep_training_day1_20260317_001134",
+        "vec_upsfortna_optisweep_training_day1_20260317_001135",
+        "vec_upsfortna_optisweep_training_day1_20260317_001136",
+        "vec_upsfortna_optisweep_training_day1_20260317_001137",
+        "vec_upsfortna_optisweep_training_day1_20260317_001138",
+        "vec_upsfortna_optisweep_training_day1_20260317_001139",
+        "vec_upsfortna_optisweep_training_day1_20260317_001140",
+        "vec_upsfortna_optisweep_training_day1_20260317_001141"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000022"
+      ],
+      "validation_status": "needs_review"
+    }
+  ]
+}

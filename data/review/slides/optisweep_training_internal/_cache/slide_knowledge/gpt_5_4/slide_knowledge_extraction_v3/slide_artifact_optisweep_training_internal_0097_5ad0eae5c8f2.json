@@ -1,0 +1,174 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0097_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        97
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0097"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Tipper tag model in Sorter Sweeper Database",
+      "systems": [
+        "OptiSweep",
+        "Tipper"
+      ],
+      "components": [
+        "Sorter Sweeper Database",
+        "Tag Model"
+      ],
+      "summary": "The slide describes a tag model where each tipper has 12 subscribed tags: 7 input tags and 5 output tags. OptiSweep Software receives messages from the tipper on output tags and writes to input tags.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Tag Model'",
+        "Text states: 'Every tipper has 12 tags that we subscribe to. 7 in and 5 out.'",
+        "Text states: 'OPTISweep Software receives messages from the tipper on the out Tags and write to the In Tags.'"
+      ],
+      "relationships": [
+        {
+          "type": "message_flow",
+          "from": "Tipper out tags",
+          "to": "OptiSweep Software"
+        },
+        {
+          "type": "write_flow",
+          "from": "OptiSweep Software",
+          "to": "Tipper in tags"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database tag model reference. Each tipper has 12 subscribed tags, with 7 in and 5 out. OptiSweep Software receives messages from the tipper on out tags and writes to in tags.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0097_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        97
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0097"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "Tag model field definitions",
+      "systems": [
+        "OptiSweep",
+        "Tipper"
+      ],
+      "components": [
+        "Tag Model"
+      ],
+      "summary": "The slide defines four tag model fields: TagType defines the tag and is used to process the action; Bit indicates whether a received tag should be broken into bits; Value shows the current value; Flag tracks when the tipper went into cycle.",
+      "observed_evidence": [
+        "Bullet: 'TagType: Defines the Tag and is used to process the action.'",
+        "Bullet: 'Bit: indicates if that tag should be broken up into bits when received'",
+        "Bullet: 'Value: Shows the Current Value'",
+        "Bullet: 'Flag: Is used to track when the tipper went into cycle.'"
+      ],
+      "relationships": [
+        {
+          "type": "field_definition",
+          "field": "TagType",
+          "meaning": "Defines the tag and is used to process the action"
+        },
+        {
+          "type": "field_definition",
+          "field": "Bit",
+          "meaning": "Indicates if the tag should be broken into bits when received"
+        },
+        {
+          "type": "field_definition",
+          "field": "Value",
+          "meaning": "Shows the current value"
+        },
+        {
+          "type": "field_definition",
+          "field": "Flag",
+          "meaning": "Tracks when the tipper went into cycle"
+        }
+      ],
+      "retrieval_text": "Tag model glossary definitions for Sorter Sweeper Database. TagType defines the tag and is used to process the action. Bit indicates whether a tag should be broken into bits when received. Value shows the current value. Flag tracks when the tipper went into cycle.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0097_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        97
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0097"
+      ],
+      "unit_type": "system_behavior",
+      "title": "OptiSweep tag communication behavior with tipper",
+      "systems": [
+        "OptiSweep",
+        "Tipper"
+      ],
+      "components": [
+        "OptiSweep Software",
+        "Tipper tags"
+      ],
+      "summary": "Operationally, the system behavior shown is asymmetric: OptiSweep consumes messages from tipper out tags and sends values by writing to tipper in tags.",
+      "observed_evidence": [
+        "Text states: 'OPTISweep Software receives messages from the tipper on the out Tags and write to the In Tags.'",
+        "Text states there are separate in and out tags for each tipper"
+      ],
+      "relationships": [
+        {
+          "type": "read_from",
+          "actor": "OptiSweep Software",
+          "target": "Tipper out tags"
+        },
+        {
+          "type": "write_to",
+          "actor": "OptiSweep Software",
+          "target": "Tipper in tags"
+        }
+      ],
+      "retrieval_text": "System behavior for OptiSweep and tipper tags: OptiSweep receives messages from the tipper on out tags and writes to in tags. The tag model separates communication into 7 in tags and 5 out tags per tipper.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0097_01",
+      "title": "No explicit procedure present on tag model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        97
+      ],
+      "systems": [
+        "OptiSweep",
+        "Tipper"
+      ],
+      "components": [
+        "Sorter Sweeper Database",
+        "Tag Model"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewer is examining slide content for procedural guidance"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0097"
+      ],
+      "procedure_visual_summary": "Slide presents database tag model concepts and field definitions, with no numbered or ordered user actions shown.",
+      "steps": [],
+      "warnings": [
+        "The slide describes structure and behavior of tags but does not provide an explicit action sequence.",
+        "Creating operational steps from this slide would require inference beyond the slide evidence."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0097_01",
+        "oku_optisweep_training_internal_0097_02",
+        "oku_optisweep_training_internal_0097_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide is a tag model/database reference slide. It defines tag counts, communication direction, and field meanings, but contains no explicit reusable action guidance or ordered steps."
+    }
+  ],
+  "discarded_candidates": []
+}

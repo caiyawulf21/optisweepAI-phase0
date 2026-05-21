@@ -13,7 +13,7 @@ DATASET_GRAPHS = {
     "canonical_incidents": Path("incidents/graph.md"),
     "timeline_events": Path("timelines/graph.md"),
     "raw_evidence_chunks": Path("evidence/graph.md"),
-    "cat1_records": Path("curated/graph.md"),
+    "candidate_incident_records": Path("curated/graph.md"),
     "sme_review_queue": Path("review/graph.md"),
 }
 
@@ -89,7 +89,7 @@ def export_graphs(data_root: Path = Path("data")) -> dict[str, int]:
         counts[str(graph_path)] = len(records)
 
     procedure_records = []
-    for dataset_name in ["procedure_candidates", "reusable_procedures"]:
+    for dataset_name in ["procedure_candidates"]:
         records = load_json(data_root / DATASET_PATHS[dataset_name])
         procedure_records.extend(records if isinstance(records, list) else [])
     for record in procedure_records:
@@ -97,7 +97,7 @@ def export_graphs(data_root: Path = Path("data")) -> dict[str, int]:
         write_markdown(data_root / "procedures" / "graphs" / f"{node_id(procedure_id)}.md", procedure_id, procedure_graph(record))
 
     workflow_records = []
-    for dataset_name in ["workflow_candidates", "workflow_definitions"]:
+    for dataset_name in ["workflow_candidates"]:
         records = load_json(data_root / DATASET_PATHS[dataset_name])
         workflow_records.extend(records if isinstance(records, list) else [])
     for record in workflow_records:

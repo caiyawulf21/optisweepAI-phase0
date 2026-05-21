@@ -1,0 +1,51 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0094_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        94
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0094"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Hospital tags model drives subscribed tag processing by TagTypeParent",
+      "systems": [
+        "Hospital"
+      ],
+      "components": [
+        "hospital controller",
+        "tags list",
+        "TagTypeParent"
+      ],
+      "summary": "The slide states that data from the hospital controller is processed using a list of tags that the system subscribes to, and actions are taken based on TagTypeParent.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Hospital Tags Model'",
+        "Visible text: 'To process the data from the hospital controller we have a list of tags that we subscribe to and action on based on the TagTypeParent.'",
+        "Visual element classified as database_schema"
+      ],
+      "relationships": [
+        {
+          "from": "hospital controller data",
+          "to": "list of subscribed tags",
+          "type": "processed_via"
+        },
+        {
+          "from": "subscribed tags",
+          "to": "actions",
+          "type": "actioned_based_on"
+        },
+        {
+          "from": "TagTypeParent",
+          "to": "actions",
+          "type": "determines"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Hospital Tags Model. Data from the hospital controller is handled through a subscribed list of tags, and the system actions those tags based on TagTypeParent.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

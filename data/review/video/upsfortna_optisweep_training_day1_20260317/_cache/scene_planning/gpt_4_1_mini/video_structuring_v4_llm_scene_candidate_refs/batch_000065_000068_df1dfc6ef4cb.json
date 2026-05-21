@@ -1,0 +1,115 @@
+{
+  "operational_scenes": [
+    {
+      "scene_title": "System Faults and Remote Monitoring Overview",
+      "timestamp_start": "02:14:00.061",
+      "timestamp_end": "02:15:07.280",
+      "primary_intent": "Explain system faults and remote monitoring capabilities",
+      "operational_intents": [
+        "Describe system fault types and their indications",
+        "Explain limitations of remote monitoring via thin clients",
+        "Discuss current methods to access system status remotely"
+      ],
+      "knowledge_extraction_strategy": "Segment by fault explanation and remote access discussion",
+      "why_this_strategy": "Distinct shift from fault types to remote monitoring methods",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000065"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000065"
+      ]
+    },
+    {
+      "scene_title": "Level 1 Support and Screen Sharing Practices",
+      "timestamp_start": "02:15:07.280",
+      "timestamp_end": "02:16:04.218",
+      "primary_intent": "Describe support call procedures and screen sharing limitations",
+      "operational_intents": [
+        "Explain typical level 1 support call scenarios",
+        "Discuss screen sharing availability and constraints",
+        "Outline alternative data access methods during support"
+      ],
+      "knowledge_extraction_strategy": "Group related support and screen sharing content",
+      "why_this_strategy": "Focus on support interaction and data access methods",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000065"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000065"
+      ]
+    },
+    {
+      "scene_title": "AGV Status and Hop In Functionality",
+      "timestamp_start": "02:16:04.218",
+      "timestamp_end": "02:17:04.040",
+      "primary_intent": "Explain AGV status pop-ups and hop in controls",
+      "operational_intents": [
+        "Describe hop in close and hop in disable functions",
+        "Explain how hop in affects tote handling and shoot exchanges"
+      ],
+      "knowledge_extraction_strategy": "Isolate AGV status and hop in operational details",
+      "why_this_strategy": "Distinct operational focus on AGV status and hop in",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000065"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000065"
+      ]
+    },
+    {
+      "scene_title": "Introduction to Hot Bins and Priority Management",
+      "timestamp_start": "02:17:06.440",
+      "timestamp_end": "02:18:12.400",
+      "primary_intent": "Define hot bins and their priority in sorting",
+      "operational_intents": [
+        "Explain what hot bins are and their urgency",
+        "Describe how hop in messages manage tote priorities"
+      ],
+      "knowledge_extraction_strategy": "Segment hot bins introduction and priority explanation",
+      "why_this_strategy": "Clear topic shift to hot bins and priority handling",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000066"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066"
+      ]
+    },
+    {
+      "scene_title": "System State and Purge vs Close Out Functions",
+      "timestamp_start": "02:18:12.400",
+      "timestamp_end": "02:19:11.600",
+      "primary_intent": "Explain system states and differences between purge and close out",
+      "operational_intents": [
+        "Describe system states like startup, bag out, shutdown",
+        "Clarify purge function versus close out in tote handling"
+      ],
+      "knowledge_extraction_strategy": "Group system state and tote handling functions",
+      "why_this_strategy": "Related operational controls on system and tote management",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000066"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066"
+      ]
+    },
+    {
+      "scene_title": "AGV Commands and Recovery Mechanisms",
+      "timestamp_start": "02:19:11.600",
+      "timestamp_end": "02:20:08.741",
+      "primary_intent": "Detail AGV command execution and recovery options",
+      "operational_intents": [
+        "Explain commands to remove, recover, pause, and resume AGVs",
+        "Describe resend Geek command and retry logic",
+        "Outline recovery steps for missed callbacks or system restarts"
+      ],
+      "knowledge_extraction_strategy": "Separate AGV command and recovery discussion",
+      "why_this_strategy": "Distinct operational focus on AGV command recovery",
+      "source_candidate_segment_ids": [
+        "cand_upsfortna_optisweep_training_day1_20260317_000066"
+      ],
+      "slide_screen_segment_refs": [
+        "sss_upsfortna_optisweep_training_day1_20260317_000066"
+      ]
+    }
+  ]
+}

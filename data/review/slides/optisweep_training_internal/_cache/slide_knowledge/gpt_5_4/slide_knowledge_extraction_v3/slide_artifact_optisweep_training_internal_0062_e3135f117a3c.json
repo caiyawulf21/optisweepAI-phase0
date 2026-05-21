@@ -1,0 +1,132 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0062_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        62
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0062"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Robotics module acts as the AGV state machine and command generator",
+      "systems": [
+        "OptiSweep",
+        "Geek+",
+        "AGV"
+      ],
+      "components": [
+        "Robotics module",
+        "Sorter Sweeper module",
+        "AGV"
+      ],
+      "summary": "The slide states that the Robotics module functions as the state machine for AGVs. It receives tote tasks from the Sorter Sweeper module and generates commands for Geek+ to execute those tasks.",
+      "observed_evidence": [
+        "Slide text: 'The Robotics module acts as the state machine for AGVs.'",
+        "Slide text: 'It receives tote tasks from the Sorter Sweeper module and generates commands for Geek+ to execute those tasks.'"
+      ],
+      "relationships": [
+        {
+          "from": "Sorter Sweeper module",
+          "relationship": "provides tote tasks to",
+          "to": "Robotics module"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "acts as state machine for",
+          "to": "AGVs"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "generates commands for",
+          "to": "Geek+"
+        },
+        {
+          "from": "Geek+",
+          "relationship": "executes tasks for",
+          "to": "AGVs"
+        }
+      ],
+      "retrieval_text": "Robotics Module detailed design: the Robotics module acts as the state machine for AGVs. It receives tote tasks from the Sorter Sweeper module and generates commands for Geek+ to execute those tasks.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0062_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        62
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0062"
+      ],
+      "unit_type": "api_capability",
+      "title": "AGV command capabilities exposed by the Robotics module",
+      "systems": [
+        "OptiSweep",
+        "Geek+",
+        "AGV"
+      ],
+      "components": [
+        "Robotics module",
+        "AGV"
+      ],
+      "summary": "The slide lists AGV command types associated with the Robotics module: Induct tote, Remove tote, Initialize AGV, Empty go to, Pickup tote, Move tote, Drop off tote, Cancel Request, and Go Charge.",
+      "observed_evidence": [
+        "Slide heading: 'AGV commands:'",
+        "Bulleted commands: 'Induct tote', 'Remove tote', 'Initialize AGV', 'Empty go to', 'Pickup tote', 'Move tote', 'Drop off tote', 'Cancel Request', 'Go Charge'"
+      ],
+      "relationships": [
+        {
+          "from": "Robotics module",
+          "relationship": "can generate command",
+          "to": "Induct tote"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "can generate command",
+          "to": "Remove tote"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "can generate command",
+          "to": "Initialize AGV"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "can generate command",
+          "to": "Empty go to"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "can generate command",
+          "to": "Pickup tote"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "can generate command",
+          "to": "Move tote"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "can generate command",
+          "to": "Drop off tote"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "can generate command",
+          "to": "Cancel Request"
+        },
+        {
+          "from": "Robotics module",
+          "relationship": "can generate command",
+          "to": "Go Charge"
+        }
+      ],
+      "retrieval_text": "AGV commands listed on the Robotics Module detailed design slide: Induct tote, Remove tote, Initialize AGV, Empty go to, Pickup tote, Move tote, Drop off tote, Cancel Request, Go Charge. These are presented as Robotics module command capabilities for AGVs/Geek+ execution.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [],
+  "discarded_candidates": []
+}

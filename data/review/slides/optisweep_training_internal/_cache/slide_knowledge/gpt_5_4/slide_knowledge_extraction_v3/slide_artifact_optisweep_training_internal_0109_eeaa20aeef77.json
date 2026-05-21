@@ -1,0 +1,183 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0109_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        109
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0109"
+      ],
+      "unit_type": "api_capability",
+      "title": "Reset Metrics API is called when UPS cycles a sort",
+      "systems": [
+        "UPS",
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Reset Metrics API"
+      ],
+      "summary": "The slide states that when UPS cycles a sort, it calls an API named Reset Metrics.",
+      "observed_evidence": [
+        "When UPS cycles a sort they call and API called Reset Metrics."
+      ],
+      "relationships": [
+        {
+          "relation_type": "triggers",
+          "target": "sort cycle event"
+        },
+        {
+          "relation_type": "affects",
+          "target": "Sort Model"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Sort Model: when UPS cycles a sort, it calls the Reset Metrics API.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0109_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        109
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0109"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Reset Metrics opens closed chutes during sort cycling",
+      "systems": [
+        "Sorter Sweeper Database",
+        "UPS"
+      ],
+      "components": [
+        "Reset Metrics API",
+        "chutes"
+      ],
+      "summary": "The slide indicates that Reset Metrics opens any chutes that are currently closed as part of cycling a sort.",
+      "observed_evidence": [
+        "This opens any closed chutes"
+      ],
+      "relationships": [
+        {
+          "relation_type": "caused_by",
+          "target": "Reset Metrics API call"
+        }
+      ],
+      "retrieval_text": "During sort cycle processing, the Reset Metrics API opens any closed chutes.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0109_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        109
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0109"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "New SortName and SortGuid are created for each sort cycle",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Sort Model",
+        "SortName",
+        "SortGuid"
+      ],
+      "summary": "The sort model creates a new SortName and SortGuid when a sort is cycled.",
+      "observed_evidence": [
+        "creates a new SortName and SortGuid"
+      ],
+      "relationships": [
+        {
+          "relation_type": "created_by",
+          "target": "Reset Metrics API call"
+        },
+        {
+          "relation_type": "part_of",
+          "target": "Sort Model"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Sort Model creates a new SortName and SortGuid when Reset Metrics is called during a sort cycle.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0109_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        109
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0109"
+      ],
+      "unit_type": "operational_process",
+      "title": "Sort activity is historically logged by SortName and SortGuid",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "SortName",
+        "SortGuid"
+      ],
+      "summary": "All activity is logged with SortName and SortGuid so historical metrics can be tracked from sort to sort.",
+      "observed_evidence": [
+        "All activity is logged with these fields for historical metrics sort to sort."
+      ],
+      "relationships": [
+        {
+          "relation_type": "uses_fields",
+          "target": "SortName"
+        },
+        {
+          "relation_type": "uses_fields",
+          "target": "SortGuid"
+        }
+      ],
+      "retrieval_text": "All sorter activity is logged using SortName and SortGuid to support historical metrics from sort to sort.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0109_01",
+      "title": "No explicit reusable procedure present for Reset Metrics sort cycle handling",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        109
+      ],
+      "systems": [
+        "UPS",
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Reset Metrics API",
+        "Sort Model"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "UPS cycles a sort"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0109"
+      ],
+      "procedure_visual_summary": "Text slide describing Reset Metrics API behavior, chute opening, new SortName and SortGuid creation, and historical activity logging.",
+      "steps": [],
+      "warnings": [
+        "Slide describes system behavior and data model effects but does not provide an operator or support action sequence."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0109_01",
+        "oku_optisweep_training_internal_0109_02",
+        "oku_optisweep_training_internal_0109_03",
+        "oku_optisweep_training_internal_0109_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide explains Reset Metrics API behavior during sort cycling but does not provide explicit action steps."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,321 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_45_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        45
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0045"
+      ],
+      "unit_type": "api_capability",
+      "title": "Aveva API incorporates selected Geek+ RMS AGV control features",
+      "systems": [
+        "Aveva",
+        "Geek+ RMS",
+        "AGV"
+      ],
+      "components": [
+        "Aveva API page"
+      ],
+      "summary": "The slide states that selected features from Geek+ RMS were incorporated into the Aveva APIs for ease of use and continuity. Listed AGV-related capabilities are Remove AGV, Recover AGV, Pause all AGVs, and Resume all AGVs.",
+      "observed_evidence": [
+        "Slide title: 'AGVs / Aveva API page'",
+        "'For ease of use and continuity, we incorporated select features from Geek+ RMS into our APIs.'",
+        "Listed features: 'Remove AGV', 'Recover AGV', 'Pause all AGVs', 'Resume all AGVs'"
+      ],
+      "relationships": [
+        {
+          "type": "incorporates_features_from",
+          "target": "Geek+ RMS"
+        },
+        {
+          "type": "applies_to",
+          "target": "AGV operations"
+        }
+      ],
+      "retrieval_text": "Aveva API page for AGVs includes selected Geek+ RMS features: Remove AGV, Recover AGV, Pause all AGVs, Resume all AGVs. The slide presents these as incorporated API capabilities for ease of use and continuity.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_45_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        45
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0045"
+      ],
+      "unit_type": "api_capability",
+      "title": "Aveva API provides AGV recovery mechanisms for RMS crash scenarios",
+      "systems": [
+        "Aveva",
+        "Geek+ RMS",
+        "AGV"
+      ],
+      "components": [
+        "Aveva API page",
+        "RMS recovery mechanisms"
+      ],
+      "summary": "The slide indicates that recovery mechanisms were implemented for RMS crash events. These include Execute AGV command and Resend Geek Command functions to address missed callbacks and errored Geek commands.",
+      "observed_evidence": [
+        "'In the event of an RMS crash, we have also implemented recovery mechanisms.'",
+        "'Execute AGV command'",
+        "'Enables users to specify an AGV ID that has completed its task when RMS fails to send a callback.'",
+        "'Resend Geek Command'",
+        "'Allows users to specify a command GUID that was sent to Geek but encountered an error.'"
+      ],
+      "relationships": [
+        {
+          "type": "used_for_recovery_of",
+          "target": "RMS crash scenarios"
+        },
+        {
+          "type": "includes",
+          "target": "Execute AGV command"
+        },
+        {
+          "type": "includes",
+          "target": "Resend Geek Command"
+        }
+      ],
+      "retrieval_text": "For RMS crash recovery, the Aveva API page includes Execute AGV command and Resend Geek Command. Execute AGV command is used when RMS fails to send a callback for an AGV that completed its task. Resend Geek Command is used when a command GUID sent to Geek encountered an error.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_45_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        45
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0045"
+      ],
+      "unit_type": "system_behavior",
+      "title": "RMS failure can leave completed AGV tasks without callback confirmation",
+      "systems": [
+        "Geek+ RMS",
+        "AGV",
+        "Aveva"
+      ],
+      "components": [
+        "RMS callback handling",
+        "AGV task completion"
+      ],
+      "summary": "The slide describes a failure mode where RMS crashes and does not send a callback even though an AGV has completed its task, requiring manual specification of the AGV ID through the API recovery mechanism.",
+      "observed_evidence": [
+        "'Enables users to specify an AGV ID that has completed its task when RMS fails to send a callback.'",
+        "This statement appears under the recovery mechanism 'Execute AGV command'"
+      ],
+      "relationships": [
+        {
+          "type": "failure_mode_in",
+          "target": "Geek+ RMS"
+        },
+        {
+          "type": "affects",
+          "target": "AGV task completion confirmation"
+        },
+        {
+          "type": "mitigated_by",
+          "target": "Execute AGV command"
+        }
+      ],
+      "retrieval_text": "A documented RMS failure mode is that RMS may fail to send a callback after an AGV completes its task. The API recovery concept is to specify the AGV ID using Execute AGV command.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_45_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        45
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0045"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "Errored Geek command GUIDs can be retried through Resend Geek Command",
+      "systems": [
+        "Geek+ RMS",
+        "Aveva"
+      ],
+      "components": [
+        "Resend Geek Command",
+        "command GUID"
+      ],
+      "summary": "The slide identifies a recovery/diagnostic concept where users can provide a command GUID for a command previously sent to Geek that encountered an error, and use Resend Geek Command to retry it.",
+      "observed_evidence": [
+        "'Resend Geek Command'",
+        "'Allows users to specify a command GUID that was sent to Geek but encountered an error.'"
+      ],
+      "relationships": [
+        {
+          "type": "uses_identifier",
+          "target": "command GUID"
+        },
+        {
+          "type": "applies_to",
+          "target": "commands sent to Geek that encountered an error"
+        }
+      ],
+      "retrieval_text": "Resend Geek Command is a recovery capability on the Aveva API page. It allows a user to specify a command GUID for a command sent to Geek that encountered an error.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_optisweep_training_internal_45_01",
+      "title": "Execute AGV command after RMS fails to send a completion callback",
+      "procedure_type": "recovery_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        45
+      ],
+      "systems": [
+        "Aveva",
+        "Geek+ RMS",
+        "AGV"
+      ],
+      "components": [
+        "Aveva API page",
+        "Execute AGV command"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "An RMS crash or RMS callback failure has occurred",
+        "The AGV has completed its task",
+        "The user has the AGV ID"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0045"
+      ],
+      "procedure_visual_summary": "Slide lists the Aveva API page recovery capability 'Execute AGV command' and explains that users can specify an AGV ID when RMS fails to send a callback.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Open the Aveva API page and locate the 'Execute AGV command' recovery function.",
+          "expected_outcome": "The relevant API recovery function is identified for use.",
+          "validation_check": "The slide names 'Execute AGV command' as the recovery mechanism.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:45",
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "visual_region_hint": "Slide body bullet list under 'In the event of an RMS crash, we have also implemented recovery mechanisms.'"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Specify the AGV ID for the AGV that completed its task when RMS did not send a callback.",
+          "expected_outcome": "The completed AGV is identified to the recovery function using its AGV ID.",
+          "validation_check": "The slide explicitly states that users can specify an AGV ID that has completed its task when RMS fails to send a callback.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:45",
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "visual_region_hint": "Bullet and explanatory text for 'Execute AGV command'"
+        }
+      ],
+      "warnings": [
+        "The slide does not provide exact UI fields, request format, or submission sequence.",
+        "The slide does not state the resulting system response after the command is executed."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_45_02",
+        "oku_optisweep_training_internal_45_03"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Recovery action candidate: use Execute AGV command on the Aveva API page when RMS fails to send a callback for an AGV that completed its task. The slide only supports locating the function and specifying the AGV ID; additional execution details are not shown."
+    },
+    {
+      "procedure_id": "proc_optisweep_training_internal_45_02",
+      "title": "Resend a Geek command using its command GUID after an error",
+      "procedure_type": "recovery_action",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        45
+      ],
+      "systems": [
+        "Aveva",
+        "Geek+ RMS"
+      ],
+      "components": [
+        "Aveva API page",
+        "Resend Geek Command"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "A command was sent to Geek and encountered an error",
+        "The command GUID is available"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0045"
+      ],
+      "procedure_visual_summary": "Slide lists the recovery capability 'Resend Geek Command' and explains that users can specify a command GUID for a command sent to Geek that encountered an error.",
+      "steps": [
+        {
+          "step_order": 1,
+          "instruction": "Open the Aveva API page and locate the 'Resend Geek Command' function.",
+          "expected_outcome": "The resend recovery function is available for use.",
+          "validation_check": "The slide explicitly lists 'Resend Geek Command' as a recovery mechanism.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:45",
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "visual_region_hint": "Slide body bullet list under RMS crash recovery mechanisms"
+        },
+        {
+          "step_order": 2,
+          "instruction": "Specify the command GUID for the command that was sent to Geek and encountered an error.",
+          "expected_outcome": "The errored command is identified by GUID for resend handling.",
+          "validation_check": "The slide states that users can specify a command GUID that was sent to Geek but encountered an error.",
+          "source_refs": [
+            "deck:optisweep_training_internal",
+            "slide:45",
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "artifact_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "screenshot_refs": [
+            "artifact:slide_artifact_optisweep_training_internal_0045"
+          ],
+          "visual_region_hint": "Bullet and explanatory text for 'Resend Geek Command'"
+        }
+      ],
+      "warnings": [
+        "The slide does not provide exact submission steps, request parameters beyond command GUID, or confirmation behavior.",
+        "The slide does not describe when to avoid resending a command."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_45_02",
+        "oku_optisweep_training_internal_45_04"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Recovery action candidate: use Resend Geek Command on the Aveva API page by specifying the command GUID for a command sent to Geek that encountered an error. The slide provides only high-level action guidance."
+    }
+  ],
+  "discarded_candidates": []
+}

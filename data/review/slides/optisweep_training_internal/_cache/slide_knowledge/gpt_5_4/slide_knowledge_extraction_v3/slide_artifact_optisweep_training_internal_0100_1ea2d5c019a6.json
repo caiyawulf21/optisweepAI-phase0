@@ -1,0 +1,329 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0100_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        100
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0100"
+      ],
+      "unit_type": "glossary_definition",
+      "title": "Items are parcels tracked on the sorter",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Item Models"
+      ],
+      "summary": "The slide defines items as parcels on the sorter and describes them as records that are updated from UPS messages and removed when they divert to their final destination.",
+      "observed_evidence": [
+        "Items are parcels on the sorter.",
+        "We listen to Scan_Data2, Sort, and SortConf from UPS.",
+        "We update the items as we receive messages and remove them when they divert to their final destination."
+      ],
+      "relationships": [
+        {
+          "relation": "updated_by",
+          "target": "UPS messages: Scan_Data2, Sort, SortConf"
+        },
+        {
+          "relation": "lifecycle_end",
+          "target": "Removed when parcel diverts to final destination"
+        }
+      ],
+      "retrieval_text": "Item Models defines items as parcels on the sorter. Item records are updated from UPS Scan_Data2, Sort, and SortConf messages and removed when they divert to their final destination.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0100_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        100
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0100"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Item records are maintained from UPS message traffic",
+      "systems": [
+        "Sorter Sweeper Database",
+        "UPS"
+      ],
+      "components": [
+        "Item Models",
+        "Scan_Data2",
+        "Sort",
+        "SortConf"
+      ],
+      "summary": "The system listens to UPS messages and updates item records as messages arrive. Item records are removed after diversion to the final destination.",
+      "observed_evidence": [
+        "We listen to Scan_Data2, Sort, and SortConf from UPS.",
+        "We update the items as we receive messages and remove them when they divert to their final destination."
+      ],
+      "relationships": [
+        {
+          "relation": "listens_to",
+          "target": "Scan_Data2"
+        },
+        {
+          "relation": "listens_to",
+          "target": "Sort"
+        },
+        {
+          "relation": "listens_to",
+          "target": "SortConf"
+        },
+        {
+          "relation": "causes_update",
+          "target": "Incoming messages update item records"
+        },
+        {
+          "relation": "causes_removal",
+          "target": "Final destination divert removes item record"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper item records are maintained by listening to UPS Scan_Data2, Sort, and SortConf messages. Records are updated as messages are received and removed when the item diverts to its final destination.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0100_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        100
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0100"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Scan_Data2 provides core package attributes for item records",
+      "systems": [
+        "Sorter Sweeper Database",
+        "UPS"
+      ],
+      "components": [
+        "Scan_Data2",
+        "Item Models"
+      ],
+      "summary": "The slide identifies the fields provided by Scan_Data2 for item data: PackageUID, Tracking number, Length, Width, Height, Weight, and Package Classification.",
+      "observed_evidence": [
+        "Scan_Data2 provides us with PackageUID, Tracking number, Length, Width, Height, Weight, and Package Classification."
+      ],
+      "relationships": [
+        {
+          "relation": "source_of_fields",
+          "target": "PackageUID"
+        },
+        {
+          "relation": "source_of_fields",
+          "target": "Tracking number"
+        },
+        {
+          "relation": "source_of_fields",
+          "target": "Length"
+        },
+        {
+          "relation": "source_of_fields",
+          "target": "Width"
+        },
+        {
+          "relation": "source_of_fields",
+          "target": "Height"
+        },
+        {
+          "relation": "source_of_fields",
+          "target": "Weight"
+        },
+        {
+          "relation": "source_of_fields",
+          "target": "Package Classification"
+        }
+      ],
+      "retrieval_text": "Scan_Data2 supplies item model package attributes including PackageUID, tracking number, dimensions, weight, and package classification.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0100_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        100
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0100"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Item Cube Adjustment Model stores cube percentage by package classification",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Item Cube Adjustment Model"
+      ],
+      "summary": "The Item Cube Adjustment Model stores the percentage of package cube to use based on package classification.",
+      "observed_evidence": [
+        "Item Cube Adjustment Model stores the % of the cube we should take based on packages classification."
+      ],
+      "relationships": [
+        {
+          "relation": "parameterized_by",
+          "target": "Package classification"
+        },
+        {
+          "relation": "stores",
+          "target": "Percent of cube to take"
+        }
+      ],
+      "retrieval_text": "Item Cube Adjustment Model stores the percent of package cube used, based on package classification.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0100_05",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        100
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0100"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Item Default Dim Model stores fallback dimensions for missing values",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Item Default Dim Model"
+      ],
+      "summary": "The Item Default Dim Model stores default dimensions to be used when a package dimension is missing.",
+      "observed_evidence": [
+        "Item Default Dim Model stores the default dimensions when one is missing."
+      ],
+      "relationships": [
+        {
+          "relation": "used_when",
+          "target": "A dimension is missing"
+        },
+        {
+          "relation": "stores",
+          "target": "Default dimensions"
+        }
+      ],
+      "retrieval_text": "Item Default Dim Model contains default dimensions used when one package dimension is missing.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0100_06",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        100
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0100"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Recirc Destinations Model stores end-of-line destinations",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Recirc Destinations Model"
+      ],
+      "summary": "The Recirc Destinations Model stores destinations used for packages that go off the end.",
+      "observed_evidence": [
+        "Recirc Destinations Model stores the destinations that are for packages that go off the end."
+      ],
+      "relationships": [
+        {
+          "relation": "applies_to",
+          "target": "Packages that go off the end"
+        },
+        {
+          "relation": "stores",
+          "target": "Recirculation-related destinations"
+        }
+      ],
+      "retrieval_text": "Recirc Destinations Model stores destinations for packages that go off the end of the sorter flow.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0100_07",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        100
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0100"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "Item tracking includes recirculation count and missing-message indicators",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Item Models"
+      ],
+      "summary": "The item model tracks recirculation frequency, whether dimension data is missing, and whether an induction message was never received.",
+      "observed_evidence": [
+        "We track how often the item recirc, If it is missing some dimension data and if we never received an Induction message."
+      ],
+      "relationships": [
+        {
+          "relation": "tracks",
+          "target": "Recirculation count/frequency"
+        },
+        {
+          "relation": "tracks",
+          "target": "Missing dimension data status"
+        },
+        {
+          "relation": "tracks",
+          "target": "Missing induction message status"
+        }
+      ],
+      "retrieval_text": "Item records track operational diagnostic indicators including how often an item recirculates, whether dimension data is missing, and whether no induction message was received.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "pca_optisweep_training_internal_0100_01",
+      "title": "No explicit reusable procedure on item models slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        100
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Item Models"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewer is examining slide 100 for procedural content"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0100"
+      ],
+      "procedure_visual_summary": "Informational slide describing item-related database models, message inputs, and tracked attributes; no ordered actions or operator instructions are shown.",
+      "steps": [],
+      "warnings": [
+        "Slide describes data sources, model purposes, and tracked fields but does not provide an explicit action sequence."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0100_01",
+        "oku_optisweep_training_internal_0100_02",
+        "oku_optisweep_training_internal_0100_03",
+        "oku_optisweep_training_internal_0100_04",
+        "oku_optisweep_training_internal_0100_05",
+        "oku_optisweep_training_internal_0100_06",
+        "oku_optisweep_training_internal_0100_07"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as procedure candidate: slide 100 contains database and system behavior context for item models, including UPS message inputs and item tracking fields, but no explicit operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

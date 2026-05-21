@@ -1,0 +1,220 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0010_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        10
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0010"
+      ],
+      "unit_type": "operational_process",
+      "title": "Sort lifecycle includes Start-up, Running, Bagout, and Shutdown phases",
+      "systems": [
+        "OptiSweep sort system"
+      ],
+      "components": [
+        "AGV",
+        "Tote",
+        "Tipper"
+      ],
+      "summary": "The slide describes the lifecycle of a sort as a sequence of named phases: Start-up, Running, Bagout, and Shutdown.",
+      "observed_evidence": [
+        "Slide title: 'Lifecycle of a Sort'",
+        "Phase labels shown: 'Start-up', 'Running', 'Bagout', 'Shutdown'",
+        "Bulleted descriptions appear under each phase"
+      ],
+      "relationships": [
+        {
+          "relation_type": "has_phases",
+          "target": "Start-up, Running, Bagout, Shutdown"
+        }
+      ],
+      "retrieval_text": "Lifecycle of a sort consists of Start-up, Running, Bagout, and Shutdown phases in the OptiSweep system.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0010_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        10
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0010"
+      ],
+      "unit_type": "state_transition",
+      "title": "Start-up moves AGVs from power cycling to staged for the sort",
+      "systems": [
+        "OptiSweep sort system"
+      ],
+      "components": [
+        "AGV"
+      ],
+      "summary": "During Start-up, AGVs transition from a power cycling state to a staged condition for the sort.",
+      "observed_evidence": [
+        "Start-up bullet: 'Takes AGVs from a power cycling state to being staged for the sort'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "transitions_from",
+          "target": "power cycling state"
+        },
+        {
+          "relation_type": "transitions_to",
+          "target": "staged for the sort"
+        },
+        {
+          "relation_type": "part_of_process",
+          "target": "Lifecycle of a Sort"
+        }
+      ],
+      "retrieval_text": "In Start-up, AGVs move from power cycling state to being staged for the sort.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0010_03",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        10
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0010"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Running phase is the main sorting period with AGVs delivering full totes to tippers for bagging",
+      "systems": [
+        "OptiSweep sort system"
+      ],
+      "components": [
+        "AGV",
+        "Tote",
+        "Tipper"
+      ],
+      "summary": "The Running phase is described as the bulk of the sort, when items are sorted and AGVs transport full totes to tippers for bagging.",
+      "observed_evidence": [
+        "Running bullet: 'Bulk of the sort where items are sorted and AGVs take full totes to tippers for bagging'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "part_of_process",
+          "target": "Lifecycle of a Sort"
+        },
+        {
+          "relation_type": "involves_component_flow",
+          "target": "AGVs take full totes to tippers"
+        }
+      ],
+      "retrieval_text": "During Running, items are sorted and AGVs take full totes to tippers for bagging; this is the bulk of the sort.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0010_04",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        10
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0010"
+      ],
+      "unit_type": "operational_process",
+      "title": "Bagout cycles all locations with items remaining in a tote to finish out",
+      "systems": [
+        "OptiSweep sort system"
+      ],
+      "components": [
+        "Tote"
+      ],
+      "summary": "The Bagout phase cycles all locations that still have any items in a tote in order to finish the sort.",
+      "observed_evidence": [
+        "Bagout bullet: 'Cycles all locations that have any items in a tote to finish out'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "part_of_process",
+          "target": "Lifecycle of a Sort"
+        }
+      ],
+      "retrieval_text": "Bagout cycles all locations that have any items in a tote to finish out the sort.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0010_05",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        10
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0010"
+      ],
+      "unit_type": "state_transition",
+      "title": "Shutdown stages AGVs so they can cycle to chargers for the next sort",
+      "systems": [
+        "OptiSweep sort system"
+      ],
+      "components": [
+        "AGV",
+        "Charger"
+      ],
+      "summary": "During Shutdown, AGVs are staged in positions that allow them to cycle to chargers in preparation for the next sort.",
+      "observed_evidence": [
+        "Shutdown bullet: 'Stages AGVs in a position where they can cycle to chargers to prepare for the next sort'"
+      ],
+      "relationships": [
+        {
+          "relation_type": "part_of_process",
+          "target": "Lifecycle of a Sort"
+        },
+        {
+          "relation_type": "prepares_for",
+          "target": "next sort"
+        }
+      ],
+      "retrieval_text": "Shutdown stages AGVs where they can cycle to chargers to prepare for the next sort.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0010_01",
+      "title": "Discarded procedure candidate: sort lifecycle phase descriptions",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        10
+      ],
+      "systems": [
+        "OptiSweep sort system"
+      ],
+      "components": [
+        "AGV",
+        "Tote",
+        "Tipper",
+        "Charger"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Slide provides lifecycle descriptions but no explicit operator action sequence"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0010"
+      ],
+      "procedure_visual_summary": "Overview slide listing Start-up, Running, Bagout, and Shutdown with one descriptive bullet per phase.",
+      "steps": [],
+      "warnings": [
+        "Rejected as a procedure because the slide is an overview of phases and state/behavior descriptions, not explicit reusable action guidance."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0010_01",
+        "oku_optisweep_training_internal_0010_02",
+        "oku_optisweep_training_internal_0010_03",
+        "oku_optisweep_training_internal_0010_04",
+        "oku_optisweep_training_internal_0010_05"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate for slide 10: the slide describes lifecycle phases and AGV/tote behavior but does not provide explicit operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

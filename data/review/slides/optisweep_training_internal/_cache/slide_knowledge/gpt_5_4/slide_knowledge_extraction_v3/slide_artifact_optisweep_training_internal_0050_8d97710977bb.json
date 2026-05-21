@@ -1,0 +1,127 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0050_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        50
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0050"
+      ],
+      "unit_type": "ui_concept",
+      "title": "Tote Task interface exposes tote movement and task detail fields",
+      "systems": [
+        "Aveva",
+        "AGV",
+        "Tote"
+      ],
+      "components": [
+        "Tote Task interface"
+      ],
+      "summary": "The Aveva Tote Task interface provides visibility into tote movements within the warehouse and displays tote-, AGV-, destination-, station-, and task-related fields.",
+      "observed_evidence": [
+        "Slide title: 'Tote Tasks / Aveva API page'",
+        "Text states: 'The Tote Task interface offers insight into tote movements within the warehouse.'",
+        "Text states: 'It provides information such as:'",
+        "Listed fields: Tote Id, AGV Id, Current Cube, Current Weight, Item Count, Original Destination, Station, Task id, Task Name, Tote Error"
+      ],
+      "relationships": [
+        {
+          "type": "describes_ui",
+          "target": "Tote Task interface"
+        },
+        {
+          "type": "references_system",
+          "target": "Aveva"
+        },
+        {
+          "type": "references_component",
+          "target": "AGV"
+        }
+      ],
+      "retrieval_text": "Aveva Tote Task interface UI reference for tote movements in the warehouse. The screen provides Tote Id, AGV Id, Current Cube, Current Weight, Item Count, Original Destination, Station, Task id, Task Name, and Tote Error.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0050_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        50
+      ],
+      "artifact_refs": [
+        "slide_artifact_optisweep_training_internal_0050"
+      ],
+      "unit_type": "api_capability",
+      "title": "Aveva Tote Tasks page/API exposes tote task tracking attributes",
+      "systems": [
+        "Aveva",
+        "AGV",
+        "Tote"
+      ],
+      "components": [
+        "Aveva API page",
+        "Tote Task interface"
+      ],
+      "summary": "The slide presents the Aveva Tote Tasks page/API as a source of tote task tracking attributes, including identity, current tote measurements, routing context, station, task identifiers, and tote error status.",
+      "observed_evidence": [
+        "Slide subtitle/title includes: 'Aveva API page'",
+        "Slide lists available information fields rather than action steps",
+        "Fields shown: Tote Id, AGV Id, Current Cube, Current Weight, Item Count, Original Destination, Station, Task id, Task Name, Tote Error"
+      ],
+      "relationships": [
+        {
+          "type": "provides_fields",
+          "target": "Tote Id, AGV Id, Current Cube, Current Weight, Item Count, Original Destination, Station, Task id, Task Name, Tote Error"
+        },
+        {
+          "type": "supports_visibility_into",
+          "target": "tote movements within the warehouse"
+        }
+      ],
+      "retrieval_text": "Aveva API page for Tote Tasks provides tote tracking and task information. Available attributes include Tote Id, AGV Id, Current Cube, Current Weight, Item Count, Original Destination, Station, Task id, Task Name, and Tote Error. This is a reference/capability slide, not an action procedure.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0050_01",
+      "title": "No procedure extracted from Tote Tasks / Aveva API page",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        50
+      ],
+      "systems": [
+        "Aveva",
+        "AGV",
+        "Tote"
+      ],
+      "components": [
+        "Aveva API page",
+        "Tote Task interface"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "User has access to the Tote Task interface or Aveva API page"
+      ],
+      "procedure_screenshot_refs": [
+        "slide_artifact_optisweep_training_internal_0050"
+      ],
+      "procedure_visual_summary": "Reference slide describing the Tote Task interface and listing available tote/task fields; no ordered actions or operator workflow are shown.",
+      "steps": [],
+      "warnings": [
+        "Slide is informational only and does not provide an explicit reusable action sequence.",
+        "Do not infer navigation, lookup, or diagnostic steps beyond the listed fields."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0050_01",
+        "oku_optisweep_training_internal_0050_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because the slide only describes the Tote Task interface/Aveva API page and enumerates available fields: Tote Id, AGV Id, Current Cube, Current Weight, Item Count, Original Destination, Station, Task id, Task Name, and Tote Error. No explicit steps are present."
+    }
+  ],
+  "discarded_candidates": []
+}

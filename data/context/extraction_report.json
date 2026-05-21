@@ -1,0 +1,30 @@
+{
+  "video_id": "training_video",
+  "structured_at": "2026-05-19T17:54:48.921559+00:00",
+  "total_transcript_segments_processed": 1,
+  "total_frames_processed": 1,
+  "total_ocr_records_processed": 1,
+  "total_evidence_chunks_created": 1,
+  "total_source_artifacts_created": 1,
+  "total_context_candidates_created": 2,
+  "total_procedure_candidates_created": 1,
+  "total_workflow_evidence_candidates_created": 1,
+  "warnings": [
+    "LLM extraction used fallback_keyword_structuring; records require review before promotion.",
+    "ctx_training_video_rms_001 is missing video_id/source_video",
+    "ctx_training_video_agv_001 is missing video_id/source_video",
+    "wf_training_video_window_001 is missing source_refs"
+  ],
+  "records_needing_review": [
+    "vec_training_video_000001",
+    "vf_training_video_cue_000001_midpoint",
+    "ctx_training_video_rms_001",
+    "ctx_training_video_agv_001",
+    "proc_training_video_window_001",
+    "wf_training_video_window_001"
+  ],
+  "records_with_missing_timestamps": [],
+  "records_with_weak_evidence": [],
+  "records_with_inferred_interpretations": [],
+  "production_context_write_ran": false
+}

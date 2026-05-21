@@ -1,0 +1,67 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0117_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        117
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0117"
+      ],
+      "unit_type": "diagnostic_concept",
+      "title": "Missing bagouts",
+      "systems": [
+        "MF1"
+      ],
+      "components": [],
+      "summary": "The slide identifies a diagnostic or issue topic labeled 'Missing bagouts' associated with MF1, but provides no further explanation, causes, or remediation steps.",
+      "observed_evidence": [
+        "Visible text: 'MF1'",
+        "Visible text: 'Missing bagouts'",
+        "Visible text: 'Mitchel Flynn, 2026-03-11T20:17:35.445'"
+      ],
+      "relationships": [
+        {
+          "relationship_type": "associated_with",
+          "target": "MF1"
+        }
+      ],
+      "retrieval_text": "MF1 missing bagouts diagnostic concept issue topic slide. Slide labels missing bagouts for MF1 with no explicit workflow, cause, or resolution details.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0117_01",
+      "title": "No procedure extracted for MF1 missing bagouts slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        117
+      ],
+      "systems": [
+        "MF1"
+      ],
+      "components": [],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0117"
+      ],
+      "procedure_visual_summary": "Title-like slide content showing 'MF1' and 'Missing bagouts' with author/timestamp only; no visible action sequence or operational guidance.",
+      "steps": [],
+      "warnings": [
+        "The slide does not provide explicit reusable action guidance.",
+        "No ordered steps, UI actions, checks, or remediation instructions are visible."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0117_01"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded procedure candidate for MF1 missing bagouts because the slide only names the issue topic and lacks explicit operational steps."
+    }
+  ],
+  "discarded_candidates": []
+}

@@ -1,0 +1,183 @@
+{
+  "operational_knowledge_units": [
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0103_01",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        103
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0103"
+      ],
+      "unit_type": "database_model_reference",
+      "title": "Tote model enumerations in Sorter Sweeper Database",
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tote Model",
+        "Tote"
+      ],
+      "summary": "The slide documents Tote Model value sets used in the Sorter Sweeper Database, including tote status values, tote error values, exchange type values, and additional tote-related flags or lane exchange fields.",
+      "observed_evidence": [
+        "Slide title: 'Sorter Sweeper Database / Tote Model'",
+        "Section label: 'Sorter Sweeper Database'",
+        "Visible text under 'Tote Status': InTransit, AtTipper, AtSorter, PickupToteSent, Removed, AtSorterLifted, AtInduction, AtHospital",
+        "Visible text under 'Tote Error': NoRead, MissMatch, AgvRemoved",
+        "Visible text under 'ExchangeType': SystemGenerated, MissSort, HotBin, HotBinCloseOut, HotBinDisabled, CloseOut, Purge, UserSent, CloseOutLowest",
+        "Additional visible labels: ExchangedLanes, LaneCloseout, SorterSideCloseout, AgvCalled, FlaggedByBagger, TipperDisabled"
+      ],
+      "relationships": [
+        {
+          "type": "has_enum_group",
+          "source": "Tote Model",
+          "target": "Tote Status"
+        },
+        {
+          "type": "has_enum_group",
+          "source": "Tote Model",
+          "target": "Tote Error"
+        },
+        {
+          "type": "has_enum_group",
+          "source": "Tote Model",
+          "target": "ExchangeType"
+        },
+        {
+          "type": "includes_field_or_flag",
+          "source": "Tote Model",
+          "target": "ExchangedLanes"
+        },
+        {
+          "type": "includes_field_or_flag",
+          "source": "Tote Model",
+          "target": "AgvCalled"
+        },
+        {
+          "type": "includes_field_or_flag",
+          "source": "Tote Model",
+          "target": "FlaggedByBagger"
+        },
+        {
+          "type": "includes_field_or_flag",
+          "source": "Tote Model",
+          "target": "TipperDisabled"
+        }
+      ],
+      "retrieval_text": "Sorter Sweeper Database Tote Model reference. Tote Status values: InTransit, AtTipper, AtSorter, PickupToteSent, Removed, AtSorterLifted, AtInduction, AtHospital. Tote Error values: NoRead, MissMatch, AgvRemoved. ExchangeType values: SystemGenerated, MissSort, HotBin, HotBinCloseOut, HotBinDisabled, CloseOut, Purge, UserSent, CloseOutLowest. Additional tote-related fields or flags shown: ExchangedLanes with LaneCloseout and SorterSideCloseout, AgvCalled, FlaggedByBagger, TipperDisabled.",
+      "validation_status": "needs_review"
+    },
+    {
+      "knowledge_unit_id": "oku_optisweep_training_internal_0103_02",
+      "deck_id": "optisweep_training_internal",
+      "source_slide_numbers": [
+        103
+      ],
+      "artifact_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0103"
+      ],
+      "unit_type": "system_behavior",
+      "title": "Observed tote lifecycle and exception categories represented in the database model",
+      "systems": [
+        "Sorter Sweeper Database",
+        "AGV"
+      ],
+      "components": [
+        "Tote",
+        "Tipper",
+        "Sorter",
+        "Induction",
+        "Hospital"
+      ],
+      "summary": "The tote model reflects operational tracking of tote location/state, exception/error conditions, and exchange causes across sorter-related subsystems such as tipper, sorter, induction, hospital, and AGV-related handling.",
+      "observed_evidence": [
+        "Tote status values reference operational positions or conditions: AtTipper, AtSorter, AtInduction, AtHospital, InTransit, Removed, AtSorterLifted, PickupToteSent",
+        "Tote error values reference exception conditions: NoRead, MissMatch, AgvRemoved",
+        "ExchangeType values reference causes or triggers for tote exchange: MissSort, HotBin, CloseOut, Purge, UserSent, SystemGenerated",
+        "Visual elements list systems/components including AGV, Tipper, Hospital, Tote"
+      ],
+      "relationships": [
+        {
+          "type": "tracks_state_for",
+          "source": "Sorter Sweeper Database",
+          "target": "Tote"
+        },
+        {
+          "type": "tracks_exception_for",
+          "source": "Sorter Sweeper Database",
+          "target": "Tote Error"
+        },
+        {
+          "type": "tracks_exchange_reason_for",
+          "source": "Sorter Sweeper Database",
+          "target": "ExchangeType"
+        },
+        {
+          "type": "references_component",
+          "source": "Tote Status",
+          "target": "Tipper"
+        },
+        {
+          "type": "references_component",
+          "source": "Tote Status",
+          "target": "Sorter"
+        },
+        {
+          "type": "references_component",
+          "source": "Tote Status",
+          "target": "Induction"
+        },
+        {
+          "type": "references_component",
+          "source": "Tote Status",
+          "target": "Hospital"
+        },
+        {
+          "type": "references_component",
+          "source": "Tote Error",
+          "target": "AGV"
+        }
+      ],
+      "retrieval_text": "The Sorter Sweeper Database tote model appears to track tote lifecycle positions and exception categories. Statuses include AtTipper, AtSorter, AtInduction, AtHospital, InTransit, Removed, AtSorterLifted, and PickupToteSent. Errors include NoRead, MissMatch, and AgvRemoved. Exchange types include operational causes such as MissSort, HotBin, CloseOut, Purge, UserSent, and SystemGenerated. This indicates database-level representation of tote movement, exception handling, and exchange reasons across sorter-related components.",
+      "validation_status": "needs_review"
+    }
+  ],
+  "procedure_candidate_attempts": [
+    {
+      "procedure_id": "proc_attempt_optisweep_training_internal_0103_01",
+      "title": "No explicit procedure present on Tote Model slide",
+      "procedure_type": "unknown",
+      "source_deck": "optisweep_training_internal",
+      "source_slide_numbers": [
+        103
+      ],
+      "systems": [
+        "Sorter Sweeper Database"
+      ],
+      "components": [
+        "Tote Model"
+      ],
+      "role_required": "unknown",
+      "support_safe": "unknown",
+      "preconditions": [
+        "Reviewer is examining slide 103 for operational guidance"
+      ],
+      "procedure_screenshot_refs": [
+        "artifact:slide_artifact_optisweep_training_internal_0103"
+      ],
+      "procedure_visual_summary": "Slide presents a database model/state enumeration for tote-related fields and values, not an action sequence.",
+      "steps": [],
+      "warnings": [
+        "The slide contains enumerated model values only.",
+        "No ordered actions, user interactions, or reusable operational steps are explicitly provided."
+      ],
+      "related_context_refs": [
+        "oku_optisweep_training_internal_0103_01",
+        "oku_optisweep_training_internal_0103_02"
+      ],
+      "validation_status": "needs_review",
+      "retrieval_text": "Discarded as a procedure candidate because slide 103 is a Tote Model database reference listing statuses, errors, exchange types, and flags without explicit operational steps or action sequence."
+    }
+  ],
+  "discarded_candidates": []
+}
