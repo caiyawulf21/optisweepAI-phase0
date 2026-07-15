@@ -13,7 +13,7 @@ permissions:
 env:
   CONTAINER_APP_NAME: optisweep-ai-app
   RESOURCE_GROUP: optisweepai
-  CONTAINER_APP_ENVIRONMENT: managedEnvironment-optisweepai-bba4
+  CONTAINER_APP_ENVIRONMENT: managedEnvironment-optisweepai-a18c
   AZURE_LOCATION: eastus
 
 jobs:
