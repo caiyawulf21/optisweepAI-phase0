@@ -1,0 +1,49 @@
+name: Trigger auto deployment for optisweepai-troubleshooting-app
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ main ]
+    paths:
+    - '**'
+    - '.github/workflows/optisweepai-troubleshooting-app-AutoDeployTrigger-cf36c871-95fa-4b31-8d62-ddfd3547d5d4.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:      
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions: 
+      id-token: write #This is required for requesting the OIDC JWT Token
+      contents: read #Required when GH token is used to authenticate with private repo
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.OPTISWEEPAITROUBLESHOOTINGAPP_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.OPTISWEEPAITROUBLESHOOTINGAPP_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.OPTISWEEPAITROUBLESHOOTINGAPP_AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }}
+          _dockerfilePathKey_: _dockerfilePath_
+          _targetLabelKey_: _targetLabel_
+          registryUrl: 
+          registryUsername: ${{ secrets.OPTISWEEPAITROUBLESHOOTINGAPP_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.OPTISWEEPAITROUBLESHOOTINGAPP_REGISTRY_PASSWORD }}
+          containerAppName: optisweepai-troubleshooting-app
+          resourceGroup: optisweepai
+          imageToBuild: default/[parameters('containerAppName')]:${{ github.sha }}
+          _buildArgumentsKey_: |
+            _buildArgumentsValues_
+
+
