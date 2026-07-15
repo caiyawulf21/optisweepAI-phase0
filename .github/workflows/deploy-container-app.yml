@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 env:
-  CONTAINER_APP_NAME: optisweep-ai-app
+  CONTAINER_APP_NAME: optisweepai-troubleshooting-app
   RESOURCE_GROUP: optisweepai
   CONTAINER_APP_ENVIRONMENT: managedEnvironment-optisweepai-a18c
   AZURE_LOCATION: eastus
