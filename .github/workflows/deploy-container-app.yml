@@ -62,5 +62,6 @@ jobs:
           az containerapp update
           --name "${{ env.CONTAINER_APP_NAME }}"
           --resource-group "${{ env.RESOURCE_GROUP }}"
+          --container-name "bootstrap-container"
           --command "python"
           --args "scripts/start_azure_container_app.py"
