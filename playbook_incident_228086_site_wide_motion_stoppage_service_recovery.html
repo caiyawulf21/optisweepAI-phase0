@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Site-wide robotic motion stoppage with AGVs out of sync after control-service or gateway abnormality</title>
+<style>
+body { font-family: Segoe UI, Arial, sans-serif; max-width: 960px; margin: 2rem auto; line-height: 1.5; }
+table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+th, td { border: 1px solid #ccc; padding: 0.5rem; text-align: left; vertical-align: top; }
+figure { margin: 1rem 0; }
+img { max-width: 100%; height: auto; border: 1px solid #ddd; }
+figcaption { font-style: italic; color: #555; margin-top: 0.5rem; }
+.warn { color: #8a4b00; }
+details.linked-runbook { border: 1px solid #ddd; border-radius: 6px; padding: 0.75rem 1rem; margin: 1rem 0; }
+details.linked-runbook > summary { cursor: pointer; font-size: 1.05rem; margin-bottom: 0.5rem; }
+details.linked-runbook-alternates { border: 1px solid #e0e0e0; border-radius: 6px; padding: 0.75rem 1rem; margin: 1rem 0; background: #fafafa; }
+details.linked-runbook-alternates > summary { cursor: pointer; font-weight: 600; margin-bottom: 0.5rem; }
+.missing-image { border: 1px dashed #bbb; padding: 1rem; background: #fafafa; }
+.missing-image-label { font-family: monospace; font-weight: 600; }
+hr { margin: 2rem 0; }
+</style>
+</head>
+<body>
+<h1>Site-wide robotic motion stoppage with AGVs out of sync after control-service or gateway abnormality</h1>
+<h2>Playbook Header</h2>
+<table>
+<tr><th>Playbook ID</th><td>playbook_incident_228086_site_wide_motion_stoppage_service_recovery</td></tr>
+<tr><th>Case ID</th><td>228086</td></tr>
+<tr><th>Extraction Mode</th><td>one_playbook_candidate_per_incident</td></tr>
+<tr><th>Confidence</th><td>high</td></tr>
+<tr><th>Validation Status</th><td>needs_sme_review</td></tr>
+</table>
+<h2>Entry Symptoms</h2>
+<ul>
+<li>Site reports that nothing is moving.</li>
+<li>Robotic system is reported as not responding.</li>
+<li>Small sort is not running.</li>
+<li>Totes cannot be removed from hospital.</li>
+<li>HMI or RMS appears abnormal, including question marks or a mostly blank page.</li>
+<li>AGVs are reported out of sync or behaving abnormally after the stoppage.</li>
+</ul>
+<h2>Nodes</h2>
+<h3>1 — Confirm site-wide stoppage and abnormal control-system presentation (diagnostic_decision)</h3>
+<p><strong>Intent:</strong> Determine whether the reported issue matches a broad robotic-system stoppage pattern rather than an isolated robot fault.</p>
+<p><strong>Runbook Links:</strong></p>
+<ul>
+<li><code>proc_check_overall_system_rms_for_system_faults_and_active_agv_faults_v1</code> (medium, primary, score=0.477) — Check Overall System RMS For System Faults And Active AGV Faults</li>
+<li><code>proc_check_whether_the_overall_system_rms_page_is_blank_because_rms_access_is_blocked_v1</code> (high, alternate, score=0.4572) — Check Whether the Overall System RMS Page Is Blank Because RMS Access Is Blocked</li>
+</ul>
+<p><strong>Linked Runbook Procedures:</strong></p>
+<p><strong>Decision Outcomes:</strong></p>
+<ul>
+<li><code>healthy</code>: No supported abnormal robot roster or mapping state is identified in available RMS or AGV status checks.</li>
+<li><code>unhealthy</code>: A specific robot appears abnormal in RMS or AGV status views and is a plausible blocker to normal pairing or fleet behavior.</li>
+<li><code>inconclusive</code>: Unhealthy evidence includes site reports that nothing is moving, small sort is stopped, hospital handling is blocked, or RMS/HMI shows abnormal blank or question-mark state. Healthy or inconclusive evidence would show localized impact only or normal RMS/HMI presentation.</li>
+<li><code>healthy</code>: No system faults are reported or visible.</li>
+<li><code>healthy</code>: The page is available and can be reviewed by support or by someone on the call.</li>
+<li><code>healthy</code>: No system faults are shown on the left side.</li>
+<li><code>healthy</code>: No active AGV faults are shown on the right side.</li>
+<li><code>healthy</code>: Someone on the call can view or share the page and report what is shown.</li>
+<li><code>unhealthy</code>: System faults are shown on the left side of the page.</li>
+</ul>
+<p><strong>Branches:</strong></p>
+<ul>
+<li><code>healthy</code> → <code>node_6</code> when Diagnostic check does not indicate the fault condition</li>
+</ul>
+<details class="linked-runbook" open><summary><strong>Runbook:</strong> Check Overall System RMS For System Faults And Active AGV Faults (<code>proc_check_overall_system_rms_for_system_faults_and_active_agv_faults_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> diagnostic</li>
+<li><strong>Role:</strong> L1_support</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Use the Overall System RMS page to determine whether system faults or active AGV faults are present during support troubleshooting. The source states this should be an initial support question and identifies where each fault type appears on the page.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use during support troubleshooting when determining whether faults are currently visible in the Overall System RMS view, especially as an initial question on a support call.</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>This source segment supports observation and fault presence checking only.</li>
+<li>Do not invent fault meanings, corrective actions, or additional controls not shown in the source.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>No supported abnormal robot roster or mapping state is identified in available RMS or AGV status checks.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>A specific robot appears abnormal in RMS or AGV status views and is a plausible blocker to normal pairing or fleet behavior.</td><td><code></code></td></tr>
+<tr><td><code>inconclusive</code></td><td>Unhealthy evidence includes site reports that nothing is moving, small sort is stopped, hospital handling is blocked, or RMS/HMI shows abnormal blank or question-mark state. Healthy or inconclusive evidence would show localized impact only or normal RMS/HMI presentation.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>No system faults are reported or visible.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>The page is available and can be reviewed by support or by someone on the call.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>No system faults are shown on the left side.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>No active AGV faults are shown on the right side.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>Someone on the call can view or share the page and report what is shown.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>System faults are shown on the left side of the page.</td><td><code></code></td></tr>
+</table>
+<p><strong>Source:</strong> training_video / training_video_day1</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Ask whether there are any system faults</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Begin the support check by asking whether there are any system faults.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>No system faults are reported or visible.</p>
+<p><strong>Expected result:</strong></p>
+<p>The caller confirms whether system faults are currently present or visible.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>The training frame and transcript note that asking about system faults should be the first question.</figcaption></figure>
+<hr>
+<h5>Step 2 — View the Overall System RMS page</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Access or view the Overall System RMS page associated with the Geek+ RMS web page. If you do not have direct access, use a person on the support call who can view the page.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The page is available and can be reviewed by support or by someone on the call.</p>
+<p><strong>Expected result:</strong></p>
+<p>The Overall System RMS page is visible for review.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>Overall System RMS page reference showing this is the Geek+ RMS web page view used for fault review.</figcaption></figure>
+<hr>
+<h5>Step 3 — Check the left side for system faults</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Review the left side of the Overall System RMS page for system faults.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>No system faults are shown on the left side.</p>
+<p><strong>Expected result:</strong></p>
+<p>You determine whether system faults are shown on the left side of the page.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>The left side of the Overall System RMS page where system faults are shown.</figcaption></figure>
+<hr>
+<h5>Step 4 — Check the right side for active AGV faults</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Review the right side of the Overall System RMS page for any active AGV faults.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>No active AGV faults are shown on the right side.</p>
+<p><strong>Expected result:</strong></p>
+<p>You determine whether active AGV faults are shown on the right side of the page.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>The right side of the Overall System RMS page where active AGV faults are shown.</figcaption></figure>
+<hr>
+<h5>Step 5 — Use another participant&#x27;s view if direct access is unavailable</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>If you do not have direct access, ask another person on the support call who has access to show the screen or describe what is visible on the Overall System RMS page.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Someone on the call can view or share the page and report what is shown.</p>
+<p><strong>Expected result:</strong></p>
+<p>Fault visibility can still be confirmed through another participant on the call.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>The source frame associated with the discussion of using available screen access during support calls.</figcaption></figure>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>The Overall System RMS page is reviewed directly or through a participant on the support call.</li>
+<li>It is confirmed whether system faults are present on the left side of the page.</li>
+<li>It is confirmed whether active AGV faults are present on the right side of the page.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>System faults are shown on the left side of the page.</li>
+<li>Active AGV faults are shown on the right side of the page.</li>
+<li>No one on the support call can access, share, or confirm the Overall System RMS page.</li>
+</ul>
+</details>
+<details class="linked-runbook-alternates"><summary><strong>Alternate supporting runbooks</strong> (1)</summary>
+<details class="linked-runbook"><summary><strong>Runbook:</strong> Check Whether the Overall System RMS Page Is Blank Because RMS Access Is Blocked (<code>proc_check_whether_the_overall_system_rms_page_is_blank_because_rms_access_is_blocked_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> diagnostic</li>
+<li><strong>Role:</strong> L1_support</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Use this source-specific diagnostic check to determine whether a blank Overall System RMS page matches the training-source explanation that the page should display the Geek+ RMS web page but may appear blank when firewall access is not open. This procedure is limited to observation and documentation only.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use when reviewing the Overall System RMS page and the RMS display area is blank, and you need to determine whether that blank condition is consistent with the source-described access limitation rather than assuming an on-screen data issue.</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>This procedure is observational and documentation-focused only.</li>
+<li>Do not assume the blank page confirms any specific network root cause beyond the source statement that the firewall is not open.</li>
+<li>If RMS visibility is required and the page remains blank, escalate.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>No supported abnormal robot roster or mapping state is identified in available RMS or AGV status checks.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>A specific robot appears abnormal in RMS or AGV status views and is a plausible blocker to normal pairing or fleet behavior.</td><td><code></code></td></tr>
+<tr><td><code>inconclusive</code></td><td>Unhealthy evidence includes site reports that nothing is moving, small sort is stopped, hospital handling is blocked, or RMS/HMI shows abnormal blank or question-mark state. Healthy or inconclusive evidence would show localized impact only or normal RMS/HMI presentation.</td><td><code></code></td></tr>
+</table>
+<p><strong>Source:</strong> training_video / training_video_day1</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Open or view the Overall System RMS page</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Open or view the Overall System RMS page and locate the area where RMS content is expected to appear.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The page is accessible and the RMS display area can be reviewed.</p>
+<p><strong>Expected result:</strong></p>
+<p>The Overall System RMS page is visible for inspection.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/1edf4bf1b0b38c00.jpg" alt="artifact_training_video_training_video_day1_0061_this_page_should_show_rms_but_primary_02_13_06_000"><figcaption>The Overall System RMS page area that should display RMS content.</figcaption></figure>
+<hr>
+<h5>Step 2 — Observe whether the RMS display area is blank</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Inspect the RMS web page area and note whether it is blank instead of showing the expected RMS content.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The page shows visible RMS content.</p>
+<p><strong>Expected result:</strong></p>
+<p>You can state whether the RMS display area is blank.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/1edf4bf1b0b38c00.jpg" alt="artifact_training_video_training_video_day1_0061_this_page_should_show_rms_but_primary_02_13_06_000"><figcaption>The RMS web page area that should contain the Geek+ RMS display.</figcaption></figure>
+<hr>
+<h5>Step 3 — Compare the blank display to the source-described firewall limitation</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Compare the observed blank display to the source statement that the page should show RMS but can appear blank when the firewall is not open.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The observed blank condition matches the source-described scenario.</p>
+<p><strong>Expected result:</strong></p>
+<p>You can determine whether the blank page is consistent with the source-described access limitation.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/1edf4bf1b0b38c00.jpg" alt="artifact_training_video_training_video_day1_0061_this_page_should_show_rms_but_primary_02_13_06_000"><figcaption>The slide text and associated explanation that the page should show RMS but may be blank when firewall access is not open.</figcaption></figure>
+<hr>
+<h5>Step 4 — Confirm the expected RMS page contents</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Confirm that the expected page content would normally include the Geek+ RMS web page, with system faults on the left and active AGV faults on the right.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Expected content is understood as the Geek+ RMS web page with system faults on the left and active AGV faults on the right.</p>
+<p><strong>Expected result:</strong></p>
+<p>You can describe the expected RMS content that is missing from the blank page.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/1edf4bf1b0b38c00.jpg" alt="artifact_training_video_training_video_day1_0061_this_page_should_show_rms_but_primary_02_13_06_000"><figcaption>The description of expected RMS content, including system faults on the left and active AGV faults on the right.</figcaption></figure>
+<hr>
+<h5>Step 5 — Document the blank page and the source-backed access limitation</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Record that the page is blank and note the source-backed possibility that firewall access is preventing RMS from being displayed.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The blank page is documented as consistent with the source-described firewall access limitation.</p>
+<p><strong>Expected result:</strong></p>
+<p>The observation is documented with the source-backed explanation and any need for escalation.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/1edf4bf1b0b38c00.jpg" alt="artifact_training_video_training_video_day1_0061_this_page_should_show_rms_but_primary_02_13_06_000"><figcaption>The source statement supporting documentation that the page may be blank when firewall access is not open.</figcaption></figure>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>The Overall System RMS page has been reviewed.</li>
+<li>The observer has determined whether the RMS display area is blank.</li>
+<li>The blank condition, if present, has been documented as consistent with the source-described firewall access limitation.</li>
+<li>Any need for escalation due to required RMS visibility has been noted.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>The Overall System RMS page cannot be accessed.</li>
+<li>The RMS display area remains blank when visibility is required.</li>
+<li>The blank page is treated as confirmed root cause without source support.</li>
+<li>Expected RMS content cannot be confirmed from the supplied source evidence.</li>
+</ul>
+</details>
+</details>
+<hr>
+<h3>2 — Check for OptiSweep service failure evidence (diagnostic_decision)</h3>
+<p><strong>Intent:</strong> Determine whether the OptiSweep service is in an abnormal state or recently terminated in a way that correlates with the stoppage.</p>
+<p><strong>Runbook Links:</strong></p>
+<ul>
+<li><code>proc_verify_whether_direct_rms_or_external_api_actions_may_have_bypassed_optisweep_tracking_v1</code> (medium, primary, score=0.4401) — Verify Whether Direct RMS Or External API Actions May Have Bypassed OptiSweep Tracking</li>
+</ul>
+<p><strong>Linked Runbook Procedures:</strong></p>
+<p><strong>Decision Outcomes:</strong></p>
+<ul>
+<li><code>healthy</code>: Checks for &#x27;Check for OptiSweep service failure evidence&#x27; do not indicate the fault condition being evaluated.</li>
+<li><code>unhealthy</code>: Checks for &#x27;Check for OptiSweep service failure evidence&#x27; indicate the fault condition being evaluated.</li>
+<li><code>inconclusive</code>: Unhealthy evidence includes Service Control Manager termination events for OptiSweep or service not running as expected. Healthy evidence would show no recent OptiSweep termination and normal running state, requiring investigation of other components.</li>
+<li><code>healthy</code>: No direct RMS or external API action outside OptiSweep is reported.</li>
+<li><code>healthy</code>: The reported action stayed within the OptiSweep software flow.</li>
+<li><code>healthy</code>: The reported action does not conflict with the source warning, or no bypass occurred.</li>
+<li><code>healthy</code>: The issue record clearly documents whether bypass activity is suspected and why it matters.</li>
+<li><code>healthy</code>: Support review stops at identification, interpretation, and escalation without bypassing OptiSweep.</li>
+<li><code>unhealthy</code>: Direct API or RMS bypass activity is suspected or confirmed.</li>
+</ul>
+<p><strong>Branches:</strong></p>
+<ul>
+<li><code>unhealthy</code> → <code>node_5</code> when OptiSweep termination evidence is present or current service state is abnormal</li>
+<li><code>unhealthy</code> → <code>node_3</code> when Service failure is not clearly established or HMI or gateway symptoms remain unexplained</li>
+<li><code>healthy</code> → <code>node_6</code> when Diagnostic check does not indicate the fault condition</li>
+</ul>
+<details class="linked-runbook" open><summary><strong>Runbook:</strong> Verify Whether Direct RMS Or External API Actions May Have Bypassed OptiSweep Tracking (<code>proc_verify_whether_direct_rms_or_external_api_actions_may_have_bypassed_optisweep_tracking_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> reference</li>
+<li><strong>Role:</strong> L2_support</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Use this source-based reference check when reviewing an issue to determine whether support or troubleshooting activity may have bypassed the normal OptiSweep software flow through direct RMS or external API interaction. The source warns that bypassing OptiSweep can leave the software unaware of what happened and create out-of-sync conditions.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use when investigating missing visibility, unexplained state differences, or suspected support actions involving RMS, Geek Plus, REST API, or other external API interaction outside the normal OptiSweep software flow.</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>The source explicitly warns against bypassing the OptiSweep software flow.</li>
+<li>Direct API activity may leave OptiSweep without knowledge of the transaction and create an out-of-sync condition.</li>
+<li>This source does not provide a recovery method after bypass activity.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>Checks for &#x27;Check for OptiSweep service failure evidence&#x27; do not indicate the fault condition being evaluated.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>Checks for &#x27;Check for OptiSweep service failure evidence&#x27; indicate the fault condition being evaluated.</td><td><code>node_5</code></td></tr>
+<tr><td><code>inconclusive</code></td><td>Unhealthy evidence includes Service Control Manager termination events for OptiSweep or service not running as expected. Healthy evidence would show no recent OptiSweep termination and normal running state, requiring investigation of other components.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>No direct RMS or external API action outside OptiSweep is reported.</td><td><code>node_5</code></td></tr>
+<tr><td><code>healthy</code></td><td>The reported action stayed within the OptiSweep software flow.</td><td><code>node_5</code></td></tr>
+<tr><td><code>healthy</code></td><td>The reported action does not conflict with the source warning, or no bypass occurred.</td><td><code>node_5</code></td></tr>
+<tr><td><code>healthy</code></td><td>The issue record clearly documents whether bypass activity is suspected and why it matters.</td><td><code>node_5</code></td></tr>
+<tr><td><code>healthy</code></td><td>Support review stops at identification, interpretation, and escalation without bypassing OptiSweep.</td><td><code>node_5</code></td></tr>
+<tr><td><code>unhealthy</code></td><td>Direct API or RMS bypass activity is suspected or confirmed.</td><td><code>node_5</code></td></tr>
+</table>
+<p><strong>Source:</strong> training_video / training_video_day1</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Confirm whether direct RMS or API interaction was attempted</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Review the incident details or support report and confirm whether anyone attempted direct interaction with Geek Plus, RMS, REST API, or other external APIs outside the normal OptiSweep software flow.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>No direct RMS or external API action outside OptiSweep is reported.</p>
+<p><strong>Expected result:</strong></p>
+<p>A clear yes/no determination is made on whether direct external interaction was attempted.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/c5866ddbebd54b66.jpg" alt="artifact_training_video_training_video_day1_0022_rms_is_the_robot_management_system_primary_00_52_41_500"><figcaption>RMS overview context and transcript references to API communication between RMS and OptiSweep.</figcaption></figure>
+<hr>
+<h5>Step 2 — Identify whether the action bypassed the OptiSweep service</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Identify whether the reported action was intended to bypass the OptiSweep service or directly trigger behavior through external APIs instead of going through the OptiSweep software flow.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The reported action stayed within the OptiSweep software flow.</p>
+<p><strong>Expected result:</strong></p>
+<p>The action is classified as either within the OptiSweep flow or a bypass of the OptiSweep service.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/c5866ddbebd54b66.jpg" alt="artifact_training_video_training_video_day1_0022_rms_is_the_robot_management_system_primary_00_52_41_500"><figcaption>Transcript context describing RMS access and API communication, used to interpret whether the reported action was outside OptiSweep.</figcaption></figure>
+<hr>
+<h5>Step 3 — Compare the action against the source warning</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Compare the reported action against the source warning that bypassing OptiSweep can leave the software unaware of what happened and can cause systems to get out of sync.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The reported action does not conflict with the source warning, or no bypass occurred.</p>
+<p><strong>Expected result:</strong></p>
+<p>You determine whether the source warning plausibly explains the observed issue.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/c5866ddbebd54b66.jpg" alt="artifact_training_video_training_video_day1_0022_rms_is_the_robot_management_system_primary_00_52_41_500"><figcaption>Warning context in the transcript about bypassing OptiSweep and causing out-of-sync conditions.</figcaption></figure>
+<hr>
+<h5>Step 4 — Record the synchronization risk</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Record that suspected or confirmed direct API activity may have left OptiSweep without knowledge of the transaction and may have created an out-of-sync condition.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The issue record clearly documents whether bypass activity is suspected and why it matters.</p>
+<p><strong>Expected result:</strong></p>
+<p>The case record reflects the source-supported explanation for missing visibility or synchronization issues.</p>
+<hr>
+<h5>Step 5 — Do not perform direct API actions from this source</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Stop short of performing direct RMS or external API actions based on this source alone. Treat this segment as a warning and interpretation boundary, not as authorization or a recovery method.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Support review stops at identification, interpretation, and escalation without bypassing OptiSweep.</p>
+<p><strong>Expected result:</strong></p>
+<p>No unsupported direct API action is taken from this source guidance alone.</p>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>Support determines whether direct RMS or external API activity may have bypassed OptiSweep.</li>
+<li>The issue record documents the source-supported risk that OptiSweep may not know what happened.</li>
+<li>No unsupported direct API action is taken from this source alone.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>Direct API or RMS bypass activity is suspected or confirmed.</li>
+<li>OptiSweep may lack knowledge of the transaction.</li>
+<li>System state is unclear and the source provides no recovery method.</li>
+</ul>
+</details>
+<hr>
+<h3>3 — Decide whether gateway or dependent application checks are needed (branching_condition)</h3>
+<p><strong>Intent:</strong> Choose whether to continue with Ignition and application-layer diagnostics when service failure evidence is absent, incomplete, or insufficient to explain the stoppage.</p>
+<p><strong>Runbook Links:</strong></p>
+<ul>
+<li class="warn">unresolved</li>
+</ul>
+<p><strong>Linked Runbook Procedures:</strong></p>
+<p><strong>Decision Outcomes:</strong></p>
+<ul>
+<li><code>healthy</code>: The branch condition is not confirmed; choose the alternate troubleshooting direction.</li>
+<li><code>unhealthy</code>: The branch condition is confirmed and the flow should continue in the primary direction.</li>
+<li><code>inconclusive</code>: Take the gateway or application branch when OptiSweep failure is not clearly established, when HMI behavior suggests gateway abnormality, or when nearby application errors are present. Skip to supported recovery when service failure is already established and authorized recovery is available.</li>
+</ul>
+<p><strong>Branches:</strong></p>
+<ul>
+<li><code>healthy</code> → <code>node_6</code> when Branch condition is not confirmed</li>
+</ul>
+<p><em>No linked runbook content available.</em></p>
+<hr>
+<h3>4 — Assess Ignition gateway and application-layer health (diagnostic_decision)</h3>
+<p><strong>Intent:</strong> Determine whether the gateway is responsive and whether nearby application errors provide supporting evidence for the stoppage.</p>
+<p><strong>Runbook Links:</strong></p>
+<ul>
+<li><code>proc_use_rms_as_a_support_entry_point_to_gather_initial_system_information_v1</code> (medium, primary, score=0.3934) — Use RMS As A Support Entry Point To Gather Initial System Information</li>
+</ul>
+<p><strong>Linked Runbook Procedures:</strong></p>
+<p><strong>Decision Outcomes:</strong></p>
+<ul>
+<li><code>healthy</code>: Checks for &#x27;Assess Ignition gateway and application-layer health&#x27; do not indicate the fault condition being evaluated.</li>
+<li><code>unhealthy</code>: Checks for &#x27;Assess Ignition gateway and application-layer health&#x27; indicate the fault condition being evaluated.</li>
+<li><code>inconclusive</code>: Healthy evidence includes a responsive Ignition Systems Overview page with normal response indicators and no recent slow-response events. Unhealthy or contextual evidence includes gateway restart need, abnormal uptime or responsiveness, or clustered WCSWebApplication/Application log errors.</li>
+<li><code>healthy</code>: The RMS address opens successfully.</li>
+<li><code>healthy</code>: Login succeeds and the user proceeds into RMS.</li>
+<li><code>healthy</code>: The overview screen is displayed and can be reviewed.</li>
+<li><code>healthy</code>: The overview provides useful starting information about the system state or issue.</li>
+<li><code>healthy</code>: The user has captured the initial state seen in RMS.</li>
+<li><code>unhealthy</code>: RMS cannot be accessed.</li>
+</ul>
+<p><strong>Branches:</strong></p>
+<ul>
+<li><code>healthy</code> → <code>node_6</code> when Diagnostic check does not indicate the fault condition</li>
+</ul>
+<details class="linked-runbook" open><summary><strong>Runbook:</strong> Use RMS As A Support Entry Point To Gather Initial System Information (<code>proc_use_rms_as_a_support_entry_point_to_gather_initial_system_information_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> diagnostic</li>
+<li><strong>Role:</strong> L1_support</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Open the RMS web application, log in, and use the overview screen as an initial support view to understand current AGV or ATP-related issues before deeper troubleshooting.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use when a support user receives a report that there is a problem and needs an initial system view in RMS to learn more information about AGV or ATP behavior.</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>This source frames RMS here as a support-facing information-gathering interface.</li>
+<li>The source warns that bypassing OptiSweep and interacting outside supported flows can cause systems to get out of sync.</li>
+<li>Do not infer unsupported meanings or actions from interface elements not explained in this source.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>Checks for &#x27;Assess Ignition gateway and application-layer health&#x27; do not indicate the fault condition being evaluated.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>Checks for &#x27;Assess Ignition gateway and application-layer health&#x27; indicate the fault condition being evaluated.</td><td><code></code></td></tr>
+<tr><td><code>inconclusive</code></td><td>Healthy evidence includes a responsive Ignition Systems Overview page with normal response indicators and no recent slow-response events. Unhealthy or contextual evidence includes gateway restart need, abnormal uptime or responsiveness, or clustered WCSWebApplication/Application log errors.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>The RMS address opens successfully.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>Login succeeds and the user proceeds into RMS.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>The overview screen is displayed and can be reviewed.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>The overview provides useful starting information about the system state or issue.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>The user has captured the initial state seen in RMS.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>RMS cannot be accessed.</td><td><code></code></td></tr>
+</table>
+<p><strong>Source:</strong> training_video / training_video_day1</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Access the RMS web application</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Open the RMS web application using the site&#x27;s RMS address or unique IP address.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The RMS address opens successfully.</p>
+<p><strong>Expected result:</strong></p>
+<p>The RMS web application is reached and ready for login.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/c5866ddbebd54b66.jpg" alt="artifact_training_video_training_video_day1_0022_rms_is_the_robot_management_system_primary_00_52_41_500"><figcaption>RMS described as a web application accessed through a unique IP address.</figcaption></figure>
+<hr>
+<h5>Step 2 — Log in to RMS</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Log in with the assigned username and password.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Login succeeds and the user proceeds into RMS.</p>
+<p><strong>Expected result:</strong></p>
+<p>The user is authenticated into RMS.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/c5866ddbebd54b66.jpg" alt="artifact_training_video_training_video_day1_0022_rms_is_the_robot_management_system_primary_00_52_41_500"><figcaption>Training context describing username and password entry for RMS access.</figcaption></figure>
+<hr>
+<h5>Step 3 — Open and observe the RMS overview screen</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Open the RMS overview screen and observe the information presented there.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The overview screen is displayed and can be reviewed.</p>
+<p><strong>Expected result:</strong></p>
+<p>The RMS overview screen is visible and available for initial review.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/c5866ddbebd54b66.jpg" alt="artifact_training_video_training_video_day1_0022_rms_is_the_robot_management_system_primary_00_52_41_500"><figcaption>RMS overview-screen context from the training segment, including the overview area referenced in the candidate.</figcaption></figure>
+<hr>
+<h5>Step 4 — Use the overview information to understand the issue</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Use the displayed RMS information to learn more about the AGV or ATP issue, consistent with the training segment&#x27;s support purpose.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The overview provides useful starting information about the system state or issue.</p>
+<p><strong>Expected result:</strong></p>
+<p>The user gains initial understanding of the reported issue from RMS.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/c5866ddbebd54b66.jpg" alt="artifact_training_video_training_video_day1_0022_rms_is_the_robot_management_system_primary_00_52_41_500"><figcaption>Support-oriented RMS overview context for learning more about ATP or AGV behavior.</figcaption></figure>
+<hr>
+<h5>Step 5 — Record initial RMS observations</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Record what the RMS overview shows before moving to deeper troubleshooting, if additional investigation is needed.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The user has captured the initial state seen in RMS.</p>
+<p><strong>Expected result:</strong></p>
+<p>Initial RMS observations are documented for follow-on troubleshooting.</p>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>The user successfully accesses RMS.</li>
+<li>The user logs in and reaches the overview screen.</li>
+<li>The user gathers initial information about the AGV or ATP issue from the RMS overview.</li>
+<li>Initial observations are recorded before deeper troubleshooting.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>RMS cannot be accessed.</li>
+<li>Login cannot be completed.</li>
+<li>The overview screen is unavailable.</li>
+<li>The source does not provide enough detail to safely interpret specific fields or indicators.</li>
+<li>The source does not provide root-cause logic or corrective actions beyond initial information gathering.</li>
+</ul>
+</details>
+<hr>
+<h3>5 — Perform approved recovery for the affected service or gateway (procedure_reference)</h3>
+<p><strong>Intent:</strong> Carry out the authorized recovery action for the identified abnormal service or gateway path.</p>
+<p><strong>Runbook Links:</strong></p>
+<ul>
+<li><code>proc_recover_an_agv_from_a_bump_fault_code_v1</code> (medium, primary, score=0.5567) — Recover An AGV From A BUMP Fault Code</li>
+</ul>
+<p><strong>Linked Runbook Procedures:</strong></p>
+<p><strong>Branches:</strong></p>
+<ul>
+<li><code>unhealthy</code> → <code>node_6</code> when Primary service or gateway recovery completed</li>
+</ul>
+<details class="linked-runbook" open><summary><strong>Runbook:</strong> Recover An AGV From A BUMP Fault Code (<code>proc_recover_an_agv_from_a_bump_fault_code_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> recovery</li>
+<li><strong>Role:</strong> L2_support</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Recover a documented AGV BUMP fault when Geek+ cannot recover the AGV by gathering required fault details, confirming the BUMP fault information on the AGV Bump Fault Screen, stopping RMS, removing the obstruction, resetting the AGV, and resuming RMS.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use this procedure for the documented AGV BUMP fault recovery case in the OptiSweep manual when Geek+ cannot recover the AGV.</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>The source states to gather information before going inside the grid (the Dance Floor).</li>
+<li>This procedure includes going inside the grid and physically removing an obstruction.</li>
+<li>Safety controls beyond the documented E-stop actions are not specified in the supplied source excerpt.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>The obstruction is removed.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>Required pre-entry fault information cannot be gathered.</td><td><code></code></td></tr>
+<tr><td><code>unknown</code></td><td>State cannot be confirmed from available runbook evidence.</td><td><code></code></td></tr>
+</table>
+<p><strong>Source:</strong> manual / manual_optisweep_om_v3</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Gather required fault information before entering the grid</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Before going inside the grid (the Dance Floor), gather the Robot ID, the fault description from RMS, whether RMS indicates the faulted AGV is holding a bin and the tote ID if present, and if the faulted AGV is under a rack, determine whether that AGV is the empty AGV for that zone.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Robot ID, RMS fault description, tote/bin status, tote ID if present, and under-rack empty-AGV status are known before entering the grid.</p>
+<p><strong>Expected result:</strong></p>
+<p>The responder has the AGV identity and required RMS fault context needed for the recovery.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/87f1d32e67350071.jpeg" alt="artifact_fig_5_2_agv_bump_fault_screen"><figcaption>AGV identification and fault information relevant to the faulted robot.</figcaption></figure>
+<hr>
+<h5>Step 2 — Confirm the documented BUMP fault case</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Identify that the AGV is in the documented BUMP fault case and check the exception information shown for code 21057 or 21060 if displayed on the AGV Bump Fault Screen.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The AGV Bump Fault Screen shows the documented BUMP fault context, with exception information matching code 21057 or 21060 when displayed.</p>
+<p><strong>Expected result:</strong></p>
+<p>The responder confirms the AGV fault matches the documented BUMP fault context and reviews the displayed exception information.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/87f1d32e67350071.jpeg" alt="artifact_fig_5_2_agv_bump_fault_screen"><figcaption>Fault or exception display area, exception code area, and AGV identification on the AGV Bump Fault Screen.</figcaption></figure>
+<hr>
+<h5>Step 3 — E-stop the RMS</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>E-stop the RMS.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>RMS is in the stopped state required for the recovery sequence.</p>
+<p><strong>Expected result:</strong></p>
+<p>RMS is E-stopped.</p>
+<hr>
+<h5>Step 4 — Remove the obstruction</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Remove the obstruction.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The obstruction is no longer present and the AGV is clear of the bump condition.</p>
+<p><strong>Expected result:</strong></p>
+<p>The obstruction is removed from the AGV path or contact point.</p>
+<hr>
+<h5>Step 5 — Reset the AGV to clear the fault</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Click the AGV RESET button for two seconds to clear the fault.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The BUMP fault clears after the AGV RESET button is held for two seconds.</p>
+<p><strong>Expected result:</strong></p>
+<p>The AGV fault is cleared.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/87f1d32e67350071.jpeg" alt="artifact_fig_5_2_agv_bump_fault_screen"><figcaption>AGV RESET button location on the AGV Bump Fault Screen.</figcaption></figure>
+<hr>
+<h5>Step 6 — Press E-stop again</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Press E-stop again.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The second E-stop action is completed as specified by the manual.</p>
+<p><strong>Expected result:</strong></p>
+<p>The documented second E-stop action is completed.</p>
+<hr>
+<h5>Step 7 — Resume RMS</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Resume RMS.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>RMS resumes and the AGV BUMP fault remains cleared.</p>
+<p><strong>Expected result:</strong></p>
+<p>RMS is resumed and the documented recovery sequence is complete.</p>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>The obstruction is removed.</li>
+<li>The AGV fault is cleared using the AGV RESET button.</li>
+<li>RMS is resumed.</li>
+<li>The documented BUMP recovery sequence completes without the fault persisting.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>Required pre-entry fault information cannot be gathered.</li>
+<li>The fault does not match the documented BUMP fault case.</li>
+<li>RMS cannot be E-stopped or resumed as documented.</li>
+<li>The obstruction cannot be removed.</li>
+<li>The AGV fault does not clear after the documented reset sequence.</li>
+</ul>
+</details>
+<hr>
+<h3>6 — Check for residual AGV desynchronization after service recovery (diagnostic_decision)</h3>
+<p><strong>Intent:</strong> Determine whether AGVs remain out of sync and require RMS-based correction before normal operation can resume.</p>
+<p><strong>Runbook Links:</strong></p>
+<ul>
+<li><code>proc_check_overall_system_rms_for_system_faults_and_active_agv_faults_v1</code> (medium, primary, score=0.479) — Check Overall System RMS For System Faults And Active AGV Faults</li>
+<li><code>proc_view_current_auv_agv_status_in_the_overall_system_agv_status_pop_up_v1</code> (high, alternate, score=0.4226) — View Current AUV/AGV Status In The Overall System AGV Status Pop-Up</li>
+</ul>
+<p><strong>Linked Runbook Procedures:</strong></p>
+<p><strong>Decision Outcomes:</strong></p>
+<ul>
+<li><code>healthy</code>: No supported abnormal robot roster or mapping state is identified in available RMS or AGV status checks.</li>
+<li><code>unhealthy</code>: A specific robot appears abnormal in RMS or AGV status views and is a plausible blocker to normal pairing or fleet behavior.</li>
+<li><code>inconclusive</code>: Unhealthy evidence includes AGVs shown as out of sync, removed unexpectedly, unmapped, or otherwise abnormal in RMS. Healthy evidence would show the fleet in normal synchronized state without residual correction needs.</li>
+<li><code>healthy</code>: No system faults are reported or visible.</li>
+<li><code>healthy</code>: The page is available and can be reviewed by support or by someone on the call.</li>
+<li><code>healthy</code>: No system faults are shown on the left side.</li>
+<li><code>healthy</code>: No active AGV faults are shown on the right side.</li>
+<li><code>healthy</code>: Someone on the call can view or share the page and report what is shown.</li>
+<li><code>unhealthy</code>: System faults are shown on the left side of the page.</li>
+</ul>
+<p><strong>Branches:</strong></p>
+<ul>
+<li><code>unhealthy</code> → <code>node_7</code> when Out-of-sync or abnormal AGVs are present in RMS</li>
+<li><code>healthy</code> → <code>node_6</code> when Diagnostic check does not indicate the fault condition</li>
+</ul>
+<details class="linked-runbook" open><summary><strong>Runbook:</strong> Check Overall System RMS For System Faults And Active AGV Faults (<code>proc_check_overall_system_rms_for_system_faults_and_active_agv_faults_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> diagnostic</li>
+<li><strong>Role:</strong> L1_support</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Use the Overall System RMS page to determine whether system faults or active AGV faults are present during support troubleshooting. The source states this should be an initial support question and identifies where each fault type appears on the page.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use during support troubleshooting when determining whether faults are currently visible in the Overall System RMS view, especially as an initial question on a support call.</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>This source segment supports observation and fault presence checking only.</li>
+<li>Do not invent fault meanings, corrective actions, or additional controls not shown in the source.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>No supported abnormal robot roster or mapping state is identified in available RMS or AGV status checks.</td><td><code>node_7</code></td></tr>
+<tr><td><code>unhealthy</code></td><td>A specific robot appears abnormal in RMS or AGV status views and is a plausible blocker to normal pairing or fleet behavior.</td><td><code>node_7</code></td></tr>
+<tr><td><code>inconclusive</code></td><td>Unhealthy evidence includes AGVs shown as out of sync, removed unexpectedly, unmapped, or otherwise abnormal in RMS. Healthy evidence would show the fleet in normal synchronized state without residual correction needs.</td><td><code>node_7</code></td></tr>
+<tr><td><code>healthy</code></td><td>No system faults are reported or visible.</td><td><code>node_7</code></td></tr>
+<tr><td><code>healthy</code></td><td>The page is available and can be reviewed by support or by someone on the call.</td><td><code>node_7</code></td></tr>
+<tr><td><code>healthy</code></td><td>No system faults are shown on the left side.</td><td><code>node_7</code></td></tr>
+<tr><td><code>healthy</code></td><td>No active AGV faults are shown on the right side.</td><td><code>node_7</code></td></tr>
+<tr><td><code>healthy</code></td><td>Someone on the call can view or share the page and report what is shown.</td><td><code>node_7</code></td></tr>
+<tr><td><code>unhealthy</code></td><td>System faults are shown on the left side of the page.</td><td><code>node_7</code></td></tr>
+</table>
+<p><strong>Source:</strong> training_video / training_video_day1</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Ask whether there are any system faults</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Begin the support check by asking whether there are any system faults.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>No system faults are reported or visible.</p>
+<p><strong>Expected result:</strong></p>
+<p>The caller confirms whether system faults are currently present or visible.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>The training frame and transcript note that asking about system faults should be the first question.</figcaption></figure>
+<hr>
+<h5>Step 2 — View the Overall System RMS page</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Access or view the Overall System RMS page associated with the Geek+ RMS web page. If you do not have direct access, use a person on the support call who can view the page.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The page is available and can be reviewed by support or by someone on the call.</p>
+<p><strong>Expected result:</strong></p>
+<p>The Overall System RMS page is visible for review.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>Overall System RMS page reference showing this is the Geek+ RMS web page view used for fault review.</figcaption></figure>
+<hr>
+<h5>Step 3 — Check the left side for system faults</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Review the left side of the Overall System RMS page for system faults.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>No system faults are shown on the left side.</p>
+<p><strong>Expected result:</strong></p>
+<p>You determine whether system faults are shown on the left side of the page.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>The left side of the Overall System RMS page where system faults are shown.</figcaption></figure>
+<hr>
+<h5>Step 4 — Check the right side for active AGV faults</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Review the right side of the Overall System RMS page for any active AGV faults.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>No active AGV faults are shown on the right side.</p>
+<p><strong>Expected result:</strong></p>
+<p>You determine whether active AGV faults are shown on the right side of the page.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>The right side of the Overall System RMS page where active AGV faults are shown.</figcaption></figure>
+<hr>
+<h5>Step 5 — Use another participant&#x27;s view if direct access is unavailable</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>If you do not have direct access, ask another person on the support call who has access to show the screen or describe what is visible on the Overall System RMS page.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Someone on the call can view or share the page and report what is shown.</p>
+<p><strong>Expected result:</strong></p>
+<p>Fault visibility can still be confirmed through another participant on the call.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/5c1dbf20176cd0a3.jpg" alt="artifact_training_video_training_video_day1_0063_do_you_have_any_system_faults_primary_02_15_57_000"><figcaption>The source frame associated with the discussion of using available screen access during support calls.</figcaption></figure>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>The Overall System RMS page is reviewed directly or through a participant on the support call.</li>
+<li>It is confirmed whether system faults are present on the left side of the page.</li>
+<li>It is confirmed whether active AGV faults are present on the right side of the page.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>System faults are shown on the left side of the page.</li>
+<li>Active AGV faults are shown on the right side of the page.</li>
+<li>No one on the support call can access, share, or confirm the Overall System RMS page.</li>
+</ul>
+</details>
+<details class="linked-runbook-alternates"><summary><strong>Alternate supporting runbooks</strong> (1)</summary>
+<details class="linked-runbook"><summary><strong>Runbook:</strong> View Current AUV/AGV Status In The Overall System AGV Status Pop-Up (<code>proc_view_current_auv_agv_status_in_the_overall_system_agv_status_pop_up_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> diagnostic</li>
+<li><strong>Role:</strong> operator</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Use the HMI status pop-up or page labeled &quot;Overall System AGV Status&quot; to view detailed current AUV/AGV system status information shown by the source training segment.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use when an operator or support user needs to inspect the current status details shown in the HMI status display identified in the training as the AUV status pop-up and shown on screen as &quot;Overall System AGV Status.&quot;</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>This source supports a view/inspection activity only.</li>
+<li>Do not infer meanings for displayed status values or indicators unless the source explicitly explains them.</li>
+<li>A terminology mismatch exists in the source: the transcript says &quot;AUV status&quot; while the on-screen title reads &quot;Overall System AGV Status.&quot; Preserve both terms when communicating findings from this source.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>No supported abnormal robot roster or mapping state is identified in available RMS or AGV status checks.</td><td><code>node_7</code></td></tr>
+<tr><td><code>unhealthy</code></td><td>A specific robot appears abnormal in RMS or AGV status views and is a plausible blocker to normal pairing or fleet behavior.</td><td><code>node_7</code></td></tr>
+<tr><td><code>inconclusive</code></td><td>Unhealthy evidence includes AGVs shown as out of sync, removed unexpectedly, unmapped, or otherwise abnormal in RMS. Healthy evidence would show the fleet in normal synchronized state without residual correction needs.</td><td><code>node_7</code></td></tr>
+</table>
+<p><strong>Source:</strong> training_video / training_video_day1</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Open or view the Overall System AGV Status pop-up</h5>
+<p><strong>Responsible role:</strong> operator</p>
+<p><strong>Instruction:</strong></p>
+<p>Open or navigate to the AUV status pop-up referenced in the training segment, identified on screen as &quot;Overall System AGV Status.&quot; Use the available HMI or displayed training screen to bring this status view into view.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>A pop-up or page matching the referenced status display is shown.</p>
+<p><strong>Expected result:</strong></p>
+<p>The status pop-up or page is visible to the user.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/11e368e46163763f.jpg" alt="artifact_training_video_training_video_day1_0064_auv_status_just_another_pop_up_primary_02_16_38_500"><figcaption>The page or pop-up title area showing &quot;Overall System AGV Status.&quot;</figcaption></figure>
+<hr>
+<h5>Step 2 — Confirm the correct status view is displayed</h5>
+<p><strong>Responsible role:</strong> operator</p>
+<p><strong>Instruction:</strong></p>
+<p>Confirm that the displayed page is the status view by checking for the title text &quot;Overall System AGV Status.&quot;</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The title &quot;Overall System AGV Status&quot; is visible on the screen.</p>
+<p><strong>Expected result:</strong></p>
+<p>The page title matches the source-supported status view.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/11e368e46163763f.jpg" alt="artifact_training_video_training_video_day1_0064_auv_status_just_another_pop_up_primary_02_16_38_500"><figcaption>The title text reading &quot;Overall System AGV Status.&quot;</figcaption></figure>
+<hr>
+<h5>Step 3 — Review the detailed current status information</h5>
+<p><strong>Responsible role:</strong> operator</p>
+<p><strong>Instruction:</strong></p>
+<p>Review the detailed status information shown on the pop-up or page, using the source-described purpose that it &quot;shows you in details&quot; and &quot;will show the current status.&quot;</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Detailed current status information is visible on the page.</p>
+<p><strong>Expected result:</strong></p>
+<p>The user can see the current status information presented by the status display.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/11e368e46163763f.jpg" alt="artifact_training_video_training_video_day1_0064_auv_status_just_another_pop_up_primary_02_16_38_500"><figcaption>The status information area associated with the text indicating the page shows the current status.</figcaption></figure>
+<hr>
+<h5>Step 4 — Observe the displayed status indicators or fields</h5>
+<p><strong>Responsible role:</strong> operator</p>
+<p><strong>Instruction:</strong></p>
+<p>Observe any status indicators, condition fields, or system-level status details shown on the screen, but use only the values and meanings explicitly provided by the source.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Status details are visible and can be read directly from the display.</p>
+<p><strong>Expected result:</strong></p>
+<p>The displayed status indicators or fields are observed as presented on the screen.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/11e368e46163763f.jpg" alt="artifact_training_video_training_video_day1_0064_auv_status_just_another_pop_up_primary_02_16_38_500"><figcaption>The screen region showing the status details or fields presented in the pop-up.</figcaption></figure>
+<hr>
+<h5>Step 5 — Record or communicate the current status shown</h5>
+<p><strong>Responsible role:</strong> operator</p>
+<p><strong>Instruction:</strong></p>
+<p>Record or communicate the current status information displayed if needed for operations or troubleshooting.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Observed status information is communicated or noted without adding unsupported interpretation.</p>
+<p><strong>Expected result:</strong></p>
+<p>The currently displayed status information is available to others if needed.</p>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>The user is able to view the Overall System AGV Status pop-up/page.</li>
+<li>The title &quot;Overall System AGV Status&quot; is visible and confirms the correct screen.</li>
+<li>Current detailed status information can be inspected from the displayed page.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>The AUV/AGV status pop-up cannot be accessed.</li>
+<li>The expected &quot;Overall System AGV Status&quot; title is not present.</li>
+<li>Displayed values or indicators would require unsupported interpretation beyond what the source explains.</li>
+</ul>
+</details>
+</details>
+<hr>
+<h3>7 — Perform supported AGV resynchronization or correction in RMS (procedure_reference)</h3>
+<p><strong>Intent:</strong> Apply the approved RMS-based correction path for AGVs left out of sync after the primary service or gateway issue is addressed.</p>
+<p><strong>Runbook Links:</strong></p>
+<ul>
+<li><code>proc_recover_an_agv_from_a_bump_fault_code_v1</code> (medium, primary, score=0.655) — Recover An AGV From A BUMP Fault Code</li>
+</ul>
+<p><strong>Linked Runbook Procedures:</strong></p>
+<p><strong>Branches:</strong></p>
+<ul>
+<li><code>unhealthy</code> → <code>node_8</code> when AGV correction completed or no residual AGV sync issue is found</li>
+</ul>
+<details class="linked-runbook" open><summary><strong>Runbook:</strong> Recover An AGV From A BUMP Fault Code (<code>proc_recover_an_agv_from_a_bump_fault_code_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> recovery</li>
+<li><strong>Role:</strong> L2_support</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Recover a documented AGV BUMP fault when Geek+ cannot recover the AGV by gathering required fault details, confirming the BUMP fault information on the AGV Bump Fault Screen, stopping RMS, removing the obstruction, resetting the AGV, and resuming RMS.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use this procedure for the documented AGV BUMP fault recovery case in the OptiSweep manual when Geek+ cannot recover the AGV.</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>The source states to gather information before going inside the grid (the Dance Floor).</li>
+<li>This procedure includes going inside the grid and physically removing an obstruction.</li>
+<li>Safety controls beyond the documented E-stop actions are not specified in the supplied source excerpt.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>The obstruction is removed.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>Required pre-entry fault information cannot be gathered.</td><td><code></code></td></tr>
+<tr><td><code>unknown</code></td><td>State cannot be confirmed from available runbook evidence.</td><td><code></code></td></tr>
+</table>
+<p><strong>Source:</strong> manual / manual_optisweep_om_v3</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Gather required fault information before entering the grid</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Before going inside the grid (the Dance Floor), gather the Robot ID, the fault description from RMS, whether RMS indicates the faulted AGV is holding a bin and the tote ID if present, and if the faulted AGV is under a rack, determine whether that AGV is the empty AGV for that zone.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>Robot ID, RMS fault description, tote/bin status, tote ID if present, and under-rack empty-AGV status are known before entering the grid.</p>
+<p><strong>Expected result:</strong></p>
+<p>The responder has the AGV identity and required RMS fault context needed for the recovery.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/87f1d32e67350071.jpeg" alt="artifact_fig_5_2_agv_bump_fault_screen"><figcaption>AGV identification and fault information relevant to the faulted robot.</figcaption></figure>
+<hr>
+<h5>Step 2 — Confirm the documented BUMP fault case</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Identify that the AGV is in the documented BUMP fault case and check the exception information shown for code 21057 or 21060 if displayed on the AGV Bump Fault Screen.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The AGV Bump Fault Screen shows the documented BUMP fault context, with exception information matching code 21057 or 21060 when displayed.</p>
+<p><strong>Expected result:</strong></p>
+<p>The responder confirms the AGV fault matches the documented BUMP fault context and reviews the displayed exception information.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/87f1d32e67350071.jpeg" alt="artifact_fig_5_2_agv_bump_fault_screen"><figcaption>Fault or exception display area, exception code area, and AGV identification on the AGV Bump Fault Screen.</figcaption></figure>
+<hr>
+<h5>Step 3 — E-stop the RMS</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>E-stop the RMS.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>RMS is in the stopped state required for the recovery sequence.</p>
+<p><strong>Expected result:</strong></p>
+<p>RMS is E-stopped.</p>
+<hr>
+<h5>Step 4 — Remove the obstruction</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Remove the obstruction.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The obstruction is no longer present and the AGV is clear of the bump condition.</p>
+<p><strong>Expected result:</strong></p>
+<p>The obstruction is removed from the AGV path or contact point.</p>
+<hr>
+<h5>Step 5 — Reset the AGV to clear the fault</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Click the AGV RESET button for two seconds to clear the fault.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The BUMP fault clears after the AGV RESET button is held for two seconds.</p>
+<p><strong>Expected result:</strong></p>
+<p>The AGV fault is cleared.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/87f1d32e67350071.jpeg" alt="artifact_fig_5_2_agv_bump_fault_screen"><figcaption>AGV RESET button location on the AGV Bump Fault Screen.</figcaption></figure>
+<hr>
+<h5>Step 6 — Press E-stop again</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Press E-stop again.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The second E-stop action is completed as specified by the manual.</p>
+<p><strong>Expected result:</strong></p>
+<p>The documented second E-stop action is completed.</p>
+<hr>
+<h5>Step 7 — Resume RMS</h5>
+<p><strong>Responsible role:</strong> L2_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Resume RMS.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>RMS resumes and the AGV BUMP fault remains cleared.</p>
+<p><strong>Expected result:</strong></p>
+<p>RMS is resumed and the documented recovery sequence is complete.</p>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>The obstruction is removed.</li>
+<li>The AGV fault is cleared using the AGV RESET button.</li>
+<li>RMS is resumed.</li>
+<li>The documented BUMP recovery sequence completes without the fault persisting.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>Required pre-entry fault information cannot be gathered.</li>
+<li>The fault does not match the documented BUMP fault case.</li>
+<li>RMS cannot be E-stopped or resumed as documented.</li>
+<li>The obstruction cannot be removed.</li>
+<li>The AGV fault does not clear after the documented reset sequence.</li>
+</ul>
+</details>
+<hr>
+<h3>8 — Validate service responsiveness and operational recovery (validation_gate)</h3>
+<p><strong>Intent:</strong> Confirm that the recovered service path is responsive, AGV status is available, and the site has resumed automated operation.</p>
+<p><strong>Runbook Links:</strong></p>
+<ul>
+<li><code>proc_verify_agvs_are_in_the_szonestaging_state_on_the_hmi_v1</code> (medium, primary, score=0.6167) — Verify AGVs Are in the &quot;szonestaging&quot; State on the HMI</li>
+<li><code>proc_verify_trailing_agv_back_fill_during_exchange_fault_recovery_v1</code> (high, alternate, score=0.5437) — Verify Trailing AGV Back Fill During Exchange Fault Recovery</li>
+</ul>
+<p><strong>Linked Runbook Procedures:</strong></p>
+<p><strong>Decision Outcomes:</strong></p>
+<ul>
+<li><code>healthy</code>: Recovery validation criteria are met and normal operation appears restored.</li>
+<li><code>unhealthy</code>: Recovery validation criteria are not met and troubleshooting or escalation should continue.</li>
+<li><code>inconclusive</code>: Recovery evidence includes OptiSweep shown running in Windows Services, successful GetAgvStatuses response from the OptiSweep or WCS API, responsive Ignition status page if used in recovery, normal or improving RMS fleet state, and site confirmation that automated operation resumed.</li>
+<li><code>healthy</code>: The AGV state field or status area is visible on the HMI.</li>
+<li><code>healthy</code>: The HMI clearly shows a readable AGV state value.</li>
+<li><code>healthy</code>: The displayed AGV state is exactly &quot;szonestaging&quot;.</li>
+<li><code>healthy</code>: The AGVs have been confirmed as being in &quot;szonestaging&quot; before restart or resume actions.</li>
+<li><code>unhealthy</code>: The HMI does not show AGV state.</li>
+<li><code>unhealthy</code>: The AGV state cannot be identified or read.</li>
+</ul>
+<p><strong>Branches:</strong></p>
+<ul>
+<li><code>unhealthy</code> → <code>node_6</code> when Recovery validation criteria are not met</li>
+<li><code>healthy</code> → <code></code> when Recovery validation criteria are met</li>
+</ul>
+<details class="linked-runbook" open><summary><strong>Runbook:</strong> Verify AGVs Are in the &quot;szonestaging&quot; State on the HMI (<code>proc_verify_agvs_are_in_the_szonestaging_state_on_the_hmi_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> diagnostic</li>
+<li><strong>Role:</strong> L1_support</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Confirm on the HMI that the AGVs being checked are displayed in the documented &quot;szonestaging&quot; state before restart or resume actions in AGV fault recovery.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use this check when AGV fault recovery or restart guidance requires confirmation that AGVs are in the documented ready state before restarting or resuming the system.</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>Stop and escalate if the HMI does not show AGV state or if the AGVs are not shown as &quot;szonestaging&quot; when this verification is required.</li>
+<li>Do not infer equivalent AGV states that are not explicitly documented in the source.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>Recovery validation criteria are met and normal operation appears restored.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>Recovery validation criteria are not met and troubleshooting or escalation should continue.</td><td><code></code></td></tr>
+<tr><td><code>inconclusive</code></td><td>Recovery evidence includes OptiSweep shown running in Windows Services, successful GetAgvStatuses response from the OptiSweep or WCS API, responsive Ignition status page if used in recovery, normal or improving RMS fleet state, and site confirmation that automated operation resumed.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>The AGV state field or status area is visible on the HMI.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>The HMI clearly shows a readable AGV state value.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>The displayed AGV state is exactly &quot;szonestaging&quot;.</td><td><code></code></td></tr>
+<tr><td><code>healthy</code></td><td>The AGVs have been confirmed as being in &quot;szonestaging&quot; before restart or resume actions.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>The HMI does not show AGV state.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>The AGV state cannot be identified or read.</td><td><code></code></td></tr>
+</table>
+<p><strong>Source:</strong> manual / manual_optisweep_om_v3</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Open the HMI view showing AGV state</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Open or view the HMI area where AGV state is displayed for the AGVs being checked.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The AGV state field or status area is visible on the HMI.</p>
+<p><strong>Expected result:</strong></p>
+<p>The HMI view showing AGV state is visible.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/ec83d895fff08cd8.jpeg" alt="artifact_fig_5_3_add_agv_to_zone_with_no_empty_agv_screen"><figcaption>Use the nearby page 90 AGV recovery screen as contextual visual support for the HMI-based AGV status verification; review the AGV status area referenced by the source.</figcaption></figure>
+<hr>
+<h5>Step 2 — Identify the AGV state value</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Identify the AGV state value shown on the HMI for the AGVs being checked.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The HMI clearly shows a readable AGV state value.</p>
+<p><strong>Expected result:</strong></p>
+<p>A visible AGV state value is identified for each AGV being checked.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/ec83d895fff08cd8.jpeg" alt="artifact_fig_5_3_add_agv_to_zone_with_no_empty_agv_screen"><figcaption>Look for the AGV status/state information referenced by the page 90 recovery guidance.</figcaption></figure>
+<hr>
+<h5>Step 3 — Verify the state is &quot;szonestaging&quot;</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Verify that the displayed AGV state is exactly &quot;szonestaging&quot; for the AGVs being checked.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The displayed AGV state is exactly &quot;szonestaging&quot;.</p>
+<p><strong>Expected result:</strong></p>
+<p>The AGVs are confirmed either to be in &quot;szonestaging&quot; or not in the required state.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/ec83d895fff08cd8.jpeg" alt="artifact_fig_5_3_add_agv_to_zone_with_no_empty_agv_screen"><figcaption>Confirm the AGV status/state matches the documented value &quot;szonestaging&quot; referenced by the source.</figcaption></figure>
+<hr>
+<h5>Step 4 — Confirm readiness before restart or resume</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Record or confirm that the AGVs are in the documented ready state before proceeding with restart or resume actions.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The AGVs have been confirmed as being in &quot;szonestaging&quot; before restart or resume actions.</p>
+<p><strong>Expected result:</strong></p>
+<p>A clear confirmation is made that the AGVs are in the documented ready state, or escalation is initiated if they are not.</p>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>The HMI displays AGV state for the AGVs being checked.</li>
+<li>The displayed AGV state is confirmed as exactly &quot;szonestaging&quot;.</li>
+<li>The AGVs are confirmed in the documented ready state before restart or resume actions.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>The HMI does not show AGV state.</li>
+<li>The AGV state cannot be identified or read.</li>
+<li>The AGV state is not &quot;szonestaging&quot; when this verification is required.</li>
+<li>Proceeding would require inferring an undocumented equivalent state.</li>
+</ul>
+</details>
+<details class="linked-runbook-alternates"><summary><strong>Alternate supporting runbooks</strong> (1)</summary>
+<details class="linked-runbook"><summary><strong>Runbook:</strong> Verify Trailing AGV Back Fill During Exchange Fault Recovery (<code>proc_verify_trailing_agv_back_fill_during_exchange_fault_recovery_v1</code>)</summary>
+<ul>
+<li><strong>Procedure Type:</strong> diagnostic</li>
+<li><strong>Role:</strong> L1_support</li>
+<li><strong>Merge Status:</strong> pass_through</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p>Use this source-specific diagnostic procedure during the manual&#x27;s AGV fault during exchange recovery scenario to verify whether the AGV behind the faulted lifted AGV has back filled, and to document whether the manual&#x27;s condition for also removing the trailing AGV applies.</p>
+<p><strong>When To Use:</strong></p>
+<p>Use when working from the manual&#x27;s AGV fault during exchange recovery guidance on page 91 and you need to determine whether the AGV behind the lifted AGV that faulted while leaving the RMS has back filled, because the manual states that if it does not back fill, that AGV is also removed.</p>
+<p><strong>Safety Notes:</strong></p><ul>
+<li>The candidate references placing the RMS in E-stop state before performing the check.</li>
+<li>Use only the source-supported condition for the trailing AGV decision: if the AGV behind the faulted AGV does not back fill, also remove that AGV.</li>
+<li>Escalate unresolved ambiguity because the source does not define the exact expected back fill position or visual indicator.</li>
+</ul>
+<p><strong>Runbook Branches:</strong></p>
+<table>
+<tr><th>Outcome</th><th>Descriptor</th><th>Next</th></tr>
+<tr><td><code>healthy</code></td><td>Recovery validation criteria are met and normal operation appears restored.</td><td><code></code></td></tr>
+<tr><td><code>unhealthy</code></td><td>Recovery validation criteria are not met and troubleshooting or escalation should continue.</td><td><code></code></td></tr>
+<tr><td><code>inconclusive</code></td><td>Recovery evidence includes OptiSweep shown running in Windows Services, successful GetAgvStatuses response from the OptiSweep or WCS API, responsive Ignition status page if used in recovery, normal or improving RMS fleet state, and site confirmation that automated operation resumed.</td><td><code></code></td></tr>
+</table>
+<p><strong>Source:</strong> manual / manual_optisweep_om_v3</p>
+<p><strong>Procedure Steps:</strong></p>
+<h5>Step 1 — Place the RMS in E-stop state</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Place the RMS in E-stop state as referenced in the fault-recovery section before checking the AGV positions involved in the exchange fault scenario.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The system is in the referenced stopped state and the AGV recovery scenario can be assessed safely within the source context.</p>
+<p><strong>Expected result:</strong></p>
+<p>The RMS is in the E-stop state used for AGV-related fault recovery.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/597651fff1a13999.jpeg" alt="artifact_fig_5_1_system_in_shut_down_mode"><figcaption>Use as a general visual reference for a stopped or shut-down system state context.</figcaption></figure>
+<figure><img src="assets/d87070d22301b81d.jpeg" alt="artifact_fig_5_4_faulted_agv_with_tote_screen"><figcaption>Use as nearby AGV fault recovery visual context on page 91.</figcaption></figure>
+<hr>
+<h5>Step 2 — Identify the faulted lifted AGV</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Identify the lifted AGV that faulted while leaving the RMS during the exchange scenario described by the manual.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The AGV being evaluated matches the source scenario: the lifted AGV that faulted while leaving the RMS.</p>
+<p><strong>Expected result:</strong></p>
+<p>The specific faulted lifted AGV is identified.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/d87070d22301b81d.jpeg" alt="artifact_fig_5_4_faulted_agv_with_tote_screen"><figcaption>Use as a nearby AGV fault visual reference while identifying the faulted AGV.</figcaption></figure>
+<hr>
+<h5>Step 3 — Locate the AGV behind the faulted AGV</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Locate the AGV behind the faulted AGV in the exchange sequence.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The AGV immediately behind the faulted AGV is identified.</p>
+<p><strong>Expected result:</strong></p>
+<p>The trailing AGV behind the faulted AGV is identified for observation.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/d87070d22301b81d.jpeg" alt="artifact_fig_5_4_faulted_agv_with_tote_screen"><figcaption>Use as nearby AGV fault recovery context while locating the AGV behind the faulted AGV.</figcaption></figure>
+<hr>
+<h5>Step 4 — Observe whether the trailing AGV back filled</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Observe whether the AGV behind the faulted AGV has back filled into the expected position based only on the source wording. Do not apply any additional criteria not stated by the source.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The observer can state whether back fill occurred using only the source-supported condition.</p>
+<p><strong>Expected result:</strong></p>
+<p>A determination is made whether the trailing AGV did or did not back fill.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/d87070d22301b81d.jpeg" alt="artifact_fig_5_4_faulted_agv_with_tote_screen"><figcaption>Use as nearby AGV fault recovery visual context while observing AGV position.</figcaption></figure>
+<hr>
+<h5>Step 5 — Record the back fill result</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>Record whether the trailing AGV did or did not back fill.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>The record clearly states either that the trailing AGV back filled or did not back fill.</p>
+<p><strong>Expected result:</strong></p>
+<p>The recovery record reflects whether the trailing AGV back filled.</p>
+<hr>
+<h5>Step 6 — Document the source-backed removal condition</h5>
+<p><strong>Responsible role:</strong> L1_support</p>
+<p><strong>Instruction:</strong></p>
+<p>If documenting the source-backed outcome, note that the manual states the trailing AGV is also removed when it does not back fill.</p>
+<p><strong>Healthy condition:</strong></p>
+<p>If the trailing AGV did not back fill, the documentation reflects that the manual states to also remove that AGV.</p>
+<p><strong>Expected result:</strong></p>
+<p>The record includes the manual&#x27;s explicit condition for also removing the trailing AGV when applicable.</p>
+<p><strong>Step Images:</strong></p>
+<figure><img src="assets/4f58f8bb3f0f6aea.jpeg" alt="artifact_fig_4_12_agv_api_controls"><figcaption>Use as the referenced AGV removal interface context if the documented outcome indicates the trailing AGV must also be removed.</figcaption></figure>
+<hr>
+<p><strong>Success Criteria:</strong></p><ul>
+<li>The faulted lifted AGV and the AGV behind it are identified.</li>
+<li>A source-grounded determination is made whether the trailing AGV back filled.</li>
+<li>The recovery record states whether the trailing AGV did or did not back fill.</li>
+<li>If the trailing AGV did not back fill, the documentation notes the manual&#x27;s instruction that the AGV is also removed.</li>
+</ul>
+<p><strong>Failure Conditions:</strong></p><ul>
+<li>The exact expected back fill position or visual indicator cannot be determined from the source.</li>
+<li>The faulted or trailing AGV cannot be confidently identified.</li>
+<li>The observer would need to invent additional criteria to decide whether back fill occurred.</li>
+<li>The result cannot be documented clearly from source-supported evidence.</li>
+</ul>
+</details>
+</details>
+<hr>
+<h3>9 — Escalate if supported recovery path does not restore stable operation (escalation_gate)</h3>
+<p><strong>Intent:</strong> Stop and escalate when the available supported checks and recovery actions do not identify a safe or successful path to restore stable operation.</p>
+<p><strong>Runbook Links:</strong></p>
+<ul>
+<li class="warn">unresolved</li>
+</ul>
+<p><strong>Linked Runbook Procedures:</strong></p>
+<p><em>No linked runbook content available.</em></p>
+<hr>
+<h2>Branch Graph</h2>
+<table>
+<tr><th>From Node</th><th>Outcome</th><th>Condition</th><th>Next Node</th></tr>
+<tr><td><code>node_1</code></td><td><code>healthy</code></td><td>Diagnostic check does not indicate the fault condition</td><td><code>node_6</code></td></tr>
+<tr><td><code>node_2</code></td><td><code>unhealthy</code></td><td>OptiSweep termination evidence is present or current service state is abnormal</td><td><code>node_5</code></td></tr>
+<tr><td><code>node_2</code></td><td><code>unhealthy</code></td><td>Service failure is not clearly established or HMI or gateway symptoms remain unexplained</td><td><code>node_3</code></td></tr>
+<tr><td><code>node_2</code></td><td><code>healthy</code></td><td>Diagnostic check does not indicate the fault condition</td><td><code>node_6</code></td></tr>
+<tr><td><code>node_3</code></td><td><code>healthy</code></td><td>Branch condition is not confirmed</td><td><code>node_6</code></td></tr>
+<tr><td><code>node_4</code></td><td><code>healthy</code></td><td>Diagnostic check does not indicate the fault condition</td><td><code>node_6</code></td></tr>
+<tr><td><code>node_5</code></td><td><code>unhealthy</code></td><td>Primary service or gateway recovery completed</td><td><code>node_6</code></td></tr>
+<tr><td><code>node_6</code></td><td><code>unhealthy</code></td><td>Out-of-sync or abnormal AGVs are present in RMS</td><td><code>node_7</code></td></tr>
+<tr><td><code>node_6</code></td><td><code>healthy</code></td><td>Diagnostic check does not indicate the fault condition</td><td><code>node_6</code></td></tr>
+<tr><td><code>node_7</code></td><td><code>unhealthy</code></td><td>AGV correction completed or no residual AGV sync issue is found</td><td><code>node_8</code></td></tr>
+<tr><td><code>node_8</code></td><td><code>unhealthy</code></td><td>Recovery validation criteria are not met</td><td><code>node_6</code></td></tr>
+<tr><td><code>node_8</code></td><td><code>healthy</code></td><td>Recovery validation criteria are met</td><td><code></code></td></tr>
+<tr><td><code>node_3</code></td><td><code>healthy</code></td><td>Branch condition is not confirmed</td><td><code>node_6</code></td></tr>
+</table>
+<h2>Unresolved / Low-Confidence Links</h2>
+<ul>
+<li>node_3: unresolved</li>
+<li>node_9: unresolved</li>
+</ul>
+</body>
+</html>

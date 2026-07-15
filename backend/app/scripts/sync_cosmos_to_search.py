@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 
+from backend.app.config.env import load_local_env
 from backend.app.repositories.cosmos_client import cosmos_container
 from backend.app.search.index_documents import INDEXED_CONTAINERS, search_documents_from_container_documents
 from backend.app.search.search_client import search_client
@@ -23,6 +24,7 @@ def upload_documents(documents: list[dict]) -> dict:
 
 
 def main() -> None:
+    load_local_env()
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()

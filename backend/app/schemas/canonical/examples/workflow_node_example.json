@@ -1,0 +1,68 @@
+{
+  "node_id": "heartbeat_timeout_question",
+  "node_type": "question",
+  "question": "Do all tippers show heartbeat timeout?",
+  "procedure_ref": "check_tipper_heartbeat_v1",
+  "relationship_tracking": {
+    "parent_workflow_id": "heartbeat_timeout_no_rms_fault_v1",
+    "procedure_ref": "check_tipper_heartbeat_v1",
+    "produces_signals": [
+      "tipper_heartbeat_timeout",
+      "tipper_heartbeat_normal"
+    ],
+    "affects_components": [
+      "tipper",
+      "wcs",
+      "ignition",
+      "opc_ua"
+    ]
+  },
+  "visual_evidence": {
+    "primary_screenshot_refs": [],
+    "supporting_screenshot_refs": [],
+    "required_screenshot_types": [
+      "tipper_status_screen"
+    ],
+    "visual_region_hints": [
+      "Heartbeat values panel"
+    ],
+    "screenshot_required": true
+  },
+  "canonical_images": [
+    {
+      "image_id": "img_rms_fault_screen_229716_001",
+      "category": "rms_screen",
+      "visual_purpose": "diagnostic_confirmation",
+      "title": "RMS fault list screen",
+      "description": "RMS screen showing AGVs down with no active alarm visible.",
+      "use_case": "Use for the workflow question about whether RMS shows an active fault when AGVs are down.",
+      "linked_incident_ids": [
+        "229716"
+      ],
+      "linked_step_ids": [
+        "heartbeat_timeout_question"
+      ],
+      "observed_signals": [
+        "rms_screen_no_faults_visible"
+      ],
+      "review_status": "needs_review",
+      "source_artifact_ids": [
+        "case_229716_docx_artifact_03"
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "condition_signal": "tipper_heartbeat_timeout",
+      "operator": "equals",
+      "value": true,
+      "next_node": "coordinate_estop"
+    },
+    {
+      "condition_signal": "tipper_heartbeat_normal",
+      "operator": "equals",
+      "value": true,
+      "next_node": "check_agv_state"
+    }
+  ]
+}

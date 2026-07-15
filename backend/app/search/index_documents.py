@@ -4,8 +4,13 @@ import hashlib
 import re
 from typing import Any
 
-from backend.app.seed.bundle_mapper import map_phase0_bundle
 from backend.app.services.record_status import is_search_indexable_record
+
+
+CANONICAL_INDEXED_CONTAINERS = {
+    "canonical_procedure_dictionary",
+    "canonical_workflow_definitions",
+}
 
 
 INDEXED_CONTAINERS = {
@@ -17,7 +22,7 @@ INDEXED_CONTAINERS = {
     "procedure_dictionary",
     "raw_evidence_chunks",
     "escalation_summaries",
-}
+} | CANONICAL_INDEXED_CONTAINERS
 
 
 def clean_key(value: str) -> str:
@@ -53,11 +58,78 @@ def symptoms(record: dict[str, Any]) -> list[str]:
     return list(dict.fromkeys(values))
 
 
+def _canonical_procedure_retrieval_text(payload: dict[str, Any]) -> str | None:
+    parts: list[str] = []
+    title = payload.get("canonical_title")
+    if isinstance(title, str) and title.strip():
+        parts.append(title.strip())
+    for subprocedure in payload.get("subprocedures") or []:
+        sub_title = subprocedure.get("canonical_title")
+        if isinstance(sub_title, str) and sub_title.strip():
+            parts.append(sub_title.strip())
+        for step in subprocedure.get("steps") or []:
+            instruction = step.get("instruction")
+            if isinstance(instruction, str) and instruction.strip():
+                parts.append(instruction.strip())
+    text = " | ".join(parts).strip()
+    return text or None
+
+
+def _canonical_workflow_retrieval_text(payload: dict[str, Any]) -> str | None:
+    parts: list[str] = []
+    title = payload.get("canonical_title")
+    if isinstance(title, str) and title.strip():
+        parts.append(title.strip())
+    for ec in payload.get("entry_conditions") or []:
+        if isinstance(ec, str) and ec.strip():
+            parts.append(ec.strip())
+    for node in payload.get("nodes") or []:
+        question = node.get("question")
+        if isinstance(question, str) and question.strip():
+            parts.append(question.strip())
+    text = " | ".join(parts).strip()
+    return text or None
+
+
+def _canonical_record_enrichments(
+    container_name: str, record: dict[str, Any]
+) -> dict[str, Any]:
+    payload = record.get("canonical_payload") or {}
+    if container_name == "canonical_procedure_dictionary":
+        return {
+            "retrieval_text": _canonical_procedure_retrieval_text(payload),
+            "title": payload.get("canonical_title"),
+            "procedure_id": payload.get("procedure_id") or record.get("procedure_id"),
+            "support_safe": _support_safe_from_canonical_procedure(payload),
+        }
+    if container_name == "canonical_workflow_definitions":
+        return {
+            "retrieval_text": _canonical_workflow_retrieval_text(payload),
+            "title": payload.get("canonical_title"),
+            "workflow_id": payload.get("workflow_id") or record.get("workflow_id"),
+            "issue_category": payload.get("issue_category")
+            or record.get("issue_category"),
+        }
+    return {}
+
+
+def _support_safe_from_canonical_procedure(payload: dict[str, Any]) -> bool | None:
+    rt = payload.get("relationship_tracking") or {}
+    role = rt.get("requires_role")
+    if role and isinstance(role, str) and role.lower() == "engineer":
+        return False
+    if role and isinstance(role, str) and role.lower() == "support":
+        return True
+    return None
+
+
 def search_document(container_name: str, record: dict[str, Any]) -> dict[str, Any] | None:
     if container_name not in INDEXED_CONTAINERS:
         return None
     if not is_search_indexable_record(container_name, record):
         return None
+    if container_name in CANONICAL_INDEXED_CONTAINERS:
+        record = {**record, **_canonical_record_enrichments(container_name, record)}
     source_id = str(record.get("id"))
     retrieval_text = first_text(
         record.get("retrieval_text"),
@@ -106,7 +178,3 @@ def search_documents_from_container_documents(documents: dict[str, list[dict[str
             if document:
                 results.append(document)
     return results
-
-
-def search_documents_from_bundle(bundle: dict[str, Any], run_trace: dict[str, Any] | None = None) -> list[dict[str, Any]]:
-    return search_documents_from_container_documents(map_phase0_bundle(bundle, run_trace))

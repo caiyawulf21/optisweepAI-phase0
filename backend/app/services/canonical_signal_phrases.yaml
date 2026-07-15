@@ -1,0 +1,198 @@
+# Canonical-signal phrase table for the deterministic keyword extractor.
+#
+# Each top-level key is a CANONICAL signal id (a member of the canonical
+# vocabulary derived from the procedure dictionary's
+# relationship_tracking.{requires,produces,confirms,rules_out}_signals
+# lists, OR a workflow node's branch.condition_signal). The extractor
+# emits these into ``state['extracted_canonical_signals']`` so the router
+# and the dynamic procedure selector can consume them WITHOUT going
+# through the legacy alias map.
+#
+# Why this file exists separately from `symptom_extraction_phrases.yaml`:
+# the legacy phrase table is pinned to the 13-key INITIAL_CAT1_SIGNALS
+# vocabulary that downstream legacy code paths still depend on. Canonical
+# signals are a strictly larger vocabulary and many of them only appear
+# AFTER an operator answers a follow-up question (e.g.
+# "service restart completed", "no e-stop fault", "tipper heartbeat is
+# back to normal"). Adding those phrases to the legacy file would either
+# break the 13-key contract or silently drop the canonical signal on the
+# routing floor.
+#
+# Keep phrases lowercase. Negation handling is applied automatically by
+# the extractor (``no e-stop fault`` flips ``e_stop_required`` to False).
+
+# Mid-flow service-restart outcomes
+optisweep_service_restart_completed:
+  - service restart completed
+  - service restart succeeded
+  - we restarted the service
+  - we restarted optisweep
+  - optisweep service restarted
+  - service restart finished
+  - restart finished
+  - restart succeeded
+  - service is back
+
+optisweep_service_restart_failed:
+  - service restart failed
+  - restart failed
+  - service did not come back
+  - service won't restart
+  - service wouldn't restart
+
+# Mid-flow heartbeat / agv-state observations
+tipper_heartbeat_normal:
+  - tipper heartbeat normal
+  - tipper heartbeat is back to normal
+  - heartbeat is normal
+  - heartbeat back to normal
+
+tipper_heartbeat_timeout_or_zero:
+  - tipper heartbeat zero
+  - tipper heartbeat is zero
+  - tipper heartbeat at zero
+  - tipper heartbeat is timing out
+  - heartbeat at zero
+
+agvs_resumed_movement:
+  - agvs resumed movement
+  - agvs are running again
+  - agvs running again
+  - agvs back online
+  - agvs back to running
+  - agvs are moving
+
+agvs_remain_stopped:
+  - agvs still stopped
+  - agvs remain stopped
+  - agvs are still stopped
+  - agvs not moving still
+
+# Mid-flow rms / fault observations
+rms_screen_no_faults_visible:
+  - rms screen has no faults
+  - rms shows no fault
+  - rms screen is clean
+  - no faults on rms
+  - rms shows no faults
+
+rms_screen_active_fault:
+  - rms shows a fault
+  - active fault on rms
+  - rms screen shows a fault
+  - rms has a fault
+
+# Mid-flow e-stop / safety state
+master_estop_confirmed_off:
+  - master e-stop confirmed off
+  - master estop is off
+  - master e-stop off
+  - e-stop confirmed off
+  - estop is off
+  - estop confirmed off
+
+master_estop_confirmed_on:
+  - master e-stop is on
+  - master estop is on
+  - estop pressed
+  - e-stop confirmed pressed
+  - master e-stop pressed
+
+e_stop_required:
+  - e-stop required
+  - estop required
+
+e_stop_not_required:
+  - e-stop not required
+  - estop not required
+  - no e-stop required
+
+safety_state_uncertain:
+  - safety state uncertain
+  - unable to confirm safety state
+
+# Mid-flow hospital tote outcomes
+hospital_tote_function_restored:
+  - hospital tote function restored
+  - tote function restored
+  - hospital induction restored
+  - hospital station can add totes again
+
+hospital_tote_add_failed:
+  - cannot add tote
+  - hospital cannot add tote
+  - hospital tote add fails
+  - tote add fails
+
+hospital_tote_removal_failed:
+  - cannot remove tote
+  - hospital cannot remove tote
+  - hospital tote remove fails
+  - tote removal fails
+  - hospital tote removal hangs
+  - tote removal hang
+  - tote removal hangs
+  - tote removal stuck
+  - tote removal command did not execute
+  - removal command did not execute
+  - hospital removal failed
+  - can't remove tote
+
+# Mid-flow remote access outcomes
+field_pc_rdp_established:
+  - rdp connected
+  - rdp established
+  - field pc rdp working
+  - field pc reachable
+
+field_pc_rdp_failed:
+  - rdp failed
+  - rdp not working
+  - cannot rdp into field pc
+
+remote_access_obtained_via_rdp:
+  - remote access via rdp
+  - have remote access via rdp
+
+remote_access_blocked_by_zscaler:
+  - zscaler blocking
+  - blocked by zscaler
+
+# Mid-flow customer-bridge outcomes
+customer_bridge_established:
+  - customer bridge established
+  - customer bridge open
+  - on the customer bridge
+
+customer_bridge_missing:
+  - no customer bridge
+  - customer bridge missing
+  - cannot reach customer bridge
+
+# Mid-flow evidence outcomes
+opc_disconnect_evidence_collected:
+  - opc disconnect collected
+  - opc disconnects logged
+
+database_timeout_evidence_collected:
+  - database timeout collected
+  - database timeouts logged
+
+service_timeout_evidence_collected:
+  - service timeout collected
+  - service timeouts logged
+
+evidence_inconclusive:
+  - evidence inconclusive
+  - evidence is inconclusive
+  - cannot tell from logs
+
+evidence_indicates_service_restart_path:
+  - evidence supports service restart
+  - evidence indicates service restart
+
+# Workflow-meta outcomes
+workflow_does_not_apply:
+  - workflow does not apply
+  - this workflow does not apply
+  - not the right workflow

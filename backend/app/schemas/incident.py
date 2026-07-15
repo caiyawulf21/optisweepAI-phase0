@@ -1,6 +1,25 @@
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import BaseModel, Field
+
+
+KpiBasis = Literal["computed", "extracted", "inferred", "unavailable"]
+
+
+class IncidentKpi(BaseModel):
+    value_minutes: float | None = None
+    kpi_basis: KpiBasis = "unavailable"
+    source_event_ids: list[str] = Field(default_factory=list)
+    narrative_excerpt: str | None = None
+    confidence: float | None = None
+    requires_manual_review: bool = True
+
+
+class IncidentKpis(BaseModel):
+    time_to_resolve_minutes: IncidentKpi = Field(default_factory=IncidentKpi)
+    time_to_recover_minutes: IncidentKpi = Field(default_factory=IncidentKpi)
 
 
 class Cat1KnowledgeRecord(BaseModel):
@@ -24,3 +43,4 @@ class Cat1KnowledgeRecord(BaseModel):
     validation_status: str = "candidate_extracted"
     source_notes: str | None = None
     notes: str | None = None
+    incident_kpis: IncidentKpis | None = None

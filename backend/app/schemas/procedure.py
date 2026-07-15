@@ -4,6 +4,8 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from backend.app.schemas.canonical.visual_evidence import CanonicalImage
+
 
 ValidationState = Literal[
     "raw",
@@ -34,14 +36,17 @@ class ProcedureStep(BaseModel):
     step_id: str | None = None
     step_number: int | None = None
     instruction: str
+    role_required: str | None = None
     validation_check: str | None = None
     expected_outcome: str | None = None
     expected_result: str | None = None
     escalation_condition: str | None = None
     evidence_refs: list[EvidenceReference] = Field(default_factory=list)
     image_refs: list[str] = Field(default_factory=list)
+    canonical_images: list[CanonicalImage] = Field(default_factory=list)
     screenshot_required: bool = False
     risk_notes: str | None = None
+    role_seed_enrichment: dict = Field(default_factory=dict)
 
 
 class ProcedureCandidate(BaseModel):
@@ -49,6 +54,7 @@ class ProcedureCandidate(BaseModel):
     title: str | None = None
     issue_category: str | None = None
     purpose: str | None = None
+    role_required: str | None = None
     source_procedure_candidate_ids: list[str] = Field(default_factory=list)
     action_tuple: dict = Field(default_factory=dict)
     operational_intent: str | None = None
@@ -62,6 +68,10 @@ class ProcedureCandidate(BaseModel):
     related_incidents: list[str] = Field(default_factory=list)
     evidence_refs: list[EvidenceReference] = Field(default_factory=list)
     source_artifacts: list[str] = Field(default_factory=list)
+    canonical_images: list[CanonicalImage] = Field(default_factory=list)
+    role_seed_enrichment: dict = Field(default_factory=dict)
+    include_in_demo: bool = True
+    demo_status: str = "approved_for_demo"
     confidence: float = 0.0
     status: ValidationState = "candidate_extracted"
     validation_status: str = "needs_review"

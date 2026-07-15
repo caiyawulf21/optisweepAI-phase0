@@ -1,0 +1,137 @@
+# Phrase table for the deterministic keyword signal extractor.
+#
+# Each top-level key is a legacy signal key from
+# `backend.app.schemas.assistant.INITIAL_CAT1_SIGNALS`. Each entry declares the
+# affirmative phrases that imply the signal is True. Negation handling is
+# applied automatically by the extractor: if the phrase appears inside a
+# negation clause ("no AGV stopped", "without RMS alarm", "AGVs are not
+# stopped") the signal is set to False rather than True.
+#
+# Keep phrases lowercase. Multi-word phrases are matched as substrings on
+# the lowercased message after the negation pre-pass split.
+
+agvs_stopped:
+  - agv stopped
+  - agvs stopped
+  - agv are stopped
+  - agvs are stopped
+  - agv not moving
+  - agvs not moving
+  - agv is not moving
+  - agvs are not moving
+  - agvs aren't moving
+  - agv isn't moving
+  - aren't moving
+  - are not moving
+  - is not moving
+  - nothing is moving
+  - nothing moving
+  - no movement
+  - not moving
+  - agvs halted
+  - agv halted
+  - agvs frozen
+  - agvs idle
+no_rms_alarm:
+  - no rms alarm
+  - no active rms
+  - rms has no alarm
+  - rms screen clear
+  - rms shows no faults
+  - rms screen is clear
+tipper_heartbeat_timeout:
+  - tipper heartbeat
+  - tippers heartbeat
+  - heartbeat timeout
+  - all tippers
+  - tippers timed out
+  - tipper timed out
+  - tipper heartbeat zero
+  - tipper hb timeout
+hospital_tote_removal_hangs:
+  - hospital tote
+  - hospital tote removal hangs
+  - tote removal hang
+  - tote removal hangs
+  - tote removal stuck
+  - removal hang
+  - remove hangs
+  - tote removal command did not execute
+  - removal command did not execute
+  - hospital removal failed
+  - can't remove tote
+  - cannot remove tote
+  - hospital induct
+  - hospital induct hang
+  - tote add failed
+  - tote remove failed
+  - hospital station unable to induct
+system_active_but_frozen:
+  - active but frozen
+  - system frozen
+  - appears active
+  - appears to be active but
+  - frozen
+  - looks active but
+  - system stuck
+  - system hang
+  - system hangs
+ignition_or_wcs_down:
+  - ignition down
+  - wcs down
+  - wcs offline
+  - ignition offline
+  - ignition not responding
+  - wcs not responding
+  - wcs service down
+  - ignition service down
+service_restart_required:
+  - restart service
+  - service restart
+  - restart optisweep
+  - restart ignition
+  - need to restart
+  - service needs restart
+  - bouncing the service
+remote_access_unavailable:
+  - remote access unavailable
+  - cannot remote
+  - no remote access
+  - vpn unavailable
+  - rdp failed
+  - zscaler blocking
+  - cant get on field pc
+ot_hardware_alarm_present:
+  - ot hardware alarm
+  - plc alarm
+  - hardware alarm
+  - controls alarm
+  - plc fault
+  - hardware fault
+safety_risk_present:
+  - safety risk
+  - unsafe
+  - injury risk
+  - e-stop required
+  - emergency stop
+  - estop pressed
+  - person in zone
+engineer_only_action_required:
+  - engineer required
+  - engineer-only
+  - needs engineer
+  - escalate to engineer
+  - call controls
+  - need controls support
+heartbeat_recovered_after_restart:
+  - heartbeat recovered
+  - heartbeat restored
+  - recovered after restart
+  - heartbeat is back
+  - heartbeat normal
+user_requests_escalation:
+  - escalate now
+  - need help from engineering
+  - call engineer
+  - hand off to engineer
+  - escalate this

@@ -3,3 +3,6 @@ azure-search-documents
 azure-storage-blob
 azure-identity
 pydantic
+python-dotenv
+rank-bm25
+sentence-transformers

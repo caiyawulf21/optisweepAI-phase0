@@ -3,6 +3,7 @@ from __future__ import annotations
 from pydantic import Field
 
 from backend.app.models.base import KnowledgeDocument
+from backend.app.schemas.incident import IncidentKpis
 
 
 class IncidentRecord(KnowledgeDocument):
@@ -28,3 +29,4 @@ class IncidentRecord(KnowledgeDocument):
     escalation_domains: list[str] = Field(default_factory=list)
     workflow_candidate: bool | None = None
     resolution_status: str | None = None
+    incident_kpis: IncidentKpis | None = None

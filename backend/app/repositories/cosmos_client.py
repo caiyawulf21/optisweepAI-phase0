@@ -23,9 +23,34 @@ def cosmos_container(container_name: str, settings: AzureKnowledgeSettings | Non
 def create_containers(settings: AzureKnowledgeSettings | None = None) -> list[dict[str, str]]:
     from azure.cosmos import PartitionKey
 
-    database = cosmos_database(settings)
+    active_settings = settings or get_settings()
+    database = cosmos_database(active_settings)
     created = []
     for definition in CONTAINERS.values():
-        database.create_container_if_not_exists(id=definition.name, partition_key=PartitionKey(path=definition.partition_key))
+        if definition.name in {"retrieval_vectors", "root_cause_vectors"}:
+            vector_embeddings = [
+                {
+                    "path": "/content_vector",
+                    "dataType": "float32",
+                    "dimensions": active_settings.cosmos_vector_dimensions,
+                    "distanceFunction": "cosine",
+                }
+            ]
+            indexing_policy = {
+                "indexingMode": "consistent",
+                "includedPaths": [{"path": "/*"}],
+                "vectorIndexes": [{"path": "/content_vector", "type": "flat"}],
+            }
+            database.create_container_if_not_exists(
+                id=definition.name,
+                partition_key=PartitionKey(path=definition.partition_key),
+                vector_embedding_policy={"vectorEmbeddings": vector_embeddings},
+                indexing_policy=indexing_policy,
+            )
+        else:
+            database.create_container_if_not_exists(
+                id=definition.name,
+                partition_key=PartitionKey(path=definition.partition_key),
+            )
         created.append({"container": definition.name, "partition_key": definition.partition_key})
     return created

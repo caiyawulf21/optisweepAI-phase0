@@ -3,6 +3,7 @@ from __future__ import annotations
 from pydantic import BaseModel, Field
 
 from backend.app.schemas.procedure import EvidenceReference, ValidationState
+from backend.app.schemas.canonical.visual_evidence import CanonicalImage
 
 
 class WorkflowCandidateStep(BaseModel):
@@ -15,10 +16,12 @@ class WorkflowCandidateStep(BaseModel):
     support_safe: bool = True
     procedure_refs: list[str] = Field(default_factory=list)
     image_refs: list[str] = Field(default_factory=list)
+    canonical_images: list[CanonicalImage] = Field(default_factory=list)
     evidence_refs: list[EvidenceReference] = Field(default_factory=list)
     expected_outcome: str | None = None
     branches: list[dict] = Field(default_factory=list)
     escalation_conditions: list[str] = Field(default_factory=list)
+    role_seed_enrichment: dict = Field(default_factory=dict)
 
 
 class WorkflowCandidate(BaseModel):
@@ -43,6 +46,10 @@ class WorkflowCandidate(BaseModel):
     related_cases: list[str] = Field(default_factory=list)
     evidence_refs: list[EvidenceReference] = Field(default_factory=list)
     image_refs: list[str] = Field(default_factory=list)
+    canonical_images: list[CanonicalImage] = Field(default_factory=list)
+    role_seed_enrichment: dict = Field(default_factory=dict)
+    include_in_demo: bool = True
+    demo_status: str = "approved_for_demo"
     escalation_conditions: list[str] = Field(default_factory=list)
     confidence: float = 0.0
     status: ValidationState = "draft"
@@ -63,6 +70,10 @@ class WorkflowProcedureLink(BaseModel):
     similar_root_cause_hypotheses: list[str] = Field(default_factory=list)
     evidence_refs: list[EvidenceReference] = Field(default_factory=list)
     image_refs: list[str] = Field(default_factory=list)
+    canonical_images: list[CanonicalImage] = Field(default_factory=list)
+    role_seed_enrichment: dict = Field(default_factory=dict)
+    include_in_demo: bool = True
+    demo_status: str = "approved_for_demo"
     rationale: str | None = None
     merge_confidence: float = 0.0
     merge_risk_notes: list[str] = Field(default_factory=list)

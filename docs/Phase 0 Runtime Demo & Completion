@@ -1,0 +1,840 @@
+## Purpose
+
+You are helping build the Optisweep AI Support Assistant.
+
+Your objective is NOT to continue expanding architecture for its own sake.
+
+Your objective is to transform the existing repository into a working Azure-backed guided troubleshooting system that demonstrates:
+
+- dynamic workflow execution
+- signal-driven branching
+- Azure AI Search retrieval
+- runtime workflow progression
+- deterministic escalation
+- multi-turn troubleshooting
+- operational traceability
+
+The system must feel like a live troubleshooting copilot.
+
+NOT:
+
+- static YAML rendering
+- retrieval-only QA
+- chatbot summaries
+- workflow dumping
+
+---
+
+# Current Architecture Context
+
+The repository already contains major foundational architecture:
+
+## Runtime Foundation
+
+Already implemented:
+
+- FastAPI backend
+- LangGraph orchestration
+- `/troubleshoot`
+- local retrieval
+- YAML workflow loading
+- deterministic escalation
+- Streamlit demo UI
+
+## Canonical Workflow Architecture
+
+Already implemented:
+
+- canonical procedures
+- canonical workflows
+- workflow plans
+- workflow graph compiler
+- relationship tracking
+- signal tracking
+- validation framework
+- workflow routing library
+- missing signal scorer
+- relationship exporter
+- Azure persistence preparation
+
+## Critical Current Problem
+
+The architecture is significantly more mature than the runtime UX.
+
+Currently:
+
+- Azure retrieval is NOT on the hot path
+- guided diagnostic questions are computed but not shown
+- `/troubleshoot` is mostly stateless
+- canonical workflows are display-only
+- workflows do NOT dynamically progress at runtime
+- session persistence does not exist
+- branching is mostly decorative
+
+The primary goal is to fix this.
+
+---
+
+# Critical Runtime Requirement
+
+The canonical workflow system must behave like a live executable troubleshooting graph.
+
+The runtime MUST support:
+
+- dynamic branching
+- runtime signal accumulation
+- conditional next-node execution
+- multi-turn progression
+- deterministic workflow mutation based on user answers
+- workflow terminal states
+- escalation branches
+- session persistence
+
+The runtime must NOT behave like:
+
+- static YAML rendering
+- static chatbot responses
+- retrieval-only QA
+- linear unchanging workflows
+
+Dynamic workflow execution is a core acceptance requirement.
+
+---
+
+# Scope Constraints
+
+## IN Scope
+
+Build ONLY what is required for the Azure-backed Phase 1 demo:
+
+- Azure Cosmos DB runtime persistence
+- Azure AI Search runtime retrieval
+- Azure OpenAI integration where already appropriate
+- guided diagnostic question surfacing
+- runtime workflow advancement
+- session persistence
+- Dataset 5 escalation summaries
+- dynamic node progression
+- signal accumulation
+- Streamlit UI updates
+- runtime tests
+
+## OUT of Scope
+
+Do NOT build:
+
+- case 227895 ingestion
+- knowledge graph query layer
+- MCP
+- ML classifiers
+- autonomous agents
+- automatic workflow refinement
+- workflow v2 generation
+- full admin approval console
+- Teams/Salesforce/SharePoint connectors
+- advanced observability dashboards
+- production auth
+- multi-category expansion
+- advanced graph reasoning
+
+Keep scope strictly CAT-1.
+
+---
+
+# Active CAT-1 Scope
+
+Use ONLY these normalized CAT-1 records:
+
+- 229374
+- 229716
+- 229777
+- 229488
+- 228086
+- 223554
+
+Do NOT expand scope.
+
+---
+
+# Required Build Order
+
+Follow this exact order.
+
+Do NOT jump ahead.
+
+---
+
+# Step 1 — Create Prompt File
+
+Create:
+
+```text
+Deprecated prompt artifact removed; use this archived master brief directly.
+
+Store this entire prompt there.
+
+Commit this first.
+
+Step 2 — Runtime Feature Flags
+
+Add or confirm support for:
+
+USE_CANONICAL_ROUTING=true
+RETRIEVAL_BACKEND=azure_search
+SESSION_BACKEND=cosmos
+ENABLE_GUIDED_DIAGNOSTIC=true
+ENABLE_CANONICAL_WORKFLOW_RUNTIME=true
+
+Also preserve safe local fallback:
+
+RETRIEVAL_BACKEND=local
+SESSION_BACKEND=memory
+
+Acceptance:
+
+app boots in local-only mode
+app boots in Azure mode
+missing Azure env vars fail clearly when Azure mode selected
+Step 3 — Azure Cosmos Containers
+
+Minimum required containers:
+
+context_reference
+incident_records
+timeline_events
+workflow_definitions
+procedure_dictionary
+raw_evidence_chunks
+source_artifacts
+escalation_summaries
+workflow_sessions
+interaction_logs
+
+Do NOT provision future-only containers.
+
+Acceptance:
+
+provisioning works
+repositories resolve correctly
+existing tests still pass
+Step 4 — Azure Seed Script
+
+Create or update:
+
+scripts/seed_phase1_azure.py
+
+Purpose:
+
+Load local datasets into Cosmos.
+
+Inputs include:
+
+data/context/context_reference.json
+data/incidents/canonical_incidents.json
+data/timelines/timeline_events.json
+data/workflows/canonical/*.yaml
+data/normalized/canonical_procedure_dictionary.json
+data/normalized/discovered_canonical_procedures.json
+data/evidence/raw_evidence_chunks.json
+data/evidence/source_artifacts.json
+data/escalation/escalation_summaries.json
+
+Modes:
+
+python scripts/seed_phase1_azure.py --dry-run
+python scripts/seed_phase1_azure.py --apply
+
+Acceptance:
+
+dry run generates audit output
+apply upserts to Cosmos
+counts printed per container
+script is idempotent
+Step 5 — Azure AI Search Runtime Index
+
+Create or update:
+
+scripts/sync_phase1_search_index.py
+
+Target index:
+
+optisweep-support-knowledge-dev
+
+Required fields:
+
+id
+container_id
+record_type
+incident_id
+workflow_id
+procedure_id
+issue_category
+component
+site
+source_type
+source_refs
+validation_status
+retrieval_text
+content_vector
+
+Searchable text:
+
+retrieval_text
+symptom_summary
+observed_signals
+root_cause_summary
+resolution_summary
+resolution_steps
+escalation_notes
+
+Modes:
+
+python scripts/sync_phase1_search_index.py --dry-run
+python scripts/sync_phase1_search_index.py --apply
+
+Acceptance:
+
+dry-run output generated
+index created/updated
+documents uploaded
+citations preserved
+Step 6 — Replace Runtime Retrieval Hot Path
+
+Current issue:
+
+Runtime still uses local retrieval.
+
+Implement:
+
+RETRIEVAL_BACKEND=azure_search | local
+
+Azure mode:
+
+/troubleshoot
+→ retrieval node
+→ Azure AI Search
+→ ranked cited results
+
+Local mode:
+
+existing behavior preserved.
+
+Acceptance:
+
+local fallback still works
+Azure retrieval used in runtime path
+citations preserved
+tests added
+Step 7 — Guided Diagnostic Question Surfacing
+
+Current issue:
+
+canonical_next_question_text
+
+is computed but ignored.
+
+Create:
+
+backend/app/graph/nodes/clarification.py
+
+Routing should become:
+
+canonical_routing
+→ clarification_node
+→ END
+
+NOT:
+
+guided_diagnostic
+→ escalation
+
+Expected response shape:
+
+{
+  "response_type": "guided_question",
+  "workflow_id": "",
+  "current_node_id": "",
+  "question": "",
+  "allowed_answers": [],
+  "why_asked": "",
+  "citations": []
+}
+
+Acceptance:
+
+guided questions reach user
+no generic escalation response
+tests verify end-to-end behavior
+Step 8 — Dataset 5 Escalation Summaries
+
+Create:
+
+data/escalation/escalation_summaries.json
+
+Seed at least:
+
+heartbeat_timeout_no_rms_fault_v1
+service_failure_with_customer_bridge_and_engineer_recovery_v1
+
+Required fields:
+
+{
+  "escalation_summary_id": "",
+  "workflow_id": "",
+  "issue_category": "",
+  "escalation_domain": "",
+  "priority": "",
+  "trigger_reason": "",
+  "symptoms": [],
+  "observed_signals": [],
+  "steps_attempted": [],
+  "steps_not_attempted": [],
+  "evidence_refs": [],
+  "logs_collected": [],
+  "source_artifacts": [],
+  "recommended_owner": "",
+  "handoff_summary_template": ""
+}
+
+Acceptance:
+
+escalation node loads template
+fallback works if template missing
+escalation summaries include runtime state
+Step 9 — Runtime Session Persistence
+
+Create:
+
+backend/app/services/session_service.py
+
+Backends:
+
+memory
+cosmos
+
+Minimum session schema:
+
+{
+  "session_id": "",
+  "user_id": "",
+  "created_at": "",
+  "updated_at": "",
+  "active_workflow_id": "",
+  "current_node_id": "",
+  "observed_signals": {},
+  "answered_questions": [],
+  "retrieval_result_ids": [],
+  "steps_attempted": [],
+  "workflow_history": [],
+  "escalation_state": {},
+  "status": "active | escalated | resolved | abandoned"
+}
+
+Acceptance:
+
+sessions created automatically
+sessions reload correctly
+signals persist across turns
+workflow node persists
+memory fallback works
+Cosmos persistence works
+Step 10 — Dynamic Canonical Workflow Runtime
+
+This is the MOST important implementation step.
+
+Current issue:
+
+Canonical workflows are display-only.
+
+You must implement REAL runtime workflow progression.
+
+Create:
+
+backend/app/services/canonical_workflow_runtime.py
+
+Responsibilities:
+
+load active workflow
+load current node from session
+apply latest user answer
+mutate observed signals
+resolve conditional branches
+advance to next node dynamically
+persist progression
+support terminal states
+support escalation branches
+
+The runtime MUST behave like an executable troubleshooting graph.
+
+Runtime Branching Requirements
+
+The SAME workflow must be able to follow DIFFERENT paths based on answers.
+
+Example:
+
+question node
+→ yes branch
+→ escalation path
+
+question node
+→ no branch
+→ service recovery path
+
+Branching must be deterministic.
+
+Do NOT hardcode workflow progression outside workflow definitions.
+
+Runtime Node Payload
+
+Runtime response must support:
+
+{
+  "workflow_id": "",
+  "workflow_title": "",
+  "current_node_id": "",
+  "node_type": "question | instruction | validation | escalation | terminal",
+  "question": "",
+  "instruction": "",
+  "allowed_answers": [],
+  "role_required": "",
+  "support_safe": true,
+  "procedure_refs": [],
+  "evidence_refs": [],
+  "escalation_conditions": [],
+  "next_expected_input": ""
+}
+
+Acceptance:
+
+user answers mutate runtime workflow state
+conditional branches execute dynamically
+workflow nodes advance correctly
+escalation branches work
+terminal nodes work
+workflows are NOT static YAML dumps
+Step 11 — /troubleshoot Response Contract
+
+Extend response structure.
+
+Add:
+
+{
+  "session_id": "",
+  "response_type": "answer | guided_question | workflow_step | escalation | terminal",
+  "workflow": {
+    "workflow_id": "",
+    "title": "",
+    "current_node_id": "",
+    "progress_label": ""
+  },
+  "guided_question": {},
+  "workflow_step": {},
+  "escalation": {},
+  "terminal_state": {},
+  "citations": []
+}
+
+Acceptance:
+
+structured runtime responses
+backward compatibility preserved
+citations included in operational responses
+Step 12 — Streamlit Guided Troubleshooting UI
+
+Update:
+
+ui/streamlit_app.py
+
+Required UI behavior:
+
+maintain session ID
+display active workflow
+display current node
+render guided questions
+render answer buttons
+display workflow progression
+display citations
+display escalation summary
+display known signals
+display support-safe indicators
+
+The UI should feel like:
+
+interactive troubleshooting
+
+NOT:
+
+chatbot dumping workflow text
+
+Acceptance:
+
+multi-turn guided troubleshooting works
+branching visible to user
+escalation visible
+workflow progression visible
+Step 13 — Interaction Logging
+
+Store runtime interactions in:
+
+interaction_logs
+
+Capture:
+
+{
+  "interaction_id": "",
+  "session_id": "",
+  "timestamp": "",
+  "user_message": "",
+  "response_type": "",
+  "selected_workflow_id": "",
+  "current_node_id": "",
+  "observed_signals": {},
+  "retrieval_result_ids": [],
+  "escalation_triggered": false
+}
+
+Acceptance:
+
+every troubleshooting interaction logged
+logging failures do not crash runtime
+Step 14 — Tests
+
+Add tests for:
+
+Azure/local retrieval switching
+guided question surfacing
+session creation
+session continuation
+signal accumulation
+dynamic branch execution
+runtime node advancement
+escalation branching
+terminal workflow states
+escalation template loading
+response contract
+local fallback behavior
+
+Do NOT delete old tests.
+
+Demo Scenarios — MUST Validate Dynamic Workflow Execution
+
+The demo is NOT successful unless workflows dynamically mutate at runtime.
+
+Scenario 1 — Guided Diagnostic Branch Resolution
+
+User:
+
+AGVs stopped and all tippers show heartbeat timeout. No RMS alarms.
+
+Expected:
+
+CAT-1 classification
+retrieval executes
+workflow selected
+missing signals detected
+guided diagnostic question shown
+
+Question:
+
+Are there active OT-side hardware alarms present?
+Branch A — answer "no"
+
+Expected progression:
+
+question node
+→ recovery validation path
+→ restart procedure
+→ post-recovery validation
+Branch B — answer "yes"
+
+Expected progression:
+
+question node
+→ controls escalation branch
+→ escalation node
+
+Critical proof:
+
+The SAME workflow follows DIFFERENT paths based on answers.
+
+Scenario 2 — Runtime Signal Accumulation
+
+Turn 1:
+
+System appears frozen and AGVs are not moving.
+
+Signals:
+
+{
+  "agvs_stopped": true
+}
+
+Question:
+
+Are all tippers showing heartbeat timeout?
+
+Turn 2 answer:
+
+yes
+
+Session signals become:
+
+{
+  "agvs_stopped": true,
+  "heartbeat_timeout": true
+}
+
+Question:
+
+Are there active RMS alarms present?
+
+Turn 3 answer:
+
+no
+
+Session signals become:
+
+{
+  "agvs_stopped": true,
+  "heartbeat_timeout": true,
+  "rms_alarm_present": false
+}
+
+Workflow should now confidently route into:
+
+heartbeat_timeout_no_rms_fault_v1
+
+Critical proof:
+
+Signals accumulate dynamically across turns.
+
+Scenario 3 — Dynamic Escalation Branch
+
+User:
+
+Heartbeat did not recover after service restart.
+
+Workflow enters:
+
+post-restart validation node
+
+Question:
+
+Did heartbeat values resume updating?
+
+User answer:
+
+no
+
+Expected:
+
+escalation branch executes
+escalation domain selected
+escalation summary generated from runtime state
+
+Critical proof:
+
+Escalation derives from workflow state,
+NOT static keyword matching.
+
+Scenario 4 — Terminal Success Path
+
+User:
+
+AGVs recovered after restart.
+
+Expected:
+
+workflow
+→ validation
+→ terminal success node
+
+Final state:
+
+{
+  "workflow_status": "resolved",
+  "escalation_required": false
+}
+
+Critical proof:
+
+Workflow can complete successfully.
+
+Scenario 5 — Retrieval-Only Mode
+
+User:
+
+Sorter behaving strangely after startup.
+
+Expected:
+
+retrieval executes
+workflow confidence remains low
+workflow NOT forced
+clarification question OR cautious guidance returned
+
+Critical proof:
+
+Workflow routing is confidence-gated.
+
+Engineering Principles
+
+Follow these rules strictly:
+
+Prefer working vertical slices over rewrites.
+Preserve local fallback behavior.
+Do not break legacy runtime path.
+Do not invent troubleshooting steps.
+Do not call live enterprise systems at runtime.
+Keep workflows config-driven.
+Keep escalation deterministic.
+Keep operational responses source-backed.
+Add tests continuously.
+Avoid building future-phase architecture.
+Final Acceptance Criteria
+
+This work is complete only when:
+
+Azure Cosmos runtime works
+Azure AI Search retrieval works at runtime
+/troubleshoot supports session persistence
+guided questions reach the user
+signals accumulate across turns
+workflows branch dynamically
+workflows advance node-by-node
+escalation branches work
+terminal success states work
+Streamlit supports guided troubleshooting
+citations appear in operational responses
+all demo scenarios execute correctly
+local fallback still works
+tests pass
+Implementation Style
+
+Work in small commits:
+
+prompt + config
+Cosmos
+Azure Search
+retrieval switch
+clarification node
+session service
+dynamic workflow runtime
+escalation templates
+response contract
+UI
+tests
+
+After each step:
+
+summarize changed files
+summarize tests run
+summarize blockers
+
+Store progress in:
+
+docs/phase1_azure_runtime_demo_progress.md
+
+Start with:
+
+Step 1 and Step 2 ONLY.

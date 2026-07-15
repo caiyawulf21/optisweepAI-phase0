@@ -3,11 +3,13 @@ from __future__ import annotations
 import argparse
 import json
 
+from backend.app.config.env import load_local_env
 from backend.app.repositories.container_config import CONTAINERS
 from backend.app.repositories.cosmos_client import create_containers
 
 
 def main() -> None:
+    load_local_env()
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()

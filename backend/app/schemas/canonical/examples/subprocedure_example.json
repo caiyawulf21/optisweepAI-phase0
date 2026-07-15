@@ -1,0 +1,77 @@
+{
+  "subprocedure_id": "read_tipper_heartbeat_values_v1",
+  "canonical_title": "Read tipper heartbeat values",
+  "parent_procedure_id": "check_tipper_heartbeat_v1",
+  "relationship_tracking": {
+    "parent_procedure_id": "check_tipper_heartbeat_v1",
+    "depends_on_subprocedures": [
+      "open_tipper_status_view_v1"
+    ],
+    "next_subprocedures": [
+      "classify_tipper_heartbeat_state_v1"
+    ],
+    "requires_signals": [
+      "tipper_status_view_open"
+    ],
+    "produces_signals": [
+      "tipper_heartbeat_values_observed",
+      "tipper_heartbeat_timeout_or_zero"
+    ],
+    "affects_components": [
+      "tipper",
+      "hmi",
+      "wcs"
+    ],
+    "requires_role": "support"
+  },
+  "visual_evidence": {
+    "primary_screenshot_refs": [
+      "case_229374_docx_artifact_23",
+      "case_229716_docx_artifact_03"
+    ],
+    "supporting_screenshot_refs": [],
+    "required_screenshot_types": [
+      "tipper_status_screen",
+      "heartbeat_values_visible"
+    ],
+    "visual_region_hints": [
+      "Heartbeat values panel for affected tippers"
+    ],
+    "screenshot_required": true
+  },
+  "source_artifacts": [
+    "case_229716_docx_artifact_03"
+  ],
+  "canonical_images": [
+    {
+      "image_id": "img_tipper_heartbeat_229716_001",
+      "category": "ignition_screen",
+      "visual_purpose": "state_verification",
+      "title": "Tipper heartbeat values screen",
+      "description": "Ignition-backed tipper status screen with heartbeat values visible for the affected tippers.",
+      "use_case": "Use when the assistant needs to confirm the tipper heartbeat state or compare a heartbeat panel against the active RMS/fault context.",
+      "linked_incident_ids": [
+        "229716"
+      ],
+      "linked_workflow_ids": [
+        "heartbeat_timeout_no_rms_fault_v1"
+      ],
+      "linked_procedure_ids": [
+        "check_tipper_heartbeat_v1"
+      ],
+      "linked_step_ids": [
+        "read_tipper_heartbeat_values_v1"
+      ],
+      "observed_signals": [
+        "tipper_heartbeat_values_observed"
+      ],
+      "review_status": "needs_review",
+      "source_artifact_ids": [
+        "case_229716_docx_artifact_03"
+      ]
+    }
+  ],
+  "steps": [],
+  "evidence_refs": [],
+  "source_artifacts": []
+}

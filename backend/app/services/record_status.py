@@ -3,8 +3,19 @@ from __future__ import annotations
 from typing import Any
 
 
-RETRIEVAL_APPROVED_STATUSES = {"approved_for_retrieval", "sme_reviewed", "approved"}
+RETRIEVAL_APPROVED_STATUSES = {
+    "approved_for_retrieval",
+    "sme_reviewed",
+    "approved",
+    "promoted_for_demo",
+}
 WORKFLOW_APPROVED_STATUSES = {"approved_for_workflow", "sme_reviewed", "approved"}
+CANONICAL_PROCEDURE_INDEXABLE_STATUSES = {
+    "sme_reviewed",
+    "approved",
+    "approved_for_workflow",
+    "promoted_for_demo",
+}
 BLOCKED_STATUSES = {"rejected", "deprecated"}
 CANDIDATE_CONTAINERS = {"workflow_candidates"}
 
@@ -56,5 +67,18 @@ def is_search_indexable_record(container_name: str, record: dict[str, Any]) -> b
     if container_name == "workflow_definitions":
         return is_runtime_workflow_record(record)
     if container_name == "procedure_dictionary":
-        return is_runtime_workflow_record(record)
+        return (
+            normalized_status(record, "validation_status", "status")
+            in CANONICAL_PROCEDURE_INDEXABLE_STATUSES
+        )
+    if container_name == "canonical_workflow_definitions":
+        return normalized_status(record, "validation_status") in {
+            "approved_for_workflow",
+            "promoted_for_demo",
+        }
+    if container_name == "canonical_procedure_dictionary":
+        return (
+            normalized_status(record, "validation_status")
+            in CANONICAL_PROCEDURE_INDEXABLE_STATUSES
+        )
     return is_runtime_retrieval_record(record)

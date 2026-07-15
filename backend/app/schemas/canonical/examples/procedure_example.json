@@ -1,0 +1,118 @@
+{
+  "procedure_id": "check_tipper_heartbeat_v1",
+  "canonical_title": "Check tipper heartbeat",
+  "procedure_type": "diagnostic_check",
+  "relationship_tracking": {
+    "parent_workflow_nodes": [
+      "heartbeat_timeout_question"
+    ],
+    "parent_procedure_ids": [],
+    "uses_subprocedures": [
+      "open_tipper_status_view_v1",
+      "read_tipper_heartbeat_values_v1",
+      "classify_tipper_heartbeat_state_v1"
+    ],
+    "depends_on_procedures": [
+      "check_rms_fault_state_v1"
+    ],
+    "requires_signals": [
+      "rms_screen_no_faults_visible"
+    ],
+    "produces_signals": [
+      "tipper_heartbeat_normal",
+      "tipper_heartbeat_timeout_or_zero",
+      "tipper_heartbeat_stale"
+    ],
+    "confirms_signals": [
+      "tipper_heartbeat_timeout_or_zero"
+    ],
+    "rules_out_signals": [
+      "tipper_heartbeat_normal"
+    ],
+    "affects_components": [
+      "tipper",
+      "wcs",
+      "ignition",
+      "opc_ua"
+    ],
+    "requires_components": [
+      "tipper_status_view"
+    ],
+    "requires_role": "support",
+    "escalates_to": [
+      "controls_engineering",
+      "wcs_engineering"
+    ],
+    "validated_by_incidents": [
+      "229374",
+      "229716",
+      "229777"
+    ]
+  },
+  "visual_evidence": {
+    "primary_screenshot_refs": [
+      "case_229374_docx_artifact_23",
+      "case_229716_docx_artifact_03"
+    ],
+    "supporting_screenshot_refs": [],
+    "required_screenshot_types": [
+      "tipper_status_screen",
+      "heartbeat_panel"
+    ],
+    "visual_region_hints": [
+      "Heartbeat values panel"
+    ],
+    "screenshot_required": true
+  },
+  "source_artifact_records": [
+    {
+      "artifact_id": "case_229716_docx_artifact_03",
+      "source_document": "Case 229716 Data.docx",
+      "artifact_type": "embedded_image",
+      "original_path": "media/image3.png"
+    }
+  ],
+  "canonical_images": [
+    {
+      "image_id": "img_rms_fault_screen_229716_001",
+      "category": "rms_screen",
+      "visual_purpose": "diagnostic_confirmation",
+      "title": "RMS fault list screen",
+      "description": "RMS screen showing AGVs down with no active alarm visible.",
+      "use_case": "Use when a workflow step needs confirmation that RMS is showing a fault state or that AGVs are down without an active alarm.",
+      "linked_incident_ids": [
+        "229716"
+      ],
+      "linked_workflow_ids": [
+        "agvs_stopped_no_rms_alarm_v1"
+      ],
+      "linked_procedure_ids": [
+        "check_rms_fault_state_v1"
+      ],
+      "linked_step_ids": [
+        "check_rms_fault_list"
+      ],
+      "observed_signals": [
+        "rms_fault_state_visible"
+      ],
+      "review_status": "needs_review",
+      "source_artifact_ids": [
+        "case_229716_docx_artifact_03"
+      ]
+    }
+  ],
+  "evidence_refs": [],
+  "source_artifacts": [],
+  "source_procedure_candidate_ids": [],
+  "source_variants": [],
+  "subprocedures": [],
+  "provenance": {
+    "created_by_agent": "workflow_procedure_architecture_agent",
+    "prompt_id": "procedure_normalization",
+    "prompt_version": "0.1",
+    "source_input_files": [],
+    "llm_model": null,
+    "created_at": "2026-05-21T00:00:00+00:00",
+    "validation_status": "needs_review"
+  }
+}

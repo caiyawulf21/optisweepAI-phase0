@@ -30,3 +30,9 @@ class Procedure(KnowledgeDocument):
     required_screenshot_examples: list[str] = Field(default_factory=list)
     candidate_refinement_questions: list[str] = Field(default_factory=list)
     supporting_artifacts: list[str] = Field(default_factory=list)
+    canonical_images: list[dict] = Field(default_factory=list)
+    role_seed_enrichment: dict = Field(default_factory=dict)
+    include_in_demo: bool = True
+    demo_status: str = "approved_for_demo"
+    validation_status: str = "needs_review"
+    metadata: dict = Field(default_factory=dict)

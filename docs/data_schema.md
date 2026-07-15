@@ -25,6 +25,24 @@ Phase 0 ingestion records include `synthesis_level`, `quality_tier`, and future-
 
 Approved CAT-1 runtime retrieval records may still live in `data/curated/cat1_records.json` for `LocalCat1RetrievalClient`.
 
+## Validation Status Lifecycle
+
+`backend/app/schemas/canonical/provenance.ValidationStatus` enumerates the supported lifecycle values:
+
+- `needs_review` - default for agent-generated artifacts. Not retrievable, not workflow-eligible.
+- `sme_reviewed` - SME has reviewed but not formally promoted. Retrievable.
+- `approved` - generic approval. Retrievable and workflow-eligible.
+- `approved_for_workflow` - SME-approved for runtime workflow execution. Required for `execution_ready: true` via `backend.app.promotion.promote_canonical_workflow`.
+- `promoted_for_demo` - demo-only promotion via `backend.app.promotion.promote_slide_review` (SME review deferred). Retrieval- and procedure-index-eligible but **not** workflow-execution-eligible.
+- `rejected` / `deprecated` - blocked everywhere.
+
+Eligibility sets in `backend/app/services/record_status.py`:
+
+- `RETRIEVAL_APPROVED_STATUSES` = `{approved_for_retrieval, sme_reviewed, approved, promoted_for_demo}`
+- `WORKFLOW_APPROVED_STATUSES` = `{approved_for_workflow, sme_reviewed, approved}` (NOT `promoted_for_demo`).
+- `CANONICAL_PROCEDURE_INDEXABLE_STATUSES` = `{sme_reviewed, approved, approved_for_workflow, promoted_for_demo}` (used for both `canonical_procedure_dictionary` and the runtime `procedure_dictionary` container).
+- `BLOCKED_STATUSES` = `{rejected, deprecated}`
+
 ## Reusable Procedures And Workflows
 
 Procedure and workflow candidates are evidence-backed local records. Manual ingestion does not upsert them into `procedure_dictionary` or `workflow_definitions`; promotion to reusable runtime assets requires an explicit promotion path.

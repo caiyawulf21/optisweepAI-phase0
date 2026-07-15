@@ -1,0 +1,22 @@
+{
+  "step_id": "step_01",
+  "instruction": "Locate the heartbeat values for each tipper on the tipper status view.",
+  "relationship_tracking": {
+    "parent_subprocedure_id": "read_tipper_heartbeat_values_v1",
+    "requires_signals": [
+      "tipper_status_view_open"
+    ],
+    "produces_signals": [
+      "tipper_heartbeat_values_observed"
+    ],
+    "affects_components": [
+      "tipper"
+    ]
+  },
+  "visual_evidence": {
+    "screenshot_required": true,
+    "screenshot_refs": [],
+    "visual_region_hint": "Heartbeat values table or panel"
+  },
+  "evidence_refs": []
+}
