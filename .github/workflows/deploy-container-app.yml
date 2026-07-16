@@ -54,6 +54,7 @@ jobs:
           containerAppEnvironment: ${{ env.CONTAINER_APP_ENVIRONMENT }}
           location: ${{ env.AZURE_LOCATION }}
           runtimeStack: python:3.12
+          startupCommand: python scripts/start_azure_container_app.py
           ingress: external
           targetPort: 8501
 
