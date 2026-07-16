@@ -54,25 +54,27 @@ Current publish target: `PUBLISH_VERSION_ID=publish_20260714_172351_09e54f8f` wi
 
 Copy container names from ingestion `publish_manifest.json`. If `PUBLISH_VERSION_ID` is stale, `AUTO_PUBLISH_VERSION=true` picks the latest publish in Cosmos.
 
-## Azure Container Apps source deployment
+## Azure Container Apps Docker deployment
 
-This repo deploys to Azure Container Apps from GitHub Actions source build. Azure builds the Python app from the repository root and `requirements.txt`.
+This repo deploys to Azure Container Apps from GitHub Actions using a root `Dockerfile`. That avoids the Oryx Python builder default (`gunicorn application:app`), which fails because this app has no `application` module.
 
 Deployment workflow:
 
 - Workflow: `.github/workflows/deploy-container-app.yml`
 - Trigger: push to `main` or manual `workflow_dispatch`
-- Container App: `optisweep-ai-app`
+- Container App: `optisweepai-troubleshooting-app`
 - Resource group: `optisweepai`
-- Container Apps environment: `managedEnvironment-optisweepai-bba4`
+- Container Apps environment: `managedEnvironment-optisweepai-a18c`
 - Region: `eastus`
-- Startup command: `python scripts/start_azure_container_app.py`
+- Image build: `Dockerfile` → `CMD ["python", "scripts/start_azure_container_app.py"]`
+- Revision template: `deploy/container-app.yaml` (single app container, no bootstrap sidecar)
 
 Runtime shape:
 
 - FastAPI starts internally at `127.0.0.1:8000`.
 - Streamlit starts externally at `0.0.0.0:8501`.
 - `API_BASE_URL` defaults to `http://127.0.0.1:8000`.
+- `PYTHONPATH` is set to `/app` in the image and startup script.
 - Azure ingress target port must be `8501`.
 
 Recommended Container App settings:
@@ -85,6 +87,7 @@ CPU: 1
 Memory: 2Gi
 Minimum replicas during demos: 1
 Maximum replicas for first demo: 1
+Containers: only optisweepai-troubleshooting-app (remove bootstrap-container-pre-deployment)
 ```
 
 Runtime environment variables supplied by Azure Container Apps:

@@ -29,9 +29,43 @@ def _repo_root() -> Path:
     return Path(__file__).resolve().parents[1]
 
 
-def _start_process(name: str, command: list[str]) -> subprocess.Popen:
-    logging.info("starting_%s command=%s", name, " ".join(command))
-    return subprocess.Popen(command, cwd=str(_repo_root()))
+def _python_executable() -> str:
+    try:
+        import uvicorn  # noqa: F401
+    except ImportError:
+        for candidate in (
+            Path("/antenv/bin/python"),
+            Path("/opt/venv/bin/python"),
+            Path("/app/.venv/bin/python"),
+        ):
+            if candidate.exists():
+                return str(candidate)
+    return sys.executable
+
+
+def _prepare_runtime() -> Path:
+    root = _repo_root()
+    os.chdir(root)
+    root_str = str(root)
+    if root_str not in sys.path:
+        sys.path.insert(0, root_str)
+    existing = os.environ.get("PYTHONPATH", "")
+    parts = [part for part in existing.split(os.pathsep) if part]
+    if root_str not in parts:
+        os.environ["PYTHONPATH"] = (
+            root_str if not parts else root_str + os.pathsep + existing
+        )
+    os.environ.setdefault("API_BASE_URL", BACKEND_URL)
+    os.environ.setdefault("STREAMLIT_SERVER_HEADLESS", "true")
+    os.environ.setdefault("STREAMLIT_BROWSER_GATHER_USAGE_STATS", "false")
+    os.environ.setdefault("STREAMLIT_SERVER_ADDRESS", STREAMLIT_HOST)
+    os.environ.setdefault("STREAMLIT_SERVER_PORT", str(STREAMLIT_PORT))
+    return root
+
+
+def _start_process(name: str, command: list[str], cwd: Path) -> subprocess.Popen:
+    logging.info("starting_%s command=%s cwd=%s", name, " ".join(command), cwd)
+    return subprocess.Popen(command, cwd=str(cwd), env=os.environ.copy())
 
 
 def _backend_healthy() -> bool:
@@ -49,7 +83,7 @@ def _backend_healthy() -> bool:
             conn.close()
 
 
-def _wait_for_backend(process: subprocess.Popen, timeout_seconds: int = 90) -> None:
+def _wait_for_backend(process: subprocess.Popen, timeout_seconds: int = 120) -> None:
     deadline = time.monotonic() + timeout_seconds
     while time.monotonic() < deadline:
         exit_code = process.poll()
@@ -78,14 +112,20 @@ def _terminate(processes: list[subprocess.Popen]) -> None:
 
 def main() -> int:
     _configure_logging()
-    os.environ.setdefault("API_BASE_URL", BACKEND_URL)
-    os.environ.setdefault("STREAMLIT_SERVER_HEADLESS", "true")
-    os.environ.setdefault("STREAMLIT_BROWSER_GATHER_USAGE_STATS", "false")
+    root = _prepare_runtime()
+    python_exe = _python_executable()
+    logging.info(
+        "container_entrypoint root=%s python=%s streamlit_port=%s backend_port=%s",
+        root,
+        python_exe,
+        STREAMLIT_PORT,
+        BACKEND_PORT,
+    )
 
     backend = _start_process(
         "fastapi",
         [
-            sys.executable,
+            python_exe,
             "-m",
             "uvicorn",
             "backend.app.main:app",
@@ -94,6 +134,7 @@ def main() -> int:
             "--port",
             str(BACKEND_PORT),
         ],
+        root,
     )
     processes = [backend]
 
@@ -110,7 +151,7 @@ def main() -> int:
         streamlit = _start_process(
             "streamlit",
             [
-                sys.executable,
+                python_exe,
                 "-m",
                 "streamlit",
                 "run",
@@ -120,6 +161,7 @@ def main() -> int:
                 "--server.port",
                 str(STREAMLIT_PORT),
             ],
+            root,
         )
         processes.append(streamlit)
 

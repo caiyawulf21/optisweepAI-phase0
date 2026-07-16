@@ -1,0 +1,78 @@
+properties:
+  configuration:
+    activeRevisionsMode: Single
+    ingress:
+      external: true
+      allowInsecure: false
+      targetPort: 8501
+      transport: auto
+  template:
+    containers:
+      - name: optisweepai-troubleshooting-app
+        image: PLACEHOLDER_IMAGE
+        command:
+          - python
+          - scripts/start_azure_container_app.py
+        resources:
+          cpu: 1.0
+          memory: 2Gi
+        env:
+          - name: APP_ENV
+            value: demo
+          - name: LOG_LEVEL
+            value: INFO
+          - name: PORT
+            value: "8501"
+          - name: API_BASE_URL
+            value: http://127.0.0.1:8000
+          - name: BACKEND_PORT
+            value: "8000"
+          - name: PYTHONPATH
+            value: /app
+          - name: RETRIEVAL_BACKEND
+            value: cosmos
+          - name: SESSION_BACKEND
+            value: cosmos
+          - name: INTERACTION_LOG_BACKEND
+            value: cosmos
+          - name: CORPUS_DEV_FALLBACK
+            value: disabled
+          - name: AUTO_PUBLISH_VERSION
+            value: "true"
+          - name: COSMOS_DATABASE
+            value: optisweep_knowledge_phase0
+          - name: COSMOS_CONTAINER_RUNBOOKS
+            value: runbooks
+          - name: COSMOS_CONTAINER_PLAYBOOKS_A
+            value: playbooks_prompt_a
+          - name: COSMOS_CONTAINER_PLAYBOOKS_B
+            value: playbooks_prompt_b
+          - name: COSMOS_CONTAINER_OPERATIONAL_CONTEXT
+            value: operational_context
+          - name: COSMOS_CONTAINER_RELATIONSHIP_LINKS
+            value: relationship_links
+          - name: COSMOS_CONTAINER_SOURCE_ARTIFACTS
+            value: source_artifacts
+          - name: COSMOS_CONTAINER_CANONICAL_IMAGES
+            value: publish_canonical_images
+          - name: AZURE_OPENAI_API_VERSION
+            value: "2024-10-21"
+          - name: AZURE_EMBEDDINGS_DEPLOYMENT
+            value: text-embedding-3-small
+          - name: AZURE_EMBEDDING_DIMENSIONS
+            value: "1536"
+          - name: AZURE_CANONICAL_IMAGES_CONTAINER
+            value: canonical-images
+          - name: COSMOS_ENDPOINT
+            secretRef: cosmos-endpoint
+          - name: COSMOS_KEY
+            secretRef: cosmos-key
+          - name: AZURE_OPENAI_ENDPOINT
+            secretRef: azure-openai-endpoint
+          - name: AZURE_OPENAI_API_KEY
+            secretRef: azure-openai-api-key
+          - name: AZURE_OPENAI_DEPLOYMENT
+            secretRef: azure-openai-deployment
+    scale:
+      minReplicas: 1
+      maxReplicas: 1

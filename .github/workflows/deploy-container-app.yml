@@ -15,6 +15,7 @@ env:
   RESOURCE_GROUP: optisweepai
   CONTAINER_APP_ENVIRONMENT: managedEnvironment-optisweepai-a18c
   AZURE_LOCATION: eastus
+  IMAGE_NAME: optisweepaiacr.azurecr.io/optisweepai/troubleshooting-app
 
 jobs:
   build-and-deploy:
@@ -42,7 +43,14 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Build and deploy source to Container App
+      - name: Prepare Container App YAML
+        run: |
+          IMAGE_TAG="${IMAGE_NAME}:${GITHUB_SHA}"
+          sed "s|PLACEHOLDER_IMAGE|${IMAGE_TAG}|g" deploy/container-app.yaml > /tmp/container-app.yaml
+          echo "IMAGE_TAG=${IMAGE_TAG}" >> "$GITHUB_ENV"
+          cat /tmp/container-app.yaml
+
+      - name: Build and deploy Docker image to Container App
         uses: azure/container-apps-deploy-action@v1
         with:
           appSourcePath: ${{ github.workspace }}
@@ -53,8 +61,8 @@ jobs:
           resourceGroup: ${{ env.RESOURCE_GROUP }}
           containerAppEnvironment: ${{ env.CONTAINER_APP_ENVIRONMENT }}
           location: ${{ env.AZURE_LOCATION }}
-          runtimeStack: python:3.12
-          startupCommand: python scripts/start_azure_container_app.py
+          dockerfilePath: Dockerfile
+          imageToBuild: ${{ env.IMAGE_TAG }}
+          yamlConfigPath: /tmp/container-app.yaml
           ingress: external
           targetPort: 8501
-

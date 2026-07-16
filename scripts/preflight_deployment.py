@@ -59,6 +59,39 @@ def _failures() -> list[str]:
             + ", ".join(missing_packages)
         )
 
+    dockerfile = REPO_ROOT / "Dockerfile"
+    if not dockerfile.exists():
+        failures.append("Dockerfile missing at repository root")
+    else:
+        dockerfile_text = dockerfile.read_text(encoding="utf-8")
+        if "scripts/start_azure_container_app.py" not in dockerfile_text:
+            failures.append(
+                "Dockerfile must start scripts/start_azure_container_app.py "
+                "(do not rely on Oryx/gunicorn application:app)"
+            )
+        if "EXPOSE 8501" not in dockerfile_text:
+            failures.append("Dockerfile must EXPOSE 8501 for Container Apps ingress")
+
+    startup_script = REPO_ROOT / "scripts" / "start_azure_container_app.py"
+    if not startup_script.exists():
+        failures.append("Container startup script missing: scripts/start_azure_container_app.py")
+
+    container_yaml = REPO_ROOT / "deploy" / "container-app.yaml"
+    if not container_yaml.exists():
+        failures.append("Container App YAML missing: deploy/container-app.yaml")
+    else:
+        yaml_text = container_yaml.read_text(encoding="utf-8")
+        if "targetPort: 8501" not in yaml_text:
+            failures.append("deploy/container-app.yaml must set targetPort: 8501")
+        if "bootstrap-container-pre-deployment" in yaml_text:
+            failures.append(
+                "deploy/container-app.yaml must not include bootstrap-container-pre-deployment"
+            )
+        if "scripts/start_azure_container_app.py" not in yaml_text:
+            failures.append(
+                "deploy/container-app.yaml must set command to scripts/start_azure_container_app.py"
+            )
+
     streamlit_entrypoint = REPO_ROOT / "ui" / "Home.py"
     if not streamlit_entrypoint.exists():
         failures.append("Streamlit entrypoint missing: ui/Home.py")
