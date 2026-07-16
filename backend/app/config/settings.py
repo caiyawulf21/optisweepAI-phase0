@@ -67,6 +67,18 @@ class AzureKnowledgeSettings:
         ]
         if missing:
             raise ValueError(f"Missing Cosmos DB settings: {', '.join(missing)}")
+        key = (self.cosmos_key or "").strip()
+        endpoint = (self.cosmos_endpoint or "").strip()
+        if key.lower().startswith(("http://", "https://")):
+            raise ValueError(
+                "COSMOS_KEY looks like a URL. Set it to the Cosmos DB primary/secondary "
+                "master key from the account keys blade, not the account endpoint."
+            )
+        if not endpoint.lower().startswith(("http://", "https://")):
+            raise ValueError(
+                "COSMOS_ENDPOINT must be an HTTPS Cosmos account URL "
+                "(for example https://<account>.documents.azure.com:443/)."
+            )
 
     def require_search(self) -> None:
         missing = [name for name, value in {"AZURE_SEARCH_ENDPOINT": self.search_endpoint, "AZURE_SEARCH_KEY": self.search_key}.items() if not value]

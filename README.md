@@ -110,12 +110,14 @@ AZURE_CANONICAL_IMAGES_CONTAINER=canonical-images
 Use Key Vault-backed Container App secret references for keys, tokens, and policy-sensitive endpoints:
 
 ```text
-COSMOS_ENDPOINT
-COSMOS_KEY
-AZURE_OPENAI_ENDPOINT
-AZURE_OPENAI_API_KEY
-AZURE_OPENAI_DEPLOYMENT
+COSMOS_ENDPOINT          # https://<account>.documents.azure.com:443/
+COSMOS_KEY               # Cosmos primary/secondary master key (base64), not the endpoint URL
+AZURE_OPENAI_ENDPOINT    # https://<resource>.cognitiveservices.azure.com/ (or .openai.azure.com/)
+AZURE_OPENAI_API_KEY     # Cognitive Services/OpenAI account key, not an endpoint URL
+AZURE_OPENAI_DEPLOYMENT  # chat deployment name (for example gpt-5.4), not a URL
 ```
+
+If Container App secret refs are version-pinned in Key Vault URLs, update those refs after rotating secrets and create a new revision (or restart) so the app reads the new values.
 
 Only these Cosmos knowledge container variables should be configured for the runtime:
 
