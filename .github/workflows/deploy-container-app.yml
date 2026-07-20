@@ -1,9 +1,13 @@
 name: Deploy OptiSweep AI to Azure Container Apps
 
+# Feature-branch preview deploy (this file on this branch):
+# - Targets optisweepai-troubleshooting-app-preview only (live app untouched).
+# - Uses GitHub Environment `preview` for Azure OIDC.
+# - Run: Actions → this workflow → Run workflow → Use workflow from THIS feature branch.
+# Do not merge this preview targeting to main without restoring live app name + removing
+# `environment: preview` (or switching to an input-gated live path).
+
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -11,15 +15,16 @@ permissions:
   id-token: write
 
 env:
-  CONTAINER_APP_NAME: optisweepai-troubleshooting-app
+  CONTAINER_APP_NAME: optisweepai-troubleshooting-app-preview
   RESOURCE_GROUP: optisweepai
   CONTAINER_APP_ENVIRONMENT: managedEnvironment-optisweepai-a18c
   AZURE_LOCATION: eastus
-  IMAGE_NAME: optisweepaiacr.azurecr.io/optisweepai/troubleshooting-app
+  IMAGE_NAME: optisweepaiacr.azurecr.io/optisweepai/troubleshooting-app-preview
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: preview
 
     steps:
       - name: Check out repository
@@ -46,8 +51,9 @@ jobs:
       - name: Prepare Container App YAML
         run: |
           IMAGE_TAG="${IMAGE_NAME}:${GITHUB_SHA}"
-          sed "s|PLACEHOLDER_IMAGE|${IMAGE_TAG}|g" deploy/container-app.yaml > /tmp/container-app.yaml
+          sed "s|PLACEHOLDER_IMAGE|${IMAGE_TAG}|g" deploy/container-app-preview.yaml > /tmp/container-app.yaml
           echo "IMAGE_TAG=${IMAGE_TAG}" >> "$GITHUB_ENV"
+          echo "Preview deploy to ${CONTAINER_APP_NAME} image ${IMAGE_TAG}"
           cat /tmp/container-app.yaml
 
       - name: Build and deploy Docker image to Container App

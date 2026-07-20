@@ -58,7 +58,30 @@ Copy container names from ingestion `publish_manifest.json`. With `AUTO_PUBLISH_
 
 This repo deploys to Azure Container Apps from GitHub Actions using a root `Dockerfile`. That avoids the Oryx Python builder default (`gunicorn application:app`), which fails because this app has no `application` module.
 
-Deployment workflow:
+### Preview deploy from a feature branch (live untouched)
+
+GitHub only *lists* workflows that exist on `main`, but when you **Run workflow** you can select a feature branch — that run uses **that branch’s** workflow file and code.
+
+On this feature branch, `deploy-container-app.yml` is pointed at:
+
+- Container App: `optisweepai-troubleshooting-app-preview`
+- Image: `…/troubleshooting-app-preview:<sha>`
+- Template: `deploy/container-app-preview.yaml`
+- GitHub Environment: `preview` (OIDC subject `repo:…:environment:preview`)
+
+One-time setup:
+
+1. GitHub → Settings → Environments → create `preview`.
+2. Entra federated credential subject: `repo:caiyawulf21/optisweepAI-phase0:environment:preview`.
+3. Create/preview-ready Container App `optisweepai-troubleshooting-app-preview` with the same secret refs as live (or let the first deploy create it).
+
+Then: Actions → **Deploy OptiSweep AI to Azure Container Apps** → Run workflow → **Use workflow from** = your feature branch (not `main`).
+
+Live `optisweepai-troubleshooting-app` is not the deploy target on this branch. Before merging the feature to `main`, restore the live workflow targets (or do not merge the preview-targeting workflow as-is).
+
+### Live deploy (`main`)
+
+Deployment workflow on `main`:
 
 - Workflow: `.github/workflows/deploy-container-app.yml`
 - Trigger: push to `main` or manual `workflow_dispatch`
@@ -68,27 +91,6 @@ Deployment workflow:
 - Region: `eastus`
 - Image build: `Dockerfile` → `CMD ["python", "scripts/start_azure_container_app.py"]`
 - Revision template: `deploy/container-app.yaml` (single app container, no bootstrap sidecar)
-
-### Preview Container App (feature branches)
-
-Use this when you want to validate a feature branch **without** moving traffic on the live app.
-
-- Workflow: `.github/workflows/deploy-preview-container-app.yml` (manual `workflow_dispatch` only)
-- Container App: `optisweepai-troubleshooting-app-preview`
-- Image: `…/troubleshooting-app-preview:<sha>`
-- Template: `deploy/container-app-preview.yaml` (`APP_ENV=preview`)
-- GitHub Environment: `preview` (OIDC subject is environment-scoped, not branch-scoped)
-
-One-time setup before the first preview deploy:
-
-1. GitHub → Settings → Environments → create `preview`.
-2. Entra app registration for `AZURE_CLIENT_ID` → Federated credentials → add subject  
-   `repo:caiyawulf21/optisweepAI-phase0:environment:preview`  
-   (issuer `https://token.actions.githubusercontent.com`, audience `api://AzureADTokenExchange`).
-3. Ensure the preview app can use the same Container App secret refs / Key Vault access as live (create the app empty with secrets first if your process requires it).
-4. Actions → **Deploy OptiSweep AI Preview Container App** → Run workflow → select the feature branch.
-
-Live `optisweepai-troubleshooting-app` is untouched by this workflow.
 
 Runtime shape:
 
