@@ -883,7 +883,8 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
         state["final_response"] = (
             "I need observable symptoms before matching a playbook. "
             "Describe what you see (for example: AGVs stopped, nothing moving, "
-            "hospital tote removal blocked, RMS/HMI blank or abnormal, alarms)."
+            "stopped at bag-out after sorting, hospital tote removal blocked, "
+            "RMS/HMI blank or abnormal, alarms)."
         )
         state["retrieval_hits"] = []
         state["retrieval_confidence"] = 0.0

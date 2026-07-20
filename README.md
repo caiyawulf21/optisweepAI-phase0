@@ -20,7 +20,7 @@ Full architecture: [`docs/PLAYBOOK_RUNTIME.md`](docs/PLAYBOOK_RUNTIME.md)
 
 ## How it works today
 
-1. **Turn 1** — keyword symptom extraction (+ optional LLM overlay when `ENABLE_LLM_SYMPTOM_EXTRACTION=true`); retrieval runs only after at least one affirmative observed signal.
+1. **Turn 1** — keyword symptom extraction from YAML phrase tables (+ optional LLM overlay when `ENABLE_LLM_SYMPTOM_EXTRACTION=true`); retrieval runs only after at least one affirmative observed signal (including `bagout_failure` for bag-out / bagging-out wording).
 2. **Orchestrator** — single control-plane agent that routes the turn (ask symptoms / pin / candidates / user pin). Pins only when hybrid rank ≥ `PLAYBOOK_MATCH_THRESHOLD` **and** entry-phrase `coverage` ≥ `PLAYBOOK_PIN_COVERAGE_THRESHOLD`, or the user picks a candidate. **Always** sets `retrieval_confidence_reason` (numbers from retrieval/pin tools). With `ENABLE_LLM_ORCHESTRATOR=true`, wording is rewritten via `prompts/agents/orchestrator/orchestrate_turn.md` from a compact briefing (no recompute of pin math).
 3. **Hybrid score** — `0.7×cosine + 0.3×jaccard`, then `max` with lexical boosts: playbook symptom overlap, and for runbooks/context a **title/id/head coverage** boost (with light service↔software query expansion). Query embeddings must match Cosmos (`text-embedding-3-small`); do **not** set `LOCAL_EMBEDDINGS_MODEL` against Azure-published vectors. Trace shows `cosine` / `jaccard` / `symptom` / `coverage` / `combined` separately.
 4. **Signals** — API returns only affirmative observed signals (not a padded False CAT-1 dictionary).

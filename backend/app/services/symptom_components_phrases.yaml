@@ -21,6 +21,12 @@ hospital_tote:
   - induct robot
   - hospital induct
   - hospital station
+bagout:
+  - bagout
+  - bag-out
+  - bag out
+  - bagging out
+  - bagged out
 wcs:
   - wcs
   - warehouse control system

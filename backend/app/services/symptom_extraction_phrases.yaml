@@ -76,6 +76,28 @@ system_active_but_frozen:
   - system stuck
   - system hang
   - system hangs
+bagout_failure:
+  - bagout
+  - bag-out
+  - bag out
+  - bagging out
+  - not bagging out
+  - is not bagging out
+  - stopped after bagout
+  - stopped after bag-out
+  - stopped after bag out
+  - stopped at bagout
+  - stopped at bag-out
+  - after bagout
+  - after bag-out
+  - after bag out
+  - bag-out entered request
+  - bagout entered request
+  - bagout request
+  - manually bagged out
+  - manual bagout
+  - manual bag-out
+  - manual bag out
 ignition_or_wcs_down:
   - ignition down
   - wcs down

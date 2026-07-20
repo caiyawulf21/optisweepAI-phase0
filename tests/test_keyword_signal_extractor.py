@@ -209,3 +209,19 @@ def test_default_extractor_loads_canonical_phrases_from_yaml(default_extractor):
     assert (
         result.canonical_signals.get("optisweep_service_restart_completed") is True
     )
+
+
+@pytest.mark.parametrize(
+    "message",
+    [
+        "system is stopped after bagout.",
+        "system isn't bagging out after sorting",
+        "System stopped at bag-out after sorting",
+        "bag-out entered request",
+    ],
+)
+def test_bagout_operator_phrasing_emits_bagout_failure(default_extractor, message):
+    result = default_extractor.extract(message)
+    assert result.signals["bagout_failure"] is True
+    assert result.observed_signals.get("bagout_failure") is True
+    assert "bagout" in result.components

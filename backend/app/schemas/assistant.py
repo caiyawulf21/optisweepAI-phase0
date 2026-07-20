@@ -42,6 +42,7 @@ INITIAL_CAT1_SIGNALS = (
     "tipper_heartbeat_timeout",
     "hospital_tote_removal_hangs",
     "system_active_but_frozen",
+    "bagout_failure",
     "ignition_or_wcs_down",
     "service_restart_required",
     "remote_access_unavailable",
