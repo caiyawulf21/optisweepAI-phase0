@@ -20,6 +20,7 @@ env:
   CONTAINER_APP_ENVIRONMENT: managedEnvironment-optisweepai-a18c
   AZURE_LOCATION: eastus
   IMAGE_NAME: optisweepaiacr.azurecr.io/optisweepai/troubleshooting-app-preview
+  LIVE_CONTAINER_APP_NAME: optisweepai-troubleshooting-app
 
 jobs:
   build-and-deploy:
@@ -50,6 +51,7 @@ jobs:
 
       - name: Prepare Container App YAML
         run: |
+          set -euo pipefail
           IMAGE_TAG="${IMAGE_NAME}:${GITHUB_SHA}"
           ENV_ID="$(az containerapp env show \
             -g "${RESOURCE_GROUP}" \
@@ -59,15 +61,99 @@ jobs:
             echo "Failed to resolve Container Apps environment id for ${CONTAINER_APP_ENVIRONMENT}"
             exit 1
           fi
-          sed \
-            -e "s|PLACEHOLDER_IMAGE|${IMAGE_TAG}|g" \
-            -e "s|PLACEHOLDER_ENVIRONMENT_ID|${ENV_ID}|g" \
-            deploy/container-app-preview.yaml > /tmp/container-app.yaml
+          python -m pip install -q pyyaml
+          export IMAGE_TAG ENV_ID
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          import yaml
+
+          rg = os.environ["RESOURCE_GROUP"]
+          live_name = os.environ["LIVE_CONTAINER_APP_NAME"]
+          env_id = os.environ["ENV_ID"]
+          image_tag = os.environ["IMAGE_TAG"]
+
+          live = json.loads(
+              subprocess.check_output(
+                  [
+                      "az",
+                      "containerapp",
+                      "show",
+                      "-g",
+                      rg,
+                      "-n",
+                      live_name,
+                      "-o",
+                      "json",
+                  ],
+                  text=True,
+              )
+          )
+          live_cfg = (live.get("properties") or {}).get("configuration") or {}
+          live_secrets = list(live_cfg.get("secrets") or [])
+          if not live_secrets:
+              raise SystemExit(
+                  f"Live app {live_name} has no configuration.secrets to copy."
+              )
+
+          secrets_out = []
+          for item in live_secrets:
+              if not isinstance(item, dict) or not item.get("name"):
+                  continue
+              entry = {"name": str(item["name"])}
+              if item.get("keyVaultUrl"):
+                  entry["keyVaultUrl"] = str(item["keyVaultUrl"])
+              if item.get("identity"):
+                  entry["identity"] = str(item["identity"])
+              if item.get("value"):
+                  entry["value"] = str(item["value"])
+              if "keyVaultUrl" in entry or "value" in entry:
+                  secrets_out.append(entry)
+
+          if not secrets_out:
+              names = [s.get("name") for s in live_secrets]
+              raise SystemExit(
+                  "Live app secret entries have names only (no keyVaultUrl/value). "
+                  f"Names={names}. Copy Key Vault secret refs onto "
+                  f"{os.environ['CONTAINER_APP_NAME']} in Portal, then re-run."
+              )
+
+          doc = yaml.safe_load(
+              Path("deploy/container-app-preview.yaml").read_text(encoding="utf-8")
+          )
+          props = doc.setdefault("properties", {})
+          props["environmentId"] = env_id
+          cfg = props.setdefault("configuration", {})
+          cfg["secrets"] = secrets_out
+          containers = ((props.get("template") or {}).get("containers") or [])
+          if containers:
+              containers[0]["image"] = image_tag
+
+          identity = live.get("identity")
+          if isinstance(identity, dict):
+              ident_out = {}
+              if identity.get("type"):
+                  ident_out["type"] = identity["type"]
+              uai = identity.get("userAssignedIdentities")
+              if isinstance(uai, dict) and uai:
+                  ident_out["userAssignedIdentities"] = {key: {} for key in uai}
+              if ident_out:
+                  doc["identity"] = ident_out
+
+          out = Path("/tmp/container-app.yaml")
+          out.write_text(yaml.safe_dump(doc, sort_keys=False), encoding="utf-8")
+          print(f"Copied {len(secrets_out)} secrets from {live_name}")
+          print("secret names:", ", ".join(s["name"] for s in secrets_out))
+          print(out.read_text(encoding="utf-8"))
+          PY
+
           echo "IMAGE_TAG=${IMAGE_TAG}" >> "$GITHUB_ENV"
           echo "Preview deploy to ${CONTAINER_APP_NAME}"
           echo "environmentId=${ENV_ID}"
           echo "image=${IMAGE_TAG}"
-          cat /tmp/container-app.yaml
 
       - name: Build and deploy Docker image to Container App
         uses: azure/container-apps-deploy-action@v1
