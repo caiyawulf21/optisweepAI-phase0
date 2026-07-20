@@ -50,6 +50,10 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Prepare Container App YAML
+        env:
+          ACR_NAME: ${{ vars.AZURE_ACR_NAME }}
+          ACR_USERNAME: ${{ secrets.AZURE_ACR_USERNAME }}
+          ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
         run: |
           set -euo pipefail
           IMAGE_TAG="${IMAGE_NAME}:${GITHUB_SHA}"
@@ -100,6 +104,7 @@ jobs:
               )
 
           secrets_out = []
+          secret_names: set[str] = set()
           for item in live_secrets:
               if not isinstance(item, dict) or not item.get("name"):
                   continue
@@ -112,6 +117,7 @@ jobs:
                   entry["value"] = str(item["value"])
               if "keyVaultUrl" in entry or "value" in entry:
                   secrets_out.append(entry)
+                  secret_names.add(entry["name"])
 
           if not secrets_out:
               names = [s.get("name") for s in live_secrets]
@@ -121,6 +127,55 @@ jobs:
                   f"{os.environ['CONTAINER_APP_NAME']} in Portal, then re-run."
               )
 
+          registries_out = []
+          for item in list(live_cfg.get("registries") or []):
+              if not isinstance(item, dict) or not item.get("server"):
+                  continue
+              entry = {"server": str(item["server"])}
+              if item.get("username"):
+                  entry["username"] = str(item["username"])
+              if item.get("passwordSecretRef"):
+                  entry["passwordSecretRef"] = str(item["passwordSecretRef"])
+              if item.get("identity"):
+                  entry["identity"] = str(item["identity"])
+              registries_out.append(entry)
+
+          # YAML create ignores deploy-action ACR flags; ensure pull auth exists.
+          if not registries_out:
+              acr = (os.environ.get("ACR_NAME") or "").strip()
+              user = (os.environ.get("ACR_USERNAME") or "").strip()
+              password = (os.environ.get("ACR_PASSWORD") or "").strip()
+              if not (acr and user and password):
+                  raise SystemExit(
+                      "Live app has no registries config and ACR_USERNAME/"
+                      "ACR_PASSWORD secrets are missing; cannot authorize image pull."
+                  )
+              server = acr if acr.endswith(".azurecr.io") else f"{acr}.azurecr.io"
+              acr_secret = "acr-password"
+              if acr_secret not in secret_names:
+                  secrets_out.append({"name": acr_secret, "value": password})
+                  secret_names.add(acr_secret)
+              registries_out.append(
+                  {
+                      "server": server,
+                      "username": user,
+                      "passwordSecretRef": acr_secret,
+                  }
+              )
+          else:
+              # If live references a password secret we didn't copy, add GH ACR password.
+              for reg in registries_out:
+                  pref = reg.get("passwordSecretRef")
+                  if pref and pref not in secret_names:
+                      password = (os.environ.get("ACR_PASSWORD") or "").strip()
+                      if not password:
+                          raise SystemExit(
+                              f"Registry passwordSecretRef '{pref}' missing from "
+                              "copied secrets and ACR_PASSWORD is empty."
+                          )
+                      secrets_out.append({"name": pref, "value": password})
+                      secret_names.add(pref)
+
           doc = yaml.safe_load(
               Path("deploy/container-app-preview.yaml").read_text(encoding="utf-8")
           )
@@ -128,6 +183,7 @@ jobs:
           props["environmentId"] = env_id
           cfg = props.setdefault("configuration", {})
           cfg["secrets"] = secrets_out
+          cfg["registries"] = registries_out
           containers = ((props.get("template") or {}).get("containers") or [])
           if containers:
               containers[0]["image"] = image_tag
@@ -145,9 +201,15 @@ jobs:
 
           out = Path("/tmp/container-app.yaml")
           out.write_text(yaml.safe_dump(doc, sort_keys=False), encoding="utf-8")
-          print(f"Copied {len(secrets_out)} secrets from {live_name}")
+          print(f"Copied {len(secrets_out)} secrets and {len(registries_out)} registries from {live_name}")
           print("secret names:", ", ".join(s["name"] for s in secrets_out))
-          print(out.read_text(encoding="utf-8"))
+          print("registry servers:", ", ".join(r["server"] for r in registries_out))
+          # Do not print secret values.
+          redacted = yaml.safe_load(out.read_text(encoding="utf-8"))
+          for secret in (redacted.get("properties") or {}).get("configuration", {}).get("secrets") or []:
+              if isinstance(secret, dict) and "value" in secret:
+                  secret["value"] = "***"
+          print(yaml.safe_dump(redacted, sort_keys=False))
           PY
 
           echo "IMAGE_TAG=${IMAGE_TAG}" >> "$GITHUB_ENV"
