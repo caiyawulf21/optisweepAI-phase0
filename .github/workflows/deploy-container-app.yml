@@ -209,7 +209,7 @@ jobs:
           ingress: external
           targetPort: 8501
 
-      - name: Ensure preview system identity can pull from ACR
+      - name: Ensure preview system identity can pull ACR and read Key Vault
         run: |
           set -euo pipefail
           PRINCIPAL_ID="$(az containerapp show \
@@ -217,23 +217,33 @@ jobs:
             -n "${CONTAINER_APP_NAME}" \
             --query identity.principalId -o tsv)"
           if [ -z "${PRINCIPAL_ID}" ] || [ "${PRINCIPAL_ID}" = "null" ]; then
-            echo "Preview app has no system identity principalId yet; skipping AcrPull assignment"
+            echo "Preview app has no system identity principalId yet; skipping role assignment"
             exit 0
           fi
           ACR_NAME_RAW="${{ vars.AZURE_ACR_NAME }}"
           ACR_NAME="${ACR_NAME_RAW%.azurecr.io}"
-          SCOPE="$(az acr show -n "${ACR_NAME}" --query id -o tsv)"
-          EXISTS="$(az role assignment list \
-            --assignee "${PRINCIPAL_ID}" \
-            --role AcrPull \
-            --scope "${SCOPE}" \
-            --query "[0].id" -o tsv || true)"
-          if [ -n "${EXISTS}" ]; then
-            echo "AcrPull already assigned to ${PRINCIPAL_ID}"
-          else
-            az role assignment create \
+          ACR_SCOPE="$(az acr show -n "${ACR_NAME}" --query id -o tsv)"
+          KV_SCOPE="$(az keyvault show -n optisweep-ai-keyvault --query id -o tsv)"
+
+          assign_if_missing() {
+            local role="$1"
+            local scope="$2"
+            local exists
+            exists="$(az role assignment list \
               --assignee "${PRINCIPAL_ID}" \
-              --role AcrPull \
-              --scope "${SCOPE}"
-            echo "Granted AcrPull on ${ACR_NAME} to preview system identity ${PRINCIPAL_ID}"
-          fi
+              --role "${role}" \
+              --scope "${scope}" \
+              --query "[0].id" -o tsv || true)"
+            if [ -n "${exists}" ]; then
+              echo "Already has ${role}"
+            else
+              az role assignment create \
+                --assignee "${PRINCIPAL_ID}" \
+                --role "${role}" \
+                --scope "${scope}"
+              echo "Granted ${role}"
+            fi
+          }
+
+          assign_if_missing "AcrPull" "${ACR_SCOPE}"
+          assign_if_missing "Key Vault Secrets User" "${KV_SCOPE}"
