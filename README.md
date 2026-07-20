@@ -64,7 +64,7 @@ GitHub only *lists* workflows that exist on `main`, but when you **Run workflow*
 
 On this feature branch, `deploy-container-app.yml` is pointed at:
 
-- Container App: `optisweepai-troubleshooting-app-preview`
+- Container App: `optisweepai-app-preview` (≤32 chars; Azure name limit)
 - Image: `…/troubleshooting-app-preview:<sha>`
 - Template: `deploy/container-app-preview.yaml`
 - GitHub Environment: `preview` (OIDC subject `repo:…:environment:preview`)

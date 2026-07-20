@@ -1,7 +1,7 @@
 name: Deploy OptiSweep AI to Azure Container Apps
 
 # Feature-branch preview deploy (this file on this branch):
-# - Targets optisweepai-troubleshooting-app-preview only (live app untouched).
+# - Targets optisweepai-app-preview only (live app untouched).
 # - Uses GitHub Environment `preview` for Azure OIDC.
 # - Run: Actions → this workflow → Run workflow → Use workflow from THIS feature branch.
 # Do not merge this preview targeting to main without restoring live app name + removing
@@ -15,7 +15,7 @@ permissions:
   id-token: write
 
 env:
-  CONTAINER_APP_NAME: optisweepai-troubleshooting-app-preview
+  CONTAINER_APP_NAME: optisweepai-app-preview
   RESOURCE_GROUP: optisweepai
   CONTAINER_APP_ENVIRONMENT: managedEnvironment-optisweepai-a18c
   AZURE_LOCATION: eastus

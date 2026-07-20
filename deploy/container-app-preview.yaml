@@ -8,7 +8,7 @@ properties:
       transport: auto
   template:
     containers:
-      - name: optisweepai-troubleshooting-app-preview
+      - name: optisweepai-app-preview
         image: PLACEHOLDER_IMAGE
         command:
           - python
