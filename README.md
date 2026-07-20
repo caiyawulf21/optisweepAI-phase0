@@ -73,7 +73,7 @@ One-time setup:
 
 1. GitHub → Settings → Environments → create `preview`.
 2. Entra federated credential subject: `repo:caiyawulf21/optisweepAI-phase0:environment:preview`.
-3. Create/preview-ready Container App `optisweepai-troubleshooting-app-preview` with the same secret refs as live (or let the first deploy create it).
+3. Create/preview-ready Container App `optisweepai-app-preview` with the same secret refs as live (or let the first deploy create it).
 
 Then: Actions → **Deploy OptiSweep AI to Azure Container Apps** → Run workflow → **Use workflow from** = your feature branch (not `main`).
 
