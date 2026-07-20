@@ -52,7 +52,7 @@ Current publish target: `PUBLISH_VERSION_ID=publish_20260714_172351_09e54f8f` wi
 | LLM agents | `ENABLE_LLM_ORCHESTRATOR=true`, `ENABLE_LLM_BRANCH_MATCH=true`, `ENABLE_LLM_SYMPTOM_EXTRACTION=true`, `ENABLE_LLM_RETRIEVE_SYNTHESIS=true`, `AZURE_OPENAI_*` (default on) |
 | Images | `COSMOS_CONTAINER_CANONICAL_IMAGES=publish_canonical_images` (PK `/publish_version_id`) + Blob; `/images/{id}` redirects to `storage_uri` |
 
-Copy container names from ingestion `publish_manifest.json`. If `PUBLISH_VERSION_ID` is stale, `AUTO_PUBLISH_VERSION=true` picks the latest publish in Cosmos.
+Copy container names from ingestion `publish_manifest.json`. With `AUTO_PUBLISH_VERSION=true` (Azure default), startup always resolves the newest Cosmos publish that has embeddings (by `_ts`), and uses `PUBLISH_VERSION_ID` only as fallback if discovery fails. Set `AUTO_PUBLISH_VERSION=false` to pin a specific version. After a new Stage 11 publish, restart the Container App so the in-memory corpus reloads.
 
 ## Azure Container Apps Docker deployment
 

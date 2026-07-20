@@ -268,8 +268,8 @@ Do not swap filesystem directories — filter Cosmos embedding `record_type` and
 ## Publish version lifecycle
 
 1. Ingestion runs Stage 11 with `--publish` → new `publish_version_id` in Cosmos.
-2. App sets `PUBLISH_VERSION_ID` env (or reads latest from a small config doc).
-3. On version change: reload embedding index + relationship shards; invalidate pinned sessions.
+2. With `AUTO_PUBLISH_VERSION=true`, app startup discovers the latest publish with embeddings; otherwise pin via `PUBLISH_VERSION_ID`.
+3. Restart (or reload corpus) so the in-memory embedding index + relationship shards refresh; invalidate sessions pinned to the old version.
 
 ---
 

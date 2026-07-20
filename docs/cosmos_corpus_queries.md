@@ -149,8 +149,8 @@ Use partition key `publish_version_id` on point reads when document id is known.
 
 When ingestion publishes a new corpus:
 
-1. Update `PUBLISH_VERSION_ID` in app config.
-2. Reload embedding index + relationship shards.
-3. Invalidate sessions pinned to old version.
+1. With `AUTO_PUBLISH_VERSION=true`, no env change is required (latest publish is discovered on startup). To pin, set `AUTO_PUBLISH_VERSION=false` and `PUBLISH_VERSION_ID`.
+2. Restart the app (or reload the corpus index) so embeddings + relationship shards refresh.
+3. Invalidate sessions pinned to the old version.
 
 Compare `session.publish_version_id` vs env on each request; reset session if mismatch.

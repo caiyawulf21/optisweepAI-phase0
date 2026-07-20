@@ -20,11 +20,10 @@ def resolve_publish_version_id(settings: CorpusSettings) -> str:
     with _lock:
         if _resolved_version:
             return _resolved_version
-        if settings.auto_publish_version and not _version_has_embeddings(settings, configured):
+        if settings.auto_publish_version:
             discovered = _discover_latest_publish_version(settings)
-            if discovered:
-                _resolved_version = discovered
-                return discovered
+            _resolved_version = discovered or configured
+            return _resolved_version
         if _version_has_embeddings(settings, configured):
             _resolved_version = configured
             return configured

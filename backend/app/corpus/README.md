@@ -22,7 +22,10 @@ COSMOS_CONTAINER_PLAYBOOKS_A=
 COSMOS_CONTAINER_PLAYBOOKS_B=
 COSMOS_CONTAINER_RELATIONSHIP_LINKS=
 PUBLISH_VERSION_ID=
+AUTO_PUBLISH_VERSION=true
 ```
+
+`AUTO_PUBLISH_VERSION=true` resolves the newest Cosmos publish with embeddings at startup / corpus reload. `PUBLISH_VERSION_ID` is the fallback (and the pin when auto is false).
 
 ## API Surface
 

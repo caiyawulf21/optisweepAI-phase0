@@ -4,7 +4,10 @@ import threading
 
 from backend.app.corpus.cosmos_client import CosmosCorpusClient
 from backend.app.corpus.models import CorpusIndex
-from backend.app.corpus.publish_version import reset_publish_version_cache
+from backend.app.corpus.publish_version import (
+    reset_publish_version_cache,
+    resolve_publish_version_id,
+)
 
 _client_lock = threading.Lock()
 _index_lock = threading.Lock()
@@ -32,8 +35,11 @@ def get_corpus_index(*, force: bool = False) -> CorpusIndex:
 
 def reload_corpus_index() -> CorpusIndex:
     global _index
+    reset_publish_version_cache()
     with _index_lock:
-        _index = get_corpus_client().load_index(force=True)
+        client = get_corpus_client()
+        client._publish_version_id = resolve_publish_version_id(client.settings)
+        _index = client.load_index(force=True)
     return _index
 
 
