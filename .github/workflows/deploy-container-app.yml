@@ -51,9 +51,22 @@ jobs:
       - name: Prepare Container App YAML
         run: |
           IMAGE_TAG="${IMAGE_NAME}:${GITHUB_SHA}"
-          sed "s|PLACEHOLDER_IMAGE|${IMAGE_TAG}|g" deploy/container-app-preview.yaml > /tmp/container-app.yaml
+          ENV_ID="$(az containerapp env show \
+            -g "${RESOURCE_GROUP}" \
+            -n "${CONTAINER_APP_ENVIRONMENT}" \
+            --query id -o tsv)"
+          if [ -z "${ENV_ID}" ]; then
+            echo "Failed to resolve Container Apps environment id for ${CONTAINER_APP_ENVIRONMENT}"
+            exit 1
+          fi
+          sed \
+            -e "s|PLACEHOLDER_IMAGE|${IMAGE_TAG}|g" \
+            -e "s|PLACEHOLDER_ENVIRONMENT_ID|${ENV_ID}|g" \
+            deploy/container-app-preview.yaml > /tmp/container-app.yaml
           echo "IMAGE_TAG=${IMAGE_TAG}" >> "$GITHUB_ENV"
-          echo "Preview deploy to ${CONTAINER_APP_NAME} image ${IMAGE_TAG}"
+          echo "Preview deploy to ${CONTAINER_APP_NAME}"
+          echo "environmentId=${ENV_ID}"
+          echo "image=${IMAGE_TAG}"
           cat /tmp/container-app.yaml
 
       - name: Build and deploy Docker image to Container App

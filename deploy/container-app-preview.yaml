@@ -1,4 +1,6 @@
+location: eastus
 properties:
+  environmentId: PLACEHOLDER_ENVIRONMENT_ID
   configuration:
     activeRevisionsMode: Single
     ingress:
