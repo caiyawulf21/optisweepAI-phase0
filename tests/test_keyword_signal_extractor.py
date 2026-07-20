@@ -26,11 +26,27 @@ def test_flagship_cat1_signature_matches_all_expected_signals(default_extractor)
         "hospital tote removal hangs, system active but frozen"
     )
     assert result.signals["agvs_stopped"] is True
+    assert result.signals["no_rms_alarm"] is True
+    assert result.observed_signals["no_rms_alarm"] is True
     assert result.signals["tipper_heartbeat_timeout"] is True
     assert result.signals["hospital_tote_removal_hangs"] is True
     assert result.signals["system_active_but_frozen"] is True
     assert result.observed_signals["hospital_tote_removal_hangs"] is True
     assert result.canonical_signals["hospital_tote_removal_failed"] is True
+
+
+@pytest.mark.parametrize(
+    "message,expected",
+    [
+        ("AGVs stop, no rms alarms", {"agvs_stopped", "no_rms_alarm"}),
+        ("without rms alarms", {"no_rms_alarm"}),
+        ("AGVs stopped, without any rms alarms", {"agvs_stopped", "no_rms_alarm"}),
+    ],
+)
+def test_absence_and_stop_phrase_variants(default_extractor, message, expected):
+    result = default_extractor.extract(message)
+    for key in expected:
+        assert result.observed_signals.get(key) is True, key
 
 
 def test_negation_window_demotes_phrase_to_false():

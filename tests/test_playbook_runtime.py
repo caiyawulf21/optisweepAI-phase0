@@ -58,7 +58,8 @@ def test_load_sample_playbook_228086(sample_client: CosmosCorpusClient) -> None:
     assert payload.get("case_id") == "228086"
 
 
-def test_agvs_stopped_pins_playbook_prompt_a() -> None:
+def test_agvs_stopped_surfaces_candidates_for_user_select(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("SKIP_PLAYBOOK_CONFIRMATION", "false")
     state = run_playbook_troubleshoot(
         "test-agvs",
         "AGVs stopped and nothing is moving on site",
@@ -66,22 +67,57 @@ def test_agvs_stopped_pins_playbook_prompt_a() -> None:
     )
     assert state.get("extracted_observed_signals", {}).get("agvs_stopped") is True
     assert state.get("retrieval_confidence", 0) > 0
-    assert state.get("active_playbook_id")
-    assert "228086" in str(state.get("active_playbook_id") or state.get("active_case_id") or "")
-    top = (state.get("retrieval_hits") or [{}])[0]
-    assert float(top.get("combined_score") or 0.0) >= 0.55
-    assert "coverage" in top and "symptom_score" in top
+    assert not state.get("active_playbook_id")
+    assert state.get("response_type") == "playbook_candidates"
+    candidates = list(state.get("playbook_candidates") or [])
+    assert candidates
+    top = candidates[0]
+    assert top.get("incidence_id") or top.get("case_id")
+    assert top.get("incidence_summary")
+    assert top.get("when_to_choose") or top.get("observed_entry_symptoms")
+    hit = (state.get("retrieval_hits") or [{}])[0]
+    assert float(hit.get("combined_score") or 0.0) >= 0.55
+    assert "coverage" in hit and "symptom_score" in hit
     response = _build_troubleshoot_response(state)
     assert response.retrieval_confidence > 0
     assert response.extracted_observed_signals.get("agvs_stopped") is True
-    if response.guided_question:
-        answers = response.guided_question.get("allowed_answers") or []
-        assert len(answers) == len({str(item).lower() for item in answers})
+    assert response.response_type == "playbook_candidates"
 
 
-def test_sparse_agvs_stopped_pins_with_coverage_gate() -> None:
+def test_agvs_stopped_auto_pins_when_confirmation_skipped(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("SKIP_PLAYBOOK_CONFIRMATION", "true")
+    state = run_playbook_troubleshoot(
+        "test-agvs-autopin",
+        "AGVs stopped and nothing is moving on site",
+        playbook_variant="prompt_a",
+    )
+    assert state.get("active_playbook_id")
+    assert "228086" in str(state.get("active_playbook_id") or state.get("active_case_id") or "")
+
+
+def test_sparse_agvs_stopped_defers_to_candidates(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("SKIP_PLAYBOOK_CONFIRMATION", "false")
     state = run_playbook_troubleshoot(
         "test-agvs-sparse",
+        "AGVs stopped",
+        playbook_variant="prompt_a",
+    )
+    assert not state.get("active_playbook_id")
+    assert state.get("response_type") == "playbook_candidates"
+    top = (state.get("retrieval_hits") or [{}])[0]
+    assert float(top.get("coverage") or 0.0) >= 0.25
+    agents = (state.get("runtime_trace") or {}).get("agents") or []
+    assert any(
+        step.get("agent") == "playbook_pin_agent"
+        and step.get("action") == "defer_to_candidates"
+        for step in agents
+    )
+
+
+def test_sparse_agvs_stopped_pins_with_coverage_gate(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("SKIP_PLAYBOOK_CONFIRMATION", "true")
+    state = run_playbook_troubleshoot(
+        "test-agvs-sparse-pin",
         "AGVs stopped",
         playbook_variant="prompt_a",
     )
@@ -99,6 +135,50 @@ def test_sparse_agvs_stopped_pins_with_coverage_gate() -> None:
     ]
     assert pin_steps
     assert "cosine" in pin_steps[0] and "coverage" in pin_steps[0]
+
+
+def test_prompt_phrase_no_rms_alarms_observed(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("SKIP_PLAYBOOK_CONFIRMATION", "false")
+    monkeypatch.setenv("ENABLE_LLM_SYMPTOM_EXTRACTION", "false")
+    from backend.app.services.keyword_signal_extractor import reset_for_tests
+
+    reset_for_tests()
+    state = run_playbook_troubleshoot(
+        "test-no-rms",
+        "AGVs stop, no RMS alarms",
+        playbook_variant="prompt_a",
+    )
+    observed = state.get("extracted_observed_signals") or {}
+    assert observed.get("no_rms_alarm") is True
+    assert observed.get("agvs_stopped") is True
+
+
+def test_extraction_memory_persists_across_turns(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("SKIP_PLAYBOOK_CONFIRMATION", "false")
+    monkeypatch.setenv("ENABLE_LLM_SYMPTOM_EXTRACTION", "false")
+    from backend.app.agents.runtime import load_playbook_session
+    from backend.app.services.keyword_signal_extractor import reset_for_tests
+    from backend.app.services.session_service import build_session_service
+
+    reset_for_tests()
+    turn1 = run_playbook_troubleshoot(
+        "test-memory",
+        "AGVs stopped",
+        playbook_variant="prompt_a",
+    )
+    assert turn1.get("extracted_observed_signals", {}).get("agvs_stopped") is True
+    turn2 = run_playbook_troubleshoot(
+        "test-memory",
+        "also no RMS alarms",
+        playbook_variant="prompt_a",
+    )
+    observed = turn2.get("extracted_observed_signals") or {}
+    assert observed.get("agvs_stopped") is True
+    assert observed.get("no_rms_alarm") is True
+    session = build_session_service().get_or_create("test-memory")
+    slice_ = load_playbook_session(session)
+    turns = list((slice_.extraction_memory or {}).get("operator_symptom_turns") or [])
+    assert len(turns) >= 2
 
 
 def test_no_symptoms_skips_retrieval() -> None:
@@ -476,7 +556,8 @@ def test_present_candidates_message_is_concise() -> None:
     assert out.get("playbook_candidates")
 
 
-def test_healthy_advances_case_228086_playbook() -> None:
+def test_healthy_advances_case_228086_playbook(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("SKIP_PLAYBOOK_CONFIRMATION", "true")
     turn1 = run_playbook_troubleshoot(
         "test-branch-228086",
         "AGVs stopped and nothing is moving on site",

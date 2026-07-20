@@ -170,7 +170,7 @@ def get_corpus_settings() -> CorpusSettings:
 
         default_playbook_variant=_env("DEFAULT_PLAYBOOK_VARIANT", "prompt_a"),
 
-        skip_playbook_confirmation=_env_truthy("SKIP_PLAYBOOK_CONFIRMATION", default=True),
+        skip_playbook_confirmation=_env_truthy("SKIP_PLAYBOOK_CONFIRMATION", default=False),
 
         enable_llm_branch_match=_env_truthy("ENABLE_LLM_BRANCH_MATCH", default=True),
 

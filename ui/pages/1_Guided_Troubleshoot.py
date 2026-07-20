@@ -196,13 +196,21 @@ def _render_candidates(payload: dict[str, Any]) -> None:
                 st.write(f"- {symptom}")
     if not candidates:
         return
-    st.markdown("**Candidate playbooks**")
+    st.markdown("**Candidate playbooks** — select one that matches the site report")
     for candidate in candidates:
         title = candidate.get("title") or candidate.get("playbook_id")
         score = float(candidate.get("score") or 0.0)
-        st.markdown(f"- **{title}** (score {score:.2f}, case `{candidate.get('case_id') or 'n/a'}`)")
-        if candidate.get("summary"):
-            st.caption(str(candidate.get("summary"))[:140])
+        incidence_id = candidate.get("incidence_id") or candidate.get("case_id") or "n/a"
+        st.markdown(f"- **{title}** (score {score:.2f}, incidence `{incidence_id}`)")
+        incidence_summary = candidate.get("incidence_summary") or candidate.get("summary")
+        if incidence_summary:
+            st.caption(f"Incidence: {str(incidence_summary)[:220]}")
+        when_to_choose = candidate.get("when_to_choose")
+        if when_to_choose:
+            st.caption(f"When to choose: {str(when_to_choose)[:220]}")
+        symptoms = candidate.get("observed_entry_symptoms") or []
+        if symptoms and not when_to_choose:
+            st.caption("Entry symptoms: " + "; ".join(str(s) for s in symptoms[:6]))
 
 
 def _render_turns(backend_url: str, session_id: str) -> None:

@@ -94,12 +94,16 @@ class LLMSignalExtractor:
         user_message: str,
         keyword_result: ExtractionResult | None = None,
         already_observed_signals: dict[str, bool] | None = None,
+        prior_operator_turns: list[dict[str, Any]] | None = None,
+        last_extraction_rationale: str | None = None,
     ) -> dict[str, Any]:
         keyword_result = keyword_result or ExtractionResult()
         packet = self._build_packet(
             user_message=user_message,
             keyword_result=keyword_result,
             already_observed_signals=already_observed_signals or {},
+            prior_operator_turns=prior_operator_turns or [],
+            last_extraction_rationale=last_extraction_rationale,
         )
         raw = self._complete_json(packet)
         if not raw:
@@ -114,6 +118,8 @@ class LLMSignalExtractor:
         user_message: str,
         keyword_result: ExtractionResult,
         already_observed_signals: dict[str, bool],
+        prior_operator_turns: list[dict[str, Any]] | None = None,
+        last_extraction_rationale: str | None = None,
     ) -> dict[str, Any]:
         packet: dict[str, Any] = {
             "operator_message": user_message,
@@ -137,6 +143,19 @@ class LLMSignalExtractor:
                 if value
             },
         }
+        turns = [
+            {
+                "role": str(item.get("role") or "user"),
+                "content": str(item.get("content") or "").strip(),
+            }
+            for item in list(prior_operator_turns or [])
+            if isinstance(item, dict) and str(item.get("content") or "").strip()
+        ]
+        if turns:
+            packet["prior_operator_turns"] = turns[-8:]
+        rationale = str(last_extraction_rationale or "").strip()
+        if rationale:
+            packet["last_extraction_rationale"] = rationale[:400]
         prior = self._semantic_prior(user_message)
         if prior:
             packet["semantically_related_signals"] = prior

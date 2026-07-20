@@ -2,17 +2,24 @@
 #
 # Each top-level key is a legacy signal key from
 # `backend.app.schemas.assistant.INITIAL_CAT1_SIGNALS`. Each entry declares the
-# affirmative phrases that imply the signal is True. Negation handling is
-# applied automatically by the extractor: if the phrase appears inside a
-# negation clause ("no AGV stopped", "without RMS alarm", "AGVs are not
-# stopped") the signal is set to False rather than True.
+# affirmative phrases that imply the signal is True.
+#
+# Absence-coded keys (e.g. `no_rms_alarm`) include the cue inside the phrase
+# ("no rms alarm", "without rms alarms") and must remain affirmative True when
+# the operator asserts absence. Do not rely on negation→False for those keys —
+# the playbook gate drops False observations.
+#
+# For normal keys, negation handling is applied by the extractor: if a phrase
+# appears inside a negation clause ("no AGVs stopped") the signal is set False.
 #
 # Keep phrases lowercase. Multi-word phrases are matched as substrings on
-# the lowercased message after the negation pre-pass split.
+# the lowercased message.
 
 agvs_stopped:
   - agv stopped
   - agvs stopped
+  - agvs stop
+  - agv stop
   - agv are stopped
   - agvs are stopped
   - agv not moving
@@ -33,12 +40,20 @@ agvs_stopped:
   - agvs frozen
   - agvs idle
 no_rms_alarm:
+  - no rms alarms
   - no rms alarm
+  - without rms alarms
+  - without rms alarm
+  - without any rms alarms
+  - no active rms alarms
   - no active rms
+  - rms has no alarms
   - rms has no alarm
   - rms screen clear
   - rms shows no faults
   - rms screen is clear
+  - no rms faults
+  - no active rms faults
 tipper_heartbeat_timeout:
   - tipper heartbeat
   - tippers heartbeat

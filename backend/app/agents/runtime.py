@@ -12,6 +12,9 @@ from backend.app.services.canonical_image_lookup import build_canonical_image_lo
 from backend.app.services.embedding_client import build_embedding_client
 from backend.app.services.session_service import WorkflowSession, build_session_service
 
+_ABSENCE_AFFIRMATIVE_KEYS = frozenset({"no_rms_alarm"})
+_EXTRACTION_TURN_CAP = 8
+
 _GENERIC_OUTCOME_SUMMARY_RE = re.compile(
     r"^(?:select\s+\w+\s+for this check\.?|"
     r"checks for\s+.+?(?:do not indicate|indicate)\s+the fault condition)",
@@ -512,6 +515,13 @@ def _enriched_retrieval_query(state: dict[str, Any]) -> str:
         if value
     ][:8]
     slice_: PlaybookSessionSlice | None = state.get("_playbook_slice")
+    memory = dict((slice_.extraction_memory if slice_ is not None else None) or {})
+    prior_turns = [
+        str(item.get("content") or "").strip()
+        for item in list(memory.get("operator_symptom_turns") or [])
+        if isinstance(item, dict) and str(item.get("content") or "").strip()
+    ]
+    prior_text = " ".join(prior_turns[-4:])
     path_bits: list[str] = []
     path_rows = list((slice_.path_evidence if slice_ is not None else None) or state.get("path_evidence") or [])
     for item in path_rows[-4:]:
@@ -542,6 +552,7 @@ def _enriched_retrieval_query(state: dict[str, Any]) -> str:
         part
         for part in [
             query,
+            prior_text,
             " ".join(prior_bits),
             " ".join(extras),
             " ".join(path_bits),
@@ -807,6 +818,7 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
     }
 
     slice_: PlaybookSessionSlice | None = state.get("_playbook_slice")
+    memory = dict((slice_.extraction_memory if slice_ is not None else None) or {})
     already_observed = {}
     if slice_ is not None:
         already_observed = {
@@ -814,21 +826,36 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
             for key, value in dict(slice_.observed_signals or {}).items()
             if value
         }
+    prior_turns = [
+        item
+        for item in list(memory.get("operator_symptom_turns") or [])
+        if isinstance(item, dict) and str(item.get("content") or "").strip()
+    ]
+    last_rationale = str(memory.get("last_rationale") or "").strip() or None
 
     llm_payload = _maybe_llm_symptom_overlay(
         user_message=user_message,
         keyword_result=result,
         already_observed_signals=already_observed,
+        prior_operator_turns=prior_turns,
+        last_extraction_rationale=last_rationale,
         settings=get_app_settings(),
     )
     if llm_payload is not None:
         for key, value in dict(llm_payload.get("signals") or {}).items():
+            key_s = str(key)
+            if key_s in _ABSENCE_AFFIRMATIVE_KEYS:
+                if value:
+                    turn_observed[key_s] = True
+                continue
             if value:
-                turn_observed[str(key)] = True
-            elif str(key) in turn_observed and value is False:
-                turn_observed.pop(str(key), None)
+                turn_observed[key_s] = True
+            elif key_s in turn_observed and value is False:
+                turn_observed.pop(key_s, None)
         for key, value in dict(llm_payload.get("canonical_signals") or {}).items():
             canonical_signals[str(key)] = bool(value)
+        if turn_observed.get("no_rms_alarm"):
+            canonical_signals.setdefault("rms_screen_no_faults_visible", True)
         for component in llm_payload.get("components") or ():
             components.add(str(component))
         metadata["extractor"] = "keyword+llm"
@@ -850,9 +877,16 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
             added_signals=sorted(
                 str(key)
                 for key, value in dict(llm_payload.get("signals") or {}).items()
-                if value
+                if value or str(key) in _ABSENCE_AFFIRMATIVE_KEYS
             ),
         )
+
+    fresh_issue = bool(metadata.get("fresh_issue"))
+    if slice_ is not None and fresh_issue:
+        already_observed = {}
+        slice_.observed_signals = {}
+        memory = {}
+        _clear_active_playbook(state, slice_, preserve_path_memory=False)
 
     if slice_ is not None:
         merged = dict(already_observed)
@@ -861,6 +895,29 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
         observed = merged
     else:
         observed = dict(turn_observed)
+
+    if slice_ is not None:
+        turns = list(prior_turns)
+        content = str(user_message or "").strip()
+        if content and (
+            not turns or str(turns[-1].get("content") or "").strip().lower() != content.lower()
+        ):
+            turns.append({"role": "user", "content": content})
+        memory = {
+            "components": sorted(components),
+            "canonical_signals": dict(canonical_signals),
+            "last_rationale": (
+                str((metadata.get("llm") or {}).get("rationale") or last_rationale or "")
+                or None
+            ),
+            "operator_symptom_turns": turns[-_EXTRACTION_TURN_CAP:],
+            "last_confidences": dict(
+                (metadata.get("llm") or {}).get("confidences")
+                or memory.get("last_confidences")
+                or {}
+            ),
+        }
+        slice_.extraction_memory = memory
 
     state["extracted_signals"] = dict(observed)
     state["extracted_observed_signals"] = dict(observed)
@@ -877,6 +934,7 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
         observed_count=len(affirmative),
         observed_signals=sorted(affirmative.keys()),
         extractor=metadata.get("extractor"),
+        memory_turns=len((memory or {}).get("operator_symptom_turns") or []),
     )
     if state["needs_symptom_clarification"]:
         state["response_type"] = "answer"
@@ -898,6 +956,8 @@ def _maybe_llm_symptom_overlay(
     keyword_result: Any,
     already_observed_signals: dict[str, bool],
     settings: Any,
+    prior_operator_turns: list[dict[str, Any]] | None = None,
+    last_extraction_rationale: str | None = None,
 ) -> dict[str, Any] | None:
     if not getattr(settings, "enable_llm_symptom_extraction", False):
         return None
@@ -908,6 +968,8 @@ def _maybe_llm_symptom_overlay(
             user_message=user_message,
             keyword_result=keyword_result,
             already_observed_signals=already_observed_signals,
+            prior_operator_turns=prior_operator_turns,
+            last_extraction_rationale=last_extraction_rationale,
         )
     except Exception:
         return None
@@ -929,15 +991,43 @@ def _candidate_from_card(
     *,
     score: float,
 ) -> dict[str, Any]:
-    symptoms = [str(item) for item in (card.get("observed_entry_symptoms") or [])]
+    symptoms = [str(item) for item in (card.get("observed_entry_symptoms") or []) if str(item).strip()]
+    examples = [
+        str(item)
+        for item in (card.get("support_user_language_examples") or [])
+        if str(item).strip()
+    ]
+    case_id = card.get("case_id")
+    incidence_id = str(case_id or "").strip() or None
+    title = str(card.get("title") or playbook_id)
+    summary = str(card.get("user_facing_summary") or "").strip()
+    incidence_summary = summary
+    if incidence_id and title:
+        incidence_summary = f"Incidence {incidence_id}: {title}"
+        if summary:
+            incidence_summary = f"{incidence_summary}. {summary}"
+    elif title:
+        incidence_summary = title
+    when_parts = []
+    if summary:
+        when_parts.append(summary)
+    if symptoms:
+        when_parts.append("Choose when site report includes: " + "; ".join(symptoms[:6]))
+    elif examples:
+        when_parts.append("Operator language like: " + "; ".join(examples[:4]))
+    when_to_choose = " ".join(when_parts).strip()
     return {
         "playbook_id": playbook_id,
-        "title": str(card.get("title") or playbook_id),
-        "case_id": card.get("case_id"),
+        "title": title,
+        "case_id": case_id,
+        "incidence_id": incidence_id,
+        "incidence_summary": incidence_summary,
+        "when_to_choose": when_to_choose,
         "score": round(float(score), 4),
-        "summary": str(card.get("user_facing_summary") or ""),
+        "summary": summary,
         "observed_entry_symptoms": symptoms,
-        "selection_label": str(card.get("title") or playbook_id)[:120],
+        "support_user_language_examples": examples,
+        "selection_label": title[:120],
     }
 
 
@@ -1138,8 +1228,9 @@ def request_more_symptoms(state: dict[str, Any]) -> dict[str, Any]:
             symptom_hint += f"; {correlated[1]}"
         symptom_hint += "."
     fallback = (
-        f"Not confident enough to auto-pin (best match ~{float(top_candidate.get('score') or confidence):.2f}: "
-        f"{top_name}). Pick a playbook below, or reply with more site symptoms.{symptom_hint}"
+        f"Best match ~{float(top_candidate.get('score') or confidence):.2f}: "
+        f"{top_name}. Pick the playbook that matches your site report, "
+        f"or reply with more symptoms.{symptom_hint}"
     )
     message, reason = _maybe_llm_orchestrate(
         state,
@@ -1152,6 +1243,9 @@ def request_more_symptoms(state: dict[str, Any]) -> dict[str, Any]:
                     "title": item.get("title"),
                     "score": item.get("score"),
                     "case_id": item.get("case_id"),
+                    "incidence_id": item.get("incidence_id"),
+                    "incidence_summary": item.get("incidence_summary"),
+                    "when_to_choose": item.get("when_to_choose"),
                 }
                 for item in candidates[:5]
             ],
@@ -1699,6 +1793,53 @@ def pin_playbook(state: dict[str, Any]) -> dict[str, Any]:
             pinned=False,
         )
         return state
+    high_confidence = (
+        score >= settings.playbook_high_confidence_threshold
+        and coverage >= coverage_threshold
+    )
+    should_auto_pin = bool(settings.skip_playbook_confirmation)
+    if not should_auto_pin:
+        state["active_playbook_id"] = None
+        slice_.active_playbook_id = None
+        slice_.active_case_id = None
+        slice_.current_node_id = None
+        slice_.pin_source = None
+        state["retrieval_confidence_reason"] = _explain_retrieval_confidence(
+            combined=score,
+            cosine=breakdown["cosine"],
+            jaccard=breakdown["jaccard"],
+            symptom=breakdown["symptom"],
+            coverage=coverage,
+            threshold=threshold,
+            coverage_threshold=coverage_threshold,
+            pinned=False,
+            top_title=top_title or None,
+        )
+        append_agent_trace(
+            state,
+            "playbook_pin_agent",
+            "defer_to_candidates",
+            score=score,
+            threshold=threshold,
+            coverage=coverage,
+            coverage_threshold=coverage_threshold,
+            cosine=breakdown["cosine"],
+            jaccard=breakdown["jaccard"],
+            symptom=breakdown["symptom"],
+            combined=breakdown["combined"],
+            high_confidence=high_confidence,
+            top_playbook_id=str(top.get("source_record_id") or ""),
+            case_id=str((top.get("filter_metadata") or {}).get("case_id") or ""),
+        )
+        append_agent_trace(
+            state,
+            "orchestrator_agent",
+            "explain_confidence",
+            reason=state["retrieval_confidence_reason"],
+            pinned=False,
+            candidate_first=True,
+        )
+        return state
     playbook_id = str(top.get("source_record_id") or "")
     client = get_corpus_client()
     playbook = client.get_playbook(playbook_id, variant=slice_.playbook_variant)
@@ -1747,10 +1888,6 @@ def pin_playbook(state: dict[str, Any]) -> dict[str, Any]:
     state["retrieval_confidence_reason"] = reason
     # final_response is filled by execute_playbook_node; keep polished fallback if needed
     state["_orchestrator_pin_message"] = message
-    high_confidence = (
-        score >= settings.playbook_high_confidence_threshold
-        and coverage >= coverage_threshold
-    )
     append_agent_trace(
         state,
         "orchestrator_agent",
@@ -1779,7 +1916,7 @@ def pin_playbook(state: dict[str, Any]) -> dict[str, Any]:
         jaccard=breakdown["jaccard"],
         symptom=breakdown["symptom"],
         combined=breakdown["combined"],
-        auto_pin=settings.skip_playbook_confirmation or high_confidence,
+        auto_pin=True,
     )
     append_agent_trace(
         state,

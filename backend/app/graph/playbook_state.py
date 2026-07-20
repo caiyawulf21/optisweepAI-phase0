@@ -49,6 +49,7 @@ class PlaybookSessionSlice:
     observed_signals: dict[str, bool] = field(default_factory=dict)
     path_evidence: list[dict[str, Any]] = field(default_factory=list)
     pin_source: str | None = None
+    extraction_memory: dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -65,6 +66,7 @@ class PlaybookSessionSlice:
             "observed_signals": dict(self.observed_signals),
             "path_evidence": list(self.path_evidence),
             "pin_source": self.pin_source,
+            "extraction_memory": dict(self.extraction_memory or {}),
         }
 
     @classmethod
@@ -95,6 +97,7 @@ class PlaybookSessionSlice:
             observed_signals=dict(payload.get("observed_signals") or {}),
             path_evidence=evidence_rows,
             pin_source=payload.get("pin_source"),
+            extraction_memory=dict(payload.get("extraction_memory") or {}),
         )
 
 

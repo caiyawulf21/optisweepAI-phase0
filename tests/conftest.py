@@ -5,6 +5,7 @@ import os
 import pytest
 
 from backend.app.corpus.bootstrap import reset_corpus_cache
+from backend.app.services.keyword_signal_extractor import reset_for_tests as reset_keyword_extractor
 from backend.app.services.session_service import reset_for_tests as reset_session_service
 
 _PLAYBOOK_TEST_ENV = {
@@ -31,6 +32,8 @@ def _playbook_test_env(request: pytest.FixtureRequest, monkeypatch: pytest.Monke
         monkeypatch.setenv(name, value)
     reset_corpus_cache()
     reset_session_service()
+    reset_keyword_extractor()
     yield
     reset_corpus_cache()
     reset_session_service()
+    reset_keyword_extractor()
