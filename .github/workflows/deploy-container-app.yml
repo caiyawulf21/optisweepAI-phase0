@@ -128,53 +128,28 @@ jobs:
               )
 
           registries_out = []
-          for item in list(live_cfg.get("registries") or []):
-              if not isinstance(item, dict) or not item.get("server"):
-                  continue
-              entry = {"server": str(item["server"])}
-              if item.get("username"):
-                  entry["username"] = str(item["username"])
-              if item.get("passwordSecretRef"):
-                  entry["passwordSecretRef"] = str(item["passwordSecretRef"])
-              if item.get("identity"):
-                  entry["identity"] = str(item["identity"])
-              registries_out.append(entry)
-
-          # YAML create ignores deploy-action ACR flags; ensure pull auth exists.
-          if not registries_out:
-              acr = (os.environ.get("ACR_NAME") or "").strip()
-              user = (os.environ.get("ACR_USERNAME") or "").strip()
-              password = (os.environ.get("ACR_PASSWORD") or "").strip()
-              if not (acr and user and password):
-                  raise SystemExit(
-                      "Live app has no registries config and ACR_USERNAME/"
-                      "ACR_PASSWORD secrets are missing; cannot authorize image pull."
-                  )
-              server = acr if acr.endswith(".azurecr.io") else f"{acr}.azurecr.io"
-              acr_secret = "acr-password"
-              if acr_secret not in secret_names:
-                  secrets_out.append({"name": acr_secret, "value": password})
-                  secret_names.add(acr_secret)
-              registries_out.append(
-                  {
-                      "server": server,
-                      "username": user,
-                      "passwordSecretRef": acr_secret,
-                  }
+          # Always use ACR admin/password for preview. Live uses system MI + AcrPull;
+          # a new preview identity does not have that role and returns 401 on pull.
+          acr = (os.environ.get("ACR_NAME") or "").strip()
+          user = (os.environ.get("ACR_USERNAME") or "").strip()
+          password = (os.environ.get("ACR_PASSWORD") or "").strip()
+          if not (acr and user and password):
+              raise SystemExit(
+                  "ACR_NAME / ACR_USERNAME / ACR_PASSWORD are required for preview "
+                  "image pull (do not rely on live system-identity registry auth)."
               )
-          else:
-              # If live references a password secret we didn't copy, add GH ACR password.
-              for reg in registries_out:
-                  pref = reg.get("passwordSecretRef")
-                  if pref and pref not in secret_names:
-                      password = (os.environ.get("ACR_PASSWORD") or "").strip()
-                      if not password:
-                          raise SystemExit(
-                              f"Registry passwordSecretRef '{pref}' missing from "
-                              "copied secrets and ACR_PASSWORD is empty."
-                          )
-                      secrets_out.append({"name": pref, "value": password})
-                      secret_names.add(pref)
+          server = acr if acr.endswith(".azurecr.io") else f"{acr}.azurecr.io"
+          acr_secret = "acr-password"
+          if acr_secret not in secret_names:
+              secrets_out.append({"name": acr_secret, "value": password})
+              secret_names.add(acr_secret)
+          registries_out.append(
+              {
+                  "server": server,
+                  "username": user,
+                  "passwordSecretRef": acr_secret,
+              }
+          )
 
           doc = yaml.safe_load(
               Path("deploy/container-app-preview.yaml").read_text(encoding="utf-8")
@@ -233,3 +208,32 @@ jobs:
           yamlConfigPath: /tmp/container-app.yaml
           ingress: external
           targetPort: 8501
+
+      - name: Ensure preview system identity can pull from ACR
+        run: |
+          set -euo pipefail
+          PRINCIPAL_ID="$(az containerapp show \
+            -g "${RESOURCE_GROUP}" \
+            -n "${CONTAINER_APP_NAME}" \
+            --query identity.principalId -o tsv)"
+          if [ -z "${PRINCIPAL_ID}" ] || [ "${PRINCIPAL_ID}" = "null" ]; then
+            echo "Preview app has no system identity principalId yet; skipping AcrPull assignment"
+            exit 0
+          fi
+          ACR_NAME_RAW="${{ vars.AZURE_ACR_NAME }}"
+          ACR_NAME="${ACR_NAME_RAW%.azurecr.io}"
+          SCOPE="$(az acr show -n "${ACR_NAME}" --query id -o tsv)"
+          EXISTS="$(az role assignment list \
+            --assignee "${PRINCIPAL_ID}" \
+            --role AcrPull \
+            --scope "${SCOPE}" \
+            --query "[0].id" -o tsv || true)"
+          if [ -n "${EXISTS}" ]; then
+            echo "AcrPull already assigned to ${PRINCIPAL_ID}"
+          else
+            az role assignment create \
+              --assignee "${PRINCIPAL_ID}" \
+              --role AcrPull \
+              --scope "${SCOPE}"
+            echo "Granted AcrPull on ${ACR_NAME} to preview system identity ${PRINCIPAL_ID}"
+          fi
