@@ -1,0 +1,82 @@
+name: Deploy OptiSweep AI Preview Container App
+
+# Deploys a separate preview Container App so feature branches can be validated
+# without moving traffic on the live app (optisweepai-troubleshooting-app).
+#
+# One-time Azure/GitHub setup (required before the first successful run):
+# 1. Create GitHub Environment named `preview` (Settings → Environments).
+# 2. On the Entra app registration for AZURE_CLIENT_ID, add a federated
+#    credential with subject:
+#      repo:caiyawulf21/optisweepAI-phase0:environment:preview
+#    (Issuer: https://token.actions.githubusercontent.com, Audience: api://AzureADTokenExchange)
+# 3. Ensure the preview Container App can use the same Key Vault / secrets as
+#    live, or create `optisweepai-troubleshooting-app-preview` with those secret
+#    refs before first deploy if your process requires the app to exist first.
+#
+# Trigger: Actions → this workflow → Run workflow (select the feature branch).
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  CONTAINER_APP_NAME: optisweepai-troubleshooting-app-preview
+  RESOURCE_GROUP: optisweepai
+  CONTAINER_APP_ENVIRONMENT: managedEnvironment-optisweepai-a18c
+  AZURE_LOCATION: eastus
+  IMAGE_NAME: optisweepaiacr.azurecr.io/optisweepai/troubleshooting-app-preview
+
+jobs:
+  build-and-deploy-preview:
+    runs-on: ubuntu-latest
+    environment: preview
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate source deployment inputs
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python scripts/preflight_deployment.py
+
+      - name: Log in to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Prepare preview Container App YAML
+        run: |
+          IMAGE_TAG="${IMAGE_NAME}:${GITHUB_SHA}"
+          sed "s|PLACEHOLDER_IMAGE|${IMAGE_TAG}|g" deploy/container-app-preview.yaml > /tmp/container-app-preview.yaml
+          echo "IMAGE_TAG=${IMAGE_TAG}" >> "$GITHUB_ENV"
+          echo "Deploying preview image ${IMAGE_TAG} to ${CONTAINER_APP_NAME}"
+          cat /tmp/container-app-preview.yaml
+
+      - name: Build and deploy Docker image to preview Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }}
+          acrName: ${{ vars.AZURE_ACR_NAME }}
+          acrUsername: ${{ secrets.AZURE_ACR_USERNAME }}
+          acrPassword: ${{ secrets.AZURE_ACR_PASSWORD }}
+          containerAppName: ${{ env.CONTAINER_APP_NAME }}
+          resourceGroup: ${{ env.RESOURCE_GROUP }}
+          containerAppEnvironment: ${{ env.CONTAINER_APP_ENVIRONMENT }}
+          location: ${{ env.AZURE_LOCATION }}
+          dockerfilePath: Dockerfile
+          imageToBuild: ${{ env.IMAGE_TAG }}
+          yamlConfigPath: /tmp/container-app-preview.yaml
+          ingress: external
+          targetPort: 8501

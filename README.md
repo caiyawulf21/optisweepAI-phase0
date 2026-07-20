@@ -69,6 +69,27 @@ Deployment workflow:
 - Image build: `Dockerfile` → `CMD ["python", "scripts/start_azure_container_app.py"]`
 - Revision template: `deploy/container-app.yaml` (single app container, no bootstrap sidecar)
 
+### Preview Container App (feature branches)
+
+Use this when you want to validate a feature branch **without** moving traffic on the live app.
+
+- Workflow: `.github/workflows/deploy-preview-container-app.yml` (manual `workflow_dispatch` only)
+- Container App: `optisweepai-troubleshooting-app-preview`
+- Image: `…/troubleshooting-app-preview:<sha>`
+- Template: `deploy/container-app-preview.yaml` (`APP_ENV=preview`)
+- GitHub Environment: `preview` (OIDC subject is environment-scoped, not branch-scoped)
+
+One-time setup before the first preview deploy:
+
+1. GitHub → Settings → Environments → create `preview`.
+2. Entra app registration for `AZURE_CLIENT_ID` → Federated credentials → add subject  
+   `repo:caiyawulf21/optisweepAI-phase0:environment:preview`  
+   (issuer `https://token.actions.githubusercontent.com`, audience `api://AzureADTokenExchange`).
+3. Ensure the preview app can use the same Container App secret refs / Key Vault access as live (create the app empty with secrets first if your process requires it).
+4. Actions → **Deploy OptiSweep AI Preview Container App** → Run workflow → select the feature branch.
+
+Live `optisweepai-troubleshooting-app` is untouched by this workflow.
+
 Runtime shape:
 
 - FastAPI starts internally at `127.0.0.1:8000`.
