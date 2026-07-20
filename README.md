@@ -21,7 +21,7 @@ Full architecture: [`docs/PLAYBOOK_RUNTIME.md`](docs/PLAYBOOK_RUNTIME.md)
 ## How it works today
 
 1. **Turn 1** — keyword symptom extraction from YAML phrase tables (+ LLM overlay when `ENABLE_LLM_SYMPTOM_EXTRACTION=true`); session `extraction_memory` keeps prior operator symptom turns for multi-turn clarification. Retrieval runs only after at least one affirmative observed signal (including absence-coded `no_rms_alarm` when the operator asserts no RMS alarms). Gate vocabulary does **not** grow per new incidence — new coverage comes from published playbook cards.
-2. **Orchestrator** — single control-plane agent that routes the turn (ask symptoms / candidates / user pin). **Candidate-first (default):** after the gate opens, ranked playbook candidates are surfaced for operator selection (`SKIP_PLAYBOOK_CONFIRMATION=false`). Each candidate includes incidence id/summary and when-to-choose / entry-symptom guidance. Optional auto-pin only when `SKIP_PLAYBOOK_CONFIRMATION=true`. Auto-pin still requires hybrid rank ≥ `PLAYBOOK_MATCH_THRESHOLD` **and** entry-phrase `coverage` ≥ `PLAYBOOK_PIN_COVERAGE_THRESHOLD`. **Always** sets `retrieval_confidence_reason` (numbers from retrieval/pin tools). With `ENABLE_LLM_ORCHESTRATOR=true`, wording is rewritten via `prompts/agents/orchestrator/orchestrate_turn.md` from a compact briefing (no recompute of pin math).
+2. **Orchestrator** — single control-plane agent that routes the turn (ask symptoms / candidates / user pin). **Candidate-first (default):** after the gate opens, ranked playbook candidates are surfaced for operator selection (`SKIP_PLAYBOOK_CONFIRMATION=false`). Each candidate includes incidence id/summary and when-to-choose / entry-symptom guidance. Optional auto-pin only when `SKIP_PLAYBOOK_CONFIRMATION=true`. Auto-pin still requires hybrid rank ≥ `PLAYBOOK_MATCH_THRESHOLD` (default **0.80**) **and** entry-phrase `coverage` ≥ `PLAYBOOK_PIN_COVERAGE_THRESHOLD` (default **0.40**) so most turns stay on user validation. **Always** sets `retrieval_confidence_reason` (numbers from retrieval/pin tools). With `ENABLE_LLM_ORCHESTRATOR=true`, wording is rewritten via `prompts/agents/orchestrator/orchestrate_turn.md` from a compact briefing (no recompute of pin math).
 3. **Hybrid score** — `0.7×cosine + 0.3×jaccard`, then `max` with lexical boosts: playbook symptom overlap, and for runbooks/context a **title/id/head coverage** boost (with light service↔software query expansion). Query embeddings must match Cosmos (`text-embedding-3-small`); do **not** set `LOCAL_EMBEDDINGS_MODEL` against Azure-published vectors. Trace shows `cosine` / `jaccard` / `symptom` / `coverage` / `combined` separately.
 4. **Signals** — API returns only affirmative observed signals (not a padded False CAT-1 dictionary).
 5. **Turn 2+** — after the operator selects a playbook, load playbook node + linked runbook by ID (no vector search). Free-text branch replies are classified as **match** (advance), **retriage** (clear pin and re-run retrieval), or **probe** (ask one clarifying question).
@@ -680,18 +680,21 @@ The graph is built in `backend/app/graph/graph.py` using `StateGraph`.
     - `LLMSignalExtractor`
     (`backend/app/tools/llm_signal_extractor.py`) — optional,
     gated by `ENABLE_LLM_SYMPTOM_EXTRACTION=true` AND Azure
-    OpenAI credentials. Mirrors `LLMWorkflowPlanner`: loads creds
-    from `config/azure_openai.local.json` or
-    `AZURE_OPENAI_*` env vars, loads the prompt at
+    OpenAI credentials. Uses the same Foundry-aware chat client
+    as other LLM agents (`backend/app/services/llm_playbook_client.py`
+    `complete_json`): classic `AzureOpenAI` for `*.openai.azure.com`,
+    OpenAI-compatible `/openai/v1` for `*.services.ai.azure.com`
+    project endpoints. Loads the prompt at
     `backend/app/prompts/symptom_extraction_prompt.md`, calls
-    Azure in JSON mode, validates the response against
+    chat in JSON mode, validates the response against
     `LLMSignalExtractionResultPayload`, drops any signal /
     component outside the supplied vocabulary, clips
     confidences into `[0, 1]`, rejects rationale strings that
     contain CAT-N codes, and stamps the deployment name as the
-    model. Failures are caught by the node so the keyword
-    baseline is always written to state — a degraded LLM never
-    blocks the runtime.
+    model. Failures are caught by the playbook runtime (traced as
+    `symptom_agent` / `llm_failed`) so the keyword baseline is
+    always written to state — a degraded LLM never blocks the
+    runtime.
   - When `ENABLE_SEMANTIC_SIGNAL_PRIOR=true` (and the LLM
   extractor is enabled), a deterministic token-Jaccard scorer
   (`backend/app/services/semantic_signal_scorer.py`) shortlists

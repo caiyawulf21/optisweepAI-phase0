@@ -154,17 +154,17 @@ def get_corpus_settings() -> CorpusSettings:
 
         auto_publish_version=_env_truthy("AUTO_PUBLISH_VERSION", default=True),
 
-        playbook_match_threshold=float(_env("PLAYBOOK_MATCH_THRESHOLD", "0.55")),
+        playbook_match_threshold=float(_env("PLAYBOOK_MATCH_THRESHOLD", "0.80")),
 
         playbook_high_confidence_threshold=float(
 
-            _env("PLAYBOOK_HIGH_CONFIDENCE_THRESHOLD", "0.75")
+            _env("PLAYBOOK_HIGH_CONFIDENCE_THRESHOLD", "0.90")
 
         ),
 
         playbook_pin_coverage_threshold=float(
 
-            _env("PLAYBOOK_PIN_COVERAGE_THRESHOLD", "0.25")
+            _env("PLAYBOOK_PIN_COVERAGE_THRESHOLD", "0.40")
 
         ),
 

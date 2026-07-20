@@ -97,12 +97,28 @@ def symptom_extraction_node(
         injected_extractor=llm_extractor,
         keyword_result=keyword_result,
     )
+    _ABSENCE_AFFIRMATIVE_KEYS = frozenset({"no_rms_alarm"})
     if llm_payload is not None:
         for key, value in (llm_payload.get("signals") or {}).items():
-            signals[key] = bool(value)
-            observed_signals[key] = bool(value)
+            key_s = str(key)
+            if key_s in _ABSENCE_AFFIRMATIVE_KEYS:
+                if value:
+                    signals[key_s] = True
+                    observed_signals[key_s] = True
+                continue
+            signals[key_s] = bool(value)
+            if value:
+                observed_signals[key_s] = True
+            elif key_s in observed_signals and value is False:
+                observed_signals.pop(key_s, None)
+                signals[key_s] = False
         for key, value in (llm_payload.get("canonical_signals") or {}).items():
             canonical_signals[key] = bool(value)
+        for key in _ABSENCE_AFFIRMATIVE_KEYS:
+            if dict(getattr(keyword_result, "observed_signals", {}) or {}).get(key):
+                signals[key] = True
+                observed_signals[key] = True
+                canonical_signals.setdefault("rms_screen_no_faults_visible", True)
         for component in llm_payload.get("components") or ():
             components.add(component)
         metadata["extractor"] = "keyword+llm"

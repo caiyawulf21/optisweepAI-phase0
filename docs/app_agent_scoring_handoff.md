@@ -60,15 +60,15 @@ With **damped** symptom formula (`0.70 * best + 0.30 * coverage`), re-measured:
 | B | 228086 stoppage | **0.81** | 0.49 | 0.81 | 0.35 |
 | B | 228723 | 0.31 | 0.45 | 0.00 | 0.00 |
 
-Stoppage clears pin (≥0.55) and high-confidence (≥0.75) with coverage ≥0.25. Pairing stays candidates/ask — not pin. Combined is **high, not 1.0**.
+Stoppage clears pin (≥0.80) and high-confidence (≥0.90) with coverage ≥0.40. Pairing stays candidates/ask — not pin. Combined is **high, not 1.0**.
 
 Threshold philosophy (do not change to fit old 0.01):
 
 | Band | Behavior |
 |------|----------|
 | `< ~0.35` | Ask symptoms / weak related |
-| `~0.35–0.55` | Candidates only; user picks |
-| `≥ 0.55` **and** coverage ≥ ~0.25 | Auto-pin allowed |
+| `~0.35–0.80` | Candidates only; user picks |
+| `≥ 0.80` **and** coverage ≥ ~0.40 | Auto-pin allowed (when confirmation skipped) |
 | `≥ 0.75` + coverage | High-confidence auto-pin |
 
 ---
@@ -85,7 +85,7 @@ coverage    = (# phrases with any token overlap) / (total phrases)
 symptom     = 0.70 * best_phrase + 0.30 * coverage
 rank_score  = max(0.7 * cosine + 0.3 * jaccard, symptom)
 
-auto_pin = rank_score >= 0.55 and coverage >= 0.25   # or user picks
+auto_pin = rank_score >= 0.80 and coverage >= 0.40   # or user picks
 # do NOT: lower thresholds, relative-pin best-of-bad, or score = 0.5 + 0.5 * score
 ```
 
@@ -99,7 +99,7 @@ Pin confidence ≠ retrieval rank: sparse speech can improve ranking and still f
 
 1. Set `PUBLISH_VERSION_ID=publish_20260714_172351_09e54f8f` and reload Cosmos embedding index.
 2. Keep damped `symptom_overlap_score` + `entry_phrase_coverage` aligned with `backend/app/retrieval/hybrid_retriever.py`.
-3. Wire pin gate: hybrid/rank ≥ 0.55 **and** coverage ≥ 0.25 (or explicit candidate pick).
+3. Wire pin gate: hybrid/rank ≥ 0.80 **and** coverage ≥ 0.40 (or explicit candidate pick).
 4. Expose score breakdown in Trace.
 5. Smoke: `"AGVs stopped"` → 228086 stoppage playbook (A and B); `"zone can't pair"` → 228723; Trace shows combined ≈ **0.79–0.81** (not 1.0) for this sparse query.
 6. Confirm query embed deployment = `text-embedding-3-small`.

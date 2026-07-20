@@ -47,6 +47,11 @@ no_rms_alarm:
   - without any rms alarms
   - no active rms alarms
   - no active rms
+  - no alarms on rms
+  - no alarm on rms
+  - no alarms in rms
+  - no alarm in rms
+  - nothing on rms
   - rms has no alarms
   - rms has no alarm
   - rms screen clear

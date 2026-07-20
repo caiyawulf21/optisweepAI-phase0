@@ -108,6 +108,9 @@ class LLMSignalExtractor:
         raw = self._complete_json(packet)
         if not raw:
             raise RuntimeError("LLM symptom extraction returned no content")
+        self._last_model = os.getenv("AZURE_OPENAI_DEPLOYMENT") or os.getenv(
+            "AZURE_EMBEDDINGS_DEPLOYMENT"
+        )
         payload = LLMSignalExtractionResultPayload.model_validate(self._parse_json(raw))
         validated = self._validate(payload)
         return validated.to_node_dict()
@@ -182,33 +185,15 @@ class LLMSignalExtractor:
         ]
 
     def _complete_json(self, packet: dict[str, Any]) -> str | None:
-        endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-        api_key = os.getenv("AZURE_OPENAI_API_KEY")
-        deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT") or os.getenv(
-            "AZURE_EMBEDDINGS_DEPLOYMENT"
-        )
-        if not (endpoint and api_key and deployment):
-            return None
-        from openai import AzureOpenAI
+        from backend.app.services.llm_playbook_client import complete_json, llm_available
 
-        client = AzureOpenAI(
-            azure_endpoint=str(endpoint).rstrip("/"),
-            api_key=api_key,
-            api_version=os.getenv("AZURE_OPENAI_API_VERSION", "2024-10-21"),
-        )
-        response = client.chat.completions.create(
-            model=str(deployment),
-            messages=[
-                {"role": "system", "content": self._system_prompt},
-                {"role": "user", "content": json.dumps(packet, indent=2, default=str)},
-            ],
+        if not llm_available():
+            return None
+        return complete_json(
+            system_prompt=self._system_prompt,
+            user_prompt=json.dumps(packet, indent=2, default=str),
             max_tokens=700,
-            temperature=0.1,
-            response_format={"type": "json_object"},
         )
-        content = response.choices[0].message.content
-        self._last_model = str(deployment)
-        return str(content).strip() if content else None
 
     def _parse_json(self, raw: str) -> dict[str, Any]:
         text = raw.strip()

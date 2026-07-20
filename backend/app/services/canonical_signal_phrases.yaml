@@ -75,6 +75,10 @@ rms_screen_no_faults_visible:
   - rms screen is clean
   - no faults on rms
   - rms shows no faults
+  - no alarms on rms
+  - no alarm on rms
+  - no alarms in rms
+  - no alarm in rms
 
 rms_screen_active_fault:
   - rms shows a fault

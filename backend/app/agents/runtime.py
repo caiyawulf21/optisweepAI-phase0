@@ -840,6 +840,7 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
         prior_operator_turns=prior_turns,
         last_extraction_rationale=last_rationale,
         settings=get_app_settings(),
+        state=state,
     )
     if llm_payload is not None:
         for key, value in dict(llm_payload.get("signals") or {}).items():
@@ -854,6 +855,9 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
                 turn_observed.pop(key_s, None)
         for key, value in dict(llm_payload.get("canonical_signals") or {}).items():
             canonical_signals[str(key)] = bool(value)
+        for key in _ABSENCE_AFFIRMATIVE_KEYS:
+            if dict(result.observed_signals or {}).get(key):
+                turn_observed[key] = True
         if turn_observed.get("no_rms_alarm"):
             canonical_signals.setdefault("rms_screen_no_faults_visible", True)
         for component in llm_payload.get("components") or ():
@@ -958,8 +962,11 @@ def _maybe_llm_symptom_overlay(
     settings: Any,
     prior_operator_turns: list[dict[str, Any]] | None = None,
     last_extraction_rationale: str | None = None,
+    state: dict[str, Any] | None = None,
 ) -> dict[str, Any] | None:
     if not getattr(settings, "enable_llm_symptom_extraction", False):
+        if state is not None:
+            append_agent_trace(state, "symptom_agent", "llm_skipped", reason="disabled")
         return None
     try:
         from backend.app.tools.llm_signal_extractor import LLMSignalExtractor
@@ -971,7 +978,15 @@ def _maybe_llm_symptom_overlay(
             prior_operator_turns=prior_operator_turns,
             last_extraction_rationale=last_extraction_rationale,
         )
-    except Exception:
+    except Exception as exc:
+        if state is not None:
+            append_agent_trace(
+                state,
+                "symptom_agent",
+                "llm_failed",
+                error=type(exc).__name__,
+                detail=str(exc)[:240],
+            )
         return None
 
 

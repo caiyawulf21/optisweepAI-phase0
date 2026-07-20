@@ -514,7 +514,7 @@ with trace_tab:
             cols[3].metric("coverage", f"{float(coverage or 0):.3f}")
             cols[4].metric("combined", f"{float(combined or 0):.3f}")
             st.caption(
-                "Auto-pin requires combined ≥ PLAYBOOK_MATCH_THRESHOLD and coverage ≥ "
-                "PLAYBOOK_PIN_COVERAGE_THRESHOLD (~0.25). A single exact phrase match is high, not 1.0."
+                "Auto-pin requires combined ≥ PLAYBOOK_MATCH_THRESHOLD (~0.80) and coverage ≥ "
+                "PLAYBOOK_PIN_COVERAGE_THRESHOLD (~0.40). Candidate pick is the default path."
             )
         st.json(last)

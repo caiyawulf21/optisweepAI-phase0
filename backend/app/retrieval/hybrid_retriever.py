@@ -20,9 +20,9 @@ STOPWORDS = {
 class RetrievalConfig:
     vector_weight: float = 0.7
     lexical_weight: float = 0.3
-    playbook_match_threshold: float = 0.55
-    playbook_high_confidence_threshold: float = 0.75
-    playbook_pin_coverage_threshold: float = 0.25
+    playbook_match_threshold: float = 0.80
+    playbook_high_confidence_threshold: float = 0.90
+    playbook_pin_coverage_threshold: float = 0.40
 
 
 @dataclass

@@ -35,9 +35,9 @@ def sample_client() -> CosmosCorpusClient:
         container_canonical_images="publish_canonical_images",
         publish_version_id="handoff-demo-v1",
         auto_publish_version=False,
-        playbook_match_threshold=0.55,
-        playbook_high_confidence_threshold=0.75,
-        playbook_pin_coverage_threshold=0.25,
+        playbook_match_threshold=0.80,
+        playbook_high_confidence_threshold=0.90,
+        playbook_pin_coverage_threshold=0.40,
         default_playbook_variant="prompt_a",
         skip_playbook_confirmation=True,
         enable_llm_branch_match=False,
@@ -145,6 +145,42 @@ def test_prompt_phrase_no_rms_alarms_observed(monkeypatch: pytest.MonkeyPatch) -
     reset_for_tests()
     state = run_playbook_troubleshoot(
         "test-no-rms",
+        "AGVs stop, no RMS alarms",
+        playbook_variant="prompt_a",
+    )
+    observed = state.get("extracted_observed_signals") or {}
+    assert observed.get("no_rms_alarm") is True
+    assert observed.get("agvs_stopped") is True
+
+
+def test_llm_false_cannot_drop_keyword_no_rms_alarm(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("SKIP_PLAYBOOK_CONFIRMATION", "false")
+    monkeypatch.setenv("ENABLE_LLM_SYMPTOM_EXTRACTION", "true")
+    from backend.app.config import get_app_settings
+    from backend.app.services.keyword_signal_extractor import reset_for_tests
+
+    if hasattr(get_app_settings, "cache_clear"):
+        get_app_settings.cache_clear()
+    reset_for_tests()
+
+    def _fake_overlay(**_kwargs):
+        return {
+            "signals": {"agvs_stopped": True, "no_rms_alarm": False},
+            "canonical_signals": {"rms_screen_no_faults_visible": False},
+            "components": ["agv", "rms"],
+            "confidences": {"agvs_stopped": 0.9, "no_rms_alarm": 0.9},
+            "fresh_issue": False,
+            "rationale": "test stub incorrectly treats absence as false",
+            "model": "test-stub",
+            "dropped_unknown_keys": [],
+        }
+
+    monkeypatch.setattr(
+        "backend.app.agents.runtime._maybe_llm_symptom_overlay",
+        _fake_overlay,
+    )
+    state = run_playbook_troubleshoot(
+        "test-no-rms-llm-false",
         "AGVs stop, no RMS alarms",
         playbook_variant="prompt_a",
     )
@@ -736,8 +772,8 @@ def test_orchestrator_llm_skipped_for_guided_button_and_templates(monkeypatch) -
             (),
             {
                 "enable_llm_orchestrator": True,
-                "playbook_match_threshold": 0.55,
-                "playbook_pin_coverage_threshold": 0.25,
+                "playbook_match_threshold": 0.80,
+                "playbook_pin_coverage_threshold": 0.40,
             },
         )(),
     )

@@ -104,7 +104,7 @@ symptom     = 0.70 * best_phrase + 0.30 * coverage
 combined    = max(combined, symptom)
 ```
 
-**Pin gate:** `combined ≥ PLAYBOOK_MATCH_THRESHOLD` (default 0.55) **and** `coverage ≥ PLAYBOOK_PIN_COVERAGE_THRESHOLD` (default 0.25), or explicit user candidate pick.
+**Pin gate:** `combined ≥ PLAYBOOK_MATCH_THRESHOLD` (default 0.80) **and** `coverage ≥ PLAYBOOK_PIN_COVERAGE_THRESHOLD` (default 0.40), or explicit user candidate pick. Candidate-first is the default; auto-pin only when `SKIP_PLAYBOOK_CONFIRMATION=true` and both floors pass.
 
 ## Routing — `/retrieve`
 

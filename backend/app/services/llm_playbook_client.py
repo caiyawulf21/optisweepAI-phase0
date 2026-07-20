@@ -23,69 +23,104 @@ def llm_available() -> bool:
     return bool(endpoint and api_key and deployment)
 
 
+def _chat_completion(
+    *,
+    messages: list[dict[str, str]],
+    max_tokens: int,
+    temperature: float | None = 0.2,
+    response_format: dict[str, str] | None = None,
+) -> str | None:
+    """Call Azure OpenAI / Foundry chat; return assistant content or None."""
+    if not llm_available():
+        return None
+    from openai import AzureOpenAI, OpenAI
+
+    endpoint = os.getenv("AZURE_OPENAI_ENDPOINT", "").rstrip("/")
+    api_key = os.getenv("AZURE_OPENAI_API_KEY", "")
+    api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-10-21")
+    deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT") or os.getenv(
+        "AZURE_EMBEDDINGS_DEPLOYMENT"
+    )
+    kwargs: dict[str, Any] = {
+        "model": str(deployment),
+        "messages": messages,
+    }
+    if response_format is not None:
+        kwargs["response_format"] = response_format
+
+    def _create(client: Any, *, use_max_completion_tokens: bool) -> Any:
+        call_kwargs = dict(kwargs)
+        if use_max_completion_tokens:
+            call_kwargs["max_completion_tokens"] = max_tokens
+        else:
+            call_kwargs["max_tokens"] = max_tokens
+        if temperature is not None:
+            call_kwargs["temperature"] = temperature
+        try:
+            return client.chat.completions.create(**call_kwargs)
+        except Exception:
+            if temperature is None:
+                raise
+            call_kwargs.pop("temperature", None)
+            return client.chat.completions.create(**call_kwargs)
+
+    if "services.ai.azure.com" in endpoint or "/api/projects/" in endpoint:
+        base = endpoint
+        if "/openai/v1" not in base:
+            base = f"{base}/openai/v1"
+        client = OpenAI(base_url=base, api_key=api_key)
+        # Newer GPT-5 deployments reject max_tokens; prefer max_completion_tokens.
+        response = _create(client, use_max_completion_tokens=True)
+    else:
+        client = AzureOpenAI(
+            azure_endpoint=endpoint,
+            api_key=api_key,
+            api_version=api_version,
+        )
+        try:
+            response = _create(client, use_max_completion_tokens=True)
+        except Exception:
+            response = _create(client, use_max_completion_tokens=False)
+    content = response.choices[0].message.content
+    return str(content).strip() if content else None
+
+
 def complete_text(
     *,
     system_prompt: str,
     user_prompt: str,
     max_tokens: int = 400,
 ) -> str | None:
-    if not llm_available():
-        return None
     try:
-        from openai import AzureOpenAI, OpenAI
-
-        endpoint = os.getenv("AZURE_OPENAI_ENDPOINT", "").rstrip("/")
-        api_key = os.getenv("AZURE_OPENAI_API_KEY", "")
-        api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-10-21")
-        deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT") or os.getenv(
-            "AZURE_EMBEDDINGS_DEPLOYMENT"
+        return _chat_completion(
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            max_tokens=max_tokens,
+            temperature=0.2,
         )
-        messages = [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": user_prompt},
-        ]
-        # Foundry / AI Services project endpoints speak OpenAI-compatible /openai/v1.
-        if "services.ai.azure.com" in endpoint or "/api/projects/" in endpoint:
-            base = endpoint
-            if "/openai/v1" not in base:
-                base = f"{base}/openai/v1"
-            client = OpenAI(base_url=base, api_key=api_key)
-            # Newer GPT-5 deployments reject max_tokens; prefer max_completion_tokens.
-            try:
-                response = client.chat.completions.create(
-                    model=str(deployment),
-                    messages=messages,
-                    max_completion_tokens=max_tokens,
-                    temperature=0.2,
-                )
-            except Exception:
-                response = client.chat.completions.create(
-                    model=str(deployment),
-                    messages=messages,
-                    max_completion_tokens=max_tokens,
-                )
-        else:
-            client = AzureOpenAI(
-                azure_endpoint=endpoint,
-                api_key=api_key,
-                api_version=api_version,
-            )
-            try:
-                response = client.chat.completions.create(
-                    model=str(deployment),
-                    messages=messages,
-                    max_completion_tokens=max_tokens,
-                    temperature=0.2,
-                )
-            except Exception:
-                response = client.chat.completions.create(
-                    model=str(deployment),
-                    messages=messages,
-                    max_tokens=max_tokens,
-                    temperature=0.2,
-                )
-        content = response.choices[0].message.content
-        return str(content).strip() if content else None
+    except Exception:
+        return None
+
+
+def complete_json(
+    *,
+    system_prompt: str,
+    user_prompt: str,
+    max_tokens: int = 700,
+) -> str | None:
+    """JSON-object chat completion for structured extractors."""
+    try:
+        return _chat_completion(
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            max_tokens=max_tokens,
+            temperature=0.1,
+            response_format={"type": "json_object"},
+        )
     except Exception:
         return None
 

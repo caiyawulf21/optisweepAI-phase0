@@ -41,6 +41,8 @@ def test_flagship_cat1_signature_matches_all_expected_signals(default_extractor)
         ("AGVs stop, no rms alarms", {"agvs_stopped", "no_rms_alarm"}),
         ("without rms alarms", {"no_rms_alarm"}),
         ("AGVs stopped, without any rms alarms", {"agvs_stopped", "no_rms_alarm"}),
+        ("agvs stopped, no alarms on rms", {"agvs_stopped", "no_rms_alarm"}),
+        ("no alarm on rms", {"no_rms_alarm"}),
     ],
 )
 def test_absence_and_stop_phrase_variants(default_extractor, message, expected):
