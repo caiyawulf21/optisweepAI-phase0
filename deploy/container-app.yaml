@@ -55,6 +55,8 @@ properties:
             value: source_artifacts
           - name: COSMOS_CONTAINER_CANONICAL_IMAGES
             value: publish_canonical_images
+          - name: COSMOS_CONTAINER_GATE_PHRASE_TABLES
+            value: gate_phrase_tables
           - name: AZURE_OPENAI_API_VERSION
             value: "2024-10-21"
           - name: AZURE_EMBEDDINGS_DEPLOYMENT

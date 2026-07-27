@@ -28,6 +28,9 @@ def test_live_cosmos_loads_playbook_embeddings() -> None:
         container_source_artifacts=os.getenv("COSMOS_CONTAINER_SOURCE_ARTIFACTS", "source_artifacts"),
         container_operational_context=os.getenv("COSMOS_CONTAINER_OPERATIONAL_CONTEXT", "operational_context"),
         container_canonical_images=os.getenv("COSMOS_CONTAINER_CANONICAL_IMAGES", "publish_canonical_images"),
+        container_gate_phrase_tables=os.getenv(
+            "COSMOS_CONTAINER_GATE_PHRASE_TABLES", "gate_phrase_tables"
+        ),
         publish_version_id=os.getenv("PUBLISH_VERSION_ID", ""),
         auto_publish_version=True,
         playbook_match_threshold=0.80,

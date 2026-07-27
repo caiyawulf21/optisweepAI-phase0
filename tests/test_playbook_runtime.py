@@ -33,6 +33,7 @@ def sample_client() -> CosmosCorpusClient:
         container_source_artifacts="source_artifacts",
         container_operational_context="operational_context",
         container_canonical_images="publish_canonical_images",
+        container_gate_phrase_tables="gate_phrase_tables",
         publish_version_id="handoff-demo-v1",
         auto_publish_version=False,
         playbook_match_threshold=0.80,

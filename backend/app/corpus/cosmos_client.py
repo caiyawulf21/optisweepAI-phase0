@@ -32,6 +32,7 @@ class CosmosCorpusClient:
             embeddings=self._load_embeddings_from_cosmos(),
             links=self._load_links_from_cosmos(),
             symptom_cards=self._load_symptom_cards_from_cosmos(),
+            gate_phrase_table=self._load_gate_phrase_table_from_cosmos(),
         )
         return self._index
 
@@ -339,6 +340,41 @@ class CosmosCorpusClient:
                 )
         return links
 
+    def _load_gate_phrase_table_from_cosmos(self) -> dict[str, Any] | None:
+        from backend.app.services.gate_phrase_loader import (
+            GATE_PHRASE_DOC_ID,
+            GATE_PHRASE_DOC_TYPE,
+            normalize_gate_phrase_doc,
+        )
+
+        rows = self._query(
+            self.settings.container_gate_phrase_tables,
+            """
+            SELECT * FROM c
+            WHERE c.publish_version_id = @version
+              AND c.doc_type = @doc_type
+              AND (c.id = @id OR c.record_id = @id)
+            """,
+            [
+                {"name": "@version", "value": self._publish_version_id},
+                {"name": "@doc_type", "value": GATE_PHRASE_DOC_TYPE},
+                {"name": "@id", "value": GATE_PHRASE_DOC_ID},
+            ],
+        )
+        if not rows:
+            return None
+        maps = normalize_gate_phrase_doc(rows[0])
+        return {
+            "id": GATE_PHRASE_DOC_ID,
+            "doc_type": GATE_PHRASE_DOC_TYPE,
+            "publish_version_id": self._publish_version_id,
+            "symptom_phrases": maps["symptom_phrases"],
+            # Keep ingest field name for debugging / older readers.
+            "legacy_signal_phrases": maps["symptom_phrases"],
+            "canonical_signal_phrases": maps["canonical_signal_phrases"],
+            "component_phrases": maps["component_phrases"],
+        }
+
     def _query(
         self,
         container_name: str,
@@ -373,9 +409,14 @@ def _sample_playbook(playbook_id: str, variant: str = "prompt_a") -> dict[str, A
             "tipper flow stopped",
         ],
         "support_user_language_examples": [
+            "AGVs stopped",
+            "AGVs are stopped",
+            "robots stopped",
+            "nothing is moving",
+            "AGVs aren't moving",
+            "no RMS alarms",
+            "rms showing no alarms",
             "AGVs stopped and nothing is moving on site",
-            "robots are stopped",
-            "small sort is stopped",
         ],
         "affected_systems_or_components": ["AGV", "RMS", "OptiSweep service"],
         "user_facing_summary": "Use this playbook when robotic motion appears stopped across the site.",

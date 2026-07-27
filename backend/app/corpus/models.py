@@ -30,6 +30,7 @@ class CorpusIndex:
     embeddings: list[EmbeddingRecord] = field(default_factory=list)
     links: list[RelationshipLink] = field(default_factory=list)
     symptom_cards: dict[str, dict[str, Any]] = field(default_factory=dict)
+    gate_phrase_table: dict[str, Any] | None = None
 
     def embeddings_by_type(self, record_type: str) -> list[EmbeddingRecord]:
         return [item for item in self.embeddings if item.record_type == record_type]

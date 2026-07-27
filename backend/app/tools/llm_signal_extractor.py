@@ -15,7 +15,6 @@ from typing import Any
 
 import yaml
 
-from backend.app.schemas.assistant import INITIAL_CAT1_SIGNALS
 from backend.app.schemas.extraction.signal_extraction import (
     LLMSignalExtractionResult,
     LLMSignalExtractionResultPayload,
@@ -23,7 +22,9 @@ from backend.app.schemas.extraction.signal_extraction import (
 from backend.app.services.keyword_signal_extractor import (
     DEFAULT_CANONICAL_SIGNAL_PHRASES_PATH,
     DEFAULT_COMPONENT_PHRASES_PATH,
+    DEFAULT_SIGNAL_PHRASES_PATH,
     ExtractionResult,
+    get_default_extractor,
 )
 
 
@@ -34,6 +35,16 @@ _MIN_CONFIDENCE = 0.3
 
 def _humanize(key: str) -> str:
     return str(key or "").replace("_", " ").strip()
+
+
+def _default_symptom_vocabulary() -> dict[str, str]:
+    try:
+        keys = get_default_extractor().symptom_keys
+        if keys:
+            return {key: _humanize(key) for key in keys}
+    except Exception:
+        pass
+    return _load_yaml_keys(DEFAULT_SIGNAL_PHRASES_PATH)
 
 
 def _load_yaml_keys(path: Path) -> dict[str, str]:
@@ -77,9 +88,7 @@ class LLMSignalExtractor:
         self._system_prompt = system_prompt or loaded or (
             "Extract structured Optisweep support signals as JSON only."
         )
-        self._legacy_vocabulary = legacy_vocabulary or {
-            key: _humanize(key) for key in INITIAL_CAT1_SIGNALS
-        }
+        self._legacy_vocabulary = legacy_vocabulary or _default_symptom_vocabulary()
         self._canonical_vocabulary = canonical_vocabulary or _load_yaml_keys(
             DEFAULT_CANONICAL_SIGNAL_PHRASES_PATH
         )

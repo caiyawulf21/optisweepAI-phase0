@@ -35,6 +35,37 @@ def test_exact_phrase_match_is_high_not_perfect() -> None:
     assert abs(symptom - (0.70 * 1.0 + 0.30 * coverage)) < 1e-6
 
 
+def test_multi_symptom_query_still_fires_short_entry_phrase() -> None:
+    """Full-query Jaccard collapses on comma-joined reports; containment must not."""
+    symptoms = [
+        "AGVs stopped",
+        "nothing is moving on site",
+        "site-wide robotic motion stoppage",
+    ]
+    examples = [
+        "AGVs stopped and nothing is moving on site",
+        "robots are stopped",
+    ]
+    query = "AGVs stopped, no RMS alarms"
+    symptom = symptom_overlap_score(query, symptoms, examples)
+    coverage = entry_phrase_coverage(query, symptoms, examples)
+    assert symptom >= 0.75
+    assert coverage < 1.0
+    assert abs(symptom - (0.70 * 1.0 + 0.30 * coverage)) < 1e-6
+
+
+def test_enriched_paraphrase_with_stopped_signal_stays_high() -> None:
+    symptoms = [
+        "AGVs stopped",
+        "nothing is moving on site",
+    ]
+    examples = ["AGVs stopped and nothing is moving on site"]
+    # Keyword gate enriches aren't-moving into agvs stopped without card hardcoding.
+    query = "agvs aren't moving, rms showing no alarms agvs stopped"
+    symptom = symptom_overlap_score(query, symptoms, examples)
+    assert symptom >= 0.75
+
+
 def test_short_query_coverage_is_query_token_based() -> None:
     symptoms = [
         "Site reports that nothing is moving.",

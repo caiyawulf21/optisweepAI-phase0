@@ -34,6 +34,7 @@ APPROVED_COSMOS_CONTAINERS = {
     "COSMOS_CONTAINER_RELATIONSHIP_LINKS": "relationship_links",
     "COSMOS_CONTAINER_SOURCE_ARTIFACTS": "source_artifacts",
     "COSMOS_CONTAINER_CANONICAL_IMAGES": "publish_canonical_images",
+    "COSMOS_CONTAINER_GATE_PHRASE_TABLES": "gate_phrase_tables",
 }
 
 REQUIRED_DEMO_ENV = (

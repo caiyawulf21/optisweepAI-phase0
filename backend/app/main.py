@@ -82,6 +82,7 @@ def health() -> dict[str, object]:
         index = get_corpus_index()
         payload["publish_version_id"] = index.publish_version_id
         payload["embedding_total"] = len(index.embeddings)
+        payload["gate_phrase_table_loaded"] = bool(index.gate_phrase_table)
     except Exception:
         payload["publish_version_id"] = corpus.publish_version_id
         payload["embedding_total"] = 0

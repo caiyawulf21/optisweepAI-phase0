@@ -1,28 +1,9 @@
-"""Deterministic keyword + negation-aware signal & component extractor.
+"""Deterministic keyword + negation-aware symptom & component extractor.
 
-The Phase 0 ``AzureOpenAIClient.extract_signals`` was a hardcoded substring
-matcher with no negation handling, no component output, and no plug-points
-for swapping in an LLM extractor. This module replaces it with a class-based,
-config-driven, negation-aware extractor that:
-
-* Loads phrase tables from YAML so adding/removing phrases does not require a
-  code change. Tests can inject in-memory phrase tables for isolation.
-* Splits the operator message on negation cues (``no``, ``not``, ``without``,
-  ``never``, ``cannot``, ``can't``, ``no longer``) before substring matching
-  so phrases inside a negation clause are recorded as ``False`` rather than
-  ``True``. This closes the long-standing "'no agvs stopped' still trips
-  the agvs_stopped signal" bug.
-* Returns BOTH legacy-keyed signals (``agvs_stopped``, ...) AND a separate
-  ``components`` set (``agv``, ``tipper``, ``hospital_tote``, ...). The
-  dynamic procedure selector consumes ``components`` via its previously
-  dead ``component_overlap`` weight.
-
-The module exposes ``KeywordSignalExtractor`` for direct callers and a
-process-singleton ``get_default_extractor()`` to mirror the loader/index
-caching pattern used elsewhere.
-
-The legacy ``AzureOpenAIClient.extract_signals`` is kept as a thin shim that
-delegates here, so existing call sites and tests stay green.
+Loads phrase tables (Cosmos gate_phrase_table at runtime, YAML fallback) and
+maps operator free text onto symptom keys and components. Symptom keys are
+whatever the published vocabulary contains — not a fixed CAT taxonomy.
+Root-cause / category labeling is out of scope for this extractor.
 """
 from __future__ import annotations
 
@@ -33,8 +14,6 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
-
-from backend.app.schemas.assistant import INITIAL_CAT1_SIGNALS
 
 
 DEFAULT_SIGNAL_PHRASES_PATH = (
@@ -64,7 +43,9 @@ _NEGATION_TOKENS: tuple[str, ...] = (
 )
 _NEGATION_RE = re.compile("|".join(_NEGATION_TOKENS), re.IGNORECASE)
 _NEGATION_WINDOW_TOKENS = 4
-_HARD_BOUNDARY_RE = re.compile(r"[.;!?]")
+_HARD_BOUNDARY_RE = re.compile(r"[.;!?,]")
+_ABSENCE_AFFIRMATIVE_SIGNAL_KEYS = frozenset({"no_rms_alarm"})
+_ABSENCE_AFFIRMATIVE_CANONICAL_KEYS = frozenset({"rms_screen_no_faults_visible"})
 _CONTRACTION_RE = re.compile(
     r"\b(aren't|arent|isn'?t|isnt|wasn'?t|wasnt|weren'?t|werent|don'?t|dont|"
     r"doesn'?t|doesnt|didn'?t|didnt|won'?t|wont|can'?t|cant|cannot|"
@@ -119,20 +100,12 @@ def _normalize_operator_text(user_message: str) -> str:
 class ExtractionResult:
     """Output of :meth:`KeywordSignalExtractor.extract`.
 
-    ``signals`` mirrors the legacy contract (every key in
-    ``INITIAL_CAT1_SIGNALS`` is present; values are ``True`` when the
-    affirmative phrase fired and ``False`` either by default or because a
-    negation clause matched the phrase). ``observed_signals`` records only
-    legacy keys that actually matched a phrase or explicit negation in this
-    turn, so downstream session state can avoid false-padding. ``canonical_signals`` is the
-    NEW canonical-vocabulary view emitted by the canonical phrase
-    table — only signals that fired are recorded (no False padding) so
-    routing layers can distinguish "operator affirmed this canonical
-    signal" from "we have no observation". ``negated_signals`` records
-    the keys that were explicitly flipped to ``False`` by a negation
-    clause — callers that want to distinguish "we know it's absent"
-    from "we don't know" can inspect this set. ``components`` is the
-    canonical component vocabulary detected in the message.
+    ``signals`` holds every symptom key in the active phrase vocabulary for
+    this extractor (True/False). ``observed_signals`` is the subset that
+    actually matched this turn (affirmative or explicit negation).
+    ``canonical_signals`` holds mid-flow / procedure-oriented keys from the
+    canonical phrase table when they fire. ``components`` is equipment /
+    area vocabulary for overlap scoring.
     """
 
     signals: dict[str, bool] = field(default_factory=dict)
@@ -209,9 +182,13 @@ class KeywordSignalExtractor:
             canonical_signal_phrases=canonical_signal_phrases,
         )
 
+    @property
+    def symptom_keys(self) -> tuple[str, ...]:
+        return tuple(sorted(self._signal_phrases))
+
     def extract(self, user_message: str) -> ExtractionResult:
         text = _normalize_operator_text(user_message)
-        signals: dict[str, bool] = {key: False for key in INITIAL_CAT1_SIGNALS}
+        signals: dict[str, bool] = {key: False for key in self._signal_phrases}
         observed_signals: dict[str, bool] = {}
         canonical_signals: dict[str, bool] = {}
         negated: set[str] = set()
@@ -228,14 +205,13 @@ class KeywordSignalExtractor:
             )
 
         for signal_key, phrases in self._signal_phrases.items():
-            if signal_key not in signals:
-                signals[signal_key] = False
+            absence_key = signal_key in _ABSENCE_AFFIRMATIVE_SIGNAL_KEYS
             for phrase in phrases:
                 offset = text.find(phrase)
                 if offset == -1:
                     continue
-                if self._is_negated_at(text, offset):
-                    if not signals[signal_key]:
+                if not absence_key and self._is_negated_at(text, offset):
+                    if not signals.get(signal_key):
                         negated.add(signal_key)
                         observed_signals[signal_key] = False
                         matched_phrases.setdefault(signal_key, []).append(
@@ -247,17 +223,13 @@ class KeywordSignalExtractor:
                     negated.discard(signal_key)
                     matched_phrases.setdefault(signal_key, []).append(phrase)
 
-        # Canonical phrase matching. Unlike legacy signals there is no
-        # fixed vocabulary contract: only canonical signals that fired
-        # (positively or negated) end up in the result, so the router
-        # can distinguish "operator affirmed this" from "we don't know"
-        # without the False-padding problem the legacy translator has.
         for signal_key, phrases in self._canonical_signal_phrases.items():
+            absence_key = signal_key in _ABSENCE_AFFIRMATIVE_CANONICAL_KEYS
             for phrase in phrases:
                 offset = text.find(phrase)
                 if offset == -1:
                     continue
-                if self._is_negated_at(text, offset):
+                if not absence_key and self._is_negated_at(text, offset):
                     if not canonical_signals.get(signal_key):
                         canonical_signals[signal_key] = False
                         negated.add(signal_key)
@@ -269,7 +241,6 @@ class KeywordSignalExtractor:
                     negated.discard(signal_key)
                     matched_phrases.setdefault(signal_key, []).append(phrase)
 
-        signals.setdefault("user_requests_escalation", False)
         if re.search(
             r"\b(escalate|need help from engineering|call engineer)\b", text
         ):
@@ -302,9 +273,10 @@ class KeywordSignalExtractor:
         tokens immediately before the phrase. If any of them is a negation
         cue (``no``, ``not``, ``without``, ``never``, ``cannot``...) the
         phrase is treated as negated. A hard sentence boundary
-        (``.;!?``) between the negation cue and the phrase resets the
-        scope so "AGVs are stopped. No RMS alarms." correctly marks
-        only ``no_rms_alarm`` as negated, not ``agvs_stopped``.
+        (``.;!?,``) between the negation cue and the phrase resets the
+        scope so "AGVs are stopped. No RMS alarms." and
+        "agvs aren't moving, rms showing no alarms" correctly mark
+        only the intended clause, not sibling clauses.
         """
         if phrase_offset <= 0:
             return False

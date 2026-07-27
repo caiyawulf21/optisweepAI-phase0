@@ -52,6 +52,9 @@ INITIAL_CAT1_SIGNALS = (
     "heartbeat_recovered_after_restart",
     "user_requests_escalation",
 )
+# Deprecated name kept for older workflow / escalation helpers. Playbook
+# first-turn gate vocabulary comes from Cosmos gate_phrase_table (or YAML
+# fallback keys), not this fixed list. Root-cause categories are out of scope.
 
 
 class Citation(BaseModel):

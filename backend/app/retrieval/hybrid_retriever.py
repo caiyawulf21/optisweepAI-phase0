@@ -41,7 +41,8 @@ class RetrievalHit:
 
 
 def tokenize(text: str) -> set[str]:
-    tokens = re.findall(r"[a-z0-9]+", text.lower())
+    normalized = str(text or "").lower().replace("'", "").replace("’", "")
+    tokens = re.findall(r"[a-z0-9]+", normalized)
     return {token for token in tokens if token not in STOPWORDS and len(token) > 1}
 
 
@@ -51,6 +52,21 @@ def token_jaccard(first_text: str, second_text: str) -> float:
     if not first_tokens or not second_tokens:
         return 0.0
     return len(first_tokens & second_tokens) / len(first_tokens | second_tokens)
+
+
+def phrase_containment(query_text: str, phrase_text: str) -> float:
+    """Fraction of phrase tokens present in the query.
+
+    Multi-symptom operator reports must be able to fully fire a short entry
+    phrase (``AGVs stopped``) without being penalized by unrelated sibling
+    clauses in the same message. Symmetric Jaccard against the full query
+    cannot do that.
+    """
+    query_tokens = tokenize(query_text)
+    phrase_tokens = tokenize(phrase_text)
+    if not query_tokens or not phrase_tokens:
+        return 0.0
+    return len(query_tokens & phrase_tokens) / len(phrase_tokens)
 
 
 def cosine_similarity(first: list[float], second: list[float]) -> float:
@@ -107,13 +123,34 @@ def symptom_overlap_score(
         return 0.0
     best = 0.0
     for phrase in phrases:
-        phrase_tokens = tokenize(phrase)
-        if not phrase_tokens:
-            continue
-        overlap = len(query_tokens & phrase_tokens) / len(query_tokens | phrase_tokens)
-        best = max(best, overlap)
+        # Containment: did this entry phrase fire inside the operator report?
+        # Jaccard: short query vs longer card phrase (keep sparse-query behavior).
+        best = max(
+            best,
+            phrase_containment(query_text, phrase),
+            token_jaccard(query_text, phrase),
+        )
     coverage = entry_phrase_coverage(query_text, symptoms, examples)
     return 0.70 * best + 0.30 * coverage
+
+
+def entry_phrase_fires(
+    query_text: str,
+    symptoms: list[str],
+    examples: list[str] | None = None,
+    *,
+    min_phrase_tokens: int = 2,
+) -> bool:
+    """True when any multi-token entry phrase is fully contained in the query."""
+    for phrase in [*symptoms, *(examples or [])]:
+        text = str(phrase or "").strip()
+        if not text:
+            continue
+        if len(tokenize(text)) < min_phrase_tokens:
+            continue
+        if phrase_containment(query_text, text) >= 1.0:
+            return True
+    return False
 
 
 def expand_query_tokens(tokens: set[str]) -> set[str]:

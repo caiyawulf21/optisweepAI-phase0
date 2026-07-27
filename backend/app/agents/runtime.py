@@ -521,6 +521,9 @@ def _enriched_retrieval_query(state: dict[str, Any]) -> str:
         for item in list(memory.get("operator_symptom_turns") or [])
         if isinstance(item, dict) and str(item.get("content") or "").strip()
     ]
+    # extract_symptoms appends the current turn before retrieve; do not double-count it.
+    if prior_turns and prior_turns[-1].lower() == query.lower():
+        prior_turns = prior_turns[:-1]
     prior_text = " ".join(prior_turns[-4:])
     path_bits: list[str] = []
     path_rows = list((slice_.path_evidence if slice_ is not None else None) or state.get("path_evidence") or [])
@@ -930,7 +933,21 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
     state["extracted_signal_metadata"] = metadata
     state["issue_category"] = None
     affirmative = dict(observed)
-    state["needs_symptom_clarification"] = not bool(affirmative)
+    card_phrase_hit = False
+    if not affirmative:
+        from backend.app.retrieval.hybrid_retriever import entry_phrase_fires
+
+        for card in get_corpus_index().symptom_cards.values():
+            if not isinstance(card, dict):
+                continue
+            if entry_phrase_fires(
+                user_message,
+                list(card.get("observed_entry_symptoms") or []),
+                list(card.get("support_user_language_examples") or []),
+            ):
+                card_phrase_hit = True
+                break
+    state["needs_symptom_clarification"] = not bool(affirmative) and not card_phrase_hit
     append_agent_trace(
         state,
         "symptom_agent",
@@ -939,6 +956,7 @@ def extract_symptoms(state: dict[str, Any]) -> dict[str, Any]:
         observed_signals=sorted(affirmative.keys()),
         extractor=metadata.get("extractor"),
         memory_turns=len((memory or {}).get("operator_symptom_turns") or []),
+        card_phrase_gate=card_phrase_hit,
     )
     if state["needs_symptom_clarification"]:
         state["response_type"] = "answer"

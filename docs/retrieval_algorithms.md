@@ -42,13 +42,20 @@ After hybrid score, compute overlap against `payload.observed_entry_symptoms` + 
 **Do not** use raw best-phrase Jaccard alone — an exact match on one example (e.g. `"AGVs stopped"`) yields Jaccard 1.0 and falsely implies perfect confidence.
 
 ```python
-best_phrase = max(token_jaccard(query, phrase) for phrase in symptoms + examples)
-coverage    = matched_entry_phrases / total_entry_phrases   # phrase has any token overlap
+# best_phrase: max of phrase containment and Jaccard.
+# Containment = |query ∩ phrase| / |phrase|  — multi-symptom reports can fully
+# fire a short entry phrase without being diluted by sibling clauses.
+# Jaccard keeps sparse short-query vs longer card-phrase behavior.
+best_phrase = max(
+    phrase_containment(query, phrase),
+    token_jaccard(query, phrase),
+) for phrase in symptoms + examples
+coverage    = matched_query_tokens / query_tokens   # tokens covered by any entry phrase
 symptom     = 0.70 * best_phrase + 0.30 * coverage
 combined    = max(combined, symptom)
 ```
 
-Example: `"agvs stopped"` vs stoppage card with one exact example among ~13 entry phrases → `best≈1.0`, `coverage≈0.3` → `symptom≈0.79` (high, not 1.0). More matched entry phrases raise the score toward high-confidence territory.
+Example: `"agvs stopped"` vs stoppage card with one exact example → `best≈1.0`, query-token `coverage` depends on how many query tokens the card covers → `symptom` high (often 0.79–1.0). `"AGVs stopped, no RMS alarms"` still gets `best≈1.0` from the short entry phrase; unmatched RMS tokens damp coverage so confidence stays high but not perfect.
 
 Hybrid / symptom is a **rank** among candidates. It is not by itself permission to auto-pin.
 

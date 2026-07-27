@@ -50,6 +50,7 @@ AZURE_EMBEDDINGS_DEPLOYMENT=<same model used in Stage 10>
 | `COSMOS_CONTAINER_SOURCE_ARTIFACTS` | Screenshot/evidence RAG | `doc_type=rag_record`, `record_type=source_artifact` |
 | `COSMOS_CONTAINER_RELATIONSHIP_LINKS` | Link graph shards | `doc_type=relationship_graph` (sharded, up to 2000 links/doc) |
 | `COSMOS_CONTAINER_CANONICAL_IMAGES` | Image metadata + Blob URI | `doc_type=canonical_image` with `storage_uri` (SAS HTTPS URL); default container `publish_canonical_images` |
+| `COSMOS_CONTAINER_GATE_PHRASE_TABLES` | First-turn gate phrase vocabulary | `doc_type=gate_phrase_table`, `id=gate_phrases` (legacy + canonical + component phrase maps) |
 
 ---
 

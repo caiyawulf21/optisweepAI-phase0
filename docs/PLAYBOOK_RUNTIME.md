@@ -98,10 +98,11 @@ cosine  = cosine_similarity(query_vector, embedding.vector)   # dims must match
 jaccard = token_jaccard(query_text, embedding.embedded_text)
 combined = 0.7 * cosine + 0.3 * jaccard
 # playbooks only:
-best_phrase = max Jaccard(query, each of symptoms + examples)
+best_phrase = max(containment(query, phrase), Jaccard(query, phrase))
 coverage    = (# query tokens covered by any phrase) / (# query tokens)
 symptom     = 0.70 * best_phrase + 0.30 * coverage
 combined    = max(combined, symptom)
+# containment = |query ∩ phrase| / |phrase|  (multi-symptom reports can fully fire a short entry phrase)
 ```
 
 **Pin gate:** `combined ≥ PLAYBOOK_MATCH_THRESHOLD` (default 0.80) **and** `coverage ≥ PLAYBOOK_PIN_COVERAGE_THRESHOLD` (default 0.40), or explicit user candidate pick. Candidate-first is the default; auto-pin only when `SKIP_PLAYBOOK_CONFIRMATION=true` and both floors pass.

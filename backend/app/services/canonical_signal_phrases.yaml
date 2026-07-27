@@ -79,6 +79,11 @@ rms_screen_no_faults_visible:
   - no alarm on rms
   - no alarms in rms
   - no alarm in rms
+  - rms showing no alarms
+  - rms showing no alarm
+  - rms shows no alarms
+  - no rms alarms
+  - no rms alarm
 
 rms_screen_active_fault:
   - rms shows a fault

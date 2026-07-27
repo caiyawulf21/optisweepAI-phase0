@@ -1,4 +1,4 @@
-# App agent handoff — entry-scoped playbook scoring (Jul 13, 2026)
+# App agent handoff — entry-scoped playbook scoring (Jul 13, 2026; cumulative republish Jul 21)
 
 **Audience:** OptiSweep AI app-repo coding agent  
 **Ingestion repo:** `optisweepAI-ingestion`  
@@ -7,17 +7,21 @@
 ---
 
 ## Point the app here
-
+    10|
 | Setting | Value |
 |---------|-------|
-| `PUBLISH_VERSION_ID` | `publish_20260714_172351_09e54f8f` |
+| `PUBLISH_VERSION_ID` | `publish_20260722_000304_b57a7153` |
 | Manifest | `shared_pipeline_stages/data/output/shared/stage_11_cosmos_publish/publish_manifest.json` |
 | Embedding model (query + docs) | `text-embedding-3-small` (must match Cosmos `embedding_model`) |
 | Cosmos | Already published (`Uploaded to Cosmos: True`) — reload index for this version |
 
 Containers (unchanged env names): `COSMOS_CONTAINER_PLAYBOOKS_A` / `_B`, `COSMOS_CONTAINER_RUNBOOKS`, `COSMOS_CONTAINER_RELATIONSHIP_LINKS`, etc.
 
-Playbook `embedded_text` in this version is **entry-scoped only** (title + `observed_entry_symptoms` + `support_user_language_examples`). Do not expect fat narrative blobs.
+    20|Playbook `embedded_text` in this version is **entry-scoped only** (title + `observed_entry_symptoms` + `support_user_language_examples`). Do not expect fat narrative blobs.
+
+**Cumulative corpus (required):** newest publish must retain prior cases (at least `218550`, `223554`, `228086`, `228723`). Do not pin the app to an old version to paper over a thin publish. Verify with `python -m backend.app.scripts.verify_cosmos_corpus`.
+
+**Operator speech lives on playbook cards** for retrieval scoring. **First-turn symptoms** live in Cosmos `gate_phrase_tables` (`id=gate_phrases`, same `publish_version_id`). Keys are symptom ids (whatever ingest publishes), not a CAT taxonomy. On corpus reload the app installs `KeywordSignalExtractor.from_phrases(...)` from that doc; committed YAML is **fallback only**. Root-cause classification is deferred (future ML/DL), not part of the gate.
 
 ---
 
@@ -26,17 +30,16 @@ Playbook `embedded_text` in this version is **entry-scoped only** (title + `obse
 1. **Stage 8 embed text** (`shared_pipeline_stages/stage_8/playbook_retrieval.py` → `build_playbook_retrieval_text`)  
    Playbook vectors = title + entry symptoms + user-language examples. Dropped: summary, systems list, node/recovery language.
 
-2. **Stage 5 prompts** (A + B)  
-   Require short operator speech in `support_user_language_examples` (e.g. `"AGVs stopped"`, `"robots stopped"`, `"nothing is moving"`).
+2. **Stage 5 / Stage 8 operator-language enrichment**  
+   Require short operator speech in `support_user_language_examples` (e.g. `"AGVs stopped"`, `"robots stopped"`, `"nothing is moving"`, `"AGVs aren't moving"`, `"rms showing no alarms"`).
 
-3. **Patched + rebuilt pilot cards**  
-   Case 228086 stoppage candidates got those phrases; Stage 8 → 9 → 10 → 11 republished.
+3. **Stage 11 cumulative publish**  
+   Assemble → merge prior corpus + enrich all playbooks → gate + smoke → `data/output/cosmos_publish`. `publish_cosmos` forces `scope=all` so newest partitions are not thin pilots.
 
 4. **Runtime scoring reference** (`backend/app/retrieval/hybrid_retriever.py`, `docs/retrieval_algorithms.md`)  
-   Symptom boost now dampens single-phrase exact matches (see critique below). **Port this formula into the app.**
+   Symptom boost uses phrase containment + damped coverage (see critique below).
 
 ---
-
 ## Test results (`"agvs stopped"`, real Azure embeddings, post-republish)
 
 Raw components (before dampening fix) on live Stage 10 vectors:
@@ -80,8 +83,8 @@ Threshold philosophy (do not change to fit old 0.01):
 **Required app scoring behavior**
 
 ```python
-best_phrase = max Jaccard(query, each of symptoms + examples)
-coverage    = (# phrases with any token overlap) / (total phrases)
+best_phrase = max(containment(query, phrase), Jaccard(query, phrase))  # containment = |q∩p|/|p|
+coverage    = (query tokens covered by any entry phrase) / (query tokens)
 symptom     = 0.70 * best_phrase + 0.30 * coverage
 rank_score  = max(0.7 * cosine + 0.3 * jaccard, symptom)
 
@@ -97,7 +100,7 @@ Pin confidence ≠ retrieval rank: sparse speech can improve ranking and still f
 
 ## App work checklist
 
-1. Set `PUBLISH_VERSION_ID=publish_20260714_172351_09e54f8f` and reload Cosmos embedding index.
+1. Set `PUBLISH_VERSION_ID=publish_20260722_000304_b57a7153` (or keep `AUTO_PUBLISH_VERSION=true`) and reload Cosmos embedding index.
 2. Keep damped `symptom_overlap_score` + `entry_phrase_coverage` aligned with `backend/app/retrieval/hybrid_retriever.py`.
 3. Wire pin gate: hybrid/rank ≥ 0.80 **and** coverage ≥ 0.40 (or explicit candidate pick).
 4. Expose score breakdown in Trace.

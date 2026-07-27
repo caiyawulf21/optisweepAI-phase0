@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import pytest
 
-from backend.app.schemas.assistant import INITIAL_CAT1_SIGNALS
 from backend.app.services.keyword_signal_extractor import KeywordSignalExtractor
 
 
@@ -12,15 +11,17 @@ def default_extractor() -> KeywordSignalExtractor:
     return KeywordSignalExtractor.from_files()
 
 
-def test_empty_message_returns_all_false(default_extractor):
+def test_empty_message_returns_no_observations(default_extractor):
     result = default_extractor.extract("")
-    assert result.signals == {key: False for key in INITIAL_CAT1_SIGNALS}
     assert result.observed_signals == {}
     assert result.negated_signals == set()
     assert result.components == set()
+    assert result.signals
+    assert not any(result.signals.values())
+    assert set(result.signals) == set(default_extractor.symptom_keys)
 
 
-def test_flagship_cat1_signature_matches_all_expected_signals(default_extractor):
+def test_flagship_stoppage_signature_matches_expected_symptoms(default_extractor):
     result = default_extractor.extract(
         "AGVs stopped, no RMS alarms, all tippers heartbeat timeout, "
         "hospital tote removal hangs, system active but frozen"
@@ -43,6 +44,8 @@ def test_flagship_cat1_signature_matches_all_expected_signals(default_extractor)
         ("AGVs stopped, without any rms alarms", {"agvs_stopped", "no_rms_alarm"}),
         ("agvs stopped, no alarms on rms", {"agvs_stopped", "no_rms_alarm"}),
         ("no alarm on rms", {"no_rms_alarm"}),
+        ("agvs aren't moving, rms showing no alarms", {"agvs_stopped", "no_rms_alarm"}),
+        ("rms showing no alarms", {"no_rms_alarm"}),
     ],
 )
 def test_absence_and_stop_phrase_variants(default_extractor, message, expected):
@@ -126,11 +129,10 @@ def test_phrase_with_active_but_frozen_is_not_truncated_by_conjunction(
     assert result.signals["system_active_but_frozen"] is True
 
 
-def test_signals_dict_always_contains_all_legacy_keys(default_extractor):
+def test_signals_dict_mirrors_active_symptom_vocabulary(default_extractor):
     result = default_extractor.extract("nothing relevant here")
-    for key in INITIAL_CAT1_SIGNALS:
-        assert key in result.signals
-        assert isinstance(result.signals[key], bool)
+    assert set(result.signals) == set(default_extractor.symptom_keys)
+    assert not any(result.signals.values())
     assert result.observed_signals == {}
 
 

@@ -20,7 +20,7 @@ Full architecture: [`docs/PLAYBOOK_RUNTIME.md`](docs/PLAYBOOK_RUNTIME.md)
 
 ## How it works today
 
-1. **Turn 1** — keyword symptom extraction from YAML phrase tables (+ LLM overlay when `ENABLE_LLM_SYMPTOM_EXTRACTION=true`); session `extraction_memory` keeps prior operator symptom turns for multi-turn clarification. Retrieval runs only after at least one affirmative observed signal (including absence-coded `no_rms_alarm` when the operator asserts no RMS alarms). Gate vocabulary does **not** grow per new incidence — new coverage comes from published playbook cards.
+1. **Turn 1** — keyword symptom extraction from the published Cosmos `gate_phrase_table` (symptom keys + phrases for the active publish; local YAML is fallback only). Optional LLM overlay when `ENABLE_LLM_SYMPTOM_EXTRACTION=true`. Symptoms are observations only — not root-cause / CAT labels. Session `extraction_memory` keeps prior operator symptom turns. Retrieval runs after an affirmative observed symptom **or** when operator text fully contains a multi-token phrase from a published playbook card.
 2. **Orchestrator** — single control-plane agent that routes the turn (ask symptoms / candidates / user pin). **Candidate-first (default):** after the gate opens, ranked playbook candidates are surfaced for operator selection (`SKIP_PLAYBOOK_CONFIRMATION=false`). Each candidate includes incidence id/summary and when-to-choose / entry-symptom guidance. Optional auto-pin only when `SKIP_PLAYBOOK_CONFIRMATION=true`. Auto-pin still requires hybrid rank ≥ `PLAYBOOK_MATCH_THRESHOLD` (default **0.80**) **and** entry-phrase `coverage` ≥ `PLAYBOOK_PIN_COVERAGE_THRESHOLD` (default **0.40**) so most turns stay on user validation. **Always** sets `retrieval_confidence_reason` (numbers from retrieval/pin tools). With `ENABLE_LLM_ORCHESTRATOR=true`, wording is rewritten via `prompts/agents/orchestrator/orchestrate_turn.md` from a compact briefing (no recompute of pin math).
 3. **Hybrid score** — `0.7×cosine + 0.3×jaccard`, then `max` with lexical boosts: playbook symptom overlap, and for runbooks/context a **title/id/head coverage** boost (with light service↔software query expansion). Query embeddings must match Cosmos (`text-embedding-3-small`); do **not** set `LOCAL_EMBEDDINGS_MODEL` against Azure-published vectors. Trace shows `cosine` / `jaccard` / `symptom` / `coverage` / `combined` separately.
 4. **Signals** — API returns only affirmative observed signals (not a padded False CAT-1 dictionary).
@@ -41,7 +41,7 @@ Most named “agents” are **deterministic tools** with traces. Optional LLM sl
 
 **Lean multi-agent policy:** one orchestrator + tools; pass structured state not chat transcripts; avoid LLM-to-LLM fan-out (token/latency/inconsistency tax). Full walkthrough: [`docs/PLAYBOOK_RUNTIME.md`](docs/PLAYBOOK_RUNTIME.md) · [`backend/app/agents/README.md`](backend/app/agents/README.md).
 
-Current publish target: `PUBLISH_VERSION_ID=publish_20260714_172351_09e54f8f` with query embeddings from `text-embedding-3-small` (must match Cosmos `embedding_model` + dims). Scoring notes: [`docs/app_agent_scoring_handoff.md`](docs/app_agent_scoring_handoff.md).
+Current publish target: `PUBLISH_VERSION_ID=publish_20260722_000304_b57a7153` (cumulative corpus + `gate_phrase_tables`) with query embeddings from `text-embedding-3-small` (must match Cosmos `embedding_model` + dims). Scoring notes: [`docs/app_agent_scoring_handoff.md`](docs/app_agent_scoring_handoff.md).
 
 ## Configuration
 
@@ -152,6 +152,7 @@ COSMOS_CONTAINER_OPERATIONAL_CONTEXT=operational_context
 COSMOS_CONTAINER_RELATIONSHIP_LINKS=relationship_links
 COSMOS_CONTAINER_SOURCE_ARTIFACTS=source_artifacts
 COSMOS_CONTAINER_CANONICAL_IMAGES=publish_canonical_images
+COSMOS_CONTAINER_GATE_PHRASE_TABLES=gate_phrase_tables
 ```
 
 Runtime memory containers are fixed in code:

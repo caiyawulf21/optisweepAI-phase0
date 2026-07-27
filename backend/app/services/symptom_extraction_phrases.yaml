@@ -1,13 +1,15 @@
-# Phrase table for the deterministic keyword signal extractor.
+# Phrase table for the deterministic keyword symptom extractor (YAML fallback).
 #
-# Each top-level key is a legacy signal key from
-# `backend.app.schemas.assistant.INITIAL_CAT1_SIGNALS`. Each entry declares the
-# affirmative phrases that imply the signal is True.
+# At runtime the app prefers the Cosmos gate_phrase_table for the active
+# publish. This file is used when that doc is missing (sample/offline).
+#
+# Each top-level key is a symptom id. Entries declare affirmative phrases
+# that imply the symptom is observed.
 #
 # Absence-coded keys (e.g. `no_rms_alarm`) include the cue inside the phrase
 # ("no rms alarm", "without rms alarms") and must remain affirmative True when
 # the operator asserts absence. Do not rely on negation→False for those keys —
-# the playbook gate drops False observations.
+# the playbook gate keeps True observations.
 #
 # For normal keys, negation handling is applied by the extractor: if a phrase
 # appears inside a negation clause ("no AGVs stopped") the signal is set False.
@@ -59,6 +61,12 @@ no_rms_alarm:
   - rms screen is clear
   - no rms faults
   - no active rms faults
+  - rms showing no alarms
+  - rms showing no alarm
+  - rms shows no alarms
+  - rms shows no alarm
+  - showing no alarms on rms
+  - showing no rms alarms
 tipper_heartbeat_timeout:
   - tipper heartbeat
   - tippers heartbeat
