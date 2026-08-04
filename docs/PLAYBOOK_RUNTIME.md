@@ -125,7 +125,7 @@ citations only. Response includes `answer`, `citations`, `corpus_source`, and
 
 - **Production:** Azure Cosmos Stage 11 containers (`docs/cosmos_data_map.md`)
 - **Runtime corpus:** Cosmos only; local sample-data fallback has been removed.
-- Images: prefer step `screens_or_images`; fall back to newest `publish_canonical_images` partition when playbook publish lagged images
+- Images: prefer step `screens_or_images`; fall back to newest `publish_canonical_images` partition that has HTTPS `storage_uri` when playbook publish lagged images or the active image partition is metadata-only
 
 ## API contract extras
 

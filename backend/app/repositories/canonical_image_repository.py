@@ -18,12 +18,20 @@ def reset_images_publish_version_cache() -> None:
         _images_publish_version = None
 
 
+def _has_http_storage_uri(record: dict[str, Any] | None) -> bool:
+    if not isinstance(record, dict):
+        return False
+    storage_uri = str(record.get("storage_uri") or "").strip()
+    return storage_uri.startswith("http://") or storage_uri.startswith("https://")
+
+
 def resolve_images_publish_version_id(settings: Any | None = None) -> str:
-    """Prefer the corpus publish that actually contains canonical image docs.
+    """Prefer the corpus publish that has renderable canonical image docs.
 
     Playbook/runbook publishes can advance before images are recopied into
-    ``publish_canonical_images``. Lookup then falls back to the newest image
-    partition that still has rows.
+    ``publish_canonical_images``, and some image partitions have metadata with
+    empty ``storage_uri``. Lookup falls back to the newest partition that still
+    has at least one HTTPS Blob URI.
     """
     global _images_publish_version
     active = settings or get_corpus_settings()
@@ -43,7 +51,10 @@ def resolve_images_publish_version_id(settings: Any | None = None) -> str:
             container.query_items(
                 query=(
                     "SELECT TOP 1 c.publish_version_id FROM c "
-                    "WHERE IS_DEFINED(c.publish_version_id) AND IS_DEFINED(c.image_id) "
+                    "WHERE IS_DEFINED(c.publish_version_id) "
+                    "AND IS_DEFINED(c.image_id) "
+                    "AND (STARTSWITH(c.storage_uri, 'http://') "
+                    "OR STARTSWITH(c.storage_uri, 'https://')) "
                     "ORDER BY c._ts DESC"
                 ),
                 enable_cross_partition_query=True,
@@ -62,7 +73,10 @@ def _partition_has_images(container: Any, version: str) -> bool:
             container.query_items(
                 query=(
                     "SELECT TOP 1 c.image_id FROM c "
-                    "WHERE c.publish_version_id = @version AND IS_DEFINED(c.image_id)"
+                    "WHERE c.publish_version_id = @version "
+                    "AND IS_DEFINED(c.image_id) "
+                    "AND (STARTSWITH(c.storage_uri, 'http://') "
+                    "OR STARTSWITH(c.storage_uri, 'https://'))"
                 ),
                 parameters=[{"name": "@version", "value": version}],
                 partition_key=version,
@@ -100,20 +114,24 @@ class CanonicalImageRepository(CosmosRepository):
                 {"name": "@image_id", "value": image_id},
             ],
         )
-        if records:
+        if records and _has_http_storage_uri(records[0]):
             return records[0]
-        # Last-resort lookup when image partitions are newer/older than cache.
+        # Prefer a renderable URI when the active partition has metadata only.
         rows = list(
             self.container.query_items(
                 query=(
                     "SELECT TOP 1 * FROM c WHERE c.image_id = @image_id "
+                    "AND (STARTSWITH(c.storage_uri, 'http://') "
+                    "OR STARTSWITH(c.storage_uri, 'https://')) "
                     "ORDER BY c._ts DESC"
                 ),
                 parameters=[{"name": "@image_id", "value": image_id}],
                 enable_cross_partition_query=True,
             )
         )
-        return rows[0] if rows else None
+        if rows:
+            return rows[0]
+        return records[0] if records else None
 
     def query(
         self,

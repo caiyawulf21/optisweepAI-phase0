@@ -3,13 +3,33 @@ import os
 import requests
 import streamlit as st
 
+from branding import (
+    FORTNA_SITE,
+    HASLET_SITE_REF,
+    apply_fortna_theme,
+    render_brand_banner,
+)
+
 st.set_page_config(page_title="OptiSweep Playbook Runtime", layout="wide")
+apply_fortna_theme()
+render_brand_banner()
+
 st.title("OptiSweep Playbook Runtime")
 
 st.markdown(
     """
 This app exposes two runtime surfaces over the same Cosmos corpus. Pick a page
 from the sidebar depending on what you need.
+"""
+)
+
+st.subheader("Site reference")
+st.markdown(
+    f"""
+**[UPS – Haslet TX]({HASLET_SITE_REF})** —
+VPN details, servers, and general site information for the UPS Haslet TX site.
+
+**[FORTNA]({FORTNA_SITE})** — company site and brand home.
 """
 )
 

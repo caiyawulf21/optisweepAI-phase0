@@ -2,6 +2,12 @@
 
 Multi-page app for playbook runtime (Stage 5 / 5b).
 
+## Brand theme
+
+Fortna light theme: black header banner, royal-blue primary (`#2B5CFF`), white
+content, Montserrat/sans-serif. Config: `.streamlit/config.toml`. Shared CSS /
+banner: `ui/branding.py` (applied on Home + pages).
+
 ## Run
 
 ```bash

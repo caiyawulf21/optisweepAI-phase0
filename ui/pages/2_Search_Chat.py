@@ -7,6 +7,7 @@ from typing import Any
 import requests
 import streamlit as st
 
+from branding import apply_fortna_theme, render_brand_banner
 from playbook_ui import (
     get_corpus_status,
     get_interactions,
@@ -28,6 +29,8 @@ if "retrieve_history" not in st.session_state:
     st.session_state.retrieve_history = []
 
 st.set_page_config(page_title="Search / Chat", layout="wide")
+apply_fortna_theme()
+render_brand_banner("Search / Chat")
 st.title("Search / Chat")
 
 with st.sidebar:

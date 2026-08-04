@@ -1,7 +1,8 @@
 # Optisweep AI Support Assistant
 
 > **Playbook runtime (implemented):** Cosmos-backed playbook orchestration + retrieval chatbot.  
-> Start here: [`docs/PLAYBOOK_RUNTIME.md`](docs/PLAYBOOK_RUNTIME.md) · UI: `streamlit run ui/Home.py` · API: `uvicorn backend.app.main:app`
+> Start here: [`docs/PLAYBOOK_RUNTIME.md`](docs/PLAYBOOK_RUNTIME.md) · UI: `streamlit run ui/Home.py` · API: `uvicorn backend.app.main:app`  
+> Site ops: [UPS – Haslet TX](https://fortna.atlassian.net/wiki/spaces/DS/pages/3064266909/UPS+-+Haslet+TX) (VPN, servers, site info) · Brand: [fortna.com](https://www.fortna.com/)
 
 This repository is the **Optisweep AI Support Assistant** runtime: a bounded FastAPI + LangGraph app for guided incident troubleshooting and corpus search.
 
@@ -184,6 +185,8 @@ Post-deployment smoke:
 |------|---------|
 | Playbook runtime | `streamlit run ui/Home.py` |
 | Legacy alias | `streamlit run ui/streamlit_app.py` (forwards to Home) |
+
+Theme: Fortna brand (black header, `#2B5CFF` primary, light content) via `.streamlit/config.toml` + `ui/branding.py`. Home links [FORTNA](https://www.fortna.com/) and [UPS – Haslet TX](https://fortna.atlassian.net/wiki/spaces/DS/pages/3064266909/UPS+-+Haslet+TX).
 
 Tabs on Guided Troubleshoot: **Conversation · Turns · Playbook/Runbook · Trace**. Conversation expands the active playbook with scannable node evidence criteria and the linked runbook (collapsed, with step images when available). Branch choices show a **short evidence strip** above thin color-coded healthy / unhealthy / inconclusive buttons (criteria from playbook outcomes / `expected_or_observed_result`). Exact button clicks are deterministic (no branch/orchestrator LLM); free-text retriage keeps `observed_signals` + `path_evidence` and may call orchestrator with a lean working-memory packet. The sidebar shows an Active playbook card (title, id, current node). Retrieval confidence uses matched Cosmos vector dims, query-token symptom coverage, and symptom cards.
 
@@ -2036,7 +2039,16 @@ Ingestion Stage 11 uploads blobs under
 metadata to Cosmos `publish_canonical_images` (partition key
 `/publish_version_id`) with live `storage_uri` (Blob SAS). The app reads that
 container via `COSMOS_CONTAINER_CANONICAL_IMAGES` and redirects
-`GET /images/{image_id}` to `storage_uri`.
+`GET /images/{image_id}` to `storage_uri`. Image lookup skips partitions that
+only have metadata (`blob_path` without an HTTPS `storage_uri`) and falls back
+to the newest partition that still has renderable Blob URIs. Cumulative Stage 11
+publish now fails closed if any image lacks HTTPS `storage_uri` (merge keeps
+prior SAS URIs; Cosmos upload refuses metadata-only docs). To backfill SAS on
+an older metadata-only publish, run
+`python -m backend.app.scripts.refresh_canonical_image_sas` with
+`PUBLISH_VERSION_ID` set to that partition. Verify with
+`python -m backend.app.scripts.verify_cosmos_corpus` (fails when images lack
+HTTPS URIs).
 
 Legacy Cosmos container `canonical_images` (PK `/category`) is incompatible
 with corpus versioning — do not point runtime at it.

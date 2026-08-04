@@ -159,6 +159,7 @@ Link types used at runtime: `playbook_runbook`, `artifact_runbook`, `context_run
 ```
 
 Prefer `storage_uri` for rendering. Resolve procedure screenshots via `artifact_runbook` links, then load the matching `image_id`.
+Stage 11 Cosmos upload **fails** if any canonical image lacks an HTTPS `storage_uri` (metadata-only publishes are offline-only).
 
 ---
 

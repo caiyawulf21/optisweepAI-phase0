@@ -22,6 +22,7 @@ from playbook_ui import (
     render_canonical_images,
     render_runbook_panel,
 )
+from branding import apply_fortna_theme, render_brand_banner
 from streamlit_helpers import (
     allowed_answers_with_unknown,
     answer_button_key,
@@ -307,6 +308,8 @@ def _render_viewer(backend_url: str, last: dict[str, Any], variant: str) -> None
 
 
 st.set_page_config(page_title="Guided Troubleshoot", layout="wide")
+apply_fortna_theme()
+render_brand_banner("Guided Troubleshoot")
 _ensure_session()
 st.title("Guided Troubleshoot")
 

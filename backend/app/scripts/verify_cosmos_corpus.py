@@ -46,13 +46,35 @@ def main() -> int:
     runbooks = [e for e in index.embeddings if e.record_type == "canonical_runbook"]
     operational = [e for e in index.embeddings if e.record_type == "operational_context"]
     client = get_corpus_client()
+    preferred_version = client.publish_version_id
     image_repo = CanonicalImageRepository()
-    image_count = len(
-        image_repo.query(
-            "SELECT c.image_id FROM c",
-            parameters=[],
+    preferred_image_rows = []
+    try:
+        from backend.app.repositories.cosmos_client import cosmos_container
+
+        images_container = cosmos_container(
+            settings.container_canonical_images or "publish_canonical_images"
         )
+        preferred_image_rows = list(
+            images_container.query_items(
+                query=(
+                    "SELECT c.image_id, c.storage_uri FROM c "
+                    "WHERE c.publish_version_id = @version"
+                ),
+                parameters=[{"name": "@version", "value": preferred_version}],
+                partition_key=preferred_version,
+            )
+        )
+    except Exception as exc:
+        print(f"FAIL: could not query preferred image partition: {exc}")
+        return 1
+    image_count = len(preferred_image_rows)
+    images_with_http_uri = sum(
+        1
+        for row in preferred_image_rows
+        if str(row.get("storage_uri") or "").startswith(("http://", "https://"))
     )
+    images_missing_http_uri = image_count - images_with_http_uri
     cases = {
         str(card.get("case_id") or "")
         for card in index.symptom_cards.values()
@@ -91,7 +113,11 @@ def main() -> int:
             or {}
         ),
         "canonical_images_container": settings.container_canonical_images,
+        "canonical_images_publish_version_id": preferred_version,
+        "canonical_images_runtime_fallback_version_id": image_repo.publish_version_id,
         "canonical_image_count": image_count,
+        "canonical_images_with_http_storage_uri": images_with_http_uri,
+        "canonical_images_missing_http_storage_uri": images_missing_http_uri,
     }
 
     gate_smoke = get_default_extractor().extract(
@@ -180,9 +206,20 @@ def main() -> int:
         print(f"sample_playbook_ok={payload is not None} id={sample_playbook}")
     if image_count == 0:
         print(
-            f"WARN: container {settings.container_canonical_images!r} returned zero images."
+            f"FAIL: container {settings.container_canonical_images!r} returned zero images "
+            f"for preferred publish_version_id={preferred_version!r}."
         )
-    print("OK: cumulative corpus + gate phrases + operator examples + smoke ranking")
+        return 1
+    if images_missing_http_uri:
+        print(
+            "FAIL: preferred publish has canonical images missing HTTPS storage_uri: "
+            f"{images_missing_http_uri}/{image_count} in "
+            f"publish_version_id={preferred_version!r}. "
+            "Re-run Stage 11 with Blob upload enabled, or "
+            "python -m backend.app.scripts.refresh_canonical_image_sas."
+        )
+        return 1
+    print("OK: cumulative corpus + gate phrases + operator examples + smoke ranking + images")
     return 0
 
 

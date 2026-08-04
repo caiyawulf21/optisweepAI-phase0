@@ -59,7 +59,10 @@ def main() -> int:
     client = CosmosClient(settings.cosmos_endpoint, credential=settings.cosmos_key)
     db = client.get_database_client(settings.cosmos_database_name)
     images = db.get_container_client(corpus.container_canonical_images)
-    version = corpus.publish_version_id
+    version = (
+        (os.getenv("PUBLISH_VERSION_ID") or "").strip()
+        or corpus.publish_version_id
+    )
     rows = list(
         images.query_items(
             query="SELECT * FROM c WHERE c.publish_version_id = @v",
