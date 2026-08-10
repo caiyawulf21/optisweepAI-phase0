@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+import base64
+from pathlib import Path
+
 import streamlit as st
 
 FORTNA_BLUE = "#2B5CFF"
@@ -10,10 +13,13 @@ FORTNA_WHITE = "#FFFFFF"
 FORTNA_GRAY = "#757575"
 FORTNA_DIVIDER = "#E0E0E0"
 FORTNA_BG = "#F5F5F5"
-FORTNA_SITE = "https://www.fortna.com/"
 HASLET_SITE_REF = (
     "https://fortna.atlassian.net/wiki/spaces/DS/pages/3064266909/UPS+-+Haslet+TX"
 )
+
+_STATIC_DIR = Path(__file__).resolve().parent / "static"
+FORTNA_LOGO_PATH = _STATIC_DIR / "fortna_logo.png"
+OPTISWEEP_SYSTEM_PATH = _STATIC_DIR / "optisweep_system.png"
 
 
 def apply_fortna_theme() -> None:
@@ -99,49 +105,46 @@ def apply_fortna_theme() -> None:
     border-color: {FORTNA_DIVIDER} !important;
   }}
 
+  div[data-testid="stHorizontalBlock"] {{
+    align-items: center;
+  }}
+
   .fortna-banner {{
     background: {FORTNA_BLACK};
     color: {FORTNA_WHITE};
-    padding: 0.85rem 1.25rem;
-    margin: -1rem -1rem 1.5rem -1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 1rem;
-    flex-wrap: wrap;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-bottom: 0.75rem;
+    padding: 0.55rem clamp(1rem, 3vw, 2.5rem);
+    box-sizing: border-box;
   }}
-  .fortna-banner a {{
-    color: {FORTNA_WHITE} !important;
-    text-decoration: none !important;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    font-size: 1.05rem;
+  .fortna-banner img {{
+    height: 28px;
+    width: auto;
+    display: block;
   }}
   .fortna-banner .fortna-product {{
     color: {FORTNA_WHITE};
     font-weight: 500;
     letter-spacing: 0.02em;
-    opacity: 0.92;
+    font-size: 1.05rem;
+    margin: 0;
   }}
-  .fortna-banner .fortna-accent {{
-    display: inline-block;
-    width: 3px;
-    height: 1.1rem;
-    background: {FORTNA_BLUE};
-    margin: 0 0.75rem;
-    vertical-align: middle;
+  .fortna-hero {{
+    display: flex;
+    justify-content: center;
+    margin: 0 0 1.25rem 0;
   }}
-  .fortna-cta {{
-    display: inline-block;
-    border: 1px solid {FORTNA_WHITE};
-    border-radius: 999px;
-    padding: 0.35rem 0.9rem;
-    color: {FORTNA_WHITE} !important;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-decoration: none !important;
+  .fortna-hero img {{
+    width: min(420px, 100%);
+    max-height: 220px;
+    object-fit: contain;
+    border-radius: 0;
   }}
 </style>
 """,
@@ -149,17 +152,27 @@ def apply_fortna_theme() -> None:
     )
 
 
-def render_brand_banner(product_label: str = "OptiSweep Playbook Runtime") -> None:
+def render_brand_banner(
+    product_label: str = "OptiSweep AI Troubleshooting Assistant",
+) -> None:
+    logo_html = '<span class="fortna-product">FORTNA</span>'
+    if FORTNA_LOGO_PATH.is_file():
+        encoded = base64.b64encode(FORTNA_LOGO_PATH.read_bytes()).decode("ascii")
+        logo_html = f'<img src="data:image/png;base64,{encoded}" alt="FORTNA" />'
     st.markdown(
-        f"""
-<div class="fortna-banner">
-  <div>
-    <a href="{FORTNA_SITE}" target="_blank" rel="noopener noreferrer">FORTNA</a>
-    <span class="fortna-accent"></span>
-    <span class="fortna-product">{product_label}</span>
-  </div>
-  <a class="fortna-cta" href="{FORTNA_SITE}" target="_blank" rel="noopener noreferrer">fortna.com</a>
-</div>
-""",
+        f'<div class="fortna-banner">{logo_html}'
+        f'<p class="fortna-product">{product_label}</p></div>',
+        unsafe_allow_html=True,
+    )
+
+
+def render_optisweep_hero() -> None:
+    if not OPTISWEEP_SYSTEM_PATH.is_file():
+        return
+    encoded = base64.b64encode(OPTISWEEP_SYSTEM_PATH.read_bytes()).decode("ascii")
+    st.markdown(
+        f'<div class="fortna-hero">'
+        f'<img src="data:image/png;base64,{encoded}" '
+        f'alt="OptiSweep system" /></div>',
         unsafe_allow_html=True,
     )

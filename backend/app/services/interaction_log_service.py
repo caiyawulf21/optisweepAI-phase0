@@ -129,7 +129,7 @@ class InteractionLog:
     ) -> "InteractionLog":
         """Build a log entry from the runtime triple (request, state, response).
 
-        ``state`` is the final :class:`backend.app.graph.state.AssistantState`
+        ``state`` is the final playbook runtime state dict
         emitted by :func:`backend.app.graph.graph.run_troubleshooting`;
         ``response`` is the :class:`backend.app.schemas.assistant.TroubleshootResponse`
         instance produced by :func:`backend.app.api.troubleshoot._build_troubleshoot_response`.

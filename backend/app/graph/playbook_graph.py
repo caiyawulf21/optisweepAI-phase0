@@ -13,6 +13,7 @@ from backend.app.agents.runtime import (
     hybrid_search,
     pin_playbook,
     request_more_symptoms,
+    runbook_fallback,
     save_playbook_session,
     session_load,
     template_answer_from_hits,
@@ -40,6 +41,9 @@ def _after_extract(state: dict[str, Any]) -> str:
 def _after_pin(state: dict[str, Any]) -> str:
     if state.get("active_playbook_id"):
         return "execute"
+    confidence = float(state.get("retrieval_confidence") or 0.0)
+    if confidence < 0.35:
+        return "runbook_fallback"
     return "ask_more"
 
 
@@ -90,6 +94,7 @@ def build_playbook_graph():
     graph.add_node("branch_clarification", apply_branch_answer)
     graph.add_node("pick_candidate", apply_candidate_selection)
     graph.add_node("request_more_symptoms", request_more_symptoms)
+    graph.add_node("runbook_fallback", runbook_fallback)
     graph.add_node("session_save", session_save_node)
     graph.set_entry_point("session_load")
     graph.add_conditional_edges(
@@ -110,7 +115,11 @@ def build_playbook_graph():
     graph.add_conditional_edges(
         "playbook_retrieve",
         _after_pin,
-        {"execute": "playbook_execute", "ask_more": "request_more_symptoms"},
+        {
+            "execute": "playbook_execute",
+            "ask_more": "request_more_symptoms",
+            "runbook_fallback": "runbook_fallback",
+        },
     )
     graph.add_conditional_edges(
         "pick_candidate",
@@ -128,6 +137,7 @@ def build_playbook_graph():
         },
     )
     graph.add_edge("request_more_symptoms", "session_save")
+    graph.add_edge("runbook_fallback", "session_save")
     graph.add_edge("session_save", END)
     return graph.compile()
 
@@ -138,7 +148,7 @@ def build_retrieve_graph():
     graph.add_node("search", lambda state: hybrid_search(
         state,
         record_types=set(state.get("record_types") or []),
-        top_k=int(state.get("top_k") or 5),
+        top_k=int(state.get("top_k") or 8),
     ))
     graph.add_node("respond", template_answer_from_hits)
     graph.set_entry_point("embed")

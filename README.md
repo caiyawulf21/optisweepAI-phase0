@@ -2,7 +2,7 @@
 
 > **Playbook runtime (implemented):** Cosmos-backed playbook orchestration + retrieval chatbot.  
 > Start here: [`docs/PLAYBOOK_RUNTIME.md`](docs/PLAYBOOK_RUNTIME.md) · UI: `streamlit run ui/Home.py` · API: `uvicorn backend.app.main:app`  
-> Site ops: [UPS – Haslet TX](https://fortna.atlassian.net/wiki/spaces/DS/pages/3064266909/UPS+-+Haslet+TX) (VPN, servers, site info) · Brand: [fortna.com](https://www.fortna.com/)
+> Site ops: [UPS – Haslet TX](https://fortna.atlassian.net/wiki/spaces/DS/pages/3064266909/UPS+-+Haslet+TX) (VPN, servers, site info)
 
 This repository is the **Optisweep AI Support Assistant** runtime: a bounded FastAPI + LangGraph app for guided incident troubleshooting and corpus search.
 
@@ -22,12 +22,12 @@ Full architecture: [`docs/PLAYBOOK_RUNTIME.md`](docs/PLAYBOOK_RUNTIME.md)
 ## How it works today
 
 1. **Turn 1** — keyword symptom extraction from the published Cosmos `gate_phrase_table` (symptom keys + phrases for the active publish; local YAML is fallback only). Optional LLM overlay when `ENABLE_LLM_SYMPTOM_EXTRACTION=true`. Symptoms are observations only — not root-cause / CAT labels. Session `extraction_memory` keeps prior operator symptom turns. Retrieval runs after an affirmative observed symptom **or** when operator text fully contains a multi-token phrase from a published playbook card.
-2. **Orchestrator** — single control-plane agent that routes the turn (ask symptoms / candidates / user pin). **Candidate-first (default):** after the gate opens, ranked playbook candidates are surfaced for operator selection (`SKIP_PLAYBOOK_CONFIRMATION=false`). Each candidate includes incidence id/summary and when-to-choose / entry-symptom guidance. Optional auto-pin only when `SKIP_PLAYBOOK_CONFIRMATION=true`. Auto-pin still requires hybrid rank ≥ `PLAYBOOK_MATCH_THRESHOLD` (default **0.80**) **and** entry-phrase `coverage` ≥ `PLAYBOOK_PIN_COVERAGE_THRESHOLD` (default **0.40**) so most turns stay on user validation. **Always** sets `retrieval_confidence_reason` (numbers from retrieval/pin tools). With `ENABLE_LLM_ORCHESTRATOR=true`, wording is rewritten via `prompts/agents/orchestrator/orchestrate_turn.md` from a compact briefing (no recompute of pin math).
-3. **Hybrid score** — `0.7×cosine + 0.3×jaccard`, then `max` with lexical boosts: playbook symptom overlap, and for runbooks/context a **title/id/head coverage** boost (with light service↔software query expansion). Query embeddings must match Cosmos (`text-embedding-3-small`); do **not** set `LOCAL_EMBEDDINGS_MODEL` against Azure-published vectors. Trace shows `cosine` / `jaccard` / `symptom` / `coverage` / `combined` separately.
+2. **Orchestrator** — single control-plane agent that routes the turn (ask symptoms / candidates / user pin). **Candidate-first (default):** after the gate opens, ranked playbook candidates are surfaced for operator selection (`SKIP_PLAYBOOK_CONFIRMATION=false`). Each candidate includes incidence id/summary and when-to-choose / entry-symptom guidance. Optional auto-pin only when `SKIP_PLAYBOOK_CONFIRMATION=true`. Auto-pin requires hybrid rank ≥ `PLAYBOOK_MATCH_THRESHOLD` (default **0.55**) **and** entry-phrase `coverage` ≥ `PLAYBOOK_PIN_COVERAGE_THRESHOLD` (default **0.25**). Weak playbook rank (`< ~0.35`) routes to runbook fallback. **Always** sets `retrieval_confidence_reason` (numbers from retrieval/pin tools). With `ENABLE_LLM_ORCHESTRATOR=true`, wording is rewritten via `prompts/agents/orchestrator/orchestrate_turn.md` from a compact briefing (no recompute of pin math).
+3. **Hybrid score** — `0.7×cosine + 0.3×jaccard`, then `max` with playbook symptom overlap (`0.70×best_phrase + 0.30×phrase_coverage`) and for runbooks/context a **title/id/head coverage** boost. Phrase coverage = matched entry phrases / total phrases so a single exact example is high (~0.79) not 1.0. Query embeddings must match Cosmos (`text-embedding-3-small`). Trace shows `cosine` / `jaccard` / `symptom` / `coverage` / `combined` separately.
 4. **Signals** — API returns only affirmative observed signals (not a padded False CAT-1 dictionary).
-5. **Turn 2+** — after the operator selects a playbook, load playbook node + linked runbook by ID (no vector search). Free-text branch replies are classified as **match** (advance), **retriage** (clear pin and re-run retrieval), or **probe** (ask one clarifying question).
+5. **Turn 2+** — after the operator selects a playbook, load playbook node + **all** linked runbooks by ID (no vector search; primary remains `workflow_state.runbook`, full list in `workflow_state.runbooks`). The Guided Troubleshoot panel renders node **objective**, **audience**, **action**, **suggested database checks** (table view from `technical_field_mapping`, with `query_mode` as a caption when present), **runbook links**, **evidence to collect**, **source evidence**, and richer healthy/unhealthy/inconclusive criteria (from indicator lists when published). Free-text branch replies are classified as **match** (advance), **retriage** (clear pin and re-run retrieval), or **probe** (ask one clarifying question).
 6. **Images** — embedded in runbook steps via `screens_or_images` only (no case-wide dump).
-7. **`/retrieve`** — multi-turn search chat with LangChain memory (`InMemoryChatMessageHistory` + `trim_messages`, sticky intent slots). Searches published Cosmos embeddings including operational-context `rag_record` vectors. Composes cited chatbot answers without dumping full prior transcripts into the prompt.
+7. **`/retrieve`** — multi-turn search chat with LangChain memory (`InMemoryChatMessageHistory` + `trim_messages`, sticky intent slots). Searches published Cosmos embeddings including operational-context `rag_record` vectors. Accepts optional compact `search_context` (active playbook/node/symptoms) to rewrite the retrieval query without mutating workflow state. Response may include `workflow_relevance.possible_state_update` for an explicit user-confirmed bridge only. Composes cited chatbot answers without dumping full prior transcripts into the prompt.
 
 ### Agent architecture (lean)
 
@@ -186,9 +186,9 @@ Post-deployment smoke:
 | Playbook runtime | `streamlit run ui/Home.py` |
 | Legacy alias | `streamlit run ui/streamlit_app.py` (forwards to Home) |
 
-Theme: Fortna brand (black header, `#2B5CFF` primary, light content) via `.streamlit/config.toml` + `ui/branding.py`. Home links [FORTNA](https://www.fortna.com/) and [UPS – Haslet TX](https://fortna.atlassian.net/wiki/spaces/DS/pages/3064266909/UPS+-+Haslet+TX).
+Theme: Fortna brand (black header + logo, OptiSweep system hero on Home, `#2B5CFF` primary) via `.streamlit/config.toml` + `ui/branding.py` + `ui/static/`. Home links [UPS – Haslet TX](https://fortna.atlassian.net/wiki/spaces/DS/pages/3064266909/UPS+-+Haslet+TX).
 
-Tabs on Guided Troubleshoot: **Conversation · Turns · Playbook/Runbook · Trace**. Conversation expands the active playbook with scannable node evidence criteria and the linked runbook (collapsed, with step images when available). Branch choices show a **short evidence strip** above thin color-coded healthy / unhealthy / inconclusive buttons (criteria from playbook outcomes / `expected_or_observed_result`). Exact button clicks are deterministic (no branch/orchestrator LLM); free-text retriage keeps `observed_signals` + `path_evidence` and may call orchestrator with a lean working-memory packet. The sidebar shows an Active playbook card (title, id, current node). Retrieval confidence uses matched Cosmos vector dims, query-token symptom coverage, and symptom cards.
+Tabs on Guided Troubleshoot: **Conversation · Turns · Playbook/Runbook · Trace**. Conversation is a dual pane — playbook on the left, contextual **Search Chat** on the right (sidebar toggle to collapse). Search Chat calls `POST /retrieve` with a separate `{session}-search` id and compact `search_context`; it never advances playbook nodes unless the operator confirms **Use this result in current troubleshooting step**. Search always includes the Azure **`operational_context`** container (reserved hit slots + answer grounding), and hit panels render related **playbooks** and **runbooks** (with preview images when useful). Conversation expands the active playbook with scannable node evidence criteria and the linked runbook(s) (collapsed, with step images when available; section-colored runbook panels). Branch choices show a **short evidence strip** above thin color-coded healthy / unhealthy / inconclusive buttons (criteria from playbook outcomes / `expected_or_observed_result`). Exact button clicks are deterministic (no branch/orchestrator LLM); free-text retriage keeps `observed_signals` + `path_evidence` and may call orchestrator with a lean working-memory packet. The sidebar shows an Active playbook card (title, id, current node). Retrieval confidence uses matched Cosmos vector dims, query-token symptom coverage, and symptom cards.
 
 ---
 
@@ -1565,74 +1565,9 @@ Outputs:
 
 ### Azure AI Search Strategy
 
-The repository ships two parallel Azure AI Search surfaces:
-
-Phase 0 canonical-layer index (used by the existing canonical ingestion
-audits):
-
-- `backend/app/search/index_schema.py`: index schema with searchable
-text, filterable metadata, facetable fields, and vector field
-configuration. Default index name `idx-optisweep-phase0-knowledge`
-(env `AZURE_SEARCH_INDEX_NAME`).
-- `backend/app/search/index_documents.py`: maps approved Cosmos-style
-records into search documents for the Phase 0 index.
-- `backend/app/scripts/create_search_index.py` and
-`backend/app/scripts/sync_canonical_to_search.py`: provision /
-preview the Phase 0 index and sync the canonical layer.
-
-Phase 1 runtime index (used by the `/troubleshoot` retrieval hot path
-when `RETRIEVAL_BACKEND=azure_search`):
-
-- `backend/app/search/phase1_index_schema.py`: dedicated runtime
-schema (`optisweep-support-knowledge-dev`) with the 14 required
-fields `id, container_id, record_type, incident_id, workflow_id, procedure_id, issue_category, component, site, source_type, source_refs, validation_status, retrieval_text, content_vector`
-and a HNSW vector profile (`phase1-vector-profile`, dimensions from
-`AZURE_SEARCH_VECTOR_DIMENSIONS`). The `content_vector` field is
-defined but not populated in Phase 1; embedding generation lands in
-a later step.
-- `backend/app/seed/phase1_search_documents.py`: per-container mappers
-that emit deterministic, sha-prefixed, globally-unique search
-documents from the same Phase 0 datasets the Cosmos seed consumes.
-Citations are preserved via `source_refs` (collected from
-`source_ref`, `source_refs`, `source_file`,
-`source_artifact_ids`, `source_artifact_paths`, `evidence_refs`).
-Searchable text concatenates `retrieval_text`, `symptom_summary`,
-`observed_signals` / `observed_failure_signals`,
-`root_cause_summary` / `candidate_inferred_causes`,
-`resolution_summary`, `resolution_steps`, `escalation_notes`, plus
-`content`/`event_summary`/`title` fallbacks for non-incident
-containers.
-- `scripts/sync_phase1_search_index.py`: dry-run by default (writes
-per-container manifests under `output/phase1_search_sync/` plus
-`phase1_search_index_manifest.json`). `--apply` requires
-`AZURE_SEARCH_ENDPOINT` + `AZURE_SEARCH_KEY`, calls
-`create_or_update_index(build_phase1_search_index(...))`, then
-batched `client.upload_documents`. Idempotent because document IDs
-are deterministic.
-
-Runtime retrieval clients live in
-`backend/app/services/azure_search_client.py`:
-
-- `LocalCat1RetrievalClient` continues to power
-`RETRIEVAL_BACKEND=local` (the default).
-- `AzureSearchRetrievalClient` powers `RETRIEVAL_BACKEND=azure_search`:
-lazy-builds `SearchClient` against
-`optisweep-support-knowledge-dev` (overridable), defaults to a
-`issue_category eq 'CAT-1'` filter, normalizes `@search.score`
-into a 0..1 confidence, maps hits into the same `RetrievalResult` +
-`Citation` shape the rest of the graph consumes, and returns an
-empty list on transport failures so the hot path can never crash a
-session.
-- `build_runtime_retrieval_client(settings)` picks the right client
-from `AppSettings.retrieval_backend`; `retrieval_node` calls this
-factory by default and accepts an optional `client=` injection seam
-for tests.
-
-Still deferred to later Phase 1 steps:
-
-- Hybrid ranking (BM25 + vector).
-- Vector embedding generation for `content_vector`.
-- Chunk-level citation expansion.
+**Deleted.** Runtime retrieval is Cosmos-published embeddings + in-memory
+hybrid scoring only (`RETRIEVAL_BACKEND=cosmos|stub`). Do not reintroduce
+Azure AI Search clients or index seed scripts.
 
 ## Escalation Architecture
 
@@ -2299,36 +2234,16 @@ Seed local datasets:
 python -m backend.app.seed.seed_local_datasets --data-root data --dry-run
 ```
 
-### Create Or Sync Azure AI Search
+### Azure AI Search (deleted)
 
-Preview index:
-
-```powershell
-python -m backend.app.scripts.create_search_index --dry-run
-```
-
-Create index:
-
-```powershell
-python -m backend.app.scripts.create_search_index
-```
-
-Preview sync from Cosmos to Search:
-
-```powershell
-python -m backend.app.scripts.sync_cosmos_to_search --dry-run
-```
+Azure AI Search clients and seed scripts were removed. Retrieval is Cosmos
+embeddings + in-memory hybrid scoring only (`RETRIEVAL_BACKEND=cosmos`).
 
 ### Add A Runtime Workflow
 
-1. Add a YAML file under `data/workflows/`.
-2. Use observable symptoms in the workflow name.
-3. Set `required_signals` to known signal names.
-4. Set `minimum_confidence` conservatively.
-5. Mark `status` as `draft` until reviewed.
-6. Include evidence references for workflow and step authority.
-7. Add or update tests for routing and status filtering.
-8. Update this README if runtime behavior, maturity, or scope changes.
+Playbook workflows are published to Cosmos by ingestion (not local YAML).
+Update playbooks via the ingestion Stage 5/8/11 pipeline, then reload the app
+corpus for the new `PUBLISH_VERSION_ID`.
 
 ### Add Retrieval Evidence
 

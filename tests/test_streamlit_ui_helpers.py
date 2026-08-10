@@ -237,19 +237,15 @@ def test_latest_observed_signals_prefers_observed_only_response_field():
     }
 
 
-def test_latest_observed_signals_uses_dynamic_runtime_state_first():
+def test_latest_observed_signals_uses_workflow_state_observed_signals():
     response = {
         "extracted_observed_signals": {"no_rms_alarm": True},
         "workflow_state": {
-            "dynamic_procedure_step": {
-                "observed_signals": {"hospital_tote_removal_hangs": True},
-                "produced_signals": {"agvs_stopped": False},
-            }
+            "observed_signals": {"hospital_tote_removal_hangs": True},
         },
     }
 
     assert latest_observed_signals_from_response(response) == {
-        "agvs_stopped": False,
         "hospital_tote_removal_hangs": True,
     }
 
@@ -265,7 +261,7 @@ def test_latest_observed_signals_uses_dynamic_runtime_state_first():
         ("answer", "answer"),
         ("guided_question", "guided_question"),
         ("workflow_step", "workflow_step"),
-        ("dynamic_procedure_step", "dynamic_procedure_step"),
+        ("playbook_candidates", "guided_question"),
         ("escalation", "escalation"),
         ("terminal", "terminal"),
     ],
@@ -340,19 +336,14 @@ def test_derive_progress_label_strips_whitespace():
 # ---------------------------------------------------------------------------
 
 
-def test_should_show_procedure_guidance_banner_returns_true_only_for_dynamic_mode():
-    assert should_show_procedure_guidance_banner("dynamic_procedure_guidance") is True
+def test_should_show_procedure_guidance_banner_always_false():
+    assert should_show_procedure_guidance_banner("dynamic_procedure_guidance") is False
     assert should_show_procedure_guidance_banner("canonical_workflow") is False
-    assert should_show_procedure_guidance_banner("retrieval_only") is False
-    assert should_show_procedure_guidance_banner("escalation") is False
     assert should_show_procedure_guidance_banner(None) is False
-    assert should_show_procedure_guidance_banner("") is False
 
 
-def test_procedure_guidance_banner_constant_is_user_visible_warning():
-    assert "approved workflow" in PROCEDURE_GUIDANCE_BANNER.lower() or (
-        "not an approved" in PROCEDURE_GUIDANCE_BANNER.lower()
-    )
+def test_procedure_guidance_banner_constant_is_retired():
+    assert PROCEDURE_GUIDANCE_BANNER == ""
 
 
 # ---------------------------------------------------------------------------
@@ -360,42 +351,21 @@ def test_procedure_guidance_banner_constant_is_user_visible_warning():
 # ---------------------------------------------------------------------------
 
 
-def test_derive_dynamic_path_progress_renders_step_and_procedure_count():
-    label = derive_dynamic_path_progress(
-        {
-            "dynamic_path_progress": {
-                "procedure_count": 2,
-                "step_count": 5,
-                "current_step_index": 1,
-                "current_procedure_id": "proc_a",
-                "validation_status": "runtime_generated_unapproved",
+def test_derive_dynamic_path_progress_retired():
+    assert (
+        derive_dynamic_path_progress(
+            {
+                "dynamic_path_progress": {
+                    "procedure_count": 2,
+                    "step_count": 5,
+                    "current_step_index": 1,
+                }
             }
-        }
+        )
+        is None
     )
-    assert label is not None
-    assert label.startswith("Step")
-    assert "5" in label
-    assert "2 procedure" in label
-
-
-def test_derive_dynamic_path_progress_returns_none_when_missing():
     assert derive_dynamic_path_progress(None) is None
     assert derive_dynamic_path_progress({}) is None
-    assert derive_dynamic_path_progress({"dynamic_path_progress": None}) is None
-
-
-def test_derive_dynamic_path_progress_handles_zero_steps():
-    label = derive_dynamic_path_progress(
-        {
-            "dynamic_path_progress": {
-                "procedure_count": 0,
-                "step_count": 0,
-                "current_step_index": 0,
-            }
-        }
-    )
-    # Zero steps still emits a deterministic label (empty path).
-    assert label is None or "0" in label or "Step" in label
 
 
 # ---------------------------------------------------------------------------
@@ -422,7 +392,7 @@ def test_derive_recommended_next_step_prefers_rendered_procedure_title():
 
 def test_derive_recommended_next_step_falls_back_to_instruction():
     payload = {
-        "dynamic_procedure_step": {
+        "workflow_step": {
             "instruction": "Open Windows Services on the target WCS host."
         }
     }
@@ -432,35 +402,30 @@ def test_derive_recommended_next_step_falls_back_to_instruction():
     )
 
 
-def test_select_confidence_value_prefers_dynamic_step_confidence():
+def test_select_confidence_value_uses_retrieval_confidence():
     payload = {
-        "canonical_coverage_ratio": 0.6,
-        "dynamic_procedure_step": {"confidence": 0.82},
+        "retrieval_confidence": 0.82,
         "runtime_trace": {"retrieval": {"top_confidence": 0.9}},
     }
     assert select_confidence_value(payload) == {
-        "source": "procedure confidence",
+        "source": "retrieval confidence",
         "confidence": 0.82,
     }
 
 
-def test_select_confidence_value_uses_routing_score_when_needed():
+def test_select_confidence_value_falls_back_to_runtime_trace_retrieval():
     payload = {
-        "runtime_trace": {
-            "routing": {
-                "dynamic_procedure_routing_diagnostics": {"top_score": 0.77}
-            }
-        }
+        "runtime_trace": {"retrieval": {"top_confidence": 0.77}},
     }
     assert select_confidence_value(payload) == {
-        "source": "dynamic procedure score",
+        "source": "retrieval confidence",
         "confidence": 0.77,
     }
 
 
 def test_accept_recommendation_requires_confidence_and_support_safe_yes():
     payload = {
-        "canonical_coverage_ratio": 0.91,
+        "retrieval_confidence": 0.91,
         "workflow_step": {
             "support_safe": True,
             "allowed_answers": ["yes", "no"],
@@ -471,11 +436,11 @@ def test_accept_recommendation_requires_confidence_and_support_safe_yes():
 
 def test_accept_recommendation_blocks_low_confidence_and_engineer_only():
     low_confidence = {
-        "canonical_coverage_ratio": 0.5,
+        "retrieval_confidence": 0.5,
         "workflow_step": {"support_safe": True, "allowed_answers": ["yes"]},
     }
     engineer_only = {
-        "canonical_coverage_ratio": 0.95,
+        "retrieval_confidence": 0.95,
         "workflow_step": {"support_safe": False, "allowed_answers": ["yes"]},
     }
     assert accept_recommendation_value(low_confidence, threshold=0.75) is None

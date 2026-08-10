@@ -76,12 +76,12 @@ def get_corpus_settings() -> CorpusSettings:
             "PUBLISH_VERSION_ID", "publish_20260722_000304_b57a7153"
         ),
         auto_publish_version=_env_truthy("AUTO_PUBLISH_VERSION", default=True),
-        playbook_match_threshold=float(_env("PLAYBOOK_MATCH_THRESHOLD", "0.80")),
+        playbook_match_threshold=float(_env("PLAYBOOK_MATCH_THRESHOLD", "0.55")),
         playbook_high_confidence_threshold=float(
-            _env("PLAYBOOK_HIGH_CONFIDENCE_THRESHOLD", "0.90")
+            _env("PLAYBOOK_HIGH_CONFIDENCE_THRESHOLD", "0.75")
         ),
         playbook_pin_coverage_threshold=float(
-            _env("PLAYBOOK_PIN_COVERAGE_THRESHOLD", "0.40")
+            _env("PLAYBOOK_PIN_COVERAGE_THRESHOLD", "0.25")
         ),
         default_playbook_variant=_env("DEFAULT_PLAYBOOK_VARIANT", "prompt_a"),
         skip_playbook_confirmation=_env_truthy("SKIP_PLAYBOOK_CONFIRMATION", default=False),

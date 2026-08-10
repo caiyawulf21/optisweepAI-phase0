@@ -165,16 +165,13 @@ _RENDERER_NAMES: dict[str, RendererName] = {
     "case_match": "case_match",
     "guided_question": "guided_question",
     "workflow_step": "workflow_step",
-    "dynamic_procedure_step": "dynamic_procedure_step",
+    "playbook_candidates": "guided_question",
     "escalation": "escalation",
     "terminal": "terminal",
 }
 
-
-PROCEDURE_GUIDANCE_BANNER = (
-    "Procedure-guided troubleshooting — based on linked canonical "
-    "procedures and evidence, NOT an approved workflow."
-)
+# Kept for import compatibility; playbook runtime never shows this banner.
+PROCEDURE_GUIDANCE_BANNER = ""
 
 SOURCE_ARTIFACTS_PATH = Path("data/evidence/source_artifacts.json")
 CANONICAL_PROCEDURES_PATH = Path("data/normalized/canonical_procedure_dictionary.json")
@@ -281,14 +278,9 @@ def latest_observed_signals_from_response(
         runtime_step = workflow_state.get("workflow_step") or {}
         if isinstance(runtime_step, Mapping):
             latest.update(runtime_step.get("observed_signals") or {})
-        dynamic_state_step = workflow_state.get("dynamic_procedure_step") or {}
-        if isinstance(dynamic_state_step, Mapping):
-            latest.update(dynamic_state_step.get("observed_signals") or {})
-            latest.update(dynamic_state_step.get("produced_signals") or {})
-    dynamic_step = response.get("dynamic_procedure_step") or {}
-    if isinstance(dynamic_step, Mapping):
-        latest.update(dynamic_step.get("observed_signals") or {})
-        latest.update(dynamic_step.get("produced_signals") or {})
+        observed_signals = workflow_state.get("observed_signals") or {}
+        if isinstance(observed_signals, Mapping):
+            latest.update(observed_signals)
     if latest:
         return {str(key): bool(value) for key, value in latest.items()}
     observed = response.get("extracted_observed_signals") or {}
@@ -325,47 +317,17 @@ def derive_progress_label(
 def should_show_procedure_guidance_banner(
     mode: str | None,
 ) -> bool:
-    """Return True iff the dynamic procedure-guidance banner should render.
-
-    The Streamlit renderer uses this to gate the yellow "not an approved
-    workflow" banner so it only appears when the runtime is actually in
-    dynamic-guidance mode (and not, e.g., showing a canonical workflow
-    step that happens to be procedure-heavy).
-    """
-    if not isinstance(mode, str):
-        return False
-    return mode == "dynamic_procedure_guidance"
+    """Legacy DPG banner removed — always False for playbook runtime."""
+    del mode
+    return False
 
 
 def derive_dynamic_path_progress(
     payload: Mapping[str, Any] | None,
 ) -> str | None:
-    """Render dynamic path progress as ``"Step N of M (procedure i/N)"``.
-
-    Reads the top-level ``dynamic_path_progress`` dict produced by the
-    dynamic procedure-guidance node. Returns ``None`` when the dict is
-    missing / malformed so the sidebar caller can stay dumb.
-    """
-    if not payload:
-        return None
-    progress = payload.get("dynamic_path_progress")
-    if not isinstance(progress, Mapping):
-        return None
-    step_count = progress.get("step_count")
-    current_step_index = progress.get("current_step_index")
-    procedure_count = progress.get("procedure_count")
-    if not isinstance(step_count, int) or not isinstance(current_step_index, int):
-        return None
-    label = (
-        f"Step {min(current_step_index + 1, step_count)} of {step_count}"
-        if step_count > 0
-        else "Step 0"
-    )
-    if isinstance(procedure_count, int) and procedure_count > 0:
-        label += f" ({procedure_count} procedure"
-        label += "s" if procedure_count != 1 else ""
-        label += " on path)"
-    return label
+    """Legacy DPG progress helper — unused by playbook runtime."""
+    del payload
+    return None
 
 
 def derive_recommended_next_step(
@@ -404,23 +366,11 @@ def select_confidence_value(
         return None
     candidates: list[tuple[str, Any]] = []
     candidates.append(("retrieval confidence", payload.get("retrieval_confidence")))
-    dynamic_step = payload.get("dynamic_procedure_step")
-    if isinstance(dynamic_step, Mapping):
-        candidates.append(("procedure confidence", dynamic_step.get("confidence")))
-    candidates.append(("canonical coverage", payload.get("canonical_coverage_ratio")))
     runtime_trace = payload.get("runtime_trace")
     if isinstance(runtime_trace, Mapping):
-        reasoning = runtime_trace.get("workflow_reasoning")
-        if isinstance(reasoning, Mapping):
-            candidates.append(("workflow reasoning confidence", reasoning.get("llm_confidence")))
         retrieval = runtime_trace.get("retrieval")
         if isinstance(retrieval, Mapping):
             candidates.append(("retrieval confidence", retrieval.get("top_confidence")))
-        routing = runtime_trace.get("routing")
-        if isinstance(routing, Mapping):
-            diagnostics = routing.get("dynamic_procedure_routing_diagnostics")
-            if isinstance(diagnostics, Mapping):
-                candidates.append(("dynamic procedure score", diagnostics.get("top_score")))
     for source, value in candidates:
         try:
             confidence = float(value)
@@ -461,7 +411,7 @@ def accept_recommendation_value(
 
 
 def _primary_step_payload(payload: Mapping[str, Any]) -> Mapping[str, Any] | None:
-    for key in ("workflow_step", "dynamic_procedure_step", "guided_question"):
+    for key in ("workflow_step", "guided_question"):
         value = payload.get(key)
         if isinstance(value, Mapping):
             return value

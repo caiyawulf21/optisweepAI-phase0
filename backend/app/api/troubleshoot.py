@@ -6,6 +6,7 @@ from typing import Any
 from fastapi import APIRouter
 
 from backend.app.runtime.playbook_runtime import run_playbook_troubleshoot
+from backend.app.runtime.playbook_node_view import serialize_current_node
 from backend.app.agents.runtime import _branch_qualification_metrics
 from backend.app.schemas.assistant import (
     Citation,
@@ -232,6 +233,20 @@ def _build_troubleshoot_response(state: dict[str, Any]) -> TroubleshootResponse:
             role_required=None,
         )
 
+    def _serialize_runbook_step(step: dict[str, Any]) -> dict[str, Any]:
+        return {
+            "step_number": step.get("step_number"),
+            "title": step.get("title"),
+            "instruction": step.get("instruction"),
+            "expected_result": step.get("expected_result"),
+            "healthy_condition": step.get("healthy_condition"),
+            "failure_condition": step.get("failure_condition"),
+            "purpose": step.get("purpose"),
+            "stop_or_escalate_if": list(step.get("stop_or_escalate_if") or []),
+            "screens_or_images": list(step.get("screens_or_images") or []),
+            "images": list(step.get("images") or []),
+        }
+
     current_step = None
     if isinstance(runbook_step, dict) and (
         runbook_step.get("instruction") or runbook_step.get("step_number") or runbook_step.get("title")
@@ -248,24 +263,60 @@ def _build_troubleshoot_response(state: dict[str, Any]) -> TroubleshootResponse:
             "images": list(runbook_step.get("images") or []),
         }
 
-    runbook_steps = []
-    for step in list(runbook.get("steps") or []):
-        if not isinstance(step, dict):
-            continue
-        runbook_steps.append(
-            {
-                "step_number": step.get("step_number"),
-                "title": step.get("title"),
-                "instruction": step.get("instruction"),
-                "expected_result": step.get("expected_result"),
-                "healthy_condition": step.get("healthy_condition"),
-                "failure_condition": step.get("failure_condition"),
-                "purpose": step.get("purpose"),
-                "stop_or_escalate_if": list(step.get("stop_or_escalate_if") or []),
-                "screens_or_images": list(step.get("screens_or_images") or []),
-                "images": list(step.get("images") or []),
-            }
+    def _serialize_runbook(
+        payload: dict[str, Any],
+        *,
+        include_current_step: bool = False,
+    ) -> dict[str, Any]:
+        steps = [
+            _serialize_runbook_step(step)
+            for step in list(payload.get("steps") or [])
+            if isinstance(step, dict)
+        ]
+        return {
+            "procedure_id": payload.get("procedure_id"),
+            "title": payload.get("title"),
+            "summary": payload.get("summary"),
+            "when_to_use": payload.get("when_to_use"),
+            "not_for": list(payload.get("not_for") or []),
+            "safety_notes": list(payload.get("safety_notes") or []),
+            "access_or_tools_needed": list(payload.get("access_or_tools_needed") or []),
+            "role_required": payload.get("role_required") or payload.get("responsible_role"),
+            "visual_references": [
+                {
+                    "artifact_id": ref.get("artifact_id"),
+                    "description": ref.get("description"),
+                    "required_level": ref.get("required_level"),
+                }
+                for ref in list(payload.get("visual_references") or [])
+                if isinstance(ref, dict)
+            ],
+            "current_step": current_step if include_current_step else None,
+            "steps": steps,
+            "step_count": len(steps),
+        }
+
+    runbook_payloads = [
+        item
+        for item in list(state.get("runbook_payloads") or [])
+        if isinstance(item, dict)
+    ]
+    if not runbook_payloads and isinstance(runbook, dict) and (
+        runbook.get("procedure_id") or runbook.get("title") or runbook.get("steps")
+    ):
+        runbook_payloads = [runbook]
+    serialized_runbooks = [
+        _serialize_runbook(item, include_current_step=(index == 0))
+        for index, item in enumerate(runbook_payloads)
+    ]
+    primary_runbook = (
+        serialized_runbooks[0]
+        if serialized_runbooks
+        else _serialize_runbook(
+            runbook if isinstance(runbook, dict) else {},
+            include_current_step=True,
         )
+    )
 
     current_node = state.get("current_node_payload")
     if not isinstance(current_node, dict) or not current_node:
@@ -320,41 +371,12 @@ def _build_troubleshoot_response(state: dict[str, Any]) -> TroubleshootResponse:
             "playbook_candidates": list(state.get("playbook_candidates") or []),
             "correlated_symptoms": list(state.get("correlated_symptoms") or []),
             "path_evidence": list(state.get("path_evidence") or []),
-            "current_node": {
-                "node_id": current_node.get("node_id"),
-                "node_order": current_node.get("node_order"),
-                "node_type": current_node.get("node_type"),
-                "title": current_node.get("title"),
-                "intent": current_node.get("intent") or current_node.get("goal"),
-                "expected_or_observed_result": current_node.get("expected_or_observed_result"),
-                "stop_or_escalation_note": current_node.get("stop_or_escalation_note"),
-                "allowed_roles": list(current_node.get("allowed_roles") or []),
-                "branch_qualification_metrics": branch_metrics,
-            }
-            if current_node
-            else None,
-            "runbook": {
-                "procedure_id": runbook.get("procedure_id"),
-                "title": runbook.get("title"),
-                "summary": runbook.get("summary"),
-                "when_to_use": runbook.get("when_to_use"),
-                "not_for": list(runbook.get("not_for") or []),
-                "safety_notes": list(runbook.get("safety_notes") or []),
-                "access_or_tools_needed": list(runbook.get("access_or_tools_needed") or []),
-                "role_required": runbook.get("role_required") or runbook.get("responsible_role"),
-                "visual_references": [
-                    {
-                        "artifact_id": ref.get("artifact_id"),
-                        "description": ref.get("description"),
-                        "required_level": ref.get("required_level"),
-                    }
-                    for ref in list(runbook.get("visual_references") or [])
-                    if isinstance(ref, dict)
-                ],
-                "current_step": current_step,
-                "steps": runbook_steps,
-                "step_count": len(runbook_steps),
-            },
+            "current_node": serialize_current_node(
+                current_node if isinstance(current_node, dict) else {},
+                branch_metrics=branch_metrics,
+            ),
+            "runbook": primary_runbook,
+            "runbooks": serialized_runbooks,
         },
         runtime_trace=dict(state.get("runtime_trace") or {}),
     )

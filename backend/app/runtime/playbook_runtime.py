@@ -20,26 +20,34 @@ _DEFAULT_RETRIEVE_TYPES = (
     "playbook_prompt_a",
     "playbook_prompt_b",
 )
+_REQUIRED_RETRIEVE_TYPES = ("operational_context",)
 
 
 def resolve_retrieve_record_types(record_types: list[str] | None) -> list[str]:
-    """Use caller filter when provided; otherwise search every embedded type in Azure/Cosmos."""
+    """Resolve `/retrieve` types and always keep operational_context searchable."""
     requested = [str(item).strip() for item in (record_types or []) if str(item).strip()]
+    resolved: list[str] = []
     if requested:
-        return requested
-    try:
-        types = sorted(
-            {
-                str(item.record_type).strip()
-                for item in get_corpus_index().embeddings
-                if str(item.record_type or "").strip()
-            }
-        )
-        if types:
-            return types
-    except Exception:
-        pass
-    return list(_DEFAULT_RETRIEVE_TYPES)
+        resolved = list(dict.fromkeys(requested))
+    else:
+        try:
+            types = sorted(
+                {
+                    str(item.record_type).strip()
+                    for item in get_corpus_index().embeddings
+                    if str(item.record_type or "").strip()
+                }
+            )
+            if types:
+                resolved = types
+        except Exception:
+            resolved = []
+        if not resolved:
+            resolved = list(_DEFAULT_RETRIEVE_TYPES)
+    for required in _REQUIRED_RETRIEVE_TYPES:
+        if required not in resolved:
+            resolved.append(required)
+    return resolved
 
 
 _playbook_graph_compiled = None
@@ -94,13 +102,21 @@ def run_retrieve_chat(
     session_id: str | None = None,
     playbook_variant: str | None = None,
     record_types: list[str] | None = None,
-    top_k: int = 5,
+    top_k: int = 8,
     prior_turns: list[dict[str, Any]] | None = None,
     commit_user_turn: bool = True,
+    search_context: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    from backend.app.services.search_context import (
+        build_contextual_retrieval_query,
+        compact_search_context,
+        search_context_trace_fields,
+    )
+
     settings = get_corpus_settings()
     resolved_types = resolve_retrieve_record_types(record_types)
     sid = str(session_id or "").strip()
+    compact_context = compact_search_context(search_context)
 
     memory: RetrieveMemoryPacket
     if prior_turns is not None and not sid:
@@ -134,9 +150,12 @@ def run_retrieve_chat(
         memory = build_retrieve_memory_packet(sid, query, hydrate=True)
 
     intent = memory.resolved_intent
+    rewritten = build_contextual_retrieval_query(query, compact_context)
     state = {
         "session_id": sid,
         "user_message": query,
+        "retrieval_query_override": rewritten if rewritten != query else None,
+        "search_context": compact_context,
         "conversation_history": memory.synth_turns,
         "retrieve_memory_hints": memory.retrieval_hints,
         "retrieve_intent": intent,
@@ -151,6 +170,8 @@ def run_retrieve_chat(
             "memory_messages": memory.message_count,
             "memory_trimmed": memory.trimmed_message_count,
             "memory_hints": list(memory.retrieval_hints),
+            **search_context_trace_fields(compact_context),
+            "retrieval_query_rewritten": rewritten if rewritten != query else None,
         },
         "surface": "retrieve",
     }
@@ -162,7 +183,11 @@ def run_retrieve_chat(
     result["runtime_trace"]["retrieve_intent"] = intent
     result["runtime_trace"]["memory_messages"] = memory.message_count
     result["runtime_trace"]["memory_trimmed"] = memory.trimmed_message_count
+    result["runtime_trace"].update(search_context_trace_fields(compact_context))
+    if rewritten != query:
+        result["runtime_trace"]["retrieval_query_rewritten"] = rewritten
     result["retrieve_intent"] = intent
+    result["search_context"] = compact_context
     return result
 
 

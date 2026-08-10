@@ -134,11 +134,25 @@ def get_runbook(procedure_id: str) -> dict:
 @router.get("/playbooks/{playbook_id}/nodes/{node_id}/runbook")
 def get_node_runbook(playbook_id: str, node_id: str, variant: str = Query(default="prompt_a")) -> dict:
     client = get_corpus_client()
-    procedure_id = client.resolve_runbook_for_node(playbook_id, node_id)
-    runbook = client.get_runbook(procedure_id) if procedure_id else None
+    playbook = client.get_playbook(playbook_id, variant=variant)
+    procedure_ids = client.resolve_runbooks_for_node(
+        playbook_id,
+        node_id,
+        playbook,
+    )
+    runbooks = []
+    for procedure_id in procedure_ids:
+        loaded = client.get_runbook(procedure_id)
+        if isinstance(loaded, dict) and loaded:
+            runbooks.append(loaded)
+        else:
+            runbooks.append({"procedure_id": procedure_id})
+    procedure_id = procedure_ids[0] if procedure_ids else None
     return {
         "playbook_id": playbook_id,
         "node_id": node_id,
         "procedure_id": procedure_id,
-        "runbook": runbook,
+        "procedure_ids": procedure_ids,
+        "runbook": runbooks[0] if runbooks else None,
+        "runbooks": runbooks,
     }

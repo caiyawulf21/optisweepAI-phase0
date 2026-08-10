@@ -50,12 +50,12 @@ best_phrase = max(
     phrase_containment(query, phrase),
     token_jaccard(query, phrase),
 ) for phrase in symptoms + examples
-coverage    = matched_query_tokens / query_tokens   # tokens covered by any entry phrase
+coverage    = matched_entry_phrases / total_entry_phrases  # any token overlap
 symptom     = 0.70 * best_phrase + 0.30 * coverage
 combined    = max(combined, symptom)
 ```
 
-Example: `"agvs stopped"` vs stoppage card with one exact example → `best≈1.0`, query-token `coverage` depends on how many query tokens the card covers → `symptom` high (often 0.79–1.0). `"AGVs stopped, no RMS alarms"` still gets `best≈1.0` from the short entry phrase; unmatched RMS tokens damp coverage so confidence stays high but not perfect.
+Example: `"agvs stopped"` vs stoppage card with one exact example among ~13 entry phrases → `best≈1.0`, `coverage≈0.3` → `symptom≈0.79` (high, not 1.0). `"AGVs stopped, no RMS alarms"` still gets `best≈1.0` from containment on the short entry phrase; phrase-fraction coverage keeps confidence high but not perfect.
 
 Hybrid / symptom is a **rank** among candidates. It is not by itself permission to auto-pin.
 
@@ -99,12 +99,12 @@ Keep two notions of confidence separate:
 
 | Band / gate | Value | Behavior |
 |-------------|-------|----------|
-| Weak / ask | `< ~0.35` | Ask for correlated symptoms; optional weak related list |
-| Candidates only | `~0.35–0.80` | Show candidates; user picks — no auto-pin (default path) |
-| `PLAYBOOK_MATCH_THRESHOLD` | `0.80` | Eligible for pin **only with coverage** (below) |
-| `PLAYBOOK_HIGH_CONFIDENCE_THRESHOLD` | `0.90` | High-confidence band when coverage also passes |
-| `PLAYBOOK_PIN_COVERAGE_THRESHOLD` | `0.40` | Entry-phrase coverage floor for pin eligibility |
-| Runbook fallback `min_score` | `0.35` | When no playbook matches |
+| Weak / runbook fallback | `< ~0.35` | Search runbook embeddings; ask for more symptoms |
+| Candidates only | `~0.35–0.55` | Show candidates; user picks — no auto-pin (default path) |
+| `PLAYBOOK_MATCH_THRESHOLD` | `0.55` | Eligible for pin **only with coverage** (below) |
+| `PLAYBOOK_HIGH_CONFIDENCE_THRESHOLD` | `0.75` | High-confidence band when coverage also passes |
+| `PLAYBOOK_PIN_COVERAGE_THRESHOLD` | `0.25` | Entry-phrase coverage floor for pin eligibility |
+| Runbook fallback `min_score` | `0.35` | When playbook rank is weak |
 
 ### Pin vs rank (no fake boosts)
 
@@ -114,8 +114,7 @@ Do treat hybrid as rank, and gate auto-pin on entry-phrase coverage:
 
 ```python
 coverage = matched_entry_phrases / total_entry_phrases
-# or: fraction of query tokens covered by the entry card bag
-auto_pin = hybrid >= 0.80 and coverage >= 0.40   # floor is tunable
+auto_pin = hybrid >= 0.55 and coverage >= 0.25   # floor is tunable
 # OR user explicitly selects a candidate
 ```
 

@@ -66,7 +66,7 @@ def test_enriched_paraphrase_with_stopped_signal_stays_high() -> None:
     assert symptom >= 0.75
 
 
-def test_short_query_coverage_is_query_token_based() -> None:
+def test_short_query_coverage_is_phrase_fraction() -> None:
     symptoms = [
         "Site reports that nothing is moving.",
         "Robotic system is reported as not responding.",
@@ -75,10 +75,21 @@ def test_short_query_coverage_is_query_token_based() -> None:
         "HMI or RMS appears abnormal.",
         "AGVs are reported out of sync after stoppage.",
     ]
-    examples: list[str] = []
-    coverage = entry_phrase_coverage("agvs are stopped", symptoms, examples)
-    # Query tokens agvs/are/stopped: agvs+are covered by AGV symptom (~2/3).
-    assert coverage >= 0.50
+    examples = [
+        "Nothing is moving.",
+        "AGVs stopped",
+        "robots stopped",
+        "nothing is moving",
+        "AGVs are stopped",
+        "small sort is down",
+        "hospital tote issue",
+    ]
+    coverage = entry_phrase_coverage("agvs stopped", symptoms, examples)
+    symptom = symptom_overlap_score("agvs stopped", symptoms, examples)
+    # Sparse exact example: high symptom, coverage ~matched phrases / total (not 1.0).
+    assert 0.25 <= coverage < 0.50
+    assert 0.70 <= symptom < 1.0
+    assert abs(symptom - (0.70 * 1.0 + 0.30 * coverage)) < 1e-6
 
 
 def test_mixed_embedding_dims_do_not_zero_mock_cosine() -> None:

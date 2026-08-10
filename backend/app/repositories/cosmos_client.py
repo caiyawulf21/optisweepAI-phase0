@@ -27,7 +27,7 @@ def create_containers(settings: AzureKnowledgeSettings | None = None) -> list[di
     database = cosmos_database(active_settings)
     created = []
     for definition in CONTAINERS.values():
-        if definition.name in {"retrieval_vectors", "root_cause_vectors"}:
+        if definition.name == "retrieval_vectors":
             vector_embeddings = [
                 {
                     "path": "/content_vector",

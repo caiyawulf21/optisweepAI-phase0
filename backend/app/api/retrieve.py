@@ -12,10 +12,33 @@ from backend.app.runtime.playbook_runtime import (
 )
 from backend.app.schemas.assistant import Citation
 from backend.app.services.interaction_log_service import InteractionLog, build_interaction_log_service
+from backend.app.services.search_context import (
+    compact_search_context,
+    infer_workflow_relevance,
+    search_context_trace_fields,
+)
 
 
 router = APIRouter()
 interaction_log_service = build_interaction_log_service()
+
+
+class SearchContext(BaseModel):
+    session_id: str | None = None
+    active_playbook_id: str | None = None
+    active_playbook_version: str | None = None
+    playbook_title: str | None = None
+    current_node_id: str | None = None
+    current_node_title: str | None = None
+    current_node_type: str | None = None
+    current_runbook_id: str | None = None
+    current_procedure_title: str | None = None
+    symptoms: list[str] = Field(default_factory=list)
+    observed_signals: list[str] = Field(default_factory=list)
+    components: list[str] = Field(default_factory=list)
+    systems: list[str] = Field(default_factory=list)
+    completed_nodes: list[str] = Field(default_factory=list)
+    allowed_answers: list[str] = Field(default_factory=list)
 
 
 class RetrieveRequest(BaseModel):
@@ -29,7 +52,14 @@ class RetrieveRequest(BaseModel):
             "Omit or pass [] to search all published embeddings in Cosmos."
         ),
     )
-    top_k: int = 5
+    top_k: int = 8
+    search_context: SearchContext | None = Field(
+        default=None,
+        description=(
+            "Compact active-troubleshooting context for retrieval precision. "
+            "Never mutates playbook/workflow state."
+        ),
+    )
 
 
 class RetrieveHit(BaseModel):
@@ -45,6 +75,18 @@ class RetrieveHit(BaseModel):
     coverage: float = 0.0
 
 
+class PossibleStateUpdate(BaseModel):
+    field: str
+    value: str
+    node_id: str | None = None
+    requires_user_confirmation: bool = True
+
+
+class WorkflowRelevance(BaseModel):
+    related_to_current_node: bool = False
+    possible_state_update: PossibleStateUpdate | None = None
+
+
 class RetrieveResponse(BaseModel):
     query: str
     hits: list[RetrieveHit] = Field(default_factory=list)
@@ -54,6 +96,10 @@ class RetrieveResponse(BaseModel):
     playbook_variant: str | None = None
     record_types: list[str] = Field(default_factory=list)
     corpus_source: str | None = None
+    retrieved_record_ids: list[str] = Field(default_factory=list)
+    related_runbook_ids: list[str] = Field(default_factory=list)
+    related_artifact_ids: list[str] = Field(default_factory=list)
+    workflow_relevance: WorkflowRelevance = Field(default_factory=WorkflowRelevance)
     runtime_trace: dict[str, Any] = Field(default_factory=dict)
 
 
@@ -83,12 +129,16 @@ def _hits_to_citations(hits: list[RetrieveHit]) -> list[Citation]:
 @router.post("/retrieve", response_model=RetrieveResponse)
 def retrieve(request: RetrieveRequest) -> RetrieveResponse:
     resolved_types = resolve_retrieve_record_types(request.record_types)
+    search_context = compact_search_context(
+        request.search_context.model_dump() if request.search_context else None
+    )
     state = run_retrieve_chat(
         request.query,
         session_id=request.session_id,
         playbook_variant=request.playbook_variant,
         record_types=resolved_types,
         top_k=request.top_k,
+        search_context=search_context or None,
     )
     hits = [
         RetrieveHit(
@@ -106,11 +156,42 @@ def retrieve(request: RetrieveRequest) -> RetrieveResponse:
         for item in state.get("retrieval_hits") or []
         if isinstance(item, dict)
     ]
+    hit_dicts = [hit.model_dump() for hit in hits]
+    answer = str(state.get("final_response") or "")
+    relevance_raw = infer_workflow_relevance(
+        answer=answer,
+        hits=hit_dicts,
+        search_context=search_context,
+    )
+    update_raw = relevance_raw.get("possible_state_update")
+    relevance = WorkflowRelevance(
+        related_to_current_node=bool(relevance_raw.get("related_to_current_node")),
+        possible_state_update=(
+            PossibleStateUpdate(**update_raw) if isinstance(update_raw, dict) else None
+        ),
+    )
+    related_runbook_ids = [
+        hit.source_record_id
+        for hit in hits
+        if hit.source_record_id
+        and hit.record_type in {"canonical_runbook", "incident_source_runbook"}
+    ]
+    related_artifact_ids: list[str] = []
+    for image in list(state.get("canonical_images") or []):
+        if not isinstance(image, dict):
+            continue
+        artifact_id = str(
+            image.get("artifact_id") or image.get("image_id") or image.get("id") or ""
+        ).strip()
+        if artifact_id and artifact_id not in related_artifact_ids:
+            related_artifact_ids.append(artifact_id)
     trace = dict(state.get("runtime_trace") or {})
+    trace.update(search_context_trace_fields(search_context))
+    trace["workflow_relevance"] = relevance.model_dump()
     response = RetrieveResponse(
         query=request.query,
         hits=hits,
-        answer=str(state.get("final_response") or ""),
+        answer=answer,
         citations=_hits_to_citations(hits),
         canonical_images=[
             item
@@ -120,6 +201,10 @@ def retrieve(request: RetrieveRequest) -> RetrieveResponse:
         playbook_variant=state.get("playbook_variant"),
         record_types=list(trace.get("record_types") or resolved_types),
         corpus_source=str(trace.get("corpus_source") or "") or None,
+        retrieved_record_ids=[hit.source_record_id for hit in hits if hit.source_record_id],
+        related_runbook_ids=related_runbook_ids,
+        related_artifact_ids=related_artifact_ids,
+        workflow_relevance=relevance,
         runtime_trace=trace,
     )
     if request.session_id:

@@ -117,9 +117,12 @@ Multi-turn memory uses LangChain `InMemoryChatMessageHistory` + `trim_messages`
 (max 6 messages; AI text compacted). Session slots keep sticky `resolved_intent`.
 Every turn re-searches with bounded user-hint enrichment from memory.
 Default record types: **all published embeddings** in the loaded Cosmos index
-(omit / empty `record_types`). Callers may optionally filter. Playbook hits are
-citations only. Response includes `answer`, `citations`, `corpus_source`, and
-`canonical_images` resolved from top runbook hits. Answers must cite sources.
+(omit / empty `record_types`), and **`operational_context` is always included**
+so Search can ground answers in the Azure operational-context container. Hybrid
+search reserves up to two top-k slots for operational-context hits when present.
+Callers may optionally filter other types. Playbook hits are citations plus
+expandable panels. Response includes `answer`, `citations`, `corpus_source`, and
+`canonical_images` resolved from top runbook/playbook hits. Answers must cite sources.
 
 ## Corpus
 

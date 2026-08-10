@@ -32,7 +32,7 @@ The session schema matches the build prompt exactly::
 The service does not touch the graph state directly. Phase 1 Step 10 (the
 canonical workflow runtime) and Step 11 (the runtime response contract) own
 the marshalling between :class:`WorkflowSession` and
-:class:`backend.app.graph.state.AssistantState`.
+playbook runtime session state.
 """
 from __future__ import annotations
 
@@ -456,9 +456,8 @@ class SessionService:
     * idempotent ``save``.
     * status transitions consistent with the build-prompt vocabulary.
 
-    The service deliberately does not import the graph state — Step 10 owns
-    the marshalling between :class:`WorkflowSession` and
-    :class:`AssistantState`.
+    The service deliberately does not import graph state — playbook runtime
+    owns marshalling between :class:`WorkflowSession` and session slices.
     """
 
     def __init__(self, store: SessionStore | None = None) -> None:

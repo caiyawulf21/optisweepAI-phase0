@@ -93,6 +93,18 @@ def _evidence_summary(metrics: dict[str, Any] | None, label: str) -> str:
     return str((payload or {}).get("summary") or "").strip()
 
 
+def _evidence_checks(metrics: dict[str, Any] | None, label: str) -> list[str]:
+    if not isinstance(metrics, dict):
+        return []
+    payload = metrics.get(label) if isinstance(metrics.get(label), dict) else {}
+    checks: list[str] = []
+    for item in list((payload or {}).get("checks") or []):
+        text = str(item or "").strip()
+        if text:
+            checks.append(text)
+    return checks
+
+
 def _shorten(text: str, limit: int = 110) -> str:
     value = " ".join(str(text or "").split())
     if len(value) <= limit:
@@ -107,9 +119,25 @@ def render_node_evidence_panel(metrics: dict[str, Any] | None) -> None:
     st.markdown("**Evidence criteria**")
     for label in BRANCH_ORDER:
         summary = _evidence_summary(metrics, label)
-        if not summary:
+        checks = _evidence_checks(metrics, label)
+        if not summary and not checks:
             continue
         colors = BRANCH_COLORS[label]
+        body_parts: list[str] = []
+        if summary:
+            body_parts.append(html.escape(_shorten(summary, 280)))
+        for check in checks[:4]:
+            if summary and check == summary:
+                continue
+            body_parts.append(f"• {html.escape(_shorten(check, 220))}")
+        body_html = "<br/>".join(body_parts)
+        next_title = ""
+        payload = metrics.get(label) if isinstance(metrics.get(label), dict) else {}
+        if isinstance(payload, dict) and payload.get("next_node_title"):
+            next_title = (
+                f'<div style="color:{colors["text"]};font-size:0.78rem;margin-top:0.25rem;'
+                f'opacity:0.85;">Next: {html.escape(str(payload.get("next_node_title")))}</div>'
+            )
         st.markdown(
             f"""
 <div style="
@@ -122,8 +150,9 @@ def render_node_evidence_panel(metrics: dict[str, Any] | None) -> None:
   <div style="font-weight:700;color:{colors['label']};font-size:0.8rem;
     text-transform:uppercase;letter-spacing:0.03em;">{html.escape(label)}</div>
   <div style="color:{colors['text']};font-size:0.9rem;line-height:1.35;margin-top:0.15rem;">
-    {html.escape(_shorten(summary, 180))}
+    {body_html}
   </div>
+  {next_title}
 </div>
 """,
             unsafe_allow_html=True,

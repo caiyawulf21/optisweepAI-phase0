@@ -437,6 +437,7 @@ def _clear_active_playbook(
     state["current_node_id"] = None
     state["playbook_payload"] = {}
     state["runbook_payload"] = {}
+    state["runbook_payloads"] = []
     state["runbook_step"] = {}
     state["current_node_payload"] = {}
     state["guided_question"] = None
@@ -491,6 +492,24 @@ def _branch_qualification_metrics(
         if option.get("next_node_id") and not metrics[label]["next_node_id"]:
             metrics[label]["next_node_id"] = option.get("next_node_id")
             metrics[label]["next_node_title"] = option.get("next_node_title")
+    indicator_keys = {
+        "healthy": "healthy_indicators",
+        "unhealthy": "unhealthy_indicators",
+        "inconclusive": "inconclusive_indicators",
+    }
+    for label, key in indicator_keys.items():
+        checks = [
+            str(item).strip()
+            for item in list(node.get(key) or [])
+            if str(item).strip()
+        ]
+        if checks:
+            metrics[label]["checks"] = checks
+            current = metrics[label]["summary"]
+            if not current or _is_generic_outcome_summary(current):
+                metrics[label]["summary"] = (
+                    checks[0] if len(checks) == 1 else "; ".join(checks[:2])
+                )
     expected = str(node.get("expected_or_observed_result") or "").strip()
     parsed = _parse_expected_outcome_evidence(expected)
     for label in ("healthy", "unhealthy", "inconclusive"):
@@ -507,13 +526,36 @@ def _branch_qualification_metrics(
 
 
 def _enriched_retrieval_query(state: dict[str, Any]) -> str:
-    query = str(state.get("user_message") or "").strip()
+    override = str(state.get("retrieval_query_override") or "").strip()
+    query = override or str(state.get("user_message") or "").strip()
     observed = state.get("extracted_observed_signals") or {}
     extras = [
         str(key).replace("_", " ")
         for key, value in observed.items()
         if value
     ][:8]
+    search_context = state.get("search_context") if isinstance(state.get("search_context"), dict) else {}
+    if not extras and search_context:
+        extras = [
+            str(item).replace("_", " ")
+            for item in list(search_context.get("observed_signals") or [])[:8]
+            if str(item).strip()
+        ]
+        extras.extend(
+            str(item)
+            for item in list(search_context.get("symptoms") or [])[:6]
+            if str(item).strip()
+        )
+        extras.extend(
+            str(item)
+            for item in list(search_context.get("components") or [])[:4]
+            if str(item).strip()
+        )
+        extras.extend(
+            str(item)
+            for item in list(search_context.get("systems") or [])[:4]
+            if str(item).strip()
+        )
     slice_: PlaybookSessionSlice | None = state.get("_playbook_slice")
     memory = dict((slice_.extraction_memory if slice_ is not None else None) or {})
     prior_turns = [
@@ -522,7 +564,8 @@ def _enriched_retrieval_query(state: dict[str, Any]) -> str:
         if isinstance(item, dict) and str(item.get("content") or "").strip()
     ]
     # extract_symptoms appends the current turn before retrieve; do not double-count it.
-    if prior_turns and prior_turns[-1].lower() == query.lower():
+    base_query = str(state.get("user_message") or "").strip()
+    if prior_turns and prior_turns[-1].lower() == base_query.lower():
         prior_turns = prior_turns[:-1]
     prior_text = " ".join(prior_turns[-4:])
     path_bits: list[str] = []
@@ -536,29 +579,32 @@ def _enriched_retrieval_query(state: dict[str, Any]) -> str:
             path_bits.append(f"{title} {outcome}")
         elif outcome:
             path_bits.append(outcome)
-    expansions = _retrieve_query_expansions(query, state) if state.get("surface") == "retrieve" else []
+    expansions = _retrieve_query_expansions(base_query or query, state) if state.get("surface") == "retrieve" else []
     prior_bits: list[str] = []
     if state.get("surface") == "retrieve":
         hints = list(state.get("retrieve_memory_hints") or [])
         for hint in hints[-3:]:
             text = str(hint or "").strip()
-            if text and text.lower() != query.lower():
+            if text and text.lower() != base_query.lower() and text.lower() != query.lower():
                 prior_bits.append(text)
         if not prior_bits:
             for turn in list(state.get("conversation_history") or [])[-4:]:
                 if not isinstance(turn, dict) or turn.get("role") != "user":
                     continue
                 content = str(turn.get("content") or "").strip()
-                if content and content.lower() != query.lower():
+                if content and content.lower() != base_query.lower() and content.lower() != query.lower():
                     prior_bits.append(content)
+    # When a contextual rewrite already embeds playbook/node context, avoid
+    # duplicating the original user question alongside the override.
+    seed = query if override else base_query
     parts = [
         part
         for part in [
-            query,
-            prior_text,
+            seed,
+            prior_text if not override else "",
             " ".join(prior_bits),
-            " ".join(extras),
-            " ".join(path_bits),
+            " ".join(extras) if not override else "",
+            " ".join(path_bits) if not override else "",
             " ".join(expansions),
         ]
         if part
@@ -689,17 +735,7 @@ def _resolve_step_images(
     return recovered
 
 
-def _attach_runbook_images(state: dict[str, Any]) -> None:
-    settings = get_corpus_settings()
-    runbook = state.get("runbook_payload") or {}
-    if not isinstance(runbook, dict):
-        state["canonical_images"] = []
-        return
-    if not settings.cosmos_configured:
-        state["canonical_images"] = []
-        return
-
-    lookup = build_canonical_image_lookup()
+def _enrich_runbook_step_images(runbook: dict[str, Any], lookup: Any) -> dict[str, Any]:
     steps = list(runbook.get("steps") or [])
     fallback_refs = _step_screen_refs(
         {"screens_or_images": list(runbook.get("screens_or_images") or [])}
@@ -714,8 +750,6 @@ def _attach_runbook_images(state: dict[str, Any]) -> None:
             if isinstance(ref, dict) and str(ref.get("artifact_id") or "").strip()
         ]
     enriched_steps: list[dict[str, Any]] = []
-    all_step_images: list[dict[str, Any]] = []
-    seen_ids: set[str] = set()
     for index, step in enumerate(steps):
         if not isinstance(step, dict):
             continue
@@ -750,27 +784,68 @@ def _attach_runbook_images(state: dict[str, Any]) -> None:
         step_out["screens_or_images"] = screen_refs
         step_out["images"] = images
         enriched_steps.append(step_out)
-        for image in images:
-            key = str(image.get("image_id") or "")
-            if key and key not in seen_ids:
-                seen_ids.add(key)
-                all_step_images.append(image)
+    if not enriched_steps:
+        return runbook
+    out = dict(runbook)
+    out["steps"] = enriched_steps
+    return out
 
-    if enriched_steps:
-        runbook = dict(runbook)
-        runbook["steps"] = enriched_steps
+
+def _attach_runbook_images(state: dict[str, Any]) -> None:
+    settings = get_corpus_settings()
+    runbook = state.get("runbook_payload") or {}
+    payloads = [
+        item
+        for item in list(state.get("runbook_payloads") or [])
+        if isinstance(item, dict)
+    ]
+    if not isinstance(runbook, dict):
+        state["canonical_images"] = []
+        return
+    if not settings.cosmos_configured:
+        state["canonical_images"] = []
+        return
+
+    lookup = build_canonical_image_lookup()
+    if not payloads and runbook:
+        payloads = [runbook]
+    enriched_payloads: list[dict[str, Any]] = []
+    for item in payloads:
+        enriched_payloads.append(_enrich_runbook_step_images(item, lookup))
+    if enriched_payloads:
+        state["runbook_payloads"] = enriched_payloads
+        runbook = enriched_payloads[0]
         state["runbook_payload"] = runbook
         current = state.get("runbook_step") if isinstance(state.get("runbook_step"), dict) else {}
-        if current:
+        enriched_steps = list(runbook.get("steps") or [])
+        if current and enriched_steps:
             match = next(
                 (
                     item
                     for item in enriched_steps
-                    if str(item.get("step_number")) == str(current.get("step_number"))
+                    if isinstance(item, dict)
+                    and str(item.get("step_number")) == str(current.get("step_number"))
                 ),
-                enriched_steps[0],
+                enriched_steps[0] if isinstance(enriched_steps[0], dict) else current,
             )
-            state["runbook_step"] = match
+            if isinstance(match, dict):
+                state["runbook_step"] = match
+    else:
+        enriched_steps = []
+
+    all_step_images: list[dict[str, Any]] = []
+    seen_ids: set[str] = set()
+    for item in enriched_payloads or [runbook]:
+        for step in list(item.get("steps") or []):
+            if not isinstance(step, dict):
+                continue
+            for image in list(step.get("images") or []):
+                if not isinstance(image, dict):
+                    continue
+                key = str(image.get("image_id") or "")
+                if key and key not in seen_ids:
+                    seen_ids.add(key)
+                    all_step_images.append(image)
 
     state["canonical_images"] = []
     append_agent_trace(
@@ -778,11 +853,17 @@ def _attach_runbook_images(state: dict[str, Any]) -> None:
         "image_agent",
         "resolve_step_screens",
         procedure_id=runbook.get("procedure_id"),
+        procedure_ids=[
+            str(item.get("procedure_id") or "")
+            for item in enriched_payloads
+            if str(item.get("procedure_id") or "").strip()
+        ],
         step_count=len(enriched_steps),
         image_count=len(all_step_images),
         unresolved_screen_refs=sum(
             1
             for step in enriched_steps
+            if isinstance(step, dict)
             for ref in list(step.get("screens_or_images") or [])
             if not any(
                 str(ref.get("artifact_id") or "")
@@ -1034,21 +1115,13 @@ def _candidate_from_card(
     incidence_id = str(case_id or "").strip() or None
     title = str(card.get("title") or playbook_id)
     summary = str(card.get("user_facing_summary") or "").strip()
-    incidence_summary = summary
-    if incidence_id and title:
-        incidence_summary = f"Incidence {incidence_id}: {title}"
-        if summary:
-            incidence_summary = f"{incidence_summary}. {summary}"
-    elif title:
-        incidence_summary = title
-    when_parts = []
-    if summary:
-        when_parts.append(summary)
+    incidence_summary = summary or None
     if symptoms:
-        when_parts.append("Choose when site report includes: " + "; ".join(symptoms[:6]))
+        when_to_choose = "Choose when site report includes: " + "; ".join(symptoms[:6])
     elif examples:
-        when_parts.append("Operator language like: " + "; ".join(examples[:4]))
-    when_to_choose = " ".join(when_parts).strip()
+        when_to_choose = "Operator language like: " + "; ".join(examples[:4])
+    else:
+        when_to_choose = summary
     return {
         "playbook_id": playbook_id,
         "title": title,
@@ -1165,6 +1238,7 @@ def request_more_symptoms(state: dict[str, Any]) -> dict[str, Any]:
     state["current_node_id"] = None
     state["playbook_payload"] = {}
     state["runbook_payload"] = {}
+    state["runbook_payloads"] = []
     state["runbook_step"] = {}
     state["canonical_images"] = []
 
@@ -1525,7 +1599,7 @@ def session_load(state: dict[str, Any]) -> dict[str, Any]:
 def embed_query(state: dict[str, Any]) -> dict[str, Any]:
     from backend.app.retrieval.hybrid_retriever import mock_embed
 
-    query = state.get("user_message") or ""
+    query = str(state.get("retrieval_query_override") or state.get("user_message") or "")
     index = get_corpus_index()
     target_dims = len(index.embeddings[0].vector) if index.embeddings else 1536
     models = {item.embedding_model for item in index.embeddings if item.embedding_model}
@@ -1722,17 +1796,29 @@ def hybrid_search(state: dict[str, Any], *, record_types: set[str], top_k: int =
         symptom_cards=index.symptom_cards,
     )
     query_text = _enriched_retrieval_query(state)
+    surface = str((state.get("runtime_trace") or {}).get("surface") or state.get("surface") or "")
+    reserve_by_type = (
+        {"operational_context": 2}
+        if surface == "retrieve" and "operational_context" in (record_types or set())
+        else None
+    )
     hits = retriever.search(
         query_text,
         query_vector=state.get("query_vector"),
         record_types=record_types,
         top_k=top_k,
+        reserve_by_type=reserve_by_type,
     )
     state["retrieval_hits"] = hits_to_dict(hits)
     top_hit = state["retrieval_hits"][0] if state["retrieval_hits"] else None
     top_score = float(top_hit.get("combined_score") or 0.0) if top_hit else 0.0
     state["retrieval_confidence"] = top_score
     breakdown = _score_breakdown(top_hit)
+    context_hits = [
+        hit
+        for hit in state["retrieval_hits"]
+        if str(hit.get("record_type") or "") == "operational_context"
+    ]
     append_agent_trace(
         state,
         "retrieval_agent",
@@ -1746,6 +1832,7 @@ def hybrid_search(state: dict[str, Any], *, record_types: set[str], top_k: int =
         symptom=breakdown["symptom"],
         coverage=breakdown["coverage"],
         combined=breakdown["combined"],
+        operational_context_hits=len(context_hits),
     )
     return state
 
@@ -1981,11 +2068,22 @@ def execute_playbook_node(state: dict[str, Any]) -> dict[str, Any]:
         state["final_response"] = "Playbook node not found."
         state["response_type"] = "answer"
         return state
-    procedure_id = client.resolve_runbook_for_node(playbook_id, str(node_id), playbook)
-    runbook = client.get_runbook(procedure_id) if procedure_id else None
+    procedure_ids = client.resolve_runbooks_for_node(
+        playbook_id, str(node_id), playbook
+    )
+    runbook_payloads: list[dict[str, Any]] = []
+    for procedure_id in procedure_ids:
+        loaded = client.get_runbook(procedure_id)
+        if isinstance(loaded, dict) and loaded:
+            runbook_payloads.append(loaded)
+        else:
+            runbook_payloads.append({"procedure_id": procedure_id})
+    procedure_id = procedure_ids[0] if procedure_ids else None
+    runbook = runbook_payloads[0] if runbook_payloads else None
     slice_.current_procedure_id = procedure_id
     state["playbook_payload"] = playbook
     state["runbook_payload"] = runbook or {}
+    state["runbook_payloads"] = runbook_payloads
     state["current_node_payload"] = node if isinstance(node, dict) else {}
     playbook_dict = playbook if isinstance(playbook, dict) else {}
     state["branch_qualification_metrics"] = _branch_qualification_metrics(
@@ -2321,6 +2419,7 @@ def runbook_fallback(state: dict[str, Any]) -> dict[str, Any]:
     case_id = str((top.get("filter_metadata") or {}).get("case_id") or "")
     state["active_case_id"] = case_id or state.get("active_case_id")
     state["runbook_payload"] = runbook or {}
+    state["runbook_payloads"] = [runbook] if isinstance(runbook, dict) and runbook else []
     steps = list((runbook or {}).get("steps") or [])
     step = steps[0] if steps else {}
     state["runbook_step"] = step if isinstance(step, dict) else {}
@@ -2448,13 +2547,26 @@ def _compose_template_retrieve_answer(
         lines.append(f"Based on published materials ({cite}):")
     if top_snippet:
         lines.append(top_snippet)
+    context_hits = [
+        hit
+        for hit in hits
+        if isinstance(hit, dict) and str(hit.get("record_type") or "") == "operational_context"
+    ]
     # Chatbot synthesis across top hits (avoid dumping procedure IDs alone).
     bullets: list[str] = []
-    for hit in hits[:4]:
+    seen_keys: set[str] = set()
+    ordered_hits = list(context_hits[:2]) + [
+        hit for hit in hits[:5] if isinstance(hit, dict)
+    ]
+    for hit in ordered_hits:
         if not isinstance(hit, dict):
             continue
-        title = _hit_display_title(hit)
         sid = _hit_source_id(hit)
+        key = f"{hit.get('record_type')}:{sid}:{hit.get('title')}"
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+        title = _hit_display_title(hit)
         excerpt = _clean_hit_excerpt(hit)
         if not excerpt or len(excerpt) < 20:
             continue
@@ -2463,11 +2575,16 @@ def _compose_template_retrieve_answer(
         label = f"**{title}**"
         if sid and sid != title:
             label = f"{label} (`{sid}`)"
-        bullets.append(f"- {label}: {excerpt}")
+        if str(hit.get("record_type") or "") == "operational_context":
+            bullets.append(f"- Context: {label}: {excerpt}")
+        else:
+            bullets.append(f"- {label}: {excerpt}")
+        if len(bullets) >= 4:
+            break
     if bullets:
         lines.append("")
         lines.append("Additional grounded points:")
-        lines.extend(bullets[:3])
+        lines.extend(bullets[:4])
     lines.append("")
     lines.append(_format_retrieve_sources_block(hits))
     return "\n".join(lines)
@@ -2497,7 +2614,7 @@ def _looks_like_overview_query(query: str) -> bool:
 
 
 def _attach_retrieve_hit_images(state: dict[str, Any]) -> None:
-    """Resolve reference images for top runbook hits on `/retrieve`."""
+    """Resolve reference images for top runbook/playbook hits on `/retrieve`."""
     hits = list(state.get("retrieval_hits") or [])
     images: list[dict[str, Any]] = []
     seen: set[str] = set()
@@ -2512,64 +2629,111 @@ def _attach_retrieve_hit_images(state: dict[str, Any]) -> None:
         append_agent_trace(state, "image_agent", "retrieve_images_unavailable")
         return
 
-    for hit in hits[:3]:
+    variant = str(state.get("playbook_variant") or "prompt_a").strip() or "prompt_a"
+
+    for hit in hits[:4]:
         if not isinstance(hit, dict):
             continue
-        if str(hit.get("record_type") or "") not in {
-            "canonical_runbook",
-            "incident_source_runbook",
-        }:
+        record_type = str(hit.get("record_type") or "")
+        source_id = str(hit.get("source_record_id") or "").strip()
+        if not source_id:
             continue
-        procedure_id = str(hit.get("source_record_id") or "").strip()
-        if not procedure_id:
-            continue
-        try:
-            runbook = client.get_runbook(procedure_id) or {}
-        except Exception:
-            continue
-        if not isinstance(runbook, dict) or not runbook:
-            continue
-        fallback_refs = _step_screen_refs(
-            {"screens_or_images": list(runbook.get("screens_or_images") or [])}
-        )
-        if not fallback_refs:
-            fallback_refs = [
-                {
-                    "artifact_id": str(ref.get("artifact_id") or "").strip(),
-                    "what_to_look_at": ref.get("description") or ref.get("what_to_look_at"),
-                }
-                for ref in list(runbook.get("visual_references") or [])
-                if isinstance(ref, dict) and str(ref.get("artifact_id") or "").strip()
-            ]
-        steps = [step for step in list(runbook.get("steps") or []) if isinstance(step, dict)]
-        for index, step in enumerate(steps[:2]):
-            screen_refs = _step_screen_refs(step)
-            if not screen_refs and index == 0 and fallback_refs:
-                screen_refs = list(fallback_refs)
-            step_images = _resolve_step_images(
-                lookup,
-                screen_refs=screen_refs,
-                embedded_images=list(step.get("canonical_images") or step.get("images") or []),
+        hit_title = _hit_display_title(hit)
+
+        if record_type in {"canonical_runbook", "incident_source_runbook"}:
+            try:
+                runbook = client.get_runbook(source_id) or {}
+            except Exception:
+                continue
+            if not isinstance(runbook, dict) or not runbook:
+                continue
+            fallback_refs = _step_screen_refs(
+                {"screens_or_images": list(runbook.get("screens_or_images") or [])}
             )
-            for image in step_images:
+            if not fallback_refs:
+                fallback_refs = [
+                    {
+                        "artifact_id": str(ref.get("artifact_id") or "").strip(),
+                        "what_to_look_at": ref.get("description") or ref.get("what_to_look_at"),
+                    }
+                    for ref in list(runbook.get("visual_references") or [])
+                    if isinstance(ref, dict) and str(ref.get("artifact_id") or "").strip()
+                ]
+            steps = [step for step in list(runbook.get("steps") or []) if isinstance(step, dict)]
+            for index, step in enumerate(steps[:2]):
+                screen_refs = _step_screen_refs(step)
+                if not screen_refs and index == 0 and fallback_refs:
+                    screen_refs = list(fallback_refs)
+                step_images = _resolve_step_images(
+                    lookup,
+                    screen_refs=screen_refs,
+                    embedded_images=list(step.get("canonical_images") or step.get("images") or []),
+                )
+                for image in step_images:
+                    key = str(image.get("image_id") or "")
+                    if not key or key in seen:
+                        continue
+                    seen.add(key)
+                    out = dict(image)
+                    if not out.get("title"):
+                        out["title"] = (
+                            str(step.get("title") or "").strip() or hit_title
+                        )
+                    out["source_procedure_id"] = source_id
+                    images.append(out)
+                if len(images) >= 8:
+                    break
+        elif record_type in {"playbook_prompt_a", "playbook_prompt_b"}:
+            try:
+                playbook = client.get_playbook(source_id, variant=variant) or {}
+            except Exception:
+                continue
+            if not isinstance(playbook, dict) or not playbook:
+                continue
+            artifact_ids: list[str] = []
+            for node in list(playbook.get("nodes") or [])[:3]:
+                if not isinstance(node, dict):
+                    continue
+                for item in list(node.get("related_artifact_ids") or []):
+                    text = str(item or "").strip()
+                    if text and text not in artifact_ids:
+                        artifact_ids.append(text)
+                for item in list(node.get("inherited_image_refs") or []):
+                    text = str(item or "").strip()
+                    if text and text not in artifact_ids:
+                        artifact_ids.append(text)
+                for item in list(node.get("source_evidence") or node.get("source_refs") or []):
+                    if not isinstance(item, dict):
+                        continue
+                    text = str(item.get("artifact_id") or "").strip()
+                    if text and text not in artifact_ids:
+                        artifact_ids.append(text)
+                if len(artifact_ids) >= 6:
+                    break
+            if not artifact_ids:
+                continue
+            try:
+                resolved = lookup.resolve_for_artifacts(
+                    artifact_ids=artifact_ids[:6],
+                    embedded_images=[],
+                    limit=6,
+                )
+            except Exception:
+                resolved = []
+            for image in resolved:
                 key = str(image.get("image_id") or "")
                 if not key or key in seen:
                     continue
                 seen.add(key)
                 out = dict(image)
                 if not out.get("title"):
-                    out["title"] = (
-                        str(step.get("title") or "").strip()
-                        or _hit_display_title(hit)
-                    )
-                out["source_procedure_id"] = procedure_id
+                    out["title"] = hit_title
+                out["source_playbook_id"] = source_id
                 images.append(out)
-            if len(images) >= 6:
-                break
-        if len(images) >= 6:
+        if len(images) >= 8:
             break
 
-    state["canonical_images"] = images
+    state["canonical_images"] = images[:8]
     append_agent_trace(
         state,
         "image_agent",

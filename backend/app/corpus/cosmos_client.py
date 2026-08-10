@@ -173,32 +173,48 @@ class CosmosCorpusClient:
         )
         return rows[0] if rows else None
 
-    def resolve_runbook_for_node(
+    def resolve_runbooks_for_node(
         self,
         playbook_id: str,
         node_id: str,
         playbook_payload: dict[str, Any] | None = None,
-    ) -> str | None:
+    ) -> list[str]:
         payload = playbook_payload or self.get_playbook(
             playbook_id,
             variant=self.settings.default_playbook_variant,
         )
+        ordered: list[str] = []
+        seen: set[str] = set()
+
+        def _add(procedure_id: Any) -> None:
+            value = str(procedure_id or "").strip()
+            if not value or value in seen:
+                return
+            seen.add(value)
+            ordered.append(value)
+
         if payload:
             for node in payload.get("nodes") or []:
                 if not isinstance(node, dict):
                     continue
                 if str(node.get("node_id")) != node_id:
                     continue
-                resolved = list(node.get("resolved_runbook_ids") or [])
-                if resolved:
-                    return str(resolved[0])
+                for procedure_id in list(node.get("resolved_runbook_ids") or []):
+                    _add(procedure_id)
                 runbook_links = list(node.get("runbook_links") or [])
                 if runbook_links:
                     sorted_links = sorted(
-                        runbook_links,
+                        [
+                            link
+                            for link in runbook_links
+                            if isinstance(link, dict)
+                        ],
                         key=lambda item: int(item.get("link_rank") or 999),
                     )
-                    return str(sorted_links[0].get("procedure_id") or "") or None
+                    for link in sorted_links:
+                        _add(link.get("procedure_id"))
+                if ordered:
+                    return ordered
         links = self.load_relationship_graph()
         matches = [
             link
@@ -206,10 +222,23 @@ class CosmosCorpusClient:
             if link.link_type == "playbook_runbook"
             and link.source_record_id == f"{playbook_id}:{node_id}"
         ]
-        if not matches:
-            return None
         matches.sort(key=lambda item: item.link_rank)
-        return matches[0].target_record_id or None
+        for link in matches:
+            _add(link.target_record_id)
+        return ordered
+
+    def resolve_runbook_for_node(
+        self,
+        playbook_id: str,
+        node_id: str,
+        playbook_payload: dict[str, Any] | None = None,
+    ) -> str | None:
+        resolved = self.resolve_runbooks_for_node(
+            playbook_id,
+            node_id,
+            playbook_payload,
+        )
+        return resolved[0] if resolved else None
 
     def _load_symptom_cards_from_cosmos(self) -> dict[str, dict[str, Any]]:
         sql = """
@@ -251,14 +280,16 @@ class CosmosCorpusClient:
     def _load_embeddings_from_cosmos(self) -> list[EmbeddingRecord]:
         embedding_sql = """
             SELECT c.id, c.record_type, c.source_record_id, c.embedded_text, c.retrieval_text,
-                   c.summary, c.vector, c.embedding_model, c.filter_metadata
+                   c.summary, c.text, c.body, c.content, c.title, c.vector, c.embedding_model,
+                   c.filter_metadata
             FROM c
             WHERE c.publish_version_id = @version AND c.doc_type = 'embedding'
         """
         # Operational context is published as rag_record + vector (not doc_type=embedding).
         context_sql = """
             SELECT c.id, c.record_type, c.source_record_id, c.embedded_text, c.retrieval_text,
-                   c.summary, c.vector, c.embedding_model, c.filter_metadata
+                   c.summary, c.text, c.body, c.content, c.title, c.vector, c.embedding_model,
+                   c.filter_metadata
             FROM c
             WHERE c.publish_version_id = @version
               AND c.doc_type = 'rag_record'
@@ -288,15 +319,21 @@ class CosmosCorpusClient:
     @staticmethod
     def _row_to_embedding(row: dict[str, Any]) -> EmbeddingRecord:
         metadata = dict(row.get("filter_metadata") or {})
+        title_candidates = [
+            metadata.get("title"),
+            metadata.get("topic"),
+            metadata.get("heading"),
+            metadata.get("section_title"),
+            metadata.get("source_title"),
+            row.get("title"),
+        ]
         if not metadata.get("title"):
-            summary = str(row.get("summary") or "").strip()
-            retrieval = str(row.get("retrieval_text") or "").strip()
-            # Prefer a short label from filter metadata topic/source rather than full summary.
-            for key in ("title", "topic", "heading", "section_title", "source_title"):
-                value = metadata.get(key)
+            for value in title_candidates:
                 if isinstance(value, str) and value.strip():
                     metadata["title"] = value.strip()[:160]
                     break
+            summary = str(row.get("summary") or "").strip()
+            retrieval = str(row.get("retrieval_text") or "").strip()
             if not metadata.get("title") and summary:
                 cut = summary.find(". ")
                 metadata["title"] = (summary[:cut] if cut > 20 else summary)[:120].strip()
@@ -307,10 +344,17 @@ class CosmosCorpusClient:
             str(row.get("embedded_text") or "").strip()
             or str(row.get("retrieval_text") or "").strip()
             or str(row.get("summary") or "").strip()
+            or str(row.get("text") or "").strip()
+            or str(row.get("body") or "").strip()
+            or str(row.get("content") or "").strip()
+            or str(row.get("title") or "").strip()
         )
+        record_type = str(row.get("record_type") or "").strip()
+        if not record_type and str(row.get("doc_type") or "") == "rag_record":
+            record_type = "operational_context"
         return EmbeddingRecord(
             record_id=str(row.get("id") or ""),
-            record_type=str(row.get("record_type") or ""),
+            record_type=record_type,
             source_record_id=str(row.get("source_record_id") or ""),
             embedded_text=embedded,
             vector=[float(v) for v in row.get("vector") or []],
@@ -523,6 +567,16 @@ def _sample_corpus_index(publish_version_id: str) -> CorpusIndex:
         "Check RMS for active AGV faults. Review RMS alarms, active faults, robot state, "
         "and AGV desynchronization after OptiSweep service recovery."
     )
+    software_stack_text = (
+        "OptiSweep software service stack: OptiSweep / WCS orchestrates robotic sortation, "
+        "RMS provides fleet and AGV status views, Ignition hosts gateway and HMI pages, and "
+        "support uses Windows Services plus Event Viewer when validating service health."
+    )
+    blank_rms_text = (
+        "Blank RMS pages can mean the overview control failed to render, RMS access is blocked, "
+        "or the control service / gateway path is unhealthy. Corroborate with site interview and "
+        "Windows Event Viewer before assuming a single-robot fault."
+    )
     return CorpusIndex(
         publish_version_id=publish_version_id,
         embeddings=[
@@ -546,6 +600,32 @@ def _sample_corpus_index(publish_version_id: str) -> CorpusIndex:
                 vector=mock_embed(runbook_text),
                 embedding_model="mock-hash-v1",
                 filter_metadata={"title": "Check RMS for active AGV faults"},
+            ),
+            EmbeddingRecord(
+                record_id="operational_context:optisweep_software_stack",
+                record_type="operational_context",
+                source_record_id="ctx_optisweep_software_stack",
+                embedded_text=software_stack_text,
+                vector=mock_embed(software_stack_text),
+                embedding_model="mock-hash-v1",
+                filter_metadata={
+                    "title": "OptiSweep software/service stack",
+                    "topic": "software_stack",
+                    "category": "training",
+                },
+            ),
+            EmbeddingRecord(
+                record_id="operational_context:blank_rms_context",
+                record_type="operational_context",
+                source_record_id="ctx_blank_rms_context",
+                embedded_text=blank_rms_text,
+                vector=mock_embed(blank_rms_text),
+                embedding_model="mock-hash-v1",
+                filter_metadata={
+                    "title": "Blank RMS page context",
+                    "topic": "rms_ui",
+                    "category": "training",
+                },
             ),
         ],
         links=[

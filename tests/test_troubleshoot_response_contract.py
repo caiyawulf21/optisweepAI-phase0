@@ -55,6 +55,46 @@ def test_build_troubleshoot_response_stub() -> None:
     assert response.retrieval_results[0].confidence == 0.82
     assert response.workflow_state.get("playbook_title") == "Site stoppage"
     assert response.workflow_state.get("runbook", {}).get("title") == "Review alarms"
+    assert response.workflow_state.get("runbooks", [{}])[0].get("title") == "Review alarms"
+
+
+def test_build_troubleshoot_response_includes_all_node_runbooks() -> None:
+    state = {
+        "session_id": "sess-multi-runbook",
+        "final_response": "Choose an outcome.",
+        "response_type": "guided_question",
+        "extracted_observed_signals": {"agvs_stopped": True},
+        "retrieval_hits": [],
+        "retrieval_confidence": 0.7,
+        "playbook_payload": {"title": "Site stoppage"},
+        "active_playbook_id": "playbook_1",
+        "current_node_id": "node_1",
+        "runbook_payload": {
+            "procedure_id": "proc_1",
+            "title": "Primary checks",
+            "steps": [{"step_number": 1, "instruction": "Open alarms"}],
+        },
+        "runbook_payloads": [
+            {
+                "procedure_id": "proc_1",
+                "title": "Primary checks",
+                "steps": [{"step_number": 1, "instruction": "Open alarms"}],
+            },
+            {
+                "procedure_id": "proc_2",
+                "title": "Secondary corroboration",
+                "summary": "Confirm RMS map state",
+                "steps": [{"step_number": 1, "instruction": "Open map monitor"}],
+            },
+        ],
+        "runbook_step": {"step_number": 1, "instruction": "Open alarms"},
+    }
+    response = _build_troubleshoot_response(state)
+    runbooks = response.workflow_state.get("runbooks") or []
+    assert len(runbooks) == 2
+    assert runbooks[0]["procedure_id"] == "proc_1"
+    assert runbooks[1]["title"] == "Secondary corroboration"
+    assert response.workflow_state.get("runbook", {}).get("procedure_id") == "proc_1"
 
 
 def test_troubleshoot_endpoint_smoke() -> None:

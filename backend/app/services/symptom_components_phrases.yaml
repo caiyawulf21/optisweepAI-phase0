@@ -2,10 +2,8 @@
 #
 # Component keys must match the canonical component vocabulary used by
 # `relationship_tracking.affects_components` / `requires_components` on
-# canonical procedures. The extractor returns a `set[str]` of the components
-# detected in the operator's message; these flow into
-# `DynamicProcedureSelector.score_all(components=...)` so the
-# `component_overlap` weight stops being dead code.
+# published procedures. The extractor returns a `set[str]` of components
+# detected in the operator's message for optional retrieval enrichment.
 
 agv:
   - agv

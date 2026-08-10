@@ -36,9 +36,9 @@ def sample_client() -> CosmosCorpusClient:
         container_gate_phrase_tables="gate_phrase_tables",
         publish_version_id="handoff-demo-v1",
         auto_publish_version=False,
-        playbook_match_threshold=0.80,
-        playbook_high_confidence_threshold=0.90,
-        playbook_pin_coverage_threshold=0.40,
+        playbook_match_threshold=0.55,
+        playbook_high_confidence_threshold=0.75,
+        playbook_pin_coverage_threshold=0.25,
         default_playbook_variant="prompt_a",
         skip_playbook_confirmation=True,
         enable_llm_branch_match=False,
@@ -59,6 +59,26 @@ def test_load_sample_playbook_228086(sample_client: CosmosCorpusClient) -> None:
     assert payload.get("case_id") == "228086"
 
 
+def test_resolve_runbooks_for_node_returns_all_ids(sample_client: CosmosCorpusClient) -> None:
+    payload = {
+        "nodes": [
+            {
+                "node_id": "node_1",
+                "resolved_runbook_ids": ["proc_primary", "proc_secondary"],
+                "runbook_links": [
+                    {"procedure_id": "proc_linked", "link_rank": 2},
+                    {"procedure_id": "proc_primary", "link_rank": 1},
+                ],
+            }
+        ]
+    }
+    ids = sample_client.resolve_runbooks_for_node("playbook_x", "node_1", payload)
+    assert ids == ["proc_primary", "proc_secondary", "proc_linked"]
+    assert sample_client.resolve_runbook_for_node("playbook_x", "node_1", payload) == (
+        "proc_primary"
+    )
+
+
 def test_agvs_stopped_surfaces_candidates_for_user_select(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("SKIP_PLAYBOOK_CONFIRMATION", "false")
     state = run_playbook_troubleshoot(
@@ -75,6 +95,8 @@ def test_agvs_stopped_surfaces_candidates_for_user_select(monkeypatch: pytest.Mo
     top = candidates[0]
     assert top.get("incidence_id") or top.get("case_id")
     assert top.get("incidence_summary")
+    incidence_summary = str(top.get("incidence_summary") or "")
+    assert not incidence_summary.startswith("Incidence ")
     assert top.get("when_to_choose") or top.get("observed_entry_symptoms")
     hit = (state.get("retrieval_hits") or [{}])[0]
     assert float(hit.get("combined_score") or 0.0) >= 0.55
@@ -552,9 +574,12 @@ def test_branch_classify_probe_keeps_awaiting() -> None:
     assert out.get("_route_after_branch") == "save"
     assert out.get("response_type") == "guided_question"
     assert out.get("branch_state", {}).get("awaiting_branch") is True
-    assert "branch" in str(out.get("final_response") or "").lower() or "symptom" in str(
-        out.get("final_response") or ""
-    ).lower()
+    response = str(out.get("final_response") or "").lower()
+    assert response
+    assert any(
+        token in response
+        for token in ("branch", "symptom", "healthy", "unhealthy", "inconclusive")
+    )
 
 
 def test_present_candidates_message_is_concise() -> None:
@@ -773,8 +798,8 @@ def test_orchestrator_llm_skipped_for_guided_button_and_templates(monkeypatch) -
             (),
             {
                 "enable_llm_orchestrator": True,
-                "playbook_match_threshold": 0.80,
-                "playbook_pin_coverage_threshold": 0.40,
+                "playbook_match_threshold": 0.55,
+                "playbook_pin_coverage_threshold": 0.25,
             },
         )(),
     )

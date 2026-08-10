@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import sys
+from collections import defaultdict
 
 from backend.app.config.env import load_local_env
 from backend.app.corpus.bootstrap import get_corpus_client, reload_corpus_index
@@ -86,6 +87,17 @@ def main() -> int:
         if not list(card.get("support_user_language_examples") or [])
     )
     missing_cases = sorted(EXPECTED_CASES - cases)
+    prompt_a_by_case: dict[str, list[str]] = defaultdict(list)
+    for emb in playbook_a:
+        case_id = str((emb.filter_metadata or {}).get("case_id") or "").strip()
+        if not case_id:
+            continue
+        prompt_a_by_case[case_id].append(emb.source_record_id)
+    prompt_a_duplicate_cases = {
+        case_id: sorted(set(ids))
+        for case_id, ids in sorted(prompt_a_by_case.items())
+        if len(set(ids)) > 1
+    }
     configured_version = settings.publish_version_id
     resolved_version = client.publish_version_id
     report = {
@@ -96,6 +108,7 @@ def main() -> int:
         "auto_publish_version": settings.auto_publish_version,
         "case_ids": sorted(cases),
         "missing_expected_cases": missing_cases,
+        "prompt_a_duplicate_cases": prompt_a_duplicate_cases,
         "playbooks_missing_support_user_language_examples": empty_examples,
         "embedding_counts": {
             "playbook_prompt_a": len(playbook_a),
@@ -183,6 +196,12 @@ def main() -> int:
         return 1
     if missing_cases:
         print(f"FAIL: missing expected cases: {missing_cases}")
+        return 1
+    if prompt_a_duplicate_cases:
+        print(
+            "FAIL: prompt_a has more than one playbook per incidence "
+            f"(expected one): {json.dumps(prompt_a_duplicate_cases, indent=2)}"
+        )
         return 1
     if empty_examples:
         print(

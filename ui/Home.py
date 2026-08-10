@@ -4,17 +4,21 @@ import requests
 import streamlit as st
 
 from branding import (
-    FORTNA_SITE,
     HASLET_SITE_REF,
     apply_fortna_theme,
     render_brand_banner,
+    render_optisweep_hero,
 )
 
-st.set_page_config(page_title="OptiSweep Playbook Runtime", layout="wide")
+st.set_page_config(
+    page_title="OptiSweep AI Troubleshooting Assistant",
+    layout="wide",
+)
 apply_fortna_theme()
 render_brand_banner()
+render_optisweep_hero()
 
-st.title("OptiSweep Playbook Runtime")
+st.title("OptiSweep AI Troubleshooting Assistant")
 
 st.markdown(
     """
@@ -28,8 +32,6 @@ st.markdown(
     f"""
 **[UPS – Haslet TX]({HASLET_SITE_REF})** —
 VPN details, servers, and general site information for the UPS Haslet TX site.
-
-**[FORTNA]({FORTNA_SITE})** — company site and brand home.
 """
 )
 
@@ -40,6 +42,8 @@ Use **Guided Troubleshoot** when you are working through a live incident.
 
 - Turn 1: hybrid search over playbook embeddings, then pin a playbook or fall back to a runbook.
 - Turn 2+: follow the pinned playbook node-by-node with linked runbook steps.
+- **Search Chat panel** sits beside the playbook so you can ask corpus questions without leaving the step.
+- Search Chat never advances playbook state unless you confirm **Use this result in current troubleshooting step**.
 - Supports branch questions, reference images, and escalation summaries.
 - Best for structured, step-by-step support workflows.
 """
@@ -54,6 +58,7 @@ Use **Search / Chat** when you want corpus Q&A without executing a playbook.
 - Every turn searches **all published embeddings** by default (runbooks + playbooks + operational context when present).
 - Composes a short answer with cited sources and reference images from top runbook hits.
 - Best for looking up procedures, context, or evidence while triaging.
+- Prefer the embedded panel on Guided Troubleshoot when a playbook is already active.
 """
 )
 

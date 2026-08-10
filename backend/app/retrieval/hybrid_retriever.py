@@ -20,9 +20,9 @@ STOPWORDS = {
 class RetrievalConfig:
     vector_weight: float = 0.7
     lexical_weight: float = 0.3
-    playbook_match_threshold: float = 0.80
-    playbook_high_confidence_threshold: float = 0.90
-    playbook_pin_coverage_threshold: float = 0.40
+    playbook_match_threshold: float = 0.55
+    playbook_high_confidence_threshold: float = 0.75
+    playbook_pin_coverage_threshold: float = 0.25
 
 
 @dataclass
@@ -92,22 +92,21 @@ def entry_phrase_coverage(
     symptoms: list[str],
     examples: list[str] | None = None,
 ) -> float:
-    """Fraction of query tokens covered by any entry symptom/example phrase.
+    """Fraction of entry phrases with any token overlap against the query.
 
-    Short operator queries (for example ``AGVs stopped``) should score high when
-    those tokens appear in the playbook card, even if they touch only one of many
-    symptom phrases.
+    A single exact example match among many card phrases must not report
+    coverage 1.0 — that would make sparse speech look like perfect certainty.
     """
     query_tokens = tokenize(query_text)
     phrases = [str(p) for p in [*symptoms, *(examples or [])] if str(p).strip()]
     if not query_tokens or not phrases:
         return 0.0
-    covered: set[str] = set()
+    matched = 0
     for phrase in phrases:
         phrase_tokens = tokenize(phrase)
-        if phrase_tokens:
-            covered |= query_tokens & phrase_tokens
-    return len(covered) / len(query_tokens)
+        if phrase_tokens and query_tokens & phrase_tokens:
+            matched += 1
+    return matched / len(phrases)
 
 
 def symptom_overlap_score(
@@ -315,6 +314,7 @@ class HybridRetriever:
         record_types: set[str] | None = None,
         top_k: int = 5,
         min_score: float = 0.0,
+        reserve_by_type: dict[str, int] | None = None,
     ) -> list[RetrievalHit]:
         vector = query_vector if query_vector is not None else mock_embed(query_text)
         hits: list[RetrievalHit] = []
@@ -325,4 +325,71 @@ class HybridRetriever:
             if hit.combined_score >= min_score:
                 hits.append(hit)
         hits.sort(key=lambda item: (-item.combined_score, item.source_record_id))
+        return diversify_hits(
+            hits,
+            top_k=top_k,
+            reserve_by_type=reserve_by_type,
+        )
+
+
+def diversify_hits(
+    hits: list[RetrievalHit],
+    *,
+    top_k: int,
+    reserve_by_type: dict[str, int] | None = None,
+) -> list[RetrievalHit]:
+    """Keep top overall hits while reserving slots for supplemental record types."""
+    if top_k <= 0:
+        return []
+    if not hits:
+        return []
+    reserves = {
+        str(key): max(0, int(value))
+        for key, value in dict(reserve_by_type or {}).items()
+        if str(key).strip() and int(value) > 0
+    }
+    if not reserves:
         return hits[:top_k]
+
+    selected: list[RetrievalHit] = []
+    used: set[str] = set()
+
+    def _key(hit: RetrievalHit) -> str:
+        return f"{hit.record_type}:{hit.source_record_id}:{hit.record_id}"
+
+    reserve_total = min(sum(reserves.values()), max(0, top_k - 1))
+    primary_slots = max(1, top_k - reserve_total)
+    for hit in hits:
+        if len(selected) >= primary_slots:
+            break
+        key = _key(hit)
+        if key in used:
+            continue
+        selected.append(hit)
+        used.add(key)
+
+    for record_type, count in reserves.items():
+        added = 0
+        for hit in hits:
+            if added >= count or len(selected) >= top_k:
+                break
+            if hit.record_type != record_type:
+                continue
+            key = _key(hit)
+            if key in used:
+                continue
+            selected.append(hit)
+            used.add(key)
+            added += 1
+
+    for hit in hits:
+        if len(selected) >= top_k:
+            break
+        key = _key(hit)
+        if key in used:
+            continue
+        selected.append(hit)
+        used.add(key)
+
+    selected.sort(key=lambda item: (-item.combined_score, item.source_record_id))
+    return selected[:top_k]

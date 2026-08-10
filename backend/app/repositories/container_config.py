@@ -30,8 +30,6 @@ CONTAINERS: dict[str, ContainerDefinition] = {
     "canonical_workflow_definitions": ContainerDefinition(
         "canonical_workflow_definitions", "/issue_category"
     ),
-    "root_cause_dataset": ContainerDefinition("root_cause_dataset", "/incident_id"),
-    "root_cause_vectors": ContainerDefinition("root_cause_vectors", "/record_type"),
     "retrieval_vectors": ContainerDefinition("retrieval_vectors", "/record_type"),
     "workflow_sessions": ContainerDefinition("workflow_sessions", "/session_id"),
     "interaction_logs": ContainerDefinition("interaction_logs", "/session_id"),
