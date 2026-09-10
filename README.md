@@ -108,7 +108,9 @@ tests/                    Pytest
 
 ## Configuration
 
-Copy [`.env.example`](.env.example). Important groups:
+Copy [`.env.example`](.env.example) for a short template, or [`.env.mock`](.env.mock)
+for an agent-oriented inventory of every key (required vs optional, aliases,
+Key Vault `secretRef` names, where to get values). Important groups:
 
 | Mode | Vars |
 |------|------|

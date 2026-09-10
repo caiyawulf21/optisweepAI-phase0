@@ -9,6 +9,7 @@ __pycache__/
 .env
 .env.*
 !.env.example
+!.env.mock
 .streamlit/secrets.toml
 config/*.local.json
 config/*secret*.json

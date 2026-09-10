@@ -293,6 +293,7 @@ py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 copy .env.example .env
+# Or use .env.mock as the agent checklist (same keys, more prose); fill into .env
 # Fill COSMOS_*, AZURE_OPENAI_*, storage URLs; leave BRAIN_HTTP_* false until Brain URL is known
 python scripts/preflight_deployment.py
 uvicorn backend.app.main:app --reload
@@ -470,6 +471,7 @@ succeeded.
 | Path | Use |
 |------|-----|
 | `.env.example` | Local/runtime env template |
+| `.env.mock` | Agent-readable full key inventory + mock shapes |
 | `ui/README.md` | Streamlit UX, backends, Brain learning loop, screenshots |
 | `deploy/container-app.yaml` | Live Container App template |
 | `deploy/container-app-preview.yaml` | Preview template |
