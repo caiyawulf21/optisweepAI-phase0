@@ -84,7 +84,7 @@ def resolve_retrieve_intent(
     prior_user_texts: list[str] | None = None,
     existing_intent: str | None = None,
 ) -> str | None:
-    if existing_intent in {"software_stack", "maintenance", "incident"}:
+    if existing_intent in {"software_stack", "maintenance", "incident", "howto"}:
         # Sticky intent unless the new turn clearly switches topics.
         text = str(query or "").lower()
         if existing_intent == "software_stack" and any(
@@ -94,6 +94,10 @@ def resolve_retrieve_intent(
         else:
             if existing_intent == "software_stack":
                 return "software_stack"
+            if existing_intent == "howto" and not any(
+                phrase in text for phrase in ("software stack", "what is optisweep")
+            ):
+                return "howto"
             if existing_intent == "maintenance" and not (
                 {"software", "wcs", "rms", "ignition"} & set(re.findall(r"[a-z0-9]+", text))
             ):
@@ -125,6 +129,23 @@ def resolve_retrieve_intent(
     if any(
         phrase in text
         for phrase in (
+            "how do i",
+            "how to",
+            "how can i",
+            "steps to",
+            "step by step",
+            "procedure for",
+            "walk me through",
+            "show me how",
+            "instructions for",
+            "guide me",
+            "checklist for",
+        )
+    ):
+        return "howto"
+    if any(
+        phrase in text
+        for phrase in (
             "maintenance",
             "hardware",
             "weights",
@@ -141,7 +162,11 @@ def resolve_retrieve_intent(
         for phrase in ("incident", "fault", "alarm", "stopped", "troubleshoot", "agv")
     ):
         return "incident"
-    return existing_intent if existing_intent in {"software_stack", "maintenance", "incident"} else None
+    return (
+        existing_intent
+        if existing_intent in {"software_stack", "maintenance", "incident", "howto"}
+        else None
+    )
 
 
 def hydrate_retrieve_memory_from_logs(session_id: str) -> InMemoryChatMessageHistory:

@@ -1,0 +1,10 @@
+{
+  "review_id": "brain_review:merge-1",
+  "resolution": "MERGE",
+  "applied": true,
+  "mutated_record_ids": [
+    "entity:symptom:agv_heartbeat",
+    "entity:symptom:agv_hb_dup"
+  ],
+  "detail": "MERGE applied via merge_record."
+}

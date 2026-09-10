@@ -1,0 +1,31 @@
+{
+  "review_id": "brain_review:merge-1",
+  "kind": "audit_finding",
+  "status": "open",
+  "title": "Merge duplicate AGV heartbeat entities",
+  "summary": "Collapse entity:symptom:agv_hb_dup into entity:symptom:agv_heartbeat",
+  "priority": "high",
+  "resolution_type": "MERGE",
+  "affected_record_ids": [
+    "entity:symptom:agv_hb_dup",
+    "entity:symptom:agv_heartbeat"
+  ],
+  "proposed_change": {
+    "action": "MERGE",
+    "winner_record_id": "entity:symptom:agv_heartbeat",
+    "loser_record_ids": ["entity:symptom:agv_hb_dup"]
+  },
+  "affected_records": [
+    {
+      "record_id": "entity:symptom:agv_hb_dup",
+      "record_type": "Entity",
+      "validation_status": "operational_unreviewed"
+    },
+    {
+      "record_id": "entity:symptom:agv_heartbeat",
+      "record_type": "Entity",
+      "validation_status": "sme_approved"
+    }
+  ],
+  "created_at": "2026-09-09T12:00:00Z"
+}

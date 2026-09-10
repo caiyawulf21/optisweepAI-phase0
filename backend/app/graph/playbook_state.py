@@ -104,7 +104,7 @@ class PlaybookSessionSlice:
 def hits_to_dict(hits: list[RetrievalHit]) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for hit in hits:
-        snippet_len = 800 if hit.record_type == "operational_context" else 240
+        snippet_len = 1200 if hit.record_type == "operational_context" else 600
         rows.append(
             {
                 "record_id": hit.record_id,

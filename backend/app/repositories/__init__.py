@@ -9,6 +9,7 @@ from backend.app.repositories.context_repository import ContextRepository
 from backend.app.repositories.escalation_repository import EscalationRepository
 from backend.app.repositories.evidence_repository import EvidenceRepository
 from backend.app.repositories.incident_repository import IncidentRepository
+from backend.app.repositories.feedback_repository import FeedbackEventRepository
 from backend.app.repositories.interaction_log_repository import (
     InteractionLogRepository,
 )
@@ -28,6 +29,7 @@ __all__ = [
     "ContextRepository",
     "EscalationRepository",
     "EvidenceRepository",
+    "FeedbackEventRepository",
     "IncidentRepository",
     "InteractionLogRepository",
     "ProcedureRepository",

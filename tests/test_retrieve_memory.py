@@ -13,6 +13,13 @@ def setup_function() -> None:
     reset_retrieve_memory()
 
 
+def test_resolve_intent_howto() -> None:
+    assert resolve_retrieve_intent("how do I check tipper heartbeat stats") == "howto"
+    assert (
+        resolve_retrieve_intent("continue", existing_intent="howto") == "howto"
+    )
+
+
 def test_resolve_intent_sticky_software_stack() -> None:
     assert (
         resolve_retrieve_intent(

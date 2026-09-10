@@ -1,3 +1,10 @@
+"""Playbook runtime agents (orchestrator + deterministic tools).
+
+Single control-plane orchestrator; most workers are tools with traces, not
+LLM-to-LLM chat. Wired by graph/playbook_graph.py. Role matrix:
+backend/app/agents/README.md and docs/PLAYBOOK_RUNTIME.md.
+"""
+
 from __future__ import annotations
 
 import re
@@ -1797,19 +1804,51 @@ def hybrid_search(state: dict[str, Any], *, record_types: set[str], top_k: int =
     )
     query_text = _enriched_retrieval_query(state)
     surface = str((state.get("runtime_trace") or {}).get("surface") or state.get("surface") or "")
-    reserve_by_type = (
-        {"operational_context": 2}
-        if surface == "retrieve" and "operational_context" in (record_types or set())
-        else None
-    )
+    intent = str(state.get("retrieve_intent") or "").strip().lower()
+    reserve_by_type: dict[str, int] | None = None
+    if surface == "retrieve":
+        if intent in {"howto", "maintenance"} and (
+            "canonical_runbook" in (record_types or set())
+            or "incident_source_runbook" in (record_types or set())
+        ):
+            reserve_by_type = {
+                "canonical_runbook": 3,
+                "incident_source_runbook": 1,
+                "operational_context": 1,
+                "playbook_prompt_a": 1,
+                "playbook_prompt_b": 1,
+            }
+            reserve_by_type = {
+                key: value
+                for key, value in reserve_by_type.items()
+                if key in (record_types or set())
+            }
+        elif "operational_context" in (record_types or set()):
+            reserve_by_type = {"operational_context": 2}
     hits = retriever.search(
         query_text,
         query_vector=state.get("query_vector"),
         record_types=record_types,
         top_k=top_k,
-        reserve_by_type=reserve_by_type,
+        reserve_by_type=reserve_by_type or None,
     )
-    state["retrieval_hits"] = hits_to_dict(hits)
+    rows = hits_to_dict(hits)
+    if surface == "retrieve" and intent in {"howto", "maintenance"}:
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            record_type = str(row.get("record_type") or "")
+            if record_type in {"canonical_runbook", "incident_source_runbook"}:
+                row["combined_score"] = float(row.get("combined_score") or 0.0) + 0.08
+            elif record_type in {"playbook_prompt_a", "playbook_prompt_b"}:
+                row["combined_score"] = float(row.get("combined_score") or 0.0) + 0.04
+        rows.sort(
+            key=lambda item: float(item.get("combined_score") or 0.0)
+            if isinstance(item, dict)
+            else 0.0,
+            reverse=True,
+        )
+    state["retrieval_hits"] = rows
     top_hit = state["retrieval_hits"][0] if state["retrieval_hits"] else None
     top_score = float(top_hit.get("combined_score") or 0.0) if top_hit else 0.0
     state["retrieval_confidence"] = top_score
@@ -1818,6 +1857,12 @@ def hybrid_search(state: dict[str, Any], *, record_types: set[str], top_k: int =
         hit
         for hit in state["retrieval_hits"]
         if str(hit.get("record_type") or "") == "operational_context"
+    ]
+    runbook_hits = [
+        hit
+        for hit in state["retrieval_hits"]
+        if str(hit.get("record_type") or "")
+        in {"canonical_runbook", "incident_source_runbook"}
     ]
     append_agent_trace(
         state,
@@ -1833,6 +1878,9 @@ def hybrid_search(state: dict[str, Any], *, record_types: set[str], top_k: int =
         coverage=breakdown["coverage"],
         combined=breakdown["combined"],
         operational_context_hits=len(context_hits),
+        runbook_hits=len(runbook_hits),
+        retrieve_intent=intent or None,
+        reserve_by_type=reserve_by_type,
     )
     return state
 
@@ -2442,20 +2490,39 @@ def _hit_display_title(hit: dict[str, Any]) -> str:
 
 
 def _hit_source_id(hit: dict[str, Any]) -> str:
-    return str(hit.get("source_record_id") or hit.get("record_id") or "").strip()
+    return str(
+        hit.get("source_record_id")
+        or hit.get("source_id")
+        or hit.get("record_id")
+        or ""
+    ).strip()
 
 
 def _format_retrieve_sources_block(hits: list[dict[str, Any]]) -> str:
     lines = ["Sources:"]
-    for index, hit in enumerate(hits[:5], start=1):
+    seen: set[str] = set()
+    for hit in hits[:8]:
         if not isinstance(hit, dict):
             continue
         title = _hit_display_title(hit)
         source_id = _hit_source_id(hit)
+        review = str(
+            hit.get("review_state") or hit.get("validation_status") or ""
+        ).strip().lower()
+        if review in {"operational_unreviewed", "working"} and (
+            "operational unreviewed" not in title.lower()
+        ):
+            title = f"{title} [operational unreviewed]"
+        key = f"{title}:{source_id}"
+        if key in seen:
+            continue
+        seen.add(key)
         if source_id and source_id != title:
             lines.append(f"- {title} (`{source_id}`)")
         else:
             lines.append(f"- {title}")
+        if len(lines) >= 7:
+            break
     return "\n".join(lines)
 
 
@@ -2489,21 +2556,50 @@ def _ensure_retrieve_answer_cites_sources(answer: str, hits: list[dict[str, Any]
     return f"{text}\n\n{_format_retrieve_sources_block(usable)}"
 
 
+def _brain_review_label(item: dict[str, Any]) -> str:
+    status = str(
+        item.get("review_state") or item.get("validation_status") or ""
+    ).strip().lower()
+    if status in {"operational_unreviewed", "working"}:
+        return "Brain working note (operational unreviewed)"
+    return "Brain"
+
+
 def _compose_template_retrieve_answer(
     query: str,
     hits: list[dict[str, Any]],
     *,
     intent: str | None = None,
     prior_turns: list[dict[str, Any]] | None = None,
+    brain_excerpts: list[dict[str, Any]] | None = None,
 ) -> str:
     del prior_turns
-    if not hits:
+    brain = [item for item in list(brain_excerpts or []) if isinstance(item, dict)]
+    if not hits and not brain:
         return (
             "I could not find published runbooks or operational context for that question. "
             "Could you clarify what you need — OptiSweep **software/service** roles "
             "(WCS/RMS/Ignition), a **hardware/maintenance** procedure, or a **fault/symptom** "
             "to troubleshoot?"
         )
+    if not hits and brain:
+        lines = [
+            "Brain knowledge matched this question (publish corpus had no strong hit):",
+            "",
+        ]
+        for item in brain[:4]:
+            title = _hit_display_title(item)
+            sid = _hit_source_id(item)
+            excerpt = _clean_hit_excerpt(item)
+            label = f"**{title}**"
+            if sid and sid != title:
+                label = f"{label} (`{sid}`)"
+            prefix = _brain_review_label(item)
+            if excerpt:
+                lines.append(f"- {prefix}: {label}: {excerpt}")
+        lines.append("")
+        lines.append(_format_retrieve_sources_block(brain))
+        return "\n".join(lines)
     top = hits[0]
     top_title = _hit_display_title(top)
     top_id = _hit_source_id(top)
@@ -2552,7 +2648,6 @@ def _compose_template_retrieve_answer(
         for hit in hits
         if isinstance(hit, dict) and str(hit.get("record_type") or "") == "operational_context"
     ]
-    # Chatbot synthesis across top hits (avoid dumping procedure IDs alone).
     bullets: list[str] = []
     seen_keys: set[str] = set()
     ordered_hits = list(context_hits[:2]) + [
@@ -2581,23 +2676,42 @@ def _compose_template_retrieve_answer(
             bullets.append(f"- {label}: {excerpt}")
         if len(bullets) >= 4:
             break
+    for item in brain[:3]:
+        sid = _hit_source_id(item)
+        key = f"brain:{sid}:{item.get('title')}"
+        if key in seen_keys:
+            continue
+        seen_keys.add(key)
+        title = _hit_display_title(item)
+        excerpt = _clean_hit_excerpt(item)
+        if not excerpt or len(excerpt) < 20:
+            continue
+        label = f"**{title}**"
+        if sid and sid != title:
+            label = f"{label} (`{sid}`)"
+        prefix = _brain_review_label(item)
+        bullets.append(f"- {prefix}: {label}: {excerpt}")
+        if len(bullets) >= 5:
+            break
     if bullets:
         lines.append("")
         lines.append("Additional grounded points:")
-        lines.extend(bullets[:4])
+        lines.extend(bullets[:5])
     lines.append("")
-    lines.append(_format_retrieve_sources_block(hits))
+    source_rows = list(hits) + list(brain)
+    lines.append(_format_retrieve_sources_block(source_rows))
     return "\n".join(lines)
 
 
 def _clean_hit_excerpt(hit: dict[str, Any]) -> str:
-    snippet = str(hit.get("snippet") or hit.get("excerpt") or "").strip()
+    snippet = str(hit.get("snippet") or hit.get("excerpt") or hit.get("text") or "").strip()
     if not snippet:
         return ""
     title = _hit_display_title(hit)
     if snippet.lower().startswith(title.lower()):
         snippet = snippet[len(title) :].lstrip(" :-—")
-    return re.sub(r"\s+", " ", snippet)[:280].strip()
+    budget = 600 if str(hit.get("record_type") or "") == "operational_context" else 480
+    return re.sub(r"\s+", " ", snippet)[:budget].strip()
 
 
 def _looks_like_overview_query(query: str) -> bool:
@@ -2745,17 +2859,28 @@ def _attach_retrieve_hit_images(state: dict[str, Any]) -> None:
 
 def template_answer_from_hits(state: dict[str, Any]) -> dict[str, Any]:
     hits = list(state.get("retrieval_hits") or [])
+    brain_excerpts = [
+        item for item in list(state.get("brain_excerpts") or []) if isinstance(item, dict)
+    ]
     _attach_retrieve_hit_images(state)
     intent = state.get("retrieve_intent")
     prior = list(state.get("conversation_history") or [])
-    if not hits:
+    cite_rows = list(hits) + list(brain_excerpts)
+    if not hits and not brain_excerpts:
         state["final_response"] = _compose_template_retrieve_answer(
             state.get("user_message") or "",
             [],
             intent=intent if isinstance(intent, str) else None,
             prior_turns=prior,
+            brain_excerpts=brain_excerpts,
         )
-        append_agent_trace(state, "synthesize_agent", "template_answer")
+        append_agent_trace(
+            state,
+            "synthesize_agent",
+            "template_answer",
+            answer_mode="template",
+            brain_synthesis_used=False,
+        )
         return state
     settings = get_corpus_settings()
     if settings.enable_llm_retrieve_synthesis:
@@ -2766,14 +2891,18 @@ def template_answer_from_hits(state: dict[str, Any]) -> dict[str, Any]:
             hits,
             prior_turns=prior,
             intent=intent if isinstance(intent, str) else None,
+            brain_excerpts=brain_excerpts,
         )
         if answer:
-            state["final_response"] = _ensure_retrieve_answer_cites_sources(answer, hits)
+            state["final_response"] = _ensure_retrieve_answer_cites_sources(answer, cite_rows)
             append_agent_trace(
                 state,
                 "synthesize_agent",
                 "llm_compose",
                 retrieve_intent=intent,
+                answer_mode="llm",
+                brain_synthesis_used=bool(brain_excerpts),
+                brain_excerpt_count=len(brain_excerpts),
             )
             return state
     state["final_response"] = _compose_template_retrieve_answer(
@@ -2781,11 +2910,15 @@ def template_answer_from_hits(state: dict[str, Any]) -> dict[str, Any]:
         hits,
         intent=intent if isinstance(intent, str) else None,
         prior_turns=prior,
+        brain_excerpts=brain_excerpts,
     )
     append_agent_trace(
         state,
         "synthesize_agent",
         "template_answer",
         retrieve_intent=intent,
+        answer_mode="template",
+        brain_synthesis_used=bool(brain_excerpts),
+        brain_excerpt_count=len(brain_excerpts),
     )
     return state

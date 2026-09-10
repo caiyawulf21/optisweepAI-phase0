@@ -45,7 +45,7 @@ class CorpusSettings:
 
     @property
     def corpus_source(self) -> str:
-        return "cosmos"
+        return "cosmos" if self.cosmos_configured else "sample"
 
 
 def get_corpus_settings() -> CorpusSettings:

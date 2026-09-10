@@ -69,11 +69,23 @@ def test_resolve_runbooks_for_node_returns_all_ids(sample_client: CosmosCorpusCl
                     {"procedure_id": "proc_linked", "link_rank": 2},
                     {"procedure_id": "proc_primary", "link_rank": 1},
                 ],
+                "decision_outcomes": [
+                    {"outcome_label": "unhealthy", "linked_runbook_id": "proc_decision"}
+                ],
+                "evidence_collection_procedures": [
+                    {"procedure_id": "proc_evidence", "title": "Evidence"}
+                ],
             }
         ]
     }
     ids = sample_client.resolve_runbooks_for_node("playbook_x", "node_1", payload)
-    assert ids == ["proc_primary", "proc_secondary", "proc_linked"]
+    assert ids == [
+        "proc_primary",
+        "proc_secondary",
+        "proc_linked",
+        "proc_evidence",
+        "proc_decision",
+    ]
     assert sample_client.resolve_runbook_for_node("playbook_x", "node_1", payload) == (
         "proc_primary"
     )
@@ -959,3 +971,94 @@ def test_retrieve_template_answer_always_cites_source_ids() -> None:
     assert "Sources:" in patched
     assert "ctx_blank_rms" in patched
 
+
+def test_retrieve_template_includes_brain_excerpts() -> None:
+    from backend.app.agents.runtime import _compose_template_retrieve_answer
+
+    hits = [
+        {
+            "title": "Check RMS Faults",
+            "source_record_id": "proc_rms_1",
+            "record_type": "canonical_runbook",
+            "snippet": "Ask whether there are system faults on the RMS page.",
+            "combined_score": 0.61,
+        }
+    ]
+    brain = [
+        {
+            "title": "Heartbeat sync risk",
+            "source_id": "claim:agv:heartbeat",
+            "source_record_id": "claim:agv:heartbeat",
+            "record_type": "claim",
+            "excerpt": "Heartbeat Max above threshold may indicate tipper/WCS sync risk.",
+            "origin": "brain",
+            "review_state": "operational_unreviewed",
+            "validation_status": "operational_unreviewed",
+        }
+    ]
+    answer = _compose_template_retrieve_answer("rms heartbeat", hits, brain_excerpts=brain)
+    assert "operational unreviewed" in answer.lower()
+    assert "claim:agv:heartbeat" in answer
+    brain_only = _compose_template_retrieve_answer("heartbeat", [], brain_excerpts=brain)
+    assert "operational unreviewed" in brain_only.lower()
+    assert "claim:agv:heartbeat" in brain_only
+
+
+def test_load_agent_prompt_strips_frontmatter() -> None:
+    from backend.app.services.llm_playbook_client import load_agent_prompt
+
+    text = load_agent_prompt("synthesize", "compose_answer.md")
+    assert text
+    assert not text.startswith("---")
+    assert "synthesize_agent" in text
+    assert "brain_excerpts" in text
+
+
+def test_llm_compose_packet_includes_brain(monkeypatch) -> None:
+    from backend.app.services import llm_playbook_client as client
+
+    captured: dict[str, str] = {}
+
+    def _fake_complete(*, system_prompt: str, user_prompt: str, max_tokens: int = 0):
+        captured["system"] = system_prompt
+        captured["user"] = user_prompt
+        return "Per **Check RMS** (`proc_1`) check faults.\n\nSources:\n- Check RMS (`proc_1`)"
+
+    monkeypatch.setattr(client, "complete_text", _fake_complete)
+    answer = client.llm_compose_retrieve_answer(
+        "rms blank",
+        [
+            {
+                "title": "Check RMS",
+                "source_record_id": "proc_1",
+                "record_type": "canonical_runbook",
+                "snippet": "Ask about system faults on RMS.",
+                "combined_score": 0.7,
+            }
+        ],
+        brain_excerpts=[
+            {
+                "title": "Heartbeat",
+                "source_id": "claim:hb",
+                "excerpt": "Heartbeat Max above threshold may indicate sync risk.",
+                "origin": "brain",
+            }
+        ],
+    )
+    assert answer
+    assert "claim:hb" in captured["user"]
+    assert "brain_excerpts" in captured["user"]
+    assert not captured["system"].startswith("---")
+    assert len(captured["user"]) > 100
+
+
+def test_corpus_source_reports_sample_without_cosmos(monkeypatch) -> None:
+    monkeypatch.delenv("COSMOS_ENDPOINT", raising=False)
+    monkeypatch.delenv("COSMOS_KEY", raising=False)
+    monkeypatch.delenv("AZURE_COSMOS_ENDPOINT", raising=False)
+    monkeypatch.delenv("AZURE_COSMOS_KEY", raising=False)
+    from backend.app.corpus.settings import get_corpus_settings
+
+    settings = get_corpus_settings()
+    assert settings.cosmos_configured is False
+    assert settings.corpus_source == "sample"

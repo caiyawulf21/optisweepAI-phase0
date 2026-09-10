@@ -26,6 +26,11 @@ from playbook_ui import (
     render_runbook_panel,
 )
 from branding import apply_fortna_theme, render_brand_banner
+from feedback_ui import (
+    render_feedback_controls,
+    render_image_summaries,
+    upload_attachments,
+)
 from streamlit_helpers import (
     allowed_answers_with_unknown,
     answer_button_key,
@@ -73,13 +78,20 @@ def _reset_troubleshoot_session() -> None:
     st.session_state.search_chat_bridge_events = []
 
 
-def _submit_user_message(backend_url: str, message: str, variant: str) -> None:
+def _submit_user_message(
+    backend_url: str,
+    message: str,
+    variant: str,
+    *,
+    attachment_ids: list[str] | None = None,
+) -> None:
     st.session_state.troubleshoot_history.append({"role": "user", "text": message})
     payload = post_troubleshoot(
         backend_url,
         session_id=st.session_state.troubleshoot_session_id,
         user_message=message,
         playbook_variant=variant,
+        attachment_ids=attachment_ids,
     )
     try:
         payload = enrich_troubleshoot_payload(
@@ -93,7 +105,13 @@ def _submit_user_message(backend_url: str, message: str, variant: str) -> None:
     )
 
 
-def _submit_search_message(backend_url: str, message: str, variant: str) -> None:
+def _submit_search_message(
+    backend_url: str,
+    message: str,
+    variant: str,
+    *,
+    attachment_ids: list[str] | None = None,
+) -> None:
     search_context = build_search_context_from_troubleshoot(
         st.session_state.troubleshoot_last,
         session_id=st.session_state.troubleshoot_session_id,
@@ -104,6 +122,7 @@ def _submit_search_message(backend_url: str, message: str, variant: str) -> None
         session_id=st.session_state.search_chat_session_id,
         playbook_variant=variant,
         search_context=search_context or None,
+        attachment_ids=attachment_ids,
     )
     append_retrieve_history_entry(
         st.session_state.search_chat_history,
@@ -325,6 +344,15 @@ def _render_playbook_conversation(*, backend_url: str, variant: str) -> None:
                 expanded=False,
                 load_images=latest,
             )
+            render_image_summaries(payload)
+            render_feedback_controls(
+                backend_url=backend_url,
+                session_id=st.session_state.troubleshoot_session_id,
+                interaction_id=payload.get("interaction_id"),
+                surface="troubleshoot",
+                payload=payload,
+                key_prefix=f"ts-fb-{index}",
+            )
             guided = payload.get("guided_question") or {}
             raw_answers = list(guided.get("allowed_answers") or [])
             add_unknown = guided.get("mode") != "playbook_candidates"
@@ -400,10 +428,32 @@ def _render_playbook_conversation(*, backend_url: str, variant: str) -> None:
             if payload.get("workflow_step") and not guided:
                 ws = payload["workflow_step"]
                 st.info(f"Node {ws.get('node_id')} — {ws.get('instruction')}")
+    pending_images = st.file_uploader(
+        "Attach screenshot(s) for next message",
+        type=["png", "jpg", "jpeg", "webp"],
+        accept_multiple_files=True,
+        key="troubleshoot_pending_images",
+    )
     prompt = st.chat_input("Describe the issue or answer the current playbook step")
     if prompt:
         try:
-            _submit_user_message(backend_url, prompt, variant)
+            attachment_ids: list[str] = []
+            if pending_images:
+                uploaded = upload_attachments(
+                    backend_url,
+                    session_id=st.session_state.troubleshoot_session_id,
+                    files=list(pending_images),
+                    source="troubleshoot",
+                    user_description=prompt,
+                )
+                attachment_ids = [
+                    str(item.get("attachment_id"))
+                    for item in uploaded
+                    if item.get("attachment_id")
+                ]
+            _submit_user_message(
+                backend_url, prompt, variant, attachment_ids=attachment_ids
+            )
             st.rerun()
         except requests.RequestException as exc:
             st.error(str(exc))
@@ -453,6 +503,16 @@ def _render_search_chat_panel(*, backend_url: str, variant: str) -> None:
                         st.rerun()
                     except requests.RequestException as exc:
                         st.error(str(exc))
+            payload = entry.get("payload") if isinstance(entry.get("payload"), dict) else {}
+            render_image_summaries(payload)
+            render_feedback_controls(
+                backend_url=backend_url,
+                session_id=st.session_state.search_chat_session_id,
+                interaction_id=payload.get("interaction_id"),
+                surface="retrieve",
+                payload=payload,
+                key_prefix=f"search-fb-{index}",
+            )
 
     with st.form("embedded_search_chat_form", clear_on_submit=True):
         question = st.text_area(
@@ -461,10 +521,35 @@ def _render_search_chat_panel(*, backend_url: str, variant: str) -> None:
             placeholder="Ask without leaving the playbook…",
             label_visibility="collapsed",
         )
+        search_images = st.file_uploader(
+            "Attach screenshot(s)",
+            type=["png", "jpg", "jpeg", "webp"],
+            accept_multiple_files=True,
+            key="embedded_search_images",
+        )
         submitted = st.form_submit_button("Ask", use_container_width=True)
     if submitted and str(question or "").strip():
         try:
-            _submit_search_message(backend_url, str(question).strip(), variant)
+            attachment_ids: list[str] = []
+            if search_images:
+                uploaded = upload_attachments(
+                    backend_url,
+                    session_id=st.session_state.search_chat_session_id,
+                    files=list(search_images),
+                    source="retrieve",
+                    user_description=str(question).strip(),
+                )
+                attachment_ids = [
+                    str(item.get("attachment_id"))
+                    for item in uploaded
+                    if item.get("attachment_id")
+                ]
+            _submit_search_message(
+                backend_url,
+                str(question).strip(),
+                variant,
+                attachment_ids=attachment_ids,
+            )
             st.rerun()
         except requests.RequestException as exc:
             st.error(str(exc))
@@ -620,6 +705,12 @@ with st.sidebar:
             st.caption(progress)
     else:
         st.caption("No playbook selected yet")
+        resolution = workflow.get("playbook_resolution")
+        if resolution in {"unpinned", "awaiting_candidate"}:
+            st.caption(
+                "This turn is flagged for Brain routing learning "
+                f"(`{resolution}`) when Brain feedback is enabled."
+            )
     st.caption(
         "Search Chat uses `POST /retrieve` with compact playbook context. "
         "It never advances playbook nodes unless you confirm **Use this result**."

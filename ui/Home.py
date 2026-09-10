@@ -62,6 +62,17 @@ Use **Search / Chat** when you want corpus Q&A without executing a playbook.
 """
 )
 
+st.subheader("SME Review")
+st.markdown(
+    """
+Use **SME Review** when you are a knowledge owner approving BrainReviews.
+
+- Pull queue of open reviews from Brain HTTP (via the app API).
+- Approve / reject / edit; MERGE may mutate the corpus, RETYPE/RECLASSIFY may be accepted but not executed yet.
+- Enable with `BRAIN_HTTP_ENABLED`, `BRAIN_HTTP_REVIEWS`, and `BRAIN_HTTP_BASE_URL`.
+"""
+)
+
 st.subheader("Backend")
 backend = os.getenv("API_BASE_URL", "http://127.0.0.1:8000").rstrip("/")
 try:

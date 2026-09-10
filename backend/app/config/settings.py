@@ -44,6 +44,25 @@ class AzureKnowledgeSettings:
             "processed-source-artifacts",
         )
     )
+    user_attachments_container: str = field(
+        default_factory=lambda: os.getenv(
+            "AZURE_USER_ATTACHMENTS_CONTAINER",
+            "user-interaction-attachments",
+        )
+    )
+    vision_endpoint: str | None = field(
+        default_factory=lambda: os.getenv("AZURE_VISION_ENDPOINT")
+        or os.getenv("AZURE_COMPUTER_VISION_ENDPOINT")
+    )
+    vision_key: str | None = field(
+        default_factory=lambda: os.getenv("AZURE_VISION_KEY")
+        or os.getenv("AZURE_COMPUTER_VISION_KEY")
+    )
+    vision_api_version: str = field(
+        default_factory=lambda: os.getenv(
+            "AZURE_VISION_API_VERSION", "2024-02-01"
+        )
+    )
     content_vector_dimensions: int = field(
         default_factory=lambda: int(os.getenv("AZURE_SEARCH_VECTOR_DIMENSIONS", "1536"))
     )

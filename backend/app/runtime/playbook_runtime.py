@@ -1,3 +1,11 @@
+"""Playbook + retrieve entrypoints used by FastAPI routes.
+
+run_playbook_troubleshoot / run_retrieve_chat build LangGraph graphs and
+execute against the in-memory Cosmos CorpusIndex (or sample corpus when Cosmos
+creds are missing). Optional approved Brain excerpts may be passed into retrieve
+synthesis; Brain HTTP fetch still happens in api/retrieve.py.
+"""
+
 from __future__ import annotations
 
 from typing import Any
@@ -106,6 +114,7 @@ def run_retrieve_chat(
     prior_turns: list[dict[str, Any]] | None = None,
     commit_user_turn: bool = True,
     search_context: dict[str, Any] | None = None,
+    brain_excerpts: list[dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     from backend.app.services.search_context import (
         build_contextual_retrieval_query,
@@ -117,6 +126,9 @@ def run_retrieve_chat(
     resolved_types = resolve_retrieve_record_types(record_types)
     sid = str(session_id or "").strip()
     compact_context = compact_search_context(search_context)
+    approved_brain = [
+        item for item in list(brain_excerpts or []) if isinstance(item, dict)
+    ]
 
     memory: RetrieveMemoryPacket
     if prior_turns is not None and not sid:
@@ -162,14 +174,19 @@ def run_retrieve_chat(
         "playbook_variant": playbook_variant or settings.default_playbook_variant,
         "record_types": resolved_types,
         "top_k": top_k,
+        "brain_excerpts": approved_brain,
         "runtime_trace": {
             "surface": "retrieve",
             "agents": [],
             "corpus_source": settings.corpus_source,
+            "cosmos_configured": settings.cosmos_configured,
+            "publish_version_id": settings.publish_version_id,
             "retrieve_intent": intent,
             "memory_messages": memory.message_count,
             "memory_trimmed": memory.trimmed_message_count,
             "memory_hints": list(memory.retrieval_hints),
+            "brain_excerpt_count": len(approved_brain),
+            "brain_synthesis_enabled": bool(approved_brain),
             **search_context_trace_fields(compact_context),
             "retrieval_query_rewritten": rewritten if rewritten != query else None,
         },
@@ -179,15 +196,20 @@ def run_retrieve_chat(
     result.setdefault("runtime_trace", {})
     result["runtime_trace"]["surface"] = "retrieve"
     result["runtime_trace"]["corpus_source"] = settings.corpus_source
+    result["runtime_trace"]["cosmos_configured"] = settings.cosmos_configured
+    result["runtime_trace"]["publish_version_id"] = settings.publish_version_id
     result["runtime_trace"]["record_types"] = resolved_types
     result["runtime_trace"]["retrieve_intent"] = intent
     result["runtime_trace"]["memory_messages"] = memory.message_count
     result["runtime_trace"]["memory_trimmed"] = memory.trimmed_message_count
+    result["runtime_trace"]["brain_excerpt_count"] = len(approved_brain)
+    result["runtime_trace"]["brain_synthesis_enabled"] = bool(approved_brain)
     result["runtime_trace"].update(search_context_trace_fields(compact_context))
     if rewritten != query:
         result["runtime_trace"]["retrieval_query_rewritten"] = rewritten
     result["retrieve_intent"] = intent
     result["search_context"] = compact_context
+    result["brain_excerpts"] = approved_brain
     return result
 
 

@@ -1,0 +1,727 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OptiSweep Brain HTTP API",
+    "description": "The four appcode-facing Brain routes: context/retrieve, context/troubleshoot, feedback, and reviews/{id}/resolve. Brain owns all brain_* container mutation; appcode is a client only, holding no Brain write credentials of its own.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/brain/v1/context/retrieve": {
+      "post": {
+        "summary": "Context Retrieve",
+        "operationId": "context_retrieve_brain_v1_context_retrieve_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContextRetrieveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContextResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brain/v1/context/troubleshoot": {
+      "post": {
+        "summary": "Context Troubleshoot",
+        "operationId": "context_troubleshoot_brain_v1_context_troubleshoot_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TroubleshootRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContextResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brain/v1/feedback": {
+      "post": {
+        "summary": "Feedback",
+        "operationId": "feedback_brain_v1_feedback_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brain/v1/reviews": {
+      "get": {
+        "summary": "List Reviews",
+        "operationId": "list_reviews_brain_v1_reviews_get",
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": "open",
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewListResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brain/v1/reviews/{review_id}/resolve": {
+      "post": {
+        "summary": "Resolve Review",
+        "operationId": "resolve_review_brain_v1_reviews__review_id__resolve_post",
+        "parameters": [
+          {
+            "name": "review_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Review Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReviewResolveRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReviewResolveResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ContextResponse": {
+        "properties": {
+          "task": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Task"
+          },
+          "excerpts": {
+            "items": {
+              "$ref": "#/components/schemas/HydratedExcerptResponse"
+            },
+            "type": "array",
+            "title": "Excerpts"
+          },
+          "excerpt_count": {
+            "type": "integer",
+            "title": "Excerpt Count"
+          },
+          "truncated_excerpt_count": {
+            "type": "integer",
+            "title": "Truncated Excerpt Count"
+          },
+          "entity_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Entity Ids"
+          },
+          "approved_knowledge_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Approved Knowledge Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "task",
+          "excerpts",
+          "excerpt_count",
+          "truncated_excerpt_count",
+          "entity_ids",
+          "approved_knowledge_ids"
+        ],
+        "title": "ContextResponse",
+        "description": "Shared response shape for both /context/retrieve and\n/context/troubleshoot -- the critical-response-rule shape: the\noriginal ID-only packet (for audit/citation) PLUS real hydrated\nexcerpts, never ID-only alone."
+      },
+      "ContextRetrieveRequest": {
+        "properties": {
+          "query_text": {
+            "type": "string",
+            "title": "Query Text"
+          },
+          "entity_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Entity Ids"
+          },
+          "relationship_types": {
+            "anyOf": [
+              {
+                "items": {
+                  "$ref": "#/components/schemas/RelationshipType"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relationship Types"
+          },
+          "hops": {
+            "type": "integer",
+            "title": "Hops",
+            "default": 1
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "query_text"
+        ],
+        "title": "ContextRetrieveRequest"
+      },
+      "FeedbackEvent": {
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "interaction_id": {
+            "type": "string",
+            "title": "Interaction Id"
+          },
+          "sentiment": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sentiment"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "targets": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Targets"
+          },
+          "image_summaries": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Image Summaries"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "session_id",
+          "interaction_id",
+          "text"
+        ],
+        "title": "FeedbackEvent",
+        "description": "Matches the appcode-side FeedbackEvent shape named in the HTTP\nboundary doc: session/interaction/sentiment/text/targets/image\nsummaries. `targets` names what the feedback is ABOUT (a node id, a\nprocedure id, a capability id, ...) -- not validated against the\ncorpus here; extract_evidence/classify_candidate do that judgment."
+      },
+      "FeedbackResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail",
+            "default": ""
+          },
+          "review_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Review Ids"
+          },
+          "written_record_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Written Record Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "FeedbackResponse"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HydratedExcerptResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "validation_status": {
+            "type": "string",
+            "title": "Validation Status"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "truncated": {
+            "type": "boolean",
+            "title": "Truncated"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "label",
+          "validation_status",
+          "text",
+          "truncated"
+        ],
+        "title": "HydratedExcerptResponse"
+      },
+      "RelationshipType": {
+        "type": "string",
+        "enum": [
+          "contains",
+          "controls",
+          "communicates_with",
+          "depends_on",
+          "displays",
+          "observes",
+          "verifies",
+          "uses",
+          "supports",
+          "affects",
+          "may_indicate",
+          "causes",
+          "contributes_to",
+          "requires",
+          "applies_to"
+        ],
+        "title": "RelationshipType"
+      },
+      "ReviewListResponse": {
+        "properties": {
+          "reviews": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewSummary"
+            },
+            "type": "array",
+            "title": "Reviews"
+          },
+          "open_count": {
+            "type": "integer",
+            "title": "Open Count"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "reviews",
+          "open_count"
+        ],
+        "title": "ReviewListResponse"
+      },
+      "ReviewResolveRequest": {
+        "properties": {
+          "resolution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resolution"
+          },
+          "winner_record_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Winner Record Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "ReviewResolveRequest",
+        "description": "SME approves or overrides a resolution for one BrainReview.\n`resolution` defaults to whatever resolve_audit_candidate (Tool 6)\nalready proposed on the review if the SME doesn't override it --\ncallers approving an agent-proposed MERGE typically omit this."
+      },
+      "ReviewResolveResponse": {
+        "properties": {
+          "review_id": {
+            "type": "string",
+            "title": "Review Id"
+          },
+          "resolution": {
+            "type": "string",
+            "title": "Resolution"
+          },
+          "applied": {
+            "type": "boolean",
+            "title": "Applied"
+          },
+          "mutated_record_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Mutated Record Ids"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "review_id",
+          "resolution",
+          "applied"
+        ],
+        "title": "ReviewResolveResponse"
+      },
+      "ReviewSummary": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "kind": {
+            "type": "string",
+            "title": "Kind"
+          },
+          "check_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Check Name"
+          },
+          "affected_record_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Affected Record Ids"
+          },
+          "proposed_change": {
+            "type": "string",
+            "title": "Proposed Change"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "resolution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resolution"
+          },
+          "resolved_by": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resolved By"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "check_name",
+          "affected_record_ids",
+          "proposed_change",
+          "status",
+          "resolution",
+          "resolved_by"
+        ],
+        "title": "ReviewSummary"
+      },
+      "TroubleshootRequest": {
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "title": "Session Id"
+          },
+          "playbook_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Playbook Id"
+          },
+          "current_node_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current Node Id"
+          },
+          "observed_signals": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Observed Signals"
+          },
+          "entity_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Entity Ids"
+          },
+          "hops": {
+            "type": "integer",
+            "title": "Hops",
+            "default": 2
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "session_id"
+        ],
+        "title": "TroubleshootRequest",
+        "description": "Session/node/signal-aware context -- distinct from a bare search\nquery. `current_node_id`/`playbook_id` seed retrieval from wherever a\nlive troubleshooting session actually is (e.g. a Playbook node's own\n`capability_id`/`procedure_id`/`symptom_entity_id`), and\n`observed_signals` are free-text observations the app has collected in\nthis session so far (e.g. \"AGV active error confirmed\", \"RMS shows\nnormal\") -- folded into the semantic query text, not treated as\nstructured facts, since Brain has no schema for \"signal\" as its own\nconcept."
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

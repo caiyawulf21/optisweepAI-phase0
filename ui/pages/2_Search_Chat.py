@@ -7,6 +7,11 @@ import requests
 import streamlit as st
 
 from branding import apply_fortna_theme, render_brand_banner
+from feedback_ui import (
+    render_feedback_controls,
+    render_image_summaries,
+    upload_attachments,
+)
 from playbook_ui import (
     append_retrieve_history_entry,
     get_corpus_status,
@@ -84,7 +89,7 @@ with st.sidebar:
 conversation_tab, turns_tab, trace_tab = st.tabs(["Conversation", "Turns", "Trace"])
 
 with conversation_tab:
-    for entry in st.session_state.retrieve_history:
+    for index, entry in enumerate(st.session_state.retrieve_history):
         with st.chat_message(entry["role"]):
             if entry["role"] == "assistant":
                 render_retrieve_assistant_entry(
@@ -94,17 +99,48 @@ with conversation_tab:
                     playbook_variant=variant,
                     load_images=show_images,
                 )
+                payload = entry.get("payload") if isinstance(entry.get("payload"), dict) else {}
+                render_image_summaries(payload)
+                render_feedback_controls(
+                    backend_url=backend_url,
+                    session_id=st.session_state.retrieve_session_id,
+                    interaction_id=payload.get("interaction_id"),
+                    surface="retrieve",
+                    payload=payload,
+                    key_prefix=f"rt-fb-{index}",
+                )
             else:
                 st.write(entry["text"])
+    pending_images = st.file_uploader(
+        "Attach screenshot(s) for next question",
+        type=["png", "jpg", "jpeg", "webp"],
+        accept_multiple_files=True,
+        key="retrieve_pending_images",
+    )
     prompt = st.chat_input("Ask a question")
     if prompt:
         try:
+            attachment_ids: list[str] = []
+            if pending_images:
+                uploaded = upload_attachments(
+                    backend_url,
+                    session_id=st.session_state.retrieve_session_id,
+                    files=list(pending_images),
+                    source="retrieve",
+                    user_description=prompt,
+                )
+                attachment_ids = [
+                    str(item.get("attachment_id"))
+                    for item in uploaded
+                    if item.get("attachment_id")
+                ]
             payload = post_retrieve(
                 backend_url,
                 query=prompt,
                 session_id=st.session_state.retrieve_session_id,
                 playbook_variant=variant,
                 record_types=record_types,
+                attachment_ids=attachment_ids,
             )
             append_retrieve_history_entry(
                 st.session_state.retrieve_history,

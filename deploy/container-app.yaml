@@ -75,6 +75,20 @@ properties:
             secretRef: azure-openai-api-key
           - name: AZURE_OPENAI_DEPLOYMENT
             secretRef: azure-openai-deployment
+          - name: BRAIN_HTTP_BASE_URL
+            value: https://optisweep-brain-http.nicetree-2326f6da.eastus.azurecontainerapps.io
+          - name: BRAIN_HTTP_ENABLED
+            value: "true"
+          - name: BRAIN_HTTP_RETRIEVE
+            value: "true"
+          - name: BRAIN_HTTP_TROUBLESHOOT
+            value: "true"
+          - name: BRAIN_HTTP_FEEDBACK
+            value: "true"
+          - name: BRAIN_HTTP_REVIEWS
+            value: "true"
+          - name: BRAIN_HTTP_TIMEOUT_SECONDS
+            value: "90"
     scale:
       minReplicas: 1
       maxReplicas: 1

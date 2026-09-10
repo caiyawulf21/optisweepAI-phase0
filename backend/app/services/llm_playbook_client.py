@@ -13,7 +13,12 @@ def load_agent_prompt(agent: str, filename: str) -> str:
     path = _PROMPTS_ROOT / agent / filename
     if not path.exists():
         return ""
-    return path.read_text(encoding="utf-8").strip()
+    text = path.read_text(encoding="utf-8").strip()
+    if text.startswith("---"):
+        end = text.find("\n---", 3)
+        if end != -1:
+            text = text[end + 4 :].strip()
+    return text
 
 
 def llm_available() -> bool:
@@ -203,25 +208,32 @@ def llm_classify_branch_reply(
     }
 
 
+def _excerpt_budget(record_type: str | None) -> int:
+    return 900 if str(record_type or "") == "operational_context" else 600
+
+
 def llm_compose_retrieve_answer(
     query: str,
     hits: list[dict[str, Any]],
     *,
     prior_turns: list[dict[str, Any]] | None = None,
     intent: str | None = None,
+    brain_excerpts: list[dict[str, Any]] | None = None,
 ) -> str | None:
     system_prompt = load_agent_prompt("synthesize", "compose_answer.md")
     if not system_prompt:
         system_prompt = (
-            "Compose a short support-safe chatbot answer from the hits. "
-            "Cite titles and source_ids inline, and end with a Sources: list. "
+            "Compose a short support-safe chatbot answer from the hits and any "
+            "brain_excerpts. Cite titles and source_ids inline, and end with a Sources: list. "
+            "Label Brain operational_unreviewed material as operational unreviewed. "
             "Do not re-ask clarifying questions when intent is already resolved."
         )
     slim_hits = []
-    for hit in hits[:5]:
+    for hit in hits[:8]:
         if not isinstance(hit, dict):
             continue
         metadata = hit.get("filter_metadata") if isinstance(hit.get("filter_metadata"), dict) else {}
+        record_type = str(hit.get("record_type") or "")
         excerpt = str(hit.get("snippet") or hit.get("excerpt") or "")
         slim_hits.append(
             {
@@ -231,13 +243,36 @@ def llm_compose_retrieve_answer(
                     or hit.get("source_record_id")
                     or hit.get("record_id")
                 ),
-                "excerpt": excerpt[:280],
+                "excerpt": excerpt[: _excerpt_budget(record_type)],
                 "confidence": hit.get("combined_score") or hit.get("confidence") or 0.0,
                 "source_id": hit.get("source_record_id") or hit.get("record_id"),
-                "record_type": hit.get("record_type"),
+                "record_type": record_type or None,
             }
         )
-    # Bounded LangChain-trimmed turns only — never dump full prior answers.
+    slim_brain = []
+    for item in list(brain_excerpts or [])[:8]:
+        if not isinstance(item, dict):
+            continue
+        excerpt = str(item.get("excerpt") or item.get("snippet") or item.get("text") or "")
+        if not excerpt.strip():
+            continue
+        review_state = str(
+            item.get("review_state") or item.get("validation_status") or "approved"
+        ).strip()
+        slim_brain.append(
+            {
+                "title": item.get("title") or item.get("source_id") or item.get("record_id"),
+                "excerpt": excerpt[:800],
+                "confidence": item.get("confidence") or item.get("combined_score") or 0.45,
+                "source_id": item.get("source_id")
+                or item.get("source_record_id")
+                or item.get("record_id"),
+                "record_type": item.get("record_type") or "brain",
+                "origin": "brain",
+                "review_state": review_state,
+                "validation_status": item.get("validation_status") or review_state,
+            }
+        )
     history = []
     for turn in list(prior_turns or [])[-4:]:
         if not isinstance(turn, dict):
@@ -252,16 +287,26 @@ def llm_compose_retrieve_answer(
             "resolved_intent": intent,
             "prior_turns": history,
             "hits": slim_hits,
+            "brain_excerpts": slim_brain,
             "instructions": (
-                "Act as a helpful chatbot. Summarize what the hits say about the user question. "
+                "Act as a helpful chatbot. Synthesize what the hits and brain_excerpts say "
+                "about the user question — do not dump raw excerpts. "
+                "Treat brain_excerpts as supplemental cited evidence from Brain retrieve, "
+                "not as a relationship graph. "
                 "prior_turns is already trimmed; do not request more history. "
                 "If resolved_intent is software_stack, answer that directly and do not ask the "
-                "software/maintenance/incident clarifying menu again."
+                "software/maintenance/incident clarifying menu again. "
+                "Prefer publish hits and approved Brain excerpts. "
+                "If resolved_intent is howto or maintenance, prefer runbook procedure hits "
+                "and point to concrete steps. "
+                "If a brain excerpt has review_state/validation_status operational_unreviewed, "
+                "you may use it but must label it as operational unreviewed and not as approved guidance. "
+                "Cite Brain material distinctly when you use it."
             ),
         },
         indent=2,
     )
-    return complete_text(system_prompt=system_prompt, user_prompt=user_prompt, max_tokens=650)
+    return complete_text(system_prompt=system_prompt, user_prompt=user_prompt, max_tokens=750)
 
 
 def llm_compose_orchestrator_message(briefing: dict[str, Any]) -> dict[str, str] | None:

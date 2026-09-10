@@ -1,0 +1,6 @@
+{
+  "status": "applied_unreviewed",
+  "detail": "Applied as operational_unreviewed",
+  "review_ids": ["brain_review:demo"],
+  "written_record_ids": ["claim:demo:new"]
+}

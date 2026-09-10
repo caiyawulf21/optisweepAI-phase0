@@ -1,9 +1,8 @@
 """Process-level configuration for the assistant runtime.
 
-``AzureKnowledgeSettings`` lives in :mod:`backend.app.config.settings` and
-covers the Azure-side knowledge plane. ``AppSettings`` (re-exported below)
-covers the Phase 0 graph runtime backend selectors
-(``RETRIEVAL_BACKEND``/``SESSION_BACKEND``) and remaining feature toggles.
+AzureKnowledgeSettings (settings.py): Cosmos / Blob / Vision / embedding dims.
+AppSettings (below): session/log/feedback backends, playbook thresholds, and
+optional Brain HTTP client flags (default off).
 """
 from __future__ import annotations
 
@@ -19,6 +18,9 @@ SESSION_BACKEND_COSMOS = "cosmos"
 INTERACTION_LOG_BACKEND_MEMORY = "memory"
 INTERACTION_LOG_BACKEND_COSMOS = "cosmos"
 INTERACTION_LOG_BACKEND_DISABLED = "disabled"
+FEEDBACK_BACKEND_MEMORY = "memory"
+FEEDBACK_BACKEND_COSMOS = "cosmos"
+FEEDBACK_BACKEND_DISABLED = "disabled"
 
 _VALID_RETRIEVAL_BACKENDS = frozenset(
     {
@@ -34,6 +36,13 @@ _VALID_INTERACTION_LOG_BACKENDS = frozenset(
         INTERACTION_LOG_BACKEND_MEMORY,
         INTERACTION_LOG_BACKEND_COSMOS,
         INTERACTION_LOG_BACKEND_DISABLED,
+    }
+)
+_VALID_FEEDBACK_BACKENDS = frozenset(
+    {
+        FEEDBACK_BACKEND_MEMORY,
+        FEEDBACK_BACKEND_COSMOS,
+        FEEDBACK_BACKEND_DISABLED,
     }
 )
 
@@ -77,6 +86,14 @@ class AppSettings:
             else INTERACTION_LOG_BACKEND_MEMORY,
         ).strip().lower()
     )
+    feedback_backend: str = field(
+        default_factory=lambda: os.getenv(
+            "FEEDBACK_BACKEND",
+            FEEDBACK_BACKEND_COSMOS
+            if _cosmos_creds_present()
+            else FEEDBACK_BACKEND_MEMORY,
+        ).strip().lower()
+    )
     enable_llm_symptom_extraction: bool = field(
         default_factory=lambda: _env_truthy(
             os.getenv("ENABLE_LLM_SYMPTOM_EXTRACTION"), default=True
@@ -85,6 +102,44 @@ class AppSettings:
     enable_semantic_signal_prior: bool = field(
         default_factory=lambda: _env_truthy(
             os.getenv("ENABLE_SEMANTIC_SIGNAL_PRIOR"), default=False
+        )
+    )
+    brain_http_base_url: str = field(
+        default_factory=lambda: (os.getenv("BRAIN_HTTP_BASE_URL") or "").strip()
+    )
+    brain_http_enabled: bool = field(
+        default_factory=lambda: _env_truthy(
+            os.getenv("BRAIN_HTTP_ENABLED"), default=False
+        )
+    )
+    brain_http_retrieve: bool = field(
+        default_factory=lambda: _env_truthy(
+            os.getenv("BRAIN_HTTP_RETRIEVE"), default=False
+        )
+    )
+    brain_http_troubleshoot: bool = field(
+        default_factory=lambda: _env_truthy(
+            os.getenv("BRAIN_HTTP_TROUBLESHOOT"), default=False
+        )
+    )
+    brain_http_feedback: bool = field(
+        default_factory=lambda: _env_truthy(
+            os.getenv("BRAIN_HTTP_FEEDBACK"), default=False
+        )
+    )
+    brain_http_reviews: bool = field(
+        default_factory=lambda: _env_truthy(
+            os.getenv("BRAIN_HTTP_REVIEWS"), default=False
+        )
+    )
+    brain_http_timeout_seconds: float = field(
+        default_factory=lambda: float(
+            os.getenv("BRAIN_HTTP_TIMEOUT_SECONDS") or "180"
+        )
+    )
+    brain_http_warmup_on_startup: bool = field(
+        default_factory=lambda: _env_truthy(
+            os.getenv("BRAIN_HTTP_WARMUP_ON_STARTUP"), default=True
         )
     )
 
@@ -123,12 +178,19 @@ def validate_runtime_mode(
             f"{settings.interaction_log_backend!r}. Valid values: "
             f"{sorted(_VALID_INTERACTION_LOG_BACKENDS)}."
         )
+    if settings.feedback_backend not in _VALID_FEEDBACK_BACKENDS:
+        raise ValueError(
+            "Invalid FEEDBACK_BACKEND="
+            f"{settings.feedback_backend!r}. Valid values: "
+            f"{sorted(_VALID_FEEDBACK_BACKENDS)}."
+        )
 
     if settings.retrieval_backend == RETRIEVAL_BACKEND_COSMOS:
         azure.require_cosmos()
     if (
         settings.session_backend == SESSION_BACKEND_COSMOS
         or settings.interaction_log_backend == INTERACTION_LOG_BACKEND_COSMOS
+        or settings.feedback_backend == FEEDBACK_BACKEND_COSMOS
     ):
         azure.require_cosmos()
 
@@ -136,6 +198,9 @@ def validate_runtime_mode(
 __all__ = [
     "AppSettings",
     "AzureKnowledgeSettings",
+    "FEEDBACK_BACKEND_COSMOS",
+    "FEEDBACK_BACKEND_DISABLED",
+    "FEEDBACK_BACKEND_MEMORY",
     "INTERACTION_LOG_BACKEND_COSMOS",
     "INTERACTION_LOG_BACKEND_DISABLED",
     "INTERACTION_LOG_BACKEND_MEMORY",

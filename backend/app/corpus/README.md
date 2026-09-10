@@ -1,32 +1,28 @@
 # Corpus Module
 
-Sole runtime data access layer for playbook orchestration. Cosmos is the only runtime corpus source.
+Primary runtime knowledge source for playbook orchestration and `/retrieve`.
+Loads a Stage 11 Cosmos publish into an in-memory `CorpusIndex` at startup.
+When Cosmos creds are missing, falls back to a tiny in-process `sample` corpus
+(`corpus_source=sample`). Optional Brain HTTP excerpts may also feed `/retrieve`
+synthesis when feature flags are on — they do not replace this index.
+
+There is **no** local `data/` corpus and **no** Azure AI Search retrieval path.
 
 ## Files
 
 | File | Role |
 |------|------|
-| `settings.py` | Env: Cosmos containers, `PUBLISH_VERSION_ID`, thresholds |
+| `settings.py` | Container env vars, `PUBLISH_VERSION_ID`, thresholds |
 | `models.py` | `EmbeddingRecord`, `RelationshipLink`, `CorpusIndex` |
 | `cosmos_client.py` | Query/load playbooks, runbooks, embeddings, links |
-| `bootstrap.py` | Process singleton cache |
+| `bootstrap.py` | Process-wide index singleton + reload |
 
-## Env Vars
+## Env
 
-```env
-COSMOS_ENDPOINT=
-COSMOS_KEY=
-COSMOS_DATABASE=
-COSMOS_CONTAINER_RUNBOOKS=
-COSMOS_CONTAINER_PLAYBOOKS_A=
-COSMOS_CONTAINER_PLAYBOOKS_B=
-COSMOS_CONTAINER_RELATIONSHIP_LINKS=
-PUBLISH_VERSION_ID=
-AUTO_PUBLISH_VERSION=true
-```
+See repo `.env.example`. With `AUTO_PUBLISH_VERSION=true`, startup resolves the
+newest publish that has embeddings; otherwise pin `PUBLISH_VERSION_ID`.
 
-`AUTO_PUBLISH_VERSION=true` resolves the newest Cosmos publish with embeddings at startup / corpus reload. `PUBLISH_VERSION_ID` is the fallback (and the pin when auto is false).
+## Consumers
 
-## API Surface
-
-Used by agents and `GET /corpus/*` routes; not called from UI directly.
+Agents (`backend/app/agents/runtime.py`), `GET /corpus/*`, and hybrid retrieval.
+UI talks to corpus only via the FastAPI routes.

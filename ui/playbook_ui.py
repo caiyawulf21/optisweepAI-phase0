@@ -219,74 +219,120 @@ def _compact_procedure_ref(value: Any) -> str | None:
     return text or None
 
 
-def _suggested_database_checks(node: dict[str, Any]) -> list[dict[str, Any]]:
-    existing = node.get("suggested_database_checks")
-    if isinstance(existing, list) and existing and all(
-        isinstance(item, dict) and ("fields" in item or "entity" in item)
-        for item in existing
-    ):
-        normalized: list[dict[str, Any]] = []
-        for check in existing:
-            fields = check.get("fields")
-            if fields and all(isinstance(field, str) for field in fields):
-                field_names = [str(field).strip() for field in fields if str(field).strip()]
-            else:
-                field_names = []
-                for field in list(fields or []):
-                    if isinstance(field, dict):
-                        text = str(field.get("meaning") or field.get("name") or "").strip()
-                    else:
-                        text = str(field or "").strip()
-                    if text:
-                        field_names.append(text)
-            database = str(check.get("database") or "").strip() or None
-            entity = str(check.get("entity") or "").strip() or None
-            if not (database or entity or field_names):
-                continue
-            normalized.append(
-                {
-                    "database": database,
-                    "entity": entity,
-                    "fields": field_names,
-                    "correlation_keys": _as_text_list(check.get("correlation_keys")),
-                    "freshness_field": str(check.get("freshness_field") or "").strip()
-                    or None,
-                }
-            )
-        if normalized:
-            return normalized
+def _normalize_check_fields(raw_fields: Any) -> list[str]:
+    fields: list[str] = []
+    for field in list(raw_fields or []):
+        if isinstance(field, dict):
+            text = str(field.get("meaning") or field.get("name") or "").strip()
+        else:
+            text = str(field or "").strip()
+        if text and text not in fields:
+            fields.append(text)
+    return fields
 
+
+def _append_database_check(
+    checks: list[dict[str, Any]],
+    *,
+    database: Any,
+    entity: Any,
+    fields: Any,
+    correlation_keys: Any = None,
+    freshness_field: Any = None,
+) -> None:
+    database_text = str(database or "").strip() or None
+    entity_text = str(entity or "").strip() or None
+    field_names = _normalize_check_fields(fields)
+    if not (database_text or entity_text or field_names):
+        return
+    key = (
+        (database_text or "").lower(),
+        (entity_text or "").lower(),
+        tuple(name.lower() for name in field_names),
+    )
+    for existing in checks:
+        existing_key = (
+            str(existing.get("database") or "").lower(),
+            str(existing.get("entity") or "").lower(),
+            tuple(str(item).lower() for item in list(existing.get("fields") or [])),
+        )
+        if existing_key == key:
+            return
+    checks.append(
+        {
+            "database": database_text,
+            "entity": entity_text,
+            "fields": field_names,
+            "correlation_keys": _as_text_list(correlation_keys),
+            "freshness_field": str(freshness_field or "").strip() or None,
+        }
+    )
+
+
+def _checks_from_support_sources(node: dict[str, Any]) -> list[dict[str, Any]]:
+    checks: list[dict[str, Any]] = []
+    sources: list[Any] = []
+    for capability in list(node.get("ontology_capabilities") or []):
+        if not isinstance(capability, dict):
+            continue
+        for mapping in list(capability.get("backend_mappings") or []):
+            if isinstance(mapping, dict):
+                sources.extend(list(mapping.get("support_read_sources") or []))
+    for mapping in list(node.get("backend_observability") or []):
+        if isinstance(mapping, dict):
+            sources.extend(list(mapping.get("support_read_sources") or []))
+    for source in sources:
+        if not isinstance(source, dict):
+            continue
+        _append_database_check(
+            checks,
+            database=source.get("database"),
+            entity=source.get("model") or source.get("entity"),
+            fields=source.get("fields"),
+        )
+    return checks
+
+
+def _suggested_database_checks(node: dict[str, Any]) -> list[dict[str, Any]]:
+    checks: list[dict[str, Any]] = []
+    existing = node.get("suggested_database_checks")
+    if isinstance(existing, list):
+        for check in existing:
+            if not isinstance(check, dict):
+                continue
+            _append_database_check(
+                checks,
+                database=check.get("database"),
+                entity=check.get("entity") or check.get("model"),
+                fields=check.get("fields"),
+                correlation_keys=check.get("correlation_keys"),
+                freshness_field=check.get("freshness_field"),
+            )
     mapping = node.get("technical_field_mapping")
     raw_checks: list[Any] = []
     if isinstance(mapping, dict):
         raw_checks = list(mapping.get("suggested_database_checks") or [])
-    if not raw_checks:
+    if not raw_checks and not checks:
         raw_checks = list(node.get("suggested_database_checks") or [])
-    checks: list[dict[str, Any]] = []
     for check in raw_checks:
         if not isinstance(check, dict):
             continue
-        fields: list[str] = []
-        for field in list(check.get("fields") or []):
-            if isinstance(field, dict):
-                text = str(field.get("meaning") or field.get("name") or "").strip()
-            else:
-                text = str(field or "").strip()
-            if text:
-                fields.append(text)
-        database = str(check.get("database") or "").strip() or None
-        entity = str(check.get("entity") or "").strip() or None
-        if not (database or entity or fields):
-            continue
-        checks.append(
-            {
-                "database": database,
-                "entity": entity,
-                "fields": fields,
-                "correlation_keys": _as_text_list(check.get("correlation_keys")),
-                "freshness_field": str(check.get("freshness_field") or "").strip()
-                or None,
-            }
+        _append_database_check(
+            checks,
+            database=check.get("database"),
+            entity=check.get("entity") or check.get("model"),
+            fields=check.get("fields"),
+            correlation_keys=check.get("correlation_keys"),
+            freshness_field=check.get("freshness_field"),
+        )
+    for check in _checks_from_support_sources(node):
+        _append_database_check(
+            checks,
+            database=check.get("database"),
+            entity=check.get("entity"),
+            fields=check.get("fields"),
+            correlation_keys=check.get("correlation_keys"),
+            freshness_field=check.get("freshness_field"),
         )
     return checks
 
@@ -294,60 +340,111 @@ def _suggested_database_checks(node: dict[str, Any]) -> list[dict[str, Any]]:
 def _runbook_links(node: dict[str, Any]) -> list[dict[str, Any]]:
     title_by_id: dict[str, str] = {}
     audience_by_id: dict[str, str] = {}
-    for procedure in list(node.get("evidence_collection_procedures") or []):
-        if not isinstance(procedure, dict):
-            continue
-        procedure_id = str(procedure.get("procedure_id") or "").strip()
-        if not procedure_id:
-            continue
-        title = str(procedure.get("title") or "").strip()
-        if title:
-            title_by_id[procedure_id] = title
-        roles = _as_text_list(procedure.get("audience_roles"))
-        role = str(procedure.get("role_required") or "").strip()
-        if role:
-            audience_by_id[procedure_id] = role
-        elif roles:
-            audience_by_id[procedure_id] = roles[0]
+    for key in ("evidence_collection_procedures", "linked_runbooks"):
+        for procedure in list(node.get(key) or []):
+            if not isinstance(procedure, dict):
+                continue
+            procedure_id = str(procedure.get("procedure_id") or "").strip()
+            if not procedure_id:
+                continue
+            title = str(procedure.get("title") or "").strip()
+            if title:
+                title_by_id[procedure_id] = title
+            roles = _as_text_list(procedure.get("audience_roles"))
+            role = str(procedure.get("role_required") or "").strip()
+            if role:
+                audience_by_id[procedure_id] = role
+            elif roles:
+                audience_by_id[procedure_id] = roles[0]
 
     links: list[dict[str, Any]] = []
-    for link in list(node.get("runbook_links") or []):
-        if not isinstance(link, dict):
-            continue
-        procedure_id = str(link.get("procedure_id") or "").strip()
-        if not procedure_id:
-            continue
+    seen: set[str] = set()
+
+    def _append_link(
+        *,
+        procedure_id: Any,
+        title: Any = None,
+        link_confidence: Any = None,
+        link_role: Any = None,
+        audience: Any = None,
+        score: Any = None,
+        link_rationale: Any = None,
+    ) -> None:
+        value = str(procedure_id or "").strip()
+        if not value or value in seen:
+            return
+        seen.add(value)
+        score_value = None
+        if score is not None:
+            try:
+                score_value = float(score)
+            except (TypeError, ValueError):
+                score_value = None
+        links.append(
+            {
+                "procedure_id": value,
+                "title": str(title or title_by_id.get(value) or "").strip() or None,
+                "link_confidence": str(link_confidence or "").strip() or None,
+                "link_role": str(link_role or "").strip() or None,
+                "audience": str(
+                    audience or audience_by_id.get(value) or ""
+                ).strip()
+                or None,
+                "score": score_value,
+                "link_rationale": str(link_rationale or "").strip() or None,
+            }
+        )
+
+    for link in sorted(
+        [item for item in list(node.get("runbook_links") or []) if isinstance(item, dict)],
+        key=lambda item: int(item.get("link_rank") or 999),
+    ):
         score = link.get("score")
         if score is None:
             score = link.get("retrieval_combined_score")
         if score is None:
             score = link.get("boosted_score")
-        try:
-            score_value = float(score) if score is not None else None
-        except (TypeError, ValueError):
-            score_value = None
-        title = str(
-            link.get("title") or title_by_id.get(procedure_id) or ""
-        ).strip() or None
-        audience = str(
-            link.get("audience")
-            or link.get("role_required")
-            or audience_by_id.get(procedure_id)
-            or ""
-        ).strip() or None
-        links.append(
-            {
-                "procedure_id": procedure_id,
-                "title": title,
-                "link_confidence": str(link.get("link_confidence") or "").strip()
-                or None,
-                "link_role": str(link.get("link_role") or "").strip() or None,
-                "audience": audience,
-                "score": score_value,
-                "link_rationale": str(link.get("link_rationale") or "").strip()
-                or None,
-            }
+        _append_link(
+            procedure_id=link.get("procedure_id"),
+            title=link.get("title"),
+            link_confidence=link.get("link_confidence"),
+            link_role=link.get("link_role"),
+            audience=link.get("audience") or link.get("role_required"),
+            score=score,
+            link_rationale=link.get("link_rationale"),
         )
+    for procedure_id in list(node.get("resolved_runbook_ids") or []):
+        _append_link(procedure_id=procedure_id, link_role="resolved")
+    for key, role in (
+        ("linked_runbooks", "linked"),
+        ("evidence_collection_procedures", "evidence"),
+        ("optional_corroboration", "corroboration"),
+    ):
+        for item in list(node.get(key) or []):
+            if isinstance(item, dict):
+                _append_link(
+                    procedure_id=item.get("procedure_id"),
+                    title=item.get("title"),
+                    link_role=role,
+                    audience=item.get("role_required"),
+                )
+            else:
+                _append_link(procedure_id=item, link_role=role)
+    primary = node.get("linked_primary_procedure")
+    if isinstance(primary, dict):
+        _append_link(
+            procedure_id=primary.get("procedure_id"),
+            title=primary.get("title"),
+            link_role="primary",
+        )
+    else:
+        _append_link(procedure_id=primary, link_role="primary")
+    for outcome in list(node.get("decision_outcomes") or []):
+        if isinstance(outcome, dict):
+            _append_link(
+                procedure_id=outcome.get("linked_runbook_id"),
+                link_role=str(outcome.get("outcome_label") or "decision"),
+            )
     return links
 
 
@@ -453,16 +550,16 @@ def _section_card_html(
     *,
     title: str,
     body_html: str,
-    border: str,
-    bg: str,
-    accent: str,
+    border: str = "#e5e7eb",
+    bg: str = "#ffffff",
+    accent: str = "#374151",
 ) -> str:
     return (
         f'<div style="border:1px solid {border};background:{bg};'
-        f'border-left:4px solid {accent};border-radius:10px;'
-        f'padding:0.75rem 0.9rem;margin:0.55rem 0 0.7rem 0;">'
-        f'<div style="font-size:0.72rem;font-weight:700;letter-spacing:0.04em;'
-        f'text-transform:uppercase;color:{accent};margin-bottom:0.35rem;">'
+        f'border-left:3px solid {accent};border-radius:6px;'
+        f'padding:0.7rem 0.85rem;margin:0.45rem 0 0.55rem 0;">'
+        f'<div style="font-size:0.75rem;font-weight:600;letter-spacing:0.02em;'
+        f'color:{accent};margin-bottom:0.3rem;">'
         f"{html.escape(title)}</div>"
         f"{body_html}"
         f"</div>"
@@ -493,32 +590,32 @@ def _render_suggested_database_checks_table(
         fresh = html.escape(freshness) if freshness else "—"
         rows_html.append(
             "<tr>"
-            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e2e8f0;'>"
-            f"<code style='color:#166534;background:#ecfdf3;padding:0.1rem 0.35rem;"
-            f"border-radius:4px;'>{html.escape(database)}</code></td>"
-            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e2e8f0;'>"
-            f"<code style='color:#1d4ed8;background:#eff6ff;padding:0.1rem 0.35rem;"
-            f"border-radius:4px;'>{html.escape(entity)}</code></td>"
-            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e2e8f0;"
-            f"color:#334155;line-height:1.45;'>{field_html}</td>"
-            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e2e8f0;"
-            f"color:#475569;'>{relate}</td>"
-            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e2e8f0;"
-            f"color:#475569;'>{fresh}</td>"
+            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e5e7eb;"
+            f"color:#111827;font-family:ui-monospace,Consolas,monospace;'>"
+            f"{html.escape(database)}</td>"
+            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e5e7eb;"
+            f"color:#111827;font-family:ui-monospace,Consolas,monospace;'>"
+            f"{html.escape(entity)}</td>"
+            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e5e7eb;"
+            f"color:#374151;line-height:1.45;'>{field_html}</td>"
+            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e5e7eb;"
+            f"color:#4b5563;'>{relate}</td>"
+            f"<td style='padding:0.45rem 0.55rem;border-bottom:1px solid #e5e7eb;"
+            f"color:#4b5563;'>{fresh}</td>"
             "</tr>"
         )
     if not rows_html:
         return
     table = (
-        "<div style='overflow-x:auto;border:1px solid #dbe3ef;border-radius:10px;"
-        "background:#f8fafc;margin:0.35rem 0 0.55rem 0;'>"
+        "<div style='overflow-x:auto;border:1px solid #e5e7eb;border-radius:6px;"
+        "background:#ffffff;margin:0.35rem 0 0.55rem 0;'>"
         "<table style='width:100%;border-collapse:collapse;font-size:0.9rem;'>"
-        "<thead><tr style='background:#eef2ff;color:#312e81;text-align:left;'>"
-        "<th style='padding:0.5rem 0.55rem;'>Database</th>"
-        "<th style='padding:0.5rem 0.55rem;'>Model</th>"
-        "<th style='padding:0.5rem 0.55rem;'>Inspect</th>"
-        "<th style='padding:0.5rem 0.55rem;'>Relate by</th>"
-        "<th style='padding:0.5rem 0.55rem;'>Freshness</th>"
+        "<thead><tr style='background:#f9fafb;color:#374151;text-align:left;'>"
+        "<th style='padding:0.5rem 0.55rem;font-weight:600;'>Database</th>"
+        "<th style='padding:0.5rem 0.55rem;font-weight:600;'>Model</th>"
+        "<th style='padding:0.5rem 0.55rem;font-weight:600;'>Inspect</th>"
+        "<th style='padding:0.5rem 0.55rem;font-weight:600;'>Relate by</th>"
+        "<th style='padding:0.5rem 0.55rem;font-weight:600;'>Freshness</th>"
         "</tr></thead>"
         f"<tbody>{''.join(rows_html)}</tbody>"
         "</table></div>"
@@ -562,7 +659,7 @@ def render_playbook_node_fields(node: dict[str, Any] | None) -> None:
     links = list(projected.get("runbook_links") or [])
     if links:
         st.markdown("**Runbook links**")
-        for link in links[:6]:
+        for link in links[:12]:
             if not isinstance(link, dict):
                 continue
             procedure_id = str(link.get("procedure_id") or "").strip()
@@ -920,9 +1017,9 @@ def enrich_troubleshoot_payload(
         if not isinstance(link, dict):
             continue
         procedure = str(link.get("procedure_id") or "").strip()
-        if procedure:
+        if procedure and procedure not in linked_ids:
             linked_ids.append(procedure)
-    if playbook_id and node_id and not linked_ids:
+    if playbook_id and node_id:
         try:
             link_payload = _fetch_json(
                 f"{base}/corpus/playbooks/{playbook_id}/nodes/{node_id}/runbook",
@@ -930,12 +1027,11 @@ def enrich_troubleshoot_payload(
             )
             for procedure in list(link_payload.get("procedure_ids") or []):
                 value = str(procedure or "").strip()
-                if value:
+                if value and value not in linked_ids:
                     linked_ids.append(value)
-            if not linked_ids:
-                primary = str(link_payload.get("procedure_id") or "").strip()
-                if primary:
-                    linked_ids.append(primary)
+            primary = str(link_payload.get("procedure_id") or "").strip()
+            if primary and primary not in linked_ids:
+                linked_ids.append(primary)
             for remote in list(link_payload.get("runbooks") or []):
                 if not isinstance(remote, dict):
                     continue
@@ -1159,32 +1255,31 @@ def render_runbook_panel(
         overview_parts: list[str] = []
         if runbook.get("summary"):
             overview_parts.append(
-                f"<div style='color:#1e293b;line-height:1.45;margin-bottom:0.35rem;'>"
+                f"<div style='color:#111827;line-height:1.5;margin-bottom:0.35rem;'>"
                 f"{html.escape(str(runbook.get('summary')))}</div>"
             )
         if runbook.get("when_to_use"):
             overview_parts.append(
-                f"<div style='color:#475569;font-size:0.9rem;'>"
+                f"<div style='color:#4b5563;font-size:0.9rem;'>"
                 f"<strong>When to use:</strong> {html.escape(str(runbook.get('when_to_use')))}"
                 f"</div>"
             )
         if runbook.get("procedure_id"):
             overview_parts.append(
-                f"<div style='margin-top:0.35rem;color:#64748b;font-size:0.85rem;'>"
-                f"Procedure: <code>{html.escape(str(runbook.get('procedure_id')))}</code>"
-                f"</div>"
+                f"<div style='margin-top:0.35rem;color:#6b7280;font-size:0.82rem;"
+                f"font-family:ui-monospace,Consolas,monospace;word-break:break-all;'>"
+                f"{html.escape(str(runbook.get('procedure_id')))}</div>"
             )
         if overview_parts:
             st.markdown(
                 _section_card_html(
                     title="Overview",
                     body_html="".join(overview_parts),
-                    border="#bfdbfe",
-                    bg="#eff6ff",
-                    accent="#1d4ed8",
                 ),
                 unsafe_allow_html=True,
             )
+        elif not (runbook.get("title") or runbook.get("steps")):
+            st.caption("Runbook document not loaded for this procedure id.")
         steps = [step for step in list(runbook.get("steps") or []) if isinstance(step, dict)]
         if detail_level != "full":
             if steps:
@@ -1229,32 +1324,25 @@ def render_runbook_panel(
         not_for = list(runbook.get("not_for") or [])
         if not_for:
             body = "".join(
-                f"<div style='color:#7c2d12;margin:0.15rem 0;'>• {html.escape(str(item))}</div>"
+                f"<div style='color:#374151;margin:0.15rem 0;'>- {html.escape(str(item))}</div>"
                 for item in not_for
             )
             st.markdown(
-                _section_card_html(
-                    title="Not for",
-                    body_html=body,
-                    border="#fdba74",
-                    bg="#fff7ed",
-                    accent="#c2410c",
-                ),
+                _section_card_html(title="Not for", body_html=body, accent="#6b7280"),
                 unsafe_allow_html=True,
             )
         safety = list(runbook.get("safety_notes") or [])
         if safety:
             body = "".join(
-                f"<div style='color:#991b1b;margin:0.15rem 0;'>• {html.escape(str(item))}</div>"
+                f"<div style='color:#374151;margin:0.15rem 0;'>- {html.escape(str(item))}</div>"
                 for item in safety
             )
             st.markdown(
                 _section_card_html(
                     title="Safety notes",
                     body_html=body,
-                    border="#fca5a5",
-                    bg="#fef2f2",
-                    accent="#b91c1c",
+                    accent="#7f1d1d",
+                    bg="#fffafa",
                 ),
                 unsafe_allow_html=True,
             )
@@ -1275,12 +1363,9 @@ def render_runbook_panel(
                 _section_card_html(
                     title="Access & role",
                     body_html="<br/>".join(
-                        f"<div style='color:#334155;margin:0.15rem 0;'>{part}</div>"
+                        f"<div style='color:#374151;margin:0.15rem 0;'>{part}</div>"
                         for part in meta_parts
                     ),
-                    border="#cbd5e1",
-                    bg="#f8fafc",
-                    accent="#475569",
                 ),
                 unsafe_allow_html=True,
             )
@@ -1294,28 +1379,17 @@ def render_runbook_panel(
                 desc = ref.get("description") or ref.get("artifact_id") or ""
                 label = f"[{level}] {desc}" if level else str(desc)
                 body += (
-                    f"<div style='color:#334155;margin:0.15rem 0;'>"
-                    f"• {html.escape(label)}</div>"
+                    f"<div style='color:#374151;margin:0.15rem 0;'>"
+                    f"- {html.escape(label)}</div>"
                 )
             if body:
                 st.markdown(
-                    _section_card_html(
-                        title="Visual references",
-                        body_html=body,
-                        border="#a5b4fc",
-                        bg="#eef2ff",
-                        accent="#4338ca",
-                    ),
+                    _section_card_html(title="Visual references", body_html=body),
                     unsafe_allow_html=True,
                 )
         current = runbook.get("current_step") or {}
         if steps:
-            st.markdown(
-                "<div style='font-size:0.72rem;font-weight:700;letter-spacing:0.04em;"
-                "text-transform:uppercase;color:#0f766e;margin:0.85rem 0 0.35rem 0;'>"
-                "Procedure steps</div>",
-                unsafe_allow_html=True,
-            )
+            st.markdown("**Procedure steps**")
             for step in steps:
                 if not isinstance(step, dict):
                     continue
@@ -1329,37 +1403,35 @@ def render_runbook_panel(
                 body_parts: list[str] = []
                 if step.get("purpose"):
                     body_parts.append(
-                        f"<div style='color:#0f766e;font-size:0.9rem;margin-bottom:0.35rem;'>"
+                        f"<div style='color:#4b5563;font-size:0.9rem;margin-bottom:0.35rem;'>"
                         f"{html.escape(str(step.get('purpose')))}</div>"
                     )
                 if step.get("instruction"):
                     body_parts.append(
-                        f"<div style='color:#0f172a;line-height:1.5;margin-bottom:0.35rem;'>"
+                        f"<div style='color:#111827;line-height:1.5;margin-bottom:0.35rem;'>"
                         f"{html.escape(str(step.get('instruction')))}</div>"
                     )
-                for label, key, color in (
-                    ("Expected", "expected_result", "#1d4ed8"),
-                    ("Healthy", "healthy_condition", "#166534"),
-                    ("Unhealthy", "failure_condition", "#b91c1c"),
+                for label, key in (
+                    ("Expected", "expected_result"),
+                    ("Healthy", "healthy_condition"),
+                    ("Unhealthy", "failure_condition"),
                 ):
                     value = step.get(key)
                     if value:
                         body_parts.append(
-                            f"<div style='color:{color};font-size:0.9rem;margin:0.2rem 0;'>"
+                            f"<div style='color:#374151;font-size:0.9rem;margin:0.2rem 0;'>"
                             f"<strong>{label}:</strong> {html.escape(str(value))}</div>"
                         )
                 for stop in list(step.get("stop_or_escalate_if") or []):
                     body_parts.append(
-                        f"<div style='color:#92400e;font-size:0.9rem;margin:0.2rem 0;'>"
+                        f"<div style='color:#374151;font-size:0.9rem;margin:0.2rem 0;'>"
                         f"<strong>Stop/escalate:</strong> {html.escape(str(stop))}</div>"
                     )
                 st.markdown(
                     _section_card_html(
                         title=title_text,
-                        body_html="".join(body_parts) or "<div style='color:#64748b;'>No detail</div>",
-                        border="#99f6e4",
-                        bg="#f0fdfa",
-                        accent="#0f766e",
+                        body_html="".join(body_parts)
+                        or "<div style='color:#6b7280;'>No detail</div>",
                     ),
                     unsafe_allow_html=True,
                 )
@@ -1400,25 +1472,19 @@ def render_runbook_panel(
                     f"<div style='color:#0f172a;line-height:1.5;'>"
                     f"{html.escape(str(current.get('instruction')))}</div>"
                 )
-            for label, key, color in (
-                ("Expected", "expected_result", "#1d4ed8"),
-                ("Healthy", "healthy_condition", "#166534"),
-                ("Unhealthy", "failure_condition", "#b91c1c"),
+            for label, key in (
+                ("Expected", "expected_result"),
+                ("Healthy", "healthy_condition"),
+                ("Unhealthy", "failure_condition"),
             ):
                 value = current.get(key)
                 if value:
                     body_parts.append(
-                        f"<div style='color:{color};font-size:0.9rem;margin:0.2rem 0;'>"
+                        f"<div style='color:#374151;font-size:0.9rem;margin:0.2rem 0;'>"
                         f"<strong>{label}:</strong> {html.escape(str(value))}</div>"
                     )
             st.markdown(
-                _section_card_html(
-                    title=title_text,
-                    body_html="".join(body_parts),
-                    border="#99f6e4",
-                    bg="#f0fdfa",
-                    accent="#0f766e",
-                ),
+                _section_card_html(title=title_text, body_html="".join(body_parts)),
                 unsafe_allow_html=True,
             )
             if load_images:
@@ -1506,11 +1572,13 @@ def post_troubleshoot(
     user_message: str,
     playbook_variant: str,
     operator_role: str | None = None,
+    attachment_ids: list[str] | None = None,
 ) -> dict[str, Any]:
     payload = {
         "session_id": session_id,
         "user_message": user_message,
         "playbook_variant": playbook_variant,
+        "attachment_ids": list(attachment_ids or []),
     }
     if operator_role:
         payload["operator_role"] = operator_role
@@ -1528,12 +1596,14 @@ def post_retrieve(
     record_types: list[str] | None = None,
     top_k: int = 8,
     search_context: dict[str, Any] | None = None,
+    attachment_ids: list[str] | None = None,
 ) -> dict[str, Any]:
     payload: dict[str, Any] = {
         "query": query,
         "session_id": session_id,
         "playbook_variant": playbook_variant,
         "top_k": top_k,
+        "attachment_ids": list(attachment_ids or []),
     }
     # Always keep operational context searchable for supplemental answer grounding.
     if record_types is None:
@@ -1796,6 +1866,7 @@ def render_retrieve_hit_detail_panels(
     show_full_runbooks: bool,
     playbook_variant: str = "prompt_a",
     load_images: bool = True,
+    retrieve_intent: str | None = None,
 ) -> None:
     playbook_hits = [
         hit
@@ -1812,8 +1883,37 @@ def render_retrieve_hit_detail_panels(
         for hit in hits
         if isinstance(hit, dict) and str(hit.get("record_type") or "") in _CONTEXT_HIT_TYPES
     ]
-    detail_level = "full" if show_full_runbooks else "summary"
-    if playbook_hits:
+    intent = str(retrieve_intent or "").strip().lower()
+    prefer_runbooks = intent in {"howto", "maintenance"}
+    detail_level = "full" if (show_full_runbooks or prefer_runbooks) else "summary"
+
+    def _render_runbooks(*, expand_first: bool) -> None:
+        if not runbook_hits:
+            return
+        st.markdown("**Related runbooks**")
+        for index, hit in enumerate(runbook_hits[:4] if prefer_runbooks else runbook_hits[:3]):
+            procedure_id = str(hit.get("source_record_id") or "").strip()
+            runbook = load_runbook_with_images(backend, procedure_id) if procedure_id else {}
+            score = hit.get("combined_score")
+            if not runbook:
+                title = hit.get("title") or procedure_id or "Runbook"
+                with st.expander(f"Runbook — {title}", expanded=expand_first and index == 0):
+                    snippet = str(hit.get("snippet") or "").strip()
+                    if snippet:
+                        st.write(snippet)
+                continue
+            render_runbook_panel(
+                runbook,
+                backend_url=backend,
+                expanded=expand_first and index == 0,
+                load_images=load_images,
+                score=float(score) if score is not None else None,
+                detail_level=detail_level,
+            )
+
+    def _render_playbooks(*, expand_first: bool) -> None:
+        if not playbook_hits:
+            return
         st.markdown("**Related playbooks**")
         for index, hit in enumerate(playbook_hits[:3]):
             playbook_id = str(hit.get("source_record_id") or "").strip()
@@ -1829,37 +1929,30 @@ def render_retrieve_hit_detail_panels(
                 playbook,
                 backend_url=backend,
                 score=float(score) if score is not None else None,
-                expanded=index == 0,
+                expanded=expand_first and index == 0 and not prefer_runbooks,
                 detail_level=detail_level,
                 load_images=load_images,
                 fallback_title=str(hit.get("title") or playbook_id or "Playbook"),
                 fallback_snippet=str(hit.get("snippet") or ""),
             )
-    if context_hits:
+
+    def _render_context() -> None:
+        if not context_hits:
+            return
         st.markdown("**Operational context**")
         for index, hit in enumerate(context_hits[:3]):
-            render_operational_context_panel(hit, expanded=index == 0)
-    if runbook_hits:
-        st.markdown("**Related runbooks**")
-        for index, hit in enumerate(runbook_hits[:3]):
-            procedure_id = str(hit.get("source_record_id") or "").strip()
-            runbook = load_runbook_with_images(backend, procedure_id) if procedure_id else {}
-            score = hit.get("combined_score")
-            if not runbook:
-                title = hit.get("title") or procedure_id or "Runbook"
-                with st.expander(f"Runbook — {title}", expanded=False):
-                    snippet = str(hit.get("snippet") or "").strip()
-                    if snippet:
-                        st.write(snippet)
-                continue
-            render_runbook_panel(
-                runbook,
-                backend_url=backend,
-                expanded=False,
-                load_images=load_images,
-                score=float(score) if score is not None else None,
-                detail_level=detail_level,
+            render_operational_context_panel(
+                hit, expanded=(index == 0 and not prefer_runbooks and not playbook_hits)
             )
+
+    if prefer_runbooks:
+        _render_runbooks(expand_first=True)
+        _render_playbooks(expand_first=False)
+        _render_context()
+    else:
+        _render_playbooks(expand_first=True)
+        _render_context()
+        _render_runbooks(expand_first=False)
 
 
 def render_retrieve_assistant_entry(
@@ -1876,6 +1969,13 @@ def render_retrieve_assistant_entry(
     st.markdown(entry.get("text") or "")
     citations = citations_from_retrieve_entry(entry)
     hits = [hit for hit in list(entry.get("hits") or []) if isinstance(hit, dict)]
+    payload = entry.get("payload") if isinstance(entry.get("payload"), dict) else {}
+    retrieve_intent = str(
+        entry.get("retrieve_intent")
+        or payload.get("retrieve_intent")
+        or (payload.get("runtime_trace") or {}).get("retrieve_intent")
+        or ""
+    ).strip() or None
     answer_has_sources = "sources:" in str(entry.get("text") or "").lower()
     if (citations or hits) and not answer_has_sources:
         render_retrieve_sources_block(citations or citations_from_retrieve_entry({"hits": hits}))
@@ -1888,6 +1988,7 @@ def render_retrieve_assistant_entry(
         show_full_runbooks=show_full_runbooks,
         playbook_variant=playbook_variant,
         load_images=load_images,
+        retrieve_intent=retrieve_intent,
     )
     images = list(entry.get("canonical_images") or [])
     if images and load_images:
@@ -1900,7 +2001,6 @@ def render_retrieve_assistant_entry(
         )
     relevance = entry.get("workflow_relevance")
     if not isinstance(relevance, dict):
-        payload = entry.get("payload") if isinstance(entry.get("payload"), dict) else {}
         relevance = payload.get("workflow_relevance") if isinstance(payload, dict) else None
     if not isinstance(relevance, dict):
         return None
@@ -1935,6 +2035,8 @@ def append_retrieve_history_entry(
             "workflow_relevance": payload.get("workflow_relevance") or {},
             "retrieved_record_ids": list(payload.get("retrieved_record_ids") or []),
             "related_runbook_ids": list(payload.get("related_runbook_ids") or []),
+            "related_playbook_ids": list(payload.get("related_playbook_ids") or []),
+            "retrieve_intent": payload.get("retrieve_intent"),
             "payload": payload,
         }
     )

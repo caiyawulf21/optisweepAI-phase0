@@ -1,3 +1,9 @@
+"""HTTP routes for guided playbook troubleshooting (`POST /troubleshoot`).
+
+Primary path: playbook_runtime → LangGraph → Cosmos corpus.
+Optional Brain context/feedback overlays when BRAIN_HTTP_* flags are on.
+"""
+
 from __future__ import annotations
 
 import logging
@@ -20,10 +26,28 @@ from backend.app.schemas.assistant import (
     WorkflowSummary,
 )
 from backend.app.services.escalation_templates import build_manual_escalation_summary
+from backend.app.services.attachment_service import (
+    build_attachment_service,
+    enrich_user_message,
+)
+from backend.app.services.brain_cite import excerpts_to_citations
+from backend.app.services.brain_http_client import (
+    BrainFeedbackRequest,
+    TroubleshootContextRequest,
+    build_brain_http_client,
+    safe_submit_feedback,
+    safe_troubleshoot_context,
+)
+from backend.app.services.feedback_service import FeedbackEvent, build_feedback_service
 from backend.app.services.interaction_log_service import (
     InteractionLog,
     InteractionLogService,
     build_interaction_log_service,
+)
+from backend.app.services.playbook_resolution import (
+    candidate_playbook_ids,
+    classify_playbook_resolution,
+    needs_brain_routing_learning,
 )
 from backend.app.services.session_service import build_session_service
 
@@ -35,14 +59,105 @@ interaction_log_service: InteractionLogService = build_interaction_log_service()
 
 @router.post("/troubleshoot", response_model=TroubleshootResponse)
 def troubleshoot(request: TroubleshootRequest) -> TroubleshootResponse:
+    attachment_ids = [str(item) for item in list(request.attachment_ids or []) if str(item)]
+    image_summaries = build_attachment_service().resolve_summaries(attachment_ids)
+    enriched_message = enrich_user_message(request.user_message, image_summaries)
     state = run_playbook_troubleshoot(
         request.session_id,
-        request.user_message,
+        enriched_message,
         operator_role=request.operator_role,
         playbook_variant=request.playbook_variant,
     )
+    state["interaction_surface"] = "troubleshoot"
+    state["attachment_ids"] = attachment_ids
+    state["image_summaries"] = image_summaries
+    state["enriched_user_message"] = enriched_message
+
+    resolution = classify_playbook_resolution(state)
+    candidates = candidate_playbook_ids(state)
+    awaiting = resolution == "awaiting_candidate"
+    brain_client = build_brain_http_client()
+    brain_context = safe_troubleshoot_context(
+        brain_client,
+        TroubleshootContextRequest(
+            query=enriched_message or request.user_message,
+            session_id=request.session_id,
+            playbook_id=str(state.get("active_playbook_id") or "") or None,
+            node_id=str(state.get("current_node_id") or "") or None,
+            runbook_id=(
+                str((state.get("runbook_payload") or {}).get("procedure_id") or "")
+                or None
+            ),
+            observed_signals=dict(state.get("extracted_observed_signals") or {}),
+            attachment_summaries=list(image_summaries),
+            include_working_material=needs_brain_routing_learning(resolution),
+            playbook_resolution=resolution,
+            awaiting_playbook_selection=awaiting,
+            candidate_playbook_ids=candidates,
+            case_id=str(state.get("active_case_id") or "") or None,
+        ),
+    )
+    if brain_context is not None:
+        trace = dict(state.get("runtime_trace") or {})
+        trace["brain_context"] = {
+            "query_echo": brain_context.query_echo,
+            "brain_backend": brain_context.brain_backend,
+            "packet": brain_context.packet.model_dump(),
+            "approved_excerpts": brain_context.approved_excerpt_dicts(),
+            "working_material": [item.model_dump() for item in brain_context.working_material],
+            "conflicts": [item.model_dump() for item in brain_context.conflicts],
+            "playbook_resolution": resolution,
+            "awaiting_playbook_selection": awaiting,
+            "candidate_playbook_ids": candidates,
+        }
+        state["runtime_trace"] = trace
+        state["brain_approved_excerpts"] = brain_context.approved_excerpt_dicts()
+
     response = _build_troubleshoot_response(state)
-    _record_interaction_log(request, state, response)
+    if brain_context is not None:
+        brain_citations = excerpts_to_citations(brain_context.approved_excerpt_dicts())
+        existing = {item.source_id for item in response.citations}
+        merged = list(response.citations)
+        for item in brain_citations:
+            source_id = str(item.get("source_id") or "")
+            if source_id and source_id in existing:
+                continue
+            merged.append(
+                Citation(
+                    source_id=str(item.get("source_id") or item.get("title") or "brain"),
+                    title=str(item.get("title") or item.get("source_id") or "Brain"),
+                    reference=item.get("reference"),
+                    excerpt=item.get("excerpt"),
+                )
+            )
+            if source_id:
+                existing.add(source_id)
+        response.citations = merged
+    log = _record_interaction_log(request, state, response)
+    if log is not None:
+        response.interaction_id = log.interaction_id
+        if needs_brain_routing_learning(resolution):
+            learning_status = _forward_unresolved_routing_learning(
+                brain_client,
+                request=request,
+                state=state,
+                response=response,
+                log=log,
+                resolution=resolution,
+                candidates=candidates,
+            )
+            if learning_status:
+                log.brain_routing_learning_status = learning_status
+                try:
+                    interaction_log_service.record(log)
+                except Exception:
+                    logger.exception(
+                        "interaction_log_routing_status_update_failed session=%s",
+                        request.session_id,
+                    )
+    response.image_summaries = list(image_summaries)
+    response.enriched_user_message = enriched_message
+    response.attachment_ids = list(attachment_ids)
     return response
 
 
@@ -136,7 +251,7 @@ def _record_interaction_log(
     request: TroubleshootRequest,
     state: dict[str, Any],
     response: TroubleshootResponse,
-) -> None:
+) -> InteractionLog | None:
     try:
         log = InteractionLog.from_state(
             session_id=request.session_id,
@@ -145,11 +260,101 @@ def _record_interaction_log(
             response=response,
         )
         interaction_log_service.record(log)
+        return log
     except Exception:
         logger.exception(
             "interaction_log_record_unexpected_failure session=%s",
             request.session_id,
         )
+        return None
+
+
+def _forward_unresolved_routing_learning(
+    brain_client: Any,
+    *,
+    request: TroubleshootRequest,
+    state: dict[str, Any],
+    response: TroubleshootResponse,
+    log: InteractionLog,
+    resolution: str,
+    candidates: list[str],
+) -> str | None:
+    """Send unpinned / awaiting-candidate turns to Brain Create-path for routing learning."""
+    brain = safe_submit_feedback(
+        brain_client,
+        BrainFeedbackRequest(
+            session_id=request.session_id,
+            interaction_id=log.interaction_id,
+            surface="troubleshoot",
+            sentiment="suggestion",
+            about="unresolved_playbook_selection",
+            user_text=str(
+                state.get("enriched_user_message") or request.user_message or ""
+            ),
+            proposed_change=(
+                "Operator did not select a playbook/case on this turn. "
+                "Use message + candidates to improve routing / symptom coverage."
+            ),
+            targets={
+                "playbook_id": state.get("active_playbook_id"),
+                "case_id": state.get("active_case_id"),
+                "node_id": state.get("current_node_id"),
+                "record_ids": list(log.retrieval_result_ids or log.record_ids or []),
+                "candidate_playbook_ids": candidates,
+                "playbook_resolution": resolution,
+            },
+            attachment_ids=list(state.get("attachment_ids") or []),
+            image_summaries=list(state.get("image_summaries") or []),
+            context_snapshot={
+                "response_type": response.response_type,
+                "playbook_resolution": resolution,
+                "awaiting_playbook_selection": resolution == "awaiting_candidate",
+                "candidate_playbook_ids": candidates,
+                "playbook_candidates": list(state.get("playbook_candidates") or [])[:10],
+                "final_response_excerpt": (response.final_response or "")[:500],
+                "pin_source": state.get("pin_source"),
+            },
+            app_feedback_id=None,
+        ),
+    )
+    if brain is None:
+        return "deferred"
+    if brain.accepted:
+        try:
+            event = FeedbackEvent(
+                session_id=request.session_id,
+                interaction_id=log.interaction_id,
+                surface="troubleshoot",
+                sentiment="suggestion",
+                about="unresolved_playbook_selection",
+                targets={
+                    "candidate_playbook_ids": candidates,
+                    "playbook_resolution": resolution,
+                },
+                user_text=str(
+                    state.get("enriched_user_message") or request.user_message or ""
+                ),
+                proposed_change=(
+                    "Operator did not select a playbook/case on this turn."
+                ),
+                attachment_ids=list(state.get("attachment_ids") or []),
+                image_summaries=list(state.get("image_summaries") or []),
+                brain_handoff_status="forwarded",
+                brain_review_id=brain.brain_review_id,
+                brain_apply_status=brain.status or None,
+                brain_mutated_record_ids=list(brain.mutated_record_ids or []),
+            )
+            build_feedback_service().record(event)
+            interaction_log_service.append_feedback_id(
+                request.session_id, log.interaction_id, event.feedback_id
+            )
+        except Exception:
+            logger.exception(
+                "unresolved_routing_feedback_audit_failed session=%s",
+                request.session_id,
+            )
+        return "forwarded"
+    return "forward_failed"
 
 
 def _hits_to_retrieval_results(
@@ -369,6 +574,10 @@ def _build_troubleshoot_response(state: dict[str, Any]) -> TroubleshootResponse:
             ),
             "user_facing_summary": playbook.get("user_facing_summary"),
             "playbook_candidates": list(state.get("playbook_candidates") or []),
+            "playbook_resolution": classify_playbook_resolution(state),
+            "awaiting_playbook_selection": (
+                classify_playbook_resolution(state) == "awaiting_candidate"
+            ),
             "correlated_symptoms": list(state.get("correlated_symptoms") or []),
             "path_evidence": list(state.get("path_evidence") or []),
             "current_node": serialize_current_node(

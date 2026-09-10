@@ -1,0 +1,25 @@
+{
+  "task": {"name": "retrieve"},
+  "excerpts": [
+    {
+      "id": "claim:agv:heartbeat",
+      "type": "claim",
+      "label": "Heartbeat may indicate sync risk",
+      "validation_status": "sme_approved",
+      "text": "Heartbeat Max above threshold may indicate tipper/WCS sync risk.",
+      "truncated": false
+    },
+    {
+      "id": "claim:agv:unreviewed",
+      "type": "claim",
+      "label": "Unreviewed claim",
+      "validation_status": "operational_unreviewed",
+      "text": "Should not be cited as approved guidance.",
+      "truncated": false
+    }
+  ],
+  "excerpt_count": 2,
+  "truncated_excerpt_count": 0,
+  "entity_ids": ["entity:system:agv_fleet"],
+  "approved_knowledge_ids": ["claim:agv:heartbeat"]
+}

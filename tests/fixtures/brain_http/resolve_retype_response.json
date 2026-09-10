@@ -1,0 +1,7 @@
+{
+  "review_id": "brain_review:retype-1",
+  "resolution": "RETYPE",
+  "applied": false,
+  "mutated_record_ids": [],
+  "detail": "RETYPE accepted but not auto-applied; ID cascade pending tooling."
+}

@@ -98,6 +98,20 @@ class InteractionLog:
     citations: list[dict[str, Any]] = field(default_factory=list)
     assistant_response: dict[str, Any] = field(default_factory=dict)
     runtime_trace: dict[str, Any] = field(default_factory=dict)
+    surface: str = "troubleshoot"
+    playbook_id: str | None = None
+    runbook_id: str | None = None
+    node_id: str | None = None
+    record_ids: list[str] = field(default_factory=list)
+    attachment_ids: list[str] = field(default_factory=list)
+    image_summaries: list[str] = field(default_factory=list)
+    enriched_user_message: str | None = None
+    feedback_event_ids: list[str] = field(default_factory=list)
+    playbook_resolution: str | None = None
+    awaiting_playbook_selection: bool = False
+    candidate_playbook_ids: list[str] = field(default_factory=list)
+    case_id: str | None = None
+    brain_routing_learning_status: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -116,6 +130,20 @@ class InteractionLog:
             "citations": list(self.citations),
             "assistant_response": dict(self.assistant_response),
             "runtime_trace": dict(self.runtime_trace),
+            "surface": self.surface,
+            "playbook_id": self.playbook_id,
+            "runbook_id": self.runbook_id,
+            "node_id": self.node_id,
+            "record_ids": list(self.record_ids),
+            "attachment_ids": list(self.attachment_ids),
+            "image_summaries": list(self.image_summaries),
+            "enriched_user_message": self.enriched_user_message,
+            "feedback_event_ids": list(self.feedback_event_ids),
+            "playbook_resolution": self.playbook_resolution,
+            "awaiting_playbook_selection": bool(self.awaiting_playbook_selection),
+            "candidate_playbook_ids": list(self.candidate_playbook_ids),
+            "case_id": self.case_id,
+            "brain_routing_learning_status": self.brain_routing_learning_status,
         }
 
     @classmethod
@@ -171,13 +199,30 @@ class InteractionLog:
             observed_signals = state.get("extracted_signals") or {}
 
         retrieval_result_ids = _collect_retrieval_ids(
-            state.get("retrieval_results") or []
+            state.get("retrieval_results")
+            or state.get("retrieval_hits")
+            or []
         )
 
         escalation_triggered = bool(state.get("escalation_required")) or (
             response_type == "escalation"
         )
         assistant_response = _response_to_dict(response)
+        if not retrieval_result_ids:
+            retrieval_result_ids = _collect_retrieval_ids(
+                assistant_response.get("retrieval_results") or []
+            )
+
+        from backend.app.services.playbook_resolution import (
+            candidate_playbook_ids,
+            classify_playbook_resolution,
+        )
+
+        resolution = classify_playbook_resolution(
+            state, response_type=str(response_type)
+        )
+        candidates = candidate_playbook_ids(state)
+        awaiting = resolution == "awaiting_candidate"
 
         return cls(
             interaction_id=_new_interaction_id(),
@@ -194,6 +239,38 @@ class InteractionLog:
             citations=_list_of_dicts(assistant_response.get("citations")),
             assistant_response=assistant_response,
             runtime_trace=_dict_or_empty(assistant_response.get("runtime_trace")),
+            surface=str(state.get("interaction_surface") or "troubleshoot"),
+            playbook_id=_string_or_none(
+                state.get("active_playbook_id") or selected_workflow_id
+            ),
+            runbook_id=_string_or_none(
+                (state.get("runbook_payload") or {}).get("procedure_id")
+                if isinstance(state.get("runbook_payload"), dict)
+                else state.get("runbook_id")
+            ),
+            node_id=_string_or_none(current_node_id or state.get("current_node_id")),
+            record_ids=[
+                str(item)
+                for item in list(
+                    state.get("record_ids")
+                    or retrieval_result_ids
+                    or []
+                )
+            ],
+            attachment_ids=[
+                str(item) for item in list(state.get("attachment_ids") or [])
+            ],
+            image_summaries=[
+                str(item) for item in list(state.get("image_summaries") or [])
+            ],
+            enriched_user_message=_string_or_none(state.get("enriched_user_message")),
+            feedback_event_ids=[
+                str(item) for item in list(state.get("feedback_event_ids") or [])
+            ],
+            playbook_resolution=resolution,
+            awaiting_playbook_selection=awaiting,
+            candidate_playbook_ids=candidates,
+            case_id=_string_or_none(state.get("active_case_id")),
         )
 
     @classmethod
@@ -218,18 +295,52 @@ class InteractionLog:
             citations=_list_of_dicts(document.get("citations")),
             assistant_response=_dict_or_empty(document.get("assistant_response")),
             runtime_trace=_dict_or_empty(document.get("runtime_trace")),
+            surface=str(document.get("surface") or "troubleshoot"),
+            playbook_id=_string_or_none(document.get("playbook_id")),
+            runbook_id=_string_or_none(document.get("runbook_id")),
+            node_id=_string_or_none(document.get("node_id")),
+            record_ids=[str(item) for item in list(document.get("record_ids") or [])],
+            attachment_ids=[
+                str(item) for item in list(document.get("attachment_ids") or [])
+            ],
+            image_summaries=[
+                str(item) for item in list(document.get("image_summaries") or [])
+            ],
+            enriched_user_message=_string_or_none(document.get("enriched_user_message")),
+            feedback_event_ids=[
+                str(item) for item in list(document.get("feedback_event_ids") or [])
+            ],
+            playbook_resolution=_string_or_none(document.get("playbook_resolution")),
+            awaiting_playbook_selection=bool(
+                document.get("awaiting_playbook_selection")
+            ),
+            candidate_playbook_ids=[
+                str(item) for item in list(document.get("candidate_playbook_ids") or [])
+            ],
+            case_id=_string_or_none(document.get("case_id")),
+            brain_routing_learning_status=_string_or_none(
+                document.get("brain_routing_learning_status")
+            ),
         )
 
 
 def _collect_retrieval_ids(results: Iterable[Any]) -> list[str]:
     ids: list[str] = []
     for item in results:
-        record_id = getattr(item, "record_id", None)
+        record_id = getattr(item, "record_id", None) or getattr(
+            item, "source_record_id", None
+        )
         if record_id:
             ids.append(str(record_id))
             continue
-        if isinstance(item, dict) and item.get("record_id"):
-            ids.append(str(item["record_id"]))
+        if isinstance(item, dict):
+            value = (
+                item.get("record_id")
+                or item.get("source_record_id")
+                or item.get("id")
+            )
+            if value:
+                ids.append(str(value))
     return ids
 
 
@@ -305,6 +416,10 @@ class InMemoryInteractionLogStore(InteractionLogStore):
 
     def record(self, log: InteractionLog) -> None:
         with self._lock:
+            for index, existing in enumerate(self._logs):
+                if existing.interaction_id == log.interaction_id:
+                    self._logs[index] = log
+                    return
             self._logs.append(log)
 
     def list_for_session(self, session_id: str) -> list[InteractionLog]:
@@ -418,6 +533,22 @@ class InteractionLogService:
                 exc_info=True,
             )
             return []
+
+    def get(self, session_id: str, interaction_id: str) -> InteractionLog | None:
+        for item in self.list_for_session(session_id):
+            if item.interaction_id == interaction_id:
+                return item
+        return None
+
+    def append_feedback_id(
+        self, session_id: str, interaction_id: str, feedback_id: str
+    ) -> bool:
+        log = self.get(session_id, interaction_id)
+        if log is None:
+            return False
+        if feedback_id not in log.feedback_event_ids:
+            log.feedback_event_ids.append(feedback_id)
+        return self.record(log)
 
 
 # ---------------------------------------------------------------------------

@@ -34,6 +34,7 @@ EXPECTED_PARTITION_KEYS: dict[str, str] = {
     "escalation_summaries": "/incident_id",
     "workflow_sessions": "/session_id",
     "interaction_logs": "/session_id",
+    "feedback_events": "/session_id",
 }
 
 
@@ -58,6 +59,12 @@ def test_workflow_session_repository_targets_workflow_sessions_container() -> No
 
 def test_interaction_log_repository_targets_interaction_logs_container() -> None:
     assert InteractionLogRepository.container_name == "interaction_logs"
+
+
+def test_feedback_event_repository_targets_feedback_events_container() -> None:
+    from backend.app.repositories import FeedbackEventRepository
+
+    assert FeedbackEventRepository.container_name == "feedback_events"
 
 
 def test_cosmos_interaction_log_store_lazy_loads_interaction_log_repository(

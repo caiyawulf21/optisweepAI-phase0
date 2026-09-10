@@ -64,6 +64,7 @@ class TroubleshootRequest(BaseModel):
     user_message: str
     operator_role: str | None = None
     playbook_variant: str | None = None
+    attachment_ids: list[str] = Field(default_factory=list)
 
 
 class EscalationSummaryRequest(BaseModel):
@@ -112,6 +113,7 @@ class WorkflowSummary(BaseModel):
 
 class TroubleshootResponse(BaseModel):
     session_id: str
+    interaction_id: str | None = None
     issue_category: str | None = None
     extracted_signals: dict[str, bool] = Field(default_factory=dict)
     extracted_observed_signals: dict[str, bool] = Field(default_factory=dict)
@@ -134,3 +136,6 @@ class TroubleshootResponse(BaseModel):
     terminal_state: dict[str, Any] | None = None
     role_warning: str | None = None
     runtime_trace: dict[str, Any] = Field(default_factory=dict)
+    image_summaries: list[str] = Field(default_factory=list)
+    enriched_user_message: str | None = None
+    attachment_ids: list[str] = Field(default_factory=list)

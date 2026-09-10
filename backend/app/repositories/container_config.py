@@ -33,6 +33,7 @@ CONTAINERS: dict[str, ContainerDefinition] = {
     "retrieval_vectors": ContainerDefinition("retrieval_vectors", "/record_type"),
     "workflow_sessions": ContainerDefinition("workflow_sessions", "/session_id"),
     "interaction_logs": ContainerDefinition("interaction_logs", "/session_id"),
+    "feedback_events": ContainerDefinition("feedback_events", "/session_id"),
 }
 
 
@@ -48,4 +49,5 @@ PHASE1_RUNTIME_CONTAINER_NAMES: tuple[str, ...] = (
     "escalation_summaries",
     "workflow_sessions",
     "interaction_logs",
+    "feedback_events",
 )

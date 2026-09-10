@@ -41,6 +41,80 @@ def _compact_procedure_ref(value: Any) -> str | None:
     return text or None
 
 
+def _normalize_check_fields(raw_fields: Any) -> list[str]:
+    fields: list[str] = []
+    for field in list(raw_fields or []):
+        if isinstance(field, dict):
+            text = str(field.get("meaning") or field.get("name") or "").strip()
+        else:
+            text = str(field or "").strip()
+        if text and text not in fields:
+            fields.append(text)
+    return fields
+
+
+def _append_database_check(
+    checks: list[dict[str, Any]],
+    *,
+    database: Any,
+    entity: Any,
+    fields: Any,
+    correlation_keys: Any = None,
+    freshness_field: Any = None,
+) -> None:
+    database_text = str(database or "").strip() or None
+    entity_text = str(entity or "").strip() or None
+    field_names = _normalize_check_fields(fields)
+    if not (database_text or entity_text or field_names):
+        return
+    key = (
+        (database_text or "").lower(),
+        (entity_text or "").lower(),
+        tuple(name.lower() for name in field_names),
+    )
+    for existing in checks:
+        existing_key = (
+            str(existing.get("database") or "").lower(),
+            str(existing.get("entity") or "").lower(),
+            tuple(str(item).lower() for item in list(existing.get("fields") or [])),
+        )
+        if existing_key == key:
+            return
+    checks.append(
+        {
+            "database": database_text,
+            "entity": entity_text,
+            "fields": field_names,
+            "correlation_keys": _as_text_list(correlation_keys),
+            "freshness_field": str(freshness_field or "").strip() or None,
+        }
+    )
+
+
+def _checks_from_support_sources(node: dict[str, Any]) -> list[dict[str, Any]]:
+    checks: list[dict[str, Any]] = []
+    sources: list[Any] = []
+    for capability in list(node.get("ontology_capabilities") or []):
+        if not isinstance(capability, dict):
+            continue
+        for mapping in list(capability.get("backend_mappings") or []):
+            if isinstance(mapping, dict):
+                sources.extend(list(mapping.get("support_read_sources") or []))
+    for mapping in list(node.get("backend_observability") or []):
+        if isinstance(mapping, dict):
+            sources.extend(list(mapping.get("support_read_sources") or []))
+    for source in sources:
+        if not isinstance(source, dict):
+            continue
+        _append_database_check(
+            checks,
+            database=source.get("database"),
+            entity=source.get("model") or source.get("entity"),
+            fields=source.get("fields"),
+        )
+    return checks
+
+
 def _suggested_database_checks(node: dict[str, Any]) -> list[dict[str, Any]]:
     mapping = node.get("technical_field_mapping")
     raw_checks: list[Any] = []
@@ -52,27 +126,22 @@ def _suggested_database_checks(node: dict[str, Any]) -> list[dict[str, Any]]:
     for check in raw_checks:
         if not isinstance(check, dict):
             continue
-        fields: list[str] = []
-        for field in list(check.get("fields") or []):
-            if isinstance(field, dict):
-                text = str(field.get("meaning") or field.get("name") or "").strip()
-            else:
-                text = str(field or "").strip()
-            if text:
-                fields.append(text)
-        database = str(check.get("database") or "").strip() or None
-        entity = str(check.get("entity") or "").strip() or None
-        if not (database or entity or fields):
-            continue
-        checks.append(
-            {
-                "database": database,
-                "entity": entity,
-                "fields": fields,
-                "correlation_keys": _as_text_list(check.get("correlation_keys")),
-                "freshness_field": str(check.get("freshness_field") or "").strip()
-                or None,
-            }
+        _append_database_check(
+            checks,
+            database=check.get("database"),
+            entity=check.get("entity") or check.get("model"),
+            fields=check.get("fields"),
+            correlation_keys=check.get("correlation_keys"),
+            freshness_field=check.get("freshness_field"),
+        )
+    for check in _checks_from_support_sources(node):
+        _append_database_check(
+            checks,
+            database=check.get("database"),
+            entity=check.get("entity"),
+            fields=check.get("fields"),
+            correlation_keys=check.get("correlation_keys"),
+            freshness_field=check.get("freshness_field"),
         )
     return checks
 
@@ -80,58 +149,109 @@ def _suggested_database_checks(node: dict[str, Any]) -> list[dict[str, Any]]:
 def _runbook_links(node: dict[str, Any]) -> list[dict[str, Any]]:
     title_by_id: dict[str, str] = {}
     audience_by_id: dict[str, str] = {}
-    for procedure in list(node.get("evidence_collection_procedures") or []):
-        if not isinstance(procedure, dict):
-            continue
-        procedure_id = str(procedure.get("procedure_id") or "").strip()
-        if not procedure_id:
-            continue
-        title = str(procedure.get("title") or "").strip()
-        if title:
-            title_by_id[procedure_id] = title
-        roles = _as_text_list(procedure.get("audience_roles"))
-        role = str(procedure.get("role_required") or "").strip()
-        if role:
-            audience_by_id[procedure_id] = role
-        elif roles:
-            audience_by_id[procedure_id] = roles[0]
+    for key in ("evidence_collection_procedures", "linked_runbooks"):
+        for procedure in list(node.get(key) or []):
+            if not isinstance(procedure, dict):
+                continue
+            procedure_id = str(procedure.get("procedure_id") or "").strip()
+            if not procedure_id:
+                continue
+            title = str(procedure.get("title") or "").strip()
+            if title:
+                title_by_id[procedure_id] = title
+            roles = _as_text_list(procedure.get("audience_roles"))
+            role = str(procedure.get("role_required") or "").strip()
+            if role:
+                audience_by_id[procedure_id] = role
+            elif roles:
+                audience_by_id[procedure_id] = roles[0]
 
     links: list[dict[str, Any]] = []
-    for link in list(node.get("runbook_links") or []):
-        if not isinstance(link, dict):
-            continue
-        procedure_id = str(link.get("procedure_id") or "").strip()
-        if not procedure_id:
-            continue
+    seen: set[str] = set()
+
+    def _append_link(
+        *,
+        procedure_id: Any,
+        title: Any = None,
+        link_confidence: Any = None,
+        link_role: Any = None,
+        audience: Any = None,
+        score: Any = None,
+        link_rationale: Any = None,
+    ) -> None:
+        value = str(procedure_id or "").strip()
+        if not value or value in seen:
+            return
+        seen.add(value)
+        score_value = None
+        if score is not None:
+            try:
+                score_value = float(score)
+            except (TypeError, ValueError):
+                score_value = None
+        links.append(
+            {
+                "procedure_id": value,
+                "title": str(title or title_by_id.get(value) or "").strip() or None,
+                "link_confidence": str(link_confidence or "").strip() or None,
+                "link_role": str(link_role or "").strip() or None,
+                "audience": str(
+                    audience or audience_by_id.get(value) or ""
+                ).strip()
+                or None,
+                "score": score_value,
+                "link_rationale": str(link_rationale or "").strip() or None,
+            }
+        )
+
+    for link in sorted(
+        [item for item in list(node.get("runbook_links") or []) if isinstance(item, dict)],
+        key=lambda item: int(item.get("link_rank") or 999),
+    ):
         score = link.get("retrieval_combined_score")
         if score is None:
             score = link.get("boosted_score")
-        try:
-            score_value = float(score) if score is not None else None
-        except (TypeError, ValueError):
-            score_value = None
-        title = str(
-            link.get("title") or title_by_id.get(procedure_id) or ""
-        ).strip() or None
-        audience = str(
-            link.get("audience")
-            or link.get("role_required")
-            or audience_by_id.get(procedure_id)
-            or ""
-        ).strip() or None
-        links.append(
-            {
-                "procedure_id": procedure_id,
-                "title": title,
-                "link_confidence": str(link.get("link_confidence") or "").strip()
-                or None,
-                "link_role": str(link.get("link_role") or "").strip() or None,
-                "audience": audience,
-                "score": score_value,
-                "link_rationale": str(link.get("link_rationale") or "").strip()
-                or None,
-            }
+        _append_link(
+            procedure_id=link.get("procedure_id"),
+            title=link.get("title"),
+            link_confidence=link.get("link_confidence"),
+            link_role=link.get("link_role"),
+            audience=link.get("audience") or link.get("role_required"),
+            score=score,
+            link_rationale=link.get("link_rationale"),
         )
+    for procedure_id in list(node.get("resolved_runbook_ids") or []):
+        _append_link(procedure_id=procedure_id, link_role="resolved")
+    for key, role in (
+        ("linked_runbooks", "linked"),
+        ("evidence_collection_procedures", "evidence"),
+        ("optional_corroboration", "corroboration"),
+    ):
+        for item in list(node.get(key) or []):
+            if isinstance(item, dict):
+                _append_link(
+                    procedure_id=item.get("procedure_id"),
+                    title=item.get("title"),
+                    link_role=role,
+                    audience=item.get("role_required"),
+                )
+            else:
+                _append_link(procedure_id=item, link_role=role)
+    primary = node.get("linked_primary_procedure")
+    if isinstance(primary, dict):
+        _append_link(
+            procedure_id=primary.get("procedure_id"),
+            title=primary.get("title"),
+            link_role="primary",
+        )
+    else:
+        _append_link(procedure_id=primary, link_role="primary")
+    for outcome in list(node.get("decision_outcomes") or []):
+        if isinstance(outcome, dict):
+            _append_link(
+                procedure_id=outcome.get("linked_runbook_id"),
+                link_role=str(outcome.get("outcome_label") or "decision"),
+            )
     return links
 
 

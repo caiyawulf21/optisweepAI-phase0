@@ -1,3 +1,9 @@
+"""In-memory hybrid retrieval over Cosmos-loaded embeddings.
+
+No Azure AI Search. Score = 0.7*cosine + 0.3*Jaccard, with playbook symptom
+phrase boost. Algorithm notes: docs/retrieval_algorithms.md.
+"""
+
 from __future__ import annotations
 
 import hashlib

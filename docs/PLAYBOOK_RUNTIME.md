@@ -1,6 +1,7 @@
 # Playbook runtime architecture
 
-Implemented the Cosmos-backed playbook runtime described by the app handoff references.
+Cosmos-backed playbook orchestration (`POST /troubleshoot`) and retrieval chat
+(`POST /retrieve`). Older YAML / CAT-1 / case-triage graphs are gone.
 
 ## Surfaces
 

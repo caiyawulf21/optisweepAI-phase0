@@ -193,6 +193,12 @@ class CosmosCorpusClient:
             seen.add(value)
             ordered.append(value)
 
+        def _add_ref(value: Any) -> None:
+            if isinstance(value, dict):
+                _add(value.get("procedure_id") or value.get("procedureId"))
+            else:
+                _add(value)
+
         if payload:
             for node in payload.get("nodes") or []:
                 if not isinstance(node, dict):
@@ -201,20 +207,28 @@ class CosmosCorpusClient:
                     continue
                 for procedure_id in list(node.get("resolved_runbook_ids") or []):
                     _add(procedure_id)
-                runbook_links = list(node.get("runbook_links") or [])
-                if runbook_links:
-                    sorted_links = sorted(
-                        [
-                            link
-                            for link in runbook_links
-                            if isinstance(link, dict)
-                        ],
-                        key=lambda item: int(item.get("link_rank") or 999),
-                    )
-                    for link in sorted_links:
-                        _add(link.get("procedure_id"))
-                if ordered:
-                    return ordered
+                runbook_links = sorted(
+                    [
+                        link
+                        for link in list(node.get("runbook_links") or [])
+                        if isinstance(link, dict)
+                    ],
+                    key=lambda item: int(item.get("link_rank") or 999),
+                )
+                for link in runbook_links:
+                    _add(link.get("procedure_id"))
+                for key in (
+                    "linked_runbooks",
+                    "evidence_collection_procedures",
+                    "optional_corroboration",
+                ):
+                    for item in list(node.get(key) or []):
+                        _add_ref(item)
+                _add_ref(node.get("linked_primary_procedure"))
+                for outcome in list(node.get("decision_outcomes") or []):
+                    if isinstance(outcome, dict):
+                        _add(outcome.get("linked_runbook_id"))
+                break
         links = self.load_relationship_graph()
         matches = [
             link

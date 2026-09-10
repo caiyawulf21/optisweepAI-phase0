@@ -1,0 +1,28 @@
+{
+  "reviews": [
+    {
+      "id": "brain_review:merge-1",
+      "kind": "audit_finding",
+      "check_name": "Merge duplicate AGV heartbeat entities",
+      "affected_record_ids": [
+        "entity:symptom:agv_hb_dup",
+        "entity:symptom:agv_heartbeat"
+      ],
+      "proposed_change": "MERGE losers into entity:symptom:agv_heartbeat",
+      "status": "open",
+      "resolution": "MERGE",
+      "resolved_by": null
+    },
+    {
+      "id": "brain_review:retype-1",
+      "kind": "audit_finding",
+      "check_name": "Retype misclassified claim",
+      "affected_record_ids": ["claim:demo:mis typed"],
+      "proposed_change": "RETYPE claim:demo:mis typed",
+      "status": "open",
+      "resolution": "RETYPE",
+      "resolved_by": null
+    }
+  ],
+  "open_count": 2
+}
