@@ -34,8 +34,16 @@ class CanonicalImageLookup:
     def __init__(self, repository: CanonicalImageRepository | None = None) -> None:
         self._repo = repository or CanonicalImageRepository()
 
-    def get_by_image_id(self, image_id: str, *, backend_base: str = "") -> dict[str, Any] | None:
-        record = self._repo.get_by_image_id(image_id)
+    def get_by_image_id(
+        self,
+        image_id: str,
+        *,
+        backend_base: str = "",
+        allow_cross_partition: bool = True,
+    ) -> dict[str, Any] | None:
+        record = self._repo.get_by_image_id(
+            image_id, allow_cross_partition=allow_cross_partition
+        )
         if not record:
             return None
         return _normalize_image(record, backend_base=backend_base)
@@ -47,8 +55,15 @@ class CanonicalImageLookup:
         embedded_images: list[dict[str, Any]] | None = None,
         backend_base: str = "",
         limit: int = 12,
+        deep_lookup: bool = False,
     ) -> list[dict[str, Any]]:
-        """Resolve only explicit screen/artifact refs (no case-wide dump)."""
+        """Resolve only explicit screen/artifact refs (no case-wide dump).
+
+        ``deep_lookup=False`` (default for troubleshoot) does a partitioned
+        id match only and falls back to lightweight stubs so the UI can load
+        via ``/images/{id}``. Expensive CONTAINS / cross-partition scans run
+        only when ``deep_lookup=True``.
+        """
         results: list[dict[str, Any]] = []
         seen: set[str] = set()
 
@@ -70,12 +85,25 @@ class CanonicalImageLookup:
             text = str(artifact_id or "").strip()
             if not text:
                 continue
-            direct = self.get_by_image_id(text, backend_base=backend_base)
+            direct = self.get_by_image_id(
+                text,
+                backend_base=backend_base,
+                allow_cross_partition=deep_lookup,
+            )
             if direct:
                 add(direct)
-                continue
-            for record in self._query_by_artifact(text):
-                add(record)
+            elif deep_lookup:
+                for record in self._query_by_artifact(text):
+                    add(record)
+            else:
+                stub = {
+                    "image_id": text,
+                    "title": text,
+                    "storage_uri": None,
+                }
+                if backend_base:
+                    stub["render_uri"] = f"{backend_base.rstrip('/')}/images/{text}"
+                add(stub)
             if len(results) >= limit:
                 break
         return results[:limit]

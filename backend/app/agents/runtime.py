@@ -720,26 +720,22 @@ def _resolve_step_images(
         images = lookup.resolve_for_artifacts(
             artifact_ids=artifact_ids,
             embedded_images=list(embedded_images or []),
+            deep_lookup=False,
         )
     except Exception:
         images = []
     if images:
         return images
-    recovered: list[dict[str, Any]] = []
-    seen: set[str] = set()
-    for artifact_id in artifact_ids:
-        try:
-            record = lookup.get_by_image_id(artifact_id)
-        except Exception:
-            record = None
-        if not isinstance(record, dict):
-            continue
-        key = str(record.get("image_id") or artifact_id)
-        if key in seen:
-            continue
-        seen.add(key)
-        recovered.append(record)
-    return recovered
+    return [
+        {
+            "image_id": str(artifact_id),
+            "title": str(artifact_id),
+            "storage_uri": None,
+            "render_uri": None,
+        }
+        for artifact_id in artifact_ids
+        if str(artifact_id or "").strip()
+    ]
 
 
 def _enrich_runbook_step_images(runbook: dict[str, Any], lookup: Any) -> dict[str, Any]:

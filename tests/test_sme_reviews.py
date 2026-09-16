@@ -83,6 +83,25 @@ def test_review_queue_helpers() -> None:
     assert "Disputed claim" in review_queue_label(row)
 
 
+def test_format_proposed_change_and_affected_records() -> None:
+    from backend.app.services.review_ui import (
+        format_affected_records,
+        format_proposed_change_card,
+    )
+
+    detail = json.loads((FIXTURES / "review_detail_response.json").read_text(encoding="utf-8"))
+    card = format_proposed_change_card(detail["proposed_change"])
+    assert card["action"] == "MERGE"
+    assert "agv_heartbeat" in card["headline"]
+    rows = format_affected_records(
+        affected_records=detail["affected_records"],
+        affected_record_ids=detail["affected_record_ids"],
+        proposed=detail["proposed_change"],
+    )
+    assert any(row["role"] == "Keep" for row in rows)
+    assert any(row["role"] == "Merge away" for row in rows)
+
+
 def test_client_list_get_resolve_reviews() -> None:
     listing = json.loads((FIXTURES / "reviews_list_response.json").read_text(encoding="utf-8"))
     merge = json.loads((FIXTURES / "resolve_merge_response.json").read_text(encoding="utf-8"))

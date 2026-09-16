@@ -2,12 +2,26 @@ from __future__ import annotations
 
 import json
 import os
+import sys
+from pathlib import Path
 from typing import Any
 
 import requests
 import streamlit as st
 
 from branding import apply_fortna_theme, render_brand_banner
+
+_ROOT = Path(__file__).resolve().parents[2]
+if str(_ROOT) not in sys.path:
+    sys.path.insert(0, str(_ROOT))
+
+from backend.app.services.review_ui import (
+    format_affected_records,
+    format_proposed_change_card,
+    format_resolve_outcome,
+    review_effective_id,
+    review_queue_label,
+)
 
 
 DEFAULT_BACKEND = os.getenv("API_BASE_URL", "http://127.0.0.1:8000").rstrip("/")
@@ -70,29 +84,8 @@ def _resolve_review(
     return data if isinstance(data, dict) else {}
 
 
-def _effective_id(row: dict[str, Any]) -> str:
-    for key in ("review_id", "id", "brain_review_id"):
-        value = row.get(key)
-        if value:
-            return str(value)
-    return ""
-
-
-def _queue_label(row: dict[str, Any]) -> str:
-    rid = _effective_id(row) or "unknown"
-    kind = str(row.get("kind") or "review").strip()
-    title = (
-        str(row.get("title") or row.get("summary") or "").strip()
-        or str(row.get("proposed_change") or "")[:80].strip()
-        or rid
-    )
-    status = str(row.get("status") or "open").strip()
-    return f"{kind} · {status} — {title}"
-
-
 def _show_outcome(result: dict[str, Any]) -> None:
-    level = str(result.get("outcome_level") or "info")
-    message = str(result.get("outcome_message") or result.get("message") or "Done.")
+    level, message = format_resolve_outcome(result)
     if level == "success":
         st.success(message)
     elif level == "warning":
@@ -106,6 +99,46 @@ def _show_outcome(result: dict[str, Any]) -> None:
     mutated = result.get("mutated_record_ids") or []
     if mutated:
         st.caption("Mutated records: " + ", ".join(str(item) for item in mutated))
+
+
+def _render_proposed_change(proposed: Any) -> None:
+    card = format_proposed_change_card(proposed)
+    st.markdown("**What Brain wants to do**")
+    st.info(f"**{card.get('action') or 'CHANGE'}** — {card.get('headline')}")
+    details = list(card.get("details") or [])
+    if details:
+        for label, value in details:
+            st.markdown(f"- **{label}:** {value}")
+    with st.expander("Proposed change (raw)", expanded=False):
+        if isinstance(proposed, (dict, list)):
+            st.json(proposed)
+        else:
+            st.write(proposed or "—")
+
+
+def _render_affected_records(detail: dict[str, Any], proposed: Any) -> None:
+    rows = format_affected_records(
+        affected_records=detail.get("affected_records"),
+        affected_record_ids=detail.get("affected_record_ids"),
+        proposed=proposed,
+    )
+    st.markdown("**Affected records**")
+    if not rows:
+        st.caption("No affected records listed.")
+        return
+    st.dataframe(
+        [
+            {
+                "Role": row["role"],
+                "Record ID": row["record_id"],
+                "Type": row["record_type"],
+                "Validation": row["validation_status"],
+            }
+            for row in rows
+        ],
+        use_container_width=True,
+        hide_index=True,
+    )
 
 
 st.set_page_config(page_title="SME Review", layout="wide")
@@ -194,8 +227,12 @@ except Exception as exc:
 if query_review_id and "sme_selected_review_id" not in st.session_state:
     st.session_state.sme_selected_review_id = query_review_id
 
-ids = [_effective_id(row) for row in reviews if _effective_id(row)]
-labels = {_effective_id(row): _queue_label(row) for row in reviews if _effective_id(row)}
+ids = [review_effective_id(row) for row in reviews if review_effective_id(row)]
+labels = {
+    review_effective_id(row): review_queue_label(row)
+    for row in reviews
+    if review_effective_id(row)
+}
 
 col_queue, col_detail = st.columns([1, 2], gap="large")
 
@@ -231,7 +268,12 @@ with col_detail:
         st.error(f"Failed to load review {selected_id}: {exc}")
         st.stop()
 
-    st.markdown(f"**{_effective_id(detail) or selected_id}**")
+    title = str(detail.get("title") or detail.get("summary") or selected_id).strip()
+    st.markdown(f"### {title}")
+    st.caption(f"Review ID: `{review_effective_id(detail) or selected_id}`")
+    if detail.get("summary") and detail.get("title"):
+        st.write(detail.get("summary"))
+
     meta_cols = st.columns(4)
     meta_cols[0].metric("Kind", str(detail.get("kind") or "—"))
     meta_cols[1].metric("Status", str(detail.get("status") or "—"))
@@ -243,28 +285,13 @@ with col_detail:
         str(detail.get("resolution_type") or detail.get("audit_action") or "—"),
     )
 
-    if detail.get("title") or detail.get("summary"):
-        st.write(detail.get("title") or detail.get("summary"))
-
     proposed = detail.get("proposed_change_detail")
     if proposed is None:
         proposed = detail.get("proposed_change")
-    st.markdown("**Proposed change**")
-    if isinstance(proposed, (dict, list)):
-        st.json(proposed)
-    else:
-        st.write(proposed or "—")
+    _render_proposed_change(proposed)
+    _render_affected_records(detail, proposed)
 
-    affected = detail.get("affected_record_ids") or []
-    st.markdown("**Affected record ids**")
-    st.code("\n".join(str(item) for item in affected) if affected else "—")
-
-    stubs = detail.get("affected_records") or []
-    if stubs:
-        with st.expander("Affected record stubs"):
-            st.json(stubs)
-
-    with st.expander("Raw review payload"):
+    with st.expander("Raw review payload", expanded=False):
         st.json(detail.get("raw") or detail)
 
     st.divider()

@@ -77,26 +77,28 @@ def troubleshoot(request: TroubleshootRequest) -> TroubleshootResponse:
     candidates = candidate_playbook_ids(state)
     awaiting = resolution == "awaiting_candidate"
     brain_client = build_brain_http_client()
-    brain_context = safe_troubleshoot_context(
-        brain_client,
-        TroubleshootContextRequest(
-            query=enriched_message or request.user_message,
-            session_id=request.session_id,
-            playbook_id=str(state.get("active_playbook_id") or "") or None,
-            node_id=str(state.get("current_node_id") or "") or None,
-            runbook_id=(
-                str((state.get("runbook_payload") or {}).get("procedure_id") or "")
-                or None
+    brain_context = None
+    if needs_brain_routing_learning(resolution) or awaiting:
+        brain_context = safe_troubleshoot_context(
+            brain_client,
+            TroubleshootContextRequest(
+                query=enriched_message or request.user_message,
+                session_id=request.session_id,
+                playbook_id=str(state.get("active_playbook_id") or "") or None,
+                node_id=str(state.get("current_node_id") or "") or None,
+                runbook_id=(
+                    str((state.get("runbook_payload") or {}).get("procedure_id") or "")
+                    or None
+                ),
+                observed_signals=dict(state.get("extracted_observed_signals") or {}),
+                attachment_summaries=list(image_summaries),
+                include_working_material=needs_brain_routing_learning(resolution),
+                playbook_resolution=resolution,
+                awaiting_playbook_selection=awaiting,
+                candidate_playbook_ids=candidates,
+                case_id=str(state.get("active_case_id") or "") or None,
             ),
-            observed_signals=dict(state.get("extracted_observed_signals") or {}),
-            attachment_summaries=list(image_summaries),
-            include_working_material=needs_brain_routing_learning(resolution),
-            playbook_resolution=resolution,
-            awaiting_playbook_selection=awaiting,
-            candidate_playbook_ids=candidates,
-            case_id=str(state.get("active_case_id") or "") or None,
-        ),
-    )
+        )
     if brain_context is not None:
         trace = dict(state.get("runtime_trace") or {})
         trace["brain_context"] = {

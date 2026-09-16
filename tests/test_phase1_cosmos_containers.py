@@ -42,6 +42,15 @@ def test_phase1_runtime_container_list_matches_build_prompt() -> None:
     assert set(PHASE1_RUNTIME_CONTAINER_NAMES) == set(EXPECTED_PARTITION_KEYS)
 
 
+def test_phase1_deprecated_containers_are_flagged() -> None:
+    from backend.app.repositories.container_config import DEPRECATED_CONTAINER_NAMES
+
+    assert "canonical_images" in DEPRECATED_CONTAINER_NAMES
+    assert CONTAINERS["canonical_images"].replacement == "publish_canonical_images"
+    assert not CONTAINERS["workflow_sessions"].deprecated
+    assert not CONTAINERS["publish_canonical_images"].deprecated
+
+
 def test_all_phase1_containers_are_registered_with_expected_partition_keys() -> None:
     for name, partition_key in EXPECTED_PARTITION_KEYS.items():
         assert name in CONTAINERS, (

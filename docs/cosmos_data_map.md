@@ -286,6 +286,16 @@ Do not swap filesystem directories — filter Cosmos embedding `record_type` and
 | Per-source `canonical_incident_record.json` | Not published — optional future container |
 | Azure AI Search index | Not used in this project |
 
+## Deprecated Phase-1 containers
+
+Cosmos cannot rename containers in place. Phase-1 leftovers
+(`canonical_images`, `workflow_definitions`, `procedure_dictionary`,
+`incident_records`, etc.) are marked `deprecated=True` in
+`backend/app/repositories/container_config.py`. Keep the Stage 11 publish
+set above; to retire an old container, copy if needed then delete (or create
+`deprecated_<name>` and copy before delete). Do **not** treat
+`source_artifacts` as obsolete — it is still used by the publish corpus path.
+
 ---
 
 ## Ingestion repo cross-reference

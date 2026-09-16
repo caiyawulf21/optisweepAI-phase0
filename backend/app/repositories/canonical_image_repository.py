@@ -100,7 +100,12 @@ class CanonicalImageRepository(CosmosRepository):
     def publish_version_id(self) -> str:
         return self._publish_version_id
 
-    def get_by_image_id(self, image_id: str) -> dict[str, Any] | None:
+    def get_by_image_id(
+        self,
+        image_id: str,
+        *,
+        allow_cross_partition: bool = True,
+    ) -> dict[str, Any] | None:
         if not image_id:
             return None
         records = self.query(
@@ -116,7 +121,8 @@ class CanonicalImageRepository(CosmosRepository):
         )
         if records and _has_http_storage_uri(records[0]):
             return records[0]
-        # Prefer a renderable URI when the active partition has metadata only.
+        if not allow_cross_partition:
+            return records[0] if records else None
         rows = list(
             self.container.query_items(
                 query=(

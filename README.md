@@ -155,10 +155,10 @@ python -m backend.app.scripts.verify_cosmos_corpus
 | Area | Status |
 |------|--------|
 | Cosmos playbook + retrieve | **Implemented** |
-| Streamlit Guided / Search / SME Review | **Implemented** (SME needs Brain flags) |
-| Brain HTTP overlay | **Partial** — client + flags; default **off**; publish corpus remains primary. Retrieve may merge Brain hydrated excerpts into synthesis (not a knowledge graph); working material labeled unreviewed. Brain **v4**: cold ~40–50s / warm ~2s; MERGE+RETYPE apply; RECLASSIFY still `applied: false`. |
+| Streamlit Guided / Search / SME Review | **Implemented** (SME needs Brain flags; review cards show friendly MERGE/RETYPE summary + affected-record table) |
+| Brain HTTP overlay | **Partial** — client + flags; default **off**; publish corpus remains primary. Retrieve may merge Brain hydrated excerpts into synthesis (not a knowledge graph); working material labeled unreviewed. Brain **v4**: cold ~40–50s / warm ~2s; MERGE+RETYPE apply; RECLASSIFY still `applied: false`. Troubleshoot Brain context runs only while playbook is unpinned/awaiting candidate. |
 | Auth / Entra on app or Brain | **Deferred** |
-| Dead Phase-1 repo/model modules | Present but **not** on hot path — cleanup candidate |
+| Dead Phase-1 repo/model modules | Present but **not** on hot path — `container_config` marks leftover containers `deprecated=True` (cleanup: copy → `deprecated_<name>` or delete in Azure; Cosmos cannot rename in place) |
 
 Do not treat removed YAML / CAT-1 / case-triage docs or `data/` workflows as current —
 those paths were deleted from this repo.

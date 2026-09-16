@@ -830,6 +830,8 @@ def enrich_troubleshoot_payload(
     variant: str = "prompt_a",
 ) -> dict[str, Any]:
     """Backfill node details, branch metrics, and images for sparse/legacy responses."""
+    if payload.get("_ui_enriched"):
+        return payload
     enriched = dict(payload)
     workflow = dict(enriched.get("workflow_state") or {})
     guided = dict(enriched.get("guided_question") or {})
@@ -1056,7 +1058,12 @@ def enrich_troubleshoot_payload(
         runbooks.append({"procedure_id": procedure})
         known_ids.add(procedure)
 
-    enriched_runbooks = [_enrich_one_runbook(item) for item in runbooks]
+    enriched_runbooks: list[dict[str, Any]] = []
+    for index, item in enumerate(runbooks):
+        if index == 0 or not list(item.get("steps") or []):
+            enriched_runbooks.append(_enrich_one_runbook(item))
+        else:
+            enriched_runbooks.append(item)
     if enriched_runbooks:
         workflow["runbooks"] = enriched_runbooks
         workflow["runbook"] = enriched_runbooks[0]
@@ -1085,6 +1092,7 @@ def enrich_troubleshoot_payload(
     enriched["workflow_state"] = workflow
     if playbook_id and not enriched.get("selected_workflow_id"):
         enriched["selected_workflow_id"] = playbook_id
+    enriched["_ui_enriched"] = True
     return enriched
 
 
@@ -1150,6 +1158,10 @@ def render_canonical_images(
             last_status = "no URI"
             for uri in candidates:
                 try:
+                    if uri.startswith("http://") or uri.startswith("https://"):
+                        st.image(uri, caption=title, use_container_width=True)
+                        loaded = True
+                        break
                     response = requests.get(uri, timeout=45, allow_redirects=True)
                     last_status = str(response.status_code)
                     if response.ok and response.content:
